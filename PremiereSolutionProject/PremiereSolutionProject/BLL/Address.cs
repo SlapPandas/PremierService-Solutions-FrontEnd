@@ -13,6 +13,7 @@ namespace PremiereSolutionProject.BLL
         private int addressID;
         private string streetName;
         private string suburb;
+        private string city;
         private Province province;
         private string postalcode;
         #endregion
@@ -24,6 +25,7 @@ namespace PremiereSolutionProject.BLL
         public Province Province { get => province; set => province = value; }
         public string Postalcode { get => postalcode; set => postalcode = value; }
         public int AddressID { get => addressID; set => addressID = value; }
+        public string City { get => city; set => city = value; }
         #endregion
 
         #region Constructor
@@ -33,19 +35,21 @@ namespace PremiereSolutionProject.BLL
 
         }
         //constructor with all fields
-        public Address(int id, string street, string suburb, Province province, string code)
+        public Address(int id, string street, string suburb, string city, Province province, string code)
         {
             this.addressID = id;
             this.streetName = street;
             this.suburb = suburb;
+            this.city = city;
             this.province = province;
             this.postalcode = code;
         }
         //constructor without ID field
-        public Address(string street, string suburb, Province province, string code)
+        public Address(string street, string suburb, string city, Province province, string code)
         {
             this.streetName = street;
             this.suburb = suburb;
+            this.city = city;
             this.province = province;
             this.postalcode = code;
         }
