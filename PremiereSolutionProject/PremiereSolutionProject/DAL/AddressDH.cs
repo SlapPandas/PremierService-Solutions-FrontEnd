@@ -41,7 +41,7 @@ namespace PremiereSolutionProject.DAL
         public void Insert(Address address)
         {
             CreateConnection();
-            commandString = $"EXEC InsertAddress @id = '{address.AddressID}', @street = '{address.StreetName}', @suburb = '{address.Suburb}', @city = '{address.City}', @province = '{address.Province}', @code = '{address.Postalcode}'";
+            commandString = $"EXEC InsertAddress @id = '{address.AddressID}', @street = '{address.StreetName}', @suburb = '{address.Suburb}', @province = '{address.Province}', @code = '{address.Postalcode}'";
             Command = new SqlCommand(commandString, Connection);
 
             try

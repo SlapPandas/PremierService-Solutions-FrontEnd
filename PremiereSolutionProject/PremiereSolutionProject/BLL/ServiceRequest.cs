@@ -367,7 +367,6 @@ namespace PremiereSolutionProject.BLL
             ServiceRequestDH serviceRequestDH = new ServiceRequestDH();
             serviceRequestDH.UpdateState(serviceRequest);
         }
-
         #endregion
 
         #region Overrides

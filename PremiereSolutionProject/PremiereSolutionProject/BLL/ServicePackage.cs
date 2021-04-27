@@ -93,12 +93,6 @@ namespace PremiereSolutionProject.BLL
             return servicePackadgeDH.SelectAllServicePackedges();
         }
 
-        public List<ServicePackage> SelectAllServicePackageState() // get a list of service packages contract can be built from
-        {
-            ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
-            return servicePackadgeDH.SelectAllServicePackedgesWithState();
-        }
-
         public void UpdateServicePackage(ServicePackage servicePackage) // updates a service package 
         {
             ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
@@ -113,18 +107,6 @@ namespace PremiereSolutionProject.BLL
         {
             ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
             servicePackadgeDH.Delete(servicePackage);
-        }
-
-        public void UpdatePromotionStateOfPackage(int id, bool state)
-        {
-            ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
-            servicePackadgeDH.UpdatePromotionState(id, state);
-        }
-
-        public void UpdateListOfServices(ServicePackage servicePackage)
-        {
-            ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
-            servicePackadgeDH.UpdateServicePackedgeServiceList(servicePackage);
         }
 
         #endregion
