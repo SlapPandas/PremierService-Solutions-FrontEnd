@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PremiereSolutionProject.BLL.Interfaces
 {
-    interface IEnity
+    interface IEntity
     {
         #region Properties
         //properties that all the inheriting classes will have

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PremiereSolutionProject.BLL.Interfaces;
+using PremiereSolutionProject.DAL;
 
 namespace PremiereSolutionProject.BLL
 {

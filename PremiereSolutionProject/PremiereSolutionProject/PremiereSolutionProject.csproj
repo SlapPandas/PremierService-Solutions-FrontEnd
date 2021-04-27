@@ -59,7 +59,7 @@
     <Compile Include="BLL\EmployeeFactory.cs" />
     <Compile Include="BLL\FactoryClass.cs" />
     <Compile Include="BLL\IndividualClient.cs" />
-    <Compile Include="BLL\Interfaces\IEnity.cs" />
+    <Compile Include="BLL\Interfaces\IEntity.cs" />
     <Compile Include="BLL\Job.cs" />
     <Compile Include="BLL\MaintenanceEmployee.cs" />
     <Compile Include="BLL\Service.cs" />
