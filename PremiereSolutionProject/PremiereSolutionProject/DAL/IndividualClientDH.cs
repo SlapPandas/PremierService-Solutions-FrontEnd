@@ -14,7 +14,7 @@ namespace PremiereSolutionProject.DAL
         public void Update(IndividualClient individualClient)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateClientIndividual @id = '{individualClient.Id}', @firstname = '{individualClient.FirstName}', @surname = '{individualClient.Surname}', @contact = '{individualClient.ContactNumber}', @email = '{individualClient.Email}', @nationalid = '{individualClient.NationalIDnumber}', @registrationdate = '{individualClient.RegistrationDate}', @active = '{GetIntFromBool(individualClient.Active)}', @adressid = '{individualClient.Address.AddressID}', @streetName = '{individualClient.Address.StreetName}', @suburb = '{individualClient.Address.Suburb}', @province = '{((int)individualClient.Address.Province).ToString()}', @postalcode = '{individualClient.Address.Postalcode}'";
+            commandString = $"EXEC UpdateClientIndividual @id = '{individualClient.Id}', @firstname = '{individualClient.FirstName}', @surname = '{individualClient.Surname}', @contact = '{individualClient.ContactNumber}', @email = '{individualClient.Email}', @nationalid = '{individualClient.NationalIDnumber}', @registrationdate = '{individualClient.RegistrationDate}', @active = '{GetIntFromBool(individualClient.Active)}', @adressid = '{individualClient.Address.AddressID}', @streetName = '{individualClient.Address.StreetName}', @suburb = '{individualClient.Address.Suburb}', @province = '{((int)individualClient.Address.Province).ToString()}', @postalcode = '{individualClient.Address.Postalcode}',@city = '{individualClient.Address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try

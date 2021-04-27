@@ -359,8 +359,8 @@ INSERT INTO Specialisation([name],[description]) VALUES ('name3','desc3');
 INSERT INTO Specialisation([name],[description]) VALUES ('name4','desc4');
 INSERT INTO Specialisation([name],[description]) VALUES ('name5','desc5');
 INSERT INTO Specialisation([name],[description]) VALUES ('name6','desc6');
-INSERT INTO "Address" (streetName, suburb, province, postalcode) VALUES ('292 tegan cres','waterkloof','1','0181');
-INSERT INTO "Address" (streetName, suburb, province, postalcode) VALUES ('91 8th street','menlopark','1','0081');
+INSERT INTO "Address" (streetName, suburb, province, postalcode,city) VALUES ('292 tegan cres','waterkloof','1','0181','Pretoria');
+INSERT INTO "Address" (streetName, suburb, province, postalcode,city) VALUES ('91 8th street','menlopark','1','0081','Pretoria');
 INSERT INTO ClientBusiness([busuinessName],[addressId],[contactNumber],[taxNumber],[RegistrationDate],[active])VALUES ('name',1,133,456,'2021-04-18','1');
 INSERT INTO ClientIndividual(firstName, surname, addressId, contactNumber, email, nationalIdNumber, RegistrationDate,[active]) VALUES ('Matin','De Wet','1','0796001462','matin@gmail.com','1234567890123','1999/12/12','1');
 INSERT INTO ClientIndividual(firstName, surname, addressId, contactNumber, email, nationalIdNumber, RegistrationDate,[active]) VALUES ('Matin','De Wet','1','0796001462','matin@gmail.com','1234567890123','1999/12/12','1');
@@ -586,7 +586,7 @@ BEGIN
 	COMMIT
 END
 GO
-CREATE PROCEDURE UpdateClientIndividual @id VARCHAR(100), @firstname VARCHAR(100), @surname VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100), @nationalid VARCHAR(13), @registrationdate DATE, @active INT, @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10)
+CREATE PROCEDURE UpdateClientIndividual @id VARCHAR(100), @firstname VARCHAR(100), @surname VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100), @nationalid VARCHAR(13), @registrationdate DATE, @active INT, @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10),@city VARCHAR(100)
 AS
 BEGIN
 	BEGIN TRAN
@@ -596,7 +596,7 @@ BEGIN
 	WHERE clientIndividualClientNumber = @id
 
 	UPDATE [Address]
-	SET streetName = @streetName, suburb = @suburb, province = @province, postalcode = @postalcode
+	SET streetName = @streetName, suburb = @suburb, province = @province, postalcode = @postalcode, city = @city
 	WHERE addressID = @adressid
 
 	COMMIT
@@ -628,7 +628,7 @@ BEGIN
 	COMMIT
 END
 GO
-CREATE PROCEDURE UpdateJob @id INT, @notes VARCHAR(255), @specialisationId INT, @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10)
+CREATE PROCEDURE UpdateJob @id INT, @notes VARCHAR(255), @specialisationId INT, @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10),@city VARCHAR(100)
 AS
 BEGIN
 	BEGIN TRAN
@@ -637,7 +637,7 @@ BEGIN
 		WHERE jobID = @id
 
 		UPDATE [Address]
-		SET streetName = @streetName, suburb = @suburb, province = @province, postalcode = @postalcode
+		SET streetName = @streetName, suburb = @suburb, province = @province, postalcode = @postalcode,city = @city
 		WHERE addressID = @adressid
 	COMMIT
 END
