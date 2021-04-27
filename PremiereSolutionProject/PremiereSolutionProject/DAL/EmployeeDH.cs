@@ -75,7 +75,7 @@ namespace PremiereSolutionProject.DAL
                 Reader = Command.ExecuteReader();
                 while (Reader.Read())
                 {
-                    callCenterEmployeeList.Add(new CallCenterEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    callCenterEmployeeList.Add(new CallCenterEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
                 }
             }
             catch (Exception e)
@@ -102,7 +102,7 @@ namespace PremiereSolutionProject.DAL
                 while (Reader.Read())
                 {
 
-                    maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
                 }
             }
             catch (Exception e)
@@ -128,7 +128,7 @@ namespace PremiereSolutionProject.DAL
                 while (Reader.Read())
                 {
 
-                    maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address(-1, (string)Reader["streetName"], (string)Reader["suburb"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
                 }
             }
             catch (Exception e)
@@ -154,7 +154,7 @@ namespace PremiereSolutionProject.DAL
                 while (Reader.Read())
                 {
 
-                    serviceManagerList.Add(new ServiceManager((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    serviceManagerList.Add(new ServiceManager((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
                 }
             }
             catch (Exception e)

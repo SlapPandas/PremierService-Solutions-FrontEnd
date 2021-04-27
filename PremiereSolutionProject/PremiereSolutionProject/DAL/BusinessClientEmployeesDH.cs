@@ -156,7 +156,7 @@ namespace PremiereSolutionProject.DAL
                 Reader = Command.ExecuteReader();
                 while (Reader.Read())
                 {
-                    myAddress = new Address((int)Reader["ID"], (string)Reader["streetName"], (string)Reader["suburb"], (Province)Reader["province"], (string)Reader["postalcode"]);
+                    myAddress = new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]);
                 }
             }
             catch (Exception e)
@@ -168,6 +168,45 @@ namespace PremiereSolutionProject.DAL
             finally { CloseConnection(); }
             return myAddress;
 
+        }
+        private Province GetProvince(string input)
+        {
+            Province province = (Province)1;
+
+            switch (input)
+            {
+                case "0":
+                    province = (Province)0;
+                    break;
+                case "1":
+                    province = (Province)1;
+                    break;
+                case "2":
+                    province = (Province)2;
+                    break;
+                case "3":
+                    province = (Province)3;
+                    break;
+                case "4":
+                    province = (Province)4;
+                    break;
+                case "5":
+                    province = (Province)5;
+                    break;
+                case "6":
+                    province = (Province)6;
+                    break;
+                case "7":
+                    province = (Province)7;
+                    break;
+                case "8":
+                    province = (Province)8;
+                    break;
+                default:
+                    province = (Province)1;
+                    break;
+            }
+            return province;
         }
         #endregion
     }

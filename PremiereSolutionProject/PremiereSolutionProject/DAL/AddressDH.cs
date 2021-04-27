@@ -15,7 +15,7 @@ namespace PremiereSolutionProject.DAL
         public void Update(Address address)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateAddress @id = '{address.AddressID}', @street = '{address.StreetName}', @suburb = '{address.Suburb}', @province = '{address.Province}', @code = '{address.Postalcode}'";
+            commandString = $"EXEC UpdateAddress @id = '{address.AddressID}', @street = '{address.StreetName}', @suburb = '{address.Suburb}', @province = '{address.Province}', @code = '{address.Postalcode}',@city = '{address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -77,7 +77,7 @@ namespace PremiereSolutionProject.DAL
                 Reader = Command.ExecuteReader();
                 while (Reader.Read())
                 {
-                    addressList.Add(new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]));
+                    addressList.Add(new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]));
                 }
             }
             catch (Exception e)

@@ -428,7 +428,7 @@ namespace PremiereSolutionProject.DAL
                 addressReader = addressCommand.ExecuteReader();
                 while (addressReader.Read())
                 {
-                    address = new Address((int)addressReader["addressID"], (string)addressReader["streetName"], (string)addressReader["suburb"], GetProvince((string)addressReader["province"]), (string)addressReader["postalcode"]);
+                    address = new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]);
                 }
             }
             catch (Exception e)

@@ -47,6 +47,7 @@ CREATE TABLE "Address"
 	addressID INT NOT NULL IDENTITY(1,1)  PRIMARY KEY,
 	streetName VARCHAR(100) NOT NULL,
 	suburb VARCHAR(100) NOT NULL,
+	city VARCHAR(100) NOT NULL,
 	province CHAR(1) NOT NULL,
 	postalcode CHAR(4) NOT NULL
 	);
@@ -537,13 +538,13 @@ AS
 GO
 
 --UPDATE Procedures
-CREATE PROCEDURE UpdateAddress @id INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10)
+CREATE PROCEDURE UpdateAddress @id INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10),@city VARCHAR(100)
 AS
 BEGIN
 	BEGIN TRAN
 
 	UPDATE Address
-	SET streetName = @streetName, suburb = @suburb, province = @province, postalcode = @postalcode
+	SET streetName = @streetName, suburb = @suburb, province = @province, postalcode = @postalcode, city = @city
 	WHERE addressID = @id
 
 	COMMIT
