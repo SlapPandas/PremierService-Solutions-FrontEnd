@@ -14,7 +14,7 @@ namespace PremiereSolutionProject.DAL
         public void Update(Employee employee)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @address = '{employee.Address}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @registrationDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{employee.Employed}', @department = '{employee.Department}'";
+            commandString = $"EXEC UpdateEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @registrationDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{employee.Employed}', @department = '{employee.Department}, @adressid = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}',@city = '{employee.Address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -40,7 +40,7 @@ namespace PremiereSolutionProject.DAL
         public void Insert(Employee employee)
         {
             CreateConnection();
-            commandString = $"EXEC InsertEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @address = '{employee.Address}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @registrationDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{employee.Employed}'";
+            commandString = $"EXEC InsertEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @address = '{employee.Address.AddressID}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @registrationDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{employee.Employed}'";
             Command = new SqlCommand(commandString, Connection);
 
             try

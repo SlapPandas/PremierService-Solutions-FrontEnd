@@ -15,7 +15,7 @@ namespace PremiereSolutionProject.DAL
         public void Update(BusinessClient businessClient)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateBusinessClient @id = '{businessClient.Id}', @address = '{businessClient.Address}', @contactnr = '{businessClient.ContactNumber}', @RegistrationDate = '{businessClient.RegistrationDate.ToString("yyyy-MM-dd")}', @taxNumber = '{businessClient.TaxNumber}', @businessName = '{businessClient.BusinessName}'";
+            commandString = $"EXEC UpdateBusinessClient @id = '{businessClient.Id}', @contactnr = '{businessClient.ContactNumber}', @RegistrationDate = '{businessClient.RegistrationDate.ToString("yyyy-MM-dd")}', @taxNumber = '{businessClient.TaxNumber}', @businessName = '{businessClient.BusinessName}, @adressid = '{businessClient.Address.AddressID}', @streetName = '{businessClient.Address.StreetName}', @suburb = '{businessClient.Address.Suburb}', @province = '{((int)businessClient.Address.Province).ToString()}', @postalcode = '{businessClient.Address.Postalcode}',@city = '{businessClient.Address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -41,7 +41,7 @@ namespace PremiereSolutionProject.DAL
         public void Insert(BusinessClient businessClient)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateBusinessClient @id = '{businessClient.Id}', @address = '{businessClient.Address}', @contactnr = '{businessClient.ContactNumber}', @RegistrationDate = '{businessClient.RegistrationDate.ToString("yyyy-MM-dd")}', @taxNumber = '{businessClient.TaxNumber}', @businessName = '{businessClient.BusinessName}'";
+            commandString = $"EXEC UpdateBusinessClient @id = '{businessClient.Id}', @address = '{businessClient.Address.AddressID}', @contactnr = '{businessClient.ContactNumber}', @RegistrationDate = '{businessClient.RegistrationDate.ToString("yyyy-MM-dd")}', @taxNumber = '{businessClient.TaxNumber}', @businessName = '{businessClient.BusinessName}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
