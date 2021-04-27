@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{24C9A2D9-29B9-4270-BBC0-22BDBC5F6928}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PremiereSolutionProject</RootNamespace>
+    <AssemblyName>PremiereSolutionProject</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Presentation_Layer\frmAddBusinessClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmAddBusinessClient.designer.cs">
+      <DependentUpon>frmAddBusinessClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\FrmAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\FrmAddEmployee.designer.cs">
+      <DependentUpon>FrmAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmAddIndividualClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmAddIndividualClient.designer.cs">
+      <DependentUpon>frmAddIndividualClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmCallCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmCallCenter.designer.cs">
+      <DependentUpon>frmCallCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmCallCenterClientInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmCallCenterClientInfo.designer.cs">
+      <DependentUpon>frmCallCenterClientInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmClientSatisfaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmClientSatisfaction.designer.cs">
+      <DependentUpon>frmClientSatisfaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmCreateContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmCreateContract.designer.cs">
+      <DependentUpon>frmCreateContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmCreateService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmCreateService.designer.cs">
+      <DependentUpon>frmCreateService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmCreateServicePackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmCreateServicePackage.designer.cs">
+      <DependentUpon>frmCreateServicePackage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmDashboard.designer.cs">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\FrmLogin.designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\FrmManageBusinessClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\FrmManageBusinessClient.designer.cs">
+      <DependentUpon>FrmManageBusinessClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\FrmManageIndividualClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\FrmManageIndividualClient.designer.cs">
+      <DependentUpon>FrmManageIndividualClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\FrmManageMaintenanceEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\FrmManageMaintenanceEmployee.designer.cs">
+      <DependentUpon>FrmManageMaintenanceEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\FrmServiceRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\FrmServiceRequest.designer.cs">
+      <DependentUpon>FrmServiceRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentation_Layer\frmAddBusinessClient.resx">
+      <DependentUpon>frmAddBusinessClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\FrmAddEmployee.resx">
+      <DependentUpon>FrmAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\frmAddIndividualClient.resx">
+      <DependentUpon>frmAddIndividualClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\frmCallCenter.resx">
+      <DependentUpon>frmCallCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\frmCallCenterClientInfo.resx">
+      <DependentUpon>frmCallCenterClientInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\frmClientSatisfaction.resx">
+      <DependentUpon>frmClientSatisfaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\frmCreateContract.resx">
+      <DependentUpon>frmCreateContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\frmCreateService.resx">
+      <DependentUpon>frmCreateService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\frmCreateServicePackage.resx">
+      <DependentUpon>frmCreateServicePackage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\frmDashboard.resx">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\FrmManageBusinessClient.resx">
+      <DependentUpon>FrmManageBusinessClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\FrmManageIndividualClient.resx">
+      <DependentUpon>FrmManageIndividualClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\FrmManageMaintenanceEmployee.resx">
+      <DependentUpon>FrmManageMaintenanceEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\FrmServiceRequest.resx">
+      <DependentUpon>FrmServiceRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
