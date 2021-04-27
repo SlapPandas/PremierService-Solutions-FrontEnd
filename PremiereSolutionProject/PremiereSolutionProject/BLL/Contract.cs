@@ -291,6 +291,12 @@ namespace PremiereSolutionProject.BLL
             return allContracts;
         }
 
+        public List<Contract> SelectActiveContracts()
+        {
+            ContractDH contractDH = new ContractDH();
+            return contractDH.SelectAllActiveContracts();
+        }
+
         #endregion
 
         #region Overrides
