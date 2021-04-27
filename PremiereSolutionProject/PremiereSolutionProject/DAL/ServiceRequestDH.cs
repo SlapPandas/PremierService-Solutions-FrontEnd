@@ -76,7 +76,7 @@ namespace PremiereSolutionProject.DAL
         {
             InsertAllSpeciliozationOfServiceRequest(serviceRequest);
             CreateConnection();
-            commandString = $"EXEC UpdateServiceRequestSpecializationList @id = '{serviceRequest.ServiceRequestID}'";
+            commandString = $"EXEC UpdateServicePackedgeServiceList @id = '{serviceRequest.ServiceRequestID}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
