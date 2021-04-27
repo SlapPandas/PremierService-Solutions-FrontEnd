@@ -63,6 +63,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnCallCenter = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.pnlChildForm = new System.Windows.Forms.Panel();
+            this.btnBusinessContact = new System.Windows.Forms.Button();
             this.pnlSideMenu.SuspendLayout();
             this.pnlClientSatisSubMenu.SuspendLayout();
             this.pnlClientMaintainSubMenu.SuspendLayout();
@@ -103,7 +104,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(0, 1475);
+            this.btnExit.Location = new System.Drawing.Point(0, 1538);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(349, 69);
@@ -119,7 +120,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.pnlClientSatisSubMenu.Controls.Add(this.btnFollowRequest);
             this.pnlClientSatisSubMenu.Controls.Add(this.btnClientSatisCall);
             this.pnlClientSatisSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlClientSatisSubMenu.Location = new System.Drawing.Point(0, 1292);
+            this.pnlClientSatisSubMenu.Location = new System.Drawing.Point(0, 1355);
             this.pnlClientSatisSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlClientSatisSubMenu.Name = "pnlClientSatisSubMenu";
             this.pnlClientSatisSubMenu.Size = new System.Drawing.Size(349, 183);
@@ -187,7 +188,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnClientSatis.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnClientSatis.Image = ((System.Drawing.Image)(resources.GetObject("btnClientSatis.Image")));
             this.btnClientSatis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientSatis.Location = new System.Drawing.Point(0, 1223);
+            this.btnClientSatis.Location = new System.Drawing.Point(0, 1286);
             this.btnClientSatis.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClientSatis.Name = "btnClientSatis";
             this.btnClientSatis.Size = new System.Drawing.Size(349, 69);
@@ -199,6 +200,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // pnlClientMaintainSubMenu
             // 
+            this.pnlClientMaintainSubMenu.Controls.Add(this.btnBusinessContact);
             this.pnlClientMaintainSubMenu.Controls.Add(this.btnCreateContract);
             this.pnlClientMaintainSubMenu.Controls.Add(this.btnCreateBusinessClient);
             this.pnlClientMaintainSubMenu.Controls.Add(this.btnCreateIndiClient);
@@ -206,7 +208,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.pnlClientMaintainSubMenu.Location = new System.Drawing.Point(0, 1035);
             this.pnlClientMaintainSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlClientMaintainSubMenu.Name = "pnlClientMaintainSubMenu";
-            this.pnlClientMaintainSubMenu.Size = new System.Drawing.Size(349, 188);
+            this.pnlClientMaintainSubMenu.Size = new System.Drawing.Size(349, 251);
             this.pnlClientMaintainSubMenu.TabIndex = 1;
             // 
             // btnCreateContract
@@ -618,6 +620,24 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.pnlChildForm.Size = new System.Drawing.Size(1017, 837);
             this.pnlChildForm.TabIndex = 2;
             // 
+            // btnBusinessContact
+            // 
+            this.btnBusinessContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnBusinessContact.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBusinessContact.FlatAppearance.BorderSize = 0;
+            this.btnBusinessContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBusinessContact.ForeColor = System.Drawing.Color.LightGray;
+            this.btnBusinessContact.Location = new System.Drawing.Point(0, 186);
+            this.btnBusinessContact.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBusinessContact.Name = "btnBusinessContact";
+            this.btnBusinessContact.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
+            this.btnBusinessContact.Size = new System.Drawing.Size(349, 62);
+            this.btnBusinessContact.TabIndex = 13;
+            this.btnBusinessContact.Text = "Add Business Contact";
+            this.btnBusinessContact.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBusinessContact.UseVisualStyleBackColor = false;
+            this.btnBusinessContact.Click += new System.EventHandler(this.btnBusinessContact_Click);
+            // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -675,5 +695,6 @@ namespace PremiereSolutionProject.Presentation_Layer
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel pnlChildForm;
+        private System.Windows.Forms.Button btnBusinessContact;
     }
 }

@@ -173,6 +173,12 @@ namespace PremiereSolutionProject.Presentation_Layer
             HideSubMenu();
         }
 
+        private void btnBusinessContact_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmBusinessContact());
+            HideSubMenu();
+        }
+
         #endregion
 
         #region btnClientSatisSubMenu
@@ -221,5 +227,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             openChildForm(new frmClientSatisfaction());
             HideSubMenu();
         }
+
+        
     }
 }
