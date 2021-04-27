@@ -138,6 +138,12 @@ namespace PremiereSolutionProject.BLL
             ContractDH contractDH = new ContractDH();
             return contractDH.SelectAllContracts();
         }
+
+        public List<Contract> SelectActiveContracts()
+        {
+            ContractDH contractDH = new ContractDH();
+            return contractDH.SelectAllActiveContracts();
+        }
         //from contractState table - contracts that client already has
         public List<Contract> SelectAllContractOfClient(string ID)
         {

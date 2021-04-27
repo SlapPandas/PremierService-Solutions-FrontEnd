@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace PremiereSolutionProject.Presentation_Layer
 {
-    public partial class FrmAddEmployee : Form
+    public partial class frmBusinessContact : Form
     {
-        public FrmAddEmployee()
+        public frmBusinessContact()
         {
             InitializeComponent();
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

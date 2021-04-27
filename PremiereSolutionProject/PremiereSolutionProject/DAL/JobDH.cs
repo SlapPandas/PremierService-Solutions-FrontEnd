@@ -74,7 +74,7 @@ namespace PremiereSolutionProject.DAL
         public void Update(Job job)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateJob @id = {job.JobID}, @notes = '{job.JobNotes}', @specialisationId = {job.Specialisation.SpecialisationID}, @adressid = {job.JobAddress.AddressID}, @streetName = '{job.JobAddress.StreetName}', @suburb = '{job.JobAddress.Suburb}', @province = '{((int)job.JobAddress.Province).ToString()}', @postalcode = '{job.JobAddress.Postalcode}'";
+            commandString = $"EXEC UpdateJob @id = {job.JobID}, @notes = '{job.JobNotes}', @specialisationId = {job.Specialisation.SpecialisationID}, @adressid = {job.JobAddress.AddressID}, @streetName = '{job.JobAddress.StreetName}', @suburb = '{job.JobAddress.Suburb}', @province = '{((int)job.JobAddress.Province).ToString()}', @postalcode = '{job.JobAddress.Postalcode}',@city = '{job.JobAddress.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try

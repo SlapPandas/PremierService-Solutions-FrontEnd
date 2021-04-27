@@ -50,7 +50,7 @@ namespace PremiereSolutionProject
             services.Add(new Service(3, "ser1", "des1"));
             services.Add(new Service(4, "ser1", "des1"));
             ServicePackage serviceRequest = new ServicePackage(1, "updated", services, false, dateTimestart, dateTimeend, 123.321, 456.654);
-            servicePackadgeDH.Update(serviceRequest);
+            servicePackadgeDH.InsertSingleServiceToServicePackedge(1,1);
 
 
             Console.WriteLine("======================================================");

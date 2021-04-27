@@ -37,8 +37,6 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnEnd = new System.Windows.Forms.Button();
             this.btnAnswer = new System.Windows.Forms.Button();
-            this.btnServiceRequest = new System.Windows.Forms.Button();
-            this.btnIdentiyClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +44,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(227, 126);
+            this.label1.Location = new System.Drawing.Point(261, 133);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 20);
@@ -55,10 +53,10 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // rtbNotes
             // 
-            this.rtbNotes.Location = new System.Drawing.Point(56, 420);
+            this.rtbNotes.Location = new System.Drawing.Point(41, 317);
             this.rtbNotes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rtbNotes.Name = "rtbNotes";
-            this.rtbNotes.Size = new System.Drawing.Size(448, 241);
+            this.rtbNotes.Size = new System.Drawing.Size(573, 303);
             this.rtbNotes.TabIndex = 4;
             this.rtbNotes.Text = "Notes:";
             // 
@@ -66,7 +64,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnExit.Location = new System.Drawing.Point(492, 691);
+            this.btnExit.Location = new System.Drawing.Point(602, 674);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 35);
@@ -79,7 +77,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Modern No. 20", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(200, 37);
+            this.label4.Location = new System.Drawing.Point(259, 28);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(161, 34);
@@ -89,7 +87,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(130, 103);
+            this.pictureBox1.Location = new System.Drawing.Point(176, 111);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
@@ -103,12 +101,13 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnEnd.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnEnd.Image = ((System.Drawing.Image)(resources.GetObject("btnEnd.Image")));
             this.btnEnd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnd.Location = new System.Drawing.Point(306, 207);
+            this.btnEnd.Location = new System.Drawing.Point(364, 235);
             this.btnEnd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEnd.Name = "btnEnd";
             this.btnEnd.Size = new System.Drawing.Size(159, 45);
             this.btnEnd.TabIndex = 1;
             this.btnEnd.Text = "End Call";
+            this.btnEnd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEnd.UseVisualStyleBackColor = true;
             // 
             // btnAnswer
@@ -117,47 +116,21 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnAnswer.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnAnswer.Image = ((System.Drawing.Image)(resources.GetObject("btnAnswer.Image")));
             this.btnAnswer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnswer.Location = new System.Drawing.Point(71, 207);
+            this.btnAnswer.Location = new System.Drawing.Point(125, 235);
             this.btnAnswer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAnswer.Name = "btnAnswer";
             this.btnAnswer.Size = new System.Drawing.Size(159, 45);
             this.btnAnswer.TabIndex = 0;
             this.btnAnswer.Text = "Answer Call";
+            this.btnAnswer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAnswer.UseVisualStyleBackColor = true;
-            // 
-            // btnServiceRequest
-            // 
-            this.btnServiceRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServiceRequest.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnServiceRequest.Location = new System.Drawing.Point(141, 349);
-            this.btnServiceRequest.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnServiceRequest.Name = "btnServiceRequest";
-            this.btnServiceRequest.Size = new System.Drawing.Size(259, 35);
-            this.btnServiceRequest.TabIndex = 12;
-            this.btnServiceRequest.Text = "Create New Service Request";
-            this.btnServiceRequest.UseVisualStyleBackColor = true;
-            this.btnServiceRequest.Click += new System.EventHandler(this.btnServiceRequest_Click);
-            // 
-            // btnIdentiyClient
-            // 
-            this.btnIdentiyClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIdentiyClient.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnIdentiyClient.Location = new System.Drawing.Point(179, 291);
-            this.btnIdentiyClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnIdentiyClient.Name = "btnIdentiyClient";
-            this.btnIdentiyClient.Size = new System.Drawing.Size(182, 35);
-            this.btnIdentiyClient.TabIndex = 13;
-            this.btnIdentiyClient.Text = "Identify Client";
-            this.btnIdentiyClient.UseVisualStyleBackColor = true;
             // 
             // frmCallCenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(616, 740);
-            this.Controls.Add(this.btnIdentiyClient);
-            this.Controls.Add(this.btnServiceRequest);
+            this.ClientSize = new System.Drawing.Size(732, 734);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.rtbNotes);
@@ -184,7 +157,5 @@ namespace PremiereSolutionProject.Presentation_Layer
         private System.Windows.Forms.RichTextBox rtbNotes;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnServiceRequest;
-        private System.Windows.Forms.Button btnIdentiyClient;
     }
 }

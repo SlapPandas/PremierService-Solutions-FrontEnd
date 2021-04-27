@@ -75,7 +75,7 @@ namespace PremiereSolutionProject.DAL
         {
             InsertAllServicesOfServicePackedge(servicePackage);
             CreateConnection();
-            commandString = $"EXEC UpdateJobEmployeeList @id = '{servicePackage.PackageID}'";
+            commandString = $"EXEC UpdateServicePackedgeServiceList @id = '{servicePackage.PackageID}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -95,6 +95,25 @@ namespace PremiereSolutionProject.DAL
         #endregion
 
         #region Insert
+        public void InsertSingleServiceToServicePackedge(int ServicePackedgeId, int Service)
+        {
+            CreateConnection();
+            commandString = $"EXEC InsertServicePackageLink @ServicePackageID = '{ServicePackedgeId}', @ServiceID = '{Service}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
+            {
+                OpenConnection();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { CloseConnection(); }
+        }
         public void Insert(ServicePackage servicePackage)
         {
             CreateConnection();
