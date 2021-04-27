@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PremiereSolutionProject.DAL;
+using PremiereSolutionProject.BLL.Interfaces;
 
 namespace PremiereSolutionProject.BLL
 {
