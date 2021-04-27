@@ -66,42 +66,6 @@ namespace PremiereSolutionProject.BLL
             JobDH jDH = new JobDH();
             jDH.UpdateAmountOfEmployeesRequired(id, emps);
         }
-
-        public void ManuallyAssignJobs()
-        {
-            ServiceRequest serviceRequest = new ServiceRequest();
-            serviceRequest.AssignPendingJobs(); //manually calls the method to assign pending jobs
-        }
-
-        public void EscalateJob(int newPosition, int jobID)
-        {
-            //move a specific job up
-            // note that this is not gonna work properly since list is not stored somewhere right now
-            ServiceRequest serviceRequest = new ServiceRequest();
-            JobDH jobDH = new JobDH();
-
-            List<Job> jobList = serviceRequest.OrderJobList(jobDH.SelectAllPendingJobs());
-
-            for (int i = 0; i < jobList.Count; i++)
-            {
-                if (jobList[i].JobID.Equals(jobID))
-                {
-                    Job jobtomove = jobList[i];
-                    jobList.RemoveAt(i);
-                    jobList.Insert(newPosition, jobtomove);
-                    break;
-                }
-            }
-
-        }
-
-        public void ReAssignJob(int id, List<MaintenanceEmployee> employees)
-        {
-            JobDH jobDH = new JobDH();
-            Job job = jobDH.SelectJobById(id);
-            job.Employee = employees;   //assigns new employee list (taken in as parameter) to employee
-            jobDH.UpdateJobEmployeeList(job);   //updates in database
-        }
         #endregion
 
         #region Overrides
