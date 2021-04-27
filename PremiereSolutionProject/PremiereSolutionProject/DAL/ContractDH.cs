@@ -113,6 +113,31 @@ namespace PremiereSolutionProject.DAL
 
             return contractList;
         }
+        public List<Contract> SelectAllActiveContracts()
+        {
+            CreateConnection();
+            commandString = $"EXEC SelectAllActiveContracts";
+            Command = new SqlCommand(commandString, Connection);
+            List<Contract> contractList = new List<Contract>();
+            try
+            {
+                OpenConnection();
+                Reader = Command.ExecuteReader();
+                while (Reader.Read())
+                {
+                    contractList.Add(new Contract((string)Reader["contractNumber"], (DateTime)Reader["startDate"], (DateTime)Reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)Reader["contractID"]), (string)Reader["priorityLevel"], Reader.GetDouble(Reader.GetOrdinal("price")), (string)Reader["contractType"]));
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { CloseConnection(); }
+
+            return contractList;
+        }
 
         public List<Contract> SelectAllContractsByIndividualClientId(string id)
         {

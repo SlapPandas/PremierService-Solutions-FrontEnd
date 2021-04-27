@@ -1088,6 +1088,12 @@ BEGIN
 	SELECT * FROM [Contract]
 END
 GO
+CREATE PROCEDURE SelectAllActiveContract AS
+BEGIN
+	SELECT * FROM [Contract]
+	WHERE active = '1'
+END 
+GO
 CREATE PROCEDURE SelectAllServicePackedgesLinkedToContract @id INT AS
 BEGIN
 	SELECT * FROM ServicePackage
