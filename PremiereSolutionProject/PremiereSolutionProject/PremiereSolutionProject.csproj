@@ -46,6 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\Interfaces\IEnity.cs" />
+    <Compile Include="DAL\AddressDH.cs" />
+    <Compile Include="DAL\BusinessClientDH.cs" />
+    <Compile Include="DAL\BusinessClientEmployeesDH.cs" />
+    <Compile Include="DAL\CallDH.cs" />
+    <Compile Include="DAL\DatabaseConnection.cs" />
+    <Compile Include="DAL\DatabaseOperationDH.cs" />
+    <Compile Include="DAL\Interfaces\IAction.cs" />
+    <Compile Include="DAL\Interfaces\IDataconnection.cs" />
     <Compile Include="Presentation_Layer\frmAddBusinessClient.cs">
       <SubType>Form</SubType>
     </Compile>
