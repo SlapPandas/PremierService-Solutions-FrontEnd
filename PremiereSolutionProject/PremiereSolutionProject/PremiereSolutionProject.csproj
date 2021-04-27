@@ -46,7 +46,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\Address.cs" />
+    <Compile Include="BLL\BusinessClient.cs" />
+    <Compile Include="BLL\BusinessClientEmployee.cs" />
+    <Compile Include="BLL\Call.cs" />
+    <Compile Include="BLL\CallCenterEmployee.cs" />
+    <Compile Include="BLL\Client.cs" />
+    <Compile Include="BLL\ClientFactory.cs" />
+    <Compile Include="BLL\Contract.cs" />
+    <Compile Include="BLL\DatabaseOperation.cs" />
+    <Compile Include="BLL\Employee.cs" />
+    <Compile Include="BLL\EmployeeFactory.cs" />
+    <Compile Include="BLL\FactoryClass.cs" />
+    <Compile Include="BLL\IndividualClient.cs" />
     <Compile Include="BLL\Interfaces\IEnity.cs" />
+    <Compile Include="BLL\Job.cs" />
+    <Compile Include="BLL\MaintenanceEmployee.cs" />
+    <Compile Include="BLL\Service.cs" />
+    <Compile Include="BLL\ServiceManager.cs" />
+    <Compile Include="BLL\ServicePackage.cs" />
+    <Compile Include="BLL\ServiceRequest.cs" />
+    <Compile Include="BLL\Specialisation.cs" />
+    <Compile Include="BLL\StaticVariables.cs" />
     <Compile Include="DAL\AddressDH.cs" />
     <Compile Include="DAL\BusinessClientDH.cs" />
     <Compile Include="DAL\BusinessClientEmployeesDH.cs" />
