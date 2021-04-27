@@ -66,8 +66,6 @@ namespace PremiereSolutionProject.BLL
             JobDH jDH = new JobDH();
             jDH.UpdateAmountOfEmployeesRequired(id, emps);
         }
-<<<<<<< Updated upstream
-=======
 
         public void ManuallyAssignJobs()
         {
@@ -103,7 +101,6 @@ namespace PremiereSolutionProject.BLL
             job.Employee = employees;   //assigns new employee list (taken in as parameter) to employee
             jobDH.UpdateJobEmployeeList(job);   //updates in database
         }
->>>>>>> Stashed changes
         #endregion
 
         #region Overrides
