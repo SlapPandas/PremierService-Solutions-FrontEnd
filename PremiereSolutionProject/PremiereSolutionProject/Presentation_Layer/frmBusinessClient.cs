@@ -10,11 +10,23 @@ using System.Windows.Forms;
 
 namespace PremiereSolutionProject.Presentation_Layer
 {
-    public partial class FrmManageBusinessClient : Form
+    public partial class frmBusinessClient : Form
     {
-        public FrmManageBusinessClient()
+        public frmBusinessClient()
         {
             InitializeComponent();
         }
+
+        private void frmAddBusinessClient_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
+
+        
 }

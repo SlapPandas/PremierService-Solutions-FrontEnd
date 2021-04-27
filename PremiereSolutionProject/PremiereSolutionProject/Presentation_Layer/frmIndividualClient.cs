@@ -10,11 +10,24 @@ using System.Windows.Forms;
 
 namespace PremiereSolutionProject.Presentation_Layer
 {
-    public partial class FrmManageIndividualClient : Form
+    public partial class frmIndividualClient : Form
     {
-        public FrmManageIndividualClient()
+        public frmIndividualClient()
         {
             InitializeComponent();
+            
+        }
+
+       
+
+        private void frmAddIndividualClient_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

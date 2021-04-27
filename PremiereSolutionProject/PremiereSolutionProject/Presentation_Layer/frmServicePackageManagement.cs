@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PremiereSolutionProject.Presentation_Layer
 { 
-    public partial class frmCreateServicePackage : Form
+    public partial class frmServicePackageManagement : Form
     {
-        public frmCreateServicePackage()
+        public frmServicePackageManagement()
         {
             InitializeComponent();
         }

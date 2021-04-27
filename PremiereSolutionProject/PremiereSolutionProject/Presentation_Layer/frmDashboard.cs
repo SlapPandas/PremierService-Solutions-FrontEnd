@@ -106,7 +106,7 @@ namespace PremiereSolutionProject.Presentation_Layer
 
         private void btnClientInformation_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmViewClientInfo());
+            openChildForm(new frmClientInfo());
             HideSubMenu();
         }
 
@@ -136,40 +136,40 @@ namespace PremiereSolutionProject.Presentation_Layer
         #region btnContractMaintenanceSubMenu
         private void btnCreateServicePackage_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmCreateServicePackage());
+            openChildForm(new frmServicePackageManagement());
             HideSubMenu();
         }
 
         private void btnServices_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmCreateService());
+            openChildForm(new frmServiceManagement());
             HideSubMenu();
         }
 
         private void btnContractInfo_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmViewClientInfo());
+            openChildForm(new frmCreateContract());
             HideSubMenu();
         }
 
         #endregion
 
         #region btnClientMaintainSubMenu
-        private void btnCreateIndiClient_Click(object sender, EventArgs e)
+        private void btnIndiClient_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmAddIndividualClient());
+            openChildForm(new frmIndividualClient());
             HideSubMenu();
         }
 
-        private void btnCreateBusinessClient_Click(object sender, EventArgs e)
+        private void btnBusinessClient_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmAddBusinessClient());
+            openChildForm(new frmBusinessClient());
             HideSubMenu();
         }
 
-        private void btnCreateContract_Click(object sender, EventArgs e)
+        private void btnClientContract_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmCreateContract());
+            openChildForm(new frmClientContract());
             HideSubMenu();
         }
 
@@ -196,7 +196,7 @@ namespace PremiereSolutionProject.Presentation_Layer
 
         private void btnViewClientData_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmViewClientInfo());
+            openChildForm(new frmClientInfo());
             HideSubMenu();
         }
         #endregion

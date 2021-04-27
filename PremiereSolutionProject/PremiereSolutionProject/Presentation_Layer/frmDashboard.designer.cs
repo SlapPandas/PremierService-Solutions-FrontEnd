@@ -40,8 +40,8 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.pnlClientMaintainSubMenu = new System.Windows.Forms.Panel();
             this.btnBusinessContact = new System.Windows.Forms.Button();
             this.btnClientContract = new System.Windows.Forms.Button();
-            this.btnCreateBusinessClient = new System.Windows.Forms.Button();
-            this.btnCreateIndiClient = new System.Windows.Forms.Button();
+            this.btnBusinessClient = new System.Windows.Forms.Button();
+            this.btnIndiClient = new System.Windows.Forms.Button();
             this.btnClientMaintence = new System.Windows.Forms.Button();
             this.pnlContractMaintSubMenu = new System.Windows.Forms.Panel();
             this.btnCreateContract = new System.Windows.Forms.Button();
@@ -202,8 +202,8 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             this.pnlClientMaintainSubMenu.Controls.Add(this.btnBusinessContact);
             this.pnlClientMaintainSubMenu.Controls.Add(this.btnClientContract);
-            this.pnlClientMaintainSubMenu.Controls.Add(this.btnCreateBusinessClient);
-            this.pnlClientMaintainSubMenu.Controls.Add(this.btnCreateIndiClient);
+            this.pnlClientMaintainSubMenu.Controls.Add(this.btnBusinessClient);
+            this.pnlClientMaintainSubMenu.Controls.Add(this.btnIndiClient);
             this.pnlClientMaintainSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlClientMaintainSubMenu.Location = new System.Drawing.Point(0, 1035);
             this.pnlClientMaintainSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -245,43 +245,43 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnClientContract.Text = "Client Contract";
             this.btnClientContract.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClientContract.UseVisualStyleBackColor = false;
-            this.btnClientContract.Click += new System.EventHandler(this.btnCreateContract_Click);
+            this.btnClientContract.Click += new System.EventHandler(this.btnClientContract_Click);
             // 
-            // btnCreateBusinessClient
+            // btnBusinessClient
             // 
-            this.btnCreateBusinessClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnCreateBusinessClient.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCreateBusinessClient.FlatAppearance.BorderSize = 0;
-            this.btnCreateBusinessClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateBusinessClient.ForeColor = System.Drawing.Color.LightGray;
-            this.btnCreateBusinessClient.Location = new System.Drawing.Point(0, 62);
-            this.btnCreateBusinessClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCreateBusinessClient.Name = "btnCreateBusinessClient";
-            this.btnCreateBusinessClient.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
-            this.btnCreateBusinessClient.Size = new System.Drawing.Size(349, 62);
-            this.btnCreateBusinessClient.TabIndex = 11;
-            this.btnCreateBusinessClient.Text = "Create Business Client";
-            this.btnCreateBusinessClient.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreateBusinessClient.UseVisualStyleBackColor = false;
-            this.btnCreateBusinessClient.Click += new System.EventHandler(this.btnCreateBusinessClient_Click);
+            this.btnBusinessClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnBusinessClient.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBusinessClient.FlatAppearance.BorderSize = 0;
+            this.btnBusinessClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBusinessClient.ForeColor = System.Drawing.Color.LightGray;
+            this.btnBusinessClient.Location = new System.Drawing.Point(0, 62);
+            this.btnBusinessClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBusinessClient.Name = "btnBusinessClient";
+            this.btnBusinessClient.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
+            this.btnBusinessClient.Size = new System.Drawing.Size(349, 62);
+            this.btnBusinessClient.TabIndex = 11;
+            this.btnBusinessClient.Text = "Business Client Management";
+            this.btnBusinessClient.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBusinessClient.UseVisualStyleBackColor = false;
+            this.btnBusinessClient.Click += new System.EventHandler(this.btnBusinessClient_Click);
             // 
-            // btnCreateIndiClient
+            // btnIndiClient
             // 
-            this.btnCreateIndiClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnCreateIndiClient.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCreateIndiClient.FlatAppearance.BorderSize = 0;
-            this.btnCreateIndiClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateIndiClient.ForeColor = System.Drawing.Color.LightGray;
-            this.btnCreateIndiClient.Location = new System.Drawing.Point(0, 0);
-            this.btnCreateIndiClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCreateIndiClient.Name = "btnCreateIndiClient";
-            this.btnCreateIndiClient.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
-            this.btnCreateIndiClient.Size = new System.Drawing.Size(349, 62);
-            this.btnCreateIndiClient.TabIndex = 10;
-            this.btnCreateIndiClient.Text = "Create Individual Client";
-            this.btnCreateIndiClient.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreateIndiClient.UseVisualStyleBackColor = false;
-            this.btnCreateIndiClient.Click += new System.EventHandler(this.btnCreateIndiClient_Click);
+            this.btnIndiClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnIndiClient.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnIndiClient.FlatAppearance.BorderSize = 0;
+            this.btnIndiClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIndiClient.ForeColor = System.Drawing.Color.LightGray;
+            this.btnIndiClient.Location = new System.Drawing.Point(0, 0);
+            this.btnIndiClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnIndiClient.Name = "btnIndiClient";
+            this.btnIndiClient.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
+            this.btnIndiClient.Size = new System.Drawing.Size(349, 62);
+            this.btnIndiClient.TabIndex = 10;
+            this.btnIndiClient.Text = "Individual Client Management";
+            this.btnIndiClient.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIndiClient.UseVisualStyleBackColor = false;
+            this.btnIndiClient.Click += new System.EventHandler(this.btnIndiClient_Click);
             // 
             // btnClientMaintence
             // 
@@ -677,8 +677,8 @@ namespace PremiereSolutionProject.Presentation_Layer
         private System.Windows.Forms.Button btnClientSatis;
         private System.Windows.Forms.Panel pnlClientMaintainSubMenu;
         private System.Windows.Forms.Button btnClientContract;
-        private System.Windows.Forms.Button btnCreateBusinessClient;
-        private System.Windows.Forms.Button btnCreateIndiClient;
+        private System.Windows.Forms.Button btnBusinessClient;
+        private System.Windows.Forms.Button btnIndiClient;
         private System.Windows.Forms.Button btnClientMaintence;
         private System.Windows.Forms.Panel pnlContractMaintSubMenu;
         private System.Windows.Forms.Button btnCreateContract;

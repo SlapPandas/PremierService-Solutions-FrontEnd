@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace PremiereSolutionProject.Presentation_Layer
 {
-    public partial class frmViewClientInfo : Form
+    public partial class frmClientInfo : Form
     {
-        public frmViewClientInfo()
+        public frmClientInfo()
         {
             InitializeComponent();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

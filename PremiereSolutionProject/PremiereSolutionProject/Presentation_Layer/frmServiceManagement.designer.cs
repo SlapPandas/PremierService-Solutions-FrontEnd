@@ -1,7 +1,7 @@
 ﻿
 namespace PremiereSolutionProject.Presentation_Layer
 {
-    partial class frmCreateService
+    partial class frmServiceManagement
     {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,8 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnCreatePackage = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnDeleteService = new System.Windows.Forms.Button();
+            this.btnUpdateService = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,10 +119,10 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             this.btnCreatePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreatePackage.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreatePackage.Location = new System.Drawing.Point(396, 677);
+            this.btnCreatePackage.Location = new System.Drawing.Point(170, 666);
             this.btnCreatePackage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCreatePackage.Name = "btnCreatePackage";
-            this.btnCreatePackage.Size = new System.Drawing.Size(216, 45);
+            this.btnCreatePackage.Size = new System.Drawing.Size(119, 32);
             this.btnCreatePackage.TabIndex = 79;
             this.btnCreatePackage.Text = "Create Service";
             this.btnCreatePackage.UseVisualStyleBackColor = true;
@@ -128,6 +130,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             // btnExit
             // 
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(812, 738);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExit.Name = "btnExit";
@@ -136,12 +139,38 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
+            // btnDeleteService
+            // 
+            this.btnDeleteService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteService.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteService.Location = new System.Drawing.Point(460, 666);
+            this.btnDeleteService.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDeleteService.Name = "btnDeleteService";
+            this.btnDeleteService.Size = new System.Drawing.Size(119, 32);
+            this.btnDeleteService.TabIndex = 81;
+            this.btnDeleteService.Text = "Delete Service";
+            this.btnDeleteService.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdateService
+            // 
+            this.btnUpdateService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateService.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateService.Location = new System.Drawing.Point(315, 666);
+            this.btnUpdateService.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnUpdateService.Name = "btnUpdateService";
+            this.btnUpdateService.Size = new System.Drawing.Size(119, 32);
+            this.btnUpdateService.TabIndex = 82;
+            this.btnUpdateService.Text = "Update Service";
+            this.btnUpdateService.UseVisualStyleBackColor = true;
+            // 
             // frmCreateService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(943, 782);
+            this.Controls.Add(this.btnUpdateService);
+            this.Controls.Add(this.btnDeleteService);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCreatePackage);
             this.Controls.Add(this.richTextBox1);
@@ -172,5 +201,7 @@ namespace PremiereSolutionProject.Presentation_Layer
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button btnCreatePackage;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnDeleteService;
+        private System.Windows.Forms.Button btnUpdateService;
     }
 }

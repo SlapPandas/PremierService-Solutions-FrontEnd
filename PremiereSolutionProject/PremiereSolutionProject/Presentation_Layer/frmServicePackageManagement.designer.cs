@@ -1,7 +1,7 @@
 ﻿
 namespace PremiereSolutionProject.Presentation_Layer
 {
-    partial class frmCreateServicePackage
+    partial class frmServicePackageManagement
     {
         /// <summary>
         /// Required designer variable.
@@ -54,8 +54,14 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.cbxResponseTime = new System.Windows.Forms.ComboBox();
             this.btnCreatePackage = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dgvSelectServices = new System.Windows.Forms.DataGridView();
+            this.btnAddService = new System.Windows.Forms.Button();
+            this.btnDeletePackage = new System.Windows.Forms.Button();
+            this.btnUpdatePackage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDPercentage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectServices)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -303,10 +309,10 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             this.btnCreatePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreatePackage.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreatePackage.Location = new System.Drawing.Point(536, 804);
+            this.btnCreatePackage.Location = new System.Drawing.Point(326, 902);
             this.btnCreatePackage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCreatePackage.Name = "btnCreatePackage";
-            this.btnCreatePackage.Size = new System.Drawing.Size(223, 40);
+            this.btnCreatePackage.Size = new System.Drawing.Size(152, 40);
             this.btnCreatePackage.TabIndex = 78;
             this.btnCreatePackage.Text = "Create Package";
             this.btnCreatePackage.UseVisualStyleBackColor = true;
@@ -314,7 +320,8 @@ namespace PremiereSolutionProject.Presentation_Layer
             // btnExit
             // 
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(1095, 844);
+            this.btnExit.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(1220, 927);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 35);
@@ -322,12 +329,74 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
-            // frmCreateServicePackage
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(654, 706);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 16);
+            this.label12.TabIndex = 82;
+            this.label12.Text = "Services";
+            // 
+            // dgvSelectServices
+            // 
+            this.dgvSelectServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSelectServices.Location = new System.Drawing.Point(890, 706);
+            this.dgvSelectServices.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvSelectServices.Name = "dgvSelectServices";
+            this.dgvSelectServices.RowHeadersWidth = 62;
+            this.dgvSelectServices.Size = new System.Drawing.Size(278, 92);
+            this.dgvSelectServices.TabIndex = 83;
+            // 
+            // btnAddService
+            // 
+            this.btnAddService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddService.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddService.Location = new System.Drawing.Point(1203, 742);
+            this.btnAddService.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAddService.Name = "btnAddService";
+            this.btnAddService.Size = new System.Drawing.Size(119, 42);
+            this.btnAddService.TabIndex = 84;
+            this.btnAddService.Text = "Add Service";
+            this.btnAddService.UseVisualStyleBackColor = true;
+            // 
+            // btnDeletePackage
+            // 
+            this.btnDeletePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeletePackage.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeletePackage.Location = new System.Drawing.Point(819, 902);
+            this.btnDeletePackage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDeletePackage.Name = "btnDeletePackage";
+            this.btnDeletePackage.Size = new System.Drawing.Size(152, 40);
+            this.btnDeletePackage.TabIndex = 85;
+            this.btnDeletePackage.Text = "Delete Package";
+            this.btnDeletePackage.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdatePackage
+            // 
+            this.btnUpdatePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdatePackage.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdatePackage.Location = new System.Drawing.Point(583, 902);
+            this.btnUpdatePackage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnUpdatePackage.Name = "btnUpdatePackage";
+            this.btnUpdatePackage.Size = new System.Drawing.Size(152, 40);
+            this.btnUpdatePackage.TabIndex = 86;
+            this.btnUpdatePackage.Text = "Update Package";
+            this.btnUpdatePackage.UseVisualStyleBackColor = true;
+            // 
+            // frmServicePackageManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(1216, 891);
+            this.ClientSize = new System.Drawing.Size(1350, 976);
+            this.Controls.Add(this.btnUpdatePackage);
+            this.Controls.Add(this.btnDeletePackage);
+            this.Controls.Add(this.btnAddService);
+            this.Controls.Add(this.dgvSelectServices);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCreatePackage);
             this.Controls.Add(this.cbxResponseTime);
@@ -355,10 +424,11 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "frmCreateServicePackage";
+            this.Name = "frmServicePackageManagement";
             this.Text = "Create A New Service Package";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDPercentage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectServices)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,5 +461,10 @@ namespace PremiereSolutionProject.Presentation_Layer
         private System.Windows.Forms.ComboBox cbxResponseTime;
         private System.Windows.Forms.Button btnCreatePackage;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView dgvSelectServices;
+        private System.Windows.Forms.Button btnAddService;
+        private System.Windows.Forms.Button btnDeletePackage;
+        private System.Windows.Forms.Button btnUpdatePackage;
     }
 }

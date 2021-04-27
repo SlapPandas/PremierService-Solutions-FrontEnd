@@ -51,7 +51,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Modern No. 20", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(266, 31);
+            this.label1.Location = new System.Drawing.Point(275, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(298, 34);
@@ -61,88 +61,88 @@
             // lblClientName
             // 
             this.lblClientName.AutoSize = true;
-            this.lblClientName.Location = new System.Drawing.Point(430, 107);
+            this.lblClientName.Location = new System.Drawing.Point(430, 96);
             this.lblClientName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClientName.Name = "lblClientName";
-            this.lblClientName.Size = new System.Drawing.Size(95, 20);
+            this.lblClientName.Size = new System.Drawing.Size(88, 18);
             this.lblClientName.TabIndex = 1;
             this.lblClientName.Text = "Client Name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 252);
+            this.label3.Location = new System.Drawing.Point(42, 215);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 20);
+            this.label3.Size = new System.Drawing.Size(87, 18);
             this.label3.TabIndex = 4;
             this.label3.Text = "Description:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(312, 107);
+            this.label4.Location = new System.Drawing.Point(312, 96);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 20);
+            this.label4.Size = new System.Drawing.Size(51, 18);
             this.label4.TabIndex = 5;
             this.label4.Text = "Client:";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(262, 252);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.richTextBox1.Location = new System.Drawing.Point(262, 215);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(349, 146);
+            this.richTextBox1.Size = new System.Drawing.Size(349, 132);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = "";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(312, 153);
+            this.label2.Location = new System.Drawing.Point(312, 138);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 20);
+            this.label2.Size = new System.Drawing.Size(62, 18);
             this.label2.TabIndex = 7;
             this.label2.Text = "Call ID:";
             // 
             // lblCallID
             // 
             this.lblCallID.AutoSize = true;
-            this.lblCallID.Location = new System.Drawing.Point(430, 153);
+            this.lblCallID.Location = new System.Drawing.Point(430, 138);
             this.lblCallID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCallID.Name = "lblCallID";
-            this.lblCallID.Size = new System.Drawing.Size(56, 20);
+            this.lblCallID.Size = new System.Drawing.Size(58, 18);
             this.lblCallID.TabIndex = 8;
             this.lblCallID.Text = "Call ID";
             // 
             // cbxSpecialisation
             // 
             this.cbxSpecialisation.FormattingEnabled = true;
-            this.cbxSpecialisation.Location = new System.Drawing.Point(262, 464);
-            this.cbxSpecialisation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbxSpecialisation.Location = new System.Drawing.Point(262, 410);
+            this.cbxSpecialisation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbxSpecialisation.Name = "cbxSpecialisation";
-            this.cbxSpecialisation.Size = new System.Drawing.Size(349, 28);
+            this.cbxSpecialisation.Size = new System.Drawing.Size(349, 26);
             this.cbxSpecialisation.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(42, 469);
+            this.label5.Location = new System.Drawing.Point(42, 414);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(169, 20);
+            this.label5.Size = new System.Drawing.Size(149, 18);
             this.label5.TabIndex = 10;
             this.label5.Text = "Specialisation needed:";
             // 
             // btnSubmit
             // 
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubmit.Location = new System.Drawing.Point(312, 643);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSubmit.Location = new System.Drawing.Point(330, 565);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(188, 45);
+            this.btnSubmit.Size = new System.Drawing.Size(188, 40);
             this.btnSubmit.TabIndex = 11;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -150,10 +150,10 @@
             // btnExit
             // 
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(738, 695);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnExit.Location = new System.Drawing.Point(738, 625);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(102, 35);
+            this.btnExit.Size = new System.Drawing.Size(102, 31);
             this.btnExit.TabIndex = 12;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -162,37 +162,37 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(42, 539);
+            this.label6.Location = new System.Drawing.Point(42, 477);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(139, 20);
+            this.label6.Size = new System.Drawing.Size(126, 18);
             this.label6.TabIndex = 14;
             this.label6.Text = "Number of people:";
             // 
             // txtNoOfPeople
             // 
-            this.txtNoOfPeople.Location = new System.Drawing.Point(262, 533);
+            this.txtNoOfPeople.Location = new System.Drawing.Point(262, 472);
             this.txtNoOfPeople.Name = "txtNoOfPeople";
-            this.txtNoOfPeople.Size = new System.Drawing.Size(349, 26);
+            this.txtNoOfPeople.Size = new System.Drawing.Size(349, 25);
             this.txtNoOfPeople.TabIndex = 15;
             // 
             // btnAdd
             // 
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(665, 528);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAdd.Location = new System.Drawing.Point(665, 462);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(175, 37);
+            this.btnAdd.Size = new System.Drawing.Size(175, 33);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add Specialisation";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
             // FrmServiceRequest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(875, 744);
+            this.ClientSize = new System.Drawing.Size(875, 670);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtNoOfPeople);
             this.Controls.Add(this.label6);
@@ -207,8 +207,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblClientName);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmServiceRequest";
             this.Text = "Service Request Form";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
