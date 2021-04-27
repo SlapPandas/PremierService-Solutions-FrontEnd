@@ -1,6 +1,8 @@
-﻿using PremiereSolutionProject.DAL.Interfaces;
+﻿using PremiereSolutionProject.BLL;
+using PremiereSolutionProject.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
