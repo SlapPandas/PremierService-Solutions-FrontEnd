@@ -51,10 +51,18 @@
     <Compile Include="DAL\BusinessClientDH.cs" />
     <Compile Include="DAL\BusinessClientEmployeesDH.cs" />
     <Compile Include="DAL\CallDH.cs" />
+    <Compile Include="DAL\ContractDH.cs" />
     <Compile Include="DAL\DatabaseConnection.cs" />
     <Compile Include="DAL\DatabaseOperationDH.cs" />
+    <Compile Include="DAL\EmployeeDH.cs" />
+    <Compile Include="DAL\IndividualClientDH.cs" />
     <Compile Include="DAL\Interfaces\IAction.cs" />
     <Compile Include="DAL\Interfaces\IDataconnection.cs" />
+    <Compile Include="DAL\JobDH.cs" />
+    <Compile Include="DAL\ServiceDH.cs" />
+    <Compile Include="DAL\ServicePackadgeDH.cs" />
+    <Compile Include="DAL\ServiceRequestDH.cs" />
+    <Compile Include="DAL\SpecializationDH.cs" />
     <Compile Include="Presentation_Layer\frmAddBusinessClient.cs">
       <SubType>Form</SubType>
     </Compile>
