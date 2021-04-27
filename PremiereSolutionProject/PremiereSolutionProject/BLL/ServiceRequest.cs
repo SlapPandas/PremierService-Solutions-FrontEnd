@@ -238,7 +238,7 @@ namespace PremiereSolutionProject.BLL
             return employeeDH.SelectAllAvailableMaintenanceEmployees();
         }
 
-        private List<Job> OrderJobList(List<Job> unorderedJoblistWithPrio)  //order list according to date & priorityLevel
+        public List<Job> OrderJobList(List<Job> unorderedJoblistWithPrio)  //order list according to date & priorityLevel
         {
             CallDH callDH = new CallDH();
             List<Call> callRequests = new List<Call>(); // used to access the dates, try match the ID's
