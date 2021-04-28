@@ -31,28 +31,23 @@ namespace PremiereSolutionProject.Presentation_Layer
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashboard));
             this.pnlSideMenu = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.Button();
             this.pnlClientSatisSubMenu = new System.Windows.Forms.Panel();
             this.btnViewClientData = new System.Windows.Forms.Button();
             this.btnFollowRequest = new System.Windows.Forms.Button();
             this.btnClientSatisCall = new System.Windows.Forms.Button();
-            this.btnClientSatis = new System.Windows.Forms.Button();
             this.pnlClientMaintainSubMenu = new System.Windows.Forms.Panel();
             this.btnBusinessContact = new System.Windows.Forms.Button();
             this.btnClientContract = new System.Windows.Forms.Button();
             this.btnBusinessClient = new System.Windows.Forms.Button();
             this.btnIndiClient = new System.Windows.Forms.Button();
-            this.btnClientMaintence = new System.Windows.Forms.Button();
             this.pnlContractMaintSubMenu = new System.Windows.Forms.Panel();
             this.btnCreateContract = new System.Windows.Forms.Button();
             this.btnServices = new System.Windows.Forms.Button();
             this.btnServicePackageManage = new System.Windows.Forms.Button();
-            this.btnContractMaintenance = new System.Windows.Forms.Button();
             this.pnlServiceDeptSubMenu = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.btnJobs = new System.Windows.Forms.Button();
-            this.btnServiceDept = new System.Windows.Forms.Button();
+            this.btnJobManagement = new System.Windows.Forms.Button();
+            this.btnTrackJobs = new System.Windows.Forms.Button();
+            this.btnViewServiceReq = new System.Windows.Forms.Button();
             this.pnlCallCenterSubmenu = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
@@ -61,9 +56,14 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnClientInformation = new System.Windows.Forms.Button();
             this.btnCreateServiceRequest = new System.Windows.Forms.Button();
             this.btnCall = new System.Windows.Forms.Button();
+            this.pnlChildForm = new System.Windows.Forms.Panel();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnClientSatis = new System.Windows.Forms.Button();
+            this.btnClientMaintence = new System.Windows.Forms.Button();
+            this.btnContractMaintenance = new System.Windows.Forms.Button();
+            this.btnServiceDept = new System.Windows.Forms.Button();
             this.btnCallCenter = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
-            this.pnlChildForm = new System.Windows.Forms.Panel();
             this.pnlSideMenu.SuspendLayout();
             this.pnlClientSatisSubMenu.SuspendLayout();
             this.pnlClientMaintainSubMenu.SuspendLayout();
@@ -95,24 +95,6 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.pnlSideMenu.Name = "pnlSideMenu";
             this.pnlSideMenu.Size = new System.Drawing.Size(375, 837);
             this.pnlSideMenu.TabIndex = 0;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(0, 1538);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(349, 69);
-            this.btnExit.TabIndex = 6;
-            this.btnExit.Text = "    Exit";
-            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // pnlClientSatisSubMenu
             // 
@@ -179,24 +161,6 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnClientSatisCall.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClientSatisCall.UseVisualStyleBackColor = false;
             this.btnClientSatisCall.Click += new System.EventHandler(this.btnClientSatisCall_Click);
-            // 
-            // btnClientSatis
-            // 
-            this.btnClientSatis.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnClientSatis.FlatAppearance.BorderSize = 0;
-            this.btnClientSatis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClientSatis.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnClientSatis.Image = ((System.Drawing.Image)(resources.GetObject("btnClientSatis.Image")));
-            this.btnClientSatis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientSatis.Location = new System.Drawing.Point(0, 1286);
-            this.btnClientSatis.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnClientSatis.Name = "btnClientSatis";
-            this.btnClientSatis.Size = new System.Drawing.Size(349, 69);
-            this.btnClientSatis.TabIndex = 5;
-            this.btnClientSatis.Text = "    Client Satisfaction";
-            this.btnClientSatis.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClientSatis.UseVisualStyleBackColor = true;
-            this.btnClientSatis.Click += new System.EventHandler(this.btnClientSatis_Click);
             // 
             // pnlClientMaintainSubMenu
             // 
@@ -283,24 +247,6 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnIndiClient.UseVisualStyleBackColor = false;
             this.btnIndiClient.Click += new System.EventHandler(this.btnIndiClient_Click);
             // 
-            // btnClientMaintence
-            // 
-            this.btnClientMaintence.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnClientMaintence.FlatAppearance.BorderSize = 0;
-            this.btnClientMaintence.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClientMaintence.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnClientMaintence.Image = ((System.Drawing.Image)(resources.GetObject("btnClientMaintence.Image")));
-            this.btnClientMaintence.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientMaintence.Location = new System.Drawing.Point(0, 966);
-            this.btnClientMaintence.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnClientMaintence.Name = "btnClientMaintence";
-            this.btnClientMaintence.Size = new System.Drawing.Size(349, 69);
-            this.btnClientMaintence.TabIndex = 4;
-            this.btnClientMaintence.Text = "        Client Maintenance";
-            this.btnClientMaintence.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClientMaintence.UseVisualStyleBackColor = true;
-            this.btnClientMaintence.Click += new System.EventHandler(this.btnClientMaintence_Click);
-            // 
             // pnlContractMaintSubMenu
             // 
             this.pnlContractMaintSubMenu.Controls.Add(this.btnCreateContract);
@@ -367,29 +313,11 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnServicePackageManage.UseVisualStyleBackColor = false;
             this.btnServicePackageManage.Click += new System.EventHandler(this.btnServicePackageManage_Click);
             // 
-            // btnContractMaintenance
-            // 
-            this.btnContractMaintenance.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnContractMaintenance.FlatAppearance.BorderSize = 0;
-            this.btnContractMaintenance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContractMaintenance.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnContractMaintenance.Image = ((System.Drawing.Image)(resources.GetObject("btnContractMaintenance.Image")));
-            this.btnContractMaintenance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnContractMaintenance.Location = new System.Drawing.Point(0, 711);
-            this.btnContractMaintenance.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnContractMaintenance.Name = "btnContractMaintenance";
-            this.btnContractMaintenance.Size = new System.Drawing.Size(349, 69);
-            this.btnContractMaintenance.TabIndex = 3;
-            this.btnContractMaintenance.Text = "    Contract Maintenance";
-            this.btnContractMaintenance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnContractMaintenance.UseVisualStyleBackColor = true;
-            this.btnContractMaintenance.Click += new System.EventHandler(this.btnContractMaintenance_Click);
-            // 
             // pnlServiceDeptSubMenu
             // 
-            this.pnlServiceDeptSubMenu.Controls.Add(this.button1);
-            this.pnlServiceDeptSubMenu.Controls.Add(this.button5);
-            this.pnlServiceDeptSubMenu.Controls.Add(this.btnJobs);
+            this.pnlServiceDeptSubMenu.Controls.Add(this.btnJobManagement);
+            this.pnlServiceDeptSubMenu.Controls.Add(this.btnTrackJobs);
+            this.pnlServiceDeptSubMenu.Controls.Add(this.btnViewServiceReq);
             this.pnlServiceDeptSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlServiceDeptSubMenu.Location = new System.Drawing.Point(0, 523);
             this.pnlServiceDeptSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -397,77 +325,59 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.pnlServiceDeptSubMenu.Size = new System.Drawing.Size(349, 188);
             this.pnlServiceDeptSubMenu.TabIndex = 1;
             // 
-            // button1
+            // btnJobManagement
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.LightGray;
-            this.button1.Location = new System.Drawing.Point(0, 124);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(349, 62);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Client Information";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnJobManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnJobManagement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnJobManagement.FlatAppearance.BorderSize = 0;
+            this.btnJobManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJobManagement.ForeColor = System.Drawing.Color.LightGray;
+            this.btnJobManagement.Location = new System.Drawing.Point(0, 124);
+            this.btnJobManagement.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnJobManagement.Name = "btnJobManagement";
+            this.btnJobManagement.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
+            this.btnJobManagement.Size = new System.Drawing.Size(349, 62);
+            this.btnJobManagement.TabIndex = 6;
+            this.btnJobManagement.Text = "Jobs management";
+            this.btnJobManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnJobManagement.UseVisualStyleBackColor = false;
+            this.btnJobManagement.Click += new System.EventHandler(this.btnJobManagement_Click);
             // 
-            // button5
+            // btnTrackJobs
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.LightGray;
-            this.button5.Location = new System.Drawing.Point(0, 62);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
-            this.button5.Size = new System.Drawing.Size(349, 62);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Create New Service Request";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnTrackJobs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnTrackJobs.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTrackJobs.FlatAppearance.BorderSize = 0;
+            this.btnTrackJobs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTrackJobs.ForeColor = System.Drawing.Color.LightGray;
+            this.btnTrackJobs.Location = new System.Drawing.Point(0, 62);
+            this.btnTrackJobs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnTrackJobs.Name = "btnTrackJobs";
+            this.btnTrackJobs.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
+            this.btnTrackJobs.Size = new System.Drawing.Size(349, 62);
+            this.btnTrackJobs.TabIndex = 5;
+            this.btnTrackJobs.Text = "Track Jobs";
+            this.btnTrackJobs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTrackJobs.UseVisualStyleBackColor = false;
+            this.btnTrackJobs.Click += new System.EventHandler(this.btnTrackJobs_Click);
             // 
-            // btnJobs
+            // btnViewServiceReq
             // 
-            this.btnJobs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnJobs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnJobs.FlatAppearance.BorderSize = 0;
-            this.btnJobs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnJobs.ForeColor = System.Drawing.Color.LightGray;
-            this.btnJobs.Location = new System.Drawing.Point(0, 0);
-            this.btnJobs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnJobs.Name = "btnJobs";
-            this.btnJobs.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
-            this.btnJobs.Size = new System.Drawing.Size(349, 62);
-            this.btnJobs.TabIndex = 4;
-            this.btnJobs.Text = "Job";
-            this.btnJobs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnJobs.UseVisualStyleBackColor = false;
-            this.btnJobs.Click += new System.EventHandler(this.btnJobs_Click);
-            // 
-            // btnServiceDept
-            // 
-            this.btnServiceDept.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnServiceDept.FlatAppearance.BorderSize = 0;
-            this.btnServiceDept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServiceDept.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnServiceDept.Image = ((System.Drawing.Image)(resources.GetObject("btnServiceDept.Image")));
-            this.btnServiceDept.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServiceDept.Location = new System.Drawing.Point(0, 454);
-            this.btnServiceDept.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnServiceDept.Name = "btnServiceDept";
-            this.btnServiceDept.Size = new System.Drawing.Size(349, 69);
-            this.btnServiceDept.TabIndex = 2;
-            this.btnServiceDept.Text = "      Service Department";
-            this.btnServiceDept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnServiceDept.UseVisualStyleBackColor = true;
-            this.btnServiceDept.Click += new System.EventHandler(this.btnServiceDept_Click);
+            this.btnViewServiceReq.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnViewServiceReq.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnViewServiceReq.FlatAppearance.BorderSize = 0;
+            this.btnViewServiceReq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewServiceReq.ForeColor = System.Drawing.Color.LightGray;
+            this.btnViewServiceReq.Location = new System.Drawing.Point(0, 0);
+            this.btnViewServiceReq.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnViewServiceReq.Name = "btnViewServiceReq";
+            this.btnViewServiceReq.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
+            this.btnViewServiceReq.Size = new System.Drawing.Size(349, 62);
+            this.btnViewServiceReq.TabIndex = 4;
+            this.btnViewServiceReq.Text = "View Service Requests";
+            this.btnViewServiceReq.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnViewServiceReq.UseVisualStyleBackColor = false;
+            this.btnViewServiceReq.Click += new System.EventHandler(this.btnViewServiceReq_Click);
             // 
             // pnlCallCenterSubmenu
             // 
@@ -599,6 +509,108 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnCall.UseVisualStyleBackColor = false;
             this.btnCall.Click += new System.EventHandler(this.btnCall_Click);
             // 
+            // pnlChildForm
+            // 
+            this.pnlChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.pnlChildForm.BackgroundImage = global::PremiereSolutionProject.Properties.Resources.PSSLogo;
+            this.pnlChildForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlChildForm.Location = new System.Drawing.Point(375, 0);
+            this.pnlChildForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pnlChildForm.Name = "pnlChildForm";
+            this.pnlChildForm.Size = new System.Drawing.Size(1017, 837);
+            this.pnlChildForm.TabIndex = 2;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.Location = new System.Drawing.Point(0, 1538);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(349, 69);
+            this.btnExit.TabIndex = 6;
+            this.btnExit.Text = "    Exit";
+            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnClientSatis
+            // 
+            this.btnClientSatis.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClientSatis.FlatAppearance.BorderSize = 0;
+            this.btnClientSatis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientSatis.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnClientSatis.Image = ((System.Drawing.Image)(resources.GetObject("btnClientSatis.Image")));
+            this.btnClientSatis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClientSatis.Location = new System.Drawing.Point(0, 1286);
+            this.btnClientSatis.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClientSatis.Name = "btnClientSatis";
+            this.btnClientSatis.Size = new System.Drawing.Size(349, 69);
+            this.btnClientSatis.TabIndex = 5;
+            this.btnClientSatis.Text = "    Client Satisfaction";
+            this.btnClientSatis.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClientSatis.UseVisualStyleBackColor = true;
+            this.btnClientSatis.Click += new System.EventHandler(this.btnClientSatis_Click);
+            // 
+            // btnClientMaintence
+            // 
+            this.btnClientMaintence.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClientMaintence.FlatAppearance.BorderSize = 0;
+            this.btnClientMaintence.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientMaintence.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnClientMaintence.Image = ((System.Drawing.Image)(resources.GetObject("btnClientMaintence.Image")));
+            this.btnClientMaintence.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClientMaintence.Location = new System.Drawing.Point(0, 966);
+            this.btnClientMaintence.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnClientMaintence.Name = "btnClientMaintence";
+            this.btnClientMaintence.Size = new System.Drawing.Size(349, 69);
+            this.btnClientMaintence.TabIndex = 4;
+            this.btnClientMaintence.Text = "        Client Maintenance";
+            this.btnClientMaintence.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClientMaintence.UseVisualStyleBackColor = true;
+            this.btnClientMaintence.Click += new System.EventHandler(this.btnClientMaintence_Click);
+            // 
+            // btnContractMaintenance
+            // 
+            this.btnContractMaintenance.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnContractMaintenance.FlatAppearance.BorderSize = 0;
+            this.btnContractMaintenance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContractMaintenance.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnContractMaintenance.Image = ((System.Drawing.Image)(resources.GetObject("btnContractMaintenance.Image")));
+            this.btnContractMaintenance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnContractMaintenance.Location = new System.Drawing.Point(0, 711);
+            this.btnContractMaintenance.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnContractMaintenance.Name = "btnContractMaintenance";
+            this.btnContractMaintenance.Size = new System.Drawing.Size(349, 69);
+            this.btnContractMaintenance.TabIndex = 3;
+            this.btnContractMaintenance.Text = "    Contract Maintenance";
+            this.btnContractMaintenance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnContractMaintenance.UseVisualStyleBackColor = true;
+            this.btnContractMaintenance.Click += new System.EventHandler(this.btnContractMaintenance_Click);
+            // 
+            // btnServiceDept
+            // 
+            this.btnServiceDept.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnServiceDept.FlatAppearance.BorderSize = 0;
+            this.btnServiceDept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnServiceDept.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnServiceDept.Image = ((System.Drawing.Image)(resources.GetObject("btnServiceDept.Image")));
+            this.btnServiceDept.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnServiceDept.Location = new System.Drawing.Point(0, 454);
+            this.btnServiceDept.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnServiceDept.Name = "btnServiceDept";
+            this.btnServiceDept.Size = new System.Drawing.Size(349, 69);
+            this.btnServiceDept.TabIndex = 2;
+            this.btnServiceDept.Text = "      Service Department";
+            this.btnServiceDept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnServiceDept.UseVisualStyleBackColor = true;
+            this.btnServiceDept.Click += new System.EventHandler(this.btnServiceDept_Click);
+            // 
             // btnCallCenter
             // 
             this.btnCallCenter.Dock = System.Windows.Forms.DockStyle.Top;
@@ -627,18 +639,6 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(349, 202);
             this.pnlLogo.TabIndex = 1;
-            // 
-            // pnlChildForm
-            // 
-            this.pnlChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.pnlChildForm.BackgroundImage = global::PremiereSolutionProject.Properties.Resources.PSSLogo;
-            this.pnlChildForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlChildForm.Location = new System.Drawing.Point(375, 0);
-            this.pnlChildForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pnlChildForm.Name = "pnlChildForm";
-            this.pnlChildForm.Size = new System.Drawing.Size(1017, 837);
-            this.pnlChildForm.TabIndex = 2;
             // 
             // frmDashboard
             // 
@@ -688,9 +688,9 @@ namespace PremiereSolutionProject.Presentation_Layer
         private System.Windows.Forms.Button btnServicePackageManage;
         private System.Windows.Forms.Button btnContractMaintenance;
         private System.Windows.Forms.Panel pnlServiceDeptSubMenu;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button btnJobs;
+        private System.Windows.Forms.Button btnJobManagement;
+        private System.Windows.Forms.Button btnTrackJobs;
+        private System.Windows.Forms.Button btnViewServiceReq;
         private System.Windows.Forms.Button btnServiceDept;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;

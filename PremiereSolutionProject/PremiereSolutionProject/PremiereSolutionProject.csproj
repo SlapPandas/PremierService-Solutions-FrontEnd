@@ -138,6 +138,12 @@
     <Compile Include="Presentation_Layer\frmContractManagement.Designer.cs">
       <DependentUpon>frmContractManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation_Layer\frmJobsManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmJobsManagement.Designer.cs">
+      <DependentUpon>frmJobsManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation_Layer\frmServiceManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,18 @@
     </Compile>
     <Compile Include="Presentation_Layer\FrmServiceRequest.designer.cs">
       <DependentUpon>FrmServiceRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmTrackJobs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmTrackJobs.Designer.cs">
+      <DependentUpon>frmTrackJobs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmViewServiceRequests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation_Layer\frmViewServiceRequests.Designer.cs">
+      <DependentUpon>frmViewServiceRequests.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -198,6 +216,9 @@
     <EmbeddedResource Include="Presentation_Layer\frmContractManagement.resx">
       <DependentUpon>frmContractManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\frmJobsManagement.resx">
+      <DependentUpon>frmJobsManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation_Layer\frmServiceManagement.resx">
       <DependentUpon>frmServiceManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +233,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation_Layer\FrmServiceRequest.resx">
       <DependentUpon>FrmServiceRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\frmTrackJobs.resx">
+      <DependentUpon>frmTrackJobs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation_Layer\frmViewServiceRequests.resx">
+      <DependentUpon>frmViewServiceRequests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -113,21 +113,21 @@ namespace PremiereSolutionProject.Presentation_Layer
         #endregion
 
         #region btnServiceDeptSubMenu
-        private void btnJobs_Click(object sender, EventArgs e)
+        private void btnViewServiceReq_Click(object sender, EventArgs e)
         {
-            //Code
+            openChildForm(new frmViewServiceRequests());
             HideSubMenu();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnTrackJobs_Click(object sender, EventArgs e)
         {
-            //Code
+            openChildForm(new frmTrackJobs());
             HideSubMenu();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnJobManagement_Click(object sender, EventArgs e)
         {
-            //Code
+            openChildForm(new frmJobsManagement());
             HideSubMenu();
         }
 
