@@ -33,12 +33,8 @@ namespace PremiereSolutionProject.Presentation_Layer
         {
 
             Call CL = new Call();
-
             CallCenterEmployee Emp = CL.GenerateRandomEmployee();
-
             lblEmpName.Text = Emp.FirstName;
-
-
 
         }
     }
