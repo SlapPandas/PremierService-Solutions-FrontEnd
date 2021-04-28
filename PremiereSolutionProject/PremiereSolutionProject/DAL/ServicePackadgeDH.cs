@@ -117,12 +117,7 @@ namespace PremiereSolutionProject.DAL
         public void Insert(ServicePackage servicePackage)
         {
             CreateConnection();
-            int promotion = 0;
-            if (servicePackage.OnPromotion == true)
-            {
-                promotion = 1;
-            }
-            commandString = $"EXEC InsertServicePackage @id ='{servicePackage.PackageID}', @name ='{servicePackage.PackageName}', @onpromotion ='{promotion}', @promationStartDate ='{servicePackage.PromotionStartDate.ToString("yyyy-MM-dd HH:mm:ss")}', @promotionEndDate ='{servicePackage.PromotionEndDate.ToString("yyyy-MM-dd HH:mm:ss")}', @price ='{servicePackage.ServicePrice}'";
+            commandString = $"EXEC InsertServicePackage @name = '{servicePackage.PackageName}', @onpromotion = '{GetIntFromBool(servicePackage.OnPromotion)}', @promationStartDate = '{servicePackage.PromotionStartDate}', @promotionEndDate = '{servicePackage.PromotionEndDate}', @price = '{servicePackage.ServicePrice}',@percintage = '{servicePackage.PromotionPercentage}'";
             Command = new SqlCommand(commandString, Connection);
 
             try

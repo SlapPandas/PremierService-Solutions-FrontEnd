@@ -76,7 +76,7 @@ namespace PremiereSolutionProject.DAL
         {
             InsertAllSpeciliozationOfServiceRequest(serviceRequest);
             CreateConnection();
-            commandString = $"EXEC UpdateServicePackedgeServiceList @id = '{serviceRequest.ServiceRequestID}'";
+            commandString = $"EXEC UpdateServiceRequestSpecializationList @id = '{serviceRequest.ServiceRequestID}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -98,12 +98,27 @@ namespace PremiereSolutionProject.DAL
         public void Insert(ServiceRequest serviceRequest)
         {
             CreateConnection();
-            int closed = 0;
-            if (serviceRequest.Closed == true)
+            commandString = $"EXEC InsertServiceRequest @callId ='{serviceRequest.CallID}', @closed ='{GetIntFromBool(serviceRequest.Closed)}', @description ='{serviceRequest.Description}',@priorityLevel ='{serviceRequest.PriorityLevel}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
             {
-                closed = 1;
+                OpenConnection();
+                Command.ExecuteNonQuery();
             }
-            commandString = $"EXEC InsertServiceRequest @id = '{serviceRequest.CallID}', @callId = '{serviceRequest.CallID}', @closed = '{closed}', @description = '{serviceRequest.Description}'";
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { CloseConnection(); }
+        }
+        public void InsertWithSpecilizationList(ServiceRequest serviceRequest)
+        {
+            InsertAllSpeciliozationOfNewServiceRequest(serviceRequest);
+            CreateConnection();
+            commandString = $"EXEC InsertServiceRequestWithSpecializationList @callId ='{serviceRequest.CallID}', @closed ='{GetIntFromBool(serviceRequest.Closed)}', @description ='{serviceRequest.Description}',@priorityLevel ='{serviceRequest.PriorityLevel}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -241,6 +256,32 @@ namespace PremiereSolutionProject.DAL
                 for (int i = 0; i < serviceRequest.SpecialisationRequiredList.Count; i++)
                 {
                     commandString = $"EXEC InsertIntoTVPServiceRequestSpecilization @serviceRequestId = '{serviceRequest.ServiceRequestID}', @SpecilizationId = '{serviceRequest.SpecialisationRequiredList[i].SpecialisationID}'";
+                    SqlCommand specialisationCommand = new SqlCommand(commandString, specialisationConnection);
+                    specialisationCommand.ExecuteNonQuery();
+                }
+
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                specialisationConnection.Close();
+            }
+        }
+        private void InsertAllSpeciliozationOfNewServiceRequest(ServiceRequest serviceRequest)
+        {
+            SqlConnection specialisationConnection = new SqlConnection(connectionSring);
+
+            try
+            {
+                specialisationConnection.Open();
+                for (int i = 0; i < serviceRequest.SpecialisationRequiredList.Count; i++)
+                {
+                    commandString = $"EXEC InsertIntoTVPNewServiceRequestSpecilization @SpecilizationId = '{serviceRequest.SpecialisationRequiredList[i].SpecialisationID}'";
                     SqlCommand specialisationCommand = new SqlCommand(commandString, specialisationConnection);
                     specialisationCommand.ExecuteNonQuery();
                 }

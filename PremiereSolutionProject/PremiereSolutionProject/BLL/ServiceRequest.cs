@@ -78,6 +78,13 @@ namespace PremiereSolutionProject.BLL
             this.specialisationRequiredList = specRequired;
             this.priorityLevel = priority;
         }
+        public ServiceRequest(int callID, bool closed, string desc, string priority)
+        {
+            this.closed = closed;
+            this.description = desc;
+            this.callID = callID;
+            this.priorityLevel = priority;
+        }
         #endregion
 
         #region Methods

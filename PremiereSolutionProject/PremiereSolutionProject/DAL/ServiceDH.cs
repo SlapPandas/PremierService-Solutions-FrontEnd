@@ -60,7 +60,7 @@ namespace PremiereSolutionProject.DAL
         public void Insert(Service service)
         {
             CreateConnection();
-            commandString = $"EXEC InsertService @id = '{service.ServiceID}', @name = '{service.ServiceName}', @description = '{service.ServiceDescription}'";
+            commandString = $"EXEC InsertService @name = '{service.ServiceName}', @description = '{service.ServiceDescription}'";
             Command = new SqlCommand(commandString, Connection);
 
             try

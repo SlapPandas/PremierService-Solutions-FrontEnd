@@ -470,6 +470,13 @@ AS
 		VALUES (@serviceRequestId,@SpecilizationId)
 	COMMIT
 GO
+CREATE PROC InsertIntoTVPNewServiceRequestSpecilization @SpecilizationId INT
+AS
+	BEGIN TRAN
+		INSERT INTO TVP(idIntOne)
+		VALUES (@SpecilizationId)
+	COMMIT
+GO
 CREATE PROC InsertIntoTVPJobEmployee @jobId INT,@employeeId VARCHAR(50)
 AS
 	BEGIN TRAN
@@ -746,6 +753,20 @@ AS
 		DELETE FROM TVP
 	COMMIT
 GO
+CREATE PROC InsertServiceRequestWithSpecializationList @callId INT, @closed INT, @description VARCHAR(255),@priorityLevel VARCHAR(255)
+AS
+	BEGIN TRAN
+		DECLARE @serviceRequestId INT
+		INSERT INTO [ServiceRequest] ([callID], [closed], [description],[priorityLevel])
+		VALUES (@callId, @closed, @description,@priorityLevel)
+		SET @serviceRequestId = SCOPE_IDENTITY()
+
+		INSERT INTO ServiceRequestSpecialisationLink(ServiceRequestID,specialisationRequiredID)
+		SELECT @serviceRequestId,idIntOne FROM TVP
+
+		DELETE FROM TVP
+	COMMIT
+GO
 CREATE PROC UpdateSpecialization @id INT, @name VARCHAR(100),@description VARCHAR(255)
 AS
 	BEGIN TRAN
@@ -772,7 +793,7 @@ BEGIN
 END 
 GO
 
-CREATE PROCEDURE InsertSpecialisation @id INT, @name VARCHAR(25), @description VARCHAR(250)
+CREATE PROCEDURE InsertSpecialisation @name VARCHAR(25), @description VARCHAR(250)
 AS
 BEGIN
 	INSERT INTO [Specialisation] ([name], [description])
@@ -795,26 +816,26 @@ BEGIN
 END 
 GO
 
-CREATE PROCEDURE InsertServicePackageState @id INT, @name VARCHAR(50), @onpromotion BIT, @promationStartDate DATETIME, @promotionEndDate DATETIME, @price FLOAT
+CREATE PROCEDURE InsertServicePackageState @name VARCHAR(50), @onpromotion INT, @promationStartDate DATETIME, @promotionEndDate DATETIME, @price FLOAT,@percintage FLOAT
 AS
 BEGIN
-	INSERT INTO [ServicePackageState] ([name], [onPromotion], [promotionStartDate], [promotionEndDate], [price])
-	VALUES (@name, @onpromotion, @promationStartDate, @promotionEndDate, @price)
+	INSERT INTO [ServicePackageState] ([name], [onPromotion], [promotionStartDate], [promotionEndDate], [price],[promotionPercentAmount])
+	VALUES (@name, @onpromotion, @promationStartDate, @promotionEndDate, @price,@percintage)
 END 
 GO
 
-CREATE PROCEDURE InsertServicePackage @id INT, @name VARCHAR(50), @onpromotion BIT, @promationStartDate DATETIME, @promotionEndDate DATETIME, @price FLOAT
+CREATE PROCEDURE InsertServicePackage @name VARCHAR(50), @onpromotion INT, @promationStartDate DATETIME, @promotionEndDate DATETIME, @price FLOAT,@percintage FLOAT
 AS
 BEGIN
-	INSERT INTO [ServicePackage] ([name], [onPromotion], [promotionStartDate], [promotionEndDate], [price])
-	VALUES (@name, @onpromotion, @promationStartDate, @promotionEndDate, @price)
+	INSERT INTO [ServicePackage] ([name], [onPromotion], [promotionStartDate], [promotionEndDate], [price],[promotionPercentAmount])
+	VALUES (@name, @onpromotion, @promationStartDate, @promotionEndDate, @price,@percintage)
 END 
 GO
 
-CREATE PROCEDURE InsertService @id INT, @name VARCHAR(50), @description VARCHAR(255)
+CREATE PROCEDURE InsertService @name VARCHAR(50), @description VARCHAR(255)
 AS
 BEGIN
-	INSERT INTO [ServiceState] ([name], [description])
+	INSERT INTO [Service] ([name], [description])
 	VALUES (@name, @description)
 END 
 GO
@@ -840,11 +861,11 @@ BEGIN
 	VALUES (@startTime, @endTime, @ClientIndividualID, @ClientBusinessID, @employeeID, @callNotes)
 END 
 GO
-CREATE PROCEDURE InsertServiceRequest @id INT, @callId INT, @closed BIT, @description VARCHAR(255)
+CREATE PROCEDURE InsertServiceRequest @callId INT, @closed INT, @description VARCHAR(255),@priorityLevel VARCHAR(255)
 AS
 BEGIN
-	INSERT INTO [ServiceRequest] ([callID], [closed], [description])
-	VALUES (@callId, @closed, @description)
+	INSERT INTO [ServiceRequest] ([callID], [closed], [description],[priorityLevel])
+	VALUES (@callId, @closed, @description,@priorityLevel)
 END 
 GO
 CREATE PROCEDURE InsertServiceRequestSpecialisationLink @specialisationRequiredID INT, @ServiceRequestID INT

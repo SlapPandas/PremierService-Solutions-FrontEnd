@@ -64,7 +64,8 @@ namespace PremiereSolutionProject.DAL
         #region Insert
         public void Insert(Specialisation specialisation)
         {
-            commandString = $"EXEC InsertSpecialisation @id = '{specialisation.SpecialisationID}', @name = '{specialisation.SpecialisationName}', @description = '{specialisation.Description}'";
+            CreateConnection();
+            commandString = $"EXEC InsertSpecialisation @name = '{specialisation.SpecialisationName}', @description = '{specialisation.Description}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
