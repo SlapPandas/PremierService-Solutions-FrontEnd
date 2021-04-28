@@ -29,8 +29,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,24 +40,24 @@
             this.txtNationalID = new System.Windows.Forms.TextBox();
             this.txtEmai = new System.Windows.Forms.TextBox();
             this.txtContactNumber = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtStreetName = new System.Windows.Forms.TextBox();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.txtFirstname = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSuburb = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtPostalCode = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.dgvEmployee = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAddClient = new System.Windows.Forms.Button();
             this.btnDeleteClient = new System.Windows.Forms.Button();
+            this.cmbProvince = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +68,7 @@
             this.label8.Location = new System.Drawing.Point(35, 550);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 20);
+            this.label8.Size = new System.Drawing.Size(60, 13);
             this.label8.TabIndex = 53;
             this.label8.Text = "National ID";
             // 
@@ -81,7 +79,7 @@
             this.label7.Location = new System.Drawing.Point(677, 628);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 20);
+            this.label7.Size = new System.Drawing.Size(32, 13);
             this.label7.TabIndex = 52;
             this.label7.Text = "Email";
             // 
@@ -92,7 +90,7 @@
             this.label6.Location = new System.Drawing.Point(674, 563);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(125, 20);
+            this.label6.Size = new System.Drawing.Size(84, 13);
             this.label6.TabIndex = 51;
             this.label6.Text = "Contact Number";
             // 
@@ -103,7 +101,7 @@
             this.label5.Location = new System.Drawing.Point(33, 619);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 20);
+            this.label5.Size = new System.Drawing.Size(75, 13);
             this.label5.TabIndex = 50;
             this.label5.Text = "Street Number";
             // 
@@ -114,7 +112,7 @@
             this.label4.Location = new System.Drawing.Point(33, 486);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 20);
+            this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 49;
             this.label4.Text = "Surname";
             // 
@@ -125,7 +123,7 @@
             this.label3.Location = new System.Drawing.Point(33, 417);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 20);
+            this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 48;
             this.label3.Text = "First Name";
             // 
@@ -136,7 +134,7 @@
             this.label2.Location = new System.Drawing.Point(34, 351);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 20);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 47;
             this.label2.Text = "ID Number";
             // 
@@ -151,6 +149,7 @@
             this.btnUpdateIndiClient.TabIndex = 45;
             this.btnUpdateIndiClient.Text = "Update Client";
             this.btnUpdateIndiClient.UseVisualStyleBackColor = true;
+            this.btnUpdateIndiClient.Click += new System.EventHandler(this.btnUpdateIndiClient_Click);
             // 
             // txtNationalID
             // 
@@ -158,7 +157,7 @@
             this.txtNationalID.Location = new System.Drawing.Point(230, 550);
             this.txtNationalID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNationalID.Name = "txtNationalID";
-            this.txtNationalID.Size = new System.Drawing.Size(390, 22);
+            this.txtNationalID.Size = new System.Drawing.Size(390, 17);
             this.txtNationalID.TabIndex = 44;
             // 
             // txtEmai
@@ -167,7 +166,7 @@
             this.txtEmai.Location = new System.Drawing.Point(872, 625);
             this.txtEmai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEmai.Name = "txtEmai";
-            this.txtEmai.Size = new System.Drawing.Size(390, 22);
+            this.txtEmai.Size = new System.Drawing.Size(390, 17);
             this.txtEmai.TabIndex = 43;
             // 
             // txtContactNumber
@@ -176,17 +175,17 @@
             this.txtContactNumber.Location = new System.Drawing.Point(872, 563);
             this.txtContactNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtContactNumber.Name = "txtContactNumber";
-            this.txtContactNumber.Size = new System.Drawing.Size(390, 22);
+            this.txtContactNumber.Size = new System.Drawing.Size(390, 17);
             this.txtContactNumber.TabIndex = 42;
             // 
-            // txtAddress
+            // txtStreetName
             // 
-            this.txtAddress.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(230, 613);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(390, 22);
-            this.txtAddress.TabIndex = 41;
+            this.txtStreetName.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStreetName.Location = new System.Drawing.Point(230, 613);
+            this.txtStreetName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtStreetName.Name = "txtStreetName";
+            this.txtStreetName.Size = new System.Drawing.Size(390, 17);
+            this.txtStreetName.TabIndex = 41;
             // 
             // txtSurname
             // 
@@ -194,7 +193,7 @@
             this.txtSurname.Location = new System.Drawing.Point(228, 483);
             this.txtSurname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSurname.Name = "txtSurname";
-            this.txtSurname.Size = new System.Drawing.Size(390, 22);
+            this.txtSurname.Size = new System.Drawing.Size(390, 17);
             this.txtSurname.TabIndex = 40;
             // 
             // txtFirstname
@@ -203,7 +202,7 @@
             this.txtFirstname.Location = new System.Drawing.Point(228, 411);
             this.txtFirstname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFirstname.Name = "txtFirstname";
-            this.txtFirstname.Size = new System.Drawing.Size(390, 22);
+            this.txtFirstname.Size = new System.Drawing.Size(390, 17);
             this.txtFirstname.TabIndex = 39;
             // 
             // txtID
@@ -212,7 +211,7 @@
             this.txtID.Location = new System.Drawing.Point(230, 344);
             this.txtID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(390, 22);
+            this.txtID.Size = new System.Drawing.Size(390, 17);
             this.txtID.TabIndex = 38;
             // 
             // label1
@@ -222,7 +221,7 @@
             this.label1.Location = new System.Drawing.Point(577, 28);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(258, 37);
+            this.label1.Size = new System.Drawing.Size(183, 26);
             this.label1.TabIndex = 37;
             this.label1.Text = "Individual Client";
             // 
@@ -233,18 +232,18 @@
             this.label9.Location = new System.Drawing.Point(675, 337);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 20);
+            this.label9.Size = new System.Drawing.Size(41, 13);
             this.label9.TabIndex = 55;
             this.label9.Text = "Suburb";
             // 
-            // textBox1
+            // txtSuburb
             // 
-            this.textBox1.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(872, 331);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(390, 22);
-            this.textBox1.TabIndex = 54;
+            this.txtSuburb.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSuburb.Location = new System.Drawing.Point(872, 331);
+            this.txtSuburb.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSuburb.Name = "txtSuburb";
+            this.txtSuburb.Size = new System.Drawing.Size(390, 17);
+            this.txtSuburb.TabIndex = 54;
             // 
             // label10
             // 
@@ -253,18 +252,18 @@
             this.label10.Location = new System.Drawing.Point(675, 392);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 20);
+            this.label10.Size = new System.Drawing.Size(24, 13);
             this.label10.TabIndex = 57;
             this.label10.Text = "City";
             // 
-            // textBox2
+            // txtCity
             // 
-            this.textBox2.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(872, 386);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(390, 22);
-            this.textBox2.TabIndex = 56;
+            this.txtCity.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCity.Location = new System.Drawing.Point(872, 386);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(390, 17);
+            this.txtCity.TabIndex = 56;
             // 
             // label11
             // 
@@ -273,18 +272,9 @@
             this.label11.Location = new System.Drawing.Point(675, 448);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 20);
+            this.label11.Size = new System.Drawing.Size(49, 13);
             this.label11.TabIndex = 59;
             this.label11.Text = "Province";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(872, 442);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(390, 22);
-            this.textBox3.TabIndex = 58;
             // 
             // label12
             // 
@@ -293,18 +283,18 @@
             this.label12.Location = new System.Drawing.Point(675, 508);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(95, 20);
+            this.label12.Size = new System.Drawing.Size(64, 13);
             this.label12.TabIndex = 61;
             this.label12.Text = "Postal Code";
             // 
-            // textBox4
+            // txtPostalCode
             // 
-            this.textBox4.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(872, 502);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(390, 22);
-            this.textBox4.TabIndex = 60;
+            this.txtPostalCode.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPostalCode.Location = new System.Drawing.Point(872, 502);
+            this.txtPostalCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPostalCode.Name = "txtPostalCode";
+            this.txtPostalCode.Size = new System.Drawing.Size(390, 17);
+            this.txtPostalCode.TabIndex = 60;
             // 
             // btnExit
             // 
@@ -321,23 +311,7 @@
             // 
             // dgvEmployee
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmployee.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmployee.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEmployee.Location = new System.Drawing.Point(303, 135);
             this.dgvEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvEmployee.Name = "dgvEmployee";
@@ -352,21 +326,22 @@
             this.label13.Location = new System.Drawing.Point(300, 100);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(116, 20);
+            this.label13.Size = new System.Drawing.Size(77, 13);
             this.label13.TabIndex = 81;
             this.label13.Text = "Existing Clients";
             // 
-            // button1
+            // btnAddClient
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(600, 750);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(183, 38);
-            this.button1.TabIndex = 82;
-            this.button1.Text = "Add Client";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddClient.Location = new System.Drawing.Point(600, 750);
+            this.btnAddClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(183, 38);
+            this.btnAddClient.TabIndex = 82;
+            this.btnAddClient.Text = "Add Client";
+            this.btnAddClient.UseVisualStyleBackColor = true;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
             // btnDeleteClient
             // 
@@ -380,25 +355,33 @@
             this.btnDeleteClient.Text = "Delete Client";
             this.btnDeleteClient.UseVisualStyleBackColor = true;
             // 
+            // cmbProvince
+            // 
+            this.cmbProvince.FormattingEnabled = true;
+            this.cmbProvince.Location = new System.Drawing.Point(872, 440);
+            this.cmbProvince.Name = "cmbProvince";
+            this.cmbProvince.Size = new System.Drawing.Size(390, 21);
+            this.cmbProvince.TabIndex = 110;
+            // 
             // frmIndividualClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1313, 859);
+            this.Controls.Add(this.cmbProvince);
             this.Controls.Add(this.btnDeleteClient);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAddClient);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dgvEmployee);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtPostalCode);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtCity);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSuburb);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -410,7 +393,7 @@
             this.Controls.Add(this.txtNationalID);
             this.Controls.Add(this.txtEmai);
             this.Controls.Add(this.txtContactNumber);
-            this.Controls.Add(this.txtAddress);
+            this.Controls.Add(this.txtStreetName);
             this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.txtFirstname);
             this.Controls.Add(this.txtID);
@@ -440,23 +423,23 @@
         private System.Windows.Forms.TextBox txtNationalID;
         private System.Windows.Forms.TextBox txtEmai;
         private System.Windows.Forms.TextBox txtContactNumber;
-        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox txtStreetName;
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.TextBox txtFirstname;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSuburb;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtPostalCode;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.DataGridView dgvEmployee;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAddClient;
         private System.Windows.Forms.Button btnDeleteClient;
+        private System.Windows.Forms.ComboBox cmbProvince;
     }
 }
