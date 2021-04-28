@@ -30,7 +30,7 @@ namespace PremiereSolutionProject.Presentation_Layer
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvCurrentServicePackages = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBusinessName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,7 +59,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnAddService = new System.Windows.Forms.Button();
             this.btnDeletePackage = new System.Windows.Forms.Button();
             this.btnUpdatePackage = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentServicePackages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDPercentage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectServices)).BeginInit();
             this.SuspendLayout();
@@ -75,15 +75,15 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.label1.TabIndex = 0;
             this.label1.Text = "Service Package Management";
             // 
-            // dataGridView1
+            // dgvCurrentServicePackages
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(211, 132);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(959, 192);
-            this.dataGridView1.TabIndex = 2;
+            this.dgvCurrentServicePackages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCurrentServicePackages.Location = new System.Drawing.Point(228, 132);
+            this.dgvCurrentServicePackages.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvCurrentServicePackages.Name = "dgvCurrentServicePackages";
+            this.dgvCurrentServicePackages.RowHeadersWidth = 62;
+            this.dgvCurrentServicePackages.Size = new System.Drawing.Size(959, 192);
+            this.dgvCurrentServicePackages.TabIndex = 2;
             // 
             // label3
             // 
@@ -423,13 +423,13 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBusinessName);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvCurrentServicePackages);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmServicePackageManagement";
             this.Text = "Create A New Service Package";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentServicePackages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDPercentage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSelectServices)).EndInit();
             this.ResumeLayout(false);
@@ -440,7 +440,7 @@ namespace PremiereSolutionProject.Presentation_Layer
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvCurrentServicePackages;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBusinessName;
         private System.Windows.Forms.Label label4;
