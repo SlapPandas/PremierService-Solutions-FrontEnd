@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PremiereSolutionProject.BLL;
 
 namespace PremiereSolutionProject.Presentation_Layer
 {
@@ -26,6 +27,19 @@ namespace PremiereSolutionProject.Presentation_Layer
 
         private void btnServiceRequest_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnAnswer_Click(object sender, EventArgs e)
+        {
+
+            Call CL = new Call();
+
+            CallCenterEmployee Emp = CL.GenerateRandomEmployee();
+
+            lblEmpName.Text = Emp.FirstName;
+
+
+
         }
     }
 }

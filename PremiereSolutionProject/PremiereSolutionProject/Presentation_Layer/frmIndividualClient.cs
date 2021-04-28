@@ -66,7 +66,7 @@ namespace PremiereSolutionProject.Presentation_Layer
 
                 else
                 {
-                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, cmbProvince.Text, txtPostalCode.Text);
+                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
                     IndividualClient ic = new IndividualClient(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, true);
                     ic.InsertIndividualClient(ic);
                     MessageBox.Show("Successfully created client", "Yay");
@@ -118,7 +118,7 @@ namespace PremiereSolutionProject.Presentation_Layer
 
                 else
                 {
-                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, cmbProvince.Text, txtPostalCode.Text);
+                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
                     IndividualClient ic = new IndividualClient(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, true);
                     ic.UpdateClient(ic);
                     MessageBox.Show("Successfully created client", "Yay");

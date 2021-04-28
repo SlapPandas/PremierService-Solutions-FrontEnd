@@ -68,7 +68,7 @@ namespace PremiereSolutionProject.Presentation_Layer
                 else
                 {
                     
-                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, cmbProvince.Text, txtPostalCode.Text);
+                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
                     BusinessClient bc = new BusinessClient(address, txtContactNumber.Text, DateTime.Now, txtTaxNum.Text, txtBusinessName.Text, true);
                     bc.InsertBusinessClient(bc);
 
@@ -126,7 +126,7 @@ namespace PremiereSolutionProject.Presentation_Layer
                 else
                 {
 
-                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, cmbProvince.Text, txtPostalCode.Text);
+                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
                     BusinessClient bc = new BusinessClient(address, txtContactNumber.Text, DateTime.Now, txtTaxNum.Text, txtBusinessName.Text, true);
                     bc.UpdateBusinessClient(bc);
 

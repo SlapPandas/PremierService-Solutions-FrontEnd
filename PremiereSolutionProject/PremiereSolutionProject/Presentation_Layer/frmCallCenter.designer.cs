@@ -30,7 +30,7 @@ namespace PremiereSolutionProject.Presentation_Layer
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCallCenter));
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblEmpName = new System.Windows.Forms.Label();
             this.rtbNotes = new System.Windows.Forms.RichTextBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,16 +40,16 @@ namespace PremiereSolutionProject.Presentation_Layer
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblEmpName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(302, 134);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(207, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Call Centre Employee Name";
+            this.lblEmpName.AutoSize = true;
+            this.lblEmpName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpName.Location = new System.Drawing.Point(302, 134);
+            this.lblEmpName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmpName.Name = "lblEmpName";
+            this.lblEmpName.Size = new System.Drawing.Size(207, 20);
+            this.lblEmpName.TabIndex = 3;
+            this.lblEmpName.Text = "Call Centre Employee Name";
             // 
             // rtbNotes
             // 
@@ -124,6 +124,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnAnswer.Text = "  Answer Call";
             this.btnAnswer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAnswer.UseVisualStyleBackColor = true;
+            this.btnAnswer.Click += new System.EventHandler(this.btnAnswer_Click);
             // 
             // frmCallCenter
             // 
@@ -134,7 +135,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.rtbNotes);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblEmpName);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnEnd);
             this.Controls.Add(this.btnAnswer);
@@ -154,7 +155,7 @@ namespace PremiereSolutionProject.Presentation_Layer
         private System.Windows.Forms.Button btnAnswer;
         private System.Windows.Forms.Button btnEnd;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblEmpName;
         private System.Windows.Forms.RichTextBox rtbNotes;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label4;
