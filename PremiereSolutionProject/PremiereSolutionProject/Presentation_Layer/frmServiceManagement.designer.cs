@@ -46,11 +46,11 @@ namespace PremiereSolutionProject.Presentation_Layer
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(36, 121);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 16);
+            this.label8.Size = new System.Drawing.Size(126, 20);
             this.label8.TabIndex = 70;
             this.label8.Text = "Current Services";
             // 
@@ -71,29 +71,29 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.label1.Location = new System.Drawing.Point(329, 38);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(295, 34);
+            this.label1.Size = new System.Drawing.Size(282, 34);
             this.label1.TabIndex = 68;
-            this.label1.Text = "Create A New Service";
+            this.label1.Text = "Service Management";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(36, 447);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 16);
+            this.label4.Size = new System.Drawing.Size(145, 20);
             this.label4.TabIndex = 73;
             this.label4.Text = "Service Description";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(36, 373);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 16);
+            this.label3.Size = new System.Drawing.Size(107, 20);
             this.label3.TabIndex = 72;
             this.label3.Text = "Service Name";
             // 
@@ -118,11 +118,11 @@ namespace PremiereSolutionProject.Presentation_Layer
             // btnCreatePackage
             // 
             this.btnCreatePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreatePackage.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreatePackage.Location = new System.Drawing.Point(170, 666);
+            this.btnCreatePackage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreatePackage.Location = new System.Drawing.Point(277, 666);
             this.btnCreatePackage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCreatePackage.Name = "btnCreatePackage";
-            this.btnCreatePackage.Size = new System.Drawing.Size(119, 32);
+            this.btnCreatePackage.Size = new System.Drawing.Size(167, 32);
             this.btnCreatePackage.TabIndex = 79;
             this.btnCreatePackage.Text = "Create Service";
             this.btnCreatePackage.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             // btnExit
             // 
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(812, 738);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExit.Name = "btnExit";
@@ -142,11 +142,11 @@ namespace PremiereSolutionProject.Presentation_Layer
             // btnDeleteService
             // 
             this.btnDeleteService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteService.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteService.Location = new System.Drawing.Point(460, 666);
+            this.btnDeleteService.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteService.Location = new System.Drawing.Point(486, 666);
             this.btnDeleteService.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDeleteService.Name = "btnDeleteService";
-            this.btnDeleteService.Size = new System.Drawing.Size(119, 32);
+            this.btnDeleteService.Size = new System.Drawing.Size(159, 32);
             this.btnDeleteService.TabIndex = 81;
             this.btnDeleteService.Text = "Delete Service";
             this.btnDeleteService.UseVisualStyleBackColor = true;
@@ -154,16 +154,16 @@ namespace PremiereSolutionProject.Presentation_Layer
             // btnUpdateService
             // 
             this.btnUpdateService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateService.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateService.Location = new System.Drawing.Point(315, 666);
+            this.btnUpdateService.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateService.Location = new System.Drawing.Point(74, 666);
             this.btnUpdateService.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnUpdateService.Name = "btnUpdateService";
-            this.btnUpdateService.Size = new System.Drawing.Size(119, 32);
+            this.btnUpdateService.Size = new System.Drawing.Size(158, 32);
             this.btnUpdateService.TabIndex = 82;
             this.btnUpdateService.Text = "Update Service";
             this.btnUpdateService.UseVisualStyleBackColor = true;
             // 
-            // frmCreateService
+            // frmServiceManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -182,7 +182,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "frmCreateService";
+            this.Name = "frmServiceManagement";
             this.Text = "Create Service";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

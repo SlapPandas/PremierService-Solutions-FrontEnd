@@ -46,7 +46,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.pnlContractMaintSubMenu = new System.Windows.Forms.Panel();
             this.btnCreateContract = new System.Windows.Forms.Button();
             this.btnServices = new System.Windows.Forms.Button();
-            this.btnCreateServicePackage = new System.Windows.Forms.Button();
+            this.btnServicePackageManage = new System.Windows.Forms.Button();
             this.btnContractMaintenance = new System.Windows.Forms.Button();
             this.pnlServiceDeptSubMenu = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -305,7 +305,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             this.pnlContractMaintSubMenu.Controls.Add(this.btnCreateContract);
             this.pnlContractMaintSubMenu.Controls.Add(this.btnServices);
-            this.pnlContractMaintSubMenu.Controls.Add(this.btnCreateServicePackage);
+            this.pnlContractMaintSubMenu.Controls.Add(this.btnServicePackageManage);
             this.pnlContractMaintSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlContractMaintSubMenu.Location = new System.Drawing.Point(0, 780);
             this.pnlContractMaintSubMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -344,28 +344,28 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnServices.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
             this.btnServices.Size = new System.Drawing.Size(349, 62);
             this.btnServices.TabIndex = 8;
-            this.btnServices.Text = "Create services";
+            this.btnServices.Text = "Service Management";
             this.btnServices.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnServices.UseVisualStyleBackColor = false;
             this.btnServices.Click += new System.EventHandler(this.btnServices_Click);
             // 
-            // btnCreateServicePackage
+            // btnServicePackageManage
             // 
-            this.btnCreateServicePackage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnCreateServicePackage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCreateServicePackage.FlatAppearance.BorderSize = 0;
-            this.btnCreateServicePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateServicePackage.ForeColor = System.Drawing.Color.LightGray;
-            this.btnCreateServicePackage.Location = new System.Drawing.Point(0, 0);
-            this.btnCreateServicePackage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCreateServicePackage.Name = "btnCreateServicePackage";
-            this.btnCreateServicePackage.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
-            this.btnCreateServicePackage.Size = new System.Drawing.Size(349, 62);
-            this.btnCreateServicePackage.TabIndex = 7;
-            this.btnCreateServicePackage.Text = "Create Service Package";
-            this.btnCreateServicePackage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreateServicePackage.UseVisualStyleBackColor = false;
-            this.btnCreateServicePackage.Click += new System.EventHandler(this.btnCreateServicePackage_Click);
+            this.btnServicePackageManage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnServicePackageManage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnServicePackageManage.FlatAppearance.BorderSize = 0;
+            this.btnServicePackageManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnServicePackageManage.ForeColor = System.Drawing.Color.LightGray;
+            this.btnServicePackageManage.Location = new System.Drawing.Point(0, 0);
+            this.btnServicePackageManage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnServicePackageManage.Name = "btnServicePackageManage";
+            this.btnServicePackageManage.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
+            this.btnServicePackageManage.Size = new System.Drawing.Size(349, 62);
+            this.btnServicePackageManage.TabIndex = 7;
+            this.btnServicePackageManage.Text = "Service Package Management";
+            this.btnServicePackageManage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnServicePackageManage.UseVisualStyleBackColor = false;
+            this.btnServicePackageManage.Click += new System.EventHandler(this.btnServicePackageManage_Click);
             // 
             // btnContractMaintenance
             // 
@@ -428,7 +428,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.button5.Padding = new System.Windows.Forms.Padding(98, 0, 0, 0);
             this.button5.Size = new System.Drawing.Size(349, 62);
             this.button5.TabIndex = 5;
-            this.button5.Text = "Create service request";
+            this.button5.Text = "Create New Service Request";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -631,6 +631,8 @@ namespace PremiereSolutionProject.Presentation_Layer
             // pnlChildForm
             // 
             this.pnlChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.pnlChildForm.BackgroundImage = global::PremiereSolutionProject.Properties.Resources.PSSLogo;
+            this.pnlChildForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlChildForm.Location = new System.Drawing.Point(375, 0);
             this.pnlChildForm.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -683,7 +685,7 @@ namespace PremiereSolutionProject.Presentation_Layer
         private System.Windows.Forms.Panel pnlContractMaintSubMenu;
         private System.Windows.Forms.Button btnCreateContract;
         private System.Windows.Forms.Button btnServices;
-        private System.Windows.Forms.Button btnCreateServicePackage;
+        private System.Windows.Forms.Button btnServicePackageManage;
         private System.Windows.Forms.Button btnContractMaintenance;
         private System.Windows.Forms.Panel pnlServiceDeptSubMenu;
         private System.Windows.Forms.Button button1;

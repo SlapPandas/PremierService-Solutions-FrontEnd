@@ -33,7 +33,6 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtClientID = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.rtbClientNotes = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,11 +47,11 @@ namespace PremiereSolutionProject.Presentation_Layer
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(206, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(255, 34);
+            this.label1.Size = new System.Drawing.Size(273, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Client Satisfaction";
             // 
@@ -73,16 +72,6 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.txtClientID.Name = "txtClientID";
             this.txtClientID.Size = new System.Drawing.Size(148, 26);
             this.txtClientID.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(170, 117);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Call";
             // 
             // label4
             // 
@@ -151,7 +140,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnAnswer.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnAnswer.Image = ((System.Drawing.Image)(resources.GetObject("btnAnswer.Image")));
             this.btnAnswer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnswer.Location = new System.Drawing.Point(36, 164);
+            this.btnAnswer.Location = new System.Drawing.Point(36, 142);
             this.btnAnswer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAnswer.Name = "btnAnswer";
             this.btnAnswer.Size = new System.Drawing.Size(139, 45);
@@ -166,7 +155,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnEnd.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnEnd.Image = ((System.Drawing.Image)(resources.GetObject("btnEnd.Image")));
             this.btnEnd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnd.Location = new System.Drawing.Point(200, 164);
+            this.btnEnd.Location = new System.Drawing.Point(198, 142);
             this.btnEnd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEnd.Name = "btnEnd";
             this.btnEnd.Size = new System.Drawing.Size(139, 45);
@@ -188,7 +177,6 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.Controls.Add(this.label5);
             this.Controls.Add(this.rtbClientNotes);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtClientID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -207,7 +195,6 @@ namespace PremiereSolutionProject.Presentation_Layer
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtClientID;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox rtbClientNotes;
         private System.Windows.Forms.Label label5;

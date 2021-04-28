@@ -52,7 +52,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(380, 365);
+            this.label9.Location = new System.Drawing.Point(380, 364);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(94, 20);
@@ -62,7 +62,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 365);
+            this.label8.Location = new System.Drawing.Point(27, 364);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(88, 20);
@@ -72,7 +72,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(380, 285);
+            this.label7.Location = new System.Drawing.Point(380, 284);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 20);
@@ -82,7 +82,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(27, 285);
+            this.label6.Location = new System.Drawing.Point(27, 284);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 20);
@@ -133,7 +133,7 @@
             // 
             this.cbxDepartment.FormattingEnabled = true;
             this.cbxDepartment.Location = new System.Drawing.Point(384, 389);
-            this.cbxDepartment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cbxDepartment.Margin = new System.Windows.Forms.Padding(4);
             this.cbxDepartment.Name = "cbxDepartment";
             this.cbxDepartment.Size = new System.Drawing.Size(218, 28);
             this.cbxDepartment.TabIndex = 28;
@@ -142,7 +142,7 @@
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(225, 486);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(210, 52);
             this.button1.TabIndex = 27;
@@ -152,7 +152,7 @@
             // txtNationalID
             // 
             this.txtNationalID.Location = new System.Drawing.Point(31, 389);
-            this.txtNationalID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNationalID.Margin = new System.Windows.Forms.Padding(4);
             this.txtNationalID.Name = "txtNationalID";
             this.txtNationalID.Size = new System.Drawing.Size(218, 26);
             this.txtNationalID.TabIndex = 26;
@@ -160,7 +160,7 @@
             // txtEmai
             // 
             this.txtEmai.Location = new System.Drawing.Point(384, 309);
-            this.txtEmai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtEmai.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmai.Name = "txtEmai";
             this.txtEmai.Size = new System.Drawing.Size(218, 26);
             this.txtEmai.TabIndex = 25;
@@ -168,23 +168,23 @@
             // txtContactNumber
             // 
             this.txtContactNumber.Location = new System.Drawing.Point(31, 309);
-            this.txtContactNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtContactNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactNumber.Name = "txtContactNumber";
             this.txtContactNumber.Size = new System.Drawing.Size(218, 26);
             this.txtContactNumber.TabIndex = 24;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(384, 235);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAddress.Location = new System.Drawing.Point(384, 234);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(218, 26);
             this.txtAddress.TabIndex = 23;
             // 
             // txtSurname
             // 
-            this.txtSurname.Location = new System.Drawing.Point(31, 235);
-            this.txtSurname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSurname.Location = new System.Drawing.Point(31, 234);
+            this.txtSurname.Margin = new System.Windows.Forms.Padding(4);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(218, 26);
             this.txtSurname.TabIndex = 22;
@@ -192,7 +192,7 @@
             // txtFirstname
             // 
             this.txtFirstname.Location = new System.Drawing.Point(384, 162);
-            this.txtFirstname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtFirstname.Margin = new System.Windows.Forms.Padding(4);
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.Size = new System.Drawing.Size(218, 26);
             this.txtFirstname.TabIndex = 21;
@@ -200,7 +200,7 @@
             // txtEmployeeID
             // 
             this.txtEmployeeID.Location = new System.Drawing.Point(31, 162);
-            this.txtEmployeeID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtEmployeeID.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.Size = new System.Drawing.Size(218, 26);
             this.txtEmployeeID.TabIndex = 20;
@@ -208,21 +208,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(219, 43);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(200, 45);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(255, 34);
+            this.label1.Size = new System.Drawing.Size(297, 37);
             this.label1.TabIndex = 19;
-            this.label1.Text = "Add new employee";
+            this.label1.Text = "Add New Employee";
             // 
             // btnExit
             // 
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(565, 565);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnExit.Location = new System.Drawing.Point(565, 564);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(102, 35);
+            this.btnExit.Size = new System.Drawing.Size(102, 34);
             this.btnExit.TabIndex = 73;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -233,7 +233,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(692, 625);
+            this.ClientSize = new System.Drawing.Size(692, 624);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -253,8 +253,9 @@
             this.Controls.Add(this.txtFirstname);
             this.Controls.Add(this.txtEmployeeID);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmAddEmployee";
             this.Text = "Add New Employee";
             this.ResumeLayout(false);

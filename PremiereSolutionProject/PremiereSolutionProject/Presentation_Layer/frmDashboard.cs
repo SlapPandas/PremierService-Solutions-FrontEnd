@@ -134,7 +134,7 @@ namespace PremiereSolutionProject.Presentation_Layer
         #endregion
 
         #region btnContractMaintenanceSubMenu
-        private void btnCreateServicePackage_Click(object sender, EventArgs e)
+        private void btnServicePackageManage_Click(object sender, EventArgs e)
         {
             openChildForm(new frmServicePackageManagement());
             HideSubMenu();
@@ -148,7 +148,7 @@ namespace PremiereSolutionProject.Presentation_Layer
 
         private void btnContractInfo_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmCreateContract());
+            openChildForm(new frmContractManagement());
             HideSubMenu();
         }
 

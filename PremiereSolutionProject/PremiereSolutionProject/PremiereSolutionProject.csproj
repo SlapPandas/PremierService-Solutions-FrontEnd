@@ -132,11 +132,11 @@
     <Compile Include="Presentation_Layer\frmClientContract.designer.cs">
       <DependentUpon>frmClientContract.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmCreateContract.cs">
+    <Compile Include="Presentation_Layer\frmContractManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmCreateContract.Designer.cs">
-      <DependentUpon>frmCreateContract.cs</DependentUpon>
+    <Compile Include="Presentation_Layer\frmContractManagement.Designer.cs">
+      <DependentUpon>frmContractManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation_Layer\frmServiceManagement.cs">
       <SubType>Form</SubType>
@@ -195,8 +195,8 @@
     <EmbeddedResource Include="Presentation_Layer\frmClientContract.resx">
       <DependentUpon>frmClientContract.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmCreateContract.resx">
-      <DependentUpon>frmCreateContract.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation_Layer\frmContractManagement.resx">
+      <DependentUpon>frmContractManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation_Layer\frmServiceManagement.resx">
       <DependentUpon>frmServiceManagement.cs</DependentUpon>
@@ -221,6 +221,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -234,6 +235,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PSSLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

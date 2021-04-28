@@ -43,20 +43,20 @@ namespace PremiereSolutionProject.Presentation_Layer
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(302, 121);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(302, 134);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 18);
+            this.label1.Size = new System.Drawing.Size(207, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Call Centre Employee Name";
             // 
             // rtbNotes
             // 
-            this.rtbNotes.Location = new System.Drawing.Point(41, 285);
-            this.rtbNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rtbNotes.Location = new System.Drawing.Point(41, 317);
+            this.rtbNotes.Margin = new System.Windows.Forms.Padding(4);
             this.rtbNotes.Name = "rtbNotes";
-            this.rtbNotes.Size = new System.Drawing.Size(573, 273);
+            this.rtbNotes.Size = new System.Drawing.Size(573, 303);
             this.rtbNotes.TabIndex = 4;
             this.rtbNotes.Text = "Notes:";
             // 
@@ -64,10 +64,10 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnExit.Location = new System.Drawing.Point(602, 607);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Location = new System.Drawing.Point(602, 674);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(102, 31);
+            this.btnExit.Size = new System.Drawing.Size(102, 34);
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -76,19 +76,19 @@ namespace PremiereSolutionProject.Presentation_Layer
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Modern No. 20", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(259, 25);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(259, 28);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(161, 34);
+            this.label4.Size = new System.Drawing.Size(176, 37);
             this.label4.TabIndex = 11;
             this.label4.Text = "Call Center";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(176, 100);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(176, 111);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -101,10 +101,10 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnEnd.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnEnd.Image = ((System.Drawing.Image)(resources.GetObject("btnEnd.Image")));
             this.btnEnd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnd.Location = new System.Drawing.Point(364, 211);
-            this.btnEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnd.Location = new System.Drawing.Point(364, 234);
+            this.btnEnd.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnd.Name = "btnEnd";
-            this.btnEnd.Size = new System.Drawing.Size(159, 40);
+            this.btnEnd.Size = new System.Drawing.Size(159, 44);
             this.btnEnd.TabIndex = 1;
             this.btnEnd.Text = "    End Call";
             this.btnEnd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -116,10 +116,10 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnAnswer.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnAnswer.Image = ((System.Drawing.Image)(resources.GetObject("btnAnswer.Image")));
             this.btnAnswer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnswer.Location = new System.Drawing.Point(125, 211);
-            this.btnAnswer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnswer.Location = new System.Drawing.Point(125, 234);
+            this.btnAnswer.Margin = new System.Windows.Forms.Padding(4);
             this.btnAnswer.Name = "btnAnswer";
-            this.btnAnswer.Size = new System.Drawing.Size(159, 40);
+            this.btnAnswer.Size = new System.Drawing.Size(159, 44);
             this.btnAnswer.TabIndex = 0;
             this.btnAnswer.Text = "  Answer Call";
             this.btnAnswer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -127,10 +127,10 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // frmCallCenter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(732, 661);
+            this.ClientSize = new System.Drawing.Size(732, 734);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.rtbNotes);
@@ -138,9 +138,9 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnEnd);
             this.Controls.Add(this.btnAnswer);
-            this.Font = new System.Drawing.Font("Modern No. 20", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCallCenter";
             this.Text = "Call Center";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

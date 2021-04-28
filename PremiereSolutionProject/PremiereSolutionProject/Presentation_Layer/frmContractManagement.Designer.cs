@@ -1,7 +1,7 @@
 ﻿
 namespace PremiereSolutionProject.Presentation_Layer
 {
-    partial class frmCreateContract
+    partial class frmContractManagement
     {
         /// <summary>
         /// Required designer variable.
@@ -30,61 +30,42 @@ namespace PremiereSolutionProject.Presentation_Layer
         private void InitializeComponent()
         {
             this.btnExit = new System.Windows.Forms.Button();
-            this.cbxServicePackages = new System.Windows.Forms.ComboBox();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.dgvViewServices = new System.Windows.Forms.DataGridView();
+            this.btnCreateContract = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddServicePackage = new System.Windows.Forms.Button();
+            this.cbxServicePackages = new System.Windows.Forms.ComboBox();
+            this.dgvViewServices = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewServices)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExit
             // 
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(565, 641);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnExit.Location = new System.Drawing.Point(526, 628);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(102, 35);
+            this.btnExit.Size = new System.Drawing.Size(102, 34);
             this.btnExit.TabIndex = 32;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
-            // cbxServicePackages
+            // btnCreateContract
             // 
-            this.cbxServicePackages.FormattingEnabled = true;
-            this.cbxServicePackages.Location = new System.Drawing.Point(135, 142);
-            this.cbxServicePackages.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cbxServicePackages.Name = "cbxServicePackages";
-            this.cbxServicePackages.Size = new System.Drawing.Size(418, 28);
-            this.cbxServicePackages.TabIndex = 29;
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreate.Location = new System.Drawing.Point(257, 557);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(175, 35);
-            this.btnCreate.TabIndex = 28;
-            this.btnCreate.Text = "Create Contract";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            // 
-            // dgvViewServices
-            // 
-            this.dgvViewServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewServices.Location = new System.Drawing.Point(134, 229);
-            this.dgvViewServices.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dgvViewServices.Name = "dgvViewServices";
-            this.dgvViewServices.RowHeadersWidth = 62;
-            this.dgvViewServices.Size = new System.Drawing.Size(419, 144);
-            this.dgvViewServices.TabIndex = 27;
+            this.btnCreateContract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateContract.Location = new System.Drawing.Point(114, 481);
+            this.btnCreateContract.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateContract.Name = "btnCreateContract";
+            this.btnCreateContract.Size = new System.Drawing.Size(175, 34);
+            this.btnCreateContract.TabIndex = 28;
+            this.btnCreateContract.Text = "Create New Contract";
+            this.btnCreateContract.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(135, 204);
+            this.label7.Location = new System.Drawing.Point(46, 204);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 20);
@@ -94,7 +75,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(131, 100);
+            this.label3.Location = new System.Drawing.Point(42, 100);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(126, 20);
@@ -105,40 +86,60 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Modern No. 20", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(221, 28);
+            this.label1.Location = new System.Drawing.Point(414, 28);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(211, 34);
+            this.label1.Size = new System.Drawing.Size(299, 34);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Create contract";
+            this.label1.Text = "Contract Management";
             // 
             // btnAddServicePackage
             // 
             this.btnAddServicePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddServicePackage.Location = new System.Drawing.Point(227, 415);
-            this.btnAddServicePackage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAddServicePackage.Location = new System.Drawing.Point(84, 412);
+            this.btnAddServicePackage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAddServicePackage.Name = "btnAddServicePackage";
-            this.btnAddServicePackage.Size = new System.Drawing.Size(237, 35);
+            this.btnAddServicePackage.Size = new System.Drawing.Size(237, 34);
             this.btnAddServicePackage.TabIndex = 33;
             this.btnAddServicePackage.Text = "Add Service Package";
             this.btnAddServicePackage.UseVisualStyleBackColor = true;
             // 
-            // frmCreateContract
+            // cbxServicePackages
+            // 
+            this.cbxServicePackages.FormattingEnabled = true;
+            this.cbxServicePackages.Location = new System.Drawing.Point(46, 142);
+            this.cbxServicePackages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxServicePackages.Name = "cbxServicePackages";
+            this.cbxServicePackages.Size = new System.Drawing.Size(339, 28);
+            this.cbxServicePackages.TabIndex = 29;
+            // 
+            // dgvViewServices
+            // 
+            this.dgvViewServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViewServices.Location = new System.Drawing.Point(45, 229);
+            this.dgvViewServices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvViewServices.Name = "dgvViewServices";
+            this.dgvViewServices.RowHeadersWidth = 62;
+            this.dgvViewServices.Size = new System.Drawing.Size(340, 144);
+            this.dgvViewServices.TabIndex = 27;
+            // 
+            // frmContractManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(699, 690);
+            this.ClientSize = new System.Drawing.Size(1108, 690);
             this.Controls.Add(this.btnAddServicePackage);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.cbxServicePackages);
-            this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.btnCreateContract);
             this.Controls.Add(this.dgvViewServices);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Name = "frmCreateContract";
+            this.Name = "frmContractManagement";
             this.Text = "frmCreateContract";
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewServices)).EndInit();
             this.ResumeLayout(false);
@@ -149,12 +150,12 @@ namespace PremiereSolutionProject.Presentation_Layer
         #endregion
 
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.ComboBox cbxServicePackages;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.DataGridView dgvViewServices;
+        private System.Windows.Forms.Button btnCreateContract;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddServicePackage;
+        private System.Windows.Forms.ComboBox cbxServicePackages;
+        private System.Windows.Forms.DataGridView dgvViewServices;
     }
 }
