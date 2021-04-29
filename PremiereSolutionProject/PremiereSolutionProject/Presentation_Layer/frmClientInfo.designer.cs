@@ -44,47 +44,55 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // dgvViewClient
             // 
+            this.dgvViewClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvViewClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewClient.Location = new System.Drawing.Point(121, 279);
+            this.dgvViewClient.Location = new System.Drawing.Point(121, 297);
             this.dgvViewClient.Name = "dgvViewClient";
             this.dgvViewClient.RowHeadersWidth = 62;
             this.dgvViewClient.RowTemplate.Height = 28;
-            this.dgvViewClient.Size = new System.Drawing.Size(456, 103);
+            this.dgvViewClient.Size = new System.Drawing.Size(589, 103);
             this.dgvViewClient.TabIndex = 15;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(253, 20);
+            this.label3.Location = new System.Drawing.Point(350, 22);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(208, 37);
+            this.label3.Size = new System.Drawing.Size(180, 31);
             this.label3.TabIndex = 13;
             this.label3.Text = "Identify Client";
             // 
             // txtClientID
             // 
+            this.txtClientID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtClientID.Location = new System.Drawing.Point(303, 102);
             this.txtClientID.Margin = new System.Windows.Forms.Padding(4);
             this.txtClientID.Name = "txtClientID";
-            this.txtClientID.Size = new System.Drawing.Size(274, 26);
+            this.txtClientID.Size = new System.Drawing.Size(407, 23);
             this.txtClientID.TabIndex = 12;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(117, 104);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 20);
+            this.label2.Size = new System.Drawing.Size(114, 17);
             this.label2.TabIndex = 11;
             this.label2.Text = "Client ID Number";
             // 
             // btnExit
             // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(660, 591);
+            this.btnExit.Location = new System.Drawing.Point(793, 630);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 34);
@@ -95,38 +103,42 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(119, 242);
+            this.label1.Location = new System.Drawing.Point(119, 260);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 20);
+            this.label1.Size = new System.Drawing.Size(117, 17);
             this.label1.TabIndex = 17;
             this.label1.Text = "Client Information";
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(119, 404);
+            this.label4.Location = new System.Drawing.Point(119, 422);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(199, 20);
+            this.label4.Size = new System.Drawing.Size(174, 17);
             this.label4.TabIndex = 19;
             this.label4.Text = "Client Contract Information";
             // 
             // dgvClientContractInfo
             // 
+            this.dgvClientContractInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClientContractInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientContractInfo.Location = new System.Drawing.Point(122, 439);
+            this.dgvClientContractInfo.Location = new System.Drawing.Point(122, 457);
             this.dgvClientContractInfo.Name = "dgvClientContractInfo";
             this.dgvClientContractInfo.RowHeadersWidth = 62;
             this.dgvClientContractInfo.RowTemplate.Height = 28;
-            this.dgvClientContractInfo.Size = new System.Drawing.Size(456, 110);
+            this.dgvClientContractInfo.Size = new System.Drawing.Size(589, 110);
             this.dgvClientContractInfo.TabIndex = 18;
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(303, 168);
+            this.btnSearch.Location = new System.Drawing.Point(370, 168);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(102, 34);
@@ -136,10 +148,10 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // frmClientInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(775, 640);
+            this.ClientSize = new System.Drawing.Size(908, 677);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dgvClientContractInfo);

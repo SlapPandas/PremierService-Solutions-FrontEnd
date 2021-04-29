@@ -51,106 +51,112 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(275, 28);
+            this.label1.Location = new System.Drawing.Point(247, 35);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(332, 37);
+            this.label1.Size = new System.Drawing.Size(284, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "Service Request Form";
             // 
             // lblClientName
             // 
             this.lblClientName.AutoSize = true;
-            this.lblClientName.Location = new System.Drawing.Point(430, 107);
+            this.lblClientName.Location = new System.Drawing.Point(406, 94);
             this.lblClientName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClientName.Name = "lblClientName";
-            this.lblClientName.Size = new System.Drawing.Size(95, 20);
+            this.lblClientName.Size = new System.Drawing.Size(84, 17);
             this.lblClientName.TabIndex = 1;
             this.lblClientName.Text = "Client Name";
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 239);
+            this.label3.Location = new System.Drawing.Point(23, 227);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 20);
+            this.label3.Size = new System.Drawing.Size(83, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "Description:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(312, 107);
+            this.label4.Location = new System.Drawing.Point(288, 94);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 20);
+            this.label4.Size = new System.Drawing.Size(47, 17);
             this.label4.TabIndex = 5;
             this.label4.Text = "Client:";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(262, 239);
+            this.richTextBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.richTextBox1.Location = new System.Drawing.Point(216, 224);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(349, 146);
+            this.richTextBox1.Size = new System.Drawing.Size(305, 122);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = "";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(312, 153);
+            this.label2.Location = new System.Drawing.Point(288, 130);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 20);
+            this.label2.Size = new System.Drawing.Size(52, 17);
             this.label2.TabIndex = 7;
             this.label2.Text = "Call ID:";
             // 
             // lblCallID
             // 
             this.lblCallID.AutoSize = true;
-            this.lblCallID.Location = new System.Drawing.Point(430, 153);
+            this.lblCallID.Location = new System.Drawing.Point(406, 130);
             this.lblCallID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCallID.Name = "lblCallID";
-            this.lblCallID.Size = new System.Drawing.Size(56, 20);
+            this.lblCallID.Size = new System.Drawing.Size(48, 17);
             this.lblCallID.TabIndex = 8;
             this.lblCallID.Text = "Call ID";
             // 
             // cbxSpecialisation
             // 
+            this.cbxSpecialisation.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cbxSpecialisation.FormattingEnabled = true;
-            this.cbxSpecialisation.Location = new System.Drawing.Point(262, 456);
+            this.cbxSpecialisation.Location = new System.Drawing.Point(216, 382);
             this.cbxSpecialisation.Margin = new System.Windows.Forms.Padding(4);
             this.cbxSpecialisation.Name = "cbxSpecialisation";
-            this.cbxSpecialisation.Size = new System.Drawing.Size(349, 28);
+            this.cbxSpecialisation.Size = new System.Drawing.Size(305, 24);
             this.cbxSpecialisation.TabIndex = 9;
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(42, 460);
+            this.label5.Location = new System.Drawing.Point(23, 385);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(169, 20);
+            this.label5.Size = new System.Drawing.Size(151, 17);
             this.label5.TabIndex = 10;
             this.label5.Text = "Specialisation needed:";
             // 
             // btnSubmit
             // 
+            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubmit.Location = new System.Drawing.Point(330, 628);
+            this.btnSubmit.Location = new System.Drawing.Point(291, 542);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(188, 44);
+            this.btnSubmit.Size = new System.Drawing.Size(143, 36);
             this.btnSubmit.TabIndex = 11;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(738, 694);
+            this.btnExit.Location = new System.Drawing.Point(793, 630);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 34);
@@ -161,38 +167,41 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(42, 530);
+            this.label6.Location = new System.Drawing.Point(23, 456);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(139, 20);
+            this.label6.Size = new System.Drawing.Size(125, 17);
             this.label6.TabIndex = 14;
             this.label6.Text = "Number of people:";
             // 
             // txtNoOfPeople
             // 
-            this.txtNoOfPeople.Location = new System.Drawing.Point(262, 524);
+            this.txtNoOfPeople.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtNoOfPeople.Location = new System.Drawing.Point(216, 450);
             this.txtNoOfPeople.Name = "txtNoOfPeople";
-            this.txtNoOfPeople.Size = new System.Drawing.Size(349, 26);
+            this.txtNoOfPeople.Size = new System.Drawing.Size(305, 23);
             this.txtNoOfPeople.TabIndex = 15;
             // 
             // btnAdd
             // 
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(665, 513);
+            this.btnAdd.Location = new System.Drawing.Point(549, 440);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(175, 37);
+            this.btnAdd.Size = new System.Drawing.Size(109, 49);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add Specialisation";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
             // FrmServiceRequest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(875, 744);
+            this.ClientSize = new System.Drawing.Size(908, 677);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtNoOfPeople);
             this.Controls.Add(this.label6);

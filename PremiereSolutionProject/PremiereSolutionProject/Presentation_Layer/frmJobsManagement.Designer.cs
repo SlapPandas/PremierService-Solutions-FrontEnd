@@ -30,7 +30,7 @@ namespace PremiereSolutionProject.Presentation_Layer
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstViewJobs = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -51,27 +51,31 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(365, 23);
+            this.label1.Location = new System.Drawing.Point(324, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(280, 37);
+            this.label1.Size = new System.Drawing.Size(236, 31);
             this.label1.TabIndex = 2;
             this.label1.Text = "Jobs Management";
             // 
-            // listView1
+            // lstViewJobs
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstViewJobs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstViewJobs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(59, 81);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(937, 245);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lstViewJobs.HideSelection = false;
+            this.lstViewJobs.Location = new System.Drawing.Point(83, 82);
+            this.lstViewJobs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstViewJobs.Name = "lstViewJobs";
+            this.lstViewJobs.Size = new System.Drawing.Size(735, 283);
+            this.lstViewJobs.TabIndex = 3;
+            this.lstViewJobs.UseCompatibleStateImageBehavior = false;
+            this.lstViewJobs.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -95,112 +99,123 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(57, 386);
+            this.label2.Location = new System.Drawing.Point(51, 435);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 20);
+            this.label2.Size = new System.Drawing.Size(129, 17);
             this.label2.TabIndex = 56;
             this.label2.Text = "Service Request ID";
             // 
             // txtServiceReqID
             // 
+            this.txtServiceReqID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtServiceReqID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtServiceReqID.Location = new System.Drawing.Point(256, 380);
-            this.txtServiceReqID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtServiceReqID.Location = new System.Drawing.Point(222, 438);
+            this.txtServiceReqID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtServiceReqID.Name = "txtServiceReqID";
-            this.txtServiceReqID.Size = new System.Drawing.Size(229, 26);
+            this.txtServiceReqID.Size = new System.Drawing.Size(204, 23);
             this.txtServiceReqID.TabIndex = 55;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(57, 446);
+            this.label3.Location = new System.Drawing.Point(51, 483);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 20);
+            this.label3.Size = new System.Drawing.Size(48, 17);
             this.label3.TabIndex = 58;
             this.label3.Text = "Job ID";
             // 
             // txtJobID
             // 
+            this.txtJobID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtJobID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtJobID.Location = new System.Drawing.Point(256, 440);
-            this.txtJobID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtJobID.Location = new System.Drawing.Point(222, 486);
+            this.txtJobID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtJobID.Name = "txtJobID";
-            this.txtJobID.Size = new System.Drawing.Size(229, 26);
+            this.txtJobID.Size = new System.Drawing.Size(204, 23);
             this.txtJobID.TabIndex = 57;
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(535, 446);
+            this.label4.Location = new System.Drawing.Point(486, 480);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 20);
+            this.label4.Size = new System.Drawing.Size(75, 17);
             this.label4.TabIndex = 62;
             this.label4.Text = "Job Status";
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(535, 386);
+            this.label5.Location = new System.Drawing.Point(486, 432);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(155, 20);
+            this.label5.Size = new System.Drawing.Size(139, 17);
             this.label5.TabIndex = 60;
             this.label5.Text = "Assigned Technician";
             // 
             // txtAssignedTechnician
             // 
+            this.txtAssignedTechnician.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtAssignedTechnician.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAssignedTechnician.Location = new System.Drawing.Point(734, 380);
-            this.txtAssignedTechnician.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAssignedTechnician.Location = new System.Drawing.Point(646, 432);
+            this.txtAssignedTechnician.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAssignedTechnician.Name = "txtAssignedTechnician";
-            this.txtAssignedTechnician.Size = new System.Drawing.Size(229, 26);
+            this.txtAssignedTechnician.Size = new System.Drawing.Size(204, 23);
             this.txtAssignedTechnician.TabIndex = 59;
             // 
             // cbxJobStatus
             // 
+            this.cbxJobStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbxJobStatus.FormattingEnabled = true;
             this.cbxJobStatus.Items.AddRange(new object[] {
             "Pending",
             "In Progress",
             "Completed"});
-            this.cbxJobStatus.Location = new System.Drawing.Point(734, 446);
+            this.cbxJobStatus.Location = new System.Drawing.Point(646, 483);
+            this.cbxJobStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbxJobStatus.Name = "cbxJobStatus";
-            this.cbxJobStatus.Size = new System.Drawing.Size(229, 28);
+            this.cbxJobStatus.Size = new System.Drawing.Size(204, 24);
             this.cbxJobStatus.TabIndex = 63;
             // 
             // btnUpdateJob
             // 
+            this.btnUpdateJob.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnUpdateJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateJob.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateJob.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdateJob.Location = new System.Drawing.Point(417, 518);
-            this.btnUpdateJob.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnUpdateJob.Location = new System.Drawing.Point(364, 561);
+            this.btnUpdateJob.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUpdateJob.Name = "btnUpdateJob";
-            this.btnUpdateJob.Size = new System.Drawing.Size(204, 46);
+            this.btnUpdateJob.Size = new System.Drawing.Size(181, 37);
             this.btnUpdateJob.TabIndex = 109;
             this.btnUpdateJob.Text = "Update Job";
             this.btnUpdateJob.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(964, 616);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnExit.Location = new System.Drawing.Point(804, 636);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(102, 35);
+            this.btnExit.Size = new System.Drawing.Size(91, 28);
             this.btnExit.TabIndex = 110;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -208,10 +223,10 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // frmJobsManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(1101, 665);
+            this.ClientSize = new System.Drawing.Size(908, 677);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnUpdateJob);
             this.Controls.Add(this.cbxJobStatus);
@@ -222,9 +237,10 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.Controls.Add(this.txtJobID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtServiceReqID);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lstViewJobs);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmJobsManagement";
             this.Text = "frmJobManagement";
             this.ResumeLayout(false);
@@ -235,7 +251,7 @@ namespace PremiereSolutionProject.Presentation_Layer
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstViewJobs;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;

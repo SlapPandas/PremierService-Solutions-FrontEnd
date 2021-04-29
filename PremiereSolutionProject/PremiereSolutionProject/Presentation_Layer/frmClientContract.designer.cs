@@ -128,14 +128,14 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.dgvServices.Margin = new System.Windows.Forms.Padding(4);
             this.dgvServices.Name = "dgvServices";
             this.dgvServices.RowHeadersWidth = 62;
-            this.dgvServices.Size = new System.Drawing.Size(184, 263);
+            this.dgvServices.Size = new System.Drawing.Size(184, 388);
             this.dgvServices.TabIndex = 12;
             // 
             // btnCreate
             // 
             this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreate.Location = new System.Drawing.Point(316, 451);
+            this.btnCreate.Location = new System.Drawing.Point(458, 576);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(112, 34);
@@ -178,7 +178,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(651, 503);
+            this.btnExit.Location = new System.Drawing.Point(793, 628);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 34);
@@ -205,7 +205,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.dgvServicePackages.Location = new System.Drawing.Point(273, 113);
             this.dgvServicePackages.Name = "dgvServicePackages";
             this.dgvServicePackages.RowHeadersWidth = 51;
-            this.dgvServicePackages.Size = new System.Drawing.Size(184, 264);
+            this.dgvServicePackages.Size = new System.Drawing.Size(184, 389);
             this.dgvServicePackages.TabIndex = 19;
             // 
             // label6
@@ -238,7 +238,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(766, 552);
+            this.ClientSize = new System.Drawing.Size(908, 677);
             this.Controls.Add(this.txtClientID);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);

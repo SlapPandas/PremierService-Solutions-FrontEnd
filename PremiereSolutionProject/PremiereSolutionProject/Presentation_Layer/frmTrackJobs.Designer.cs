@@ -39,25 +39,30 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(335, 33);
+            this.label1.Location = new System.Drawing.Point(356, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 37);
+            this.label1.Size = new System.Drawing.Size(148, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "Track Jobs";
             // 
             // lstJobTracker
             // 
+            this.lstJobTracker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstJobTracker.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
             this.lstJobTracker.HideSelection = false;
-            this.lstJobTracker.Location = new System.Drawing.Point(95, 87);
+            this.lstJobTracker.Location = new System.Drawing.Point(84, 70);
+            this.lstJobTracker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstJobTracker.Name = "lstJobTracker";
-            this.lstJobTracker.Size = new System.Drawing.Size(684, 394);
+            this.lstJobTracker.Size = new System.Drawing.Size(711, 499);
             this.lstJobTracker.TabIndex = 2;
             this.lstJobTracker.UseCompatibleStateImageBehavior = false;
             this.lstJobTracker.View = System.Windows.Forms.View.Details;
@@ -79,12 +84,13 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // btnExit
             // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(791, 569);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnExit.Location = new System.Drawing.Point(804, 636);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(102, 35);
+            this.btnExit.Size = new System.Drawing.Size(91, 28);
             this.btnExit.TabIndex = 111;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -92,14 +98,15 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // frmTrackJobs
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(906, 618);
+            this.ClientSize = new System.Drawing.Size(908, 677);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lstJobTracker);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmTrackJobs";
             this.Text = "Track Jobs";
             this.ResumeLayout(false);

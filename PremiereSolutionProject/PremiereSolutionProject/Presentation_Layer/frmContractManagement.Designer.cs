@@ -42,9 +42,10 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // btnExit
             // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(526, 628);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Location = new System.Drawing.Point(793, 630);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 34);
             this.btnExit.TabIndex = 32;
@@ -53,9 +54,10 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // btnCreateContract
             // 
+            this.btnCreateContract.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCreateContract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateContract.Location = new System.Drawing.Point(114, 481);
-            this.btnCreateContract.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateContract.Location = new System.Drawing.Point(474, 531);
+            this.btnCreateContract.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateContract.Name = "btnCreateContract";
             this.btnCreateContract.Size = new System.Drawing.Size(175, 34);
             this.btnCreateContract.TabIndex = 28;
@@ -65,20 +67,20 @@ namespace PremiereSolutionProject.Presentation_Layer
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(46, 204);
+            this.label7.Location = new System.Drawing.Point(107, 215);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 20);
+            this.label7.Size = new System.Drawing.Size(62, 17);
             this.label7.TabIndex = 24;
             this.label7.Text = "Services";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 100);
+            this.label3.Location = new System.Drawing.Point(107, 104);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 20);
+            this.label3.Size = new System.Drawing.Size(113, 17);
             this.label3.TabIndex = 20;
             this.label3.Text = "Service package";
             // 
@@ -86,49 +88,54 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Modern No. 20", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(414, 28);
+            this.label1.Location = new System.Drawing.Point(329, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(299, 34);
+            this.label1.Size = new System.Drawing.Size(256, 29);
             this.label1.TabIndex = 18;
             this.label1.Text = "Contract Management";
             // 
             // btnAddServicePackage
             // 
+            this.btnAddServicePackage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddServicePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddServicePackage.Location = new System.Drawing.Point(84, 412);
-            this.btnAddServicePackage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddServicePackage.Location = new System.Drawing.Point(246, 531);
+            this.btnAddServicePackage.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddServicePackage.Name = "btnAddServicePackage";
-            this.btnAddServicePackage.Size = new System.Drawing.Size(237, 34);
+            this.btnAddServicePackage.Size = new System.Drawing.Size(184, 34);
             this.btnAddServicePackage.TabIndex = 33;
             this.btnAddServicePackage.Text = "Add Service Package";
             this.btnAddServicePackage.UseVisualStyleBackColor = true;
             // 
             // cbxServicePackages
             // 
+            this.cbxServicePackages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxServicePackages.FormattingEnabled = true;
-            this.cbxServicePackages.Location = new System.Drawing.Point(46, 142);
-            this.cbxServicePackages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxServicePackages.Location = new System.Drawing.Point(110, 149);
+            this.cbxServicePackages.Margin = new System.Windows.Forms.Padding(4);
             this.cbxServicePackages.Name = "cbxServicePackages";
-            this.cbxServicePackages.Size = new System.Drawing.Size(339, 28);
+            this.cbxServicePackages.Size = new System.Drawing.Size(339, 24);
             this.cbxServicePackages.TabIndex = 29;
             // 
             // dgvViewServices
             // 
+            this.dgvViewServices.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvViewServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewServices.Location = new System.Drawing.Point(45, 229);
-            this.dgvViewServices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvViewServices.Location = new System.Drawing.Point(110, 247);
+            this.dgvViewServices.Margin = new System.Windows.Forms.Padding(4);
             this.dgvViewServices.Name = "dgvViewServices";
             this.dgvViewServices.RowHeadersWidth = 62;
-            this.dgvViewServices.Size = new System.Drawing.Size(340, 144);
+            this.dgvViewServices.Size = new System.Drawing.Size(680, 184);
             this.dgvViewServices.TabIndex = 27;
             // 
             // frmContractManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(1108, 690);
+            this.ClientSize = new System.Drawing.Size(908, 677);
             this.Controls.Add(this.btnAddServicePackage);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.cbxServicePackages);
