@@ -550,6 +550,13 @@ AS
 		WHERE clientBusinessEmployeeID = @id
 	COMMIT
 GO
+CREATE PROC DeleteSpecialisation @id INT 
+AS
+	BEGIN TRAN
+		DELETE FROM Specialisation
+		WHERE specialisationID = @id
+	COMMIT
+GO
 
 --UPDATE Procedures
 CREATE PROCEDURE UpdateAddress @id INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10),@city VARCHAR(100)
@@ -807,13 +814,17 @@ BEGIN
 	VALUES (@name, @description)
 END 
 GO
-
-CREATE PROCEDURE InsertClientIndividual @id INT, @firstName VARCHAR(50), @surname VARCHAR(50), @addressId INT, @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @registrationDate DATE
+CREATE PROCEDURE InsertClientIndividual @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @registrationDate DATE, @active INT,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
 AS
-BEGIN
-	INSERT INTO [ClientIndividual] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [RegistrationDate])
-	VALUES (@firstName, @surname, @addressId, @contactNumber, @email, @nationalIdNumber, @registrationDate)
-END 
+		BEGIN TRAN
+		DECLARE @LASTID INT
+		INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode],[city])
+		VALUES (@streetname, @suburb,@province ,@postalcode,@city)
+		SET @LASTID = SCOPE_IDENTITY()
+
+		INSERT INTO [ClientIndividual] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [RegistrationDate],[active])
+		VALUES (@firstName, @surname, @LASTID, @contactNumber, @email, @nationalIdNumber, @registrationDate,@active)
+COMMIT 
 GO
 CREATE PROCEDURE InsertClientBusiness @id INT, @busuinessName VARCHAR(50), @addressID INT, @contactNumber VARCHAR(10), @taxNumber VARCHAR(10), @RegistrationDate DATE
 AS
@@ -1504,5 +1515,15 @@ AS
 BEGIN TRAN
 	SELECT * FROM [Call]
 	WHERE [Call].ClientBusinessID = @id
+COMMIT
+GO
+
+--CountUses
+CREATE PROCEDURE SpecialisationUses @id INT
+AS
+BEGIN TRAN
+	DECLARE @count INT
+	SET @count = (SELECT COUNT(specialisationID) FROM Job WHERE specialisationID = @id) + (SELECT COUNT(specialisationID) FROM SpecialisationEmployeeLink WHERE specialisationID = @id) + (SELECT COUNT(specialisationRequiredID) FROM ServiceRequestSpecialisationLink WHERE specialisationRequiredID = @id)
+	SELECT @count AS uses
 COMMIT
 GO

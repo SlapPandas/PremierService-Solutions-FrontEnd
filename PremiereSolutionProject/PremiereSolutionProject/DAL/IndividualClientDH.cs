@@ -36,7 +36,7 @@ namespace PremiereSolutionProject.DAL
         public void Insert(IndividualClient individualClient)
         {
             CreateConnection();
-            commandString = $"EXEC InsertClientIndividual @id = '{individualClient.Id}', @firstName = '{individualClient.FirstName}', @surname = '{individualClient.Surname}', @addressId = '{individualClient.Address.AddressID}', @contactNumber = '{individualClient.ContactNumber}', @email = '{individualClient.Email}', @nationalIdNumber = '{individualClient.NationalIDnumber}', @registrationDate = '{individualClient.RegistrationDate.ToString("yyyy-MM-dd")}'";
+            commandString = $"EXEC InsertClientIndividual @firstName = '{individualClient.FirstName}', @surname = '{individualClient.Surname}', @contactNumber = '{individualClient.ContactNumber}', @email = '{individualClient.Email}', @nationalIdNumber = '{individualClient.NationalIDnumber}', @registrationDate = '{individualClient.RegistrationDate.ToString("yyyy-MM-dd")}', @active = '{GetIntFromBool(individualClient.Active)}',@streetname = '{individualClient.Address.StreetName}',@suburb = '{individualClient.Address.Suburb}',@province = '{((int)individualClient.Address.Province).ToString()}',@postalcode= '{individualClient.Address.Postalcode}', @city = '{individualClient.Address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try

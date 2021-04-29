@@ -152,7 +152,7 @@ namespace PremiereSolutionProject.DAL
                 specialisationReader = specialisationCommand.ExecuteReader();
                 while (specialisationReader.Read())
                 {
-                    output = (int)specialisationReader["NumberOfUses"];
+                    output = (int)specialisationReader["uses"];
                 }
             }
             catch (Exception e)
