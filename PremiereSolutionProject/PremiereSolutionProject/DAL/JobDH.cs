@@ -116,7 +116,27 @@ namespace PremiereSolutionProject.DAL
         public void Insert(Job job)
         {
             CreateConnection();
-            commandString = $"EXEC InsertJob @id = '{job.JobID}', @addressId = '{job.JobAddress.AddressID}', @ServiceRequestID = '{job.ServiceRequestID}', @notes = '{job.JobNotes}', @currentState = '{job.JobState}'";
+            commandString = $"EXEC InsertJob @addressId = '{job.JobAddress.AddressID}', @ServiceRequestID = '{job.ServiceRequestID}', @notes = '{job.JobNotes}', @currentState = '{((int)job.JobState).ToString()}', @specialization = '{job.Specialisation.SpecialisationID}', @amountOfEmployees = '{job.EmployeesNeeded}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
+            {
+                OpenConnection();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { CloseConnection(); }
+        }
+        public void InsertWithEmployeeList(Job job)
+        {
+            InsertAllEmployeesOfNewJob(job);
+            CreateConnection();
+            commandString = $"EXEC InsertJobWithEmployeeList @addressId = '{job.JobAddress.AddressID}', @ServiceRequestID = '{job.ServiceRequestID}', @notes = '{job.JobNotes}', @currentState = '{((int)job.JobState).ToString()}', @specialization = '{job.Specialisation.SpecialisationID}', @amountOfEmployees = '{job.EmployeesNeeded}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -368,6 +388,32 @@ namespace PremiereSolutionProject.DAL
                 for (int i = 0; i < job.Employee.Count; i++)
                 {
                     commandString = $"EXEC InsertIntoTVPJobEmployee @jobId = '{job.JobID}', @employeeId = '{job.Employee[i].Id}'";
+                    SqlCommand jobCommand = new SqlCommand(commandString, jobConnection);
+                    jobCommand.ExecuteNonQuery();
+                }
+
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                jobConnection.Close();
+            }
+        }
+        private void InsertAllEmployeesOfNewJob(Job job)
+        {
+            SqlConnection jobConnection = new SqlConnection(connectionSring);
+
+            try
+            {
+                jobConnection.Open();
+                for (int i = 0; i < job.Employee.Count; i++)
+                {
+                    commandString = $"EXEC InsertIntoTVPNewJobEmployee @employeeId = '{job.Employee[i].Id}'";
                     SqlCommand jobCommand = new SqlCommand(commandString, jobConnection);
                     jobCommand.ExecuteNonQuery();
                 }

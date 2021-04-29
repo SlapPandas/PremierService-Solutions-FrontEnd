@@ -95,7 +95,7 @@ namespace PremiereSolutionProject.DAL
         #endregion
 
         #region Insert
-        public void InsertSingleServiceToServicePackedge(int ServicePackedgeId, int Service)
+        public void InsertSingleServiceToServicePackadge(int ServicePackedgeId, int Service)
         {
             CreateConnection();
             commandString = $"EXEC InsertServicePackageLink @ServicePackageID = '{ServicePackedgeId}', @ServiceID = '{Service}'";

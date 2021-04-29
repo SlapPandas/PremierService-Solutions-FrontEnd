@@ -178,7 +178,7 @@ CREATE TABLE Job
 	ServiceRequestID INT NOT NULL FOREIGN KEY (ServiceRequestID) REFERENCES ServiceRequest (serviceRequestID),
 	notes VARCHAR(255) NULL,
 	currentState VARCHAR(20) NOT NULL,
-	specialisationId INT NOT NULL,
+	specialisationId INT NOT NULL FOREIGN KEY (specialisationId) REFERENCES Specialisation (specialisationID),
 	amountOfEmployeesNeeded INT NOT NULL,
 	);
 	GO
@@ -482,6 +482,13 @@ AS
 	BEGIN TRAN
 		INSERT INTO TVP(idIntOne,idIntTwo)
 		VALUES (@jobId,(SELECT Employee.employeeID FROM Employee WHERE Employee.employeeNumber = @employeeId))
+	COMMIT
+GO
+CREATE PROC InsertIntoTVPNewJobEmployee @employeeId VARCHAR(50)
+AS
+	BEGIN TRAN
+		INSERT INTO TVP(idIntOne)
+		VALUES ((SELECT Employee.employeeID FROM Employee WHERE Employee.employeeNumber = @employeeId))
 	COMMIT
 GO
 CREATE PROC InsertIntoTVPPackedgeService @packedgeId INT,@serviceId INT
@@ -876,12 +883,29 @@ BEGIN
 END 
 GO
 
-CREATE PROCEDURE InsertJob @id INT, @addressId INT, @ServiceRequestID INT, @notes VARCHAR(255), @currentState VARCHAR(20)
+CREATE PROCEDURE InsertJob @addressId INT, @ServiceRequestID INT, @notes VARCHAR(255), @currentState VARCHAR(20), @specialization INT, @amountOfEmployees INT
 AS
-BEGIN
-	INSERT INTO [Job] ([addressId], [ServiceRequestID], [notes], [currentState])
-	VALUES (@addressId, @ServiceRequestID, @notes, @currentState)
-END 
+	BEGIN TRAN
+		INSERT INTO [Job] ([addressId], [ServiceRequestID], [notes], [currentState],[specialisationId],[amountOfEmployeesNeeded])
+		VALUES (@addressId, @ServiceRequestID, @notes, @currentState,@specialization,@amountOfEmployees)
+	COMMIT 
+GO
+CREATE PROCEDURE InsertJobWithEmployeeList @addressId INT, @ServiceRequestID INT, @notes VARCHAR(255), @currentState VARCHAR(20), @specialization INT, @amountOfEmployees INT
+AS
+	BEGIN TRAN
+		DECLARE @jobId INT
+		INSERT INTO [Job] ([addressId], [ServiceRequestID], [notes], [currentState],[specialisationId],[amountOfEmployeesNeeded])
+		VALUES (@addressId, @ServiceRequestID, @notes, @currentState,@specialization,@amountOfEmployees)
+		SET @jobId = SCOPE_IDENTITY()
+
+		INSERT INTO JobEmployeeLink(jobID,employeeID)
+		SELECT @jobId,idIntOne FROM TVP
+
+		DELETE FROM TVP
+
+
+
+	COMMIT 
 GO
 CREATE PROCEDURE InsertServiceRequestJobLink @serviceRequestID INT, @jobID INT
 AS
