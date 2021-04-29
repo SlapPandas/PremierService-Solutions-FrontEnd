@@ -63,6 +63,15 @@ namespace PremiereSolutionProject.BLL
             this.specialisation = spec;
             this.employeesNeeded = emps;
         }
+        public Job(Address jAddress, JobState js, string jNotes, Specialisation spec, int sReqID, int emps)
+        {
+            this.jobAddress = jAddress;
+            this.JobState = js;
+            this.jobNotes = jNotes;
+            this.serviceRequestID = sReqID;
+            this.specialisation = spec;
+            this.employeesNeeded = emps;
+        }
 
         //public Job(Address jAddress, JobState js, string jNotes, List<MaintenanceEmployee> mE, Specialisation spec, int sReqID)
         //{
