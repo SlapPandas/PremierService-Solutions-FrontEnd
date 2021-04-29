@@ -119,11 +119,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             HideSubMenu();
         }
 
-        private void btnTrackJobs_Click(object sender, EventArgs e)
-        {
-            openChildForm(new frmTrackJobs());
-            HideSubMenu();
-        }
+        
 
         private void btnJobManagement_Click(object sender, EventArgs e)
         {

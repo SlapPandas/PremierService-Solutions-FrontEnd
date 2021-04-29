@@ -45,6 +45,11 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.cbxJobStatus = new System.Windows.Forms.ComboBox();
             this.btnUpdateJob = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.lstJobTracker = new System.Windows.Forms.ListView();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -60,19 +65,17 @@ namespace PremiereSolutionProject.Presentation_Layer
             // 
             // lstViewJobs
             // 
-            this.lstViewJobs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstViewJobs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lstViewJobs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
             this.lstViewJobs.HideSelection = false;
-            this.lstViewJobs.Location = new System.Drawing.Point(83, 82);
+            this.lstViewJobs.Location = new System.Drawing.Point(54, 62);
             this.lstViewJobs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstViewJobs.Name = "lstViewJobs";
-            this.lstViewJobs.Size = new System.Drawing.Size(735, 283);
+            this.lstViewJobs.Size = new System.Drawing.Size(796, 136);
             this.lstViewJobs.TabIndex = 3;
             this.lstViewJobs.UseCompatibleStateImageBehavior = false;
             this.lstViewJobs.View = System.Windows.Forms.View.Details;
@@ -115,7 +118,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.txtServiceReqID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtServiceReqID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtServiceReqID.Location = new System.Drawing.Point(222, 438);
-            this.txtServiceReqID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtServiceReqID.Margin = new System.Windows.Forms.Padding(4);
             this.txtServiceReqID.Name = "txtServiceReqID";
             this.txtServiceReqID.Size = new System.Drawing.Size(204, 23);
             this.txtServiceReqID.TabIndex = 55;
@@ -138,7 +141,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.txtJobID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtJobID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtJobID.Location = new System.Drawing.Point(222, 486);
-            this.txtJobID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtJobID.Margin = new System.Windows.Forms.Padding(4);
             this.txtJobID.Name = "txtJobID";
             this.txtJobID.Size = new System.Drawing.Size(204, 23);
             this.txtJobID.TabIndex = 57;
@@ -174,7 +177,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.txtAssignedTechnician.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtAssignedTechnician.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAssignedTechnician.Location = new System.Drawing.Point(646, 432);
-            this.txtAssignedTechnician.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAssignedTechnician.Margin = new System.Windows.Forms.Padding(4);
             this.txtAssignedTechnician.Name = "txtAssignedTechnician";
             this.txtAssignedTechnician.Size = new System.Drawing.Size(204, 23);
             this.txtAssignedTechnician.TabIndex = 59;
@@ -200,7 +203,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnUpdateJob.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateJob.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnUpdateJob.Location = new System.Drawing.Point(364, 561);
-            this.btnUpdateJob.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdateJob.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateJob.Name = "btnUpdateJob";
             this.btnUpdateJob.Size = new System.Drawing.Size(181, 37);
             this.btnUpdateJob.TabIndex = 109;
@@ -213,7 +216,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(804, 636);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(91, 28);
             this.btnExit.TabIndex = 110;
@@ -221,12 +224,58 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // lstJobTracker
+            // 
+            this.lstJobTracker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstJobTracker.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7});
+            this.lstJobTracker.HideSelection = false;
+            this.lstJobTracker.Location = new System.Drawing.Point(60, 266);
+            this.lstJobTracker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstJobTracker.Name = "lstJobTracker";
+            this.lstJobTracker.Size = new System.Drawing.Size(790, 112);
+            this.lstJobTracker.TabIndex = 111;
+            this.lstJobTracker.UseCompatibleStateImageBehavior = false;
+            this.lstJobTracker.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Pending";
+            this.columnHeader5.Width = 180;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "In Progress";
+            this.columnHeader6.Width = 180;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Completed";
+            this.columnHeader7.Width = 180;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label6.Location = new System.Drawing.Point(57, 234);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(104, 17);
+            this.label6.TabIndex = 112;
+            this.label6.Text = "Jobs Trackings";
+            // 
             // frmJobsManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(908, 677);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lstJobTracker);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnUpdateJob);
             this.Controls.Add(this.cbxJobStatus);
@@ -266,5 +315,10 @@ namespace PremiereSolutionProject.Presentation_Layer
         private System.Windows.Forms.ComboBox cbxJobStatus;
         private System.Windows.Forms.Button btnUpdateJob;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.ListView lstJobTracker;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -431,7 +431,7 @@ namespace PremiereSolutionProject.Presentation_Layer
             this.btnTrackJobs.Text = "Track Jobs";
             this.btnTrackJobs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTrackJobs.UseVisualStyleBackColor = false;
-            this.btnTrackJobs.Click += new System.EventHandler(this.btnTrackJobs_Click);
+            
             // 
             // btnViewServiceReq
             // 
