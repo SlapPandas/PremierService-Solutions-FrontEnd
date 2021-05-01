@@ -60,6 +60,16 @@ namespace PremiereSolutionProject.BLL
             this.promotionPercentage = promoPerc;
             this.servicePrice = servPrice;
         }
+        public ServicePackage(int packID, string packName,bool onPromo, DateTime promoStartDate, DateTime promoEndDate, double promoPerc, double servPrice)
+        {
+            this.packageID = packID;
+            this.packageName = packName;
+            this.onPromotion = onPromo;
+            this.promotionStartDate = promoStartDate;
+            this.promotionEndDate = promoEndDate;
+            this.promotionPercentage = promoPerc;
+            this.servicePrice = servPrice;
+        }
         #endregion
 
         #region Overrides
