@@ -623,6 +623,17 @@ BEGIN
 	COMMIT
 END
 GO
+CREATE PROCEDURE UpdateClientIndividualCurrentState @id VARCHAR(100), @active INT
+AS
+BEGIN
+	BEGIN TRAN
+
+	UPDATE ClientIndividual
+	SET active = @active
+	WHERE clientIndividualClientNumber = @id
+	COMMIT
+END
+GO
 CREATE PROCEDURE UpdateContract @id INT, @startdate DATE, @endtime DATE, @active BIT, @priorityLevel VARCHAR(20)
 AS
 BEGIN
