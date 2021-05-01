@@ -130,7 +130,7 @@ namespace PremiereSolutionProject.BLL
         public List<Call> SelectAllCallsOfClient(string ID)
         {
             CallDH callDH = new CallDH();
-            List<Call> clientCalls = ID[0] == 'I' ? callDH.SelectAllCallByIndividualClientById(ID) : ID[0] == 'B' ? callDH.SelectAllCallByBusinessClientById(ID) : null;
+            List<Call> clientCalls = ID[0] == 'A' ? callDH.SelectAllCallByIndividualClientById(ID) : ID[0] == 'B' ? callDH.SelectAllCallByBusinessClientById(ID) : null;
             return clientCalls;
         }
         #endregion
