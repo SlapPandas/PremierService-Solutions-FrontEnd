@@ -357,6 +357,12 @@ namespace PremiereSolutionProject.BLL
             serviceRequestDH.Insert(serviceRequest);
         }
 
+        public void InsertServiceRequestWithSpecialisation(ServiceRequest serviceRequest)
+        {
+            ServiceRequestDH serviceRequestDH = new ServiceRequestDH();
+            serviceRequestDH.InsertWithSpecilizationList(serviceRequest);
+        }
+
         public void DeleteServiceRequest(ServiceRequest serviceRequest)
         {
             ServiceRequestDH serviceRequestDH = new ServiceRequestDH();

@@ -146,7 +146,11 @@ namespace PremiereSolutionProject.BLL
             JobDH jobDH = new JobDH();
             jobDH.Insert(job);
         }
-
+        public void InsertJobWithEmployeeList(Job job) // insert a job with an employee list
+        {
+            JobDH jobDH = new JobDH();
+            jobDH.InsertWithEmployeeList(job);
+        }
         public void DeleteJob(Job job)
         {
             JobDH jobDH = new JobDH();

@@ -70,6 +70,12 @@ namespace PremiereSolutionProject.BLL
             specializationDH.Insert(specialisation);
         }
 
+        public void DeleteSpecialisation(Specialisation specialisation) // inserts a new specialisation
+        {
+            SpecializationDH specializationDH = new SpecializationDH();
+            specializationDH.Delete(specialisation);
+        }
+
         #endregion
     }
 }
