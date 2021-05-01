@@ -15,7 +15,7 @@ namespace PremiereSolutionProject.DAL
         public void Update(Address address)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateAddress @id = '{address.AddressID}', @street = '{address.StreetName}', @suburb = '{address.Suburb}', @province = '{address.Province}', @code = '{address.Postalcode}',@city = '{address.City}'";
+            commandString = $"EXEC UpdateAddress @id ='{address.AddressID}', @streetName ='{address.StreetName}', @suburb ='{address.Suburb}', @province ='{((int)address.Province).ToString()}', @postalcode ='{address.Postalcode}',@city ='{address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
