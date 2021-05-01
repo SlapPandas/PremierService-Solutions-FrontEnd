@@ -91,7 +91,66 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
+        #region Delete
+        public bool Delete(Address address)
+        {
+            if (GetNumberOfAddessUses(address.AddressID) > 0)
+            {
+                return false;
+            }
+
+            CreateConnection();
+            commandString = $"EXEC DeleteAddress @id = '{address.AddressID}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
+            {
+                OpenConnection();
+                Command.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+                return false;
+            }
+            finally { CloseConnection(); }
+        }
+        #endregion
+
         #region SeperateMethods
+        private int GetNumberOfAddessUses(int addressId)
+        {
+
+            SqlConnection addressConnection = new SqlConnection(connectionSring);
+            SqlDataReader addressReader;
+            int output = -1;
+            commandString = $"EXEC AddressUses @id = '{addressId}'";
+            SqlCommand addressCommand = new SqlCommand(commandString, addressConnection);
+
+            try
+            {
+                addressConnection.Open();
+                addressReader = addressCommand.ExecuteReader();
+                while (addressReader.Read())
+                {
+                    output = (int)addressReader["uses"];
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                addressConnection.Close();
+            }
+            return output;
+        }
         private Province GetProvince(string input)
         {
             Province province = (Province)1;

@@ -557,13 +557,19 @@ AS
 		WHERE specialisationID = @id
 	COMMIT
 GO
+CREATE PROC DeleteAddress @id INT 
+AS
+	BEGIN TRAN
+		DELETE FROM Address
+		WHERE addressID = @id
+	COMMIT
+GO
 
 --UPDATE Procedures
-CREATE PROCEDURE UpdateAddress @id INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10),@city VARCHAR(100)
+CREATE PROCEDURE UpdateAddress @id INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10),@city VARCHAR(40)
 AS
 BEGIN
 	BEGIN TRAN
-
 	UPDATE Address
 	SET streetName = @streetName, suburb = @suburb, province = @province, postalcode = @postalcode, city = @city
 	WHERE addressID = @id
@@ -802,7 +808,7 @@ AS
 GO
 
 -- INSERT Procedures
-CREATE PROCEDURE InsertAddress @id INT,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(4), @city VARCHAR(40)
+CREATE PROCEDURE InsertAddress @streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(4), @city VARCHAR(40)
 AS
 BEGIN 
 	INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode],[city])
@@ -1535,6 +1541,14 @@ AS
 BEGIN TRAN
 	DECLARE @count INT
 	SET @count = (SELECT COUNT(specialisationID) FROM Job WHERE specialisationID = @id) + (SELECT COUNT(specialisationID) FROM SpecialisationEmployeeLink WHERE specialisationID = @id) + (SELECT COUNT(specialisationRequiredID) FROM ServiceRequestSpecialisationLink WHERE specialisationRequiredID = @id)
+	SELECT @count AS uses
+COMMIT
+GO
+CREATE PROCEDURE AddressUses @id INT
+AS
+BEGIN TRAN
+	DECLARE @count INT
+	SET @count = (SELECT COUNT(addressId) FROM Job WHERE addressId = @id) + (SELECT COUNT(addressId) FROM Employee WHERE addressId = @id) + (SELECT COUNT(addressId) FROM ClientBusiness WHERE addressId = @id) + (SELECT COUNT(addressId) FROM ClientIndividual WHERE addressId = @id)
 	SELECT @count AS uses
 COMMIT
 GO
