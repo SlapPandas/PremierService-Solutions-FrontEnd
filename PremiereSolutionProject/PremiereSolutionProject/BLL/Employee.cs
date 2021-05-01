@@ -79,10 +79,9 @@ namespace PremiereSolutionProject.BLL
 
         #region Methods
 
-
         public void UpdateEmployee(Employee employee)
         {
-            //might need to have a cast???
+            //might need to have a cast??? Will need to check when testing
             EmployeeDH employeeDH = new EmployeeDH();
             employeeDH.Update(employee);
         }

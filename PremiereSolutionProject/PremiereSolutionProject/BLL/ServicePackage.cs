@@ -72,30 +72,12 @@ namespace PremiereSolutionProject.BLL
         }
         #endregion
 
-        #region Overrides
-        public override string ToString()
-        {
-            return base.ToString();
-        }
-
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-        #endregion
-
         #region Methods
 
         public double CalculatePromotion() // calculate the amount a client will pay for a service package if it is on promotion   
         {
             return this.onPromotion ? (this.servicePrice * (1 - this.promotionPercentage)) : this.servicePrice;
         }
-
 
         public List<ServicePackage> SelectAllServicePackage() // get a list of service packages contract can be built from
         {
@@ -112,6 +94,11 @@ namespace PremiereSolutionProject.BLL
         {
             ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
             servicePackadgeDH.Insert(servicePackage);
+        }
+        public void InsertSingleServiceIntoPackage(int servicePackageID, int serviceID) // inserts a new service package
+        {
+            ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
+            servicePackadgeDH.InsertSingleServiceToServicePackadge(servicePackageID, serviceID);
         }
         public void DeleteServicePackage(ServicePackage servicePackage) // inserts a new service package
         {
@@ -136,5 +123,23 @@ namespace PremiereSolutionProject.BLL
             return servicePackadgeDH.SelectAllServicePackedgesWithState();
         }
         #endregion
+
+        #region Overrides
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+        #endregion
+
     }
 }
