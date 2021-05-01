@@ -67,10 +67,16 @@ namespace PremiereSolutionProject.BLL
             jDH.UpdateAmountOfEmployeesRequired(id, emps);
         }
 
-        public void ManuallyAssignJobs()
+        public void ManuallyAssignJobs(Job job, List<MaintenanceEmployee> chosenEmployees)
         {
-            ServiceRequest serviceRequest = new ServiceRequest();
-            serviceRequest.AssignPendingJobs(); //manually calls the method to assign pending jobs
+            JobDH jobDH = new JobDH();
+
+            jobDH.UpdateState(job.JobID, JobState.InProgress);  //update state of the job
+
+            foreach (MaintenanceEmployee emp in chosenEmployees)
+            {
+                jobDH.InsertSingleEmployeeToJob(job.JobID, emp.Id);
+            }
         }
 
         public void EscalateJob(int newPosition, int jobID)
