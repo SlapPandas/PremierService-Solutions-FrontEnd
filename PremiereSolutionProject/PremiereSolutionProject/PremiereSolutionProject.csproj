@@ -84,151 +84,151 @@
     <Compile Include="DAL\ServicePackadgeDH.cs" />
     <Compile Include="DAL\ServiceRequestDH.cs" />
     <Compile Include="DAL\SpecializationDH.cs" />
-    <Compile Include="Presentation_Layer\frmBusinessClient.cs">
+    <Compile Include="PL\frmBusinessClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmBusinessClient.designer.cs">
+    <Compile Include="PL\frmBusinessClient.designer.cs">
       <DependentUpon>frmBusinessClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\FrmAddEmployee.cs">
+    <Compile Include="PL\FrmAddEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\FrmAddEmployee.designer.cs">
+    <Compile Include="PL\FrmAddEmployee.designer.cs">
       <DependentUpon>FrmAddEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmIndividualClient.cs">
+    <Compile Include="PL\frmIndividualClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmIndividualClient.designer.cs">
+    <Compile Include="PL\frmIndividualClient.designer.cs">
       <DependentUpon>frmIndividualClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmBusinessContact.cs">
+    <Compile Include="PL\frmBusinessContact.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmBusinessContact.Designer.cs">
+    <Compile Include="PL\frmBusinessContact.Designer.cs">
       <DependentUpon>frmBusinessContact.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmCallCenter.cs">
+    <Compile Include="PL\frmCallCenter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmCallCenter.designer.cs">
+    <Compile Include="PL\frmCallCenter.designer.cs">
       <DependentUpon>frmCallCenter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmClientInfo.cs">
+    <Compile Include="PL\frmClientInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmClientInfo.designer.cs">
+    <Compile Include="PL\frmClientInfo.designer.cs">
       <DependentUpon>frmClientInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmClientSatisfaction.cs">
+    <Compile Include="PL\frmClientSatisfaction.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmClientSatisfaction.designer.cs">
+    <Compile Include="PL\frmClientSatisfaction.designer.cs">
       <DependentUpon>frmClientSatisfaction.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmClientContract.cs">
+    <Compile Include="PL\frmClientContract.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmClientContract.designer.cs">
+    <Compile Include="PL\frmClientContract.designer.cs">
       <DependentUpon>frmClientContract.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmContractManagement.cs">
+    <Compile Include="PL\frmContractManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmContractManagement.Designer.cs">
+    <Compile Include="PL\frmContractManagement.Designer.cs">
       <DependentUpon>frmContractManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmJobsManagement.cs">
+    <Compile Include="PL\frmJobsManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmJobsManagement.Designer.cs">
+    <Compile Include="PL\frmJobsManagement.Designer.cs">
       <DependentUpon>frmJobsManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmServiceManagement.cs">
+    <Compile Include="PL\frmServiceManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmServiceManagement.designer.cs">
+    <Compile Include="PL\frmServiceManagement.designer.cs">
       <DependentUpon>frmServiceManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmServicePackageManagement.cs">
+    <Compile Include="PL\frmServicePackageManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmServicePackageManagement.designer.cs">
+    <Compile Include="PL\frmServicePackageManagement.designer.cs">
       <DependentUpon>frmServicePackageManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmDashboard.cs">
+    <Compile Include="PL\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmDashboard.designer.cs">
+    <Compile Include="PL\frmDashboard.designer.cs">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\FrmManageMaintenanceEmployee.cs">
+    <Compile Include="PL\FrmManageMaintenanceEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\FrmManageMaintenanceEmployee.designer.cs">
+    <Compile Include="PL\FrmManageMaintenanceEmployee.designer.cs">
       <DependentUpon>FrmManageMaintenanceEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\FrmServiceRequest.cs">
+    <Compile Include="PL\FrmServiceRequest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\FrmServiceRequest.designer.cs">
+    <Compile Include="PL\FrmServiceRequest.designer.cs">
       <DependentUpon>FrmServiceRequest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation_Layer\frmViewServiceRequests.cs">
+    <Compile Include="PL\frmViewServiceRequests.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation_Layer\frmViewServiceRequests.Designer.cs">
+    <Compile Include="PL\frmViewServiceRequests.Designer.cs">
       <DependentUpon>frmViewServiceRequests.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestingGrounds.cs" />
-    <EmbeddedResource Include="Presentation_Layer\frmBusinessClient.resx">
+    <EmbeddedResource Include="PL\frmBusinessClient.resx">
       <DependentUpon>frmBusinessClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\FrmAddEmployee.resx">
+    <EmbeddedResource Include="PL\FrmAddEmployee.resx">
       <DependentUpon>FrmAddEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmIndividualClient.resx">
+    <EmbeddedResource Include="PL\frmIndividualClient.resx">
       <DependentUpon>frmIndividualClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmBusinessContact.resx">
+    <EmbeddedResource Include="PL\frmBusinessContact.resx">
       <DependentUpon>frmBusinessContact.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmCallCenter.resx">
+    <EmbeddedResource Include="PL\frmCallCenter.resx">
       <DependentUpon>frmCallCenter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmClientInfo.resx">
+    <EmbeddedResource Include="PL\frmClientInfo.resx">
       <DependentUpon>frmClientInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmClientSatisfaction.resx">
+    <EmbeddedResource Include="PL\frmClientSatisfaction.resx">
       <DependentUpon>frmClientSatisfaction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmClientContract.resx">
+    <EmbeddedResource Include="PL\frmClientContract.resx">
       <DependentUpon>frmClientContract.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmContractManagement.resx">
+    <EmbeddedResource Include="PL\frmContractManagement.resx">
       <DependentUpon>frmContractManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmJobsManagement.resx">
+    <EmbeddedResource Include="PL\frmJobsManagement.resx">
       <DependentUpon>frmJobsManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmServiceManagement.resx">
+    <EmbeddedResource Include="PL\frmServiceManagement.resx">
       <DependentUpon>frmServiceManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmServicePackageManagement.resx">
+    <EmbeddedResource Include="PL\frmServicePackageManagement.resx">
       <DependentUpon>frmServicePackageManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmDashboard.resx">
+    <EmbeddedResource Include="PL\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\FrmManageMaintenanceEmployee.resx">
+    <EmbeddedResource Include="PL\FrmManageMaintenanceEmployee.resx">
       <DependentUpon>FrmManageMaintenanceEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\FrmServiceRequest.resx">
+    <EmbeddedResource Include="PL\FrmServiceRequest.resx">
       <DependentUpon>FrmServiceRequest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation_Layer\frmViewServiceRequests.resx">
+    <EmbeddedResource Include="PL\frmViewServiceRequests.resx">
       <DependentUpon>frmViewServiceRequests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
