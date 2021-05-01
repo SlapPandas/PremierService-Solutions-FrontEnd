@@ -26,9 +26,9 @@ namespace PremiereSolutionProject.BLL
         public double SilverPrice { get => silverPrice; set => silverPrice = 6500.00; }
         public double BronzePrice { get => bronzePrice; set => bronzePrice = 4000.00; }
         public int PlatinumDays { get => platinumDays; set => platinumDays = 2; }
-        public int GoldDays { get => goldDays; set => goldDays = 3; }
-        public int SilverDays { get => silverDays; set => silverDays = 5; }
-        public int BronzeDays { get => bronzeDays; set => bronzeDays = 7; }
+        public int GoldDays { get => goldDays; set => goldDays = 4; }
+        public int SilverDays { get => silverDays; set => silverDays = 6; }
+        public int BronzeDays { get => bronzeDays; set => bronzeDays = 8; }
         #endregion
     }
 }
