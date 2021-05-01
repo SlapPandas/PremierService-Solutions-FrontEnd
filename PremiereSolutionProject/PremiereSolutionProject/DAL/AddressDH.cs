@@ -41,7 +41,7 @@ namespace PremiereSolutionProject.DAL
         public void Insert(Address address)
         {
             CreateConnection();
-            commandString = $"EXEC InsertAddress @id = '{address.AddressID}', @street = '{address.StreetName}', @suburb = '{address.Suburb}', @city = '{address.City}', @province = '{address.Province}', @code = '{address.Postalcode}'";
+            commandString = $"EXEC InsertAddress @streetname ='{address.StreetName}',@suburb ='{address.Suburb}',@province ='{((int)address.Province).ToString()}',@postalcode ='{address.Postalcode}', @city ='{address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -64,7 +64,6 @@ namespace PremiereSolutionProject.DAL
         #endregion
 
         #region Select
-
         public List<Address> SelectAllAddresses()
         {
             CreateConnection();
@@ -90,7 +89,6 @@ namespace PremiereSolutionProject.DAL
 
             return addressList;
         }
-
         #endregion
 
         #region SeperateMethods

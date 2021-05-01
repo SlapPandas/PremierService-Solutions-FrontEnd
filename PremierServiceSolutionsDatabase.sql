@@ -802,11 +802,11 @@ AS
 GO
 
 -- INSERT Procedures
-CREATE PROCEDURE InsertAddress @id INT,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(4) 
+CREATE PROCEDURE InsertAddress @id INT,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(4), @city VARCHAR(40)
 AS
 BEGIN 
-	INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode])
-	VALUES (@streetname, @suburb,@province ,@postalcode)
+	INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode],[city])
+	VALUES (@streetname, @suburb,@province ,@postalcode,@city)
 END
 GO
 
