@@ -30,6 +30,25 @@ namespace PremiereSolutionProject.DAL
             }
             finally { CloseConnection(); }
         }
+        public void ChangeClientState(string clientId,bool active)
+        {
+            CreateConnection();
+            commandString = $"EXEC UpdateClientIndividualCurrentState @id ='{clientId}', @active ='{GetIntFromBool(active)}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
+            {
+                OpenConnection();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { CloseConnection(); }
+        }
         #endregion
 
         #region Insert
