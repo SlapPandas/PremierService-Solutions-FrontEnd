@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace PremiereSolutionProject.DAL
         public void Update(ServicePackage servicePackage)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateServicePackage @id = '{servicePackage.PackageID}', @name = '{servicePackage.PackageName}', @price = '{servicePackage.ServicePrice}'";
+            commandString = $"EXEC UpdateServicePackage @id = '{servicePackage.PackageID}', @name = '{servicePackage.PackageName}', @price = '{servicePackage.ServicePrice.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -117,7 +118,7 @@ namespace PremiereSolutionProject.DAL
         public void Insert(ServicePackage servicePackage)
         {
             CreateConnection();
-            commandString = $"EXEC InsertServicePackage @name = '{servicePackage.PackageName}', @onpromotion = '{GetIntFromBool(servicePackage.OnPromotion)}', @promationStartDate = '{servicePackage.PromotionStartDate}', @promotionEndDate = '{servicePackage.PromotionEndDate}', @price = '{servicePackage.ServicePrice}',@percintage = '{servicePackage.PromotionPercentage}'";
+            commandString = $"EXEC InsertServicePackage @name = '{servicePackage.PackageName}', @onpromotion = '{GetIntFromBool(servicePackage.OnPromotion)}', @promationStartDate = '{servicePackage.PromotionStartDate}', @promotionEndDate = '{servicePackage.PromotionEndDate}', @price = '{servicePackage.ServicePrice.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}',@percintage = '{servicePackage.PromotionPercentage.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -136,7 +137,7 @@ namespace PremiereSolutionProject.DAL
         public void InsertPromotion(ServicePackage servicePackage)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateServicePackagePropotion @id = '{servicePackage.PackageID}', @onPromotion = '{GetIntFromBool(servicePackage.OnPromotion)}', @promotionStartDate = '{servicePackage.PromotionStartDate.ToString("yyyy-MM-dd HH:mm:ss")}', @promotionEndDate = '{servicePackage.PromotionEndDate.ToString("yyyy-MM-dd HH:mm:ss")}', @percentage = '{servicePackage.PromotionPercentage}'";
+            commandString = $"EXEC UpdateServicePackagePropotion @id = '{servicePackage.PackageID}', @onPromotion = '{GetIntFromBool(servicePackage.OnPromotion)}', @promotionStartDate = '{servicePackage.PromotionStartDate.ToString("yyyy-MM-dd HH:mm:ss")}', @promotionEndDate = '{servicePackage.PromotionEndDate.ToString("yyyy-MM-dd HH:mm:ss")}', @percentage = '{servicePackage.PromotionPercentage.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
