@@ -44,6 +44,8 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.nudNumberOfPeople = new System.Windows.Forms.NumericUpDown();
+            this.lbxSpecialisations = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumberOfPeople)).BeginInit();
             this.SuspendLayout();
@@ -55,7 +57,7 @@
             this.label1.Location = new System.Drawing.Point(247, 35);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(284, 31);
+            this.label1.Size = new System.Drawing.Size(229, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "Service Request Form";
             // 
@@ -65,7 +67,7 @@
             this.lblClientName.Location = new System.Drawing.Point(406, 94);
             this.lblClientName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClientName.Name = "lblClientName";
-            this.lblClientName.Size = new System.Drawing.Size(84, 17);
+            this.lblClientName.Size = new System.Drawing.Size(64, 13);
             this.lblClientName.TabIndex = 1;
             this.lblClientName.Text = "Client Name";
             // 
@@ -76,7 +78,7 @@
             this.label3.Location = new System.Drawing.Point(23, 227);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 17);
+            this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Description:";
             // 
@@ -86,7 +88,7 @@
             this.label4.Location = new System.Drawing.Point(288, 94);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 17);
+            this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "Client:";
             // 
@@ -106,7 +108,7 @@
             this.label2.Location = new System.Drawing.Point(288, 130);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 17);
+            this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Call ID:";
             // 
@@ -116,7 +118,7 @@
             this.lblCallID.Location = new System.Drawing.Point(406, 130);
             this.lblCallID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCallID.Name = "lblCallID";
-            this.lblCallID.Size = new System.Drawing.Size(48, 17);
+            this.lblCallID.Size = new System.Drawing.Size(38, 13);
             this.lblCallID.TabIndex = 8;
             this.lblCallID.Text = "Call ID";
             // 
@@ -127,7 +129,7 @@
             this.cbxSpecialisation.Location = new System.Drawing.Point(216, 382);
             this.cbxSpecialisation.Margin = new System.Windows.Forms.Padding(4);
             this.cbxSpecialisation.Name = "cbxSpecialisation";
-            this.cbxSpecialisation.Size = new System.Drawing.Size(305, 24);
+            this.cbxSpecialisation.Size = new System.Drawing.Size(305, 21);
             this.cbxSpecialisation.TabIndex = 9;
             // 
             // label5
@@ -137,7 +139,7 @@
             this.label5.Location = new System.Drawing.Point(23, 385);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(151, 17);
+            this.label5.Size = new System.Drawing.Size(114, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Specialisation needed:";
             // 
@@ -173,7 +175,7 @@
             this.label6.Location = new System.Drawing.Point(23, 456);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(125, 17);
+            this.label6.Size = new System.Drawing.Size(94, 13);
             this.label6.TabIndex = 14;
             this.label6.Text = "Number of people:";
             // 
@@ -181,27 +183,51 @@
             // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(549, 440);
+            this.btnAdd.Location = new System.Drawing.Point(553, 382);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(109, 49);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add Specialisation";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // nudNumberOfPeople
             // 
             this.nudNumberOfPeople.Location = new System.Drawing.Point(216, 456);
             this.nudNumberOfPeople.Name = "nudNumberOfPeople";
-            this.nudNumberOfPeople.Size = new System.Drawing.Size(133, 23);
+            this.nudNumberOfPeople.Size = new System.Drawing.Size(133, 20);
             this.nudNumberOfPeople.TabIndex = 17;
+            // 
+            // lbxSpecialisations
+            // 
+            this.lbxSpecialisations.FormattingEnabled = true;
+            this.lbxSpecialisations.Location = new System.Drawing.Point(682, 227);
+            this.lbxSpecialisations.Name = "lbxSpecialisations";
+            this.lbxSpecialisations.Size = new System.Drawing.Size(139, 186);
+            this.lbxSpecialisations.TabIndex = 18;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(553, 470);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(109, 49);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Remove specialisation";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmServiceRequest
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(908, 677);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lbxSpecialisations);
             this.Controls.Add(this.nudNumberOfPeople);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label6);
@@ -221,6 +247,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmServiceRequest";
             this.Text = "Service Request Form";
+            this.Load += new System.EventHandler(this.FrmServiceRequest_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNumberOfPeople)).EndInit();
             this.ResumeLayout(false);
@@ -245,5 +272,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.NumericUpDown nudNumberOfPeople;
+        private System.Windows.Forms.ListBox lbxSpecialisations;
+        private System.Windows.Forms.Button button1;
     }
 }

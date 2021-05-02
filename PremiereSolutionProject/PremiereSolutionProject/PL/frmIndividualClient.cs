@@ -19,11 +19,22 @@ namespace PremiereSolutionProject.PL
             
         }
 
-       
+        List<IndividualClient> ic;
+        IndividualClient ic2;
+        BindingSource bs = new BindingSource();
+        IndividualClient selectedIc;
 
         private void frmAddIndividualClient_Load(object sender, EventArgs e)
         {
-            
+            ic = new IndividualClient().SelectAllIndividualClients();
+            RefreshDGV();
+        }
+        private void RefreshDGV()
+        {
+            bs.DataSource = ic;
+            dgvEmployee.DataSource = null;
+            dgvEmployee.DataSource = bs;
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -133,6 +144,62 @@ namespace PremiereSolutionProject.PL
             {
                 MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ic = new IndividualClient().SelectAllIndividualClients();
+                foreach (IndividualClient item in ic)
+                {
+                    if (item.Id == txtSearch.Text)
+                    {
+                        ic2 = item;
+                        ic = null;
+                        ic.Add(ic2);
+                        RefreshDGV();
+                    }
+                }
+                RefreshDGV();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+            }
+        }
+
+        private void UpdateData()
+        {
+            //selectedProduct
+            foreach (Address item in cmbProvince.Items)
+            {
+                if (item.Province == selectedIc.Address.Province)
+                {
+                    cmbProvince.SelectedItem = item.Province;
+                    break;
+                }
+            }
+
+
+            txtCity.Text = selectedIc.Address.City;
+            txtContactNumber.Text = selectedIc.ContactNumber;
+            txtEmai.Text = selectedIc.Email;
+            txtFirstname.Text = selectedIc.FirstName;
+            txtID.Text = selectedIc.Id;
+            txtNationalID.Text = selectedIc.NationalIDnumber;
+            txtPostalCode.Text = selectedIc.Address.Postalcode;
+            txtSuburb.Text = selectedIc.Address.Suburb;
+            txtStreetName.Text = selectedIc.Address.StreetName;
+            txtSurname.Text = selectedIc.Surname;
+            
+           
+        }
+
+        private void dgvEmployee_SelectionChanged(object sender, EventArgs e)
+        {
+            selectedIc = (IndividualClient)bs.Current;
+            UpdateData();
         }
     }
 }

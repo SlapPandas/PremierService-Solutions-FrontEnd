@@ -37,6 +37,8 @@ namespace PremiereSolutionProject.PL
             this.btnAddServicePackage = new System.Windows.Forms.Button();
             this.cbxServicePackages = new System.Windows.Forms.ComboBox();
             this.dgvViewServices = new System.Windows.Forms.DataGridView();
+            this.lbxPackages = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewServices)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +72,7 @@ namespace PremiereSolutionProject.PL
             this.label7.Location = new System.Drawing.Point(107, 215);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 17);
+            this.label7.Size = new System.Drawing.Size(48, 13);
             this.label7.TabIndex = 24;
             this.label7.Text = "Services";
             // 
@@ -80,7 +82,7 @@ namespace PremiereSolutionProject.PL
             this.label3.Location = new System.Drawing.Point(107, 104);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 17);
+            this.label3.Size = new System.Drawing.Size(88, 13);
             this.label3.TabIndex = 20;
             this.label3.Text = "Service package";
             // 
@@ -91,7 +93,7 @@ namespace PremiereSolutionProject.PL
             this.label1.Location = new System.Drawing.Point(329, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(256, 29);
+            this.label1.Size = new System.Drawing.Size(206, 24);
             this.label1.TabIndex = 18;
             this.label1.Text = "Contract Management";
             // 
@@ -106,6 +108,7 @@ namespace PremiereSolutionProject.PL
             this.btnAddServicePackage.TabIndex = 33;
             this.btnAddServicePackage.Text = "Add Service Package";
             this.btnAddServicePackage.UseVisualStyleBackColor = true;
+            this.btnAddServicePackage.Click += new System.EventHandler(this.btnAddServicePackage_Click);
             // 
             // cbxServicePackages
             // 
@@ -115,8 +118,9 @@ namespace PremiereSolutionProject.PL
             this.cbxServicePackages.Location = new System.Drawing.Point(110, 149);
             this.cbxServicePackages.Margin = new System.Windows.Forms.Padding(4);
             this.cbxServicePackages.Name = "cbxServicePackages";
-            this.cbxServicePackages.Size = new System.Drawing.Size(339, 24);
+            this.cbxServicePackages.Size = new System.Drawing.Size(339, 21);
             this.cbxServicePackages.TabIndex = 29;
+            this.cbxServicePackages.SelectedIndexChanged += new System.EventHandler(this.cbxServicePackages_SelectedIndexChanged);
             // 
             // dgvViewServices
             // 
@@ -127,15 +131,35 @@ namespace PremiereSolutionProject.PL
             this.dgvViewServices.Margin = new System.Windows.Forms.Padding(4);
             this.dgvViewServices.Name = "dgvViewServices";
             this.dgvViewServices.RowHeadersWidth = 62;
-            this.dgvViewServices.Size = new System.Drawing.Size(680, 184);
+            this.dgvViewServices.Size = new System.Drawing.Size(539, 184);
             this.dgvViewServices.TabIndex = 27;
+            // 
+            // lbxPackages
+            // 
+            this.lbxPackages.FormattingEnabled = true;
+            this.lbxPackages.Location = new System.Drawing.Point(709, 247);
+            this.lbxPackages.Name = "lbxPackages";
+            this.lbxPackages.Size = new System.Drawing.Size(155, 186);
+            this.lbxPackages.TabIndex = 34;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(706, 215);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "Added packages";
             // 
             // frmContractManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(908, 677);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbxPackages);
             this.Controls.Add(this.btnAddServicePackage);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.cbxServicePackages);
@@ -148,6 +172,7 @@ namespace PremiereSolutionProject.PL
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Name = "frmContractManagement";
             this.Text = "frmCreateContract";
+            this.Load += new System.EventHandler(this.frmContractManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewServices)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -164,5 +189,7 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Button btnAddServicePackage;
         private System.Windows.Forms.ComboBox cbxServicePackages;
         private System.Windows.Forms.DataGridView dgvViewServices;
+        private System.Windows.Forms.ListBox lbxPackages;
+        private System.Windows.Forms.Label label2;
     }
 }

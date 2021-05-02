@@ -17,9 +17,21 @@ namespace PremiereSolutionProject.PL
         {
             InitializeComponent();
         }
+        List<BusinessClient> bc;
+        BusinessClient bc2;
+        BindingSource bs = new BindingSource();
+        BusinessClient selectedBc;
 
         private void frmAddBusinessClient_Load(object sender, EventArgs e)
         {
+            bc = new BusinessClient().SelectAllBusinessClients();
+            RefreshDGV();
+        }
+        private void RefreshDGV()
+        {
+            bs.DataSource = bc;
+            dgvBusinessClients.DataSource = null;
+            dgvBusinessClients.DataSource = bs;
 
         }
 
@@ -142,6 +154,63 @@ namespace PremiereSolutionProject.PL
             {
                 MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bc = new BusinessClient().SelectAllBusinessClients();
+                foreach (BusinessClient item in bc)
+                {
+                    if (item.Id == txtSearch.Text)
+                    {
+                        bc2 = item ;
+                        bc = null;
+                        bc.Add(bc2);
+                        RefreshDGV();
+                    }
+                }
+                RefreshDGV();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+            }
+        }
+
+        private void UpdateData()
+        {
+            //selectedProduct
+            foreach (Address item in cmbProvince.Items)
+            {
+                if (item.Province == selectedBc.Address.Province)
+                {
+                    cmbProvince.SelectedItem = item.Province;
+                    break;
+                }
+            }
+            
+           
+            txtBusinessName.Text = selectedBc.BusinessName;
+            txtCity.Text = selectedBc.Address.City;
+            txtContactNumber.Text = selectedBc.ContactNumber;
+            txtPostalCode.Text = selectedBc.Address.Postalcode;
+            txtSuburb.Text = selectedBc.Address.Suburb;
+            txtStreetName.Text = selectedBc.Address.StreetName;
+            txtTaxNum.Text = selectedBc.TaxNumber;
+           
+        }
+
+        private void dgvBusinessClients_SelectionChanged(object sender, EventArgs e)
+        {
+            selectedBc = (BusinessClient)bs.Current;
+            UpdateData();
+        }
+
+        private void btnDeleteClient_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
