@@ -15,7 +15,7 @@ namespace PremiereSolutionProject.DAL
         public bool Delete(BusinessClientEmployees businessClientEmployees)
         {
             CreateConnection();
-            commandString = $"EXEC DeleteBusinessClientEmployees @id = '{businessClientEmployees.Id}'";
+            commandString = $"EXEC DeleteClientBusinessEmployee @id = '{businessClientEmployees.Id}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -42,7 +42,7 @@ namespace PremiereSolutionProject.DAL
         public void Update(BusinessClientEmployees businessClientEmployees)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateBusinessClientEmployees @id = '{businessClientEmployees.Id}',  @firstName = '{businessClientEmployees.FirstName}',  @surname = '{businessClientEmployees.Surname}',  @department = '{businessClientEmployees.Department}',  @contactNumber = '{businessClientEmployees.Contactnumber}',  @email = '{businessClientEmployees.Email}',  @businessName = '{businessClientEmployees.BusinessName}'";
+            commandString = $"EXEC UpdateBusinessClientEmployee @id = '{businessClientEmployees.Id}',  @firstName = '{businessClientEmployees.FirstName}',  @surname = '{businessClientEmployees.Surname}',  @department = '{businessClientEmployees.Department}',  @contactNumber = '{businessClientEmployees.Contactnumber}',  @email = '{businessClientEmployees.Email}'";
             Command = new SqlCommand(commandString, Connection);
 
             try

@@ -510,6 +510,13 @@ AS
 		WHERE jobID = @id
 	COMMIT
 GO
+CREATE PROC DeleteClientBusinessEmployee @id INT 
+AS
+	BEGIN TRAN
+		DELETE FROM ClientBusinessEmployee
+		WHERE clientBusinessEmployeeID = @id
+	COMMIT
+GO
 CREATE PROC DeleteService @id INT
 AS
 	BEGIN TRAN
@@ -541,13 +548,6 @@ AS
 
 		DELETE FROM [Contract]
 		WHERE contractID = @id
-	COMMIT
-GO
-CREATE PROC DeleteBusinessClientEmployee @id INT 
-AS
-	BEGIN TRAN
-		DELETE FROM ClientBusinessEmployee
-		WHERE clientBusinessEmployeeID = @id
 	COMMIT
 GO
 CREATE PROC DeleteSpecialisation @id INT 
@@ -589,19 +589,8 @@ BEGIN
 	COMMIT
 END
 GO 
-CREATE PROCEDURE UpdateBusinessClient @id INT, @businessName VARCHAR(50), @addressid INT, @contactnr VARCHAR(10), @taxnumber VARCHAR(10), @registrationDate DATE
-AS
-BEGIN
-	BEGIN TRAN
 
-	UPDATE ClientBusiness
-	SET busuinessName = @businessName, addressId = @addressid, contactNumber = @contactnr, taxNumber = @taxnumber, RegistrationDate = @registrationDate
-	WHERE clientBusinessID = @id
-
-	COMMIT
-END
-GO
-CREATE PROCEDURE UpdateBusinessClientEmployee @id INT, @firstname VARCHAR(100), @surname VARCHAR(100), @department VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100)
+CREATE PROCEDURE UpdateBusinessClientEmployee @id VARCHAR(100), @firstname VARCHAR(100), @surname VARCHAR(100), @department VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100)
 AS
 BEGIN
 	BEGIN TRAN
@@ -613,6 +602,24 @@ BEGIN
 	COMMIT
 END
 GO
+
+CREATE PROCEDURE UpdateClientBusiness @id VARCHAR(100), @businessName VARCHAR(50), @contact VARCHAR(10), @taxnumber VARCHAR(10), @registrationDate DATE, @active INT, @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10),@city VARCHAR(100)
+AS
+BEGIN
+	BEGIN TRAN
+
+	UPDATE ClientBusiness
+	SET busuinessName = @businessName, addressId = @adressid, contactNumber = @contact, taxNumber = @taxnumber, RegistrationDate = @registrationDate, active = @active
+	WHERE clientBusinessClientNumber = @id
+
+	UPDATE [Address]
+	SET streetName = @streetName, suburb = @suburb, province = @province, postalcode = @postalcode, city = @city
+	WHERE addressID = @adressid
+
+	COMMIT
+END
+GO
+
 CREATE PROCEDURE UpdateClientIndividual @id VARCHAR(100), @firstname VARCHAR(100), @surname VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100), @nationalid VARCHAR(13), @registrationdate DATE, @active INT, @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10),@city VARCHAR(100)
 AS
 BEGIN
@@ -662,6 +669,10 @@ BEGIN
 	UPDATE Employee
 	SET firstName = @firstname, surname = @surname, addressId = @adressid, contactNumber = @contact, email = @email, nationalIdNumber = @nationalid,  employmentDate = @employmentdate, employed = @employed, department = @department
 	WHERE employeeID = @id
+
+	UPDATE [Address]
+	SET streetName = @streetName, suburb = @suburb, province = @province, postalcode = @postalcode,city = @city
+	WHERE addressID = @adressid
 
 	COMMIT
 END
@@ -1116,12 +1127,7 @@ BEGIN
 	WHERE ClientBusiness.clientBusinessClientNumber = @id
 END
 GO
-CREATE PROCEDURE SelectBusinessClients AS
-BEGIN
-	SELECT * FROM ClientBusiness
-	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
-END
-GO
+
 CREATE PROCEDURE SelectBusinessClientById @id INT AS
 BEGIN
 	SELECT * FROM ClientBusiness
@@ -1146,6 +1152,12 @@ CREATE PROCEDURE SelectAllIndividualClients AS
 BEGIN
 	SELECT * FROM ClientIndividual
 	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
+END
+GO
+CREATE PROCEDURE SelectAllBusinessClients AS
+BEGIN
+	SELECT * FROM ClientBusiness
+	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
 END
 GO
 CREATE PROCEDURE SelectIndividualClientById @id INT AS

@@ -15,7 +15,7 @@ namespace PremiereSolutionProject.DAL
         public void Update(BusinessClient businessClient)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateBusinessClient @id = '{businessClient.Id}', @address = '{businessClient.Address}', @contactnr = '{businessClient.ContactNumber}', @RegistrationDate = '{businessClient.RegistrationDate.ToString("yyyy-MM-dd")}', @taxNumber = '{businessClient.TaxNumber}', @businessName = '{businessClient.BusinessName}, @adressid = '{businessClient.Address.AddressID}', @streetName = '{businessClient.Address.StreetName}', @suburb = '{businessClient.Address.Suburb}', @province = '{((int)businessClient.Address.Province).ToString()}', @postalcode = '{businessClient.Address.Postalcode}',@city = '{businessClient.Address.City}'";
+            commandString = $"EXEC UpdateClientBusiness @id = '{businessClient.Id}', @businessName = '{businessClient.BusinessName}', @contact = '{businessClient.ContactNumber}', @taxnumber = '{businessClient.TaxNumber}', @registrationdate = '{businessClient.RegistrationDate}', @active = '{GetIntFromBool(businessClient.Active)}', @addressid = '{businessClient.Address.AddressID}', @streetName = '{businessClient.Address.StreetName}', @province '{((int)businessClient.Address.Province).ToString()}', @postalcode = '{businessClient.Address.Postalcode}', @city = '{businessClient.Address.City}'";                                                      
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -66,7 +66,7 @@ namespace PremiereSolutionProject.DAL
         public List<BusinessClient> SelectAllBusinessClients()
         {
             CreateConnection();
-            commandString = $"EXEC SelectBusinessClients";
+            commandString = $"EXEC SelectAllBusinessClients";
             Command = new SqlCommand(commandString, Connection);
             List<BusinessClient> businessClientList = new List<BusinessClient>();
             try
