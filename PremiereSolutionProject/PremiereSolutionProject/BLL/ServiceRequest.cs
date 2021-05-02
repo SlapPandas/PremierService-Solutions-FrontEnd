@@ -32,6 +32,9 @@ namespace PremiereSolutionProject.BLL
         #endregion
 
         #region Constructors
+
+        public event Action OnInitialization;
+
         //default constructor
         public ServiceRequest()
         {
@@ -57,7 +60,25 @@ namespace PremiereSolutionProject.BLL
             this.callID = callID;
             this.specialisationRequiredList = specRequired;
             this.priorityLevel = priority;
+        }
 
+        //constructor with callback for event
+        public ServiceRequest(bool c, string desc, int callID, List<Specialisation> specRequired, string priority, Action callback)
+        {
+            this.OnInitialization += callback;
+            callback = service_OnInitialization;
+            this.closed = c;
+            this.description = desc;
+            this.callID = callID;
+            this.specialisationRequiredList = specRequired;
+            this.priorityLevel = priority;
+            if (OnInitialization != null) OnInitialization();
+        }
+
+        public void service_OnInitialization()
+        {
+            Console.WriteLine("Service request has been instantiated");
+            //CreateJobs(this);
         }
 
         //constructor with all fields except ID
@@ -88,6 +109,9 @@ namespace PremiereSolutionProject.BLL
         #endregion
 
         #region Methods
+
+        
+
         public List<ServiceRequest> SelectAllServiceRequests()
         {
             ServiceRequestDH serviceRequestDH = new ServiceRequestDH();
