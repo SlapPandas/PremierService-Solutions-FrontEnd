@@ -1424,6 +1424,16 @@ BEGIN
 	WHERE department = 'Maintenance'
 END
 GO
+CREATE PROCEDURE SelectMaintenanceEmployeesAccordingToSpecinization @specilization VARCHAR(20)
+AS
+BEGIN
+	SELECT * FROM Employee
+	INNER JOIN [Address] ON Employee.addressId = [Address].addressID
+	INNER JOIN SpecialisationEmployeeLink ON Employee.employeeID = SpecialisationEmployeeLink.employeeID
+	INNER JOIN Specialisation ON SpecialisationEmployeeLink.specialisationID = Specialisation.specialisationID
+	WHERE department = 'Maintenance' AND Specialisation.name = @specilization
+END
+GO
 CREATE PROCEDURE SelectAvailableMaintenanceEmployees AS
 BEGIN
 	SELECT * FROM Employee

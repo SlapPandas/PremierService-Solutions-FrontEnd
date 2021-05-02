@@ -115,6 +115,32 @@ namespace PremiereSolutionProject.DAL
 
             return maintenanceEmployeeList;
         }
+        public List<MaintenanceEmployee> SelectAllMaintenanceEmployeesWithGivenSpecilization(string specilization)
+        {
+            CreateConnection();
+            commandString = $"EXEC SelectMaintenanceEmployeesAccordingToSpecinization @specilization = '{specilization}'";
+            Command = new SqlCommand(commandString, Connection);
+            List<MaintenanceEmployee> maintenanceEmployeeList = new List<MaintenanceEmployee>();
+            try
+            {
+                OpenConnection();
+                Reader = Command.ExecuteReader();
+                while (Reader.Read())
+                {
+
+                    maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { CloseConnection(); }
+
+            return maintenanceEmployeeList;
+        }
         public List<MaintenanceEmployee> SelectAllAvailableMaintenanceEmployees()
         {
             CreateConnection();
