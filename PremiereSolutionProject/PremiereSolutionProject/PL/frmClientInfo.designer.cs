@@ -60,7 +60,7 @@ namespace PremiereSolutionProject.PL
             this.label3.Location = new System.Drawing.Point(350, 22);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 31);
+            this.label3.Size = new System.Drawing.Size(144, 26);
             this.label3.TabIndex = 13;
             this.label3.Text = "Identify Client";
             // 
@@ -72,7 +72,7 @@ namespace PremiereSolutionProject.PL
             this.txtClientID.Location = new System.Drawing.Point(303, 102);
             this.txtClientID.Margin = new System.Windows.Forms.Padding(4);
             this.txtClientID.Name = "txtClientID";
-            this.txtClientID.Size = new System.Drawing.Size(407, 23);
+            this.txtClientID.Size = new System.Drawing.Size(407, 20);
             this.txtClientID.TabIndex = 12;
             // 
             // label2
@@ -84,7 +84,7 @@ namespace PremiereSolutionProject.PL
             this.label2.Location = new System.Drawing.Point(117, 104);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 17);
+            this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "Client ID Number";
             // 
@@ -108,9 +108,9 @@ namespace PremiereSolutionProject.PL
             this.label1.Location = new System.Drawing.Point(119, 260);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 17);
+            this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 17;
-            this.label1.Text = "Client Information";
+            this.label1.Text = "Client service requests";
             // 
             // label4
             // 
@@ -119,9 +119,9 @@ namespace PremiereSolutionProject.PL
             this.label4.Location = new System.Drawing.Point(119, 422);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(174, 17);
+            this.label4.Size = new System.Drawing.Size(106, 13);
             this.label4.TabIndex = 19;
-            this.label4.Text = "Client Contract Information";
+            this.label4.Text = "Client call information";
             // 
             // dgvClientContractInfo
             // 
@@ -145,10 +145,11 @@ namespace PremiereSolutionProject.PL
             this.btnSearch.TabIndex = 20;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // frmClientInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(908, 677);
@@ -165,6 +166,7 @@ namespace PremiereSolutionProject.PL
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Name = "frmClientInfo";
             this.Text = "View Client Information";
+            this.Load += new System.EventHandler(this.frmClientInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientContractInfo)).EndInit();
             this.ResumeLayout(false);

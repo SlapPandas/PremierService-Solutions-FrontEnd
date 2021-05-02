@@ -66,5 +66,10 @@ namespace PremiereSolutionProject.PL
         {
             lbxSpecialisations.Items.RemoveAt(lbxSpecialisations.SelectedIndex);
         }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
