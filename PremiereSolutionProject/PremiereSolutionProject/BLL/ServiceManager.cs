@@ -51,16 +51,19 @@ namespace PremiereSolutionProject.BLL
             JobDH jDH = new JobDH();
             jDH.Update(job);
         }
+
         public void UpdateServiceRequest(ServiceRequest servReq) // updates a service request
         {
             ServiceRequestDH sDH = new ServiceRequestDH();
             sDH.Update(servReq);
         }
+
         public void UpdateJobEmployeeList(Job job) //updates the employees on a job
         {
             JobDH jDH = new JobDH();
             jDH.UpdateJobEmployeeList(job);
         }
+
         public void UpdateNumberOfEmployeesForJob(int id, int emps) //updates the number of employees on a job
         {
             JobDH jDH = new JobDH();
@@ -77,6 +80,12 @@ namespace PremiereSolutionProject.BLL
             {
                 jobDH.InsertSingleEmployeeToJob(job.JobID, emp.Id);
             }
+        }
+
+        public List<MaintenanceEmployee> SelectAllMaintenanceEmployeesWithGivenSpecialization(int id)
+        {
+            EmployeeDH employeeDH = new EmployeeDH();
+            return employeeDH.SelectAllMaintenanceEmployeesWithGivenSpecilization(id);
         }
 
         public void EscalateJob(int newPosition, int jobID)
