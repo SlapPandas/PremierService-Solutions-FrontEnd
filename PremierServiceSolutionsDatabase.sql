@@ -590,6 +590,19 @@ BEGIN
 END
 GO 
 
+CREATE PROCEDURE UpdateCall @id INT, @startTime DATETIME, @endTime DATETIME, @ClientIndividualID INT, @ClientBusinessID INT, @employeeID INT, @callNotes VARCHAR(255)
+AS
+BEGIN
+	BEGIN TRAN
+
+	UPDATE Call
+	SET ClientIndividualID = @ClientIndividualID, ClientBusinessID = @ClientBusinessID, employeeID = @employeeID 
+	WHERE callID = @id
+
+	COMMIT
+END
+GO 
+
 CREATE PROCEDURE UpdateBusinessClientEmployee @id VARCHAR(100), @firstname VARCHAR(100), @surname VARCHAR(100), @department VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100)
 AS
 BEGIN
@@ -647,21 +660,21 @@ BEGIN
 	COMMIT
 END
 GO
-CREATE PROCEDURE UpdateContract @id INT, @startdate DATE, @endtime DATE, @active BIT, @priorityLevel VARCHAR(20)
+CREATE PROCEDURE UpdateContract @id INT, @startdate DATE, @endtime DATE, @active BIT, @priorityLevel VARCHAR(20), @price FLOAT, @contractType VARCHAR(15)
 AS
 BEGIN
 
 	BEGIN TRAN
 
 	UPDATE Contract
-	SET startDate = @startdate, endDate = @endtime, active = @active,priorityLevel = @priorityLevel
+	SET startDate = @startdate, endDate = @endtime, active = @active, priorityLevel = @priorityLevel, price = @price, contractType = @contractType
 	WHERE contractID = @id
 
 	COMMIT
 
 END
 GO
-CREATE PROCEDURE UpdateEmployee @id INT, @firstname VARCHAR(100), @surname VARCHAR(100), @adressid INT, @contact VARCHAR(10), @email VARCHAR(100), @nationalid VARCHAR(13), @employmentdate DATE, @employed BIT, @department VARCHAR(25)
+CREATE PROCEDURE UpdateEmployee @id INT, @firstname VARCHAR(100), @surname VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100), @nationalid VARCHAR(13), @employmentdate DATE, @employed BIT, @department VARCHAR(25), @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10), @city VARCHAR(100)
 AS
 BEGIN
 	BEGIN TRAN

@@ -41,7 +41,7 @@ namespace PremiereSolutionProject.DAL
         public void Update(Contract contract)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateContract @id = '{contract.ContractID}', @start = '{contract.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @end = '{contract.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @Client = '{contract.Client}', @packageList = '{contract.PackageList}', @active = '{contract.Active}'";
+            commandString = $"EXEC UpdateContract @id = '{contract.ContractID}', @startDate = '{contract.StartTime}', @endDate = '{contract.EndTime}', @active = '{GetIntFromBool(contract.Active)}', @priorityLevel = '{contract.PriorityLevel}', @price = '{contract.Price}', @contractType = '{contract.ContractType}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -259,6 +259,17 @@ namespace PremiereSolutionProject.DAL
         {
             bool output = bit == 1 ? true : false;
             return output;
+        }
+        private int GetIntFromBool(bool input)
+        {
+            if (input == true)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
         private Province GetProvince(string input)
         {
