@@ -632,7 +632,16 @@ BEGIN
 	COMMIT
 END
 GO
-
+CREATE PROCEDURE UpdateBusinessClientState @id VARCHAR(20), @active INT
+AS
+BEGIN
+	BEGIN TRAN
+	UPDATE ClientBusiness
+	SET active = @active
+	WHERE clientBusinessClientNumber = @id
+	COMMIT
+END
+GO
 CREATE PROCEDURE UpdateClientIndividual @id VARCHAR(100), @firstname VARCHAR(100), @surname VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100), @nationalid VARCHAR(13), @registrationdate DATE, @active INT, @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10),@city VARCHAR(100)
 AS
 BEGIN
