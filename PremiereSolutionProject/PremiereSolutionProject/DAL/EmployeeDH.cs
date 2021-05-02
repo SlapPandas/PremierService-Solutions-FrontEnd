@@ -115,10 +115,10 @@ namespace PremiereSolutionProject.DAL
 
             return maintenanceEmployeeList;
         }
-        public List<MaintenanceEmployee> SelectAllMaintenanceEmployeesWithGivenSpecilization(string specilization)
+        public List<MaintenanceEmployee> SelectAllMaintenanceEmployeesWithGivenSpecilization(int specilizationId)
         {
             CreateConnection();
-            commandString = $"EXEC SelectMaintenanceEmployeesAccordingToSpecinization @specilization = '{specilization}'";
+            commandString = $"EXEC SelectMaintenanceEmployeesAccordingToSpecinization @specilization = '{specilizationId}'";
             Command = new SqlCommand(commandString, Connection);
             List<MaintenanceEmployee> maintenanceEmployeeList = new List<MaintenanceEmployee>();
             try
