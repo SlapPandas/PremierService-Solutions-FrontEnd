@@ -286,7 +286,7 @@ namespace PremiereSolutionProject.BLL
                         case "PLA1":
                             nextPrioLevel = 4;
                             break;
-                        case "GLO2":
+                        case "GOL2":
                             nextPrioLevel = 3;
                             break;
                         case "SIL3":
