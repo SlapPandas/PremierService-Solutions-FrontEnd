@@ -97,7 +97,7 @@ namespace PremiereSolutionProject.BLL
         public List<ServiceRequest> SelectAllServiceRequestsForClient(string ID)
         {
             ServiceRequestDH serviceRequestDH = new ServiceRequestDH();
-            List<ServiceRequest> clientServiceRequests = ID[0] == 'I' ? serviceRequestDH.SelectAllServiceRequestsByIndividualClient(ID) : ID[0] == 'B' ? serviceRequestDH.SelectAllServiceRequestsByBusinessClient(ID) : null;
+            List<ServiceRequest> clientServiceRequests = ID[0] == 'A' ? serviceRequestDH.SelectAllServiceRequestsByIndividualClient(ID) : ID[0] == 'B' ? serviceRequestDH.SelectAllServiceRequestsByBusinessClient(ID) : null;
             return clientServiceRequests;
         }
 
