@@ -24,49 +24,64 @@ namespace PremiereSolutionProject.PL
         }
         List<ServicePackage> sp;
         ServicePackage sp2;
+        List<Service> services;
         BindingSource bs = new BindingSource();
         ServicePackage selectedP;
         private void frmServicePackageManagement_Load(object sender, EventArgs e)
         {
-            sp = new BusinessClient().SelectAllBusinessClients();
+            services = new Service().SelectAllServices();
+            sp = new ServicePackage().SelectAllServicePackage();
             RefreshDGV();
+            lbxAvailable.Items.Add(services);
         }
 
         private void RefreshDGV()
         {
             bs.DataSource = sp;
-            dgvBusinessClients.DataSource = null;
-            dgvBusinessClients.DataSource = bs;
+            dgvCurrentServicePackages.DataSource = null;
+            dgvCurrentServicePackages.DataSource = bs;
 
         }
 
         private void UpdateData()
         {
             //selectedProduct
-            foreach (Address item in cmbProvince.Items)
+            if (selectedP.OnPromotion == true)
             {
-                if (item.Province == selectedP.Address.Province)
-                {
-                    cmbProvince.SelectedItem = item.Province;
-                    break;
-                }
+                cbxPromotionYes.Checked = true;
+                cbxPromotionNo.Checked = false;
+            }
+            else
+            {
+                cbxPromotionNo.Checked = true;
+                cbxPromotionYes.Checked = false;
             }
 
+            lbxAdded.Items.Clear();
+            lbxAdded.Items.Add(selectedP.ServiceList);
 
-            txtBusinessName.Text = selectedP.BusinessName;
-            txtCity.Text = selectedP.Address.City;
-            txtContactNumber.Text = selectedP.ContactNumber;
-            txtPostalCode.Text = selectedP.Address.Postalcode;
-            txtSuburb.Text = selectedP.Address.Suburb;
-            txtStreetName.Text = selectedP.Address.StreetName;
-            txtTaxNum.Text = selectedP.TaxNumber;
+            txtPackageName.Text = selectedP.PackageName;
+
+            dtpPromotionEnd.Value = selectedP.PromotionEndDate;
+            dtpPromotionStart.Value = selectedP.PromotionStartDate;
+           // numUDPercentage.Value = selectedP.PromotionPercentage;
 
         }
 
         private void dgvCurrentServicePackages_SelectionChanged(object sender, EventArgs e)
         {
-            selectedP = (BusinessClient)bs.Current;
+            selectedP = (ServicePackage)bs.Current;
             UpdateData();
+        }
+
+        private void btnAddService_Click(object sender, EventArgs e)
+        {
+            lbxAdded.Items.Add(lbxAvailable.SelectedItem.ToString());
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            lbxAdded.Items.RemoveAt(lbxAdded.SelectedIndex);
         }
     }
 }

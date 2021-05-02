@@ -32,7 +32,7 @@ namespace PremiereSolutionProject.PL
             this.label1 = new System.Windows.Forms.Label();
             this.dgvCurrentServicePackages = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtBusinessName = new System.Windows.Forms.TextBox();
+            this.txtPackageName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cbxPromotionYes = new System.Windows.Forms.CheckBox();
@@ -45,23 +45,19 @@ namespace PremiereSolutionProject.PL
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.numUDPercentage = new System.Windows.Forms.NumericUpDown();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cbxHelpNo = new System.Windows.Forms.CheckBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cbxHelpYes = new System.Windows.Forms.CheckBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbxResponseTime = new System.Windows.Forms.ComboBox();
             this.btnCreatePackage = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.dgvSelectServices = new System.Windows.Forms.DataGridView();
             this.btnAddService = new System.Windows.Forms.Button();
             this.btnDeletePackage = new System.Windows.Forms.Button();
             this.btnUpdatePackage = new System.Windows.Forms.Button();
+            this.lbxAvailable = new System.Windows.Forms.ListBox();
+            this.lbxAdded = new System.Windows.Forms.ListBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentServicePackages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDPercentage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectServices)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -97,15 +93,15 @@ namespace PremiereSolutionProject.PL
             this.label3.TabIndex = 56;
             this.label3.Text = "Package Name";
             // 
-            // txtBusinessName
+            // txtPackageName
             // 
-            this.txtBusinessName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtPackageName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtBusinessName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBusinessName.Location = new System.Drawing.Point(143, 205);
-            this.txtBusinessName.Name = "txtBusinessName";
-            this.txtBusinessName.Size = new System.Drawing.Size(115, 20);
-            this.txtBusinessName.TabIndex = 55;
+            this.txtPackageName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPackageName.Location = new System.Drawing.Point(143, 205);
+            this.txtPackageName.Name = "txtPackageName";
+            this.txtPackageName.Size = new System.Drawing.Size(115, 20);
+            this.txtPackageName.TabIndex = 55;
             // 
             // label4
             // 
@@ -223,7 +219,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(318, 336);
+            this.label2.Location = new System.Drawing.Point(317, 336);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 13);
             this.label2.TabIndex = 68;
@@ -237,94 +233,6 @@ namespace PremiereSolutionProject.PL
             this.numUDPercentage.Name = "numUDPercentage";
             this.numUDPercentage.Size = new System.Drawing.Size(47, 20);
             this.numUDPercentage.TabIndex = 69;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(143, 291);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(115, 21);
-            this.comboBox2.TabIndex = 71;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(26, 291);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(67, 13);
-            this.label9.TabIndex = 70;
-            this.label9.Text = "Priority Level";
-            // 
-            // cbxHelpNo
-            // 
-            this.cbxHelpNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbxHelpNo.AutoSize = true;
-            this.cbxHelpNo.Location = new System.Drawing.Point(221, 334);
-            this.cbxHelpNo.Name = "cbxHelpNo";
-            this.cbxHelpNo.Size = new System.Drawing.Size(40, 17);
-            this.cbxHelpNo.TabIndex = 74;
-            this.cbxHelpNo.Text = "No";
-            this.cbxHelpNo.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(26, 339);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(45, 13);
-            this.label10.TabIndex = 73;
-            this.label10.Text = "Helpline";
-            // 
-            // cbxHelpYes
-            // 
-            this.cbxHelpYes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbxHelpYes.AutoSize = true;
-            this.cbxHelpYes.Location = new System.Drawing.Point(143, 334);
-            this.cbxHelpYes.Name = "cbxHelpYes";
-            this.cbxHelpYes.Size = new System.Drawing.Size(44, 17);
-            this.cbxHelpYes.TabIndex = 72;
-            this.cbxHelpYes.Text = "Yes";
-            this.cbxHelpYes.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(26, 375);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(81, 13);
-            this.label11.TabIndex = 76;
-            this.label11.Text = "Response Time";
-            // 
-            // cbxResponseTime
-            // 
-            this.cbxResponseTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbxResponseTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxResponseTime.FormattingEnabled = true;
-            this.cbxResponseTime.Items.AddRange(new object[] {
-            "1 Hour",
-            "2 Hours",
-            "24 Hours",
-            "48 Hours",
-            "72 Hours"});
-            this.cbxResponseTime.Location = new System.Drawing.Point(143, 375);
-            this.cbxResponseTime.Name = "cbxResponseTime";
-            this.cbxResponseTime.Size = new System.Drawing.Size(115, 21);
-            this.cbxResponseTime.TabIndex = 77;
             // 
             // btnCreatePackage
             // 
@@ -357,34 +265,24 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(318, 375);
+            this.label12.Location = new System.Drawing.Point(26, 272);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(48, 13);
             this.label12.TabIndex = 82;
             this.label12.Text = "Services";
-            // 
-            // dgvSelectServices
-            // 
-            this.dgvSelectServices.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dgvSelectServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSelectServices.Location = new System.Drawing.Point(467, 373);
-            this.dgvSelectServices.Name = "dgvSelectServices";
-            this.dgvSelectServices.RowHeadersWidth = 62;
-            this.dgvSelectServices.Size = new System.Drawing.Size(185, 80);
-            this.dgvSelectServices.TabIndex = 83;
             // 
             // btnAddService
             // 
             this.btnAddService.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnAddService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddService.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddService.Location = new System.Drawing.Point(579, 339);
+            this.btnAddService.Location = new System.Drawing.Point(143, 309);
             this.btnAddService.Name = "btnAddService";
-            this.btnAddService.Size = new System.Drawing.Size(74, 22);
+            this.btnAddService.Size = new System.Drawing.Size(36, 22);
             this.btnAddService.TabIndex = 84;
-            this.btnAddService.Text = "Add Service";
+            this.btnAddService.Text = ">>";
             this.btnAddService.UseVisualStyleBackColor = true;
+            this.btnAddService.Click += new System.EventHandler(this.btnAddService_Click);
             // 
             // btnDeletePackage
             // 
@@ -410,26 +308,76 @@ namespace PremiereSolutionProject.PL
             this.btnUpdatePackage.Text = "Update Package";
             this.btnUpdatePackage.UseVisualStyleBackColor = true;
             // 
+            // lbxAvailable
+            // 
+            this.lbxAvailable.FormattingEnabled = true;
+            this.lbxAvailable.Location = new System.Drawing.Point(29, 309);
+            this.lbxAvailable.Name = "lbxAvailable";
+            this.lbxAvailable.Size = new System.Drawing.Size(88, 121);
+            this.lbxAvailable.TabIndex = 87;
+            // 
+            // lbxAdded
+            // 
+            this.lbxAdded.FormattingEnabled = true;
+            this.lbxAdded.Location = new System.Drawing.Point(204, 309);
+            this.lbxAdded.Name = "lbxAdded";
+            this.lbxAdded.Size = new System.Drawing.Size(88, 121);
+            this.lbxAdded.TabIndex = 88;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(27, 293);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(50, 13);
+            this.label13.TabIndex = 89;
+            this.label13.Text = "Available";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(201, 293);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(38, 13);
+            this.label14.TabIndex = 90;
+            this.label14.Text = "Added";
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.Location = new System.Drawing.Point(143, 392);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(36, 22);
+            this.btnRemove.TabIndex = 84;
+            this.btnRemove.Text = "<<";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // frmServicePackageManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(681, 550);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lbxAdded);
+            this.Controls.Add(this.lbxAvailable);
             this.Controls.Add(this.btnUpdatePackage);
             this.Controls.Add(this.btnDeletePackage);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAddService);
-            this.Controls.Add(this.dgvSelectServices);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCreatePackage);
-            this.Controls.Add(this.cbxResponseTime);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.cbxHelpNo);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.cbxHelpYes);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.numUDPercentage);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label8);
@@ -443,7 +391,7 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtBusinessName);
+            this.Controls.Add(this.txtPackageName);
             this.Controls.Add(this.dgvCurrentServicePackages);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -452,7 +400,6 @@ namespace PremiereSolutionProject.PL
             this.Load += new System.EventHandler(this.frmServicePackageManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentServicePackages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDPercentage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSelectServices)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -463,7 +410,7 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvCurrentServicePackages;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtBusinessName;
+        private System.Windows.Forms.TextBox txtPackageName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.CheckBox cbxPromotionYes;
@@ -476,19 +423,16 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numUDPercentage;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.CheckBox cbxHelpNo;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox cbxHelpYes;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cbxResponseTime;
         private System.Windows.Forms.Button btnCreatePackage;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridView dgvSelectServices;
         private System.Windows.Forms.Button btnAddService;
         private System.Windows.Forms.Button btnDeletePackage;
         private System.Windows.Forms.Button btnUpdatePackage;
+        private System.Windows.Forms.ListBox lbxAvailable;
+        private System.Windows.Forms.ListBox lbxAdded;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnRemove;
     }
 }
