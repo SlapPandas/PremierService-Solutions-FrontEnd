@@ -61,7 +61,9 @@ namespace PremiereSolutionProject.BLL
 
         public bool VerifyClientContract(string clientID)
         {
-            List<Contract> contractList = new List<Contract>();
+            ContractDH contractDH = new ContractDH();
+
+            List<Contract> contractList = clientID[0] == 'A' ? contractDH.SelectAllContractsByIndividualClientId(clientID) :  clientID[0] == 'B' ? contractDH.SelectAllContractsByBusinessClientId(clientID) : null;
             //get contracts for a specific client
 
             foreach (Contract contract in contractList)
