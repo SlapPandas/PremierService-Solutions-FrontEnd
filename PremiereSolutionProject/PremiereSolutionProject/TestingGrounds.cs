@@ -22,6 +22,23 @@ namespace PremiereSolutionProject
         {
             Console.WriteLine("======================================================");
 
+            //CallDH callDH = new CallDH();
+            ////DateTime dateTime = new DateTime(2001, 01, 01);
+            //callDH.InsertBusinessClientToCall(1, "B00000001");
+            //SpecializationDH specializationDH = new SpecializationDH();
+            //List<Specialisation> specialisations = specializationDH.SelectAllSpecialisations();
+            //ServiceRequestDH serviceRequestDH = new ServiceRequestDH();
+            //List<ServiceRequest> serviceRequests = serviceRequestDH.SelectAllServiceRequestsByIndividualClient("A00000001");
+            //ServiceDH serviceDH = new ServiceDH();
+            //List<Service> services = serviceDH.se(1);
+            //ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
+            //List<ServicePackage> servicePackages = servicePackadgeDH.SelectAllServicePackedges();
+            //IndividualClientDH individualClientDH = new IndividualClientDH();
+            //List<IndividualClient> individualClients = individualClientDH.SelectAllIndividualClients();
+            AddressDH addressDH = new AddressDH();
+            List<Address> addresses = addressDH.SelectAllAddresses();
+
+            DateTime dateTime = new DateTime(2001, 01, 01);
             //JobDH jobDH = new JobDH();
             //Address address = new Address(1, "update", "update", GetProvince("3"), "1233");
             //DateTime dateTime = new DateTime(2001, 01, 01);
@@ -41,15 +58,15 @@ namespace PremiereSolutionProject
             //jobDH.UpdateJobEmployeeList(job);
             //jobDH.AddSingleEmployeeToJob(1, "E00000005");
 
-            ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
-            DateTime dateTimestart = new DateTime(2001, 01, 01);
-            DateTime dateTimeend = new DateTime(2001, 01, 20);
-            List<Service> services = new List<Service>();
-            services.Add(new Service(1, "ser1", "des1"));
-            services.Add(new Service(2, "ser1", "des1"));
-            services.Add(new Service(3, "ser1", "des1"));
-            services.Add(new Service(4, "ser1", "des1"));
-            ServicePackage serviceRequest = new ServicePackage(1, "updated", services, false, dateTimestart, dateTimeend, 123.321, 456.654);
+            //ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
+            //DateTime dateTimestart = new DateTime(2001, 01, 01);
+            //DateTime dateTimeend = new DateTime(2001, 01, 20);
+            //List<Service> services = new List<Service>();
+            //services.Add(new Service(1, "ser1", "des1"));
+            //services.Add(new Service(2, "ser1", "des1"));
+            //services.Add(new Service(3, "ser1", "des1"));
+            //services.Add(new Service(4, "ser1", "des1"));
+            //ServicePackage serviceRequest = new ServicePackage(1, "updated", services, false, dateTimestart, dateTimeend, 123.321, 456.654);
             //servicePackadgeDH.InsertSingleServiceToServicePackedge(1,1); //Commented out due to error
 
 

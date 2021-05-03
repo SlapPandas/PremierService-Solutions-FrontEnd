@@ -616,7 +616,7 @@ AS
 BEGIN
 	BEGIN TRAN
 		UPDATE Call
-		SET ClientIndividualID = (SELECT clientIndividualID FROM ClientIndividual WHERE clientIndividualClientNumber = @ClientIndividual)
+		SET ClientIndividualID = (SELECT clientIndividualID FROM ClientIndividual WHERE clientIndividualClientNumber = @ClientBusiness)
 		WHERE callID = @id
 	COMMIT
 END
