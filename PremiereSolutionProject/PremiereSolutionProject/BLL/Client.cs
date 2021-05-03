@@ -127,6 +127,22 @@ namespace PremiereSolutionProject.BLL
             }
         }
 
+        //to change a client state to INACTIVE
+        public void RemoveClient(Client c)
+        {
+            IndividualClientDH individualClientDH = new IndividualClientDH();
+            BusinessClientDH businessClientDH = new BusinessClientDH();
+
+            if (c.id[0] == 'A')
+            {
+                individualClientDH.ChangeClientState(c.id, false);
+            }
+            else if (c.id[0] == 'B')
+            {
+                businessClientDH.UpdateState(c.id, false);
+            }
+        }
+
         #endregion
     }
 }
