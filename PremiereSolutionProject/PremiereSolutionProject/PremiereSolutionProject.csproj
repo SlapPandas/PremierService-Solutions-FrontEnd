@@ -96,6 +96,12 @@
     <Compile Include="PL\FrmAddEmployee.designer.cs">
       <DependentUpon>FrmAddEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="PL\frmErrorsTesting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\frmErrorsTesting.Designer.cs">
+      <DependentUpon>frmErrorsTesting.cs</DependentUpon>
+    </Compile>
     <Compile Include="PL\frmIndividualClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PL\FrmAddEmployee.resx">
       <DependentUpon>FrmAddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\frmErrorsTesting.resx">
+      <DependentUpon>frmErrorsTesting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PL\frmIndividualClient.resx">
       <DependentUpon>frmIndividualClient.cs</DependentUpon>
