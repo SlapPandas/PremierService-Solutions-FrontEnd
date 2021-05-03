@@ -40,7 +40,7 @@ namespace PremiereSolutionProject.DAL
         public void Insert(Employee employee)
         {
             CreateConnection();
-            commandString = $"EXEC InsertEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @address = '{employee.Address.AddressID}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @registrationDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{employee.Employed}'";
+            commandString = $"EXEC InsertEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{GetIntFromBool(employee.Employed)}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -201,6 +201,17 @@ namespace PremiereSolutionProject.DAL
         {
             bool output = bit == 1 ? true : false;
             return output;
+        }
+        private int GetIntFromBool(bool input)
+        {
+            if (input == true)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
         private Province GetProvince(string input)
         {

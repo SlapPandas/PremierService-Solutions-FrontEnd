@@ -852,12 +852,17 @@ END
 GO
 
 
-CREATE PROCEDURE InsertEmployee @id INT, @firstName VARCHAR(50), @surname VARCHAR(50), @addressId INT, @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentDate DATE, @employed BIT, @department VARCHAR(25)
+CREATE PROCEDURE InsertEmployee @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentDate DATE, @employed INT, @department VARCHAR(25), @streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
 AS
-BEGIN
-	INSERT INTO [Employee] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate], [employed], [department])
-	VALUES (@firstName, @surname, @addressId, @contactNumber, @email, @nationalIdNumber, @employmentDate, @employed, @department)
-END 
+		BEGIN TRAN
+		DECLARE @LASTID INT
+		INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode],[city])
+		VALUES (@streetname, @suburb,@province ,@postalcode,@city)
+		SET @LASTID = SCOPE_IDENTITY()
+
+		INSERT INTO [Employee] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate],[employed])
+		VALUES (@firstName, @surname, @LASTID, @contactNumber, @email, @nationalIdNumber, @employmentDate,@employed)
+COMMIT 
 GO
 
 CREATE PROCEDURE InsertSpecialisation @name VARCHAR(25), @description VARCHAR(250)
@@ -954,7 +959,7 @@ BEGIN
 END 
 GO
 
-CREATE PROCEDURE InsertBusinessClientEmployees @firstName VARCHAR(50),@surname VARCHAR(50),@department VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @businessID VARCHAR(100)
+CREATE PROCEDURE InsertBusinessClientEmployees @firstName VARCHAR(50),@surname VARCHAR(50),@department VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @businessID INT
 AS
 BEGIN 
 	INSERT INTO [ClientBusinessEmployee] ([firstName], [surname], [department], [contactNumber], [email], [businessID])
