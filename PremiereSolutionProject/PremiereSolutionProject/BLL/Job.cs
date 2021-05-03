@@ -114,7 +114,7 @@ namespace PremiereSolutionProject.BLL
         public List<Job> SelectInProgressJobs() // get a list of all in progress jobs
         {
             JobDH jobDH = new JobDH();
-            return jobDH.SelectAllPendingJobs();
+            return jobDH.SelectAllInProgressJobs();
         }
 
         public List<Job> SelectFinishedJobs() // get a list of all finished jobs
