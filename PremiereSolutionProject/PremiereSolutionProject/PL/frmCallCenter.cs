@@ -40,8 +40,9 @@ namespace PremiereSolutionProject.PL
 
         private void btnSearchClient_Click(object sender, EventArgs e)
         {
-            
-            
+            new frmClientInfo().Show();
+            this.Hide();
+
         }
 
         
