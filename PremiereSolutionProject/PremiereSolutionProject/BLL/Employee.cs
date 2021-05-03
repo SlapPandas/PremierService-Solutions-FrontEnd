@@ -86,6 +86,7 @@ namespace PremiereSolutionProject.BLL
             employeeDH.Update(employee);
         }
 
+        //Cant insert straight employee as it is 
         public void InsertEmployee(Employee employee)
         {
             EmployeeDH employeeDH = new EmployeeDH();

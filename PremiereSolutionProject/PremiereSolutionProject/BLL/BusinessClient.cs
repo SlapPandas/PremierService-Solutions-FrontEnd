@@ -46,10 +46,10 @@ namespace PremiereSolutionProject.BLL
 
         #region Methods
         //Update the BusinessClient, take in a BusinessClient from PL
-        public void UpdateBusinessClient(BusinessClient BC)
+        public void UpdateBusinessClient(BusinessClient businessClient)
         {
             BusinessClientDH businessClientDH = new BusinessClientDH();
-            businessClientDH.Update(BC);
+            businessClientDH.Update(businessClient);
         }
 
         //to insert a new BusinessClient into the database

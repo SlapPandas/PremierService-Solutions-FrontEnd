@@ -37,10 +37,33 @@ namespace PremiereSolutionProject.DAL
         #endregion
 
         #region Insert
-        public void Insert(Employee employee)
+        public void Insert (Employee employee)
         {
             CreateConnection();
-            commandString = $"EXEC InsertEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{GetIntFromBool(employee.Employed)}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
+            commandString = $"EXEC InsertCallCenterEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
+            {
+                OpenConnection();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void InsertCallCenterEmployee(CallCenterEmployee employee)
+        {
+            CreateConnection();
+            commandString = $"EXEC InsertCallCenterEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try

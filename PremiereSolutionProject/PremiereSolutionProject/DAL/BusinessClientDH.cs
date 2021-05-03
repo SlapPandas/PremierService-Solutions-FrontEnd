@@ -11,7 +11,7 @@ namespace PremiereSolutionProject.DAL
 {
     class BusinessClientDH : DatabaseConnection, IDataconnection
     {
-        //Testing Problems
+        //Runs like it works but idk
         #region Update
         public void Update(BusinessClient businessClient)
         {
