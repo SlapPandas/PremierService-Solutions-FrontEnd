@@ -113,7 +113,8 @@ namespace PremiereSolutionProject.BLL
 
             return ccEmpList[random.Next(ccEmpList.Count)];
         }
-
+        //TODO: reimplement Call Insert
+        /*
         public void UpdateCall(Call call)
         {
             CallDH callDH = new CallDH();
@@ -125,7 +126,7 @@ namespace PremiereSolutionProject.BLL
             CallDH callDH = new CallDH();
             callDH.Insert(call);
         }
-
+        */
         //To select all the calls of a specific client according to ID
         public List<Call> SelectAllCallsOfClient(string ID)
         {
