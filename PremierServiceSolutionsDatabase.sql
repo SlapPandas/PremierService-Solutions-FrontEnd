@@ -603,7 +603,7 @@ BEGIN
 END
 GO 
 
-CREATE PROCEDURE UpdateBusinessClientEmployee @id VARCHAR(100), @firstname VARCHAR(100), @surname VARCHAR(100), @department VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100)
+CREATE PROCEDURE UpdateBusinessClientEmployee @id VARCHAR(100), @firstname VARCHAR(100), @surname VARCHAR(100), @department VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100), @businessID VARCHAR(100)
 AS
 BEGIN
 	BEGIN TRAN
@@ -612,6 +612,17 @@ BEGIN
 	SET firstName = @firstname, surname = @surname, department = @department, contactNumber = @contact, email = @email
 	WHERE clientBusinessEmployeeID = @id
 
+	COMMIT
+END
+GO
+
+CREATE PROCEDURE UpdateBusinessClientState @id VARCHAR(20), @active INT
+AS
+BEGIN
+	BEGIN TRAN
+	UPDATE ClientBusiness
+	SET active = @active
+	WHERE clientBusinessClientNumber = @id
 	COMMIT
 END
 GO
@@ -632,16 +643,7 @@ BEGIN
 	COMMIT
 END
 GO
-CREATE PROCEDURE UpdateBusinessClientState @id VARCHAR(20), @active INT
-AS
-BEGIN
-	BEGIN TRAN
-	UPDATE ClientBusiness
-	SET active = @active
-	WHERE clientBusinessClientNumber = @id
-	COMMIT
-END
-GO
+
 CREATE PROCEDURE UpdateClientIndividual @id VARCHAR(100), @firstname VARCHAR(100), @surname VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100), @nationalid VARCHAR(13), @registrationdate DATE, @active INT, @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10),@city VARCHAR(100)
 AS
 BEGIN
@@ -849,6 +851,7 @@ BEGIN
 END
 GO
 
+
 CREATE PROCEDURE InsertEmployee @id INT, @firstName VARCHAR(50), @surname VARCHAR(50), @addressId INT, @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentDate DATE, @employed BIT, @department VARCHAR(25)
 AS
 BEGIN
@@ -864,6 +867,8 @@ BEGIN
 	VALUES (@name, @description)
 END 
 GO
+
+
 CREATE PROCEDURE InsertClientIndividual @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @registrationDate DATE, @active INT,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
 AS
 		BEGIN TRAN
@@ -876,12 +881,17 @@ AS
 		VALUES (@firstName, @surname, @LASTID, @contactNumber, @email, @nationalIdNumber, @registrationDate,@active)
 COMMIT 
 GO
-CREATE PROCEDURE InsertClientBusiness @id INT, @busuinessName VARCHAR(50), @addressID INT, @contactNumber VARCHAR(10), @taxNumber VARCHAR(10), @RegistrationDate DATE
+CREATE PROCEDURE InsertClientBusiness @busuinessName VARCHAR(50), @contactNumber VARCHAR(10), @taxNumber VARCHAR(10), @RegistrationDate DATE, @active INT,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
 AS
-BEGIN
-	INSERT INTO [ClientBusiness] ([busuinessName], [addressId], [contactNumber], [taxNumber], [RegistrationDate])
-	VALUES (@busuinessName, @addressID, @contactNumber, @taxNumber, @RegistrationDate)
-END 
+	BEGIN TRAN
+	DECLARE @LASTID INT
+	INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode],[city])
+	VALUES (@streetname, @suburb,@province ,@postalcode,@city)
+	SET @LASTID = SCOPE_IDENTITY()
+
+	INSERT INTO [ClientBusiness] ([busuinessName], [addressId], [contactNumber], [taxNumber], [RegistrationDate], [active])
+	VALUES (@busuinessName, @LASTID, @contactNumber, @taxNumber, @RegistrationDate, @active)
+COMMIT
 GO
 
 CREATE PROCEDURE InsertServicePackageState @name VARCHAR(50), @onpromotion INT, @promationStartDate DATETIME, @promotionEndDate DATETIME, @price FLOAT,@percintage FLOAT
@@ -922,7 +932,7 @@ BEGIN
 	VALUES (@employeeID, @specialisationID)
 END 
 GO
-CREATE PROCEDURE InsertCall @id INT, @startTime DATETIME, @endTime DATETIME, @ClientIndividualID INT, @ClientBusinessID INT, @employeeID INT, @callNotes VARCHAR (255)
+CREATE PROCEDURE InsertCall @startTime DATETIME, @endTime DATETIME, @ClientIndividualID INT, @ClientBusinessID INT, @employeeID INT, @callNotes VARCHAR (255)
 AS
 BEGIN
 	INSERT INTO [Call] ([startTime], [endTime], [ClientIndividualID], [ClientBusinessID], [employeeID], [callNotes])
@@ -942,6 +952,14 @@ BEGIN
 	INSERT INTO [ServiceRequestSpecialisationLink] ([specialisationRequiredID], [ServiceRequestID])
 	VALUES (@specialisationRequiredID, @ServiceRequestID)
 END 
+GO
+
+CREATE PROCEDURE InsertBusinessClientEmployees @firstName VARCHAR(50),@surname VARCHAR(50),@department VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @businessID VARCHAR(100)
+AS
+BEGIN 
+	INSERT INTO [ClientBusinessEmployee] ([firstName], [surname], [department], [contactNumber], [email], [businessID])
+	VALUES (@firstName, @surname, @department, @contactNumber, @email, @businessID)
+END
 GO
 
 CREATE PROCEDURE InsertJob @addressId INT, @ServiceRequestID INT, @notes VARCHAR(255), @currentState VARCHAR(20), @specialization INT, @amountOfEmployees INT

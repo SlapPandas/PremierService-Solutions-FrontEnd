@@ -11,6 +11,7 @@ namespace PremiereSolutionProject.DAL
 {
     class BusinessClientDH : DatabaseConnection, IDataconnection
     {
+        //Testing Problems
         #region Update
         public void Update(BusinessClient businessClient)
         {
@@ -34,6 +35,7 @@ namespace PremiereSolutionProject.DAL
             }
 
         }
+        //Works
         public void UpdateState(string id, bool active)
         {
             CreateConnection();
@@ -58,11 +60,12 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
+        //Works
         #region Insert
         public void Insert(BusinessClient businessClient)
         {
             CreateConnection();
-            commandString = $"EXEC InsertClientBusiness @busuinessName ='{businessClient.BusinessName}', @contactNumber ='{businessClient.ContactNumber}', @taxNumber ='{businessClient.TaxNumber}', @RegistrationDate ='{businessClient.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}',@active ='{GetIntFromBool(businessClient.Active)}',@streetname ='{businessClient.Address.StreetName}',@suburb ='{businessClient.Address.Suburb}',@province ='{((int)businessClient.Address.Province).ToString()}',@postalcode ='{businessClient.Address.Postalcode}',@city ='{businessClient.Address.City}'";
+            commandString = $"EXEC InsertClientBusiness @busuinessName ='{businessClient.BusinessName}', @contactNumber ='{businessClient.ContactNumber}', @taxNumber ='{businessClient.TaxNumber}', @RegistrationDate ='{businessClient.RegistrationDate.ToString("yyyy-MM-dd")}',@active ='{GetIntFromBool(businessClient.Active)}',@streetname ='{businessClient.Address.StreetName}',@suburb ='{businessClient.Address.Suburb}',@province ='{((int)businessClient.Address.Province).ToString()}',@postalcode ='{businessClient.Address.Postalcode}',@city ='{businessClient.Address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -83,6 +86,7 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
+        //Think works (Ask Matin)
         #region Select
         public List<BusinessClient> SelectAllBusinessClients()
         {

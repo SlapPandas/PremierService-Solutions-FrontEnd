@@ -40,7 +40,7 @@ namespace PremiereSolutionProject.DAL
         public void Insert(Call call)
         {
             CreateConnection();
-            commandString = $"EXEC InsertCall @id = '{call.CallID}', @start = '{call.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @end = '{call.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @client = '{call.Client}', @callCenterEmployee = '{call.Employee}', @notes = '{call.CallNotes}'";
+            commandString = $"EXEC InsertCall @start = '{call.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @end = '{call.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @client = '{call.Client}', @callCenterEmployee = '{call.Employee}', @notes = '{call.CallNotes}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
