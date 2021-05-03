@@ -69,6 +69,12 @@ namespace PremiereSolutionProject.BLL
             addressDH.Insert(a);
         }
 
+        public void DeleteAddess(Address a)
+        {
+            AddressDH addressDH = new AddressDH();
+            addressDH.Delete(a);
+        }
+
         public List<Address> SelectAllAddresses()
         {
             AddressDH addressDH = new AddressDH();
