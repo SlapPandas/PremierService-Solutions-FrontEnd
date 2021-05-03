@@ -283,8 +283,6 @@ namespace PremiereSolutionProject.BLL
             List<Call> callRequests = new List<Call>(); // used to access the dates, try match the ID's
             List<Job> highestPrioList = new List<Job>();
             bool unchanged = false;
-            string currentPrio;
-            string nextPrio;
             int currentPrioLevel = 0;
             int nextPrioLevel = 0;
             DateTime currentTime = DateTime.Now;
@@ -294,42 +292,8 @@ namespace PremiereSolutionProject.BLL
                 unchanged = true;
                 for (int i = 0; i <= unorderedJoblistWithPrio.Count - 1; i++)  // unorderedPrioLevel.Count-1 so that it does go out of bounds
                 {
-                    currentPrio = unorderedJoblistWithPrio[i].PriorityLevel; // compairing current item with next item
-                    nextPrio = unorderedJoblistWithPrio[i + 1].PriorityLevel;
-                    switch (currentPrio) // assigning prio level to comparible number for current item
-                    {
-                        case "PLA1":
-                            currentPrioLevel = 4;
-                            break;
-                        case "GLO2":
-                            currentPrioLevel = 3;
-                            break;
-                        case "SIL3":
-                            currentPrioLevel = 2;
-                            break;
-                        case "BRO4":
-                            currentPrioLevel = 1;
-                            break;
-                        default:
-                            break;
-                    }
-                    switch (nextPrio) // assigning prio level to comparible number for next item
-                    {
-                        case "PLA1":
-                            nextPrioLevel = 4;
-                            break;
-                        case "GOL2":
-                            nextPrioLevel = 3;
-                            break;
-                        case "SIL3":
-                            nextPrioLevel = 2;
-                            break;
-                        case "BRO4":
-                            nextPrioLevel = 1;
-                            break;
-                        default:
-                            break;
-                    }
+                    currentPrioLevel = ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel); // compairing current item with next item
+                    nextPrioLevel = ExtractNumber(unorderedJoblistWithPrio[i + 1].PriorityLevel);
                     if (nextPrioLevel > currentPrioLevel) // switch items based on prio level
                     {
                         unchanged = false;
@@ -345,19 +309,19 @@ namespace PremiereSolutionProject.BLL
             }
             for (int i = 0; i < callRequests.Count; i++) // these days are  just place holders, can be changed to fit a range or otherwise
             {
-                if ((currentTime - callRequests[i].EndTime).TotalDays > 1 && unorderedJoblistWithPrio[i].PriorityLevel == "PLA1")
+                if ((currentTime - callRequests[i].EndTime).TotalDays > 1 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) <= 2)
                 {
                     highestPrioList.Add(unorderedJoblistWithPrio[i]);
                 }
-                if ((currentTime - callRequests[i].EndTime).TotalDays > 2 && unorderedJoblistWithPrio[i].PriorityLevel == "GLO2")
+                if ((currentTime - callRequests[i].EndTime).TotalDays > 2 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) <= 4 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) > 2)
                 {
                     highestPrioList.Add(unorderedJoblistWithPrio[i]);
                 }
-                if ((currentTime - callRequests[i].EndTime).TotalDays > 3 && unorderedJoblistWithPrio[i].PriorityLevel == "SLI3")
+                if ((currentTime - callRequests[i].EndTime).TotalDays > 3 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) <= 6 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) > 4)
                 {
                     highestPrioList.Add(unorderedJoblistWithPrio[i]);
                 }
-                if ((currentTime - callRequests[i].EndTime).TotalDays > 4 && unorderedJoblistWithPrio[i].PriorityLevel == "BRO4")
+                if ((currentTime - callRequests[i].EndTime).TotalDays > 4 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) <= 8 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) > 6)
                 {
                     highestPrioList.Add(unorderedJoblistWithPrio[i]);
                 }
