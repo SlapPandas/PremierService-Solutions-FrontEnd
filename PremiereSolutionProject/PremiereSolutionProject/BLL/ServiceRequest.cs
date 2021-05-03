@@ -172,6 +172,8 @@ namespace PremiereSolutionProject.BLL
             return specEmployees;
         }
 
+        
+
         private Specialisation MatchSpecialisation(string specName, List<Specialisation> specList)
         {
             foreach (Specialisation spec in specList)
@@ -267,6 +269,12 @@ namespace PremiereSolutionProject.BLL
         {
             EmployeeDH employeeDH = new EmployeeDH();
             return employeeDH.SelectAllAvailableMaintenanceEmployees();
+        }
+
+        private int ExtractNumber(string s)
+        {
+            Regex r = new Regex(@"[^0 - 9]", RegexOptions.IgnoreCase); //returns only the numbers
+            return Int32.Parse(r.Replace(s, @""));
         }
 
         public List<Job> OrderJobList(List<Job> unorderedJoblistWithPrio)  //order list according to date & priorityLevel
