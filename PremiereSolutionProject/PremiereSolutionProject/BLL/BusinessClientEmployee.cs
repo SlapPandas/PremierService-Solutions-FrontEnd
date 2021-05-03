@@ -16,7 +16,7 @@ namespace PremiereSolutionProject.BLL
         private string department;
         private string contactnumber;
         private string email;
-        private string businessName;
+        private string businessID;
         #endregion
 
         #region Properties
@@ -26,7 +26,7 @@ namespace PremiereSolutionProject.BLL
         public string Department { get => department; set => department = value; }
         public string Contactnumber { get => contactnumber; set => contactnumber = value; }
         public string Email { get => email; set => email = value; }
-        public string BusinessName { get => businessName; set => businessName = value; }
+        public string BusinessID { get => businessID; set => businessID = value; }
         #endregion
 
         #region Constructors
@@ -37,7 +37,7 @@ namespace PremiereSolutionProject.BLL
         }
 
         //constructor with all fields
-        public BusinessClientEmployees(int id, string fname, string sname, string depart, string contact, string email, string businessName)
+        public BusinessClientEmployees(int id, string fname, string sname, string depart, string contact, string email, string businessID)
         {
             this.id = id;
             this.firstName = fname;
@@ -45,18 +45,18 @@ namespace PremiereSolutionProject.BLL
             this.department = depart;
             this.contactnumber = contact;
             this.email = email;
-            this.businessName = businessName;
+            this.businessID = businessID;
         }
 
         //constructor without ID field
-        public BusinessClientEmployees(string fname, string sname, string depart, string contact, string email, string businessName)
+        public BusinessClientEmployees(string fname, string sname, string depart, string contact, string email, string businessID)
         {
             this.firstName = fname;
             this.surname = sname;
             this.department = depart;
             this.contactnumber = contact;
             this.email = email;
-            this.businessName = businessName;
+            this.businessID = businessID;
         }
         #endregion
 
