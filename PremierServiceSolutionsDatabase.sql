@@ -918,7 +918,7 @@ AS
 		VALUES (@streetname, @suburb,@province ,@postalcode,@city)
 		SET @LASTID = SCOPE_IDENTITY()
 
-		INSERT INTO [Employee] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate],[employed], [department])
+		INSERT INTO [Employee] (firstName, surname, [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate],[employed], [department])
 		VALUES (@firstName, @surname, @LASTID, @contactNumber, @email, @nationalIdNumber, @employmentDate,@employed, @department)
 COMMIT 
 GO
@@ -944,7 +944,7 @@ AS
 		VALUES (@streetname, @suburb,@province ,@postalcode,@city)
 		SET @LASTID = SCOPE_IDENTITY()
 
-		INSERT INTO [Employee] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate],[employed], [department])
+		INSERT INTO [Employee] (firstName, surname, [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate],[employed], [department])
 		VALUES (@firstName, @surname, @LASTID, @contactNumber, @email, @nationalIdNumber, @employmentDate,@employed, @department)
 COMMIT 
 GO

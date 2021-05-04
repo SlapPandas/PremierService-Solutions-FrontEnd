@@ -63,12 +63,11 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Need assistance
         #region Insert
         public void Insert(BusinessClientEmployees businessClientEmployees)
         {
             CreateConnection();
-            commandString = $"EXEC InsertBusinessClientEmployees @firstName = '{businessClientEmployees.FirstName}',  @surname = '{businessClientEmployees.Surname}',  @department = '{businessClientEmployees.Department}',  @contactNumber = '{businessClientEmployees.Contactnumber}',  @email = '{businessClientEmployees.Email}',  @businessName = '{businessClientEmployees.BusinessID}'";
+            commandString = $"EXEC InsertBusinessClientEmployees @firstName = '{businessClientEmployees.FirstName}',  @surname = '{businessClientEmployees.Surname}',  @department = '{businessClientEmployees.Department}',  @contactNumber = '{businessClientEmployees.Contactnumber}',  @email = '{businessClientEmployees.Email}', @businessID = '{businessClientEmployees.BusinessID}'";
             Command = new SqlCommand(commandString, Connection);
 
             try

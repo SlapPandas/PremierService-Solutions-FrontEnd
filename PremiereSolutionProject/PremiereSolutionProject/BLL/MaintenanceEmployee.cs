@@ -38,6 +38,12 @@ namespace PremiereSolutionProject.BLL
             Department = department;
             this.Specialisations = spec;
         }
+
+        public MaintenanceEmployee(string fname, string sname, Address address, string contactnr, string email, string natID, DateTime date, bool employed, string department = "Maintenance")
+        : base(fname, sname, address, contactnr, email, natID, date, employed, department)
+        {
+            Department = department;
+        }
         #endregion
 
         #region Interface Methods

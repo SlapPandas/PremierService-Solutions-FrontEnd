@@ -10,6 +10,7 @@ namespace PremiereSolutionProject.DAL
 {
     class EmployeeDH : DatabaseConnection
     {
+        //Gotta Do
         #region Update
         public void Update(Employee employee)
         {
@@ -36,35 +37,12 @@ namespace PremiereSolutionProject.DAL
 
         #endregion
 
-        //Need assistance
         #region Insert
-        public void Insert (Employee employee)
-        {
-            CreateConnection();
-            commandString = $"EXEC InsertCallCenterEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
-        }
 
         public void InsertCallCenterEmployee(CallCenterEmployee employee)
         {
             CreateConnection();
-            commandString = $"EXEC InsertCallCenterEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
+            commandString = $"EXEC InsertCallCenterEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -87,7 +65,7 @@ namespace PremiereSolutionProject.DAL
         public void InsertMaintenanceEmployee(MaintenanceEmployee employee)
         {
             CreateConnection();
-            commandString = $"EXEC InsertMaintenanceEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
+            commandString = $"EXEC InsertMaintenanceEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}',@employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -110,7 +88,7 @@ namespace PremiereSolutionProject.DAL
         public void InsertServiceManager(ServiceManager employee)
         {
             CreateConnection();
-            commandString = $"EXEC InsertServiceManager @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
+            commandString = $"EXEC InsertServiceManager @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
