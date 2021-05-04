@@ -13,22 +13,7 @@ namespace PremiereSolutionProject.DAL
         #region Update
         public void Update(Specialisation specialisation)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateSpecialization @id = '{specialisation.SpecialisationID}', @name = '{specialisation.SpecialisationName}',@description = '{specialisation.Description}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateSpecialization @i = '{specialisation.SpecialisationID}', @name = '{specialisation.SpecialisationName}',@description = '{specialisation.Description}'");
         }
         #endregion
 
@@ -40,14 +25,15 @@ namespace PremiereSolutionProject.DAL
                 return false;
             }
 
-            CreateConnection();
-            commandString = $"EXEC DeleteSpecialisation @id = '{specialisation.SpecialisationID}'";
-            Command = new SqlCommand(commandString, Connection);
-
             try
             {
-                OpenConnection();
-                Command.ExecuteNonQuery();
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC DeleteSpecialisation @id = '{specialisation.SpecialisationID}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    command.ExecuteNonQuery();
+                }
                 return true;
             }
             catch (Exception e)
@@ -57,7 +43,7 @@ namespace PremiereSolutionProject.DAL
                 databaseOperationDH.CreateOperationLog(databaseOperation);
                 return false;
             }
-            finally { CloseConnection(); }
+            finally {}
         }
         #endregion
 
@@ -86,17 +72,19 @@ namespace PremiereSolutionProject.DAL
         #region Select
         public List<Specialisation> SelectAllSpecialisations()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllSpecialisations";
-            Command = new SqlCommand(commandString, Connection);
             List<Specialisation> specialisation = new List<Specialisation>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    specialisation.Add(new Specialisation((int)Reader["specialisationID"], (string)Reader["name"], (string)Reader["description"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllSpecialisations";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        specialisation.Add(new Specialisation((int)reader["specialisationID"], (string)reader["name"], (string)reader["description"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -105,23 +93,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return specialisation;
         }
         public List<Specialisation> SelectAllSpecialisationNames()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllSpecialisationName";
-            Command = new SqlCommand(commandString, Connection);
             List<Specialisation> specialisation = new List<Specialisation>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    specialisation.Add(new Specialisation((string)Reader["name"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllSpecialisationName";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        specialisation.Add(new Specialisation((string)reader["name"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -130,7 +120,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return specialisation;
         }
@@ -139,20 +129,19 @@ namespace PremiereSolutionProject.DAL
         #region Seperate Methods
         private int GetNumberOfSpecializationUses(int specializationId)
         {
-
-            SqlConnection specialisationConnection = new SqlConnection(connectionSring);
-            SqlDataReader specialisationReader;
             int output = -1;
-            commandString = $"EXEC SpecialisationUses @id = '{specializationId}'";
-            SqlCommand specialisationCommand = new SqlCommand(commandString, specialisationConnection);
-
             try
             {
-                specialisationConnection.Open();
-                specialisationReader = specialisationCommand.ExecuteReader();
-                while (specialisationReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    output = (int)specialisationReader["uses"];
+                    connection.Open();
+                    commandString = $"EXEC SpecialisationUses @id = '{specializationId}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        output = (int)reader["uses"];
+                    }
                 }
             }
             catch (Exception e)
@@ -161,10 +150,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally
-            {
-                specialisationConnection.Close();
-            }
+            finally{}
             return output;
         }
         #endregion
