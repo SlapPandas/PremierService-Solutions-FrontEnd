@@ -86,8 +86,26 @@ namespace PremiereSolutionProject.BLL
             employeeDH.Update(employee);
         }
 
-        //Cant insert straight employee as it is 
+        //Cant create instance of abstract type or Interface
         public void InsertEmployee(Employee employee)
+        {
+            EmployeeDH employeeDH = new EmployeeDH();
+            employeeDH.Insert(employee);
+        }
+
+        public void InsertCallCenterEmployee(CallCenterEmployee employee)
+        {
+            EmployeeDH employeeDH = new EmployeeDH();
+            employeeDH.Insert(employee);
+        }
+
+        public void InsertMaintenanceEmployee(MaintenanceEmployee employee)
+        {
+            EmployeeDH employeeDH = new EmployeeDH();
+            employeeDH.Insert(employee);
+        }
+
+        public void InsertServiceManager(ServiceManager employee)
         {
             EmployeeDH employeeDH = new EmployeeDH();
             employeeDH.Insert(employee);

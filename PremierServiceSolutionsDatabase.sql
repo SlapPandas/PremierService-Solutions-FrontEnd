@@ -891,6 +891,44 @@ BEGIN
 END 
 GO
 
+CREATE PROCEDURE InsertCallCenterEmployee @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentDate DATE, @employed INT, @department VARCHAR(25) ,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
+AS
+		BEGIN TRAN
+		DECLARE @LASTID INT
+		INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode],[city])
+		VALUES (@streetname, @suburb,@province ,@postalcode,@city)
+		SET @LASTID = SCOPE_IDENTITY()
+
+		INSERT INTO [Employee] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate],[employed], [department])
+		VALUES (@firstName, @surname, @LASTID, @contactNumber, @email, @nationalIdNumber, @employmentDate,@employed, @department)
+COMMIT 
+GO
+
+CREATE PROCEDURE InsertMaintenanceEmployee @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentDate DATE, @employed INT, @department VARCHAR(25) ,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
+AS
+		BEGIN TRAN
+		DECLARE @LASTID INT
+		INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode],[city])
+		VALUES (@streetname, @suburb,@province ,@postalcode,@city)
+		SET @LASTID = SCOPE_IDENTITY()
+
+		INSERT INTO [Employee] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate],[employed], [department])
+		VALUES (@firstName, @surname, @LASTID, @contactNumber, @email, @nationalIdNumber, @employmentDate,@employed, @department)
+COMMIT 
+GO
+
+CREATE PROCEDURE InsertServiceManager @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentDate DATE, @employed INT, @department VARCHAR(25) ,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
+AS
+		BEGIN TRAN
+		DECLARE @LASTID INT
+		INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode],[city])
+		VALUES (@streetname, @suburb,@province ,@postalcode,@city)
+		SET @LASTID = SCOPE_IDENTITY()
+
+		INSERT INTO [Employee] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate],[employed], [department])
+		VALUES (@firstName, @surname, @LASTID, @contactNumber, @email, @nationalIdNumber, @employmentDate,@employed, @department)
+COMMIT 
+GO
 
 CREATE PROCEDURE InsertClientIndividual @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @registrationDate DATE, @active INT,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
 AS

@@ -36,6 +36,7 @@ namespace PremiereSolutionProject.DAL
 
         #endregion
 
+        //Need assistance
         #region Insert
         public void Insert (Employee employee)
         {
@@ -64,6 +65,52 @@ namespace PremiereSolutionProject.DAL
         {
             CreateConnection();
             commandString = $"EXEC InsertCallCenterEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
+            {
+                OpenConnection();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void InsertMaintenanceEmployee(MaintenanceEmployee employee)
+        {
+            CreateConnection();
+            commandString = $"EXEC InsertMaintenanceEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
+            {
+                OpenConnection();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public void InsertServiceManager(ServiceManager employee)
+        {
+            CreateConnection();
+            commandString = $"EXEC InsertServiceManager @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
             Command = new SqlCommand(commandString, Connection);
 
             try

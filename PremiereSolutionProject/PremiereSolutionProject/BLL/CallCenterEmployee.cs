@@ -50,11 +50,6 @@ namespace PremiereSolutionProject.BLL
             return myEmployeeList;
         }
 
-        public void InsertCallCenterEmployee(CallCenterEmployee employee)
-        {
-            EmployeeDH employeeDH = new EmployeeDH();
-            employeeDH.InsertCallCenterEmployee(employee);
-        }
         #endregion
     }
 }
