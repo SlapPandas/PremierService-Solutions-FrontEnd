@@ -75,14 +75,18 @@ namespace PremiereSolutionProject.DAL
         public void UpdateServicePackedgeServiceList(ServicePackage servicePackage)
         {
             InsertAllServicesOfServicePackedge(servicePackage);
-            CreateConnection();
+            //CreateConnection();
+            SqlConnection packageConnection = new SqlConnection(connectionSring);
             commandString = $"EXEC UpdateServicePackedgeServiceList @id = '{servicePackage.PackageID}'";
-            Command = new SqlCommand(commandString, Connection);
+            //Command = new SqlCommand(commandString, Connection);
+            SqlCommand packageCommand = new SqlCommand(commandString, packageConnection);
 
             try
             {
-                OpenConnection();
-                Command.ExecuteNonQuery();
+                //OpenConnection();
+                packageConnection.Open();
+                //Command.ExecuteNonQuery();
+                packageCommand.ExecuteNonQuery();
             }
             catch (Exception e)
             {
@@ -90,7 +94,9 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { //CloseConnection();
+                packageConnection.Close();
+            }
         }
 
         #endregion
@@ -211,28 +217,24 @@ namespace PremiereSolutionProject.DAL
         #region SeperateMethods
         private void InsertAllServicesOfServicePackedge(ServicePackage servicePackage)
         {
-            SqlConnection servicePackagejobConnection = new SqlConnection(connectionSring);
-
             try
             {
-                servicePackagejobConnection.Open();
-                for (int i = 0; i < servicePackage.ServiceList.Count; i++)
+                using (SqlConnection servicePackageConnection = new SqlConnection(connectionSring))
                 {
-                    commandString = $"EXEC InsertIntoTVPPackedgeService @packedgeId = '{servicePackage.PackageID}',@serviceId = '{servicePackage.ServiceList[i].ServiceID}'";
-                    SqlCommand servicePackageCommand = new SqlCommand(commandString, servicePackagejobConnection);
-                    servicePackageCommand.ExecuteNonQuery();
+                    servicePackageConnection.Open();
+                    for (int i = 0; i < servicePackage.ServiceList.Count; i++)
+                    {
+                        commandString = $"EXEC InsertIntoTVPPackedgeService @packedgeId = '{servicePackage.PackageID}',@serviceId = '{servicePackage.ServiceList[i].ServiceID}'";
+                        SqlCommand servicePackageCommand = new SqlCommand(commandString, servicePackageConnection);
+                        servicePackageCommand.ExecuteNonQuery();
+                    }
                 }
-
             }
             catch (Exception e)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                servicePackagejobConnection.Close();
             }
         }
         private List<Service> SelectAllServicesLinkedToPackedge(int id)
