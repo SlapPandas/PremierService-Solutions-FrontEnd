@@ -43,7 +43,7 @@ namespace PremiereSolutionProject.PL
             
             // contract = new List<Contract>();
 
-            foreach (var item in contract)
+            foreach (Contract item in contract)
             {
                 cbxContractName.Items.Add(item.ContractType.ToString());
             }
