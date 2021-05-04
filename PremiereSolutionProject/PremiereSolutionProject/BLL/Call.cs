@@ -88,6 +88,13 @@ namespace PremiereSolutionProject.BLL
             this.employee = ccEmp;
             this.callNotes = cNotes;
         }
+
+        public Call(int id, DateTime start, CallCenterEmployee ccEmp)
+        {
+            this.callID = id;
+            this.startTime = start;
+            this.employee = ccEmp;
+        }
         #endregion
 
         #region Methods
@@ -120,13 +127,15 @@ namespace PremiereSolutionProject.BLL
             callDH.UpdateNotes(callid, callnotes);
         }
 
-        public int CreateCall(string employeeID)
+        public Call CreateCall()
         {
-            CallDH callDH = new CallDH();
-            int clientID = callDH.Insert(DateTime.Now, employeeID);
             //passes the current datetime to DAL
             //this is to initially log a call
-            return clientID;
+            CallDH callDH = new CallDH();
+            CallCenterEmployee c = GenerateRandomEmployee();
+            int callID = callDH.Insert(DateTime.Now, c.Id);
+            Call call = new Call(callID, DateTime.Now, c);
+            return call;
         }
 
         public void LogClientToCall(int callID, string clientID)
