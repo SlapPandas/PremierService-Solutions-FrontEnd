@@ -120,12 +120,13 @@ namespace PremiereSolutionProject.BLL
             callDH.UpdateNotes(callid, callnotes);
         }
 
-        public void CreateCall(string employeeID)
+        public int CreateCall(string employeeID)
         {
             CallDH callDH = new CallDH();
-            callDH.Insert(DateTime.Now, employeeID);
+            int clientID = callDH.Insert(DateTime.Now, employeeID);
             //passes the current datetime to DAL
             //this is to initially log a call
+            return clientID;
         }
 
         public void LogClientToCall(int callID, string clientID)
