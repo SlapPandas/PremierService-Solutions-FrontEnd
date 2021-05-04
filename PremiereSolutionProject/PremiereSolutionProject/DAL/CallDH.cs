@@ -11,10 +11,10 @@ namespace PremiereSolutionProject.DAL
     class CallDH : DatabaseConnection
     {
         #region Update
-        public void Update(Call call)
+        public void UpdateNotes(int id, string notes)
         {
             CreateConnection();
-            commandString = $"EXEC UpdateCall @id = '{call.CallID}', @start = '{call.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @end = '{call.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @client = '{call.Client}', @callCenterEmployee = '{call.Employee}', @notes = '{call.CallNotes}'";
+            commandString = $"EXEC UpdateCallNotes @id ='{id}', @callnotes ='{notes}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -37,10 +37,10 @@ namespace PremiereSolutionProject.DAL
         #endregion
 
         #region Insert
-        public void Insert(Call call)
+        public void InsertEndTime(int id, DateTime dateTime)
         {
             CreateConnection();
-            commandString = $"EXEC InsertCall @start = '{call.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @end = '{call.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @client = '{call.Client}', @callCenterEmployee = '{call.Employee}', @notes = '{call.CallNotes}'";
+            commandString = $"EXEC UpdateEndTime @id ='{id}', @endTime ='{dateTime}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
@@ -58,6 +58,73 @@ namespace PremiereSolutionProject.DAL
             {
                 CloseConnection();
             }
+        }
+        public void InsertIndividualClientToCall(int Callid, string ClientId)
+        {
+            CreateConnection();
+            commandString = $"EXEC UpdateCallClientIndividual @id ='{Callid}', @ClientIndividual ='{ClientId}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
+            {
+                OpenConnection();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public void InsertBusinessClientToCall(int Callid, string ClientId)
+        {
+            CreateConnection();
+            commandString = $"EXEC UpdateCallClientBusiness @id ='{Callid}', @ClientBusiness ='{ClientId}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
+            {
+                OpenConnection();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public int Insert(DateTime dateTime, string empId)
+        {
+            CreateConnection();
+            commandString = $"EXEC InsertCall @startTime ='{dateTime}', @employeeID = '{empId}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
+            {
+                OpenConnection();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return GetLastCallId();
         }
 
         #endregion
@@ -192,6 +259,35 @@ namespace PremiereSolutionProject.DAL
                 callCenterEmployeeConnection.Close();
             }
             return callCenterEmployee;
+        }
+        private int GetLastCallId()
+        {
+            int lastId = -1;
+            SqlConnection callConnection = new SqlConnection(connectionSring);
+            SqlDataReader callReader;
+            commandString = $"EXEC SelectLastCallId";
+            SqlCommand callCommand = new SqlCommand(commandString, callConnection);
+
+            try
+            {
+                callConnection.Open();
+                callReader = callCommand.ExecuteReader();
+                while (callReader.Read())
+                {
+                    lastId = (int)callReader["callId"];
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                callConnection.Close();
+            }
+            return lastId;
         }
         private Province GetProvince(string input)
         {

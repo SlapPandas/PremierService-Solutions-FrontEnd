@@ -147,7 +147,7 @@ CREATE TABLE "Call"
 	(
 	callID INT NOT NULL IDENTITY(1,1)  PRIMARY KEY,
 	startTime DATETIME NOT NULL,
-	endTime DATETIME NOT NULL,
+	endTime DATETIME NULL,
 	ClientIndividualID INT NULL FOREIGN KEY (ClientIndividualID) REFERENCES ClientIndividual (clientIndividualID),
 	ClientBusinessID INT NULL FOREIGN KEY (ClientBusinessID) REFERENCES ClientBusiness (clientBusinessID),
 	employeeID INT NOT NULL FOREIGN KEY (employeeID) REFERENCES Employee (employeeID),
@@ -589,21 +589,39 @@ BEGIN
 	COMMIT
 END
 GO 
-
-CREATE PROCEDURE UpdateCall @id INT, @startTime DATETIME, @endTime DATETIME, @ClientIndividualID INT, @ClientBusinessID INT, @employeeID INT, @callNotes VARCHAR(255)
+CREATE PROCEDURE UpdateEndTime @id INT, @endTime DATETIME
 AS
 BEGIN
 	BEGIN TRAN
 
 	UPDATE Call
-	SET ClientIndividualID = @ClientIndividualID, ClientBusinessID = @ClientBusinessID, employeeID = @employeeID 
+	SET endTime = @endTime
 	WHERE callID = @id
 
 	COMMIT
 END
 GO 
-
-CREATE PROCEDURE UpdateBusinessClientEmployee @id VARCHAR(100), @firstname VARCHAR(100), @surname VARCHAR(100), @department VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100), @businessID VARCHAR(100)
+CREATE PROCEDURE UpdateCallClientIndividual @id INT, @ClientIndividual VARCHAR(50)
+AS
+BEGIN
+	BEGIN TRAN
+		UPDATE Call
+		SET ClientIndividualID = (SELECT clientIndividualID FROM ClientIndividual WHERE clientIndividualClientNumber = @ClientIndividual)
+		WHERE callID = @id
+	COMMIT
+END
+GO
+CREATE PROCEDURE UpdateCallClientBusiness @id INT, @ClientBusiness VARCHAR(50)
+AS
+BEGIN
+	BEGIN TRAN
+		UPDATE Call
+		SET ClientIndividualID = (SELECT clientIndividualID FROM ClientIndividual WHERE clientIndividualClientNumber = @ClientBusiness)
+		WHERE callID = @id
+	COMMIT
+END
+GO
+CREATE PROCEDURE UpdateBusinessClientEmployee @id VARCHAR(100), @firstname VARCHAR(100), @surname VARCHAR(100), @department VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100)
 AS
 BEGIN
 	BEGIN TRAN
@@ -873,6 +891,44 @@ BEGIN
 END 
 GO
 
+CREATE PROCEDURE InsertCallCenterEmployee @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentDate DATE, @employed INT, @department VARCHAR(25) ,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
+AS
+		BEGIN TRAN
+		DECLARE @LASTID INT
+		INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode],[city])
+		VALUES (@streetname, @suburb,@province ,@postalcode,@city)
+		SET @LASTID = SCOPE_IDENTITY()
+
+		INSERT INTO [Employee] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate],[employed], [department])
+		VALUES (@firstName, @surname, @LASTID, @contactNumber, @email, @nationalIdNumber, @employmentDate,@employed, @department)
+COMMIT 
+GO
+
+CREATE PROCEDURE InsertMaintenanceEmployee @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentDate DATE, @employed INT, @department VARCHAR(25) ,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
+AS
+		BEGIN TRAN
+		DECLARE @LASTID INT
+		INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode],[city])
+		VALUES (@streetname, @suburb,@province ,@postalcode,@city)
+		SET @LASTID = SCOPE_IDENTITY()
+
+		INSERT INTO [Employee] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate],[employed], [department])
+		VALUES (@firstName, @surname, @LASTID, @contactNumber, @email, @nationalIdNumber, @employmentDate,@employed, @department)
+COMMIT 
+GO
+
+CREATE PROCEDURE InsertServiceManager @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentDate DATE, @employed INT, @department VARCHAR(25) ,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
+AS
+		BEGIN TRAN
+		DECLARE @LASTID INT
+		INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode],[city])
+		VALUES (@streetname, @suburb,@province ,@postalcode,@city)
+		SET @LASTID = SCOPE_IDENTITY()
+
+		INSERT INTO [Employee] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate],[employed], [department])
+		VALUES (@firstName, @surname, @LASTID, @contactNumber, @email, @nationalIdNumber, @employmentDate,@employed, @department)
+COMMIT 
+GO
 
 CREATE PROCEDURE InsertClientIndividual @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @registrationDate DATE, @active INT,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
 AS
@@ -937,11 +993,12 @@ BEGIN
 	VALUES (@employeeID, @specialisationID)
 END 
 GO
-CREATE PROCEDURE InsertCall @startTime DATETIME, @endTime DATETIME, @ClientIndividualID INT, @ClientBusinessID INT, @employeeID INT, @callNotes VARCHAR (255)
+
+CREATE PROCEDURE InsertCall @startTime DATETIME, @employeeID VARCHAR(50)
 AS
 BEGIN
-	INSERT INTO [Call] ([startTime], [endTime], [ClientIndividualID], [ClientBusinessID], [employeeID], [callNotes])
-	VALUES (@startTime, @endTime, @ClientIndividualID, @ClientBusinessID, @employeeID, @callNotes)
+	INSERT INTO [Call] ([startTime], [employeeID])
+	VALUES (@startTime, (SELECT employeeID FROM Employee WHERE employeeNumber = @employeeID))
 END 
 GO
 CREATE PROCEDURE InsertServiceRequest @callId INT, @closed INT, @description VARCHAR(255),@priorityLevel VARCHAR(255)
@@ -1170,6 +1227,13 @@ BEGIN
 	INNER JOIN ClientBusiness ON [Call].ClientBusinessID = ClientBusiness.clientBusinessID
 	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
 	WHERE ClientBusiness.clientBusinessClientNumber = @id
+END
+GO
+CREATE PROCEDURE SelectLastCallId AS
+BEGIN
+	DECLARE @last INT
+	SET @last = IDENT_CURRENT('Call')
+	SELECT @last AS callId
 END
 GO
 

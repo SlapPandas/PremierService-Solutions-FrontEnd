@@ -46,10 +46,18 @@
             this.txtNationalID = new System.Windows.Forms.TextBox();
             this.txtEmai = new System.Windows.Forms.TextBox();
             this.txtContactNumber = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtStreetName = new System.Windows.Forms.TextBox();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.txtFirstname = new System.Windows.Forms.TextBox();
             this.txtEmployeeID = new System.Windows.Forms.TextBox();
+            this.txtPostalCode = new System.Windows.Forms.TextBox();
+            this.txtSuburb = new System.Windows.Forms.TextBox();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.cbxProvince = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,9 +161,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(241, 238);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 13);
+            this.label5.Size = new System.Drawing.Size(66, 13);
             this.label5.TabIndex = 74;
-            this.label5.Text = "Address";
+            this.label5.Text = "Street Name";
             // 
             // label4
             // 
@@ -213,12 +221,12 @@
             this.txtContactNumber.Size = new System.Drawing.Size(100, 20);
             this.txtContactNumber.TabIndex = 67;
             // 
-            // txtAddress
+            // txtStreetName
             // 
-            this.txtAddress.Location = new System.Drawing.Point(245, 253);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(100, 20);
-            this.txtAddress.TabIndex = 66;
+            this.txtStreetName.Location = new System.Drawing.Point(245, 253);
+            this.txtStreetName.Name = "txtStreetName";
+            this.txtStreetName.Size = new System.Drawing.Size(100, 20);
+            this.txtStreetName.TabIndex = 66;
             // 
             // txtSurname
             // 
@@ -241,12 +249,85 @@
             this.txtEmployeeID.Size = new System.Drawing.Size(100, 20);
             this.txtEmployeeID.TabIndex = 63;
             // 
+            // txtPostalCode
+            // 
+            this.txtPostalCode.Location = new System.Drawing.Point(416, 302);
+            this.txtPostalCode.Name = "txtPostalCode";
+            this.txtPostalCode.Size = new System.Drawing.Size(100, 20);
+            this.txtPostalCode.TabIndex = 85;
+            // 
+            // txtSuburb
+            // 
+            this.txtSuburb.Location = new System.Drawing.Point(416, 205);
+            this.txtSuburb.Name = "txtSuburb";
+            this.txtSuburb.Size = new System.Drawing.Size(100, 20);
+            this.txtSuburb.TabIndex = 86;
+            // 
+            // txtCity
+            // 
+            this.txtCity.Location = new System.Drawing.Point(416, 253);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(100, 20);
+            this.txtCity.TabIndex = 87;
+            // 
+            // cbxProvince
+            // 
+            this.cbxProvince.FormattingEnabled = true;
+            this.cbxProvince.Location = new System.Drawing.Point(416, 353);
+            this.cbxProvince.Name = "cbxProvince";
+            this.cbxProvince.Size = new System.Drawing.Size(103, 21);
+            this.cbxProvince.TabIndex = 88;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(413, 190);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 89;
+            this.label10.Text = "Suburb";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(413, 238);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(24, 13);
+            this.label11.TabIndex = 90;
+            this.label11.Text = "City";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(413, 285);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(64, 13);
+            this.label12.TabIndex = 91;
+            this.label12.Text = "Postal Code";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(413, 337);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(49, 13);
+            this.label13.TabIndex = 92;
+            this.label13.Text = "Province";
+            // 
             // FrmManageMaintenanceEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(536, 466);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.cbxProvince);
+            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.txtSuburb);
+            this.Controls.Add(this.txtPostalCode);
             this.Controls.Add(this.cbxAvailable);
             this.Controls.Add(this.dgvEmployee);
             this.Controls.Add(this.btnUpdate);
@@ -265,7 +346,7 @@
             this.Controls.Add(this.txtNationalID);
             this.Controls.Add(this.txtEmai);
             this.Controls.Add(this.txtContactNumber);
-            this.Controls.Add(this.txtAddress);
+            this.Controls.Add(this.txtStreetName);
             this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.txtFirstname);
             this.Controls.Add(this.txtEmployeeID);
@@ -299,9 +380,17 @@
         private System.Windows.Forms.TextBox txtNationalID;
         private System.Windows.Forms.TextBox txtEmai;
         private System.Windows.Forms.TextBox txtContactNumber;
-        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.TextBox txtStreetName;
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.TextBox txtFirstname;
         private System.Windows.Forms.TextBox txtEmployeeID;
+        private System.Windows.Forms.TextBox txtPostalCode;
+        private System.Windows.Forms.TextBox txtSuburb;
+        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.ComboBox cbxProvince;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }

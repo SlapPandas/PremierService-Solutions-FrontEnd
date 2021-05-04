@@ -11,7 +11,6 @@ namespace PremiereSolutionProject.DAL
 {
     class BusinessClientDH : DatabaseConnection, IDataconnection
     {
-        //Testing Problems
         #region Update
         public void Update(BusinessClient businessClient)
         {
@@ -35,7 +34,6 @@ namespace PremiereSolutionProject.DAL
             }
 
         }
-        //Works
         public void UpdateState(string id, bool active)
         {
             CreateConnection();
@@ -60,7 +58,6 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Works
         #region Insert
         public void Insert(BusinessClient businessClient)
         {
@@ -86,7 +83,6 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Think works (Ask Matin)
         #region Select
         public List<BusinessClient> SelectAllBusinessClients()
         {

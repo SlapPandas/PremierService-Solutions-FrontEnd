@@ -14,8 +14,8 @@ namespace PremiereSolutionProject.PL
         [STAThread]
         static void Main()
         {
-            //TestingGrounds testingGrounds = new TestingGrounds();
-            //testingGrounds.Run(true);
+            TestingGrounds testingGrounds = new TestingGrounds();
+            testingGrounds.Run(true);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
