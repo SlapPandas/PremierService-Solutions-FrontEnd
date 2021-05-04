@@ -38,6 +38,7 @@ namespace PremiereSolutionProject.DAL
         #endregion
 
         #region Update
+
         public void Update(Contract contract)
         {
             CreateConnection();
@@ -59,6 +60,26 @@ namespace PremiereSolutionProject.DAL
             {
                 CloseConnection();
             }
+        }
+        public void UpdateContractPackageList(Contract contract)
+        {
+            InsertAllServicesPackedgesOfContract(contract);
+            CreateConnection();
+            commandString = $"EXEC UpdateContractPackageList @id = '{contract.ContractID}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
+            {
+                OpenConnection();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { CloseConnection(); }
         }
         #endregion
 
@@ -84,6 +105,25 @@ namespace PremiereSolutionProject.DAL
             {
                 CloseConnection();
             }
+        }
+        public void InsertSingleServicePackedgeToContract(string contractId, int ServicePackageId)
+        {
+            CreateConnection();
+            commandString = $"EXEC InsertServiceContractLink @ContractID ='{contractId}', @ServicePackageID ='{ServicePackageId}'";
+            Command = new SqlCommand(commandString, Connection);
+
+            try
+            {
+                OpenConnection();
+                Command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { CloseConnection(); }
         }
         #endregion
 
@@ -151,7 +191,7 @@ namespace PremiereSolutionProject.DAL
                 Reader = Command.ExecuteReader();
                 while (Reader.Read())
                 {
-                    contractList.Add(new Contract((string)Reader["contractNumber"], (DateTime)Reader["startDate"], (DateTime)Reader["endDate"], new IndividualClient((string)Reader["clientIndividualClientNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["RegistrationDate"], GetTrueFalseFromBit((int)Reader["active"])), SelectAllServicePackedgesLinkedToContract((int)Reader["contractID"]), GetTrueFalseFromBit((int)Reader["active"]), (string)Reader["priorityLevel"], Reader.GetDouble(Reader.GetOrdinal("price")), (string)Reader["contractType"]));
+                    contractList.Add(new Contract((string)Reader["contractNumber"], (DateTime)Reader["startDate"], (DateTime)Reader["endDate"], new IndividualClient((string)Reader["clientIndividualClientNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["RegistrationDate"], GetTrueFalseFromBit((int)Reader["active"])), SelectAllServicePackedgesLinkedToContractState((int)Reader["contractID"]), GetTrueFalseFromBit((int)Reader["active"]), (string)Reader["priorityLevel"], Reader.GetDouble(Reader.GetOrdinal("price")), (string)Reader["contractType"]));
                 }
             }
             catch (Exception e)
@@ -177,7 +217,7 @@ namespace PremiereSolutionProject.DAL
                 Reader = Command.ExecuteReader();
                 while (Reader.Read())
                 {
-                    contractList.Add(new Contract((string)Reader["contractNumber"], (DateTime)Reader["startDate"], (DateTime)Reader["endDate"], new BusinessClient((string)Reader["clientBusinessClientNumber"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (DateTime)Reader["RegistrationDate"], (string)Reader["taxNumber"], (string)Reader["busuinessName"], GetTrueFalseFromBit((int)Reader["active"])), SelectAllServicePackedgesLinkedToContract((int)Reader["contractID"]), GetTrueFalseFromBit((int)Reader["active"]), (string)Reader["priorityLevel"], Reader.GetDouble(Reader.GetOrdinal("price")), (string)Reader["contractType"]));
+                    contractList.Add(new Contract((string)Reader["contractNumber"], (DateTime)Reader["startDate"], (DateTime)Reader["endDate"], new BusinessClient((string)Reader["clientBusinessClientNumber"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (DateTime)Reader["RegistrationDate"], (string)Reader["taxNumber"], (string)Reader["busuinessName"], GetTrueFalseFromBit((int)Reader["active"])), SelectAllServicePackedgesLinkedToContractState((int)Reader["contractID"]), GetTrueFalseFromBit((int)Reader["active"]), (string)Reader["priorityLevel"], Reader.GetDouble(Reader.GetOrdinal("price")), (string)Reader["contractType"]));
                 }
             }
             catch (Exception e)
@@ -194,7 +234,32 @@ namespace PremiereSolutionProject.DAL
         #endregion
 
         #region SeperateMethods
+        private void InsertAllServicesPackedgesOfContract(Contract contract)
+        {
+            SqlConnection contractPackageConnection = new SqlConnection(connectionSring);
 
+            try
+            {
+                contractPackageConnection.Open();
+                for (int i = 0; i < contract.PackageList.Count; i++)
+                {
+                    commandString = $"EXEC InsertIntoTVPContractServicePackage @contractId ='{contract.ContractID}',@servicePackageId ='{contract.PackageList[i].PackageID}'";
+                    SqlCommand contractPackageCommand = new SqlCommand(commandString, contractPackageConnection);
+                    contractPackageCommand.ExecuteNonQuery();
+                }
+
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                contractPackageConnection.Close();
+            }
+        }
         private List<Service> SelectAllServicesLinkedToPackedge(int id)
         {
             SqlConnection serviceConnection = new SqlConnection(connectionSring);
@@ -225,6 +290,36 @@ namespace PremiereSolutionProject.DAL
             }
             return serivceList;
         }
+        private List<Service> SelectAllServicesLinkedToPackedgeState(int id)
+        {
+            SqlConnection serviceConnection = new SqlConnection(connectionSring);
+            SqlDataReader serviceReader;
+            List<Service> serivceList = new List<Service>();
+            commandString = $"EXEC SelectAllServicesByServicePackedgeWithState @id = '{id}'";
+            SqlCommand serviceCommand = new SqlCommand(commandString, serviceConnection);
+
+            try
+            {
+                serviceConnection.Open();
+                serviceReader = serviceCommand.ExecuteReader();
+                while (serviceReader.Read())
+                {
+                    serivceList.Add(new Service((int)serviceReader["serviceStateID"], (string)serviceReader["name"], (string)serviceReader["description"]));
+
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                serviceConnection.Close();
+            }
+            return serivceList;
+        }
         private List<ServicePackage> SelectAllServicePackedgesLinkedToContract(int contractid)
         {
             SqlConnection servicePackedgeConnection = new SqlConnection(connectionSring);
@@ -240,6 +335,36 @@ namespace PremiereSolutionProject.DAL
                 while (servicePackedgeReader.Read())
                 {
                     servicePackedgeList.Add(new ServicePackage((int)servicePackedgeReader["servicePackageID"], (string)servicePackedgeReader["name"], SelectAllServicesLinkedToPackedge((int)servicePackedgeReader["servicePackageID"]), GetTrueFalseFromBit((int)servicePackedgeReader["onPromotion"]), (DateTime)servicePackedgeReader["promotionStartDate"], (DateTime)servicePackedgeReader["promotionEndDate"], servicePackedgeReader.GetDouble(servicePackedgeReader.GetOrdinal("promotionPercentAmount")), servicePackedgeReader.GetDouble(servicePackedgeReader.GetOrdinal("price"))));
+
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally
+            {
+                servicePackedgeConnection.Close();
+            }
+            return servicePackedgeList;
+        }
+        private List<ServicePackage> SelectAllServicePackedgesLinkedToContractState(int contractid)
+        {
+            SqlConnection servicePackedgeConnection = new SqlConnection(connectionSring);
+            SqlDataReader servicePackedgeReader;
+            List<ServicePackage> servicePackedgeList = new List<ServicePackage>();
+            commandString = $"EXEC SelectAllServicePackedgesLinkedToContractState @id = '{contractid}'";
+            SqlCommand servicePackedgeCommand = new SqlCommand(commandString, servicePackedgeConnection);
+
+            try
+            {
+                servicePackedgeConnection.Open();
+                servicePackedgeReader = servicePackedgeCommand.ExecuteReader();
+                while (servicePackedgeReader.Read())
+                {
+                    servicePackedgeList.Add(new ServicePackage((int)servicePackedgeReader["servicePackageStateID"], (string)servicePackedgeReader["name"], SelectAllServicesLinkedToPackedgeState((int)servicePackedgeReader["servicePackageStateID"]), GetTrueFalseFromBit((int)servicePackedgeReader["onPromotion"]), (DateTime)servicePackedgeReader["promotionStartDate"], (DateTime)servicePackedgeReader["promotionEndDate"], servicePackedgeReader.GetDouble(servicePackedgeReader.GetOrdinal("promotionPercentAmount")), servicePackedgeReader.GetDouble(servicePackedgeReader.GetOrdinal("price"))));
 
                 }
             }

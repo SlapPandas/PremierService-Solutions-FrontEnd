@@ -154,9 +154,10 @@ namespace PremiereSolutionProject.BLL
             //there is no return value, so i cannot retun null.
         }
 
-        public void LogEndTimeOfCall(int callID)
+        public void LogEndTimeOfCall(int callID, string notes)
         {
             CallDH callDH = new CallDH();
+            callDH.UpdateNotes(callID, notes);
             callDH.InsertEndTime(callID, DateTime.Now);
         }
         

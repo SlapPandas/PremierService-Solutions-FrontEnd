@@ -498,6 +498,13 @@ AS
 		VALUES (@packedgeId,@serviceId)
 	COMMIT
 GO
+CREATE PROC InsertIntoTVPContractServicePackage @contractId VARCHAR(50),@servicePackageId INT
+AS
+	BEGIN TRAN
+		INSERT INTO TVP(idIntOne,idIntTwo)
+		VALUES ((SELECT contractID FROM [Contract] WHERE contractNumber = @contractId),@servicePackageId)
+	COMMIT
+GO
 
 --DELETE Procedures
 CREATE PROC DeleteJob @id INT
@@ -801,6 +808,18 @@ AS
 		DELETE FROM TVP
 	COMMIT
 GO
+CREATE PROC UpdateContractPackageList @id VARCHAR(50)
+AS
+	BEGIN TRAN
+		DELETE FROM ServiceContractLink
+		WHERE ServiceContractLink.ContractID = (SELECT contractID FROM [Contract] WHERE contractNumber = @id)
+
+		INSERT INTO ServiceContractLink(ContractID,ServicePackedgeID)
+		SELECT idIntOne,idIntTwo FROM TVP
+
+		DELETE FROM TVP
+	COMMIT
+GO
 CREATE PROC UpdateService @id INT, @name VARCHAR(100),@description VARCHAR(255)
 AS
 	BEGIN TRAN
@@ -1091,11 +1110,11 @@ BEGIN
 	VALUES (@contractStateID, @ServicePackageStateID)
 END 
 GO
-CREATE PROCEDURE InsertServiceContractLink @ContractID INT, @ServicePackedgeID INT
+CREATE PROCEDURE InsertServiceContractLink @ContractID VARCHAR(40), @ServicePackageID INT
 AS
 BEGIN
 	INSERT INTO [ServiceContractLink] ([ContractID], [ServicePackedgeID])
-	VALUES (@ContractID, @ServicePackedgeID)
+	VALUES ((SELECT contractID FROM [Contract] WHERE contractNumber = @ContractID), @ServicePackageID)
 END 
 GO
 CREATE PROCEDURE InsertServicePackageStateLink @ServicePackageStateID INT, @ServiceStateID INT
@@ -1294,6 +1313,14 @@ BEGIN
 	INNER JOIN ServiceContractLink ON ServicePackage.servicePackageID = ServiceContractLink.ServicePackedgeID
 	INNER JOIN [Contract] ON ServiceContractLink.ContractID = ServiceContractLink.ContractID
 	WHERE [Contract].contractID = @id
+END
+GO
+CREATE PROCEDURE SelectAllServicePackedgesLinkedToContractState @id INT AS
+BEGIN
+	SELECT * FROM ServicePackageState
+	INNER JOIN ServiceContractStateLink ON ServicePackageState.servicePackageStateID = ServiceContractStateLink.servicePackageStateID
+	INNER JOIN [ContractState] ON ServiceContractStateLink.contractStateID = [ContractState].contractStateID
+	WHERE [ContractState].contractStateID = @id
 END
 GO
 CREATE PROC SelectAllContractsByIndividualClientId @id VARCHAR(100)
@@ -1610,10 +1637,10 @@ GO
 CREATE PROCEDURE SelectAllServicesByServicePackedgeWithState @id INT
 AS
 BEGIN TRAN
-	SELECT * FROM [Service]
-	INNER JOIN ServicePackageLink ON [Service].serviceID = ServicePackageLink.ServiceID
-	INNER JOIN ServicePackage ON ServicePackageLink.ServicePackageID = ServicePackage.servicePackageID
-	WHERE ServicePackage.servicePackageID = @id
+	SELECT * FROM [ServiceState]
+	INNER JOIN ServicePackageStateLink ON [ServiceState].serviceStateID = ServicePackageStateLink.ServiceStateID
+	INNER JOIN ServicePackageState ON ServicePackageStateLink.ServicePackageStateID = ServicePackageState.servicePackageStateID
+	WHERE ServicePackageState.servicePackageStateID = @id
 COMMIT
 GO
 CREATE PROCEDURE SelectSpecialisationById @id INT
