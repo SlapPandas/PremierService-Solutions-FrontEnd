@@ -102,7 +102,7 @@ namespace PremiereSolutionProject.BLL
         public List<Job> SelectAllJobs() // get a list of all jobs
         {
             JobDH jobDH = new JobDH();
-            return jobDH.SelectAllJobs();
+            return jobDH.SelectAllJobsWithPriority();
         }
 
         public List<Job> SelectPendngJobs() // get a list of all pending jobs
