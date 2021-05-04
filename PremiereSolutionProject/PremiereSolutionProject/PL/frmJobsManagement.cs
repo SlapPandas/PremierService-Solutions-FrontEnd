@@ -22,6 +22,7 @@ namespace PremiereSolutionProject.PL
         List<MaintenanceEmployee> myEmployee = new List<MaintenanceEmployee>();
         BindingSource bs = new BindingSource();
         Job SelectedJob;
+        List<Job> NewJobList = new List<Job>();
 
 
         public frmJobsManagement()
@@ -47,6 +48,24 @@ namespace PremiereSolutionProject.PL
         private void frmJobsManagement_Load(object sender, EventArgs e)
         {
 
+            foreach (Job J in JB.SelectAllJobs())
+            {
+                ListViewItem lst = new ListViewItem(new string[]
+                {
+                    J.JobID.ToString(),
+                    J.JobState.ToString(),
+                    J.JobNotes,
+                  //  J.Specialisation.GetSpecialisationNames, Into another ListView
+                    J.EmployeesNeeded.ToString(),
+                    J.ServiceRequestID.ToString(),
+                    J.PriorityLevel
+                });
+
+                lst.Tag = J;
+                lstJobs.Items.Add(lst);
+
+                NewJobList.Add(J);
+            }
 
 
             myJob = JB.SelectAllJobs();
@@ -54,15 +73,15 @@ namespace PremiereSolutionProject.PL
 
             myEmployee = MainEmp.SelectAllMaintenaceEmpployees();
 
-            foreach (Job j in JB.SelectPendngJobs())
+            foreach (Job j in JB.SelectAllJobs())
             {
-                ListViewItem lst = new ListViewItem(new string[]
+                ListViewItem lsty = new ListViewItem(new string[]
                 {
                     j.JobID.ToString(),
                     j.JobState.ToString()
                 });
 
-                lstPending.Items.Add(lst);
+                lstPending.Items.Add(lsty);
             }
 
 
@@ -111,10 +130,6 @@ namespace PremiereSolutionProject.PL
             {
                 throw new FormatException("No State written");
             }
-            else if (string.IsNullOrEmpty(cbxSpecialisationName.Text))
-            {
-                throw new FormatException("No Specialisation Seelected");
-            }
             else if (nudEmployees.Value < 0)
             {
                 throw new FormatException("Invalid Numeric Selection");
@@ -140,19 +155,42 @@ namespace PremiereSolutionProject.PL
 
         public void UpdateJob()
         {
-            /*cbxCurrentState.Text = SelectedJob.JobState;
-            rtbNotes.Text = SelectedJob.JobNotes;
-            cbxSpecialisationName = SelectedJob.Specialisation;
-            nudEmployees.Value = SelectedJob.EmployeesNeeded;
-            lbxCurrentAssigned.Items.Add();*/
+            //cbxCurrentState.Text = SelectedJob.JobState;
+            //rtbNotes.Text = SelectedJob.JobNotes;
+            //cbxSpecialisationName = SelectedJob.Specialisation;
+            //nudEmployees.Value = SelectedJob.EmployeesNeeded;
+            //lbxCurrentAssigned.Items.Add();
 
-            
+
         }
 
         private void dgvJobs_SelectionChanged(object sender, EventArgs e)
         {
             SelectedJob = (Job)bs.Current;
             UpdateJob();
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            //if (lstJobs.SelectedItems.Count > 0 )
+            //{
+            //    Job NewJob = lstJobs.SelectedItems[0].Tag as Job;
+
+            //    List<Specialisation> newSpList = new List<Specialisation>();
+
+            //    List<Employee> NewEmp = new List<Employee>();
+
+            //    newSpList.Add(NewJob[l);
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No record wass selected ", "Jobs",MessageBoxButtons.OK);
+            //}
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

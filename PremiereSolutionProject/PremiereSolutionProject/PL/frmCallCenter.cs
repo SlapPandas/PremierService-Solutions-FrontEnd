@@ -42,7 +42,6 @@ namespace PremiereSolutionProject.PL
         {
             new frmClientInfo().Show();
             this.Hide();
-
         }
 
         
