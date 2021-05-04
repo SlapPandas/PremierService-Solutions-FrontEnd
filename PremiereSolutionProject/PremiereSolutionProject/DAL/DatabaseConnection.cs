@@ -92,6 +92,25 @@ namespace PremiereSolutionProject.DAL
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
         }
+        public void InsertCommand(string input)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = input;
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+        }
         #endregion
     }
 }
