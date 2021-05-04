@@ -96,10 +96,10 @@ namespace PremiereSolutionProject.DAL
         #endregion
 
         #region Insert
-        public void InsertSingleServiceToServicePackadge(int ServicePackedgeId, int Service)
+        public void InsertSingleServiceToServicePackadge(int ServicePackageId, int ServiceId)
         {
             CreateConnection();
-            commandString = $"EXEC InsertServicePackageLink @ServicePackageID = '{ServicePackedgeId}', @ServiceID = '{Service}'";
+            commandString = $"EXEC InsertServicePackageLink @ServicePackageID = '{ServicePackageId}', @ServiceID = '{ServiceId}'";
             Command = new SqlCommand(commandString, Connection);
 
             try
