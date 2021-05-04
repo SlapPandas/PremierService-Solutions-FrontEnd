@@ -113,20 +113,43 @@ namespace PremiereSolutionProject.BLL
 
             return ccEmpList[random.Next(ccEmpList.Count)];
         }
-        //TODO: reimplement Call Insert
-        /*
-        public void UpdateCall(Call call)
+
+        public void UpdateCallNotes(int callid, string callnotes)
         {
             CallDH callDH = new CallDH();
-            callDH.Update(call);
+            callDH.UpdateNotes(callid, callnotes);
         }
 
-        public void InsertCall(Call call)
+        public void CreateCall(string employeeID)
         {
             CallDH callDH = new CallDH();
-            callDH.Insert(call);
+            callDH.Insert(DateTime.Now, employeeID);
+            //passes the current datetime to DAL
+            //this is to initially log a call
         }
-        */
+
+        public void LogClientToCall(int callID, string clientID)
+        {
+            CallDH callDH = new CallDH();
+
+            if (clientID[0] == 'A')
+            {
+                callDH.InsertIndividualClientToCall(callID, clientID);
+            }
+            else if (clientID[0] == 'B')
+            {
+                callDH.InsertBusinessClientToCall(callID, clientID);
+            }
+            // do I need to make something here to show if it did not work?
+            //there is no return value, so i cannot retun null.
+        }
+
+        public void LogEndTimeOfCall(int callID)
+        {
+            CallDH callDH = new CallDH();
+            callDH.InsertEndTime(callID, DateTime.Now);
+        }
+        
         //To select all the calls of a specific client according to ID
         public List<Call> SelectAllCallsOfClient(string ID)
         {
