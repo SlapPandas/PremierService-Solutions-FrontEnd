@@ -24,48 +24,18 @@ namespace PremiereSolutionProject.DAL
             {
                 return false;
             }
-
-            try
+            else
             {
-                using (SqlConnection connection = new SqlConnection(connectionSring))
-                {
-                    connection.Open();
-                    commandString = $"EXEC DeleteSpecialisation @id = '{specialisation.SpecialisationID}'";
-                    SqlCommand command = new SqlCommand(commandString, connection);
-                    command.ExecuteNonQuery();
-                }
+                DeleteCommand($"EXEC DeleteSpecialisation @id = '{specialisation.SpecialisationID}'");
                 return true;
             }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-                return false;
-            }
-            finally {}
         }
         #endregion
 
         #region Insert
         public void Insert(Specialisation specialisation)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertSpecialisation @name = '{specialisation.SpecialisationName}', @description = '{specialisation.Description}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            InsertCommand($"EXEC InsertSpecialisation @name = '{specialisation.SpecialisationName}', @description = '{specialisation.Description}'");
         }
         #endregion
 

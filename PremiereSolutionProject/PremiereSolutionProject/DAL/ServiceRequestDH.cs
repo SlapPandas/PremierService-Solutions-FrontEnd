@@ -14,142 +14,54 @@ namespace PremiereSolutionProject.DAL
         #region Delete
         public void Delete(ServiceRequest serviceRequest)
         {
-            CreateConnection();
-            commandString = $"EXEC DeleteServiceRequest @id = '{serviceRequest.ServiceRequestID}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            DeleteCommand($"EXEC DeleteServiceRequest @id = '{serviceRequest.ServiceRequestID}'");
         }
         #endregion
 
         #region Update
         public void Update(ServiceRequest serviceRequest)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateServiceRequest @id = '{serviceRequest.ServiceRequestID}', @description = '{serviceRequest.Description}', @priorityLevel = '{serviceRequest.PriorityLevel}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateServiceRequest @id = '{serviceRequest.ServiceRequestID}', @description = '{serviceRequest.Description}', @priorityLevel = '{serviceRequest.PriorityLevel}'");
         }
         public void UpdateState(ServiceRequest serviceRequest)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateServiceRequestCurrentState @id = '{serviceRequest.ServiceRequestID}', @closed = '{GetIntFromBool(serviceRequest.Closed)}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateServiceRequestCurrentState @id = '{serviceRequest.ServiceRequestID}', @closed = '{GetIntFromBool(serviceRequest.Closed)}'");
         }
         public void UpdateSpecializationList(ServiceRequest serviceRequest)
         {
             InsertAllSpeciliozationOfServiceRequest(serviceRequest);
-            CreateConnection();
-            commandString = $"EXEC UpdateServiceRequestSpecializationList @id = '{serviceRequest.ServiceRequestID}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateServiceRequestSpecializationList @id = '{serviceRequest.ServiceRequestID}'");
         }
         #endregion
 
         #region Insert
         public void Insert(ServiceRequest serviceRequest)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertServiceRequest @callId ='{serviceRequest.CallID}', @closed ='{GetIntFromBool(serviceRequest.Closed)}', @description ='{serviceRequest.Description}',@priorityLevel ='{serviceRequest.PriorityLevel}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            InsertCommand($"EXEC InsertServiceRequest @callId ='{serviceRequest.CallID}', @closed ='{GetIntFromBool(serviceRequest.Closed)}', @description ='{serviceRequest.Description}',@priorityLevel ='{serviceRequest.PriorityLevel}'");
         }
         public void InsertWithSpecilizationList(ServiceRequest serviceRequest)
         {
             InsertAllSpeciliozationOfNewServiceRequest(serviceRequest);
-            CreateConnection();
-            commandString = $"EXEC InsertServiceRequestWithSpecializationList @callId ='{serviceRequest.CallID}', @closed ='{GetIntFromBool(serviceRequest.Closed)}', @description ='{serviceRequest.Description}',@priorityLevel ='{serviceRequest.PriorityLevel}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            InsertCommand($"EXEC InsertServiceRequestWithSpecializationList @callId ='{serviceRequest.CallID}', @closed ='{GetIntFromBool(serviceRequest.Closed)}', @description ='{serviceRequest.Description}',@priorityLevel ='{serviceRequest.PriorityLevel}'");
         }
         #endregion
 
         #region Select
         public List<ServiceRequest> SelectAllServiceRequests()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllServiceRequests";
-            Command = new SqlCommand(commandString, Connection);
             List<ServiceRequest> ServiceRequestList = new List<ServiceRequest>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    ServiceRequestList.Add(new ServiceRequest((int)Reader["serviceRequestID"], GetTrueFalseFromBit((int)Reader["closed"]), (string)Reader["description"], (int)Reader["callID"], GetSpecialisationById((int)Reader["serviceRequestID"]), (string)Reader["priorityLevel"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServiceRequests";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ServiceRequestList.Add(new ServiceRequest((int)reader["serviceRequestID"], GetTrueFalseFromBit((int)reader["closed"]), (string)reader["description"], (int)reader["callID"], GetSpecialisationById((int)reader["serviceRequestID"]), (string)reader["priorityLevel"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -158,24 +70,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
-
+            finally {}
 
             return ServiceRequestList;
         }
         public List<ServiceRequest> SelectAllServiceRequestsByBusinessClient(string id)
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllServiceRequestsByBusinessClient @id = '{id}'";
-            Command = new SqlCommand(commandString, Connection);
             List<ServiceRequest> ServiceRequestList = new List<ServiceRequest>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    ServiceRequestList.Add(new ServiceRequest((int)Reader["serviceRequestID"], GetTrueFalseFromBit((int)Reader["closed"]), (string)Reader["description"], (int)Reader["callID"], GetSpecialisationById((int)Reader["serviceRequestID"]), (string)Reader["priorityLevel"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServiceRequestsByBusinessClient @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                    ServiceRequestList.Add(new ServiceRequest((int)reader["serviceRequestID"], GetTrueFalseFromBit((int)reader["closed"]), (string)reader["description"], (int)reader["callID"], GetSpecialisationById((int)reader["serviceRequestID"]), (string)reader["priorityLevel"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -184,24 +97,26 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
 
             return ServiceRequestList;
         }
         public List<ServiceRequest> SelectAllServiceRequestsByIndividualClient(string id)
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllServiceRequestsByIndividualClient @id= '{id}'";
-            Command = new SqlCommand(commandString, Connection);
             List<ServiceRequest> ServiceRequestList = new List<ServiceRequest>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    ServiceRequestList.Add(new ServiceRequest((int)Reader["serviceRequestID"], GetTrueFalseFromBit((int)Reader["closed"]), (string)Reader["description"], (int)Reader["callID"], GetSpecialisationById((int)Reader["serviceRequestID"]), (string)Reader["priorityLevel"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServiceRequestsByIndividualClient @id= '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ServiceRequestList.Add(new ServiceRequest((int)reader["serviceRequestID"], GetTrueFalseFromBit((int)reader["closed"]), (string)reader["description"], (int)reader["callID"], GetSpecialisationById((int)reader["serviceRequestID"]), (string)reader["priorityLevel"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -210,7 +125,8 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
+
             return ServiceRequestList;
         }
         #endregion
@@ -218,20 +134,19 @@ namespace PremiereSolutionProject.DAL
         #region SeperateMethods
         private List<Specialisation> GetSpecialisationById(int serviceRequestID)
         {
-
-            SqlConnection specialisationConnection = new SqlConnection(connectionSring);
-            SqlDataReader specialisationReader;
             List<Specialisation> specialisationList = new List<Specialisation>();
-            commandString = $"EXEC SelectAllSpecilisationbyServiceRequest @id = '{serviceRequestID}'";
-            SqlCommand specialisationCommand = new SqlCommand(commandString, specialisationConnection);
-
             try
             {
-                specialisationConnection.Open();
-                specialisationReader = specialisationCommand.ExecuteReader();
-                while (specialisationReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    specialisationList.Add(new Specialisation((int)specialisationReader["specialisationID"], (string)specialisationReader["name"], (string)specialisationReader["description"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllSpecilisationbyServiceRequest @id = '{serviceRequestID}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        specialisationList.Add(new Specialisation((int)reader["specialisationID"], (string)reader["name"], (string)reader["description"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -241,61 +156,22 @@ namespace PremiereSolutionProject.DAL
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
             finally
-            {
-                specialisationConnection.Close();
-            }
+            {}
+
             return specialisationList;
         }
         private void InsertAllSpeciliozationOfServiceRequest(ServiceRequest serviceRequest)
         {
-            SqlConnection specialisationConnection = new SqlConnection(connectionSring);
-
-            try
+            for (int i = 0; i < serviceRequest.SpecialisationRequiredList.Count; i++)
             {
-                specialisationConnection.Open();
-                for (int i = 0; i < serviceRequest.SpecialisationRequiredList.Count; i++)
-                {
-                    commandString = $"EXEC InsertIntoTVPServiceRequestSpecilization @serviceRequestId = '{serviceRequest.ServiceRequestID}', @SpecilizationId = '{serviceRequest.SpecialisationRequiredList[i].SpecialisationID}'";
-                    SqlCommand specialisationCommand = new SqlCommand(commandString, specialisationConnection);
-                    specialisationCommand.ExecuteNonQuery();
-                }
-
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                specialisationConnection.Close();
+                InsertCommand($"EXEC InsertIntoTVPServiceRequestSpecilization @serviceRequestId = '{serviceRequest.ServiceRequestID}', @SpecilizationId = '{serviceRequest.SpecialisationRequiredList[i].SpecialisationID}'");
             }
         }
         private void InsertAllSpeciliozationOfNewServiceRequest(ServiceRequest serviceRequest)
         {
-            SqlConnection specialisationConnection = new SqlConnection(connectionSring);
-
-            try
+            for (int i = 0; i < serviceRequest.SpecialisationRequiredList.Count; i++)
             {
-                specialisationConnection.Open();
-                for (int i = 0; i < serviceRequest.SpecialisationRequiredList.Count; i++)
-                {
-                    commandString = $"EXEC InsertIntoTVPNewServiceRequestSpecilization @SpecilizationId = '{serviceRequest.SpecialisationRequiredList[i].SpecialisationID}'";
-                    SqlCommand specialisationCommand = new SqlCommand(commandString, specialisationConnection);
-                    specialisationCommand.ExecuteNonQuery();
-                }
-
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                specialisationConnection.Close();
+                InsertCommand($"EXEC InsertIntoTVPNewServiceRequestSpecilization @SpecilizationId = '{serviceRequest.SpecialisationRequiredList[i].SpecialisationID}'");
             }
         }
         private bool GetTrueFalseFromBit(int bit)
