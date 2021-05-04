@@ -39,6 +39,7 @@ namespace PremiereSolutionProject.PL
             this.dgvViewServices = new System.Windows.Forms.DataGridView();
             this.lbxPackages = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewServices)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,13 +59,14 @@ namespace PremiereSolutionProject.PL
             // 
             this.btnCreateContract.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCreateContract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateContract.Location = new System.Drawing.Point(474, 531);
+            this.btnCreateContract.Location = new System.Drawing.Point(333, 542);
             this.btnCreateContract.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateContract.Name = "btnCreateContract";
             this.btnCreateContract.Size = new System.Drawing.Size(175, 34);
             this.btnCreateContract.TabIndex = 28;
             this.btnCreateContract.Text = "Create New Contract";
             this.btnCreateContract.UseVisualStyleBackColor = true;
+            this.btnCreateContract.Click += new System.EventHandler(this.btnCreateContract_Click);
             // 
             // label7
             // 
@@ -101,10 +103,10 @@ namespace PremiereSolutionProject.PL
             // 
             this.btnAddServicePackage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddServicePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddServicePackage.Location = new System.Drawing.Point(246, 531);
+            this.btnAddServicePackage.Location = new System.Drawing.Point(494, 440);
             this.btnAddServicePackage.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddServicePackage.Name = "btnAddServicePackage";
-            this.btnAddServicePackage.Size = new System.Drawing.Size(184, 34);
+            this.btnAddServicePackage.Size = new System.Drawing.Size(155, 34);
             this.btnAddServicePackage.TabIndex = 33;
             this.btnAddServicePackage.Text = "Add Service Package";
             this.btnAddServicePackage.UseVisualStyleBackColor = true;
@@ -152,12 +154,26 @@ namespace PremiereSolutionProject.PL
             this.label2.TabIndex = 35;
             this.label2.Text = "Added packages";
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Location = new System.Drawing.Point(709, 440);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(155, 34);
+            this.btnRemove.TabIndex = 36;
+            this.btnRemove.Text = "Remove Service Package";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // frmContractManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(908, 677);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbxPackages);
             this.Controls.Add(this.btnAddServicePackage);
@@ -191,5 +207,6 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.DataGridView dgvViewServices;
         private System.Windows.Forms.ListBox lbxPackages;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnRemove;
     }
 }

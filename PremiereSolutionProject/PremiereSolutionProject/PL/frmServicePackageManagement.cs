@@ -83,5 +83,179 @@ namespace PremiereSolutionProject.PL
         {
             lbxAdded.Items.RemoveAt(lbxAdded.SelectedIndex);
         }
+        bool promotion;
+        private void btnCreatePackage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtPackageName.Text))
+                {
+                    throw new FormatException("No business id");
+                }
+                if (string.IsNullOrWhiteSpace(lbxAdded.Text))
+                {
+                    throw new FormatException("No added services");
+                }
+                if ((cbxPromotionYes.Checked == true) && (cbxPromotionNo.Checked == true))
+                {
+                    throw new FormatException("only one promotion check box can be ticked");
+                }
+                if ((cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false))
+                {
+                    throw new FormatException("One promotion check box has to be ticked");
+                }
+                if ((numUDPercentage.Value < 0))
+                {
+                    throw new FormatException("Promotion percentage cant be smaller than 0");
+                }
+                
+                
+                else
+                {
+                    List<Service> ser = new List<Service>();
+                    foreach (Service item in lbxAdded.Items)
+                    {
+                        ser.Add(item);
+                    }
+                    if (cbxPromotionYes.Checked == true)
+                    {
+                        promotion = true;
+                    }
+                    else
+                    {
+                        promotion = false;
+                    }
+                    
+                    ServicePackage sp = new ServicePackage(txtPackageName.Text,ser,promotion,dtpPromotionStart.Value,dtpPromotionEnd.Value,(double)numUDPercentage.Value,0);
+                    sp.InsertServicePackage(sp);
+                    MessageBox.Show("Successfully updated service package", "Yay");
+                }
+
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show(fe.Message, "user input error");
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+            }
+        }
+
+        private void btnUpdatePackage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtPackageName.Text))
+                {
+                    throw new FormatException("No business id");
+                }
+                if (string.IsNullOrWhiteSpace(lbxAdded.Text))
+                {
+                    throw new FormatException("No added services");
+                }
+                if ((cbxPromotionYes.Checked == true) && (cbxPromotionNo.Checked == true))
+                {
+                    throw new FormatException("only one promotion check box can be ticked");
+                }
+                if ((cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false))
+                {
+                    throw new FormatException("One promotion check box has to be ticked");
+                }
+                if ((numUDPercentage.Value < 0))
+                {
+                    throw new FormatException("Promotion percentage cant be smaller than 0");
+                }
+
+
+                else
+                {
+                    List<Service> ser = new List<Service>();
+                    foreach (Service item in lbxAdded.Items)
+                    {
+                        ser.Add(item);
+                    }
+                    if (cbxPromotionYes.Checked == true)
+                    {
+                        promotion = true;
+                    }
+                    else
+                    {
+                        promotion = false;
+                    }
+
+                    ServicePackage sp = new ServicePackage(txtPackageName.Text, ser, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, 0);
+                    sp.UpdateServicePackage(sp);
+                    MessageBox.Show("Successfully updated service package", "Yay");
+                }
+
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show(fe.Message, "user input error");
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+            }
+        }
+
+        private void btnDeletePackage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtPackageName.Text))
+                {
+                    throw new FormatException("No business id");
+                }
+                if (string.IsNullOrWhiteSpace(lbxAdded.Text))
+                {
+                    throw new FormatException("No added services");
+                }
+                if ((cbxPromotionYes.Checked == true) && (cbxPromotionNo.Checked == true))
+                {
+                    throw new FormatException("only one promotion check box can be ticked");
+                }
+                if ((cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false))
+                {
+                    throw new FormatException("One promotion check box has to be ticked");
+                }
+                if ((numUDPercentage.Value < 0))
+                {
+                    throw new FormatException("Promotion percentage cant be smaller than 0");
+                }
+
+
+                else
+                {
+                    List<Service> ser = new List<Service>();
+                    foreach (Service item in lbxAdded.Items)
+                    {
+                        ser.Add(item);
+                    }
+                    if (cbxPromotionYes.Checked == true)
+                    {
+                        promotion = true;
+                    }
+                    else
+                    {
+                        promotion = false;
+                    }
+
+                    ServicePackage sp = new ServicePackage(txtPackageName.Text, ser, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, 0);
+                    sp.DeleteServicePackage(sp);
+                    MessageBox.Show("Successfully updated service package", "Yay");
+                }
+
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show(fe.Message, "user input error");
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+            }
+        }
     }
 }

@@ -245,6 +245,7 @@ namespace PremiereSolutionProject.PL
             this.btnCreatePackage.TabIndex = 78;
             this.btnCreatePackage.Text = "Create Package";
             this.btnCreatePackage.UseVisualStyleBackColor = true;
+            this.btnCreatePackage.Click += new System.EventHandler(this.btnCreatePackage_Click);
             // 
             // btnExit
             // 
@@ -295,6 +296,7 @@ namespace PremiereSolutionProject.PL
             this.btnDeletePackage.TabIndex = 85;
             this.btnDeletePackage.Text = "Delete Package";
             this.btnDeletePackage.UseVisualStyleBackColor = true;
+            this.btnDeletePackage.Click += new System.EventHandler(this.btnDeletePackage_Click);
             // 
             // btnUpdatePackage
             // 
@@ -307,6 +309,7 @@ namespace PremiereSolutionProject.PL
             this.btnUpdatePackage.TabIndex = 86;
             this.btnUpdatePackage.Text = "Update Package";
             this.btnUpdatePackage.UseVisualStyleBackColor = true;
+            this.btnUpdatePackage.Click += new System.EventHandler(this.btnUpdatePackage_Click);
             // 
             // lbxAvailable
             // 
