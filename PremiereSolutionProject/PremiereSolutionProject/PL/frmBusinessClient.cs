@@ -175,7 +175,7 @@ namespace PremiereSolutionProject.PL
 
         private void UpdateData()
         {
-            //selectedProduct
+            
             foreach (Address item in cmbProvince.Items)
             {
                 if (item.Province == selectedBc.Address.Province)

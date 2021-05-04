@@ -29,38 +29,38 @@ namespace PremiereSolutionProject.PL
             {
                 if (string.IsNullOrWhiteSpace(txtEmployeeID.Text))
                 {
-                    throw new FormatException("No client identification");
+                    throw new FormatException("No employee identification");
                 }
                 if (string.IsNullOrWhiteSpace(txtFirstname.Text))
                 {
-                    throw new FormatException("No client name");
+                    throw new FormatException("No employee name");
                 }
                 if (string.IsNullOrWhiteSpace(txtSurname.Text))
                 {
-                    throw new FormatException("No client surname");
+                    throw new FormatException("No employee surname");
                 }
                 if (string.IsNullOrWhiteSpace(txtNationalID.Text))
                 {
-                    throw new FormatException("No client national ID");
+                    throw new FormatException("No employee national ID");
                 }
                 if (string.IsNullOrWhiteSpace(txtAddress.Text))
                 {
-                    throw new FormatException("No client address");
+                    throw new FormatException("No employee address");
                 }
                 if (string.IsNullOrWhiteSpace(txtContactNumber.Text))
                 {
-                    throw new FormatException("No client Contact number");
+                    throw new FormatException("No employee Contact number");
                 }
                 if (string.IsNullOrWhiteSpace(txtEmai.Text))
                 {
-                    throw new FormatException("No client e-mail");
+                    throw new FormatException("No employee e-mail");
                 }
 
                 else
                 {
                     //Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
-                    
-                    MessageBox.Show("Successfully created client", "Yay");
+                   // Employee emp = new Employee(txtFirstname.Text,txtSurname.Text,null,txtContactNumber.Text,txtEmai.Text,txtNationalID.Text,DateTime.Now(),true,cbxDepartment.Text)
+                    MessageBox.Show("Successfully created Employee", "Yay");
                 }
 
             }

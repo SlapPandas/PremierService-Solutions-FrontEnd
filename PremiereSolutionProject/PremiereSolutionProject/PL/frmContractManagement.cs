@@ -53,5 +53,15 @@ namespace PremiereSolutionProject.PL
             dgvViewServices.DataSource = bs;
 
         }
+
+        private void btnCreateContract_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            lbxPackages.Items.RemoveAt(lbxPackages.SelectedIndex);
+        }
     }
 }

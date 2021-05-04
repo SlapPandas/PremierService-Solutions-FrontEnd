@@ -15,13 +15,29 @@ namespace PremiereSolutionProject.PL
     public partial class frmJobsManagement : Form
     {
         Job JB = new Job();
+        MaintenanceEmployee MainEmp = new MaintenanceEmployee();
         int indexrow;
+        int Index;
+        List<Job> myJob = new List<Job>();
+        List<MaintenanceEmployee> myEmployee = new List<MaintenanceEmployee>();
+        BindingSource bs = new BindingSource();
+        Job SelectedJob;
+
 
         public frmJobsManagement()
         {
             InitializeComponent();
+            RefreshDGV();
+            lbxAvailable.Items.Add(myEmployee);
         }
 
+        private void RefreshDGV()
+        {
+            bs.DataSource = myJob;
+            dgvJobs.DataSource = null;
+            dgvJobs.DataSource = bs;
+
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -30,46 +46,113 @@ namespace PremiereSolutionProject.PL
 
         private void frmJobsManagement_Load(object sender, EventArgs e)
         {
-            //var myList = new List<List<PremiereSolutionProject.BLL.Job>>()
-            //{
-            //    JB.SelectPendngJobs(),
-            //    JB.SelectInProgressJobs(),
-            //    JB.SelectFinishedJobs()
-            //};
 
-            //ListViewItem[] lItem = myList.Select(
-            //                               X => new ListViewItem(X.ToArray())
-            //                         ).ToArray();
-            //lstJobTracker.Items.AddRange(lItem);
-            //
 
-            //dgvJobs.DataSource = JB.SelectAllJobs(); //Displaying all jobs
+
+            myJob = JB.SelectAllJobs();
+            dgvJobs.DataSource = myJob;
+
+            myEmployee = MainEmp.SelectAllMaintenaceEmpployees();
+
+            foreach (Job j in JB.SelectPendngJobs())
+            {
+                ListViewItem lst = new ListViewItem(new string[]
+                {
+                    j.JobID.ToString(),
+                    j.JobState.ToString()
+                });
+
+                lstPending.Items.Add(lst);
+            }
+
+
+            foreach (Job j in JB.SelectInProgressJobs())
+            {
+                ListViewItem lst = new ListViewItem(new string[]
+                {
+                    j.JobID.ToString(),
+                    j.JobState.ToString()
+                });
+
+                //    lstInProgress.Items.Add(lst);
+                //}
+
+                //foreach (Job j in JB.SelectFinishedJobs())
+                //{
+                //    ListViewItem lst = new ListViewItem(new string[]
+                //    {
+                //        j.JobID.ToString(),
+                //        j.JobState.ToString()
+                //    });
+
+                //    lstCompleted.Items.Add(lst);
+                //}
+
+            }
         }
 
-        private void dgvJobs_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //indexrow = e.RowIndex;
-
-            //DataGridViewRow row = dgvJobs.Rows[indexrow]; //Allowing the selected datagrid row to show in the textboxes
-
-            //txtJobID.Text = row.Cells[0].Value.ToString();
-            //txtAddressID.Text = row.Cells[1].Value.ToString();
-            //cbxCurrentState.Text = row.Cells[2].Value.ToString(); //Need to identify the number as a state
-            //rtbNotes.Text = row.Cells[3].Value.ToString();
-            //txtServiceReqID.Text = row.Cells[4].Value.ToString();
-            //rtbAssignedTechnicians.Text = row.Cells[5].Value.ToString(); // 2 Questions: Can a list show in a cell? Based on 1 - how?
-            //cbxSpecialisationID.Text = row.Cells[6].Value.ToString(); //Need to identify the number as a specialisation
-            //nudEmployees.Value = int.Parse(row.Cells[7].Value.ToString());
-        }
+        
 
         private void btnDeleteJob_Click(object sender, EventArgs e)
         {
+
             //JB.DeleteJob(Job); //Need to parse a job object to the delete method to delete
+            MessageBox.Show("Successfully deleted the job.");
         }
 
         private void btnUpdateJob_Click(object sender, EventArgs e)
         {
+            //Validation that none off the fields are empty
+            if (string.IsNullOrEmpty(cbxCurrentState.Text)) 
+            {
+                throw new FormatException("No State Chosen ");
+            }
+            else if (string.IsNullOrEmpty(rtbNotes.Text))
+            {
+                throw new FormatException("No State written");
+            }
+            else if (string.IsNullOrEmpty(cbxSpecialisationName.Text))
+            {
+                throw new FormatException("No Specialisation Seelected");
+            }
+            else if (nudEmployees.Value < 0)
+            {
+                throw new FormatException("Invalid Numeric Selection");
+            }
+            else if (lbxCurrentAssigned.Items.Count == 0)
+            {
+                throw new FormatException("There are no current employees.");
+            }
+
+
             //JB.UpdateJob(Job); //Need to parse a job object to update
+        }
+
+        private void btnAddTechnician_Click(object sender, EventArgs e)
+        {
+            lbxNewAssigned.Items.Add(lbxAvailable.SelectedItem.ToString());
+        }
+
+        private void btnRemoveTechnician_Click(object sender, EventArgs e)
+        {
+            lbxCurrentAssigned.Items.RemoveAt(lbxCurrentAssigned.SelectedIndex);
+        }
+
+        public void UpdateJob()
+        {
+            /*cbxCurrentState.Text = SelectedJob.JobState;
+            rtbNotes.Text = SelectedJob.JobNotes;
+            cbxSpecialisationName = SelectedJob.Specialisation;
+            nudEmployees.Value = SelectedJob.EmployeesNeeded;
+            lbxCurrentAssigned.Items.Add();*/
+
+            
+        }
+
+        private void dgvJobs_SelectionChanged(object sender, EventArgs e)
+        {
+            SelectedJob = (Job)bs.Current;
+            UpdateJob();
         }
     }
 }
