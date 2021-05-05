@@ -35,12 +35,12 @@ namespace PremiereSolutionProject.BLL
 
         #region Constructors
         //default constructor
-        public Call()
+         Call()
         {
         }
 
         //constructor with all fields
-        public Call(int id, DateTime start, DateTime end, Client c, CallCenterEmployee ccEmp, string cNotes)
+         Call(int id, DateTime start, DateTime end, Client c, CallCenterEmployee ccEmp, string cNotes)
         {
             this.callID = id;
             this.startTime = start;
@@ -50,7 +50,7 @@ namespace PremiereSolutionProject.BLL
             this.callNotes = cNotes;
         }
 
-        public Call(int id, DateTime start, DateTime end, IndividualClient c, CallCenterEmployee ccEmp, string cNotes)
+         Call(int id, DateTime start, DateTime end, IndividualClient c, CallCenterEmployee ccEmp, string cNotes)
         {
             this.callID = id;
             this.startTime = start;
@@ -60,7 +60,7 @@ namespace PremiereSolutionProject.BLL
             this.callNotes = cNotes;
         }
 
-        public Call(int id, DateTime start, DateTime end, BusinessClient c, CallCenterEmployee ccEmp, string cNotes)
+         Call(int id, DateTime start, DateTime end, BusinessClient c, CallCenterEmployee ccEmp, string cNotes)
         {
             this.callID = id;
             this.startTime = start;
@@ -71,7 +71,7 @@ namespace PremiereSolutionProject.BLL
         }
 
         //constructor without ID field
-        public Call(DateTime start, DateTime end, Client c, CallCenterEmployee ccEmp, string cNotes)
+         Call(DateTime start, DateTime end, Client c, CallCenterEmployee ccEmp, string cNotes)
         {
             this.startTime = start;
             this.endTime = end;
@@ -80,7 +80,7 @@ namespace PremiereSolutionProject.BLL
             this.callNotes = cNotes;
         }
 
-        public Call(int id, DateTime start, DateTime end, CallCenterEmployee ccEmp, string cNotes)
+         Call(int id, DateTime start, DateTime end, CallCenterEmployee ccEmp, string cNotes)
         {
             this.callID = id;
             this.startTime = start;
@@ -89,7 +89,7 @@ namespace PremiereSolutionProject.BLL
             this.callNotes = cNotes;
         }
 
-        public Call(int id, DateTime start, CallCenterEmployee ccEmp)
+         Call(int id, DateTime start, CallCenterEmployee ccEmp)
         {
             this.callID = id;
             this.startTime = start;
@@ -111,7 +111,7 @@ namespace PremiereSolutionProject.BLL
         }
 
         //Generate a random CallCenterEmployee to be assigned to an incoming call
-        public CallCenterEmployee GenerateRandomEmployee()
+         CallCenterEmployee GenerateRandomEmployee()
         {
             EmployeeDH employeeDH = new EmployeeDH();
             List<CallCenterEmployee> ccEmpList = employeeDH.SelectAllCallCenterEmployees(); //list of all call center employees
