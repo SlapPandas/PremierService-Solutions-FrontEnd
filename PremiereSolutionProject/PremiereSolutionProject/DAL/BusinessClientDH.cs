@@ -11,77 +11,26 @@ namespace PremiereSolutionProject.DAL
 {
     class BusinessClientDH : DatabaseConnection, IDataconnection
     {
+        //Done
         #region Update
         public void Update(BusinessClient businessClient)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateClientBusiness @id = '{businessClient.Id}', @businessName = '{businessClient.BusinessName}', @contact = '{businessClient.ContactNumber}', @taxnumber = '{businessClient.TaxNumber}', @registrationDate = '{businessClient.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @active = '{GetIntFromBool(businessClient.Active)}', @adressid = '{businessClient.Address.AddressID}', @streetName = '{businessClient.Address.StreetName}', @suburb = '{businessClient.Address.Suburb}', @province = '{((int)businessClient.Address.Province)}', @postalcode = '{businessClient.Address.Postalcode}',@city = '{businessClient.Address.City}'";
-            Command = new SqlCommand(commandString, Connection);
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
-
+            UpdateCommand($"EXEC UpdateClientBusiness @id = '{businessClient.Id}', @businessName = '{businessClient.BusinessName}', @contact = '{businessClient.ContactNumber}', @taxnumber = '{businessClient.TaxNumber}', @registrationDate = '{businessClient.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @active = '{GetIntFromBool(businessClient.Active)}', @adressid = '{businessClient.Address.AddressID}', @streetName = '{businessClient.Address.StreetName}', @suburb = '{businessClient.Address.Suburb}', @province = '{((int)businessClient.Address.Province)}', @postalcode = '{businessClient.Address.Postalcode}',@city = '{businessClient.Address.City}'");
         }
         public void UpdateState(string id, bool active)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateBusinessClientState @id = '{id}', @active = '{GetIntFromBool(active)}'";
-            Command = new SqlCommand(commandString, Connection);
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
-
+            UpdateCommand($"EXEC UpdateBusinessClientState @id = '{id}', @active = '{GetIntFromBool(active)}'");
         }
         #endregion
 
+        //Done
         #region Insert
         public void Insert(BusinessClient businessClient)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertClientBusiness @busuinessName ='{businessClient.BusinessName}', @contactNumber ='{businessClient.ContactNumber}', @taxNumber ='{businessClient.TaxNumber}', @RegistrationDate ='{businessClient.RegistrationDate.ToString("yyyy-MM-dd")}',@active ='{GetIntFromBool(businessClient.Active)}',@streetname ='{businessClient.Address.StreetName}',@suburb ='{businessClient.Address.Suburb}',@province ='{((int)businessClient.Address.Province).ToString()}',@postalcode ='{businessClient.Address.Postalcode}',@city ='{businessClient.Address.City}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            InsertCommand($"EXEC InsertClientBusiness @busuinessName ='{businessClient.BusinessName}', @contactNumber ='{businessClient.ContactNumber}', @taxNumber ='{businessClient.TaxNumber}', @RegistrationDate ='{businessClient.RegistrationDate.ToString("yyyy-MM-dd")}',@active ='{GetIntFromBool(businessClient.Active)}',@streetname ='{businessClient.Address.StreetName}',@suburb ='{businessClient.Address.Suburb}',@province ='{((int)businessClient.Address.Province).ToString()}',@postalcode ='{businessClient.Address.Postalcode}',@city ='{businessClient.Address.City}'");
         }
         #endregion
+
 
         #region Select
         public List<BusinessClient> SelectAllBusinessClients()
@@ -111,6 +60,7 @@ namespace PremiereSolutionProject.DAL
 
         }
         #endregion
+
 
         #region SeperateMethods
         private Province GetProvince(string input)

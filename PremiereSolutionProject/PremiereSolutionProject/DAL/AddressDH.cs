@@ -11,57 +11,23 @@ namespace PremiereSolutionProject.DAL
 {
     class AddressDH : DatabaseConnection, IDataconnection
     {
+        //Done
         #region Update
         public void Update(Address address)
-        {
-            CreateConnection();
-            commandString = $"EXEC UpdateAddress @id ='{address.AddressID}', @streetName ='{address.StreetName}', @suburb ='{address.Suburb}', @province ='{((int)address.Province).ToString()}', @postalcode ='{address.Postalcode}',@city ='{address.City}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+        {      
+            UpdateCommand($"EXEC UpdateAddress @id ='{address.AddressID}', @streetName ='{address.StreetName}', @suburb ='{address.Suburb}', @province ='{((int)address.Province).ToString()}', @postalcode ='{address.Postalcode}',@city ='{address.City}'");
         }
-
         #endregion
 
+        //Done
         #region Insert
         public void Insert(Address address)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertAddress @streetname ='{address.StreetName}',@suburb ='{address.Suburb}',@province ='{((int)address.Province).ToString()}',@postalcode ='{address.Postalcode}', @city ='{address.City}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            InsertCommand($"EXEC InsertAddress @streetname ='{address.StreetName}',@suburb ='{address.Suburb}',@province ='{((int)address.Province).ToString()}',@postalcode ='{address.Postalcode}', @city ='{address.City}'");
         }
 
         #endregion
+
 
         #region Select
         public List<Address> SelectAllAddresses()
@@ -91,6 +57,7 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
+        //Done
         #region Delete
         public bool Delete(Address address)
         {
@@ -98,27 +65,14 @@ namespace PremiereSolutionProject.DAL
             {
                 return false;
             }
-
-            CreateConnection();
-            commandString = $"EXEC DeleteAddress @id = '{address.AddressID}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
+            else
             {
-                OpenConnection();
-                Command.ExecuteNonQuery();
+                DeleteCommand($"EXEC DeleteAddress @id = '{address.AddressID}'");
                 return true;
             }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-                return false;
-            }
-            finally { CloseConnection(); }
         }
         #endregion
+
 
         #region SeperateMethods
         private int GetNumberOfAddessUses(int addressId)

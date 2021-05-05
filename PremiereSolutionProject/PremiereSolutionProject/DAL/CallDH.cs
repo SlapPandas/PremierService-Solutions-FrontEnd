@@ -10,124 +10,40 @@ namespace PremiereSolutionProject.DAL
 {
     class CallDH : DatabaseConnection
     {
+        //Done
         #region Update
         public void UpdateNotes(int id, string notes)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateCallNotes @id ='{id}', @callnotes ='{notes}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            UpdateCommand($"EXEC UpdateCallNotes @id ='{id}', @callnotes ='{notes}'");
         }
 
         #endregion
 
+        //Done, but question with Insert method
         #region Insert
         public void InsertEndTime(int id, DateTime dateTime)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateEndTime @id ='{id}', @endTime ='{dateTime}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            InsertCommand($"EXEC UpdateEndTime @id ='{id}', @endTime ='{dateTime}'");
+          
         }
         public void InsertIndividualClientToCall(int Callid, string ClientId)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateCallClientIndividual @id ='{Callid}', @ClientIndividual ='{ClientId}'";
-            Command = new SqlCommand(commandString, Connection);
+            InsertCommand($"EXEC UpdateCallClientIndividual @id ='{Callid}', @ClientIndividual ='{ClientId}'");
 
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
         }
         public void InsertBusinessClientToCall(int Callid, string ClientId)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateCallClientBusiness @id ='{Callid}', @ClientBusiness ='{ClientId}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            InsertCommand($"EXEC UpdateCallClientBusiness @id ='{Callid}', @ClientBusiness ='{ClientId}'");
         }
         public int Insert(DateTime dateTime, string empId)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertCall @startTime ='{dateTime}', @employeeID = '{empId}'";
-            Command = new SqlCommand(commandString, Connection);
+            InsertCommand($"EXEC InsertCall @startTime ='{dateTime}', @employeeID = '{empId}'");
 
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
             return GetLastCallId();
         }
 
         #endregion
+
 
         #region Select
         public List<Call> SelectAllCallByIndividualClientById(string id)
@@ -212,6 +128,7 @@ namespace PremiereSolutionProject.DAL
             return call;
         }
         #endregion
+        
 
         #region SeperateMethods
         private bool GetTrueFalseFromBit(int bit)

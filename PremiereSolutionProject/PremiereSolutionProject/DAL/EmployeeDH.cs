@@ -10,105 +10,45 @@ namespace PremiereSolutionProject.DAL
 {
     class EmployeeDH : DatabaseConnection
     {
-        //Gotta Do
+        //Need assistance
         #region Update
-        public void Update(Employee employee)
+        public void UpdateCallCenterEmployee(CallCenterEmployee employee)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @registrationDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{employee.Employed}', @department = '{employee.Department}, @adressid = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}',@city = '{employee.Address.City}'";
-            Command = new SqlCommand(commandString, Connection);
+            UpdateCommand($"EXEC UpdateCallCenterEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentdate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}, @adressid = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}',@city = '{employee.Address.City}'");
+        }
 
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+        public void UpdateMaintenanceEmployee(MaintenanceEmployee employee)
+        {
+            UpdateCommand($"EXEC UpdateMaintenanceEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @registrationDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{employee.Employed}', @department = '{employee.Department}, @adressid = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}',@city = '{employee.Address.City}'");
+        }
+
+        public void UpdateServiceManager(ServiceManager employee)
+        {
+            UpdateCommand($"EXEC UpdateServiceManager @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @registrationDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{employee.Employed}', @department = '{employee.Department}, @adressid = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}',@city = '{employee.Address.City}'");
         }
 
         #endregion
 
+        //Done
         #region Insert
 
         public void InsertCallCenterEmployee(CallCenterEmployee employee)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertCallCenterEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            InsertCommand($"EXEC InsertCallCenterEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'");
         }
 
         public void InsertMaintenanceEmployee(MaintenanceEmployee employee)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertMaintenanceEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}',@employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            InsertCommand($"EXEC InsertMaintenanceEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}',@employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'");
         }
 
         public void InsertServiceManager(ServiceManager employee)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertServiceManager @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            InsertCommand($"EXEC InsertServiceManager @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'");
         }
 
         #endregion
+
 
         #region Select
         public List<CallCenterEmployee> SelectAllCallCenterEmployees()
@@ -243,6 +183,7 @@ namespace PremiereSolutionProject.DAL
 
         }
         #endregion
+
 
         #region Seperate Methods
         private bool GetTrueFalseFromBit(int bit)

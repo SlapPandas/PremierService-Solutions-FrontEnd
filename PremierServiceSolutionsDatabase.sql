@@ -710,13 +710,13 @@ BEGIN
 
 END
 GO
-CREATE PROCEDURE UpdateEmployee @id INT, @firstname VARCHAR(100), @surname VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100), @nationalid VARCHAR(13), @employmentdate DATE, @employed BIT, @department VARCHAR(25), @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10), @city VARCHAR(100)
+CREATE PROCEDURE UpdateCallCenterEmployee @id VARCHAR(50), @firstName VARCHAR(50), @surname VARCHAR(100), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentdate DATE, @employed BIT, @department VARCHAR(25), @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10), @city VARCHAR(100)
 AS
 BEGIN
 	BEGIN TRAN
 
 	UPDATE Employee
-	SET firstName = @firstname, surname = @surname, addressId = @adressid, contactNumber = @contact, email = @email, nationalIdNumber = @nationalid,  employmentDate = @employmentdate, employed = @employed, department = @department
+	SET firstName = @firstName, surname = @surname, addressId = @adressid, contactNumber = @contactNumber, email = @email, nationalIdNumber = @nationalIdNumber,  employmentDate = @employmentdate, employed = @employed, department = @department
 	WHERE employeeID = @id
 
 	UPDATE [Address]
@@ -1081,11 +1081,11 @@ BEGIN
 	VALUES ((SELECT Employee.employeeID FROM Employee WHERE employeeNumber = @employeeID), @jobID)
 END 
 GO
-CREATE PROCEDURE InsertContract @id INT, @startDate DATETIME, @endDate DATETIME, @active BIT,@priorityLevel INT
+CREATE PROCEDURE InsertContract @startDate DATETIME, @endDate DATETIME, @active BIT,@priorityLevel VARCHAR(20), @price FLOAT, @contractType VARCHAR(15)
 AS
 BEGIN
-	INSERT INTO [Contract] ([startDate], [endDate], [active],priorityLevel)
-	VALUES (@startDate, @endDate, @active,@priorityLevel)
+	INSERT INTO [Contract] ([startDate], [endDate], [active],[priorityLevel],[price],[contractType])
+	VALUES (@startDate, @endDate, @active,@priorityLevel,@price,@contractType)
 END 
 GO
 CREATE PROCEDURE InsertContractState @id INT, @startDate DATETIME, @endDate DATETIME, @active BIT,@priorityLevel INT

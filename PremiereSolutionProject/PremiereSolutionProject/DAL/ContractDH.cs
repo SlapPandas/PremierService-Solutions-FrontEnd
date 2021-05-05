@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,122 +11,40 @@ namespace PremiereSolutionProject.DAL
 {
     class ContractDH : DatabaseConnection
     {
+        //Need assistance
         #region Delete
-        public bool Delete(Contract contract)
+        public void Delete(Contract contract)
         {
-            CreateConnection();
-            commandString = $"EXEC DeleteContract @id = '{contract.ContractID}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-                return false;
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            DeleteCommand($"EXEC DeleteContract @id = '{contract.ContractID}'");
         }
         #endregion
 
+        //Need assistance
         #region Update
 
         public void Update(Contract contract)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateContract @id = '{contract.ContractID}', @startDate = '{contract.StartTime}', @endDate = '{contract.EndTime}', @active = '{GetIntFromBool(contract.Active)}', @priorityLevel = '{contract.PriorityLevel}', @price = '{contract.Price}', @contractType = '{contract.ContractType}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            UpdateCommand($"EXEC UpdateContract @id = '{contract.ContractID}', @startDate = '{contract.StartTime}', @endDate = '{contract.EndTime}', @active = '{GetIntFromBool(contract.Active)}', @priorityLevel = '{contract.PriorityLevel}', @price = '{contract.Price}', @contractType = '{contract.ContractType}'");
         }
         public void UpdateContractPackageList(Contract contract)
         {
             InsertAllServicesPackedgesOfContract(contract);
-            CreateConnection();
-            commandString = $"EXEC UpdateContractPackageList @id = '{contract.ContractID}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateContractPackageList @id = '{contract.ContractID}'");
         }
         #endregion
 
+        //Need assistance
         #region Insert
         public void Insert(Contract contract)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertContract @id = '{contract.ContractID}', @start = '{contract.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @end = '{contract.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @Client = '{contract.Client}', @packageList = '{contract.PackageList}', @active = '{contract.Active}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            InsertCommand($"EXEC InsertContract @startDate = '{contract.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @endDate = '{contract.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @active ='{GetIntFromBool(contract.Active)}', @priorityLevel = '{contract.PriorityLevel}', @price = '{contract.Price.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}', @contractType = '{contract.ContractType}'");
         }
         public void InsertSingleServicePackedgeToContract(string contractId, int ServicePackageId)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertServiceContractLink @ContractID ='{contractId}', @ServicePackageID ='{ServicePackageId}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            InsertCommand($"EXEC InsertServiceContractLink @ContractID ='{contractId}', @ServicePackageID ='{ServicePackageId}'"); 
         }
         #endregion
+
 
         #region Select
         public List<Contract> SelectAllContracts()
@@ -232,6 +151,7 @@ namespace PremiereSolutionProject.DAL
         }
 
         #endregion
+
 
         #region SeperateMethods
         private void InsertAllServicesPackedgesOfContract(Contract contract)

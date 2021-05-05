@@ -79,12 +79,12 @@ namespace PremiereSolutionProject.BLL
 
         #region Methods
 
-        public void UpdateEmployee(Employee employee)
-        {
-            //might need to have a cast??? Will need to check when testing
-            EmployeeDH employeeDH = new EmployeeDH();
-            employeeDH.Update(employee);
-        }
+        //public void UpdateEmployee(Employee employee)
+        //{
+        //    //might need to have a cast??? Will need to check when testing
+        //    EmployeeDH employeeDH = new EmployeeDH();
+        //    employeeDH.Update(employee);
+        //}
 
         //Cant create instance of abstract type or Interface
         //public void InsertEmployee(Employee employee)

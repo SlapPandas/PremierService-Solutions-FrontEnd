@@ -11,82 +11,30 @@ namespace PremiereSolutionProject.DAL
 {
     class BusinessClientEmployeesDH : DatabaseConnection, IDataconnection
     {
+        //Need to do
         #region Delete
-        public bool Delete(BusinessClientEmployees businessClientEmployees)
+        public void Delete(BusinessClientEmployees businessClientEmployees)
         {
-            CreateConnection();
-            commandString = $"EXEC DeleteClientBusinessEmployee @id = '{businessClientEmployees.Id}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-                return false;
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            DeleteCommand($"EXEC DeleteClientBusinessEmployee @id = '{businessClientEmployees.Id}'");
         }
         #endregion
 
+        //Need to do
         #region Update
         public void Update(BusinessClientEmployees businessClientEmployees)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateBusinessClientEmployee @id = '{businessClientEmployees.Id}',  @firstName = '{businessClientEmployees.FirstName}',  @surname = '{businessClientEmployees.Surname}',  @department = '{businessClientEmployees.Department}',  @contactNumber = '{businessClientEmployees.Contactnumber}',  @email = '{businessClientEmployees.Email}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            UpdateCommand($"EXEC UpdateBusinessClientEmployee @id = '{businessClientEmployees.Id}',  @firstName = '{businessClientEmployees.FirstName}',  @surname = '{businessClientEmployees.Surname}',  @department = '{businessClientEmployees.Department}',  @contactNumber = '{businessClientEmployees.Contactnumber}',  @email = '{businessClientEmployees.Email}'");
         }
         #endregion
 
+        //Assistance
         #region Insert
         public void Insert(BusinessClientEmployees businessClientEmployees)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertBusinessClientEmployees @firstName = '{businessClientEmployees.FirstName}',  @surname = '{businessClientEmployees.Surname}',  @department = '{businessClientEmployees.Department}',  @contactNumber = '{businessClientEmployees.Contactnumber}',  @email = '{businessClientEmployees.Email}', @businessID = '{businessClientEmployees.BusinessID}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                CloseConnection();
-            }
+            InsertCommand($"EXEC InsertBusinessClientEmployees @firstName = '{businessClientEmployees.FirstName}',  @surname = '{businessClientEmployees.Surname}',  @department = '{businessClientEmployees.Department}',  @contactNumber = '{businessClientEmployees.Contactnumber}',  @email = '{businessClientEmployees.Email}', @businessID = '{businessClientEmployees.BusinessID}'");
         }
         #endregion
+
 
         #region Select
         public List<BusinessClientEmployees> SelectAllBusinessClientEmployeesByBusinessId(string businessId)
@@ -142,6 +90,7 @@ namespace PremiereSolutionProject.DAL
             return businessClientemployeeList;
         }
         #endregion
+
 
         #region SeperateMethods
         private Address GetAddressById(int addressId)
