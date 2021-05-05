@@ -491,6 +491,13 @@ AS
 		VALUES ((SELECT Employee.employeeID FROM Employee WHERE Employee.employeeNumber = @employeeId))
 	COMMIT
 GO
+CREATE PROC InsertIntoTVPNewContractServicePackedge @packedgeId VARCHAR(50)
+AS
+	BEGIN TRAN
+		INSERT INTO TVP(idIntOne)
+		VALUES (@packedgeId)
+	COMMIT
+GO
 CREATE PROC InsertIntoTVPPackedgeService @packedgeId INT,@serviceId INT
 AS
 	BEGIN TRAN
@@ -1123,11 +1130,16 @@ BEGIN
 	VALUES ((SELECT Employee.employeeID FROM Employee WHERE employeeNumber = @employeeID), @jobID)
 END 
 GO
-CREATE PROCEDURE InsertContract @startDate DATETIME, @endDate DATETIME, @active BIT,@priorityLevel VARCHAR(20), @price FLOAT, @contractType VARCHAR(15)
+CREATE PROCEDURE InsertContractWithPackadgeList @startDate DATETIME, @endDate DATETIME, @active INT,@priorityLevel VARCHAR(20), @price FLOAT, @contractType VARCHAR(15)
 AS
 BEGIN
+	DECLARE @contractId INT
 	INSERT INTO [Contract] ([startDate], [endDate], [activeContract],[priorityLevel],[price],[contractType])
 	VALUES (@startDate, @endDate, @active,@priorityLevel,@price,@contractType)
+	SET @contractId = SCOPE_IDENTITY()
+
+	INSERT INTO ServiceContractLink(ContractID,ServicePackedgeID)
+	SELECT @contractId,idIntOne FROM TVP
 END 
 GO
 CREATE PROCEDURE InsertContractState @id INT, @startDate DATETIME, @endDate DATETIME, @active BIT,@priorityLevel INT

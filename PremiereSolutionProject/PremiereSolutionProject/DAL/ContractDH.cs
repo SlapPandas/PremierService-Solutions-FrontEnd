@@ -44,9 +44,10 @@ namespace PremiereSolutionProject.DAL
         #endregion
 
         #region Insert
-        public void Insert(Contract contract)
+        public void InsertWithPackedge(Contract contract)
         {
-            InsertCommand($"EXEC InsertContract @startDate = '{contract.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @endDate = '{contract.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @active ='{GetIntFromBool(contract.Active)}', @priorityLevel = '{contract.PriorityLevel}', @price = '{contract.Price.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}', @contractType = '{contract.ContractType}'");
+            InsertAllServicePackedgesOfNewContract(contract);
+            InsertCommand($"EXEC InsertContractWithPackadgeList @startDate = '{contract.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @endDate = '{contract.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @active ='{GetIntFromBool(contract.Active)}', @priorityLevel = '{contract.PriorityLevel}', @price = '{contract.Price.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}', @contractType = '{contract.ContractType}'");
         }
         public void InsertSingleServicePackedgeToContract(string contractId, int ServicePackageId)
         {
@@ -360,6 +361,14 @@ namespace PremiereSolutionProject.DAL
             }
             finally { }
             return servicePackedgeList;
+        }
+        private void InsertAllServicePackedgesOfNewContract(Contract contract)
+        {
+            for (int i = 0; i < contract.PackageList.Count; i++)
+            {
+                InsertCommand($"EXEC InsertIntoTVPNewContractServicePackedge @packedgeId = '{contract.PackageList[i].PackageID}'");
+            }
+
         }
         private bool GetTrueFalseFromBit(int bit)
         {
