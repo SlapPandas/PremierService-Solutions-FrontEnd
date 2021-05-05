@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PremiereSolutionProject.DAL
 {
-    class BusinessClientEmployeesDH : DatabaseConnection, IDataconnection
+    public class BusinessClientEmployeesDH : DatabaseConnection, IDataconnection
     {
         //Need to do
         #region Delete

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PremiereSolutionProject.DAL
 {
-    class AddressDH : DatabaseConnection, IDataconnection
+    public class AddressDH : DatabaseConnection, IDataconnection
     {
         //Done
         #region Update
