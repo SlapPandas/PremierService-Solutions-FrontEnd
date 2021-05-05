@@ -13,163 +13,43 @@ namespace PremiereSolutionProject.DAL
         #region Delete
         public void Delete(Job job)
         {
-            CreateConnection();
-            commandString = $"EXEC DeleteJob @id = '{job.JobID}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            DeleteCommand($"EXEC DeleteJob @id = '{job.JobID}'");
         }
         #endregion
 
         #region Update
         public void UpdateState(int jobId, JobState jobState)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateJobState @id = '{jobId}', @currentstate = '{((int)jobState).ToString()}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateJobState @id = '{jobId}', @currentstate = '{((int)jobState).ToString()}'");
         }
         public void UpdateAmountOfEmployeesRequired(int jobId, int amountOfEmployees)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateJobEmployeesRequired @id = '{jobId}', @amount = '{amountOfEmployees}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateJobEmployeesRequired @id = '{jobId}', @amount = '{amountOfEmployees}'");
         }
         public void Update(Job job)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateJob @id = {job.JobID}, @notes = '{job.JobNotes}', @specialisationId = {job.Specialisation.SpecialisationID}, @adressid = {job.JobAddress.AddressID}, @streetName = '{job.JobAddress.StreetName}', @suburb = '{job.JobAddress.Suburb}', @province = '{((int)job.JobAddress.Province).ToString()}', @postalcode = '{job.JobAddress.Postalcode}',@city = '{job.JobAddress.City}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateJob @id = {job.JobID}, @notes = '{job.JobNotes}', @specialisationId = {job.Specialisation.SpecialisationID}, @adressid = {job.JobAddress.AddressID}, @streetName = '{job.JobAddress.StreetName}', @suburb = '{job.JobAddress.Suburb}', @province = '{((int)job.JobAddress.Province).ToString()}', @postalcode = '{job.JobAddress.Postalcode}',@city = '{job.JobAddress.City}'");
         }
         public void UpdateJobEmployeeList(Job job)
         {
             InsertAllEmployeesOfJob(job);
-            CreateConnection();
-            commandString = $"EXEC UpdateJobEmployeeList @id = '{job.JobID}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateJobEmployeeList @id = '{job.JobID}'");
         }
         #endregion
 
         #region Insert
         public void Insert(Job job)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertJob @addressId = '{job.JobAddress.AddressID}', @ServiceRequestID = '{job.ServiceRequestID}', @notes = '{job.JobNotes}', @currentState = '{((int)job.JobState).ToString()}', @specialization = '{job.Specialisation.SpecialisationID}', @amountOfEmployees = '{job.EmployeesNeeded}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            InsertCommand($"EXEC InsertJob @addressId = '{job.JobAddress.AddressID}', @ServiceRequestID = '{job.ServiceRequestID}', @notes = '{job.JobNotes}', @currentState = '{((int)job.JobState).ToString()}', @specialization = '{job.Specialisation.SpecialisationID}', @amountOfEmployees = '{job.EmployeesNeeded}'");
         }
         public void InsertWithEmployeeList(Job job)
         {
             InsertAllEmployeesOfNewJob(job);
-            CreateConnection();
-            commandString = $"EXEC InsertJobWithEmployeeList @addressId = '{job.JobAddress.AddressID}', @ServiceRequestID = '{job.ServiceRequestID}', @notes = '{job.JobNotes}', @currentState = '{((int)job.JobState).ToString()}', @specialization = '{job.Specialisation.SpecialisationID}', @amountOfEmployees = '{job.EmployeesNeeded}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            InsertCommand($"EXEC InsertJobWithEmployeeList @addressId = '{job.JobAddress.AddressID}', @ServiceRequestID = '{job.ServiceRequestID}', @notes = '{job.JobNotes}', @currentState = '{((int)job.JobState).ToString()}', @specialization = '{job.Specialisation.SpecialisationID}', @amountOfEmployees = '{job.EmployeesNeeded}'");
         }
         public void InsertSingleEmployeeToJob(int jobId, string employeeId)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertJobEmployeeLink @employeeID = '{employeeId}', @jobID = '{jobId}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            InsertCommand($"EXEC InsertJobEmployeeLink @employeeID = '{employeeId}', @jobID = '{jobId}'");
         }
 
         #endregion
@@ -177,17 +57,19 @@ namespace PremiereSolutionProject.DAL
         #region Select
         public List<Job> SelectAllJobs()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllJobs";
-            Command = new SqlCommand(commandString, Connection);
             List<Job> jobList = new List<Job>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    jobList.Add(new Job((int)Reader["jobID"], GetAddressById((int)Reader["addressId"]), GetJobState((string)Reader["currentState"]), (string)Reader["notes"], GetMaintenanceEmployeeByJobId((int)Reader["jobID"]), GetSpecialisationById((int)Reader["specialisationId"]), (int)Reader["ServiceRequestID"], (int)Reader["amountOfEmployeesNeeded"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllJobs";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        jobList.Add(new Job((int)reader["jobID"], GetAddressById((int)reader["addressId"]), GetJobState((string)reader["currentState"]), (string)reader["notes"], GetMaintenanceEmployeeByJobId((int)reader["jobID"]), GetSpecialisationById((int)reader["specialisationId"]), (int)reader["ServiceRequestID"], (int)reader["amountOfEmployeesNeeded"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -196,23 +78,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return jobList;
         }
         public Job SelectJobById(int id)
         {
-            CreateConnection();
-            commandString = $"EXEC SelectJobByJobId @id = '{id}'";
-            Command = new SqlCommand(commandString, Connection);
             Job job = new Job();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    job = new Job((int)Reader["jobID"], GetAddressById((int)Reader["addressId"]), GetJobState((string)Reader["currentState"]), (string)Reader["notes"], GetMaintenanceEmployeeByJobId((int)Reader["jobID"]), GetSpecialisationById((int)Reader["specialisationId"]), (int)Reader["ServiceRequestID"], (int)Reader["amountOfEmployeesNeeded"]);
+                    connection.Open();
+                    commandString = $"EXEC SelectJobByJobId @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        job = new Job((int)reader["jobID"], GetAddressById((int)reader["addressId"]), GetJobState((string)reader["currentState"]), (string)reader["notes"], GetMaintenanceEmployeeByJobId((int)reader["jobID"]), GetSpecialisationById((int)reader["specialisationId"]), (int)reader["ServiceRequestID"], (int)reader["amountOfEmployeesNeeded"]);
+                    }
                 }
             }
             catch (Exception e)
@@ -221,23 +105,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return job;
         }
         public List<Job> SelectAllJobsWithPriority()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllPendingJobsWithPriority";
-            Command = new SqlCommand(commandString, Connection);
             List<Job> jobList = new List<Job>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    jobList.Add(new Job((int)Reader["jobID"], GetAddressById((int)Reader["addressId"]), GetJobState((string)Reader["currentState"]), (string)Reader["notes"], GetMaintenanceEmployeeByJobId((int)Reader["jobID"]), GetSpecialisationById((int)Reader["specialisationId"]), (int)Reader["ServiceRequestID"], (int)Reader["amountOfEmployeesNeeded"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllJobsWithPriority";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        jobList.Add(new Job((int)reader["jobID"], GetAddressById((int)reader["addressId"]), GetJobState((string)reader["currentState"]), (string)reader["notes"], GetMaintenanceEmployeeByJobId((int)reader["jobID"]), GetSpecialisationById((int)reader["specialisationId"]), (int)reader["ServiceRequestID"], (string)reader["priorityLevel"], (int)reader["amountOfEmployeesNeeded"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -246,23 +132,52 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
+
+            return jobList;
+        }
+        public List<Job> SelectAllPendingJobsWithPriority()
+        {
+            List<Job> jobList = new List<Job>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectAllPendingJobsWithPriority";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        jobList.Add(new Job((int)reader["jobID"], GetAddressById((int)reader["addressId"]), GetJobState((string)reader["currentState"]), (string)reader["notes"], GetMaintenanceEmployeeByJobId((int)reader["jobID"]), GetSpecialisationById((int)reader["specialisationId"]), (int)reader["ServiceRequestID"],(string)reader["priorityLevel"], (int)reader["amountOfEmployeesNeeded"]));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { }
 
             return jobList;
         }
         public List<Job> SelectAllPendingJobs()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllPendingJobs";
-            Command = new SqlCommand(commandString, Connection);
             List<Job> jobList = new List<Job>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    jobList.Add(new Job((int)Reader["jobID"], GetAddressById((int)Reader["addressId"]), GetJobState((string)Reader["currentState"]), (string)Reader["notes"], GetMaintenanceEmployeeByJobId((int)Reader["jobID"]), GetSpecialisationById((int)Reader["specialisationId"]), (int)Reader["ServiceRequestID"], (int)Reader["amountOfEmployeesNeeded"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllPendingJobs";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        jobList.Add(new Job((int)reader["jobID"], GetAddressById((int)reader["addressId"]), GetJobState((string)reader["currentState"]), (string)reader["notes"], GetMaintenanceEmployeeByJobId((int)reader["jobID"]), GetSpecialisationById((int)reader["specialisationId"]), (int)reader["ServiceRequestID"], (int)reader["amountOfEmployeesNeeded"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -271,23 +186,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return jobList;
         }
         public List<Job> SelectAllInProgressJobs()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllInProgressJobs";
-            Command = new SqlCommand(commandString, Connection);
             List<Job> jobList = new List<Job>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    jobList.Add(new Job((int)Reader["jobID"], GetAddressById((int)Reader["addressId"]), GetJobState((string)Reader["currentState"]), (string)Reader["notes"], GetMaintenanceEmployeeByJobId((int)Reader["jobID"]), GetSpecialisationById((int)Reader["specialisationId"]), (int)Reader["ServiceRequestID"], (int)Reader["amountOfEmployeesNeeded"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllInProgressJobs";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        jobList.Add(new Job((int)reader["jobID"], GetAddressById((int)reader["addressId"]), GetJobState((string)reader["currentState"]), (string)reader["notes"], GetMaintenanceEmployeeByJobId((int)reader["jobID"]), GetSpecialisationById((int)reader["specialisationId"]), (int)reader["ServiceRequestID"], (int)reader["amountOfEmployeesNeeded"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -296,23 +213,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return jobList;
         }
         public List<Job> SelectAllFinishedJobs()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllFinishedJobs";
-            Command = new SqlCommand(commandString, Connection);
             List<Job> jobList = new List<Job>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    jobList.Add(new Job((int)Reader["jobID"], GetAddressById((int)Reader["addressId"]), GetJobState((string)Reader["currentState"]), (string)Reader["notes"], GetMaintenanceEmployeeByJobId((int)Reader["jobID"]), GetSpecialisationById((int)Reader["specialisationId"]), (int)Reader["ServiceRequestID"], (int)Reader["amountOfEmployeesNeeded"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllFinishedJobs";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        jobList.Add(new Job((int)reader["jobID"], GetAddressById((int)reader["addressId"]), GetJobState((string)reader["currentState"]), (string)reader["notes"], GetMaintenanceEmployeeByJobId((int)reader["jobID"]), GetSpecialisationById((int)reader["specialisationId"]), (int)reader["ServiceRequestID"], (int)reader["amountOfEmployeesNeeded"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -321,23 +240,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return jobList;
         }
         public List<Job> SelectAllFinishedJobsByIndividualClientID(string id)
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllFinishedJobsByIndividualClientID @id = '{id}'";
-            Command = new SqlCommand(commandString, Connection);
             List<Job> jobList = new List<Job>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    jobList.Add(new Job((int)Reader["jobID"], GetAddressById((int)Reader["addressId"]), GetJobState((string)Reader["currentState"]), (string)Reader["notes"], GetMaintenanceEmployeeByJobId((int)Reader["jobID"]), GetSpecialisationById((int)Reader["specialisationId"]), (int)Reader["ServiceRequestID"], (int)Reader["amountOfEmployeesNeeded"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllFinishedJobsByIndividualClientID @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        jobList.Add(new Job((int)reader["jobID"], GetAddressById((int)reader["addressId"]), GetJobState((string)reader["currentState"]), (string)reader["notes"], GetMaintenanceEmployeeByJobId((int)reader["jobID"]), GetSpecialisationById((int)reader["specialisationId"]), (int)reader["ServiceRequestID"], (int)reader["amountOfEmployeesNeeded"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -346,23 +267,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return jobList;
         }
         public List<Job> SelectAllFinishedJobsByBusinessClientID(string id)
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllFinishedJobsByBusinessClientID @id = '{id}'";
-            Command = new SqlCommand(commandString, Connection);
             List<Job> jobList = new List<Job>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    jobList.Add(new Job((int)Reader["jobID"], GetAddressById((int)Reader["addressId"]), GetJobState((string)Reader["currentState"]), (string)Reader["notes"], GetMaintenanceEmployeeByJobId((int)Reader["jobID"]), GetSpecialisationById((int)Reader["specialisationId"]), (int)Reader["ServiceRequestID"], (int)Reader["amountOfEmployeesNeeded"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllFinishedJobsByBusinessClientID @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        jobList.Add(new Job((int)reader["jobID"], GetAddressById((int)reader["addressId"]), GetJobState((string)reader["currentState"]), (string)reader["notes"], GetMaintenanceEmployeeByJobId((int)reader["jobID"]), GetSpecialisationById((int)reader["specialisationId"]), (int)reader["ServiceRequestID"], (int)reader["amountOfEmployeesNeeded"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -371,7 +294,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return jobList;
         }
@@ -380,72 +303,35 @@ namespace PremiereSolutionProject.DAL
         #region SeperateMethods
         private void InsertAllEmployeesOfJob(Job job)
         {
-            SqlConnection jobConnection = new SqlConnection(connectionSring);
-
-            try
+            for (int i = 0; i < job.Employee.Count; i++)
             {
-                jobConnection.Open();
-                for (int i = 0; i < job.Employee.Count; i++)
-                {
-                    commandString = $"EXEC InsertIntoTVPJobEmployee @jobId = '{job.JobID}', @employeeId = '{job.Employee[i].Id}'";
-                    SqlCommand jobCommand = new SqlCommand(commandString, jobConnection);
-                    jobCommand.ExecuteNonQuery();
-                }
-
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                jobConnection.Close();
+                InsertCommand($"EXEC InsertIntoTVPJobEmployee @jobId = '{job.JobID}', @employeeId = '{job.Employee[i].Id}'");
             }
         }
         private void InsertAllEmployeesOfNewJob(Job job)
         {
-            SqlConnection jobConnection = new SqlConnection(connectionSring);
+            for (int i = 0; i < job.Employee.Count; i++)
+            {
+                InsertCommand($"EXEC InsertIntoTVPNewJobEmployee @employeeId = '{job.Employee[i].Id}'");
+            }
 
-            try
-            {
-                jobConnection.Open();
-                for (int i = 0; i < job.Employee.Count; i++)
-                {
-                    commandString = $"EXEC InsertIntoTVPNewJobEmployee @employeeId = '{job.Employee[i].Id}'";
-                    SqlCommand jobCommand = new SqlCommand(commandString, jobConnection);
-                    jobCommand.ExecuteNonQuery();
-                }
-
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                jobConnection.Close();
-            }
         }
         private Specialisation GetSpecialisationById(int specialisationID)
         {
-
-            SqlConnection specialisationConnection = new SqlConnection(connectionSring);
-            SqlDataReader specialisationReader;
             Specialisation specialisation = new Specialisation();
-            commandString = $"EXEC SelectSpecialisationById @id = '{specialisationID}'";
-            SqlCommand specialisationCommand = new SqlCommand(commandString, specialisationConnection);
 
             try
             {
-                specialisationConnection.Open();
-                specialisationReader = specialisationCommand.ExecuteReader();
-                while (specialisationReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    specialisation = new Specialisation((int)specialisationReader["specialisationID"], (string)specialisationReader["name"], (string)specialisationReader["description"]);
+                    connection.Open();
+                    commandString = $"EXEC SelectSpecialisationById @id = '{specialisationID}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        specialisation = new Specialisation((int)reader["specialisationID"], (string)reader["name"], (string)reader["description"]);
+                    }
                 }
             }
             catch (Exception e)
@@ -454,27 +340,24 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally
-            {
-                specialisationConnection.Close();
-            }
+            finally { }
             return specialisation;
         }
         public Address GetAddressById(int addressId)
         {
-            SqlConnection addressConnection = new SqlConnection(connectionSring);
-            SqlDataReader addressReader;
             Address address = new Address();
-            commandString = $"EXEC SelectAddressById @id = '{addressId}'";
-            SqlCommand addressCommand = new SqlCommand(commandString, addressConnection);
-
             try
             {
-                addressConnection.Open();
-                addressReader = addressCommand.ExecuteReader();
-                while (addressReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    address = new Address((int)addressReader["addressID"], (string)addressReader["streetName"], (string)addressReader["suburb"], (string)addressReader["city"], GetProvince((string)addressReader["province"]), (string)addressReader["postalcode"]);
+                    connection.Open();
+                    commandString = $"EXEC SelectAddressById @id = '{addressId}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        address = new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]);
+                    }
                 }
             }
             catch (Exception e)
@@ -483,10 +366,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally
-            {
-                addressConnection.Close();
-            }
+            finally { }
             return address;
         }
         private bool GetTrueFalseFromBit(int bit)
@@ -496,20 +376,19 @@ namespace PremiereSolutionProject.DAL
         }
         private List<MaintenanceEmployee> GetMaintenanceEmployeeByJobId(int jobId)
         {
-            SqlConnection maintenanceEmployeeConnection = new SqlConnection(connectionSring);
-            SqlDataReader maintenanceEmployeeReader;
             List<MaintenanceEmployee> maintenanceEmployeeList = new List<MaintenanceEmployee>();
-            commandString = $"EXEC GetMaintenanceEmployeeByJobId @id = '{jobId}'";
-            SqlCommand maintenanceEmployeeCommand = new SqlCommand(commandString, maintenanceEmployeeConnection);
-
             try
             {
-                maintenanceEmployeeConnection.Open();
-                maintenanceEmployeeReader = maintenanceEmployeeCommand.ExecuteReader();
-                while (maintenanceEmployeeReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    maintenanceEmployeeList.Add(new MaintenanceEmployee((string)maintenanceEmployeeReader["employeeNumber"], (string)maintenanceEmployeeReader["firstName"], (string)maintenanceEmployeeReader["surname"], GetAddressById((int)maintenanceEmployeeReader["addressId"]), (string)maintenanceEmployeeReader["contactNumber"], (string)maintenanceEmployeeReader["email"], (string)maintenanceEmployeeReader["nationalIdNumber"], (DateTime)maintenanceEmployeeReader["employmentDate"], GetSpecialisationOfEmployeeById((int)maintenanceEmployeeReader["employeeID"]), GetTrueFalseFromBit((int)maintenanceEmployeeReader["employed"]), (string)maintenanceEmployeeReader["department"]));
-
+                    connection.Open();
+                    commandString = $"EXEC GetMaintenanceEmployeeByJobId @id = '{jobId}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        maintenanceEmployeeList.Add(new MaintenanceEmployee((string)reader["employeeNumber"], (string)reader["firstName"], (string)reader["surname"], GetAddressById((int)reader["addressId"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["employmentDate"], GetSpecialisationOfEmployeeById((int)reader["employeeID"]), GetTrueFalseFromBit((int)reader["employed"]), (string)reader["department"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -518,28 +397,24 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally
-            {
-                maintenanceEmployeeConnection.Close();
-            }
+            finally { }
             return maintenanceEmployeeList;
         }
         private List<Specialisation> GetSpecialisationOfEmployeeById(int employeeID)
         {
-
-            SqlConnection specialisationConnection = new SqlConnection(connectionSring);
-            SqlDataReader specialisationReader;
             List<Specialisation> specialisationList = new List<Specialisation>();
-            commandString = $"EXEC GetSpecialisationOfEmployeeByEmployeeId @id = '{employeeID}'";
-            SqlCommand specialisationCommand = new SqlCommand(commandString, specialisationConnection);
-
             try
             {
-                specialisationConnection.Open();
-                specialisationReader = specialisationCommand.ExecuteReader();
-                while (specialisationReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    specialisationList.Add(new Specialisation((int)specialisationReader["specialisationID"], (string)specialisationReader["name"], (string)specialisationReader["description"]));
+                    connection.Open();
+                    commandString = $"EXEC GetSpecialisationOfEmployeeByEmployeeId @id = '{employeeID}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        specialisationList.Add(new Specialisation((int)reader["specialisationID"], (string)reader["name"], (string)reader["description"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -548,10 +423,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally
-            {
-                specialisationConnection.Close();
-            }
+            finally { }
             return specialisationList;
         }
         private Province GetProvince(string input)

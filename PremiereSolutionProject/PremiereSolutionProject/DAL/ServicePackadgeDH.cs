@@ -14,89 +14,23 @@ namespace PremiereSolutionProject.DAL
         #region Delete
         public void Delete(ServicePackage servicePackage)
         {
-            CreateConnection();
-            commandString = $"EXEC DeleteServicePackage @id = '{servicePackage.PackageID}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            DeleteCommand($"EXEC DeleteServicePackage @id = '{servicePackage.PackageID}'");
         }
         #endregion
 
         #region Update
         public void Update(ServicePackage servicePackage)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateServicePackage @id = '{servicePackage.PackageID}', @name = '{servicePackage.PackageName}', @price = '{servicePackage.ServicePrice.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateServicePackage @id = '{servicePackage.PackageID}', @name = '{servicePackage.PackageName}', @price = '{servicePackage.ServicePrice.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'");
         }
         public void UpdatePromotionState(int id, bool state)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateServicePackageState @id = '{id}', @onPromotion = '{GetIntFromBool(state)}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateServicePackageState @id = '{id}', @onPromotion = '{GetIntFromBool(state)}'");
         }
         public void UpdateServicePackedgeServiceList(ServicePackage servicePackage)
         {
             InsertAllServicesOfServicePackedge(servicePackage);
-            //CreateConnection();
-            SqlConnection packageConnection = new SqlConnection(connectionSring);
-            commandString = $"EXEC UpdateServicePackedgeServiceList @id = '{servicePackage.PackageID}'";
-            //Command = new SqlCommand(commandString, Connection);
-            SqlCommand packageCommand = new SqlCommand(commandString, packageConnection);
-
-            try
-            {
-                //OpenConnection();
-                packageConnection.Open();
-                //Command.ExecuteNonQuery();
-                packageCommand.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { //CloseConnection();
-                packageConnection.Close();
-            }
+            UpdateCommand($"EXEC UpdateServicePackedgeServiceList @id = '{servicePackage.PackageID}'");
         }
 
         #endregion
@@ -104,129 +38,33 @@ namespace PremiereSolutionProject.DAL
         #region Insert
         public void InsertSingleServiceToServicePackadge(int ServicePackageId, int ServiceId)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertServicePackageLink @ServicePackageID = '{ServicePackageId}', @ServiceID = '{ServiceId}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            InsertCommand($"EXEC InsertServicePackageLink @ServicePackageID = '{ServicePackageId}', @ServiceID = '{ServiceId}'");
         }
         public void Insert(ServicePackage servicePackage)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertServicePackage @name = '{servicePackage.PackageName}', @onpromotion = '{GetIntFromBool(servicePackage.OnPromotion)}', @promationStartDate = '{servicePackage.PromotionStartDate}', @promotionEndDate = '{servicePackage.PromotionEndDate}', @price = '{servicePackage.ServicePrice.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}',@percintage = '{servicePackage.PromotionPercentage.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            InsertCommand($"EXEC InsertServicePackage @name = '{servicePackage.PackageName}', @onpromotion = '{GetIntFromBool(servicePackage.OnPromotion)}', @promationStartDate = '{servicePackage.PromotionStartDate}', @promotionEndDate = '{servicePackage.PromotionEndDate}', @price = '{servicePackage.ServicePrice.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}',@percintage = '{servicePackage.PromotionPercentage.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'");
         }
         public void InsertPromotion(ServicePackage servicePackage)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateServicePackagePropotion @id = '{servicePackage.PackageID}', @onPromotion = '{GetIntFromBool(servicePackage.OnPromotion)}', @promotionStartDate = '{servicePackage.PromotionStartDate.ToString("yyyy-MM-dd HH:mm:ss")}', @promotionEndDate = '{servicePackage.PromotionEndDate.ToString("yyyy-MM-dd HH:mm:ss")}', @percentage = '{servicePackage.PromotionPercentage.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateServicePackagePropotion @id = '{servicePackage.PackageID}', @onPromotion = '{GetIntFromBool(servicePackage.OnPromotion)}', @promotionStartDate = '{servicePackage.PromotionStartDate.ToString("yyyy-MM-dd HH:mm:ss")}', @promotionEndDate = '{servicePackage.PromotionEndDate.ToString("yyyy-MM-dd HH:mm:ss")}', @percentage = '{servicePackage.PromotionPercentage.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'");
         }
         #endregion
 
         #region Select
         public List<ServicePackage> SelectAllServicePackedges()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllServicePackages";
-            Command = new SqlCommand(commandString, Connection);
             List<ServicePackage> servicePackedgeList = new List<ServicePackage>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    servicePackedgeList.Add(new ServicePackage((int)Reader["servicePackageID"], (string)Reader["name"], SelectAllServicesLinkedToPackedge((int)Reader["servicePackageID"]), GetTrueFalseFromBit((int)Reader["onPromotion"]), (DateTime)Reader["promotionStartDate"], (DateTime)Reader["promotionEndDate"], Reader.GetDouble(Reader.GetOrdinal("promotionPercentAmount")), Reader.GetDouble(Reader.GetOrdinal("price"))));
-                }
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
-
-            return servicePackedgeList;
-        }
-        public List<ServicePackage> SelectAllServicePackedgesWithState()
-        {
-            CreateConnection();
-            commandString = $"EXEC SelectAllServicePackageStates";
-            Command = new SqlCommand(commandString, Connection);
-            List<ServicePackage> servicePackedgeList = new List<ServicePackage>();
-            try
-            {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
-                {
-                    servicePackedgeList.Add(new ServicePackage((int)Reader["servicePackageStateID"], (string)Reader["name"], SelectAllServicesLinkedToPackedgeWithState((int)Reader["servicePackageStateID"]), GetTrueFalseFromBit((int)Reader["onPromotion"]), (DateTime)Reader["promotionStartDate"], (DateTime)Reader["promotionEndDate"], Reader.GetDouble(Reader.GetOrdinal("promotionPercentAmount")), Reader.GetDouble(Reader.GetOrdinal("price"))));
-                }
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
-
-            return servicePackedgeList;
-        }
-        #endregion
-
-        #region SeperateMethods
-        private void InsertAllServicesOfServicePackedge(ServicePackage servicePackage)
-        {
-            try
-            {
-                using (SqlConnection servicePackageConnection = new SqlConnection(connectionSring))
-                {
-                    servicePackageConnection.Open();
-                    for (int i = 0; i < servicePackage.ServiceList.Count; i++)
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServicePackages";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
                     {
-                        commandString = $"EXEC InsertIntoTVPPackedgeService @packedgeId = '{servicePackage.PackageID}',@serviceId = '{servicePackage.ServiceList[i].ServiceID}'";
-                        SqlCommand servicePackageCommand = new SqlCommand(commandString, servicePackageConnection);
-                        servicePackageCommand.ExecuteNonQuery();
+                        servicePackedgeList.Add(new ServicePackage((int)reader["servicePackageID"], (string)reader["name"], SelectAllServicesLinkedToPackedge((int)reader["servicePackageID"]), GetTrueFalseFromBit((int)reader["onPromotion"]), (DateTime)reader["promotionStartDate"], (DateTime)reader["promotionEndDate"], reader.GetDouble(reader.GetOrdinal("promotionPercentAmount")), reader.GetDouble(reader.GetOrdinal("price"))));
                     }
                 }
             }
@@ -236,23 +74,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-        }
-        private List<Service> SelectAllServicesLinkedToPackedge(int id)
-        {
-            SqlConnection serviceConnection = new SqlConnection(connectionSring);
-            SqlDataReader serviceReader;
-            List<Service> serivceList = new List<Service>();
-            commandString = $"EXEC SelectAllServicesByServicePackedge @id = '{id}'";
-            SqlCommand serviceCommand = new SqlCommand(commandString, serviceConnection);
+            finally {}
 
+            return servicePackedgeList;
+        }
+        public List<ServicePackage> SelectAllServicePackedgesWithState()
+        {
+            List<ServicePackage> servicePackedgeList = new List<ServicePackage>();
             try
             {
-                serviceConnection.Open();
-                serviceReader = serviceCommand.ExecuteReader();
-                while (serviceReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    serivceList.Add(new Service((int)serviceReader["serviceID"], (string)serviceReader["name"], (string)serviceReader["description"]));
-
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServicePackageStates";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        servicePackedgeList.Add(new ServicePackage((int)reader["servicePackageStateID"], (string)reader["name"], SelectAllServicesLinkedToPackedgeWithState((int)reader["servicePackageStateID"]), GetTrueFalseFromBit((int)reader["onPromotion"]), (DateTime)reader["promotionStartDate"], (DateTime)reader["promotionEndDate"], reader.GetDouble(reader.GetOrdinal("promotionPercentAmount")), reader.GetDouble(reader.GetOrdinal("price"))));
+                    }
                 }
             }
             catch (Exception e)
@@ -261,28 +101,61 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally
+            finally {}
+
+            return servicePackedgeList;
+        }
+        #endregion
+
+        #region SeperateMethods
+        private void InsertAllServicesOfServicePackedge(ServicePackage servicePackage)
+        {
+            for (int i = 0; i < servicePackage.ServiceList.Count; i++)
             {
-                serviceConnection.Close();
+                InsertCommand($"EXEC InsertIntoTVPPackedgeService @packedgeId = '{servicePackage.PackageID}',@serviceId = '{servicePackage.ServiceList[i].ServiceID}'");
             }
+        }
+        private List<Service> SelectAllServicesLinkedToPackedge(int id)
+        {
+            List<Service> serivceList = new List<Service>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServicesByServicePackedge @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        serivceList.Add(new Service((int)reader["serviceID"], (string)reader["name"], (string)reader["description"]));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { }
             return serivceList;
         }
         private List<Service> SelectAllServicesLinkedToPackedgeWithState(int id)
         {
-            SqlConnection serviceConnection = new SqlConnection(connectionSring);
-            SqlDataReader serviceReader;
             List<Service> serivceList = new List<Service>();
-            commandString = $"EXEC SelectAllServicesByServicePackedgeWithState @id = '{id}'";
-            SqlCommand serviceCommand = new SqlCommand(commandString, serviceConnection);
-
             try
             {
-                serviceConnection.Open();
-                serviceReader = serviceCommand.ExecuteReader();
-                while (serviceReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    serivceList.Add(new Service((int)serviceReader["serviceID"], (string)serviceReader["name"], (string)serviceReader["description"]));
-
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServicesByServicePackedgeWithState @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        serivceList.Add(new Service((int)reader["serviceStateID"], (string)reader["name"], (string)reader["description"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -291,10 +164,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally
-            {
-                serviceConnection.Close();
-            }
+            finally { }
             return serivceList;
         }
         private bool GetTrueFalseFromBit(int bit)

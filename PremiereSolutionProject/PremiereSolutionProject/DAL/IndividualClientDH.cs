@@ -13,81 +13,37 @@ namespace PremiereSolutionProject.DAL
         #region Update
         public void Update(IndividualClient individualClient)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateClientIndividual @id = '{individualClient.Id}', @firstname = '{individualClient.FirstName}', @surname = '{individualClient.Surname}', @contact = '{individualClient.ContactNumber}', @email = '{individualClient.Email}', @nationalid = '{individualClient.NationalIDnumber}', @registrationdate = '{individualClient.RegistrationDate}', @active = '{GetIntFromBool(individualClient.Active)}', @adressid = '{individualClient.Address.AddressID}', @streetName = '{individualClient.Address.StreetName}', @suburb = '{individualClient.Address.Suburb}', @province = '{((int)individualClient.Address.Province).ToString()}', @postalcode = '{individualClient.Address.Postalcode}',@city = '{individualClient.Address.City}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateClientIndividual @id = '{individualClient.Id}', @firstname = '{individualClient.FirstName}', @surname = '{individualClient.Surname}', @contact = '{individualClient.ContactNumber}', @email = '{individualClient.Email}', @nationalid = '{individualClient.NationalIDnumber}', @registrationdate = '{individualClient.RegistrationDate}', @active = '{GetIntFromBool(individualClient.Active)}', @adressid = '{individualClient.Address.AddressID}', @streetName = '{individualClient.Address.StreetName}', @suburb = '{individualClient.Address.Suburb}', @province = '{((int)individualClient.Address.Province).ToString()}', @postalcode = '{individualClient.Address.Postalcode}',@city = '{individualClient.Address.City}'");
         }
         public void ChangeClientState(string clientId,bool active)
         {
-            CreateConnection();
-            commandString = $"EXEC UpdateClientIndividualCurrentState @id ='{clientId}', @active ='{GetIntFromBool(active)}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            UpdateCommand($"EXEC UpdateClientIndividualCurrentState @id ='{clientId}', @active ='{GetIntFromBool(active)}'");
         }
         #endregion
 
         #region Insert
         public void Insert(IndividualClient individualClient)
         {
-            CreateConnection();
-            commandString = $"EXEC InsertClientIndividual @firstName = '{individualClient.FirstName}', @surname = '{individualClient.Surname}', @contactNumber = '{individualClient.ContactNumber}', @email = '{individualClient.Email}', @nationalIdNumber = '{individualClient.NationalIDnumber}', @registrationDate = '{individualClient.RegistrationDate.ToString("yyyy-MM-dd")}', @active = '{GetIntFromBool(individualClient.Active)}',@streetname = '{individualClient.Address.StreetName}',@suburb = '{individualClient.Address.Suburb}',@province = '{((int)individualClient.Address.Province).ToString()}',@postalcode= '{individualClient.Address.Postalcode}', @city = '{individualClient.Address.City}'";
-            Command = new SqlCommand(commandString, Connection);
-
-            try
-            {
-                OpenConnection();
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { CloseConnection(); }
+            InsertCommand($"EXEC InsertClientIndividual @firstName = '{individualClient.FirstName}', @surname = '{individualClient.Surname}', @contactNumber = '{individualClient.ContactNumber}', @email = '{individualClient.Email}', @nationalIdNumber = '{individualClient.NationalIDnumber}', @registrationDate = '{individualClient.RegistrationDate.ToString("yyyy-MM-dd")}', @active = '{GetIntFromBool(individualClient.Active)}',@streetname = '{individualClient.Address.StreetName}',@suburb = '{individualClient.Address.Suburb}',@province = '{((int)individualClient.Address.Province).ToString()}',@postalcode= '{individualClient.Address.Postalcode}', @city = '{individualClient.Address.City}'");
         }
         #endregion
 
         #region Select
         public List<IndividualClient> SelectAllIndividualClients()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllIndividualClients";
-            Command = new SqlCommand(commandString, Connection);
             List<IndividualClient> IndividualClientList = new List<IndividualClient>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-
-                    IndividualClientList.Add(new IndividualClient((string)Reader["clientIndividualClientNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["RegistrationDate"], GetTrueFalseFromBit((int)Reader["active"])));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllIndividualClients";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        IndividualClientList.Add(new IndividualClient((string)reader["clientIndividualClientNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["RegistrationDate"], GetTrueFalseFromBit((int)reader["active"])));
+                    }
                 }
             }
             catch (Exception e)
@@ -96,7 +52,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return IndividualClientList;
         }
