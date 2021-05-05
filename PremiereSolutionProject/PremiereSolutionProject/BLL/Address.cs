@@ -86,7 +86,7 @@ namespace PremiereSolutionProject.BLL
     }
 
     //enum containing all the provinces in South-Africa, since it is constant
-    enum Province
+    public enum Province
     {
         North_West,
         Gauteng,
