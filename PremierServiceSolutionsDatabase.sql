@@ -802,7 +802,7 @@ AS
 		DELETE FROM ServicePackageLink
 		WHERE ServicePackageLink.ServicePackageID = @id
 
-		INSERT INTO ServiceRequestSpecialisationLink(ServiceRequestID,specialisationRequiredID)
+		INSERT INTO ServicePackageLink(ServicePackageID,ServiceID)
 		SELECT idIntOne,idIntTwo FROM TVP
 
 		DELETE FROM TVP
@@ -1367,6 +1367,12 @@ BEGIN
 	SELECT * FROM Job
 	INNER JOIN ServiceRequest ON Job.ServiceRequestID = ServiceRequest.serviceRequestID
 	WHERE currentState = '0'
+END
+GO
+CREATE PROCEDURE SelectAllJobsWithPriority AS
+BEGIN
+	SELECT * FROM Job
+	INNER JOIN ServiceRequest ON Job.ServiceRequestID = ServiceRequest.serviceRequestID
 END
 GO
 CREATE PROCEDURE SelectAllInProgressJobs AS
