@@ -35,17 +35,19 @@ namespace PremiereSolutionProject.DAL
         #region Select
         public List<BusinessClient> SelectAllBusinessClients()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllBusinessClients";
-            Command = new SqlCommand(commandString, Connection);
             List<BusinessClient> businessClientList = new List<BusinessClient>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    businessClientList.Add(new BusinessClient((string)Reader["clientBusinessClientNumber"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (DateTime)Reader["RegistrationDate"], (string)Reader["taxNumber"], (string)Reader["busuinessName"], GetTrueFalseFromBit((int)Reader["active"])));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllBusinessClients";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        businessClientList.Add(new BusinessClient((string)Reader["clientBusinessClientNumber"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (DateTime)Reader["RegistrationDate"], (string)Reader["taxNumber"], (string)Reader["busuinessName"], GetTrueFalseFromBit((int)Reader["active"])));
+                    }
                 }
             }
             catch (Exception e)
@@ -54,7 +56,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }         
 
             return businessClientList;
 

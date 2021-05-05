@@ -53,17 +53,19 @@ namespace PremiereSolutionProject.DAL
         #region Select
         public List<CallCenterEmployee> SelectAllCallCenterEmployees()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectCallCenterEmployees";
-            Command = new SqlCommand(commandString, Connection);
             List<CallCenterEmployee> callCenterEmployeeList = new List<CallCenterEmployee>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    callCenterEmployeeList.Add(new CallCenterEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectCallCenterEmployees";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        callCenterEmployeeList.Add(new CallCenterEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -72,25 +74,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }
 
             return callCenterEmployeeList;
         }
-
         public List<MaintenanceEmployee> SelectAllMaintenanceEmployees()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectMaintenanceEmployees";
-            Command = new SqlCommand(commandString, Connection);
             List<MaintenanceEmployee> maintenanceEmployeeList = new List<MaintenanceEmployee>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-
-                    maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectMaintenanceEmployees";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -99,24 +101,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }
 
             return maintenanceEmployeeList;
         }
         public List<MaintenanceEmployee> SelectAllMaintenanceEmployeesWithGivenSpecilization(int specilizationId)
         {
-            CreateConnection();
-            commandString = $"EXEC SelectMaintenanceEmployeesAccordingToSpecinization @specilization = '{specilizationId}'";
-            Command = new SqlCommand(commandString, Connection);
             List<MaintenanceEmployee> maintenanceEmployeeList = new List<MaintenanceEmployee>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-
-                    maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectMaintenanceEmployeesAccordingToSpecinization @specilization = '{specilizationId}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -125,24 +128,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }
 
             return maintenanceEmployeeList;
         }
         public List<MaintenanceEmployee> SelectAllAvailableMaintenanceEmployees()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAvailableMaintenanceEmployees";
-            Command = new SqlCommand(commandString, Connection);
             List<MaintenanceEmployee> maintenanceEmployeeList = new List<MaintenanceEmployee>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-
-                    maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAvailableMaintenanceEmployees";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -151,24 +155,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }
 
             return maintenanceEmployeeList;
         }
         public List<ServiceManager> SelectAllServiceManagers()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectServiceManagers";
-            Command = new SqlCommand(commandString, Connection);
             List<ServiceManager> serviceManagerList = new List<ServiceManager>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-
-                    serviceManagerList.Add(new ServiceManager((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectServiceManagers";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        serviceManagerList.Add(new ServiceManager((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -177,7 +182,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }          
 
             return serviceManagerList;
 

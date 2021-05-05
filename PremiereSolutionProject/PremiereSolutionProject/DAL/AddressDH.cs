@@ -32,17 +32,19 @@ namespace PremiereSolutionProject.DAL
         #region Select
         public List<Address> SelectAllAddresses()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllAddresses";
-            Command = new SqlCommand(commandString, Connection);
             List<Address> addressList = new List<Address>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    addressList.Add(new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllAddresses";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        addressList.Add(new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -51,7 +53,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }
 
             return addressList;
         }

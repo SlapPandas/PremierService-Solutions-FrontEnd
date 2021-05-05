@@ -39,17 +39,19 @@ namespace PremiereSolutionProject.DAL
         #region Select
         public List<BusinessClientEmployees> SelectAllBusinessClientEmployeesByBusinessId(string businessId)
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllBusinessClientEmployeesByBusinessId @businessid = '{businessId}'";
-            Command = new SqlCommand(commandString, Connection);
             List<BusinessClientEmployees> businessClientemployeeList = new List<BusinessClientEmployees>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    businessClientemployeeList.Add(new BusinessClientEmployees((int)Reader["clientBusinessEmployeeID"], (string)Reader["firstName"], (string)Reader["surname"], (string)Reader["department"], (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["busuinessName"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllBusinessClientEmployeesByBusinessId @businessid = '{businessId}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        businessClientemployeeList.Add(new BusinessClientEmployees((int)Reader["clientBusinessEmployeeID"], (string)Reader["firstName"], (string)Reader["surname"], (string)Reader["department"], (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["busuinessName"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -58,7 +60,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }
 
             return businessClientemployeeList;
 
@@ -66,17 +68,19 @@ namespace PremiereSolutionProject.DAL
 
         public List<BusinessClientEmployees> SelectAllBusinessClientEmployees()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllBusinessClientEmployees";
-            Command = new SqlCommand(commandString, Connection);
             List<BusinessClientEmployees> businessClientemployeeList = new List<BusinessClientEmployees>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    businessClientemployeeList.Add(new BusinessClientEmployees((int)Reader["clientBusinessEmployeeID"], (string)Reader["firstName"], (string)Reader["surname"], (string)Reader["department"], (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["busuinessName"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllBusinessClientEmployees";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        businessClientemployeeList.Add(new BusinessClientEmployees((int)Reader["clientBusinessEmployeeID"], (string)Reader["firstName"], (string)Reader["surname"], (string)Reader["department"], (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["busuinessName"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -85,7 +89,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }
 
             return businessClientemployeeList;
         }
@@ -95,17 +99,19 @@ namespace PremiereSolutionProject.DAL
         #region SeperateMethods
         private Address GetAddressById(int addressId)
         {
-            commandString = $"EXEC SelectAddress = '{addressId}'";
-            Command = new SqlCommand(commandString, Connection);
             Address myAddress = null;
-
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    myAddress = new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]);
+                    connection.Open();
+                    commandString = $"EXEC SelectAddress = '{addressId}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myAddress = new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]);
+                    }
                 }
             }
             catch (Exception e)
@@ -114,7 +120,8 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }
+           
             return myAddress;
 
         }

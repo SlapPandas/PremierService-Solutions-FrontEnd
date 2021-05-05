@@ -48,19 +48,21 @@ namespace PremiereSolutionProject.DAL
         #region Select
         public List<Call> SelectAllCallByIndividualClientById(string id)
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllCallsByIndividualClientId @id = '{id}'";
-            Command = new SqlCommand(commandString, Connection);
             List<Call> callList = new List<Call>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
-                    //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
-                    callList.Add(new Call((int)Reader["callID"], (DateTime)Reader["startTime"], (DateTime)Reader["endTime"], new IndividualClient((string)Reader["clientIndividualClientNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["RegistrationDate"], GetTrueFalseFromBit((int)Reader["active"])), callcenterEnptyEmployee, (string)Reader["callNotes"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllCallsByIndividualClientId @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
+                        //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
+                        callList.Add(new Call((int)Reader["callID"], (DateTime)Reader["startTime"], (DateTime)Reader["endTime"], new IndividualClient((string)Reader["clientIndividualClientNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["RegistrationDate"], GetTrueFalseFromBit((int)Reader["active"])), callcenterEnptyEmployee, (string)Reader["callNotes"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -69,25 +71,27 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }       
 
             return callList;
         }
         public List<Call> SelectAllCallByBusinessClientById(string id)
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllCallsByBusinessClientId @id = '{id}'";
-            Command = new SqlCommand(commandString, Connection);
             List<Call> callList = new List<Call>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
-                    //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
-                    callList.Add(new Call((int)Reader["callID"], (DateTime)Reader["startTime"], (DateTime)Reader["endTime"], new BusinessClient((string)Reader["clientBusinessClientNumber"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (DateTime)Reader["RegistrationDate"], (string)Reader["taxNumber"], (string)Reader["busuinessName"], GetTrueFalseFromBit((int)Reader["active"])), callcenterEnptyEmployee, (string)Reader["callNotes"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllCallsByBusinessClientId @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
+                        //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
+                        callList.Add(new Call((int)Reader["callID"], (DateTime)Reader["startTime"], (DateTime)Reader["endTime"], new BusinessClient((string)Reader["clientBusinessClientNumber"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (DateTime)Reader["RegistrationDate"], (string)Reader["taxNumber"], (string)Reader["busuinessName"], GetTrueFalseFromBit((int)Reader["active"])), callcenterEnptyEmployee, (string)Reader["callNotes"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -96,25 +100,27 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }          
 
             return callList;
         }
         public Call SelectCallByJobId(int id)
         {
-            CreateConnection();
-            commandString = $"EXEC SelectCallByJobId @id = '{id}'";
-            Command = new SqlCommand(commandString, Connection);
             Call call = new Call();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
-                    //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
-                    call = new Call((int)Reader["callID"], (DateTime)Reader["startTime"], (DateTime)Reader["endTime"], callcenterEnptyEmployee, (string)Reader["callNotes"]);
+                    connection.Open();
+                    commandString = $"EXEC SelectCallByJobId @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
+                        //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
+                        call = new Call((int)Reader["callID"], (DateTime)Reader["startTime"], (DateTime)Reader["endTime"], callcenterEnptyEmployee, (string)Reader["callNotes"]);
+                    }
                 }
             }
             catch (Exception e)
@@ -123,7 +129,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally { }           
 
             return call;
         }
