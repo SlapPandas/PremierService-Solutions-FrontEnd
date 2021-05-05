@@ -11,7 +11,7 @@ namespace PremiereSolutionProject.DAL
 {
     public class BusinessClientEmployeesDH : DatabaseConnection, IDataconnection
     {
-        //Need to do
+        //Done
         #region Delete
         public void Delete(BusinessClientEmployees businessClientEmployees)
         {
@@ -19,7 +19,7 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Need to do
+        //Done
         #region Update
         public void Update(BusinessClientEmployees businessClientEmployees)
         {
@@ -27,7 +27,7 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Assistance
+        //Done
         #region Insert
         public void Insert(BusinessClientEmployees businessClientEmployees)
         {

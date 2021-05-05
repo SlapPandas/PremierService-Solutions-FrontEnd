@@ -58,6 +58,17 @@ namespace PremiereSolutionProject.BLL
             this.email = email;
             this.businessID = businessID;
         }
+
+        //I created this constructor because the details may change but if the business ID changes then they would be inserted as a new BusinessClientEmployee
+        public BusinessClientEmployees(int id, string fname, string sname, string depart, string contact, string email)
+        {
+            this.id = id;
+            this.firstName = fname;
+            this.surname = sname;
+            this.department = depart;
+            this.contactnumber = contact;
+            this.email = email;
+        }
         #endregion
 
         #region Methods

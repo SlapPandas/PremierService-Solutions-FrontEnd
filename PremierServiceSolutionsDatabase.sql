@@ -630,20 +630,18 @@ AS
 BEGIN
 	BEGIN TRAN
 		UPDATE Call
-		SET ClientIndividualID = (SELECT clientIndividualID FROM ClientIndividual WHERE clientIndividualClientNumber = @ClientBusiness)
+		SET ClientBusinessID = (SELECT clientIndividualID FROM ClientIndividual WHERE clientIndividualClientNumber = @ClientBusiness)
 		WHERE callID = @id
 	COMMIT
 END
 GO
-CREATE PROCEDURE UpdateBusinessClientEmployee @id VARCHAR(100), @firstname VARCHAR(100), @surname VARCHAR(100), @department VARCHAR(100), @contact VARCHAR(10), @email VARCHAR(100)
+CREATE PROCEDURE UpdateBusinessClientEmployee @id Int, @firstName  VARCHAR(50), @surname VARCHAR(50), @department VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100)
 AS
 BEGIN
 	BEGIN TRAN
-
 	UPDATE ClientBusinessEmployee
-	SET firstName = @firstname, surname = @surname, department = @department, contactNumber = @contact, email = @email
+	SET firstName = @firstName, surname = @surname, department = @department, contactNumber = @contactNumber, email = @email
 	WHERE clientBusinessEmployeeID = @id
-
 	COMMIT
 END
 GO
@@ -1084,11 +1082,11 @@ BEGIN
 END 
 GO
 
-CREATE PROCEDURE InsertBusinessClientEmployees @firstName VARCHAR(50),@surname VARCHAR(50),@department VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @businessID INT
+CREATE PROCEDURE InsertBusinessClientEmployees @firstName VARCHAR(50),@surname VARCHAR(50),@department VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @businessID VARCHAR(50)
 AS
 BEGIN 
 	INSERT INTO [ClientBusinessEmployee] ([firstName], [surname], [department], [contactNumber], [email], [businessID])
-	VALUES (@firstName, @surname, @department, @contactNumber, @email, @businessID)
+	VALUES (@firstName, @surname, @department, @contactNumber, @email, (SELECT clientBusinessID FROM ClientBusiness WHERE clientBusinessClientNumber = @businessID))
 END
 GO
 
