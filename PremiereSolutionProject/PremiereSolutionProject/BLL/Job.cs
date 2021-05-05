@@ -193,7 +193,7 @@ namespace PremiereSolutionProject.BLL
         }
         #endregion
     }
-    enum JobState
+    public enum JobState
     {
         //we added Pending and made it the default JobState. When the job has been assigned it will change to InProgress
         Pending,
