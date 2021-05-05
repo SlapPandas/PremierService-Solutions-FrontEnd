@@ -110,8 +110,6 @@ namespace PremiereSolutionProject.BLL
 
         #region Methods
 
-        
-
         public List<ServiceRequest> SelectAllServiceRequests()
         {
             ServiceRequestDH serviceRequestDH = new ServiceRequestDH();
@@ -171,8 +169,6 @@ namespace PremiereSolutionProject.BLL
 
             return specEmployees;
         }
-
-        
 
         private Specialisation MatchSpecialisation(string specName, List<Specialisation> specList)
         {
