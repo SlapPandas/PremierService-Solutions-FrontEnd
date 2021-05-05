@@ -8,7 +8,7 @@ using PremiereSolutionProject.BLL.Interfaces;
 
 namespace PremiereSolutionProject.BLL
 {
-    class BusinessClient : Client
+    public class BusinessClient : Client
     {
         #region Fields
         private string taxNumber;

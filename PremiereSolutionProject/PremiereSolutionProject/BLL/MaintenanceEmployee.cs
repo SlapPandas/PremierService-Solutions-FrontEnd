@@ -8,7 +8,7 @@ using PremiereSolutionProject.BLL.Interfaces;
 
 namespace PremiereSolutionProject.BLL
 {
-    class MaintenanceEmployee : Employee
+    public class MaintenanceEmployee : Employee
     {
         #region Fields
         private List<Specialisation> specialisations;

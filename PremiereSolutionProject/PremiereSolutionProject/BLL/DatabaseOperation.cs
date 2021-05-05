@@ -8,7 +8,7 @@ using PremiereSolutionProject.BLL.Interfaces;
 
 namespace PremiereSolutionProject.BLL
 {
-    class DatabaseOperation
+    public class DatabaseOperation
     {
         #region Properties
         public int Id { get; set; }

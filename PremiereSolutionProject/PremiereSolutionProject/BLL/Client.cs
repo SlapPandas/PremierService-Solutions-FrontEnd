@@ -8,7 +8,7 @@ using PremiereSolutionProject.BLL.Interfaces;
 
 namespace PremiereSolutionProject.BLL
 {
-    abstract class Client : IEntity
+    public abstract class Client : IEntity
     {
         #region Fields
         private string id;

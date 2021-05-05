@@ -8,7 +8,7 @@ using PremiereSolutionProject.BLL.Interfaces;
 
 namespace PremiereSolutionProject.BLL
 {
-    class CallCenterEmployee : Employee
+    public class CallCenterEmployee : Employee
     {
         //inherits all fields and properties from Employee
 

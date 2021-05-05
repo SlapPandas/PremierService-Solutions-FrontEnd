@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PremiereSolutionProject.BLL
 {
-    class StaticVariables
+    public class StaticVariables
     {
         #region Fields
         private double platinumPrice;   //refers to price per day

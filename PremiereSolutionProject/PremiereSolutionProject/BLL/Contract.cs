@@ -8,7 +8,7 @@ using PremiereSolutionProject.DAL;
 
 namespace PremiereSolutionProject.BLL
 {
-    class Contract
+    public class Contract
     {
         #region Fields
         private string contractID;

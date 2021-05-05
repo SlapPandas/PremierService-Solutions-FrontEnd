@@ -7,7 +7,7 @@ using PremiereSolutionProject.DAL;
 
 namespace PremiereSolutionProject.BLL
 {
-    class Address
+    public class Address
     {
         #region Fields
         private int addressID;

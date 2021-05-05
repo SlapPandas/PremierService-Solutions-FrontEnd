@@ -8,7 +8,7 @@ using PremiereSolutionProject.BLL.Interfaces;
 
 namespace PremiereSolutionProject.BLL
 {
-    class ClientFactory : FactoryClass
+    public class ClientFactory : FactoryClass
     {
 
         public override IEntity GetEntity(string clientNeeded)

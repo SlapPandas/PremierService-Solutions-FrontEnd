@@ -8,7 +8,7 @@ using PremiereSolutionProject.DAL;
 
 namespace PremiereSolutionProject.BLL
 {
-    class ServiceRequest
+    public class ServiceRequest
     {
 
         #region Fields

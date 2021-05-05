@@ -8,7 +8,7 @@ using PremiereSolutionProject.BLL.Interfaces;
 
 namespace PremiereSolutionProject.BLL
 {
-    abstract class FactoryClass
+    public abstract class FactoryClass
     {
         public abstract IEntity GetEntity(string needed);
     }

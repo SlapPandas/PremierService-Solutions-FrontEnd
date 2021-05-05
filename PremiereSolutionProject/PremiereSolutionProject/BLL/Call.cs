@@ -35,12 +35,12 @@ namespace PremiereSolutionProject.BLL
 
         #region Constructors
         //default constructor
-         Call()
+         public Call()
         {
         }
 
         //constructor with all fields
-         Call(int id, DateTime start, DateTime end, Client c, CallCenterEmployee ccEmp, string cNotes)
+        public Call(int id, DateTime start, DateTime end, Client c, CallCenterEmployee ccEmp, string cNotes)
         {
             this.callID = id;
             this.startTime = start;
@@ -50,7 +50,7 @@ namespace PremiereSolutionProject.BLL
             this.callNotes = cNotes;
         }
 
-         Call(int id, DateTime start, DateTime end, IndividualClient c, CallCenterEmployee ccEmp, string cNotes)
+        public Call(int id, DateTime start, DateTime end, IndividualClient c, CallCenterEmployee ccEmp, string cNotes)
         {
             this.callID = id;
             this.startTime = start;
@@ -60,7 +60,7 @@ namespace PremiereSolutionProject.BLL
             this.callNotes = cNotes;
         }
 
-         Call(int id, DateTime start, DateTime end, BusinessClient c, CallCenterEmployee ccEmp, string cNotes)
+        public Call(int id, DateTime start, DateTime end, BusinessClient c, CallCenterEmployee ccEmp, string cNotes)
         {
             this.callID = id;
             this.startTime = start;
@@ -71,7 +71,7 @@ namespace PremiereSolutionProject.BLL
         }
 
         //constructor without ID field
-         Call(DateTime start, DateTime end, Client c, CallCenterEmployee ccEmp, string cNotes)
+        public Call(DateTime start, DateTime end, Client c, CallCenterEmployee ccEmp, string cNotes)
         {
             this.startTime = start;
             this.endTime = end;
@@ -80,7 +80,7 @@ namespace PremiereSolutionProject.BLL
             this.callNotes = cNotes;
         }
 
-         Call(int id, DateTime start, DateTime end, CallCenterEmployee ccEmp, string cNotes)
+        public Call(int id, DateTime start, DateTime end, CallCenterEmployee ccEmp, string cNotes)
         {
             this.callID = id;
             this.startTime = start;
@@ -89,7 +89,7 @@ namespace PremiereSolutionProject.BLL
             this.callNotes = cNotes;
         }
 
-         Call(int id, DateTime start, CallCenterEmployee ccEmp)
+        public Call(int id, DateTime start, CallCenterEmployee ccEmp)
         {
             this.callID = id;
             this.startTime = start;

@@ -8,7 +8,7 @@ using PremiereSolutionProject.DAL;
 
 namespace PremiereSolutionProject.BLL
 {
-    abstract class Employee : IEntity
+    public abstract class Employee : IEntity
     {
         #region Fields
         private string id;

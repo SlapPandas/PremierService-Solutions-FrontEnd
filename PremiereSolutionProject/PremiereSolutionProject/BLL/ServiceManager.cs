@@ -8,7 +8,7 @@ using PremiereSolutionProject.BLL.Interfaces;
 
 namespace PremiereSolutionProject.BLL
 {
-    class ServiceManager : Employee
+    public class ServiceManager : Employee
     {
         #region Constructors
         public ServiceManager() // default constructor

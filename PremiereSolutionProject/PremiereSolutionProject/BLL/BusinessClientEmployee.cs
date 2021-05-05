@@ -7,7 +7,7 @@ using PremiereSolutionProject.DAL;
 
 namespace PremiereSolutionProject.BLL
 {
-    class BusinessClientEmployees
+    public class BusinessClientEmployees
     {
         #region Fields
         private int id;

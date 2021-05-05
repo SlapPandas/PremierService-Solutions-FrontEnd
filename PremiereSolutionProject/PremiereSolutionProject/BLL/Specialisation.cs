@@ -7,7 +7,7 @@ using PremiereSolutionProject.DAL;
 
 namespace PremiereSolutionProject.BLL
 {
-    class Specialisation
+    public class Specialisation
     {
         #region Fields
         private int specialisationID;
