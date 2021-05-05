@@ -157,13 +157,13 @@ namespace PremiereSolutionProject.BLL
             ContractDH contractDH = new ContractDH();
             contractDH.Delete(contract);
         }
-
+        /*
         public void InsertContract(Contract contract)
         {
             ContractDH contractDH = new ContractDH();
             contractDH.Insert(contract);
         }
-
+        
         public void CreateNewContract(Client c, Contract contract)
         {
             //should the method maybe take in a ClientID and then just find the client according that from a list? 
@@ -173,7 +173,7 @@ namespace PremiereSolutionProject.BLL
                 InsertContract(new Contract(contract.startDate, contract.endDate, c, contract.packageList, true, contract.priorityLevel, CalculateContractPrice(), "Recurring"));
             }
         }
-
+        */
         private double CalculateContractPrice()
         {
             int daysChosen = DetermineDaysChosen(priorityLevel);
