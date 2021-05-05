@@ -95,6 +95,18 @@ namespace PremiereSolutionProject.BLL
             this.priorityLevel = priority;
             this.employeesNeeded = empsNeeded;
         }
+        public Job(int id, Address jAddress, JobState js, string jNotes, List<MaintenanceEmployee> mE, Specialisation spec, int sReqID, string priority, int empsNeeded) // normal constructor
+        {
+            this.jobID = id;
+            this.jobAddress = jAddress;
+            this.JobState = js;
+            this.jobNotes = jNotes;
+            this.employee = mE;
+            this.serviceRequestID = sReqID;
+            this.specialisation = spec;
+            this.priorityLevel = priority;
+            this.employeesNeeded = empsNeeded;
+        }
         #endregion
 
         #region Methods
