@@ -111,7 +111,7 @@ namespace PremiereSolutionProject.BLL
         }
 
         //Generate a random CallCenterEmployee to be assigned to an incoming call
-         CallCenterEmployee GenerateRandomEmployee()
+         public CallCenterEmployee GenerateRandomEmployee()
         {
             EmployeeDH employeeDH = new EmployeeDH();
             List<CallCenterEmployee> ccEmpList = employeeDH.SelectAllCallCenterEmployees(); //list of all call center employees
