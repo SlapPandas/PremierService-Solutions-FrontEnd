@@ -200,7 +200,7 @@ CREATE TABLE "Contract"
 	contractNumber VARCHAR(100),
 	startDate DATETIME NOT NULL,
 	endDate DATETIME NULL,
-	active INT NOT NULL,
+	activeContract INT NOT NULL,
 	priorityLevel VARCHAR (20) NOT NULL,
 	price FLOAT NOT NULL,
 	contractType VARCHAR(15) NOT NULL
@@ -212,7 +212,7 @@ CREATE TABLE "ContractState"
 	contractNumber VARCHAR(100),
 	startDate DATETIME NOT Null,
 	endDate DATETIME NULL,
-	active INT NOT NULL,
+	activeContract INT NOT NULL,
 	priorityLevel VARCHAR (20) NOT NULL,
 	price FLOAT NOT NULL,
 	contractType VARCHAR(15) NOT NULL
@@ -255,7 +255,7 @@ CREATE TABLE ServicePackageLink
 	GO
 CREATE TABLE ClientContractLink
 	(
-	ContractID INT NOT NULL FOREIGN KEY (ContractID) REFERENCES "Contract" (contractID),
+	ContractID INT NOT NULL FOREIGN KEY (ContractID) REFERENCES [ContractState] (contractStateID),
 	ClientBusinessID INT NULL FOREIGN KEY (ClientBusinessID) REFERENCES ClientBusiness (clientBusinessID),
 	ClientIndividualID INT NULL FOREIGN KEY (ClientIndividualID) REFERENCES ClientIndividual (clientIndividualID)
 	);
@@ -417,7 +417,7 @@ INSERT INTO ServicePackageLink ([servicepackageID],[serviceID]) VALUES ('1','1')
 INSERT INTO ServicePackageLink ([servicepackageID],[serviceID]) VALUES ('1','2');
 INSERT INTO ServicePackageLink ([servicepackageID],[serviceID]) VALUES ('2','3');
 INSERT INTO ServicePackageLink ([servicepackageID],[serviceID]) VALUES ('2','4');
-INSERT INTO [Contract]([startDate],[endDate],[active],priorityLevel,price,contractType) VALUES('1999/12/12','2000/12/12','1','123','12.12','type');
+INSERT INTO [Contract]([startDate],[endDate],[activeContract],priorityLevel,price,contractType) VALUES('1999/12/12','2000/12/12','1','123','12.12','type');
 INSERT INTO ServiceContractLink([contractID],[ServicePackedgeID]) VALUES ('1','1')
 INSERT INTO ServiceContractLink([contractID],[ServicePackedgeID]) VALUES ('1','2')
 
@@ -425,7 +425,7 @@ INSERT INTO [ServicePackageState]([name],[onPromotion],[promotionStartDate],[pro
 INSERT INTO [ServiceState]([name],[description]) VALUES('s1','service 1');
 INSERT INTO [ServiceState]([name],[description]) VALUES('s2','service 2');
 INSERT INTO ServicePackageStateLink ([ServicePackageStateID],[ServiceStateID]) VALUES ('1','1');
-INSERT INTO [ContractState]([startDate],[endDate],[active],priorityLevel,price,contractType) VALUES('1999/12/12','2000/12/12','1','123','12.12','type');
+INSERT INTO [ContractState]([startDate],[endDate],[activeContract],priorityLevel,price,contractType) VALUES('1999/12/12','2000/12/12','1','123','12.12','type');
 INSERT INTO ServiceContractStateLink([contractStateID],[ServicePackageStateID]) VALUES ('1','1');
 INSERT INTO ClientContractLink(ContractID,ClientBusinessID) VALUES('1','1')
 INSERT INTO ClientContractLink(ContractID,ClientIndividualID) VALUES('1','1')
@@ -547,14 +547,14 @@ AS
 		WHERE servicePackageID = @id
 	COMMIT
 GO
-CREATE PROC DeleteContract @id INT
+CREATE PROC DeleteContract @id VARCHAR(50)
 AS
 	BEGIN TRAN
 		DELETE FROM ServiceContractLink
-		WHERE ContractID IN (SELECT contractID FROM [Contract] WHERE contractID = @id)
+		WHERE ContractID IN (SELECT contractID FROM [Contract] WHERE contractNumber = @id)
 
 		DELETE FROM [Contract]
-		WHERE contractID = @id
+		WHERE contractID = (SELECT contractID FROM [Contract] WHERE contractNumber = @id)
 	COMMIT
 GO
 CREATE PROC DeleteSpecialisation @id INT 
@@ -696,15 +696,57 @@ BEGIN
 	COMMIT
 END
 GO
-CREATE PROCEDURE UpdateContract @id INT, @startdate DATE, @endtime DATE, @active BIT, @priorityLevel VARCHAR(20), @price FLOAT, @contractType VARCHAR(15)
+CREATE PROCEDURE UpdateContract @id VARCHAR(50), @startdate DATE, @endtime DATE, @active INT, @priorityLevel VARCHAR(20), @price FLOAT, @contractType VARCHAR(15)
 AS
 BEGIN
 
 	BEGIN TRAN
 
 	UPDATE Contract
-	SET startDate = @startdate, endDate = @endtime, active = @active, priorityLevel = @priorityLevel, price = @price, contractType = @contractType
-	WHERE contractID = @id
+	SET startDate = @startdate, endDate = @endtime, [activeContract] = @active, priorityLevel = @priorityLevel, price = @price, contractType = @contractType
+	WHERE contractID = (SELECT contractID FROM [Contract] WHERE contractNumber = @id)
+
+	COMMIT
+
+END
+GO
+CREATE PROCEDURE UpdateOfferedContractActive @id VARCHAR(50), @active INT
+AS
+BEGIN
+
+	BEGIN TRAN
+
+	UPDATE Contract
+	SET [activeContract] = @active
+	WHERE contractID = (SELECT contractID FROM [Contract] WHERE contractNumber = @id)
+
+	COMMIT
+
+END
+GO
+CREATE PROCEDURE UpdateClientContractActive @id VARCHAR(50), @active INT
+AS
+BEGIN
+
+	BEGIN TRAN
+
+	UPDATE [ContractState]
+	SET [activeContract] = @active
+	WHERE contractStateID = (SELECT contractID FROM [Contract] WHERE contractNumber = @id)
+
+	COMMIT
+
+END
+GO
+CREATE PROCEDURE UpdateOfferedContractActiveAndDateRange @id VARCHAR(50), @active INT,@dateStart DATETIME,@dateEnd DATETIME
+AS
+BEGIN
+
+	BEGIN TRAN
+
+	UPDATE [Contract]
+	SET [activeContract] = @active,startDate = @dateStart, endDate = @dateEnd
+	WHERE contractID = (SELECT contractID FROM [Contract] WHERE contractNumber = @id)
 
 	COMMIT
 
@@ -1084,14 +1126,14 @@ GO
 CREATE PROCEDURE InsertContract @startDate DATETIME, @endDate DATETIME, @active BIT,@priorityLevel VARCHAR(20), @price FLOAT, @contractType VARCHAR(15)
 AS
 BEGIN
-	INSERT INTO [Contract] ([startDate], [endDate], [active],[priorityLevel],[price],[contractType])
+	INSERT INTO [Contract] ([startDate], [endDate], [activeContract],[priorityLevel],[price],[contractType])
 	VALUES (@startDate, @endDate, @active,@priorityLevel,@price,@contractType)
 END 
 GO
 CREATE PROCEDURE InsertContractState @id INT, @startDate DATETIME, @endDate DATETIME, @active BIT,@priorityLevel INT
 AS
 BEGIN
-	INSERT INTO [ContractState] ([startDate], [endDate], [active],priorityLevel)
+	INSERT INTO [ContractState] ([startDate], [endDate], [activeContract],priorityLevel)
 	VALUES (@startDate, @endDate, @active,@priorityLevel)
 END 
 GO
@@ -1304,7 +1346,7 @@ GO
 CREATE PROCEDURE SelectAllActiveContract AS
 BEGIN
 	SELECT * FROM [Contract]
-	WHERE active = '1'
+	WHERE [activeContract] = '1'
 END 
 GO
 CREATE PROCEDURE SelectAllServicePackedgesLinkedToContract @id INT AS
@@ -1331,6 +1373,14 @@ AS
 	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
     WHERE ClientIndividual.clientIndividualClientNumber = @id
 GO
+CREATE PROC SelectContractByIndividualClientIdAndContractId @clientId VARCHAR(50),@contractId VARCHAR(50)
+AS
+    SELECT * FROM ContractState
+    INNER JOIN ClientContractLink ON ContractState.contractStateID = ClientContractLink.ContractID
+    INNER JOIN ClientIndividual ON ClientContractLink.ClientIndividualID = ClientIndividual.clientIndividualID
+	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
+    WHERE ClientIndividual.clientIndividualClientNumber = @clientId AND ContractState.contractNumber = @contractId
+GO
 CREATE PROC SelectAllContractsByBusinessClientId @id VARCHAR(100)
 AS
     SELECT * FROM ContractState
@@ -1338,6 +1388,14 @@ AS
     INNER JOIN ClientBusiness ON ClientContractLink.clientBusinessID = ClientBusiness.clientBusinessID
 	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
     WHERE ClientBusiness.clientBusinessClientNumber = @id
+GO
+CREATE PROC SelectAllContractsByBusinessClientIdAndContractId @clientId VARCHAR(50),@contractId VARCHAR(50)
+AS
+    SELECT * FROM ContractState
+    INNER JOIN ClientContractLink ON ContractState.contractStateID = ClientContractLink.ContractID
+    INNER JOIN ClientBusiness ON ClientContractLink.clientBusinessID = ClientBusiness.clientBusinessID
+	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
+    WHERE ClientBusiness.clientBusinessClientNumber = @clientId AND ContractState.contractNumber = @contractId
 GO
 CREATE PROCEDURE SelectEmployees AS
 BEGIN
@@ -1512,7 +1570,16 @@ BEGIN
 	SELECT * FROM "Contract"
 END
 GO
-
+CREATE PROCEDURE SelectContractByID @id VARCHAR(50) AS
+BEGIN
+	SELECT * FROM "Contract" WHERE contractID = (SELECT contractID FROM [Contract] WHERE contractNumber = @id)
+END
+GO
+CREATE PROCEDURE SelectAllActiveContracts AS
+BEGIN
+	SELECT * FROM "Contract" WHERE [activeContract] = '1'
+END
+GO
 CREATE PROCEDURE SelectCallCenterEmployees AS
 BEGIN
 	SELECT * FROM Employee

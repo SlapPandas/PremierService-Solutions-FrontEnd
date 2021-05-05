@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PremiereSolutionProject.DAL
 {
-    class JobDH : DatabaseConnection
+    public class JobDH : DatabaseConnection
     {
         #region Delete
         public void Delete(Job job)

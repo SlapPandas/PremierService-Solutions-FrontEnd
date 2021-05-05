@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace PremiereSolutionProject.DAL
 {
-    class DatabaseOperationDH : DatabaseConnection
+    public class DatabaseOperationDH : DatabaseConnection
     {
         #region Insert
         public void CreateOperationLog(DatabaseOperation operation)

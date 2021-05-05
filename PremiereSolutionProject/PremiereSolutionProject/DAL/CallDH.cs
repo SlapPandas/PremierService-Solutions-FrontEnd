@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PremiereSolutionProject.DAL
 {
-    class CallDH : DatabaseConnection
+    public class CallDH : DatabaseConnection
     {
         //Done
         #region Update

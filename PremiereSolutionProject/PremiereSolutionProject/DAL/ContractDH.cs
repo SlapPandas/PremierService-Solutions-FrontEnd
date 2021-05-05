@@ -11,7 +11,6 @@ namespace PremiereSolutionProject.DAL
 {
     class ContractDH : DatabaseConnection
     {
-        //Need assistance
         #region Delete
         public void Delete(Contract contract)
         {
@@ -19,12 +18,23 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Need assistance
         #region Update
 
         public void Update(Contract contract)
         {
-            UpdateCommand($"EXEC UpdateContract @id = '{contract.ContractID}', @startDate = '{contract.StartTime}', @endDate = '{contract.EndTime}', @active = '{GetIntFromBool(contract.Active)}', @priorityLevel = '{contract.PriorityLevel}', @price = '{contract.Price}', @contractType = '{contract.ContractType}'");
+            UpdateCommand($"EXEC UpdateContract @id ='{contract.ContractID}', @startdate ='{contract.StartTime}', @endtime ='{contract.EndTime}', @active ='{GetIntFromBool(contract.Active)}', @priorityLevel ='{contract.PriorityLevel}', @price ='{contract.Price.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}', @contractType ='{contract.ContractType}'");
+        }
+        public void UpdateOfferedContractIfActive(string contractId, bool active)
+        {
+            UpdateCommand($"EXEC UpdateOfferedContractActive @id ='{contractId}', @active ='{GetIntFromBool(active)}'");
+        }
+        public void UpdateClientContractIfActive(string contractId, bool active)
+        {
+            UpdateCommand($"EXEC UpdateClientContractActive @id ='{contractId}', @active ='{GetIntFromBool(active)}'");
+        }
+        public void UpdateActiveAndDateRangeOfOfferedContract(string contractId,DateTime startDate,DateTime endDate, bool active)
+        {
+            UpdateCommand($"EXEC UpdateOfferedContractActiveAndDateRange @id ='{contractId}', @active ='{GetIntFromBool(active)}',@dateStart ='{startDate}',@dateEnd ='{endDate}'");
         }
         public void UpdateContractPackageList(Contract contract)
         {
@@ -33,7 +43,6 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Need assistance
         #region Insert
         public void Insert(Contract contract)
         {
@@ -49,17 +58,19 @@ namespace PremiereSolutionProject.DAL
         #region Select
         public List<Contract> SelectAllContracts()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllContracts";
-            Command = new SqlCommand(commandString, Connection);
             List<Contract> contractList = new List<Contract>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    contractList.Add(new Contract((string)Reader["contractNumber"], (DateTime)Reader["startDate"], (DateTime)Reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)Reader["contractID"]), (string)Reader["priorityLevel"], Reader.GetDouble(Reader.GetOrdinal("price")), (string)Reader["contractType"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllContracts";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        contractList.Add(new Contract((string)reader["contractNumber"],GetTrueFalseFromBit((int)reader["activeContract"]), (DateTime)reader["startDate"], (DateTime)reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)reader["contractID"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -68,23 +79,106 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
+
+            return contractList;
+        }
+        public List<Contract> SelectOfferedContractById(string input)
+        {
+            List<Contract> contractList = new List<Contract>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectContractByID @id ='{input}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        contractList.Add(new Contract((string)reader["contractNumber"], GetTrueFalseFromBit((int)reader["activeContract"]), (DateTime)reader["startDate"], (DateTime)reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)reader["contractID"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { }
+
+            return contractList;
+        }
+        public List<Contract> SelectAssignedContractByIdAndIndividualClientId(string contractId,string clientId)
+        {
+            List<Contract> contractList = new List<Contract>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectContractByIndividualClientIdAndContractId @clientId ='{clientId}',@contractId ='{contractId}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        contractList.Add(new Contract((string)reader["contractNumber"], GetTrueFalseFromBit((int)reader["activeContract"]), (DateTime)reader["startDate"], (DateTime)reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)reader["contractID"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { }
+
+            return contractList;
+        }
+        public List<Contract> SelectAssignedContractByIdAndBusinessClientId(string contractId, string clientId)
+        {
+            List<Contract> contractList = new List<Contract>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectAllContractsByBusinessClientIdAndContractId @clientId ='{clientId}',@contractId ='{contractId}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        contractList.Add(new Contract((string)reader["contractNumber"], GetTrueFalseFromBit((int)reader["activeContract"]), (DateTime)reader["startDate"], (DateTime)reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)reader["contractID"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                databaseOperationDH.CreateOperationLog(databaseOperation);
+            }
+            finally { }
 
             return contractList;
         }
         public List<Contract> SelectAllActiveContracts()
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllActiveContracts";
-            Command = new SqlCommand(commandString, Connection);
             List<Contract> contractList = new List<Contract>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    contractList.Add(new Contract((string)Reader["contractNumber"], (DateTime)Reader["startDate"], (DateTime)Reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)Reader["contractID"]), (string)Reader["priorityLevel"], Reader.GetDouble(Reader.GetOrdinal("price")), (string)Reader["contractType"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllActiveContracts";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        contractList.Add(new Contract((string)reader["contractNumber"], GetTrueFalseFromBit((int)reader["activeContract"]), (DateTime)reader["startDate"], (DateTime)reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)reader["contractID"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -93,24 +187,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return contractList;
         }
-
         public List<Contract> SelectAllContractsByIndividualClientId(string id)
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllContractsByIndividualClientId @id = '{id}'";
-            Command = new SqlCommand(commandString, Connection);
             List<Contract> contractList = new List<Contract>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    contractList.Add(new Contract((string)Reader["contractNumber"], (DateTime)Reader["startDate"], (DateTime)Reader["endDate"], new IndividualClient((string)Reader["clientIndividualClientNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["RegistrationDate"], GetTrueFalseFromBit((int)Reader["active"])), SelectAllServicePackedgesLinkedToContractState((int)Reader["contractID"]), GetTrueFalseFromBit((int)Reader["active"]), (string)Reader["priorityLevel"], Reader.GetDouble(Reader.GetOrdinal("price")), (string)Reader["contractType"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllContractsByIndividualClientId @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        contractList.Add(new Contract((string)reader["contractNumber"], (DateTime)reader["startDate"], (DateTime)reader["endDate"], new IndividualClient((string)reader["clientIndividualClientNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["RegistrationDate"], GetTrueFalseFromBit((int)reader["active"])), SelectAllServicePackedgesLinkedToContractState((int)reader["contractID"]), GetTrueFalseFromBit((int)reader["activeContract"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -119,24 +214,25 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return contractList;
         }
-
         public List<Contract> SelectAllContractsByBusinessClientId(string id)
         {
-            CreateConnection();
-            commandString = $"EXEC SelectAllContractsByBusinessClientId @id = '{id}'";
-            Command = new SqlCommand(commandString, Connection);
             List<Contract> contractList = new List<Contract>();
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    contractList.Add(new Contract((string)Reader["contractNumber"], (DateTime)Reader["startDate"], (DateTime)Reader["endDate"], new BusinessClient((string)Reader["clientBusinessClientNumber"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (DateTime)Reader["RegistrationDate"], (string)Reader["taxNumber"], (string)Reader["busuinessName"], GetTrueFalseFromBit((int)Reader["active"])), SelectAllServicePackedgesLinkedToContractState((int)Reader["contractID"]), GetTrueFalseFromBit((int)Reader["active"]), (string)Reader["priorityLevel"], Reader.GetDouble(Reader.GetOrdinal("price")), (string)Reader["contractType"]));
+                    connection.Open();
+                    commandString = $"EXEC SelectAllContractsByBusinessClientId @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        contractList.Add(new Contract((string)reader["contractNumber"], (DateTime)reader["startDate"], (DateTime)reader["endDate"], new BusinessClient((string)reader["clientBusinessClientNumber"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (DateTime)reader["RegistrationDate"], (string)reader["taxNumber"], (string)reader["busuinessName"], GetTrueFalseFromBit((int)reader["active"])), SelectAllServicePackedgesLinkedToContractState((int)reader["contractID"]), GetTrueFalseFromBit((int)reader["activeContract"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -145,7 +241,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
+            finally {}
 
             return contractList;
         }
@@ -156,46 +252,26 @@ namespace PremiereSolutionProject.DAL
         #region SeperateMethods
         private void InsertAllServicesPackedgesOfContract(Contract contract)
         {
-            SqlConnection contractPackageConnection = new SqlConnection(connectionSring);
-
-            try
+            for (int i = 0; i < contract.PackageList.Count; i++)
             {
-                contractPackageConnection.Open();
-                for (int i = 0; i < contract.PackageList.Count; i++)
-                {
-                    commandString = $"EXEC InsertIntoTVPContractServicePackage @contractId ='{contract.ContractID}',@servicePackageId ='{contract.PackageList[i].PackageID}'";
-                    SqlCommand contractPackageCommand = new SqlCommand(commandString, contractPackageConnection);
-                    contractPackageCommand.ExecuteNonQuery();
-                }
-
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                contractPackageConnection.Close();
+                InsertCommand($"EXEC InsertIntoTVPContractServicePackage @contractId ='{contract.ContractID}',@servicePackageId ='{contract.PackageList[i].PackageID}'");
             }
         }
         private List<Service> SelectAllServicesLinkedToPackedge(int id)
         {
-            SqlConnection serviceConnection = new SqlConnection(connectionSring);
-            SqlDataReader serviceReader;
             List<Service> serivceList = new List<Service>();
-            commandString = $"EXEC SelectAllServicesByServicePackedge @id = '{id}'";
-            SqlCommand serviceCommand = new SqlCommand(commandString, serviceConnection);
-
             try
             {
-                serviceConnection.Open();
-                serviceReader = serviceCommand.ExecuteReader();
-                while (serviceReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    serivceList.Add(new Service((int)serviceReader["serviceID"], (string)serviceReader["name"], (string)serviceReader["description"]));
-
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServicesByServicePackedge @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        serivceList.Add(new Service((int)reader["serviceID"], (string)reader["name"], (string)reader["description"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -204,28 +280,24 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally
-            {
-                serviceConnection.Close();
-            }
+            finally { }
             return serivceList;
         }
         private List<Service> SelectAllServicesLinkedToPackedgeState(int id)
         {
-            SqlConnection serviceConnection = new SqlConnection(connectionSring);
-            SqlDataReader serviceReader;
             List<Service> serivceList = new List<Service>();
-            commandString = $"EXEC SelectAllServicesByServicePackedgeWithState @id = '{id}'";
-            SqlCommand serviceCommand = new SqlCommand(commandString, serviceConnection);
-
             try
             {
-                serviceConnection.Open();
-                serviceReader = serviceCommand.ExecuteReader();
-                while (serviceReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    serivceList.Add(new Service((int)serviceReader["serviceStateID"], (string)serviceReader["name"], (string)serviceReader["description"]));
-
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServicesByServicePackedgeWithState @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        serivceList.Add(new Service((int)reader["serviceStateID"], (string)reader["name"], (string)reader["description"]));
+                    }
                 }
             }
             catch (Exception e)
@@ -234,28 +306,24 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally
-            {
-                serviceConnection.Close();
-            }
+            finally { }
             return serivceList;
         }
         private List<ServicePackage> SelectAllServicePackedgesLinkedToContract(int contractid)
         {
-            SqlConnection servicePackedgeConnection = new SqlConnection(connectionSring);
-            SqlDataReader servicePackedgeReader;
             List<ServicePackage> servicePackedgeList = new List<ServicePackage>();
-            commandString = $"EXEC SelectAllServicePackedgesLinkedToContract @id = '{contractid}'";
-            SqlCommand servicePackedgeCommand = new SqlCommand(commandString, servicePackedgeConnection);
-
             try
             {
-                servicePackedgeConnection.Open();
-                servicePackedgeReader = servicePackedgeCommand.ExecuteReader();
-                while (servicePackedgeReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    servicePackedgeList.Add(new ServicePackage((int)servicePackedgeReader["servicePackageID"], (string)servicePackedgeReader["name"], SelectAllServicesLinkedToPackedge((int)servicePackedgeReader["servicePackageID"]), GetTrueFalseFromBit((int)servicePackedgeReader["onPromotion"]), (DateTime)servicePackedgeReader["promotionStartDate"], (DateTime)servicePackedgeReader["promotionEndDate"], servicePackedgeReader.GetDouble(servicePackedgeReader.GetOrdinal("promotionPercentAmount")), servicePackedgeReader.GetDouble(servicePackedgeReader.GetOrdinal("price"))));
-
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServicePackedgesLinkedToContract @id = '{contractid}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        servicePackedgeList.Add(new ServicePackage((int)reader["servicePackageID"], (string)reader["name"], SelectAllServicesLinkedToPackedge((int)reader["servicePackageID"]), GetTrueFalseFromBit((int)reader["onPromotion"]), (DateTime)reader["promotionStartDate"], (DateTime)reader["promotionEndDate"], reader.GetDouble(reader.GetOrdinal("promotionPercentAmount")), reader.GetDouble(reader.GetOrdinal("price"))));
+                    }
                 }
             }
             catch (Exception e)
@@ -264,28 +332,24 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally
-            {
-                servicePackedgeConnection.Close();
-            }
+            finally { }
             return servicePackedgeList;
         }
         private List<ServicePackage> SelectAllServicePackedgesLinkedToContractState(int contractid)
         {
-            SqlConnection servicePackedgeConnection = new SqlConnection(connectionSring);
-            SqlDataReader servicePackedgeReader;
             List<ServicePackage> servicePackedgeList = new List<ServicePackage>();
-            commandString = $"EXEC SelectAllServicePackedgesLinkedToContractState @id = '{contractid}'";
-            SqlCommand servicePackedgeCommand = new SqlCommand(commandString, servicePackedgeConnection);
-
             try
             {
-                servicePackedgeConnection.Open();
-                servicePackedgeReader = servicePackedgeCommand.ExecuteReader();
-                while (servicePackedgeReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    servicePackedgeList.Add(new ServicePackage((int)servicePackedgeReader["servicePackageStateID"], (string)servicePackedgeReader["name"], SelectAllServicesLinkedToPackedgeState((int)servicePackedgeReader["servicePackageStateID"]), GetTrueFalseFromBit((int)servicePackedgeReader["onPromotion"]), (DateTime)servicePackedgeReader["promotionStartDate"], (DateTime)servicePackedgeReader["promotionEndDate"], servicePackedgeReader.GetDouble(servicePackedgeReader.GetOrdinal("promotionPercentAmount")), servicePackedgeReader.GetDouble(servicePackedgeReader.GetOrdinal("price"))));
-
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServicePackedgesLinkedToContractState @id = '{contractid}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        servicePackedgeList.Add(new ServicePackage((int)reader["servicePackageStateID"], (string)reader["name"], SelectAllServicesLinkedToPackedgeState((int)reader["servicePackageStateID"]), GetTrueFalseFromBit((int)reader["onPromotion"]), (DateTime)reader["promotionStartDate"], (DateTime)reader["promotionEndDate"], reader.GetDouble(reader.GetOrdinal("promotionPercentAmount")), reader.GetDouble(reader.GetOrdinal("price"))));
+                    }
                 }
             }
             catch (Exception e)
@@ -294,10 +358,7 @@ namespace PremiereSolutionProject.DAL
                 DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
                 databaseOperationDH.CreateOperationLog(databaseOperation);
             }
-            finally
-            {
-                servicePackedgeConnection.Close();
-            }
+            finally { }
             return servicePackedgeList;
         }
         private bool GetTrueFalseFromBit(int bit)

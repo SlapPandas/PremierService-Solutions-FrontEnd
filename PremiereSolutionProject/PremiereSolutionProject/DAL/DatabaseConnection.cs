@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PremiereSolutionProject.DAL
 {
-    class DatabaseConnection : IDataconnection
+    public class DatabaseConnection : IDataconnection
     {
         #region Fields
         public string connectionSring = @"Data Source =.; Initial Catalog = PremierServiceSolutionsDatabase; Integrated Security = SSPI";

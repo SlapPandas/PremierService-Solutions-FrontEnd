@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PremiereSolutionProject.DAL
 {
-    class IndividualClientDH : DatabaseConnection
+    public class IndividualClientDH : DatabaseConnection
     {
         #region Update
         public void Update(IndividualClient individualClient)

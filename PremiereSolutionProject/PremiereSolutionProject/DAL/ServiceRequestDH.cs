@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PremiereSolutionProject.DAL
 {
-    class ServiceRequestDH : DatabaseConnection, IDataconnection
+    public class ServiceRequestDH : DatabaseConnection, IDataconnection
     {
         #region Delete
         public void Delete(ServiceRequest serviceRequest)
