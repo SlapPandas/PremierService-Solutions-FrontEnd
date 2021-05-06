@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PremiereSolutionProject.BLL;
 
 namespace PremiereSolutionProject.PL
 {
     public partial class frmDashboard : Form
     {
+        public Call callInfo;
         public frmDashboard()
         {
             InitializeComponent();
@@ -94,13 +96,13 @@ namespace PremiereSolutionProject.PL
         #region btnCallCenterSubMenu
         private void btnCall_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmCallCenter());
+            openChildForm(new frmCallCenter(this));
             HideSubMenu();
         }
 
         private void btnCreateServiceRequest_Click(object sender, EventArgs e)
         {
-            openChildForm(new FrmServiceRequest());
+            openChildForm(new FrmServiceRequest(this));
             HideSubMenu();
         }
 

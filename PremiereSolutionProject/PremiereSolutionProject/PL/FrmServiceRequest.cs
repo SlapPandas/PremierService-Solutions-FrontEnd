@@ -17,10 +17,17 @@ namespace PremiereSolutionProject.PL
             InitializeComponent();
         }
 
+        public FrmServiceRequest(frmDashboard _dashform):this()
+        {
+            dashform = _dashform;
+        }
+        frmDashboard dashform;
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+       
         List<Specialisation> spec;
         private void FrmServiceRequest_Load(object sender, EventArgs e)
         {
@@ -29,6 +36,8 @@ namespace PremiereSolutionProject.PL
             {
                 cbxSpecialisation.Items.Add(item.SpecialisationName);
             }
+            lblCallID.Text = dashform.callInfo.CallID.ToString();
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

@@ -19,6 +19,12 @@ namespace PremiereSolutionProject.PL
             InitializeComponent();
             
         }
+        public frmCallCenter(frmDashboard _dashform):this()
+        {
+            dashform = _dashform;
+        }
+        frmDashboard dashform;
+        
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -32,8 +38,9 @@ namespace PremiereSolutionProject.PL
         private void btnAnswer_Click(object sender, EventArgs e)
         {
 
-            Call CL = new Call();
-            CallCenterEmployee Emp = CL.GenerateRandomEmployee();
+            dashform.callInfo = new Call();
+            CallCenterEmployee Emp = dashform.callInfo.GenerateRandomEmployee();
+            
             lblEmpName.Text = Emp.FirstName;
 
         }
