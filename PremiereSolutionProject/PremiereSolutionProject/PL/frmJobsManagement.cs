@@ -23,23 +23,19 @@ namespace PremiereSolutionProject.PL
         BindingSource bs = new BindingSource();
         Job SelectedJob;
         List<Job> NewJobList = new List<Job>();
+        List<MaintenanceEmployee> NewEmp = new List<MaintenanceEmployee>();
+        Employee NewEmployee;
+
+        List<MaintenanceEmployee> Availablelist = new List<MaintenanceEmployee>();
+        List<MaintenanceEmployee> RemoveList = new List<MaintenanceEmployee>();
 
 
         public frmJobsManagement()
         {
             InitializeComponent();
-            RefreshDGV();
-            lbxAvailable.Items.Add(myEmployee);
         }
 
 
-        private void RefreshDGV()
-        {
-            bs.DataSource = myJob;
-            dgvJobs.DataSource = null;
-            dgvJobs.DataSource = bs;
-
-        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -68,9 +64,23 @@ namespace PremiereSolutionProject.PL
                 NewJobList.Add(J);
             }
 
+            MaintenanceEmployee NewMEMP = new MaintenanceEmployee();
 
-            myJob = JB.SelectAllJobs();
-            dgvJobs.DataSource = myJob;
+            foreach (MaintenanceEmployee Emp in NewMEMP.SelectAllMaintenaceEmpployees())
+            {
+                ListViewItem lst = new ListViewItem(new string[]
+                {
+                        Emp.Id,
+                        Emp.FirstName,
+                        Emp.Surname
+                });
+                lst.Tag = Emp;
+                lstAvailable.Items.Add(lst);
+                Availablelist.Add(Emp);
+            }
+
+
+            //myJob = JB.SelectAllJobs();
 
             myEmployee = MainEmp.SelectAllMaintenaceEmpployees();
 
@@ -141,12 +151,42 @@ namespace PremiereSolutionProject.PL
 
         private void btnAddTechnician_Click(object sender, EventArgs e)
         {
-            lbxNewAssigned.Items.Add(lbxAvailable.SelectedItem.ToString());
+            //   lstNewAssigned.Items.Add(lstAvailable.SelectedIndices[0]);
+
+            MainEmp = lstAvailable.SelectedItems[0].Tag as MaintenanceEmployee;
+
+            ListViewItem lst = new ListViewItem(new string[]
+                {
+                        MainEmp.Id,
+                        MainEmp.FirstName,
+                        MainEmp.Surname
+                });
+            lst.Tag = MainEmp;
+            lstNewAssigned.Items.Add(lst);
+            lstAvailable.Items.Remove(lst);
+
+            RemoveList.Add(MainEmp);
+            Availablelist.Remove(MainEmp);
+
         }
 
         private void btnRemoveTechnician_Click(object sender, EventArgs e)
         {
-            lstViewAssemp.Items.RemoveAt(lstViewAssemp.SelectedIndices[0]);
+
+            MainEmp = lstAvailable.SelectedItems[0].Tag as MaintenanceEmployee;
+
+            ListViewItem lst = new ListViewItem(new string[]
+                {
+                        MainEmp.Id,
+                        MainEmp.FirstName,
+                        MainEmp.Surname
+                });
+            lst.Tag = MainEmp;
+            lstAvailable.Items.Add(lst);
+            lstNewAssigned.Items.Remove(lst);
+            RemoveList.Remove(MainEmp);
+            Availablelist.Add(MainEmp);
+
         }
 
         public void UpdateJob()
@@ -168,11 +208,17 @@ namespace PremiereSolutionProject.PL
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            //lstViewAssemp.Clear();
+            //cbxCurrentState.Items.Clear();
+
             if (lstJobs.SelectedItems.Count > 0)
             {
                 cmbSpec.Items.Clear();
                 Job NewJob = lstJobs.SelectedItems[0].Tag as Job;
-               
+
+                rtbNotes.Text = NewJob.JobNotes;
+                nudEmployees.Value = NewJob.EmployeesNeeded;
+
                 JobState st;
                 st = NewJob.JobState;
 
@@ -194,15 +240,14 @@ namespace PremiereSolutionProject.PL
                 List<Specialisation> newSpList = NewJob.Specialisation.GetSpecialisationNames();
 
                
-
-                //txtBoxSpec.Text = newSp.SpecialisationName;
+                
                 foreach (Specialisation sp in newSpList)
                 {
                     cmbSpec.Items.Add(sp.SpecialisationName);
                 }
                 cmbSpec.Text = newSpList[0].SpecialisationName;
 
-                List<MaintenanceEmployee> NewEmp = new List<MaintenanceEmployee>();
+               
 
                 NewEmp = NewJob.Employee;
 
@@ -222,7 +267,7 @@ namespace PremiereSolutionProject.PL
                 MessageBox.Show("No record was selected ", "Jobs", MessageBoxButtons.OK);
             }
 
-
+           
 
         }
 

@@ -36,17 +36,14 @@ namespace PremiereSolutionProject.PL
             this.btnUpdateJob = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.dgvJobs = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.nudEmployees = new System.Windows.Forms.NumericUpDown();
             this.rtbNotes = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnDeleteJob = new System.Windows.Forms.Button();
-            this.lbxAvailable = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbxNewAssigned = new System.Windows.Forms.ListBox();
             this.btnAddTechnician = new System.Windows.Forms.Button();
             this.btnRemoveTechnician = new System.Windows.Forms.Button();
             this.lstPending = new System.Windows.Forms.ListView();
@@ -64,7 +61,14 @@ namespace PremiereSolutionProject.PL
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmbSpec = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJobs)).BeginInit();
+            this.lstAvailable = new System.Windows.Forms.ListView();
+            this.lstNewAssigned = new System.Windows.Forms.ListView();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.nudEmployees)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,7 +102,7 @@ namespace PremiereSolutionProject.PL
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(474, 417);
+            this.label5.Location = new System.Drawing.Point(474, 385);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(197, 17);
@@ -160,19 +164,6 @@ namespace PremiereSolutionProject.PL
             this.label6.Size = new System.Drawing.Size(104, 17);
             this.label6.TabIndex = 112;
             this.label6.Text = "Jobs Trackings";
-            // 
-            // dgvJobs
-            // 
-            this.dgvJobs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvJobs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvJobs.Location = new System.Drawing.Point(936, 65);
-            this.dgvJobs.Name = "dgvJobs";
-            this.dgvJobs.RowHeadersWidth = 51;
-            this.dgvJobs.RowTemplate.Height = 24;
-            this.dgvJobs.Size = new System.Drawing.Size(10, 150);
-            this.dgvJobs.TabIndex = 114;
-            this.dgvJobs.Visible = false;
-            this.dgvJobs.SelectionChanged += new System.EventHandler(this.dgvJobs_SelectionChanged);
             // 
             // label7
             // 
@@ -243,16 +234,6 @@ namespace PremiereSolutionProject.PL
             this.btnDeleteJob.UseVisualStyleBackColor = true;
             this.btnDeleteJob.Click += new System.EventHandler(this.btnDeleteJob_Click);
             // 
-            // lbxAvailable
-            // 
-            this.lbxAvailable.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbxAvailable.FormattingEnabled = true;
-            this.lbxAvailable.ItemHeight = 16;
-            this.lbxAvailable.Location = new System.Drawing.Point(476, 535);
-            this.lbxAvailable.Name = "lbxAvailable";
-            this.lbxAvailable.Size = new System.Drawing.Size(168, 100);
-            this.lbxAvailable.TabIndex = 125;
-            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -278,16 +259,6 @@ namespace PremiereSolutionProject.PL
             this.label3.Size = new System.Drawing.Size(177, 17);
             this.label3.TabIndex = 128;
             this.label3.Text = "New Assigned Technicians";
-            // 
-            // lbxNewAssigned
-            // 
-            this.lbxNewAssigned.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbxNewAssigned.FormattingEnabled = true;
-            this.lbxNewAssigned.ItemHeight = 16;
-            this.lbxNewAssigned.Location = new System.Drawing.Point(751, 538);
-            this.lbxNewAssigned.Name = "lbxNewAssigned";
-            this.lbxNewAssigned.Size = new System.Drawing.Size(195, 100);
-            this.lbxNewAssigned.TabIndex = 127;
             // 
             // btnAddTechnician
             // 
@@ -337,6 +308,7 @@ namespace PremiereSolutionProject.PL
             // columnHeader2
             // 
             this.columnHeader2.Text = "State";
+            this.columnHeader2.Width = 100;
             // 
             // btnSelect
             // 
@@ -373,21 +345,22 @@ namespace PremiereSolutionProject.PL
             // columnHeader5
             // 
             this.columnHeader5.Text = "ID";
+            this.columnHeader5.Width = 100;
             // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "State";
-            this.columnHeader7.Width = 99;
+            this.columnHeader7.Width = 100;
             // 
             // columnHeader8
             // 
             this.columnHeader8.Text = "Notes";
-            this.columnHeader8.Width = 137;
+            this.columnHeader8.Width = 160;
             // 
             // columnHeader10
             // 
             this.columnHeader10.Text = "Service Request ID";
-            this.columnHeader10.Width = 123;
+            this.columnHeader10.Width = 90;
             // 
             // columnHeader11
             // 
@@ -397,6 +370,7 @@ namespace PremiereSolutionProject.PL
             // columnHeader12
             // 
             this.columnHeader12.Text = "Priority level";
+            this.columnHeader12.Width = 90;
             // 
             // lstViewAssemp
             // 
@@ -416,10 +390,12 @@ namespace PremiereSolutionProject.PL
             // columnHeader3
             // 
             this.columnHeader3.Text = "ID";
+            this.columnHeader3.Width = 120;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Name";
+            this.columnHeader4.Width = 120;
             // 
             // cmbSpec
             // 
@@ -429,12 +405,66 @@ namespace PremiereSolutionProject.PL
             this.cmbSpec.Size = new System.Drawing.Size(121, 24);
             this.cmbSpec.TabIndex = 138;
             // 
+            // lstAvailable
+            // 
+            this.lstAvailable.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader6,
+            this.columnHeader9,
+            this.columnHeader13});
+            this.lstAvailable.HideSelection = false;
+            this.lstAvailable.Location = new System.Drawing.Point(479, 537);
+            this.lstAvailable.Name = "lstAvailable";
+            this.lstAvailable.Size = new System.Drawing.Size(167, 107);
+            this.lstAvailable.TabIndex = 139;
+            this.lstAvailable.UseCompatibleStateImageBehavior = false;
+            this.lstAvailable.View = System.Windows.Forms.View.Details;
+            // 
+            // lstNewAssigned
+            // 
+            this.lstNewAssigned.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader14,
+            this.columnHeader15,
+            this.columnHeader16});
+            this.lstNewAssigned.HideSelection = false;
+            this.lstNewAssigned.Location = new System.Drawing.Point(764, 537);
+            this.lstNewAssigned.Name = "lstNewAssigned";
+            this.lstNewAssigned.Size = new System.Drawing.Size(182, 110);
+            this.lstNewAssigned.TabIndex = 140;
+            this.lstNewAssigned.UseCompatibleStateImageBehavior = false;
+            this.lstNewAssigned.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "ID";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Name";
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Surname";
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "ID";
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Name";
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Surname";
+            // 
             // frmJobsManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1017, 745);
+            this.Controls.Add(this.lstNewAssigned);
+            this.Controls.Add(this.lstAvailable);
             this.Controls.Add(this.cmbSpec);
             this.Controls.Add(this.lstViewAssemp);
             this.Controls.Add(this.lstJobs);
@@ -443,16 +473,13 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.btnRemoveTechnician);
             this.Controls.Add(this.btnAddTechnician);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lbxNewAssigned);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.lbxAvailable);
             this.Controls.Add(this.btnDeleteJob);
             this.Controls.Add(this.rtbNotes);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.nudEmployees);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.dgvJobs);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnUpdateJob);
@@ -465,7 +492,6 @@ namespace PremiereSolutionProject.PL
             this.Name = "frmJobsManagement";
             this.Text = "frmJobManagement";
             this.Load += new System.EventHandler(this.frmJobsManagement_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJobs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudEmployees)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -481,17 +507,14 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Button btnUpdateJob;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dgvJobs;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown nudEmployees;
         private System.Windows.Forms.RichTextBox rtbNotes;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnDeleteJob;
-        private System.Windows.Forms.ListBox lbxAvailable;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox lbxNewAssigned;
         private System.Windows.Forms.Button btnAddTechnician;
         private System.Windows.Forms.Button btnRemoveTechnician;
         private System.Windows.Forms.ListView lstPending;
@@ -509,5 +532,13 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ComboBox cmbSpec;
+        private System.Windows.Forms.ListView lstAvailable;
+        private System.Windows.Forms.ListView lstNewAssigned;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
     }
 }
