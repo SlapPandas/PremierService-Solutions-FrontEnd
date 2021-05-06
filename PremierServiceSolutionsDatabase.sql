@@ -1141,15 +1141,6 @@ BEGIN
 	SELECT @contractId,idIntOne FROM TVP
 END 
 GO
-CREATE PROCEDURE InsertContractWithPackadgeListTest @startDate DATETIME, @endDate DATETIME, @active INT,@priorityLevel VARCHAR(20), @price FLOAT, @contractType VARCHAR(15)
-AS
-BEGIN
-	INSERT INTO [Contract] ([startDate], [endDate], [activeContract],[priorityLevel],[price],[contractType])
-	VALUES (@startDate, @endDate, @active,@priorityLevel,@price,@contractType)
-	SELECT SCOPE_IDENTITY()
-
-END 
-GO
 CREATE PROCEDURE InsertContractState @id INT, @startDate DATETIME, @endDate DATETIME, @active BIT,@priorityLevel INT
 AS
 BEGIN
@@ -1308,13 +1299,6 @@ BEGIN
 	INNER JOIN ClientBusiness ON [Call].ClientBusinessID = ClientBusiness.clientBusinessID
 	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
 	WHERE ClientBusiness.clientBusinessClientNumber = @id
-END
-GO
-CREATE PROCEDURE SelectLastCallId AS
-BEGIN
-	DECLARE @last INT
-	SET @last = IDENT_CURRENT('Call')
-	SELECT @last AS callId
 END
 GO
 

@@ -49,13 +49,15 @@ namespace PremiereSolutionProject.DAL
             InsertAllServicePackedgesOfNewContract(contract);
             InsertCommand($"EXEC InsertContractWithPackadgeList @startDate = '{contract.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @endDate = '{contract.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @active ='{GetIntFromBool(contract.Active)}', @priorityLevel = '{contract.PriorityLevel}', @price = '{contract.Price.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}', @contractType = '{contract.ContractType}'");
         }
-        public void InsertWithPackedgeTestReturn(Contract contract)
-        {
-            int id = InsertCommandWithReturnedId($"EXEC InsertContractWithPackadgeListTest @startDate = '{contract.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @endDate = '{contract.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @active ='{GetIntFromBool(contract.Active)}', @priorityLevel = '{contract.PriorityLevel}', @price = '{contract.Price.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}', @contractType = '{contract.ContractType}'");
-        }
         public void InsertSingleServicePackedgeToContract(string contractId, int ServicePackageId)
         {
             InsertCommand($"EXEC InsertServiceContractLink @ContractID ='{contractId}', @ServicePackageID ='{ServicePackageId}'"); 
+        }
+        public void InsertNewlyAssignedContractToIndividualClient(Contract contract) 
+        {
+            int ContractGenetatedId = -1;
+
+            IndividualClient individualClient = contract.Indclient;
         }
         #endregion
 
@@ -88,9 +90,9 @@ namespace PremiereSolutionProject.DAL
 
             return contractList;
         }
-        public List<Contract> SelectOfferedContractById(string input)
+        public Contract SelectOfferedContractById(string input)
         {
-            List<Contract> contractList = new List<Contract>();
+            Contract contract = new Contract();
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionSring))
@@ -101,7 +103,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        contractList.Add(new Contract((string)reader["contractNumber"], GetTrueFalseFromBit((int)reader["activeContract"]), (DateTime)reader["startDate"], (DateTime)reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)reader["contractID"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]));
+                        contract = new Contract((string)reader["contractNumber"], GetTrueFalseFromBit((int)reader["activeContract"]), (DateTime)reader["startDate"], (DateTime)reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)reader["contractID"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]);
                     }
                 }
             }
@@ -113,11 +115,11 @@ namespace PremiereSolutionProject.DAL
             }
             finally { }
 
-            return contractList;
+            return contract;
         }
-        public List<Contract> SelectAssignedContractByIdAndIndividualClientId(string contractId,string clientId)
+        public Contract SelectAssignedContractByIdAndIndividualClientId(string contractId,string clientId)
         {
-            List<Contract> contractList = new List<Contract>();
+            Contract contract = new Contract();
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionSring))
@@ -128,7 +130,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        contractList.Add(new Contract((string)reader["contractNumber"], GetTrueFalseFromBit((int)reader["activeContract"]), (DateTime)reader["startDate"], (DateTime)reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)reader["contractID"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]));
+                        contract = new Contract((string)reader["contractNumber"], GetTrueFalseFromBit((int)reader["activeContract"]), (DateTime)reader["startDate"], (DateTime)reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)reader["contractID"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]);
                     }
                 }
             }
@@ -140,11 +142,11 @@ namespace PremiereSolutionProject.DAL
             }
             finally { }
 
-            return contractList;
+            return contract;
         }
-        public List<Contract> SelectAssignedContractByIdAndBusinessClientId(string contractId, string clientId)
+        public Contract SelectAssignedContractByIdAndBusinessClientId(string contractId, string clientId)
         {
-            List<Contract> contractList = new List<Contract>();
+            Contract contract = new Contract();
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionSring))
@@ -155,7 +157,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        contractList.Add(new Contract((string)reader["contractNumber"], GetTrueFalseFromBit((int)reader["activeContract"]), (DateTime)reader["startDate"], (DateTime)reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)reader["contractID"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]));
+                        contract = new Contract((string)reader["contractNumber"], GetTrueFalseFromBit((int)reader["activeContract"]), (DateTime)reader["startDate"], (DateTime)reader["endDate"], SelectAllServicePackedgesLinkedToContract((int)reader["contractID"]), (string)reader["priorityLevel"], reader.GetDouble(reader.GetOrdinal("price")), (string)reader["contractType"]);
                     }
                 }
             }
@@ -167,7 +169,7 @@ namespace PremiereSolutionProject.DAL
             }
             finally { }
 
-            return contractList;
+            return contract;
         }
         public List<Contract> SelectAllActiveContracts()
         {
