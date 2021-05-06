@@ -43,7 +43,6 @@ namespace PremiereSolutionProject.PL
             this.rtbNotes = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnDeleteJob = new System.Windows.Forms.Button();
-            this.lbxCurrentAssigned = new System.Windows.Forms.ListBox();
             this.lbxAvailable = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,7 +60,10 @@ namespace PremiereSolutionProject.PL
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstSpecial = new System.Windows.Forms.ListView();
+            this.lstViewAssemp = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cmbSpec = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJobs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudEmployees)).BeginInit();
             this.SuspendLayout();
@@ -181,9 +183,9 @@ namespace PremiereSolutionProject.PL
             this.label7.Location = new System.Drawing.Point(38, 557);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(143, 17);
+            this.label7.Size = new System.Drawing.Size(136, 17);
             this.label7.TabIndex = 115;
-            this.label7.Text = "Specialisation Names";
+            this.label7.Text = "Specialisation Name";
             // 
             // label8
             // 
@@ -191,7 +193,7 @@ namespace PremiereSolutionProject.PL
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(38, 649);
+            this.label8.Location = new System.Drawing.Point(38, 605);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 17);
@@ -200,7 +202,7 @@ namespace PremiereSolutionProject.PL
             // 
             // nudEmployees
             // 
-            this.nudEmployees.Location = new System.Drawing.Point(215, 647);
+            this.nudEmployees.Location = new System.Drawing.Point(215, 603);
             this.nudEmployees.Name = "nudEmployees";
             this.nudEmployees.Size = new System.Drawing.Size(70, 22);
             this.nudEmployees.TabIndex = 118;
@@ -240,16 +242,6 @@ namespace PremiereSolutionProject.PL
             this.btnDeleteJob.Text = "Delete Job";
             this.btnDeleteJob.UseVisualStyleBackColor = true;
             this.btnDeleteJob.Click += new System.EventHandler(this.btnDeleteJob_Click);
-            // 
-            // lbxCurrentAssigned
-            // 
-            this.lbxCurrentAssigned.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbxCurrentAssigned.FormattingEnabled = true;
-            this.lbxCurrentAssigned.ItemHeight = 16;
-            this.lbxCurrentAssigned.Location = new System.Drawing.Point(685, 414);
-            this.lbxCurrentAssigned.Name = "lbxCurrentAssigned";
-            this.lbxCurrentAssigned.Size = new System.Drawing.Size(261, 68);
-            this.lbxCurrentAssigned.TabIndex = 124;
             // 
             // lbxAvailable
             // 
@@ -376,6 +368,7 @@ namespace PremiereSolutionProject.PL
             this.lstJobs.TabIndex = 134;
             this.lstJobs.UseCompatibleStateImageBehavior = false;
             this.lstJobs.View = System.Windows.Forms.View.Details;
+            this.lstJobs.SelectedIndexChanged += new System.EventHandler(this.lstJobs_SelectedIndexChanged);
             // 
             // columnHeader5
             // 
@@ -405,15 +398,36 @@ namespace PremiereSolutionProject.PL
             // 
             this.columnHeader12.Text = "Priority level";
             // 
-            // lstSpecial
+            // lstViewAssemp
             // 
-            this.lstSpecial.HideSelection = false;
-            this.lstSpecial.Location = new System.Drawing.Point(215, 547);
-            this.lstSpecial.Name = "lstSpecial";
-            this.lstSpecial.Size = new System.Drawing.Size(204, 84);
-            this.lstSpecial.TabIndex = 135;
-            this.lstSpecial.UseCompatibleStateImageBehavior = false;
-            this.lstSpecial.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.lstViewAssemp.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lstViewAssemp.HideSelection = false;
+            this.lstViewAssemp.Location = new System.Drawing.Point(689, 385);
+            this.lstViewAssemp.MultiSelect = false;
+            this.lstViewAssemp.Name = "lstViewAssemp";
+            this.lstViewAssemp.Size = new System.Drawing.Size(257, 97);
+            this.lstViewAssemp.TabIndex = 136;
+            this.lstViewAssemp.UseCompatibleStateImageBehavior = false;
+            this.lstViewAssemp.View = System.Windows.Forms.View.Details;
+            this.lstViewAssemp.SelectedIndexChanged += new System.EventHandler(this.lstViewAssemp_SelectedIndexChanged);
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "ID";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Name";
+            // 
+            // cmbSpec
+            // 
+            this.cmbSpec.FormattingEnabled = true;
+            this.cmbSpec.Location = new System.Drawing.Point(215, 557);
+            this.cmbSpec.Name = "cmbSpec";
+            this.cmbSpec.Size = new System.Drawing.Size(121, 24);
+            this.cmbSpec.TabIndex = 138;
             // 
             // frmJobsManagement
             // 
@@ -421,7 +435,8 @@ namespace PremiereSolutionProject.PL
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1017, 745);
-            this.Controls.Add(this.lstSpecial);
+            this.Controls.Add(this.cmbSpec);
+            this.Controls.Add(this.lstViewAssemp);
             this.Controls.Add(this.lstJobs);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.lstPending);
@@ -431,7 +446,6 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.lbxNewAssigned);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbxAvailable);
-            this.Controls.Add(this.lbxCurrentAssigned);
             this.Controls.Add(this.btnDeleteJob);
             this.Controls.Add(this.rtbNotes);
             this.Controls.Add(this.label9);
@@ -474,7 +488,6 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.RichTextBox rtbNotes;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnDeleteJob;
-        private System.Windows.Forms.ListBox lbxCurrentAssigned;
         private System.Windows.Forms.ListBox lbxAvailable;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -492,6 +505,9 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ListView lstSpecial;
+        private System.Windows.Forms.ListView lstViewAssemp;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ComboBox cmbSpec;
     }
 }

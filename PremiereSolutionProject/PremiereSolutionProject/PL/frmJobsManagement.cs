@@ -32,6 +32,7 @@ namespace PremiereSolutionProject.PL
             lbxAvailable.Items.Add(myEmployee);
         }
 
+
         private void RefreshDGV()
         {
             bs.DataSource = myJob;
@@ -134,11 +135,6 @@ namespace PremiereSolutionProject.PL
             {
                 throw new FormatException("Invalid Numeric Selection");
             }
-            else if (lbxCurrentAssigned.Items.Count == 0)
-            {
-                throw new FormatException("There are no current employees.");
-            }
-
 
             //JB.UpdateJob(Job); //Need to parse a job object to update
         }
@@ -150,7 +146,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnRemoveTechnician_Click(object sender, EventArgs e)
         {
-            lbxCurrentAssigned.Items.RemoveAt(lbxCurrentAssigned.SelectedIndex);
+            lstViewAssemp.Items.RemoveAt(lstViewAssemp.SelectedIndices[0]);
         }
 
         public void UpdateJob()
@@ -172,23 +168,75 @@ namespace PremiereSolutionProject.PL
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            //if (lstJobs.SelectedItems.Count > 0 )
-            //{
-            //    Job NewJob = lstJobs.SelectedItems[0].Tag as Job;
+            if (lstJobs.SelectedItems.Count > 0)
+            {
+                cmbSpec.Items.Clear();
+                Job NewJob = lstJobs.SelectedItems[0].Tag as Job;
+               
+                JobState st;
+                st = NewJob.JobState;
 
-            //    List<Specialisation> newSpList = new List<Specialisation>();
+                if (st.ToString()=="Pending")
+                {
+                    cbxCurrentState.Text = "Pending";
+                }
+                if (st.ToString() == "In Progress")
+                {
+                    cbxCurrentState.Text = "In Progress";
+                }
+                if (st.ToString() == "Finshed")
+                {
+                    cbxCurrentState.Text = "Finished";
+                }
 
-            //    List<Employee> NewEmp = new List<Employee>();
+                Specialisation newSp = NewJob.Specialisation; //Not a list of specialisations?
 
-            //    newSpList.Add(NewJob[l);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No record wass selected ", "Jobs",MessageBoxButtons.OK);
-            //}
+                List<Specialisation> newSpList = NewJob.Specialisation.GetSpecialisationNames();
+
+               
+
+                //txtBoxSpec.Text = newSp.SpecialisationName;
+                foreach (Specialisation sp in newSpList)
+                {
+                    cmbSpec.Items.Add(sp.SpecialisationName);
+                }
+                cmbSpec.Text = newSpList[0].SpecialisationName;
+
+                List<MaintenanceEmployee> NewEmp = new List<MaintenanceEmployee>();
+
+                NewEmp = NewJob.Employee;
+
+                foreach (Employee ME in NewEmp)
+                {
+                    ListViewItem lst = new ListViewItem(new string[]
+                     {
+                            ME.Id,
+                            ME.FirstName
+                     });
+
+                    lstViewAssemp.Items.Add(lst);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No record was selected ", "Jobs", MessageBoxButtons.OK);
+            }
+
+
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstViewAssemp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstJobs_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
