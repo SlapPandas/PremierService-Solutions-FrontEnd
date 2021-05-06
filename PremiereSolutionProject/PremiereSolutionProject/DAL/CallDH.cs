@@ -19,7 +19,7 @@ namespace PremiereSolutionProject.DAL
 
         #endregion
 
-        //Done, but question with Insert method
+        //Done
         #region Insert
         public void InsertEndTime(int id, DateTime dateTime)
         {
@@ -42,7 +42,7 @@ namespace PremiereSolutionProject.DAL
 
         #endregion
 
-
+        //Not sure if TODO was solved?
         #region Select
         public List<Call> SelectAllCallByIndividualClientById(string id)
         {
@@ -59,7 +59,7 @@ namespace PremiereSolutionProject.DAL
                     {
                         CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
                         //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
-                        callList.Add(new Call((int)Reader["callID"], (DateTime)Reader["startTime"], (DateTime)Reader["endTime"], new IndividualClient((string)Reader["clientIndividualClientNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["RegistrationDate"], GetTrueFalseFromBit((int)Reader["active"])), callcenterEnptyEmployee, (string)Reader["callNotes"]));
+                        callList.Add(new Call((int)reader["callID"], (DateTime)reader["startTime"], (DateTime)reader["endTime"], new IndividualClient((string)reader["clientIndividualClientNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["RegistrationDate"], GetTrueFalseFromBit((int)reader["active"])), GetCallCenterEmployeeByCallId((int)reader["callID"]), (string)reader["callNotes"]));
                     }
                 }
             }
@@ -88,7 +88,7 @@ namespace PremiereSolutionProject.DAL
                     {
                         CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
                         //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
-                        callList.Add(new Call((int)Reader["callID"], (DateTime)Reader["startTime"], (DateTime)Reader["endTime"], new BusinessClient((string)Reader["clientBusinessClientNumber"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (DateTime)Reader["RegistrationDate"], (string)Reader["taxNumber"], (string)Reader["busuinessName"], GetTrueFalseFromBit((int)Reader["active"])), callcenterEnptyEmployee, (string)Reader["callNotes"]));
+                        callList.Add(new Call((int)reader["callID"], (DateTime)reader["startTime"], (DateTime)reader["endTime"], new BusinessClient((string)reader["clientBusinessClientNumber"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (DateTime)reader["RegistrationDate"], (string)reader["taxNumber"], (string)reader["busuinessName"], GetTrueFalseFromBit((int)reader["active"])), callcenterEnptyEmployee, (string)reader["callNotes"]));
                     }
                 }
             }
@@ -117,7 +117,7 @@ namespace PremiereSolutionProject.DAL
                     {
                         CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
                         //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
-                        call = new Call((int)Reader["callID"], (DateTime)Reader["startTime"], (DateTime)Reader["endTime"], callcenterEnptyEmployee, (string)Reader["callNotes"]);
+                        call = new Call((int)reader["callID"], (DateTime)reader["startTime"], (DateTime)reader["endTime"], callcenterEnptyEmployee, (string)reader["callNotes"]);
                     }
                 }
             }
@@ -133,41 +133,32 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
         
-
+        //Not 100% sure
         #region SeperateMethods
         private bool GetTrueFalseFromBit(int bit)
         {
             bool output = bit == 1 ? true : false;
             return output;
         }
-        private CallCenterEmployee GetCallCenterEmployeeByCallId(int callId)
+        public CallCenterEmployee GetCallCenterEmployeeByCallId(int callId)
         {
-            SqlConnection callCenterEmployeeConnection = new SqlConnection(connectionSring);
-            SqlDataReader callCenterEmployeeReader;
             CallCenterEmployee callCenterEmployee = new CallCenterEmployee();
-            commandString = $"EXEC SelectCallCenterEmployeeByCallId @id = '{callId}'";
-            SqlCommand maintenanceEmployeeCommand = new SqlCommand(commandString, callCenterEmployeeConnection);
-
             try
             {
-                callCenterEmployeeConnection.Open();
-                callCenterEmployeeReader = maintenanceEmployeeCommand.ExecuteReader();
-                while (callCenterEmployeeReader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    int emptid = (int)Reader["employeeID"];
-                    string empid = (string)Reader["employeeNumber"];
-                    string fname = (string)Reader["firstName"];
-                    string sname = (string)Reader["surname"];
-                    Address address = new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]);
-                    string contactnr = (string)Reader["contactNumber"];
-                    string email = (string)Reader["email"];
-                    string natID = (string)Reader["nationalIdNumber"];
-                    DateTime date = (DateTime)Reader["employmentDate"];
-                    bool employed = GetTrueFalseFromBit((int)Reader["employed"]);
-                    string department = (string)Reader["department"];
-                    callCenterEmployee = new CallCenterEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]);
+                    connection.Open();
+                    commandString = $"EXEC SelectCallCenterEmployeeByCallId @id = '{callId}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
+                        //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
+                        callCenterEmployee = new CallCenterEmployee((string)reader["employeeNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressId"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["employmentDate"], GetTrueFalseFromBit((int)reader["employed"]), (string)reader["department"]);
 
-                }
+                    }
+                }                
             }
             catch (Exception e)
             {
@@ -177,7 +168,7 @@ namespace PremiereSolutionProject.DAL
             }
             finally
             {
-                callCenterEmployeeConnection.Close();
+
             }
             return callCenterEmployee;
         }

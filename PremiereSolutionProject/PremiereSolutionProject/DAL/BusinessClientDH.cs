@@ -31,7 +31,7 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-
+        //Done
         #region Select
         public List<BusinessClient> SelectAllBusinessClients()
         {

@@ -35,7 +35,7 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-
+        //Done
         #region Select
         public List<BusinessClientEmployees> SelectAllBusinessClientEmployeesByBusinessId(string businessId)
         {
@@ -50,7 +50,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        businessClientemployeeList.Add(new BusinessClientEmployees((int)Reader["clientBusinessEmployeeID"], (string)Reader["firstName"], (string)Reader["surname"], (string)Reader["department"], (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["busuinessName"]));
+                        businessClientemployeeList.Add(new BusinessClientEmployees((int)reader["clientBusinessEmployeeID"], (string)reader["firstName"], (string)reader["surname"], (string)reader["department"], (string)reader["contactNumber"], (string)reader["email"], (string)reader["busuinessName"]));
                     }
                 }
             }
@@ -79,7 +79,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        businessClientemployeeList.Add(new BusinessClientEmployees((int)Reader["clientBusinessEmployeeID"], (string)Reader["firstName"], (string)Reader["surname"], (string)Reader["department"], (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["busuinessName"]));
+                        businessClientemployeeList.Add(new BusinessClientEmployees((int)reader["clientBusinessEmployeeID"], (string)reader["firstName"], (string)reader["surname"], (string)reader["department"], (string)reader["contactNumber"], (string)reader["email"], (string)reader["busuinessName"]));
                     }
                 }
             }
@@ -110,7 +110,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        myAddress = new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]);
+                        myAddress = new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]);
                     }
                 }
             }

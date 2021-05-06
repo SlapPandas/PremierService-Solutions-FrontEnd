@@ -14,7 +14,7 @@ namespace PremiereSolutionProject.DAL
         #region Update
         public void UpdateCallCenterEmployee(CallCenterEmployee employee)
         {
-            UpdateCommand($"EXEC UpdateCallCenterEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentdate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}, @adressid = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}',@city = '{employee.Address.City}'");
+            UpdateCommand($"EXEC UpdateCallCenterEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentdate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}, @adressId = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}',@city = '{employee.Address.City}'");
         }
 
         public void UpdateMaintenanceEmployee(MaintenanceEmployee employee)
@@ -25,6 +25,11 @@ namespace PremiereSolutionProject.DAL
         public void UpdateServiceManager(ServiceManager employee)
         {
             UpdateCommand($"EXEC UpdateServiceManager @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @registrationDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{employee.Employed}', @department = '{employee.Department}, @adressid = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}',@city = '{employee.Address.City}'");
+        }
+
+        public void UpdateEmployee(Employee employee)
+        {
+
         }
 
         #endregion
@@ -49,7 +54,7 @@ namespace PremiereSolutionProject.DAL
 
         #endregion
 
-
+        //Done
         #region Select
         public List<CallCenterEmployee> SelectAllCallCenterEmployees()
         {
@@ -64,7 +69,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        callCenterEmployeeList.Add(new CallCenterEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                        callCenterEmployeeList.Add(new CallCenterEmployee((string)reader["employeeNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["employmentDate"], GetTrueFalseFromBit((int)reader["employed"]), (string)reader["department"]));
                     }
                 }
             }
@@ -91,7 +96,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                        maintenanceEmployeeList.Add(new MaintenanceEmployee((string)reader["employeeNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["employmentDate"], GetSpecialisationByEmployeeId((int)reader["employeeID"]), GetTrueFalseFromBit((int)reader["employed"]), (string)reader["department"]));
                     }
                 }
             }
@@ -118,7 +123,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                        maintenanceEmployeeList.Add(new MaintenanceEmployee((string)reader["employeeNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["employmentDate"], GetSpecialisationByEmployeeId((int)reader["employeeID"]), GetTrueFalseFromBit((int)reader["employed"]), (string)reader["department"]));
                     }
                 }
             }
@@ -145,7 +150,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        maintenanceEmployeeList.Add(new MaintenanceEmployee((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetSpecialisationByEmployeeId((int)Reader["employeeID"]), GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                        maintenanceEmployeeList.Add(new MaintenanceEmployee((string)reader["employeeNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["employmentDate"], GetSpecialisationByEmployeeId((int)reader["employeeID"]), GetTrueFalseFromBit((int)reader["employed"]), (string)reader["department"]));
                     }
                 }
             }
@@ -172,7 +177,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        serviceManagerList.Add(new ServiceManager((string)Reader["employeeNumber"], (string)Reader["firstName"], (string)Reader["surname"], new Address((int)Reader["addressID"], (string)Reader["streetName"], (string)Reader["suburb"], (string)Reader["city"], GetProvince((string)Reader["province"]), (string)Reader["postalcode"]), (string)Reader["contactNumber"], (string)Reader["email"], (string)Reader["nationalIdNumber"], (DateTime)Reader["employmentDate"], GetTrueFalseFromBit((int)Reader["employed"]), (string)Reader["department"]));
+                        serviceManagerList.Add(new ServiceManager((string)reader["employeeNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["employmentDate"], GetTrueFalseFromBit((int)reader["employed"]), (string)reader["department"]));
                     }
                 }
             }
