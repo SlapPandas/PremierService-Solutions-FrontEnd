@@ -14,15 +14,17 @@ namespace PremiereSolutionProject.DAL
         #region Insert
         public void CreateOperationLog(DatabaseOperation operation)
         {
-            DateTime time = DateTime.Now;
-            CreateConnection();
-            commandString = $"EXEC CreateDatabaseOperationLog @dateAndTime = '{time.ToString("yyyy-MM-dd HH:mm:ss")}', @description = '{operation.Description}', @success = '{GetIntFromBool(operation.Success)}'";
-            Command = new SqlCommand(commandString, Connection);
-
             try
             {
-                OpenConnection();
-                Command.ExecuteNonQuery();
+                DateTime time = DateTime.Now;
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    
+                    connection.Open();
+                    commandString = $"EXEC CreateDatabaseOperationLog @dateTime = '{time}', @description = '{operation.Description}', @success = '{GetIntFromBool(operation.Success)}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    command.ExecuteNonQuery();
+                }
             }
             catch (Exception e)
             {
@@ -30,33 +32,31 @@ namespace PremiereSolutionProject.DAL
                 MessageBox.Show("The Error will not be able to be logged, the error is: \n\n\n" + e);
                 Environment.Exit(1);
             }
-            finally { CloseConnection(); }
         }
         #endregion
 
         public List<DatabaseOperation> SelectAllErrors()
         {
-            CreateConnection();
-            commandString = $"EXEC GetAllErrors";
-            Command = new SqlCommand(commandString, Connection);
             List<DatabaseOperation> errorList = new List<DatabaseOperation>();
-
             try
             {
-                OpenConnection();
-                Reader = Command.ExecuteReader();
-                while (Reader.Read())
+                using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
-                    errorList.Add(new DatabaseOperation((int)Reader["errorID"], (DateTime)Reader["dateAndTime"], GetTrueFalseFromBit((int)Reader["success"]), (string)Reader["description"]));
+                    connection.Open();
+                    commandString = $"EXEC GetAllErrors";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        errorList.Add(new DatabaseOperation((int)reader["errorID"], (DateTime)reader["dateAndTime"], GetTrueFalseFromBit((int)reader["success"]), (string)reader["description"]));
+                    }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
+                DatabaseOperation databaseOperation = new DatabaseOperation(false, "EXEC GetAllErrors");
                 CreateOperationLog(databaseOperation);
             }
-            finally { CloseConnection(); }
-
             return errorList;
         }
         #region SeperateMethods

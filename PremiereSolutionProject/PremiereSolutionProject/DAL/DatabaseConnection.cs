@@ -13,48 +13,10 @@ namespace PremiereSolutionProject.DAL
     {
         #region Fields
         public string connectionSring = @"Data Source =.; Initial Catalog = PremierServiceSolutionsDatabase; Integrated Security = SSPI";
-        public SqlConnection Connection;
-
         public string commandString = "";
-        public SqlCommand Command;
-
-        public SqlDataReader Reader;
         #endregion
 
         #region Methods
-        public void CreateConnection()
-        {
-            Connection = new SqlConnection(connectionSring);
-        }
-        public void OpenConnection()
-        {
-            try
-            {
-                Connection.Open();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-
-        }
-        public void CloseConnection()
-        {
-            try
-            {
-                Connection.Close();
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-
-        }
-
         public void UpdateCommand(string input) {
             try
             {
@@ -66,11 +28,10 @@ namespace PremiereSolutionProject.DAL
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, input));
             }
 
         }
@@ -85,11 +46,10 @@ namespace PremiereSolutionProject.DAL
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, input));
             }
         }
         public void InsertCommand(string input)
@@ -104,11 +64,10 @@ namespace PremiereSolutionProject.DAL
                     command.ExecuteNonQuery();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, input));
             }
         }
         public int InsertCommandWithReturnedId(string input)
@@ -124,11 +83,10 @@ namespace PremiereSolutionProject.DAL
                     id = Convert.ToInt32(command.ExecuteScalar());
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, input));
             }
             return id;
         }

@@ -11,7 +11,6 @@ namespace PremiereSolutionProject.DAL
 {
     public class AddressDH : DatabaseConnection, IDataconnection
     {
-        //Done
         #region Update
         public void Update(Address address)
         {      
@@ -19,7 +18,6 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Done
         #region Insert
         public void Insert(Address address)
         {
@@ -28,7 +26,6 @@ namespace PremiereSolutionProject.DAL
 
         #endregion
 
-        //Done
         #region Select
         public List<Address> SelectAllAddresses()
         {
@@ -47,11 +44,10 @@ namespace PremiereSolutionProject.DAL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
             }
             finally { }
 
@@ -59,7 +55,6 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Done
         #region Delete
         public bool Delete(Address address)
         {
@@ -95,11 +90,10 @@ namespace PremiereSolutionProject.DAL
                     output = (int)addressReader["uses"];
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
             }
             finally
             {

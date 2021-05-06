@@ -54,11 +54,10 @@ namespace PremiereSolutionProject.DAL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
             }
             finally { }
 
@@ -83,11 +82,10 @@ namespace PremiereSolutionProject.DAL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
             }
             finally { }
 
@@ -95,36 +93,7 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-
         #region SeperateMethods
-        private Address GetAddressById(int addressId)
-        {
-            Address myAddress = null;
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionSring))
-                {
-                    connection.Open();
-                    commandString = $"EXEC SelectAddress = '{addressId}'";
-                    SqlCommand command = new SqlCommand(commandString, connection);
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        myAddress = new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally { }
-           
-            return myAddress;
-
-        }
         private Province GetProvince(string input)
         {
             Province province = (Province)1;

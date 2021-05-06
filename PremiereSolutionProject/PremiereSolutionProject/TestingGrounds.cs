@@ -35,10 +35,14 @@ namespace PremiereSolutionProject
             //List<ServicePackage> servicePackages = servicePackadgeDH.SelectAllServicePackedges();
             //IndividualClientDH individualClientDH = new IndividualClientDH();
             //List<IndividualClient> individualClients = individualClientDH.SelectAllIndividualClients();
-            AddressDH addressDH = new AddressDH();
-            List<Address> addresses = addressDH.SelectAllAddresses();
+            //AddressDH addressDH = new AddressDH();
+            //List<Address> addresses = addressDH.SelectAllAddresses();
 
-            DateTime dateTime = new DateTime(2001, 01, 01);
+            //DateTime dateTime = new DateTime(2001, 01, 01);
+            //JobDH jobDH = new JobDH();
+            //EmployeeDH employeeDH = new EmployeeDH();
+            //List<MaintenanceEmployee> maintenanceEmployees = employeeDH.SelectAllMaintenanceEmployees();
+            //List<Job> jobs = jobDH.SelectAllJobs();
             //JobDH jobDH = new JobDH();
             //Address address = new Address(1, "update", "update", GetProvince("3"), "1233");
             //DateTime dateTime = new DateTime(2001, 01, 01);
@@ -68,6 +72,10 @@ namespace PremiereSolutionProject
             //services.Add(new Service(4, "ser1", "des1"));
             //ServicePackage serviceRequest = new ServicePackage(1, "updated", services, false, dateTimestart, dateTimeend, 123.321, 456.654);
             //servicePackadgeDH.InsertSingleServiceToServicePackedge(1,1); //Commented out due to error
+
+            //DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+            //DatabaseOperation databaseOperation = new DatabaseOperation(true,"success");
+            //databaseOperationDH.CreateOperationLog(databaseOperation);
 
 
             Console.WriteLine("======================================================");

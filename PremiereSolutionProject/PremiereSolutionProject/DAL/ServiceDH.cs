@@ -49,11 +49,10 @@ namespace PremiereSolutionProject.DAL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
             }
             finally {}
             return serviceList;
@@ -75,11 +74,10 @@ namespace PremiereSolutionProject.DAL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
             }
             finally {}
             return serviceList;
@@ -101,11 +99,10 @@ namespace PremiereSolutionProject.DAL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
             }
             finally {}
             return serviceList;
@@ -127,11 +124,10 @@ namespace PremiereSolutionProject.DAL
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
             }
             finally {}
             return serviceList;
