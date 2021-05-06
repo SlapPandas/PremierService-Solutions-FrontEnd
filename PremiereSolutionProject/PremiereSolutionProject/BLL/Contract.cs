@@ -207,6 +207,21 @@ namespace PremiereSolutionProject.BLL
             contractDH.InsertSingleServicePackedgeToContract(contractID, serviceRequestID);
         }
 
+        public void LinkClientToContract(Contract contract)
+        {
+            ContractDH contractDH = new ContractDH();
+
+            if (contract.client.Id[0] == 'A')
+            {
+                contractDH.InsertNewlyAssignedContractToIndividualClient(contract);
+            }
+            if (contract.client.Id[0] == 'B')
+            {
+                contractDH.InsertNewlyAssignedContractToBusinessClient(contract);
+            }
+
+        }
+
         //this method needs to be tested. I am not sure how it will work taking in a Client
         public void CreateNewContract(Client c, Contract contract)
         {
