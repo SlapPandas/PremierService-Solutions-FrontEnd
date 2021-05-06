@@ -284,14 +284,15 @@ namespace PremiereSolutionProject.BLL
             int nextPrioLevel = 0;
             DateTime currentTime = DateTime.Now;
             Job tempJob = new Job(); // used for swapping in bubble sort
+            int unorderedList = unorderedJoblistWithPrio.Count - 2;
             while (!unchanged) // this is a bubble sort. uses the prio string to change the order of the 2 lists so they stay linked. results in unordered job list to be sorted by prio. NOT DATE
             {
                 unchanged = true;
-                for (int i = 0; i <= unorderedJoblistWithPrio.Count - 1; i++)  // unorderedPrioLevel.Count-1 so that it does go out of bounds
+                for (int i = 0; i <= unorderedList; i++)  // unorderedPrioLevel.Count-1 so that it does go out of bounds
                 {
                     currentPrioLevel = ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel); // compairing current item with next item
                     nextPrioLevel = ExtractNumber(unorderedJoblistWithPrio[i + 1].PriorityLevel);
-                    if (nextPrioLevel > currentPrioLevel) // switch items based on prio level
+                    if (nextPrioLevel < currentPrioLevel) // switch items based on prio level
                     {
                         unchanged = false;
                         tempJob = unorderedJoblistWithPrio[i];
@@ -304,21 +305,22 @@ namespace PremiereSolutionProject.BLL
             {
                 callRequests.Add(callDH.SelectCallByJobId(item.JobID));
             }
+
             for (int i = 0; i < callRequests.Count; i++) // these days are  just place holders, can be changed to fit a range or otherwise
             {
-                if ((currentTime - callRequests[i].EndTime).TotalDays > 1 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) <= 2)
+                if ((currentTime - callRequests[i].EndTime).TotalDays > 2 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) <= 2)
                 {
                     highestPrioList.Add(unorderedJoblistWithPrio[i]);
                 }
-                if ((currentTime - callRequests[i].EndTime).TotalDays > 2 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) <= 4 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) > 2)
+                if ((currentTime - callRequests[i].EndTime).TotalDays > 4 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) <= 4 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) > 2)
                 {
                     highestPrioList.Add(unorderedJoblistWithPrio[i]);
                 }
-                if ((currentTime - callRequests[i].EndTime).TotalDays > 3 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) <= 6 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) > 4)
+                if ((currentTime - callRequests[i].EndTime).TotalDays > 6 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) <= 6 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) > 4)
                 {
                     highestPrioList.Add(unorderedJoblistWithPrio[i]);
                 }
-                if ((currentTime - callRequests[i].EndTime).TotalDays > 4 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) <= 8 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) > 6)
+                if ((currentTime - callRequests[i].EndTime).TotalDays > 8 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) <= 8 && ExtractNumber(unorderedJoblistWithPrio[i].PriorityLevel) > 6)
                 {
                     highestPrioList.Add(unorderedJoblistWithPrio[i]);
                 }
