@@ -146,10 +146,46 @@ namespace PremiereSolutionProject.BLL
             return clientContracts;
         }
 
+        public Contract GetOfferedContractByID(string id)
+        {
+            ContractDH contractDH = new ContractDH();
+            return contractDH.SelectOfferedContractById(id);
+        }
+
+        public Contract GetContractByIDandClient(string clientID, string contractID)
+        {
+            ContractDH contractDH = new ContractDH();
+            Contract clientContract = clientID[0] == 'A' ? contractDH.SelectAssignedContractByIdAndIndividualClientId(clientID, contractID) : clientID[0] == 'B' ? contractDH.SelectAssignedContractByIdAndBusinessClientId(clientID, contractID) : null;
+            return clientContract;
+        }
+
         public void UpdateContract(Contract contract)
         {
             ContractDH contractDH = new ContractDH();
             contractDH.Update(contract);
+        }
+
+        public void ChangeActiveStateOfOfferedContract(string contractID, bool active)
+        {
+            ContractDH contractDH = new ContractDH();
+            contractDH.UpdateOfferedContractIfActive(contractID, active);
+        }
+
+        public void ChangeActiveStateOfClientContract(string contractID, bool active)
+        {
+            ContractDH contractDH = new ContractDH();
+            contractDH.UpdateClientContractIfActive(contractID, active);
+        }
+
+        public void ChangeActiveStateAndDateRangeofContact(string contractID, DateTime newStartDate, DateTime newEndDate, bool active)
+        {
+            ContractDH contractDH = new ContractDH();
+            contractDH.UpdateActiveAndDateRangeOfOfferedContract(contractID, newStartDate, newEndDate, active);
+        }
+        public void UpdatePackagesInContract(Contract contract)
+        {
+            ContractDH contractDH = new ContractDH();
+            contractDH.UpdateContractPackageList(contract);
         }
 
         public void DeleteContract(Contract contract)
@@ -157,23 +193,31 @@ namespace PremiereSolutionProject.BLL
             ContractDH contractDH = new ContractDH();
             contractDH.Delete(contract);
         }
-        /*
+        
         public void InsertContract(Contract contract)
         {
+            //inserts all servicePackages and inserts contracts into DB
             ContractDH contractDH = new ContractDH();
-            contractDH.Insert(contract);
+            contractDH.InsertWithPackedge(contract);
         }
-        
+
+        public void InsertSingleServicePackage(string contractID, int serviceRequestID)
+        {
+            ContractDH contractDH = new ContractDH();
+            contractDH.InsertSingleServicePackedgeToContract(contractID, serviceRequestID);
+        }
+
+        //this method needs to be tested. I am not sure how it will work taking in a Client
         public void CreateNewContract(Client c, Contract contract)
         {
             //should the method maybe take in a ClientID and then just find the client according that from a list? 
             //or will PL be able to enter a client object as a parameter?
             if (c.VerifyClientContract(c.Id))
             {
-                InsertContract(new Contract(contract.startDate, contract.endDate, c, contract.packageList, true, contract.priorityLevel, CalculateContractPrice(), "Recurring"));
+                InsertContract(new Contract(contract.startDate, contract.endDate, c, contract.packageList, true, contract.priorityLevel, CalculateContractPrice(), contract.contractType));
             }
         }
-        */
+        
         private double CalculateContractPrice()
         {
             int daysChosen = DetermineDaysChosen(priorityLevel);
@@ -228,13 +272,11 @@ namespace PremiereSolutionProject.BLL
 
         public int DetermineDaysChosen(string code)
         {
-            int n = 0;
+            //int n = 0;
+            //Regex r = new Regex(@"[^0 - 9]", RegexOptions.IgnoreCase); //returns only the numbers
+            //n = int.Parse(r.Replace(code, @""));
 
-            Regex r = new Regex(@"[^0 - 9]", RegexOptions.IgnoreCase); //returns only the numbers
-
-            n = int.Parse(r.Replace(code, @""));
-
-            return n;
+            return int.Parse(Regex.Replace(code, @"[^\d]", ""));
         }
 
         public List<string> GetContractPerformance()
