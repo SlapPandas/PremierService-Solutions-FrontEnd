@@ -269,8 +269,9 @@ namespace PremiereSolutionProject.BLL
 
         private int ExtractNumber(string s)
         {
-            Regex r = new Regex(@"[^0 - 9]", RegexOptions.IgnoreCase); //returns only the numbers
-            return Int32.Parse(r.Replace(s, @""));
+            //Regex r = new Regex(@"[^0 - 9]", RegexOptions.IgnoreCase); //returns only the numbers
+            //return Int32.Parse(r.Replace(s, @""));
+            return int.Parse(Regex.Replace(s, @"[^\d]", ""));
         }
 
         public List<Job> OrderJobList(List<Job> unorderedJoblistWithPrio)  //order list according to date & priorityLevel
