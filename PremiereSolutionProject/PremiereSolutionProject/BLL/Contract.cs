@@ -219,7 +219,6 @@ namespace PremiereSolutionProject.BLL
             {
                 contractDH.InsertNewlyAssignedContractToBusinessClient(contract);
             }
-
         }
 
         //this method needs to be tested. I am not sure how it will work taking in a Client
@@ -229,18 +228,19 @@ namespace PremiereSolutionProject.BLL
             //or will PL be able to enter a client object as a parameter?
             if (c.VerifyClientContract(c.Id))
             {
-                InsertContract(new Contract(contract.startDate, contract.endDate, c, contract.packageList, true, contract.priorityLevel, CalculateContractPrice(), contract.contractType));
+                InsertContract(new Contract(contract.startDate, contract.endDate, c, contract.packageList, true, contract.priorityLevel, CalculateContractPrice(this), contract.contractType));
             }
         }
         
-        private double CalculateContractPrice()
+        private double CalculateContractPrice(Contract contract)
         {
-            int daysChosen = DetermineDaysChosen(priorityLevel);
-            string priority = DeterminePriorityLevel(priorityLevel);
+            int daysChosen = DetermineDaysChosen(contract.priorityLevel);
+            string priority = DeterminePriorityLevel(contract.priorityLevel);
 
             StaticVariables sv = new StaticVariables();
-            ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
-            List<ServicePackage> servicePackageList = new List<ServicePackage>(); //get list of service packages in the contract
+            //ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
+            //ContractDH contractDH = new ContractDH();
+            List<ServicePackage> servicePackageList = contract.packageList; //get list of service packages in the contract
 
             //get sum of prices of service packages in contract
             double servicePackagePrice = 0;
