@@ -55,9 +55,34 @@ namespace PremiereSolutionProject.DAL
         }
         public void InsertNewlyAssignedContractToIndividualClient(Contract contract) 
         {
-            int ContractGenetatedId = -1;
-
-            IndividualClient individualClient = contract.Indclient;
+            int contractGenetatedId = InsertCommandWithReturnedId($"EXEC InsertContractOfClient @contractId ='{contract.ContractID}', @startDate ='{contract.StartTime}', @endDate ='{contract.EndTime}', @active ='{GetIntFromBool(contract.Active)}'");
+            InsertCommand($"InsertClientContractLinkIndividualClient @ContractID ='{contractGenetatedId}', @ClientIndividualID ='{contract.Indclient.Id}'");
+            for (int i = 0; i < contract.PackageList.Count; i++)
+            {
+                int packedgeId = InsertCommandWithReturnedId($"EXEC InsertServicePackageState @id ='{contract.PackageList[i].PackageID}'");
+                InsertCommand($"InsertServiceContractStateLink @contractStateID ='{contractGenetatedId}', @ServicePackageStateID ='{packedgeId}'");
+                for (int j = 0; j < contract.PackageList[i].ServiceList.Count; j++)
+                {
+                    int serviceId = InsertCommandWithReturnedId($"EXEC InsertServiceState @id ='{contract.PackageList[i].ServiceList[j].ServiceID}'");
+                    InsertCommand($"InsertServicePackageStateLink @ServicePackageStateID ='{packedgeId}', @ServiceStateID ='{serviceId}'");
+                }
+            }
+        }
+        public void InsertNewlyAssignedContractToBusinessClient(Contract contract)
+        {
+            int contractGenetatedId = -1;
+            contractGenetatedId = InsertCommandWithReturnedId($"EXEC InsertContractOfClient @contractId ='{contract.ContractID}', @startDate ='{contract.StartTime}', @endDate ='{contract.EndTime}', @active ='{GetIntFromBool(contract.Active)}'");
+            InsertCommand($"InsertClientContractLinkBusinessClient @ContractID ='{contractGenetatedId}', @ClientBusinessID ='{contract.Indclient.Id}'");
+            for (int i = 0; i < contract.PackageList.Count; i++)
+            {
+                int packedgeId = InsertCommandWithReturnedId($"EXEC InsertServicePackageState @id ='{contract.PackageList[i].PackageID}'");
+                InsertCommand($"InsertServiceContractStateLink @contractStateID ='{contractGenetatedId}', @ServicePackageStateID ='{packedgeId}'");
+                for (int j = 0; j < contract.PackageList[i].ServiceList.Count; j++)
+                {
+                    int serviceId = InsertCommandWithReturnedId($"EXEC InsertServiceState @id ='{contract.PackageList[i].ServiceList[j].ServiceID}'");
+                    InsertCommand($"InsertServicePackageStateLink @ServicePackageStateID ='{packedgeId}', @ServiceStateID ='{serviceId}'");
+                }
+            }
         }
         #endregion
 

@@ -1021,11 +1021,12 @@ AS
 COMMIT
 GO
 
-CREATE PROCEDURE InsertServicePackageState @name VARCHAR(50), @onpromotion INT, @promationStartDate DATETIME, @promotionEndDate DATETIME, @price FLOAT,@percintage FLOAT
+CREATE PROCEDURE InsertServicePackageState @id INT
 AS
 BEGIN
 	INSERT INTO [ServicePackageState] ([name], [onPromotion], [promotionStartDate], [promotionEndDate], [price],[promotionPercentAmount])
-	VALUES (@name, @onpromotion, @promationStartDate, @promotionEndDate, @price,@percintage)
+	SELECT [name], [onPromotion], [promotionStartDate], [promotionEndDate], [price],[promotionPercentAmount] FROM [ServicePackage] WHERE [ServicePackage].servicePackageID = @id
+	SELECT SCOPE_IDENTITY()
 END 
 GO
 
@@ -1045,11 +1046,12 @@ BEGIN
 END 
 GO
 
-CREATE PROCEDURE InsertServiceState @id INT, @name VARCHAR(50), @description VARCHAR(255)
+CREATE PROCEDURE InsertServiceState @id INT
 AS
 BEGIN
 	INSERT INTO [ServiceState] ([name], [description])
-	VALUES (@name, @description)
+	SELECT [name], [description] FROM [Service] WHERE [Service].serviceID = @id
+	SELECT SCOPE_IDENTITY()
 END 
 GO
 CREATE PROCEDURE InsertSpecialisationEmployeeLink @employeeID INT, @specialisationID INT
@@ -1141,12 +1143,13 @@ BEGIN
 	SELECT @contractId,idIntOne FROM TVP
 END 
 GO
-CREATE PROCEDURE InsertContractState @id INT, @startDate DATETIME, @endDate DATETIME, @active BIT,@priorityLevel INT
+CREATE PROCEDURE InsertContractOfClient @contractId VARCHAR(50),@startDate DATETIME, @endDate DATETIME, @active INT
 AS
-BEGIN
-	INSERT INTO [ContractState] ([startDate], [endDate], [activeContract],priorityLevel)
-	VALUES (@startDate, @endDate, @active,@priorityLevel)
-END 
+BEGIN TRAN
+	INSERT INTO ContractState(startDate,endDate,activeContract,priorityLevel,price,contractType)
+	SELECT @startDate,@endDate,@active,priorityLevel,price,contractType FROM [Contract] WHERE [Contract].contractNumber =  @contractId
+	SELECT SCOPE_IDENTITY()
+COMMIT 
 GO
 
 CREATE PROCEDURE InsertClientBusinessEmployee @id INT, @businessID INT, @firstName VARCHAR(50), @surname VARCHAR(50), @department VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100)
@@ -1184,11 +1187,18 @@ BEGIN
 	VALUES (@ServicePackageID, @ServiceID)
 END 
 GO
-CREATE PROCEDURE InsertClientContractLink @ContractID INT, @ClientBusinessID INT, @ClientIndividualID INT
+CREATE PROCEDURE InsertClientContractLinkIndividualClient @ContractID INT, @ClientIndividualID VARCHAR(50)
 AS
 BEGIN
-	INSERT INTO [ClientContractLink] ([ContractID], [ClientBusinessID], [ClientIndividualID])
-	VALUES (@ContractID, @ClientBusinessID, @ClientIndividualID)
+	INSERT INTO [ClientContractLink] ([ContractID], [ClientIndividualID])
+	VALUES (@ContractID,(SELECT clientIndividualID FROM ClientIndividual WHERE clientIndividualClientNumber = @ClientIndividualID))
+END 
+GO
+CREATE PROCEDURE InsertClientContractLinkBusinessClient @ContractID INT, @ClientBusinessID VARCHAR(50)
+AS
+BEGIN
+	INSERT INTO [ClientContractLink] ([ContractID], [ClientBusinessID])
+	VALUES (@ContractID, (SELECT clientBusinessID FROM ClientBusiness WHERE clientBusinessClientNumber = @ClientBusinessID))
 END 
 GO
 CREATE PROCEDURE InsertClientBusinessWithAddress @busuinessName VARCHAR(50), @contactNumber VARCHAR(10), @taxNumber VARCHAR(10), @RegistrationDate DATE,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20)
