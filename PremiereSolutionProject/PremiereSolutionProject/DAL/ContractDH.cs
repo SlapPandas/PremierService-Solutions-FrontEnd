@@ -49,6 +49,10 @@ namespace PremiereSolutionProject.DAL
             InsertAllServicePackedgesOfNewContract(contract);
             InsertCommand($"EXEC InsertContractWithPackadgeList @startDate = '{contract.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @endDate = '{contract.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @active ='{GetIntFromBool(contract.Active)}', @priorityLevel = '{contract.PriorityLevel}', @price = '{contract.Price.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}', @contractType = '{contract.ContractType}'");
         }
+        public void InsertWithPackedgeTestReturn(Contract contract)
+        {
+            int id = InsertCommandWithReturnedId($"EXEC InsertContractWithPackadgeListTest @startDate = '{contract.StartTime.ToString("yyyy-MM-dd HH:mm:ss")}', @endDate = '{contract.EndTime.ToString("yyyy-MM-dd HH:mm:ss")}', @active ='{GetIntFromBool(contract.Active)}', @priorityLevel = '{contract.PriorityLevel}', @price = '{contract.Price.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}', @contractType = '{contract.ContractType}'");
+        }
         public void InsertSingleServicePackedgeToContract(string contractId, int ServicePackageId)
         {
             InsertCommand($"EXEC InsertServiceContractLink @ContractID ='{contractId}', @ServicePackageID ='{ServicePackageId}'"); 

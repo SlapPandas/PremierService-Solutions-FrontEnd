@@ -1065,6 +1065,7 @@ AS
 BEGIN
 	INSERT INTO [Call] ([startTime], [employeeID])
 	VALUES (@startTime, (SELECT employeeID FROM Employee WHERE employeeNumber = @employeeID))
+	SELECT SCOPE_IDENTITY()
 END 
 GO
 CREATE PROCEDURE InsertServiceRequest @callId INT, @closed INT, @description VARCHAR(255),@priorityLevel VARCHAR(255)
@@ -1138,6 +1139,15 @@ BEGIN
 
 	INSERT INTO ServiceContractLink(ContractID,ServicePackedgeID)
 	SELECT @contractId,idIntOne FROM TVP
+END 
+GO
+CREATE PROCEDURE InsertContractWithPackadgeListTest @startDate DATETIME, @endDate DATETIME, @active INT,@priorityLevel VARCHAR(20), @price FLOAT, @contractType VARCHAR(15)
+AS
+BEGIN
+	INSERT INTO [Contract] ([startDate], [endDate], [activeContract],[priorityLevel],[price],[contractType])
+	VALUES (@startDate, @endDate, @active,@priorityLevel,@price,@contractType)
+	SELECT SCOPE_IDENTITY()
+
 END 
 GO
 CREATE PROCEDURE InsertContractState @id INT, @startDate DATETIME, @endDate DATETIME, @active BIT,@priorityLevel INT

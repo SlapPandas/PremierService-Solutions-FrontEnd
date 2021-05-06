@@ -37,9 +37,7 @@ namespace PremiereSolutionProject.DAL
         }
         public int Insert(DateTime dateTime, string empId)
         {
-            InsertCommand($"EXEC InsertCall @startTime ='{dateTime}', @employeeID = '{empId}'");
-
-            return GetLastCallId();
+            return InsertCommandWithReturnedId($"EXEC InsertCall @startTime ='{dateTime}', @employeeID = '{empId}'");
         }
 
         #endregion
@@ -182,35 +180,6 @@ namespace PremiereSolutionProject.DAL
                 callCenterEmployeeConnection.Close();
             }
             return callCenterEmployee;
-        }
-        private int GetLastCallId()
-        {
-            int lastId = -1;
-            SqlConnection callConnection = new SqlConnection(connectionSring);
-            SqlDataReader callReader;
-            commandString = $"EXEC SelectLastCallId";
-            SqlCommand callCommand = new SqlCommand(commandString, callConnection);
-
-            try
-            {
-                callConnection.Open();
-                callReader = callCommand.ExecuteReader();
-                while (callReader.Read())
-                {
-                    lastId = (int)callReader["callId"];
-                }
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally
-            {
-                callConnection.Close();
-            }
-            return lastId;
         }
         private Province GetProvince(string input)
         {
