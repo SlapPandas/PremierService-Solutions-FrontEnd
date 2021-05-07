@@ -182,6 +182,7 @@ namespace PremiereSolutionProject.BLL
             ContractDH contractDH = new ContractDH();
             contractDH.UpdateActiveAndDateRangeOfOfferedContract(contractID, newStartDate, newEndDate, active);
         }
+
         public void UpdatePackagesInContract(Contract contract)
         {
             ContractDH contractDH = new ContractDH();
@@ -363,7 +364,7 @@ namespace PremiereSolutionProject.BLL
 
             foreach (Contract item in allContractsOffered)
             {
-                if (item.endDate <= DateTime.Now  && !item.active)
+                if (item.endDate <= DateTime.Now  && item.active)
                 {
                     ChangeActiveStateOfOfferedContract(item.contractID, false);
                 }

@@ -73,7 +73,19 @@ namespace PremiereSolutionProject.BLL
         #endregion
 
         #region Methods
+        public void CheckPromotionEndDates()
+        {
+            ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
+            List<ServicePackage> allPackages = servicePackadgeDH.SelectAllServicePackedges();
 
+            foreach (ServicePackage item in allPackages)
+            {
+                if (item.promotionEndDate <= DateTime.Now && item.onPromotion)
+                {
+                    UpdatePromotionStateOfPackage(item.packageID, false);
+                }
+            }
+        }
         public double CalculatePromotion() // calculate the amount a client will pay for a service package if it is on promotion   
         {
             return this.onPromotion ? (this.servicePrice * (1 - this.promotionPercentage)) : this.servicePrice;
