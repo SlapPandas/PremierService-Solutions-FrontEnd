@@ -354,6 +354,22 @@ namespace PremiereSolutionProject.BLL
             return contractDH.SelectAllActiveContracts();
         }
 
+        //this method is to change the active fields of the contract to false when the end is reached
+        //could be ran on form load, or program start or something
+        public void CheckContractEndDates()
+        {
+            ContractDH contractDH = new ContractDH();
+            List<Contract> allContractsOffered = contractDH.SelectAllContracts();
+
+            foreach (Contract item in allContractsOffered)
+            {
+                if (item.endDate <= DateTime.Now  && !item.active)
+                {
+                    ChangeActiveStateOfOfferedContract(item.contractID, false);
+                }
+            }
+        }
+
         #endregion
 
         #region Overrides
