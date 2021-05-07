@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using PremiereSolutionProject.BLL;
 
@@ -17,6 +18,22 @@ namespace PremiereSolutionProject.PL
         public frmDashboard()
         {
             InitializeComponent();
+
+            //Lijani: 
+            //I added this thread to run alongside the main thread to assign pending jobs 'automatically' every 5 minutes
+            Thread th = new Thread(() =>
+            {
+                while (true)
+                {
+                    Console.WriteLine("Now assigning jobs..");
+                    ServiceRequest sr = new ServiceRequest();
+                    sr.AssignPendingJobs();
+                    Console.WriteLine("Jobs have been assigned..");
+                    Thread.Sleep(300000);
+                }
+            });
+            th.Start();
+
             CustomizeDesign();
         }
         private void CustomizeDesign()
