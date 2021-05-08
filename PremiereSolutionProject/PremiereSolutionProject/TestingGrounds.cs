@@ -39,7 +39,8 @@ namespace PremiereSolutionProject
             //List<Address> addresses = addressDH.SelectAllAddresses();
 
             //DateTime dateTime = new DateTime(2001, 01, 01);
-            //JobDH jobDH = new JobDH();
+            ServiceDH serviceDH = new ServiceDH();
+            List<Service> services = serviceDH.SelectAllServices();
             //EmployeeDH employeeDH = new EmployeeDH();
             //List<MaintenanceEmployee> maintenanceEmployees = employeeDH.SelectAllMaintenanceEmployees();
             //List<Job> jobs = jobDH.SelectAllJobs();

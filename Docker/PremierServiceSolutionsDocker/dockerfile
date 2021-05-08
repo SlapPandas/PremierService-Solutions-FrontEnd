@@ -1,0 +1,17 @@
+FROM mcr.microsoft.com/mssql/server:2019-latest AS build
+ENV ACCEPT_EULA=Y
+ENV SA_PASSWORD=GrantedPeople1209!
+
+WORKDIR /tmp
+COPY PremierServiceSolutionsDatabase.bak .
+COPY restoreBackup.sql .
+
+RUN /opt/mssql/bin/sqlservr --accept-eula & sleep 10 \
+	&& /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "GrantedPeople1209!" -i /tmp/restoreBackup.sql \
+	&& pkill sqlservr
+	
+FROM mcr.microsoft.com/mssql/server:2019-latest AS release
+
+ENV ACCEPT_EULA=Y
+
+COPY --from=build /var/opt/mssql/data /var/opt/mssql/data
