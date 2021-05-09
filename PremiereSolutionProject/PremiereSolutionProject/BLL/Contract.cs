@@ -233,14 +233,14 @@ namespace PremiereSolutionProject.BLL
             }
         }
         
-        private double CalculateContractPrice(Contract contract)
+        public double CalculateContractPrice(Contract contract)
         {
             int daysChosen = DetermineDaysChosen(contract.priorityLevel);
             string priority = DeterminePriorityLevel(contract.priorityLevel);
 
             StaticVariables sv = new StaticVariables();
-            //ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
-            //ContractDH contractDH = new ContractDH();
+            ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
+            ContractDH contractDH = new ContractDH();
             List<ServicePackage> servicePackageList = contract.packageList; //get list of service packages in the contract
 
             //get sum of prices of service packages in contract
@@ -249,17 +249,16 @@ namespace PremiereSolutionProject.BLL
             {
                 servicePackagePrice += servicePackageList[i].ServicePrice;
             }
-
             switch (priority.ToLower())
-            {
+            {                
                 case "platinum":
-                    return price = (sv.PlatinumPrice + servicePackagePrice) / daysChosen;
+                    return price = (sv.PlatinumPrice + servicePackagePrice)*(1 + (1 - ((double)daysChosen) / 8));
                 case "gold":
-                    return price = (sv.GoldPrice + servicePackagePrice) / daysChosen;
+                    return price = (sv.GoldPrice + servicePackagePrice) * (1 + (1 - ((double)daysChosen) / 8));
                 case "silver":
-                    return price = (sv.SilverPrice + servicePackagePrice) / daysChosen;
-                case "bronze":
-                    return price = (sv.BronzePrice + servicePackagePrice) / daysChosen;
+                    return price = (sv.SilverPrice + servicePackagePrice) * (1 + (1 - ((double)daysChosen) / 8));
+                case "bronze":                    
+                    return price = (sv.BronzePrice + servicePackagePrice) * (1 + (1 - ((double)daysChosen) / 8));
                 default:
                     return price = 0;
             }
@@ -301,7 +300,8 @@ namespace PremiereSolutionProject.BLL
             int count = 0;
 
             //get list of all contracts from DAL
-            List<Contract> allContracts = new List<Contract>();
+            ContractDH contractDH = new ContractDH();
+            List<Contract> allContracts = contractDH.SelectAllContracts();
             //get list of contract occurences from clientContractLink
             List<Contract> contractOccurrences = new List<Contract>();
 
