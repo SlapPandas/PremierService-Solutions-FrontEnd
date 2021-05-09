@@ -51,5 +51,13 @@ namespace PremiereSolutionProject.BLL
         }
 
         #endregion
+
+        #region Methods
+        public void Update(CallCenterEmployee CCE)
+        {
+            EmployeeDH employeeDH = new EmployeeDH();
+            employeeDH.UpdateCallCenterEmployee(CCE);
+        }
+        #endregion
     }
 }

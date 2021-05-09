@@ -21,14 +21,21 @@ namespace PremiereSolutionProject.BLL
         #endregion
 
         #region Properties
-        public double PlatinumPrice { get => platinumPrice; set => platinumPrice = 10000.00; }
-        public double GoldPrice { get => goldPrice; set => goldPrice = 8000.00; }
-        public double SilverPrice { get => silverPrice; set => silverPrice = 6500.00; }
-        public double BronzePrice { get => bronzePrice; set => bronzePrice = 4000.00; }
-        public int PlatinumDays { get => platinumDays; set => platinumDays = 2; }
-        public int GoldDays { get => goldDays; set => goldDays = 4; }
-        public int SilverDays { get => silverDays; set => silverDays = 6; }
-        public int BronzeDays { get => bronzeDays; set => bronzeDays = 8; }
+        public double PlatinumPrice { get => platinumPrice = 10000.00; set => platinumPrice = 10000.00; }
+        public double GoldPrice { get => goldPrice = 8000.00; set => goldPrice = 8000.00; }
+        public double SilverPrice { get => silverPrice = 6500.00; set => silverPrice = 6500.00; }
+        public double BronzePrice { get => bronzePrice = 4000.00; set => bronzePrice = 4000.00; }
+        public int PlatinumDays { get => platinumDays = 2; set => platinumDays = 2; }
+        public int GoldDays { get => goldDays = 4; set => goldDays = 4; }
+        public int SilverDays { get => silverDays = 6; set => silverDays = 6; }
+        public int BronzeDays { get => bronzeDays = 8; set => bronzeDays = 8; }
+        #endregion
+
+        #region constructor
+        public StaticVariables()
+        {
+
+        }
         #endregion
     }
 }
