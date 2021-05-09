@@ -6,7 +6,7 @@ WORKDIR /tmp
 COPY PremierServiceSolutionsDatabase.bak .
 COPY restoreBackup.sql .
 
-RUN /opt/mssql/bin/sqlservr --accept-eula & sleep 10 \
+RUN /opt/mssql/bin/sqlservr --accept-eula & sleep 45 \
 	&& /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "GrantedPeople1209!" -i /tmp/restoreBackup.sql \
 	&& pkill sqlservr
 	
