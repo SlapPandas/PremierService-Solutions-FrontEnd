@@ -122,16 +122,16 @@ namespace PremiereSolutionProject.PL
                 }
                 else
                 {
-                    bool available;
+                    bool available = false;
                     if (cbxAvailable.Checked == true)
                     {
                         available = true;
                     }
                     Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cbxProvince.SelectedIndex, txtPostalCode.Text);
-                   // MaintenanceEmployee me = new MaintenanceEmployee(txtFirstname.Text,txtSurname.Text,address,txtContactNumber.Text,txtEmai.Text,txtNationalID.Text,DateTime.Now(),,available,);
-                    //me.(bc);
+                    MaintenanceEmployee me = new MaintenanceEmployee(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now,available);
+                    
 
-                    MessageBox.Show("Successfully updated business client", "Yay");
+                    MessageBox.Show("Successfully updated Maintenance employee", "Yay");
                 }
 
             }

@@ -17,7 +17,11 @@ namespace PremiereSolutionProject.PL
         {
             InitializeComponent();
         }
-
+        public frmClientContract(frmDashboard _dashForm):this()
+        {
+            dashForm = _dashForm;
+        }
+        frmDashboard dashForm;
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -31,7 +35,17 @@ namespace PremiereSolutionProject.PL
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            //bool available;
+            //if (cbx.Checked == true)
+            //{
+            //    available = true;
+            //}
+            string pLvl = cbxPriorityLevel.Text + "," + nudNoOfDays.Value;
 
+            Contract cont = new Contract(dtpStartDate.Value, dtpEndDate.Value, dashForm.callInfo.Client, packages, true, cbxPriorityLevel.Text, 0.00, "Contract");
+            double price = cont.CalculateContractPrice(cont);
+            cont = new Contract(dtpStartDate.Value, dtpEndDate.Value, dashForm.callInfo.Client, packages, true, pLvl, price, "Contract");
+            cont.InsertContract(cont);
         }
 
         private void frmClientContract_Load(object sender, EventArgs e)
@@ -57,7 +71,7 @@ namespace PremiereSolutionProject.PL
             cbxPriorityLevel.Items.Add("Bronze");
             cbxContractName.ValueMember = null;
             cbxContractName.SelectedIndex = -1;
-
+            txtClientID.Text = dashForm.callInfo.Client.Id;
             RefreshDGV();
             RefreshDGVServices();
         }
@@ -121,19 +135,23 @@ namespace PremiereSolutionProject.PL
             {
                 case "Platinum":
                     prio = "Platinum";
-                    nudNoOfDays.Value = 2;
+                    nudNoOfDays.Maximum = 2;
+                    nudNoOfDays.Minimum = 1;
                     break;
                 case "Gold":
                     prio = "Gold";
-                    nudNoOfDays.Value = 4;
+                    nudNoOfDays.Maximum = 4;
+                    nudNoOfDays.Minimum = 3;
                     break;
                 case "Silver":
                     prio = "Silver";
-                    nudNoOfDays.Value = 6;
+                    nudNoOfDays.Maximum = 6;
+                    nudNoOfDays.Minimum = 5;
                     break;
                 case "Bronze":
                     prio = "Bronze";
-                    nudNoOfDays.Value = 8;
+                    nudNoOfDays.Maximum = 8;
+                    nudNoOfDays.Minimum = 7;
                     break;
                 default:
                     // code block

@@ -39,18 +39,24 @@ namespace PremiereSolutionProject.PL
         {
 
             dashform.callInfo = new Call();
+
             CallCenterEmployee Emp = dashform.callInfo.GenerateRandomEmployee();
-            
+            dashform.callInfo.CreateCall();
+            //dashform.callInfo.LogClientToCall(dashform.callInfo.CallID,)
+
             lblEmpName.Text = Emp.FirstName;
 
         }
 
         private void btnSearchClient_Click(object sender, EventArgs e)
         {
-            new frmClientInfo().Show();
+            new frmClientInfo(dashform).Show();
             this.Hide();
         }
 
-        
+        private void btnEnd_Click(object sender, EventArgs e)
+        {
+            dashform.callInfo.LogEndTimeOfCall(dashform.callInfo.CallID,rtbNotes.Text);
+        }
     }
 }

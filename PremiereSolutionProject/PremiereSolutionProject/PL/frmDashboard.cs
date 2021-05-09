@@ -184,7 +184,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnClientContract_Click(object sender, EventArgs e)
         {
-            openChildForm(new frmClientContract());
+            openChildForm(new frmClientContract(this));
             HideSubMenu();
         }
 

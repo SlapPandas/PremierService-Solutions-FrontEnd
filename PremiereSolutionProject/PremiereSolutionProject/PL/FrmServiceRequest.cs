@@ -37,6 +37,31 @@ namespace PremiereSolutionProject.PL
                 cbxSpecialisation.Items.Add(item.SpecialisationName);
             }
             lblCallID.Text = dashform.callInfo.CallID.ToString();
+            List<IndividualClient> ic = new IndividualClient().SelectAllIndividualClients();
+            List<BusinessClient> bc = new BusinessClient().SelectAllBusinessClients();
+            //List<Client> cl = dashform.callInfo.Client.SelectAllClients();
+            string clientName = "";
+            if (dashform.callInfo.Client.Id[0] == 'A')
+            {
+                foreach (IndividualClient item in ic)
+                {
+                    if (dashform.callInfo.Client.Id == item.Id)
+                    {
+                        clientName = item.FirstName;
+                    }
+                }
+            }
+            else if (dashform.callInfo.Client.Id[0]  == 'B')
+            {
+                foreach (BusinessClient item in bc)
+                {
+                    if (dashform.callInfo.Client.Id == item.Id)
+                    {
+                        clientName = item.BusinessName;
+                    }
+                }
+            }
+            lblClientName.Text = clientName;
 
         }
 
@@ -78,7 +103,21 @@ namespace PremiereSolutionProject.PL
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            spec = new Specialisation().SelectSpecialisationList();
+            List<Specialisation> addedSpec = new List<Specialisation>(); 
+            foreach (var item in lbxSpecialisations.Items)
+            {
+                foreach (Specialisation item2 in spec)
+                {
+                    if (item2.SpecialisationName == item.ToString())
+                    {
+                        addedSpec.Add(item2);
+                    }
+                }
+            }
 
+            ServiceRequest sr = new ServiceRequest(richTextBox1.Text, int.Parse(lblCallID.Text), addedSpec, "1");
+            sr.CreateServiceRequest(sr);
         }
     }
 }

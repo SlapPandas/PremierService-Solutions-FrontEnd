@@ -45,10 +45,9 @@ namespace PremiereSolutionProject.PL
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(335, 20);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(251, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 31);
+            this.label1.Size = new System.Drawing.Size(183, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "Service Requests";
             // 
@@ -58,22 +57,22 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvViewAllServiceReq.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewAllServiceReq.Location = new System.Drawing.Point(105, 71);
-            this.dgvViewAllServiceReq.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvViewAllServiceReq.Location = new System.Drawing.Point(79, 58);
+            this.dgvViewAllServiceReq.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvViewAllServiceReq.Name = "dgvViewAllServiceReq";
             this.dgvViewAllServiceReq.RowHeadersWidth = 62;
             this.dgvViewAllServiceReq.RowTemplate.Height = 28;
-            this.dgvViewAllServiceReq.Size = new System.Drawing.Size(745, 218);
+            this.dgvViewAllServiceReq.Size = new System.Drawing.Size(559, 177);
             this.dgvViewAllServiceReq.TabIndex = 2;
             // 
             // btnForward
             // 
             this.btnForward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnForward.Location = new System.Drawing.Point(484, 320);
-            this.btnForward.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnForward.Location = new System.Drawing.Point(363, 260);
+            this.btnForward.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(105, 41);
+            this.btnForward.Size = new System.Drawing.Size(79, 33);
             this.btnForward.TabIndex = 12;
             this.btnForward.Text = ">";
             this.btnForward.UseVisualStyleBackColor = true;
@@ -82,10 +81,10 @@ namespace PremiereSolutionProject.PL
             // 
             this.btnBackward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBackward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackward.Location = new System.Drawing.Point(328, 320);
-            this.btnBackward.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnBackward.Location = new System.Drawing.Point(246, 260);
+            this.btnBackward.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBackward.Name = "btnBackward";
-            this.btnBackward.Size = new System.Drawing.Size(105, 41);
+            this.btnBackward.Size = new System.Drawing.Size(79, 33);
             this.btnBackward.TabIndex = 13;
             this.btnBackward.Text = "<";
             this.btnBackward.UseVisualStyleBackColor = true;
@@ -94,10 +93,10 @@ namespace PremiereSolutionProject.PL
             // 
             this.btnEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnd.Location = new System.Drawing.Point(617, 320);
-            this.btnEnd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnEnd.Location = new System.Drawing.Point(463, 260);
+            this.btnEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEnd.Name = "btnEnd";
-            this.btnEnd.Size = new System.Drawing.Size(105, 41);
+            this.btnEnd.Size = new System.Drawing.Size(79, 33);
             this.btnEnd.TabIndex = 14;
             this.btnEnd.Text = ">>";
             this.btnEnd.UseVisualStyleBackColor = true;
@@ -106,10 +105,10 @@ namespace PremiereSolutionProject.PL
             // 
             this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStart.Location = new System.Drawing.Point(199, 320);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnStart.Location = new System.Drawing.Point(149, 260);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(105, 41);
+            this.btnStart.Size = new System.Drawing.Size(79, 33);
             this.btnStart.TabIndex = 15;
             this.btnStart.Text = "<<";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -119,10 +118,9 @@ namespace PremiereSolutionProject.PL
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(804, 636);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit.Location = new System.Drawing.Point(603, 517);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(91, 28);
+            this.btnExit.Size = new System.Drawing.Size(68, 23);
             this.btnExit.TabIndex = 111;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -133,10 +131,9 @@ namespace PremiereSolutionProject.PL
             this.btnInsert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsert.Location = new System.Drawing.Point(342, 418);
-            this.btnInsert.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInsert.Location = new System.Drawing.Point(256, 340);
             this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(91, 28);
+            this.btnInsert.Size = new System.Drawing.Size(68, 23);
             this.btnInsert.TabIndex = 112;
             this.btnInsert.Text = "Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
@@ -146,20 +143,19 @@ namespace PremiereSolutionProject.PL
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(484, 418);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Location = new System.Drawing.Point(363, 340);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(91, 28);
+            this.btnDelete.Size = new System.Drawing.Size(68, 23);
             this.btnDelete.TabIndex = 113;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // frmViewServiceRequests
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(908, 677);
+            this.ClientSize = new System.Drawing.Size(681, 550);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.btnExit);
@@ -170,9 +166,10 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.dgvViewAllServiceReq);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmViewServiceRequests";
             this.Text = "View Service Requests";
+            this.Load += new System.EventHandler(this.frmViewServiceRequests_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewAllServiceReq)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -64,7 +64,7 @@ namespace PremiereSolutionProject.PL
             this.label3.Location = new System.Drawing.Point(350, 22);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 31);
+            this.label3.Size = new System.Drawing.Size(144, 26);
             this.label3.TabIndex = 13;
             this.label3.Text = "Identify Client";
             // 
@@ -76,7 +76,7 @@ namespace PremiereSolutionProject.PL
             this.txtClientID.Location = new System.Drawing.Point(303, 79);
             this.txtClientID.Margin = new System.Windows.Forms.Padding(4);
             this.txtClientID.Name = "txtClientID";
-            this.txtClientID.Size = new System.Drawing.Size(407, 23);
+            this.txtClientID.Size = new System.Drawing.Size(407, 20);
             this.txtClientID.TabIndex = 12;
             // 
             // label2
@@ -88,7 +88,7 @@ namespace PremiereSolutionProject.PL
             this.label2.Location = new System.Drawing.Point(117, 81);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 17);
+            this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "Client ID Number";
             // 
@@ -112,7 +112,7 @@ namespace PremiereSolutionProject.PL
             this.label1.Location = new System.Drawing.Point(118, 175);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 17);
+            this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 17;
             this.label1.Text = "Client service requests";
             // 
@@ -123,7 +123,7 @@ namespace PremiereSolutionProject.PL
             this.label4.Location = new System.Drawing.Point(118, 337);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(142, 17);
+            this.label4.Size = new System.Drawing.Size(106, 13);
             this.label4.TabIndex = 19;
             this.label4.Text = "Client call information";
             // 
@@ -158,7 +158,7 @@ namespace PremiereSolutionProject.PL
             this.label5.Location = new System.Drawing.Point(118, 509);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 17);
+            this.label5.Size = new System.Drawing.Size(87, 13);
             this.label5.TabIndex = 22;
             this.label5.Text = "Client information";
             // 
@@ -184,10 +184,11 @@ namespace PremiereSolutionProject.PL
             this.button1.TabIndex = 23;
             this.button1.Text = "Log Client";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmClientInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(908, 677);

@@ -20,6 +20,7 @@ namespace PremiereSolutionProject.PL
         {
             bc = new BusinessClient().SelectAllBusinessClients();
             RefreshDGV();
+            btnDeleteClient.Enabled = false;
         }
         private void RefreshDGV()
         {

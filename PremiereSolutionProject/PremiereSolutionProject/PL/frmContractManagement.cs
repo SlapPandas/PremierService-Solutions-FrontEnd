@@ -56,7 +56,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnCreateContract_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnRemove_Click(object sender, EventArgs e)

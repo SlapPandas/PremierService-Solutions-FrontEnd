@@ -233,7 +233,7 @@ namespace PremiereSolutionProject.BLL
             }
         }
         
-        private double CalculateContractPrice(Contract contract)
+        public double CalculateContractPrice(Contract contract)
         {
             int daysChosen = DetermineDaysChosen(contract.priorityLevel);
             string priority = DeterminePriorityLevel(contract.priorityLevel);
