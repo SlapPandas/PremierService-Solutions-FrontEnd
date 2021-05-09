@@ -4,23 +4,7 @@ if exists (SELECT * FROM sysdatabases WHERE NAME='PremierServiceSolutionsDatabas
 		drop database PremierServiceSolutionsDatabase
 GO
 
---- Creates Database PSSDatabase
-DECLARE @device_directory NVARCHAR(520)
-SELECT @device_directory = SUBSTRING(FILENAME, 1, CHARINDEX(N'master.mdf', LOWER(FILENAME)) - 1)
-FROM MASTER.dbo.sysaltfiles WHERE DBID = 1 AND fileid = 1
-
-EXECUTE (N'CREATE DATABASE PremierServiceSolutionsDatabase
-  ON PRIMARY (NAME = N''PremierServiceSolutionsDatabase'', FILENAME = N''' + @device_directory + N'PremierServiceSolutionsDatabase.mdf''),
-  FILEGROUP SECONDARY(NAME = N''PremierServiceSolutionsDatabase_Backup'', FILENAME = N''' + @device_directory + N'PremierServiceSolutionsDatabase_Backup.ndf'')
-  LOG ON (NAME = N''PremierServiceSolutionsDatabase_log'',  FILENAME = N''' + @device_directory + N'PremierServiceSolutionsDatabase.ldf'')')
-GO	
-ALTER DATABASE PremierServiceSolutionsDatabase SET AUTO_SHRINK ON 
-ALTER DATABASE PremierServiceSolutionsDatabase SET RECOVERY SIMPLE
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_NULLS ON
+Create Database PremierServiceSolutionsDatabase
 GO
 
 USE PremierServiceSolutionsDatabase
@@ -389,6 +373,13 @@ AS
 	BEGIN TRAN
 		INSERT INTO TVP(idIntOne,idIntTwo)
 		VALUES (@serviceRequestId,@SpecilizationId)
+	COMMIT
+GO
+CREATE PROC InsertIntoTVPMaintenanceEmployeeSpecilization @employeeId INT,@SpecilizationId INT
+AS
+	BEGIN TRAN
+		INSERT INTO TVP(idIntOne,idIntTwo)
+		VALUES (@employeeId,@SpecilizationId)
 	COMMIT
 GO
 CREATE PROC InsertIntoTVPNewServiceRequestSpecilization @SpecilizationId INT
@@ -819,6 +810,18 @@ AS
 		WHERE ServiceRequestSpecialisationLink.ServiceRequestID = @id
 
 		INSERT INTO ServiceRequestSpecialisationLink(ServiceRequestID,specialisationRequiredID)
+		SELECT idIntOne,idIntTwo FROM TVP
+
+		DELETE FROM TVP
+	COMMIT
+GO
+CREATE PROC UpdateMaintenanceEmployeeSpecializationList @id INT
+AS
+	BEGIN TRAN
+		DELETE FROM SpecialisationEmployeeLink
+		WHERE SpecialisationEmployeeLink.employeeID = @id
+
+		INSERT INTO SpecialisationEmployeeLink(employeeID,specialisationID)
 		SELECT idIntOne,idIntTwo FROM TVP
 
 		DELETE FROM TVP

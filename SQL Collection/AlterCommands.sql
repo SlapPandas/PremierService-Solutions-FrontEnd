@@ -132,6 +132,13 @@ AS
 		VALUES (@serviceRequestId,@SpecilizationId)
 	COMMIT
 GO
+ALTER PROC InsertIntoTVPMaintenanceEmployeeSpecilization @employeeId INT,@SpecilizationId INT
+AS
+	BEGIN TRAN
+		INSERT INTO TVP(idIntOne,idIntTwo)
+		VALUES (@employeeId,@SpecilizationId)
+	COMMIT
+GO
 ALTER PROC InsertIntoTVPNewServiceRequestSpecilization @SpecilizationId INT
 AS
 	BEGIN TRAN
@@ -414,14 +421,14 @@ BEGIN
 
 END
 GO
-ALTER PROCEDURE UpdateCallCenterEmployee @id VARCHAR(50), @firstName VARCHAR(50), @surname VARCHAR(100), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentdate DATE, @employed BIT, @department VARCHAR(25), @adressId INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10), @city VARCHAR(100)
+ALTER PROCEDURE UpdateCallCenterEmployee @id VARCHAR(50), @firstName VARCHAR(50), @surname VARCHAR(100), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentdate DATE, @employed INT, @department VARCHAR(25), @adressId INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10), @city VARCHAR(100)
 AS
 BEGIN
 	BEGIN TRAN
 
 	UPDATE Employee
 	SET firstName = @firstName, surname = @surname, addressId = @adressId, contactNumber = @contactNumber, email = @email, nationalIdNumber = @nationalIdNumber,  employmentDate = @employmentdate, employed = @employed, department = @department
-	WHERE employeeID = (SELECT employeeID FROM Employee WHERE employeeNumber= @id)
+	WHERE employeeID = (SELECT employeeID FROM Employee WHERE employeeNumber = @id)
 
 	UPDATE [Address]
 	SET streetName = @streetName, suburb = @suburb, province = @province, postalcode = @postalcode,city = @city
@@ -555,6 +562,18 @@ AS
 		WHERE ServiceRequestSpecialisationLink.ServiceRequestID = @id
 
 		INSERT INTO ServiceRequestSpecialisationLink(ServiceRequestID,specialisationRequiredID)
+		SELECT idIntOne,idIntTwo FROM TVP
+
+		DELETE FROM TVP
+	COMMIT
+GO
+ALTER PROC UpdateMaintenanceEmployeeSpecializationList @id INT
+AS
+	BEGIN TRAN
+		DELETE FROM SpecialisationEmployeeLink
+		WHERE SpecialisationEmployeeLink.employeeID = @id
+
+		INSERT INTO SpecialisationEmployeeLink(employeeID,specialisationID)
 		SELECT idIntOne,idIntTwo FROM TVP
 
 		DELETE FROM TVP

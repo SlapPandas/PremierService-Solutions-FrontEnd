@@ -14,24 +14,24 @@ namespace PremiereSolutionProject.DAL
         #region Update
         public void UpdateCallCenterEmployee(CallCenterEmployee employee)
         {
-            UpdateCommand($"EXEC UpdateCallCenterEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentdate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}, @adressId = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}',@city = '{employee.Address.City}'");
+            UpdateCommand($"EXEC UpdateEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname ='{employee.Surname}', @contactNumber ='{employee.ContactNumber}', @email ='{employee.Email}', @nationalIdNumber ='{employee.NationalIDnumber}', @employmentdate ='{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed ='{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}', @adressId = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'");
         }
 
         public void UpdateMaintenanceEmployee(MaintenanceEmployee employee)
         {
-            UpdateCommand($"EXEC UpdateMaintenanceEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @registrationDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{employee.Employed}', @department = '{employee.Department}, @adressid = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}',@city = '{employee.Address.City}'");
+            UpdateCommand($"EXEC UpdateEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname ='{employee.Surname}', @contactNumber ='{employee.ContactNumber}', @email ='{employee.Email}', @nationalIdNumber ='{employee.NationalIDnumber}', @employmentdate ='{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed ='{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}', @adressId = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'");
         }
 
         public void UpdateServiceManager(ServiceManager employee)
         {
-            UpdateCommand($"EXEC UpdateServiceManager @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalID = '{employee.NationalIDnumber}', @registrationDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd HH:mm:ss")}', @employed = '{employee.Employed}', @department = '{employee.Department}, @adressid = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}',@city = '{employee.Address.City}'");
+            UpdateCommand($"EXEC UpdateEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname ='{employee.Surname}', @contactNumber ='{employee.ContactNumber}', @email ='{employee.Email}', @nationalIdNumber ='{employee.NationalIDnumber}', @employmentdate ='{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed ='{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}', @adressId = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'");
         }
 
-        public void UpdateEmployee(Employee employee)
+        public void UpdateMaintenanceEmployeeSpecialisation(MaintenanceEmployee employee)
         {
-
+            InsertAllSpeciliozationOfMaintenanceEmployee(employee);
+            UpdateCommand($"EXEC UpdateMaintenanceEmployeeSpecializationList @id = '{employee.Id}'");
         }
-
         #endregion
 
         //Done
@@ -207,6 +207,15 @@ namespace PremiereSolutionProject.DAL
                 return 0;
             }
         }
+
+        private void InsertAllSpeciliozationOfMaintenanceEmployee(MaintenanceEmployee employee)
+        {
+            for (int i = 0; i < employee.Specialisations.Count; i++)
+            {
+                InsertCommand($"EXEC InsertIntoTVPMaintenanceEmployeeSpecilization @employeeId = '{employee.Id}', @SpecilizationId = '{employee.Specialisations[i].SpecialisationID}'");
+            }
+        }
+
         private Province GetProvince(string input)
         {
             Province province = (Province)1;
