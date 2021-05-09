@@ -77,10 +77,10 @@ namespace PremiereSolutionProject.BLL
         {
             ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
             List<ServicePackage> allPackages = servicePackadgeDH.SelectAllServicePackedges();
-
             foreach (ServicePackage item in allPackages)
             {
-                if (item.promotionEndDate <= DateTime.Now && item.onPromotion)
+                DateTime dateTimeTest = DateTime.Now;
+                if (item.promotionEndDate <= dateTimeTest && item.onPromotion)
                 {
                     UpdatePromotionStateOfPackage(item.packageID, false);
                 }
