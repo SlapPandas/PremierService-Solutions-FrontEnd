@@ -25,7 +25,7 @@ namespace PremiereSolutionProject.BLL
         public int JobID { get => jobID; set => jobID = value; }
         public Address JobAddress { get => jobAddress; set => jobAddress = value; }
         public string JobNotes { get => jobNotes; set => jobNotes = value; }
-        internal JobState JobState { get => jobState; set => jobState = JobState.Pending; }
+        internal JobState JobState { get => jobState; set => jobState = value; }
         internal List<MaintenanceEmployee> Employee { get => employee; set => employee = value; }
         public int ServiceRequestID { get => serviceRequestID; set => serviceRequestID = value; }
         internal Specialisation Specialisation { get => specialisation; set => specialisation = value; }
