@@ -88,7 +88,8 @@ namespace PremiereSolutionProject.BLL
         }
         public double CalculatePromotion() // calculate the amount a client will pay for a service package if it is on promotion   
         {
-            return this.onPromotion ? (this.servicePrice * (1 - this.promotionPercentage)) : this.servicePrice;
+
+            return this.onPromotion ? (this.servicePrice * ((100 - this.promotionPercentage)/100)) : this.servicePrice;
         }
 
         public List<ServicePackage> SelectAllServicePackage() // get a list of service packages contract can be built from
