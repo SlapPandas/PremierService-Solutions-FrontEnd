@@ -62,10 +62,10 @@ namespace PremiereSolutionProject.PL
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmbSpec = new System.Windows.Forms.ComboBox();
             this.lstAvailable = new System.Windows.Forms.ListView();
-            this.lstNewAssigned = new System.Windows.Forms.ListView();
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lstNewAssigned = new System.Windows.Forms.ListView();
             this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -253,7 +253,7 @@ namespace PremiereSolutionProject.PL
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(748, 505);
+            this.label3.Location = new System.Drawing.Point(761, 505);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(177, 17);
@@ -412,12 +412,25 @@ namespace PremiereSolutionProject.PL
             this.columnHeader9,
             this.columnHeader13});
             this.lstAvailable.HideSelection = false;
-            this.lstAvailable.Location = new System.Drawing.Point(479, 537);
+            this.lstAvailable.Location = new System.Drawing.Point(452, 537);
             this.lstAvailable.Name = "lstAvailable";
-            this.lstAvailable.Size = new System.Drawing.Size(167, 107);
+            this.lstAvailable.Size = new System.Drawing.Size(194, 107);
             this.lstAvailable.TabIndex = 139;
             this.lstAvailable.UseCompatibleStateImageBehavior = false;
             this.lstAvailable.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "ID";
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Name";
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Surname";
+            this.columnHeader13.Width = 68;
             // 
             // lstNewAssigned
             // 
@@ -432,18 +445,6 @@ namespace PremiereSolutionProject.PL
             this.lstNewAssigned.TabIndex = 140;
             this.lstNewAssigned.UseCompatibleStateImageBehavior = false;
             this.lstNewAssigned.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "ID";
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Name";
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "Surname";
             // 
             // columnHeader14
             // 
