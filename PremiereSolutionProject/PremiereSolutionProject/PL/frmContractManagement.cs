@@ -56,7 +56,8 @@ namespace PremiereSolutionProject.PL
 
         private void btnCreateContract_Click(object sender, EventArgs e)
         {
-            
+            Contract cont = new Contract(null, DateTime.Now, DateTime.Now, package, null, 0.00, null);
+            cont.InsertContract(cont);
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
