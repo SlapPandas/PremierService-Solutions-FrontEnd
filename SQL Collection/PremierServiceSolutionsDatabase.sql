@@ -669,7 +669,7 @@ BEGIN
 
 END
 GO
-CREATE PROCEDURE UpdateCallCenterEmployee @id VARCHAR(50), @firstName VARCHAR(50), @surname VARCHAR(100), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentdate DATE, @employed BIT, @department VARCHAR(25), @adressId INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10), @city VARCHAR(100)
+CREATE PROCEDURE UpdateEmployee @id VARCHAR(50), @firstName VARCHAR(50), @surname VARCHAR(100), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentdate DATE, @employed BIT, @department VARCHAR(25), @adressId INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10), @city VARCHAR(100)
 AS
 BEGIN
 	BEGIN TRAN
