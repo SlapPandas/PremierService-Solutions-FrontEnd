@@ -1,3 +1,8 @@
+Make use of powershell
 1. go to dir where the docker file is located
 2. docker build -t restored-db .
 3. docker run -p 11433:1433 -d restored-db
+
+Servername: localhost, 11433
+Username: sa
+Password:GrantedPeople1209!
