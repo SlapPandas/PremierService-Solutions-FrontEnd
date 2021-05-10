@@ -86,10 +86,10 @@ namespace PremiereSolutionProject.BLL
                 }
             }
         }
-        public double CalculatePromotion() // calculate the amount a client will pay for a service package if it is on promotion   
+        public double CalculatePromotion(ServicePackage package) // calculate the amount a client will pay for a service package if it is on promotion   
         {
 
-            return this.onPromotion ? (this.servicePrice * ((100 - this.promotionPercentage)/100)) : this.servicePrice;
+            return package.onPromotion ? (package.servicePrice * ((100 - package.promotionPercentage)/100)) : package.servicePrice;
         }
 
         public List<ServicePackage> SelectAllServicePackage() // get a list of service packages contract can be built from
@@ -103,16 +103,19 @@ namespace PremiereSolutionProject.BLL
             ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
             servicePackadgeDH.Update(servicePackage);
         }
+        
         public void InsertServicePackage(ServicePackage servicePackage) // inserts a new service package
         {
             ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
             servicePackadgeDH.Insert(servicePackage);
         }
+        
         public void InsertSingleServiceIntoPackage(int servicePackageID, int serviceID) // inserts a new service package
         {
             ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
             servicePackadgeDH.InsertSingleServiceToServicePackadge(servicePackageID, serviceID);
         }
+
         public void DeleteServicePackage(ServicePackage servicePackage) // inserts a new service package
         {
             ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
@@ -124,6 +127,7 @@ namespace PremiereSolutionProject.BLL
             ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
             servicePackadgeDH.UpdatePromotionState(id, state);
         }
+
         public void UpdateListOfServices(ServicePackage servicePackage)
         {
             ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();

@@ -247,13 +247,14 @@ namespace PremiereSolutionProject.BLL
             string priority = DeterminePriorityLevel(contract.priorityLevel);
 
             StaticVariables sv = new StaticVariables();
+            ServicePackage package = new ServicePackage();
             List<ServicePackage> servicePackageList = contract.packageList; //get list of service packages in the contract
 
             //get sum of prices of service packages in contract
             double servicePackagePrice = 0;
             for (int i = 0; i < servicePackageList.Count; i++)
             {
-                servicePackagePrice += servicePackageList[i].ServicePrice;
+                servicePackagePrice += package.CalculatePromotion(servicePackageList[i]);
             }
             switch (priority.ToLower())
             {                
