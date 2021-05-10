@@ -29,6 +29,7 @@ namespace PremiereSolutionProject.PL
         ServicePackage selectedP;
         private void frmServicePackageManagement_Load(object sender, EventArgs e)
         {
+            dgvCurrentServicePackages.ForeColor = Color.Black;
             services = new Service().SelectAllServices();
             
             sp = new ServicePackage().SelectAllServicePackage();

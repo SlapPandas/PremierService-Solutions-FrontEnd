@@ -53,7 +53,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtPostalCode = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
-            this.dgvEmployee = new System.Windows.Forms.DataGridView();
+            this.dgvExistingClients = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
             this.btnAddClient = new System.Windows.Forms.Button();
             this.btnDeleteClient = new System.Windows.Forms.Button();
@@ -61,7 +61,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExistingClients)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
@@ -71,7 +71,7 @@
             this.label8.Location = new System.Drawing.Point(44, 406);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 13);
+            this.label8.Size = new System.Drawing.Size(77, 17);
             this.label8.TabIndex = 53;
             this.label8.Text = "National ID";
             // 
@@ -82,7 +82,7 @@
             this.label7.Location = new System.Drawing.Point(424, 479);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.Size = new System.Drawing.Size(42, 17);
             this.label7.TabIndex = 52;
             this.label7.Text = "Email";
             // 
@@ -93,7 +93,7 @@
             this.label6.Location = new System.Drawing.Point(423, 423);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 13);
+            this.label6.Size = new System.Drawing.Size(110, 17);
             this.label6.TabIndex = 51;
             this.label6.Text = "Contact Number";
             // 
@@ -104,7 +104,7 @@
             this.label5.Location = new System.Drawing.Point(43, 467);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.Size = new System.Drawing.Size(100, 17);
             this.label5.TabIndex = 50;
             this.label5.Text = "Street Number";
             // 
@@ -115,7 +115,7 @@
             this.label4.Location = new System.Drawing.Point(44, 348);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.Size = new System.Drawing.Size(65, 17);
             this.label4.TabIndex = 49;
             this.label4.Text = "Surname";
             // 
@@ -126,7 +126,7 @@
             this.label3.Location = new System.Drawing.Point(42, 292);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 13);
+            this.label3.Size = new System.Drawing.Size(76, 17);
             this.label3.TabIndex = 48;
             this.label3.Text = "First Name";
             // 
@@ -137,7 +137,7 @@
             this.label2.Location = new System.Drawing.Point(43, 241);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.Size = new System.Drawing.Size(75, 17);
             this.label2.TabIndex = 47;
             this.label2.Text = "ID Number";
             // 
@@ -162,7 +162,7 @@
             this.txtNationalID.Location = new System.Drawing.Point(175, 406);
             this.txtNationalID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNationalID.Name = "txtNationalID";
-            this.txtNationalID.Size = new System.Drawing.Size(176, 17);
+            this.txtNationalID.Size = new System.Drawing.Size(176, 20);
             this.txtNationalID.TabIndex = 44;
             // 
             // txtEmai
@@ -173,7 +173,7 @@
             this.txtEmai.Location = new System.Drawing.Point(574, 476);
             this.txtEmai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEmai.Name = "txtEmai";
-            this.txtEmai.Size = new System.Drawing.Size(176, 17);
+            this.txtEmai.Size = new System.Drawing.Size(176, 20);
             this.txtEmai.TabIndex = 43;
             // 
             // txtContactNumber
@@ -184,7 +184,7 @@
             this.txtContactNumber.Location = new System.Drawing.Point(574, 426);
             this.txtContactNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtContactNumber.Name = "txtContactNumber";
-            this.txtContactNumber.Size = new System.Drawing.Size(176, 17);
+            this.txtContactNumber.Size = new System.Drawing.Size(176, 20);
             this.txtContactNumber.TabIndex = 42;
             // 
             // txtStreetName
@@ -195,7 +195,7 @@
             this.txtStreetName.Location = new System.Drawing.Point(175, 464);
             this.txtStreetName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtStreetName.Name = "txtStreetName";
-            this.txtStreetName.Size = new System.Drawing.Size(176, 17);
+            this.txtStreetName.Size = new System.Drawing.Size(176, 20);
             this.txtStreetName.TabIndex = 41;
             // 
             // txtSurname
@@ -206,7 +206,7 @@
             this.txtSurname.Location = new System.Drawing.Point(175, 348);
             this.txtSurname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSurname.Name = "txtSurname";
-            this.txtSurname.Size = new System.Drawing.Size(176, 17);
+            this.txtSurname.Size = new System.Drawing.Size(176, 20);
             this.txtSurname.TabIndex = 40;
             // 
             // txtFirstname
@@ -217,7 +217,7 @@
             this.txtFirstname.Location = new System.Drawing.Point(175, 290);
             this.txtFirstname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFirstname.Name = "txtFirstname";
-            this.txtFirstname.Size = new System.Drawing.Size(176, 17);
+            this.txtFirstname.Size = new System.Drawing.Size(176, 20);
             this.txtFirstname.TabIndex = 39;
             // 
             // txtID
@@ -228,7 +228,7 @@
             this.txtID.Location = new System.Drawing.Point(175, 241);
             this.txtID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(176, 17);
+            this.txtID.Size = new System.Drawing.Size(176, 20);
             this.txtID.TabIndex = 38;
             // 
             // label1
@@ -238,7 +238,7 @@
             this.label1.Location = new System.Drawing.Point(316, 29);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 26);
+            this.label1.Size = new System.Drawing.Size(223, 31);
             this.label1.TabIndex = 37;
             this.label1.Text = "Individual Client";
             // 
@@ -249,7 +249,7 @@
             this.label9.Location = new System.Drawing.Point(44, 513);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 13);
+            this.label9.Size = new System.Drawing.Size(54, 17);
             this.label9.TabIndex = 55;
             this.label9.Text = "Suburb";
             // 
@@ -261,7 +261,7 @@
             this.txtSuburb.Location = new System.Drawing.Point(175, 513);
             this.txtSuburb.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSuburb.Name = "txtSuburb";
-            this.txtSuburb.Size = new System.Drawing.Size(176, 17);
+            this.txtSuburb.Size = new System.Drawing.Size(176, 20);
             this.txtSuburb.TabIndex = 54;
             // 
             // label10
@@ -271,7 +271,7 @@
             this.label10.Location = new System.Drawing.Point(424, 247);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(24, 13);
+            this.label10.Size = new System.Drawing.Size(31, 17);
             this.label10.TabIndex = 57;
             this.label10.Text = "City";
             // 
@@ -283,7 +283,7 @@
             this.txtCity.Location = new System.Drawing.Point(574, 244);
             this.txtCity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(176, 17);
+            this.txtCity.Size = new System.Drawing.Size(176, 20);
             this.txtCity.TabIndex = 56;
             // 
             // label11
@@ -293,7 +293,7 @@
             this.label11.Location = new System.Drawing.Point(424, 303);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 13);
+            this.label11.Size = new System.Drawing.Size(63, 17);
             this.label11.TabIndex = 59;
             this.label11.Text = "Province";
             // 
@@ -304,7 +304,7 @@
             this.label12.Location = new System.Drawing.Point(424, 363);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(64, 13);
+            this.label12.Size = new System.Drawing.Size(84, 17);
             this.label12.TabIndex = 61;
             this.label12.Text = "Postal Code";
             // 
@@ -316,7 +316,7 @@
             this.txtPostalCode.Location = new System.Drawing.Point(574, 360);
             this.txtPostalCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPostalCode.Name = "txtPostalCode";
-            this.txtPostalCode.Size = new System.Drawing.Size(176, 17);
+            this.txtPostalCode.Size = new System.Drawing.Size(176, 20);
             this.txtPostalCode.TabIndex = 60;
             // 
             // btnExit
@@ -324,7 +324,7 @@
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(793, 628);
+            this.btnExit.Location = new System.Drawing.Point(764, 615);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 35);
@@ -333,18 +333,29 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // dgvEmployee
+            // dgvExistingClients
             // 
-            this.dgvEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvExistingClients.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< Updated upstream
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployee.Location = new System.Drawing.Point(39, 119);
             this.dgvEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvEmployee.Name = "dgvEmployee";
             this.dgvEmployee.RowHeadersWidth = 62;
-            this.dgvEmployee.Size = new System.Drawing.Size(563, 95);
+            this.dgvEmployee.Size = new System.Drawing.Size(476, 119);
             this.dgvEmployee.TabIndex = 80;
             this.dgvEmployee.SelectionChanged += new System.EventHandler(this.dgvEmployee_SelectionChanged);
+=======
+            this.dgvExistingClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExistingClients.Location = new System.Drawing.Point(39, 119);
+            this.dgvExistingClients.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvExistingClients.Name = "dgvExistingClients";
+            this.dgvExistingClients.RowHeadersWidth = 62;
+            this.dgvExistingClients.Size = new System.Drawing.Size(563, 95);
+            this.dgvExistingClients.TabIndex = 80;
+            this.dgvExistingClients.SelectionChanged += new System.EventHandler(this.dgvEmployee_SelectionChanged);
+>>>>>>> Stashed changes
             // 
             // label13
             // 
@@ -353,7 +364,7 @@
             this.label13.Location = new System.Drawing.Point(36, 79);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(77, 13);
+            this.label13.Size = new System.Drawing.Size(102, 17);
             this.label13.TabIndex = 81;
             this.label13.Text = "Existing Clients";
             // 
@@ -389,7 +400,11 @@
             this.cmbProvince.FormattingEnabled = true;
             this.cmbProvince.Location = new System.Drawing.Point(574, 298);
             this.cmbProvince.Name = "cmbProvince";
-            this.cmbProvince.Size = new System.Drawing.Size(176, 21);
+<<<<<<< Updated upstream
+            this.cmbProvince.Size = new System.Drawing.Size(220, 24);
+=======
+            this.cmbProvince.Size = new System.Drawing.Size(176, 24);
+>>>>>>> Stashed changes
             this.cmbProvince.TabIndex = 110;
             // 
             // label14
@@ -399,19 +414,17 @@
             this.label14.Location = new System.Drawing.Point(628, 134);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(58, 13);
+            this.label14.Size = new System.Drawing.Size(74, 17);
             this.label14.TabIndex = 112;
             this.label14.Text = "Search ID:";
             // 
             // txtSearch
             // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.txtSearch.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(719, 131);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(160, 17);
+            this.txtSearch.Size = new System.Drawing.Size(160, 20);
             this.txtSearch.TabIndex = 111;
             // 
             // btnSearch
@@ -429,10 +442,10 @@
             // 
             // frmIndividualClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(908, 677);
+            this.ClientSize = new System.Drawing.Size(726, 541);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtSearch);
@@ -440,7 +453,7 @@
             this.Controls.Add(this.btnDeleteClient);
             this.Controls.Add(this.btnAddClient);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.dgvEmployee);
+            this.Controls.Add(this.dgvExistingClients);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtPostalCode);
@@ -471,7 +484,7 @@
             this.Name = "frmIndividualClient";
             this.Text = "Add New Individual Client";
             this.Load += new System.EventHandler(this.frmAddIndividualClient_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExistingClients)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -503,7 +516,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtPostalCode;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.DataGridView dgvEmployee;
+        private System.Windows.Forms.DataGridView dgvExistingClients;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnAddClient;
         private System.Windows.Forms.Button btnDeleteClient;

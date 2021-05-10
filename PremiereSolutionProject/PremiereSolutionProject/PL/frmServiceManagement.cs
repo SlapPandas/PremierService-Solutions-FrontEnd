@@ -84,7 +84,7 @@ namespace PremiereSolutionProject.PL
 
         private void frmServiceManagement_Load(object sender, EventArgs e)
         {
-
+            dgvCurrentServices.ForeColor = Color.Black;
         }
 
         private void btnDeleteService_Click(object sender, EventArgs e)

@@ -26,6 +26,8 @@ namespace PremiereSolutionProject.PL
         BindingSource bs = new BindingSource();
         private void frmViewServiceRequests_Load(object sender, EventArgs e)
         {
+            dgvViewAllServiceReq.ForeColor = Color.Black;
+
             sr = new ServiceRequest().SelectAllServiceRequests();
             RefreshDGV();
         }

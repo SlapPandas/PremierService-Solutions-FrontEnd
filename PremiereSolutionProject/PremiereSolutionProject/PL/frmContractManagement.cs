@@ -27,6 +27,7 @@ namespace PremiereSolutionProject.PL
         BindingSource bs = new BindingSource();
         private void frmContractManagement_Load(object sender, EventArgs e)
         {
+            dgvViewServices.ForeColor = Color.Black;
             package = new ServicePackage().SelectAllServicePackage();
             foreach (ServicePackage item in package)
             {

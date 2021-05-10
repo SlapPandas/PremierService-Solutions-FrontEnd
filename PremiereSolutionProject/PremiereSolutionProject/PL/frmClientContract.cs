@@ -50,6 +50,9 @@ namespace PremiereSolutionProject.PL
 
         private void frmClientContract_Load(object sender, EventArgs e)
         {
+            dgvServicePackages.ForeColor = Color.Black;
+            dgvServices.ForeColor = Color.Black;
+
             packages = new ServicePackage().SelectAllServicePackage();
             contract = new Contract().SelectAllContracts();
             services = new Service().SelectAllServices();

@@ -1,7 +1,7 @@
 ﻿
 namespace PremiereSolutionProject.PL
 {
-    partial class frmErrorsTesting
+    partial class frmErrorHandling
     {
         /// <summary>
         /// Required designer variable.
@@ -102,7 +102,7 @@ namespace PremiereSolutionProject.PL
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             // 
-            // frmErrorsTesting
+            // frmErrorHandling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,8 +114,9 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.lstErrors);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Name = "frmErrorsTesting";
-            this.Text = "frmErrorsTesting";
+            this.Name = "frmErrorHandling";
+            this.Text = "Error Handling";
+            this.Load += new System.EventHandler(this.frmErrorsHandling_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

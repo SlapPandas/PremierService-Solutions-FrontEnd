@@ -180,10 +180,10 @@ namespace PremiereSolutionProject.BLL
 
         public void CreateJobs(ServiceRequest sr) //creates all the jobs from a call
         {
-            foreach (spe item in sr.SpecialisationRequiredList)
-            {
+            //foreach (spe item in sr.SpecialisationRequiredList)
+            //{
 
-            }
+            //}
 
 
 

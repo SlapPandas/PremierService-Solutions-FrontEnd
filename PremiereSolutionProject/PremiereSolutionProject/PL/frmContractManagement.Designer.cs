@@ -74,7 +74,7 @@ namespace PremiereSolutionProject.PL
             this.label7.Location = new System.Drawing.Point(107, 215);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 13);
+            this.label7.Size = new System.Drawing.Size(62, 17);
             this.label7.TabIndex = 24;
             this.label7.Text = "Services";
             // 
@@ -84,7 +84,7 @@ namespace PremiereSolutionProject.PL
             this.label3.Location = new System.Drawing.Point(107, 104);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 13);
+            this.label3.Size = new System.Drawing.Size(113, 17);
             this.label3.TabIndex = 20;
             this.label3.Text = "Service package";
             // 
@@ -95,7 +95,7 @@ namespace PremiereSolutionProject.PL
             this.label1.Location = new System.Drawing.Point(329, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 24);
+            this.label1.Size = new System.Drawing.Size(256, 29);
             this.label1.TabIndex = 18;
             this.label1.Text = "Contract Management";
             // 
@@ -120,7 +120,7 @@ namespace PremiereSolutionProject.PL
             this.cbxServicePackages.Location = new System.Drawing.Point(110, 149);
             this.cbxServicePackages.Margin = new System.Windows.Forms.Padding(4);
             this.cbxServicePackages.Name = "cbxServicePackages";
-            this.cbxServicePackages.Size = new System.Drawing.Size(339, 21);
+            this.cbxServicePackages.Size = new System.Drawing.Size(339, 24);
             this.cbxServicePackages.TabIndex = 29;
             this.cbxServicePackages.SelectedIndexChanged += new System.EventHandler(this.cbxServicePackages_SelectedIndexChanged);
             // 
@@ -129,7 +129,7 @@ namespace PremiereSolutionProject.PL
             this.dgvViewServices.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvViewServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewServices.Location = new System.Drawing.Point(110, 247);
+            this.dgvViewServices.Location = new System.Drawing.Point(110, 243);
             this.dgvViewServices.Margin = new System.Windows.Forms.Padding(4);
             this.dgvViewServices.Name = "dgvViewServices";
             this.dgvViewServices.RowHeadersWidth = 62;
@@ -139,9 +139,10 @@ namespace PremiereSolutionProject.PL
             // lbxPackages
             // 
             this.lbxPackages.FormattingEnabled = true;
+            this.lbxPackages.ItemHeight = 16;
             this.lbxPackages.Location = new System.Drawing.Point(709, 247);
             this.lbxPackages.Name = "lbxPackages";
-            this.lbxPackages.Size = new System.Drawing.Size(155, 186);
+            this.lbxPackages.Size = new System.Drawing.Size(155, 180);
             this.lbxPackages.TabIndex = 34;
             // 
             // label2
@@ -150,7 +151,7 @@ namespace PremiereSolutionProject.PL
             this.label2.Location = new System.Drawing.Point(706, 215);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.Size = new System.Drawing.Size(114, 17);
             this.label2.TabIndex = 35;
             this.label2.Text = "Added packages";
             // 
@@ -169,7 +170,7 @@ namespace PremiereSolutionProject.PL
             // 
             // frmContractManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(908, 677);

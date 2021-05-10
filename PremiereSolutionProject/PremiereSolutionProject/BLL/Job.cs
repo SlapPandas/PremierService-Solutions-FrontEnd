@@ -71,7 +71,22 @@ namespace PremiereSolutionProject.BLL
             this.serviceRequestID = sReqID;
             this.specialisation = spec;
             this.employeesNeeded = emps;
+<<<<<<< Updated upstream
         }        
+=======
+        }
+
+        //public Job(Address jAddress, JobState js, string jNotes, List<MaintenanceEmployee> mE, Specialisation spec, int sReqID)
+        //{
+        //    this.jobAddress = jAddress;
+        //    this.JobState = js;
+        //    this.jobNotes = jNotes;
+        //    this.employee = mE;
+        //    this.serviceRequestID = sReqID;
+        //    this.specialisation = spec;
+        //}
+
+>>>>>>> Stashed changes
         //constructor with priority level - for assigning jobs
         public Job(Address jAddress, JobState js, string jNotes, List<MaintenanceEmployee> mE, Specialisation spec, int sReqID, string priority, int empsNeeded)
         {

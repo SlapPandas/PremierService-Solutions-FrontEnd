@@ -37,6 +37,10 @@ namespace PremiereSolutionProject.PL
         BindingSource bs2 = new BindingSource();
         private void frmClientInfo_Load(object sender, EventArgs e)
         {
+            dgvClientInfo.ForeColor = Color.Black;
+            dgvClientContractInfo.ForeColor = Color.Black;
+            dgvClientInfo.ForeColor = Color.Black;
+
             bClient = new BusinessClient().SelectAllBusinessClients();
             iClient = new IndividualClient().SelectAllIndividualClients();
             

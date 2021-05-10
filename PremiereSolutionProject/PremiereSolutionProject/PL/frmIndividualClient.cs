@@ -26,14 +26,16 @@ namespace PremiereSolutionProject.PL
 
         private void frmAddIndividualClient_Load(object sender, EventArgs e)
         {
+            dgvExistingClients.ForeColor = Color.Black;
+
             ic = new IndividualClient().SelectAllIndividualClients();
             RefreshDGV();
         }
         private void RefreshDGV()
         {
             bs.DataSource = ic;
-            dgvEmployee.DataSource = null;
-            dgvEmployee.DataSource = bs;
+            dgvExistingClients.DataSource = null;
+            dgvExistingClients.DataSource = bs;
 
         }
 

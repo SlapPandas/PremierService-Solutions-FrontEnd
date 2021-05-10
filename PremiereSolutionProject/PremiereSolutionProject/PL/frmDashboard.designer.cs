@@ -63,6 +63,7 @@ namespace PremiereSolutionProject.PL
             this.btnCallCenter = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.pnlChildForm = new System.Windows.Forms.Panel();
+            this.btnErrorHandling = new System.Windows.Forms.Button();
             this.pnlSideMenu.SuspendLayout();
             this.pnlClientSatisSubMenu.SuspendLayout();
             this.pnlClientMaintainSubMenu.SuspendLayout();
@@ -76,6 +77,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.pnlSideMenu.AutoScroll = true;
             this.pnlSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            this.pnlSideMenu.Controls.Add(this.btnErrorHandling);
             this.pnlSideMenu.Controls.Add(this.btnExit);
             this.pnlSideMenu.Controls.Add(this.pnlClientSatisSubMenu);
             this.pnlSideMenu.Controls.Add(this.btnClientSatis);
@@ -103,7 +105,7 @@ namespace PremiereSolutionProject.PL
             this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(0, 1181);
+            this.btnExit.Location = new System.Drawing.Point(0, 1244);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(312, 55);
@@ -620,6 +622,24 @@ namespace PremiereSolutionProject.PL
             this.pnlChildForm.Size = new System.Drawing.Size(908, 677);
             this.pnlChildForm.TabIndex = 2;
             // 
+            // btnErrorHandling
+            // 
+            this.btnErrorHandling.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnErrorHandling.FlatAppearance.BorderSize = 0;
+            this.btnErrorHandling.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnErrorHandling.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnErrorHandling.Image = ((System.Drawing.Image)(resources.GetObject("btnErrorHandling.Image")));
+            this.btnErrorHandling.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnErrorHandling.Location = new System.Drawing.Point(0, 1181);
+            this.btnErrorHandling.Margin = new System.Windows.Forms.Padding(4);
+            this.btnErrorHandling.Name = "btnErrorHandling";
+            this.btnErrorHandling.Size = new System.Drawing.Size(312, 63);
+            this.btnErrorHandling.TabIndex = 7;
+            this.btnErrorHandling.Text = "        Error Handling";
+            this.btnErrorHandling.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnErrorHandling.UseVisualStyleBackColor = true;
+            this.btnErrorHandling.Click += new System.EventHandler(this.btnErrorHandling_Click);
+            // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -677,5 +697,6 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel pnlChildForm;
         private System.Windows.Forms.Button btnBusinessContact;
+        private System.Windows.Forms.Button btnErrorHandling;
     }
 }

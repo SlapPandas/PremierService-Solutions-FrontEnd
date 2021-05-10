@@ -75,14 +75,15 @@ namespace PremiereSolutionProject.PL
 
         private void frmBusinessContact_Load(object sender, EventArgs e)
         {
+            dgvExistingBusinesses.ForeColor = Color.Black;
             bce = new BusinessClientEmployees().SelectAllBusinessClientEmployees();
             RefreshDGV();
         }
         private void RefreshDGV()
         {
             bs.DataSource = bce;
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = bs;
+            dgvExistingBusinesses.DataSource = null;
+            dgvExistingBusinesses.DataSource = bs;
 
         }
 
