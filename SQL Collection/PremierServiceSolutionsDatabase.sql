@@ -721,7 +721,7 @@ BEGIN
 	COMMIT
 END
 GO
-CREATE PROCEDURE UpdateEmployeeState @id VARCHAR(50), @employed INT
+CREATE PROCEDURE UpdateEmployeeState @id INT, @employed INT
 AS
 BEGIN
 	BEGIN TRAN
