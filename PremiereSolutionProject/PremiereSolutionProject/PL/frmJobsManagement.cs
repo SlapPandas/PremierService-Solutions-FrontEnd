@@ -16,7 +16,7 @@ namespace PremiereSolutionProject.PL
     {
         Job JB = new Job();
         Job SelectedJob = new Job();
-        Specialisation special;
+        Specialisation special = new Specialisation();
         MaintenanceEmployee MainEmp = new MaintenanceEmployee();
         List<MaintenanceEmployee> myEmployee = new List<MaintenanceEmployee>();
         BindingSource bs = new BindingSource();
@@ -200,19 +200,19 @@ namespace PremiereSolutionProject.PL
                     cbxCurrentState.Text = "Finished";
                 }
 
-                List<Specialisation> newSpList = NewJob.Specialisation.GetSpecialisationNames(); //We only want the specialisation name
-                special = NewJob.Specialisation;
-                SelectedJob.Specialisation = special;
+                List<Specialisation> newSpList = NewJob.Specialisation.SelectSpecialisationList();
+                //special = newSpList;
+                //SelectedJob.Specialisation = newSpList;
 
-                //foreach (Specialisation sp in special)
-                //{
-                //    ListViewItem thylist = new ListViewItem(new string[]
-                //    {
-                //        sp.SpecialisationName,
-                //        sp.Description
-                //    });
-                //    lstSpecialisations.Items.Add(thylist);
-                //}
+                foreach (Specialisation sp in newSpList)
+                {
+                    ListViewItem thylist = new ListViewItem(new string[]
+                    {
+                        sp.SpecialisationName,
+                        sp.Description
+                    });
+                    lstSpecialisations.Items.Add(thylist);
+                }
 
 
 
@@ -229,8 +229,6 @@ namespace PremiereSolutionProject.PL
 
                     lstViewAssemp.Items.Add(lst);
                 }
-
-                
 
             }
             else
