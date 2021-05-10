@@ -473,15 +473,16 @@ BEGIN
 	COMMIT
 END
 GO
-ALTER PROCEDURE UpdateEmployeeState @id INT, @employed INT
+ALTER PROCEDURE UpdateEmployeeState @id VARCHAR(50), @employed INT
 AS
 BEGIN
 	BEGIN TRAN
 		UPDATE Employee
 		SET employed = @employed
-		WHERE employeeID = @id
+		WHERE employeeID = (SELECT employeeID FROM Employee WHERE employeeNumber= @id)
 	COMMIT
 END
+GO
 GO
 ALTER PROCEDURE UpdateJobEmployeesRequired @id INT, @amount INT
 AS

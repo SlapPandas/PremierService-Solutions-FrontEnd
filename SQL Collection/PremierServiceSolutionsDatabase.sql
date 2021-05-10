@@ -721,13 +721,13 @@ BEGIN
 	COMMIT
 END
 GO
-CREATE PROCEDURE UpdateEmployeeState @id INT, @employed INT
+CREATE PROCEDURE UpdateEmployeeState @id VARCHAR(50), @employed INT
 AS
 BEGIN
 	BEGIN TRAN
 		UPDATE Employee
 		SET employed = @employed
-		WHERE employeeID = @id
+		WHERE employeeID = (SELECT employeeID FROM Employee WHERE employeeNumber= @id)
 	COMMIT
 END
 GO
