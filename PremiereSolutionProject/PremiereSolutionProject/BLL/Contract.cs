@@ -226,13 +226,14 @@ namespace PremiereSolutionProject.BLL
         {
             ContractDH contractDH = new ContractDH();
 
-            if (contract.client.Id[0] == 'A')
+            if (contract.indclient == null)
+            {
+                
+                contractDH.InsertNewlyAssignedContractToBusinessClient(contract);
+            }
+            if (contract.busclient == null)
             {
                 contractDH.InsertNewlyAssignedContractToIndividualClient(contract);
-            }
-            if (contract.client.Id[0] == 'B')
-            {
-                contractDH.InsertNewlyAssignedContractToBusinessClient(contract);
             }
         }
 

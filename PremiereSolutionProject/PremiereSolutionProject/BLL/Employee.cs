@@ -99,7 +99,7 @@ namespace PremiereSolutionProject.BLL
         public void UpdateSpecialisationOfMaintenanceEmployee(MaintenanceEmployee m)
         {
             EmployeeDH employeeDH = new EmployeeDH();
-            employeeDH.UpdateMaintenanceEmployeeSpecialisation(m);
+            //TODO employeeDH.UpdateMaintenanceEmployeeSpecialisation(m);
         }
 
         public void InsertEmployee(Employee employee)
