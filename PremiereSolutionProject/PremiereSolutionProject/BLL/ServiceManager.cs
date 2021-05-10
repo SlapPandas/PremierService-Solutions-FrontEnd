@@ -71,6 +71,12 @@ namespace PremiereSolutionProject.BLL
             jobDH.UpdateState(id, s);
         }
 
+        public void UpdateEmployeestate(string id, bool state)
+        {
+            EmployeeDH employeeDH = new EmployeeDH();
+            employeeDH.UpdateEmployeeState(id, state);
+        }
+
         public void UpdateServiceRequest(ServiceRequest servReq) // updates a service request
         {
             ServiceRequestDH sDH = new ServiceRequestDH();
@@ -107,7 +113,7 @@ namespace PremiereSolutionProject.BLL
             return employeeDH.SelectAllMaintenanceEmployeesWithGivenSpecilization(id);
         }
 
-        public void EscalateJob(int newPosition, int jobID)
+        public void EscalateJob(int newPosition, int jobID)  //?????????
         {
             //move a specific job up
             // note that this is not gonna work properly since list is not stored somewhere right now
