@@ -721,6 +721,16 @@ BEGIN
 	COMMIT
 END
 GO
+CREATE PROCEDURE UpdateEmployeeState @id VARCHAR(50), @employed INT
+AS
+BEGIN
+	BEGIN TRAN
+		UPDATE Employee
+		SET employed = @employed
+		WHERE employeeID = @id
+	COMMIT
+END
+GO
 CREATE PROCEDURE UpdateJobEmployeesRequired @id INT, @amount INT
 AS
 BEGIN
