@@ -64,7 +64,11 @@ namespace PremiereSolutionProject.PL
             }
 
             lbxAdded.Items.Clear();
-            lbxAdded.Items.Add(selectedP.ServiceList);
+            
+            foreach (var item in selectedP.ServiceList)
+            {
+                lbxAdded.Items.Add(item.ServiceName);
+            }
 
             txtPackageName.Text = selectedP.PackageName;
 

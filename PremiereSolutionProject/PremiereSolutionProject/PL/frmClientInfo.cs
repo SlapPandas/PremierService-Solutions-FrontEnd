@@ -33,6 +33,7 @@ namespace PremiereSolutionProject.PL
         List<Call> calls;
         List<ServiceRequest> sReq;
         List<Client> ClientList;
+        
         BindingSource bs = new BindingSource();
         BindingSource bs2 = new BindingSource();
         private void frmClientInfo_Load(object sender, EventArgs e)
@@ -60,42 +61,59 @@ namespace PremiereSolutionProject.PL
         }
         private void RefreshDGV3()
         {
-            bs.DataSource = ClientList;
+            bs2.DataSource = ClientList;
             dgvClientInfo.DataSource = null;
-            dgvClientInfo.DataSource = bs;
+            dgvClientInfo.DataSource = bs2;
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            calls = new Call().SelectAllCallsOfClient(txtClientID.Text);
-            sReq = new ServiceRequest().SelectAllServiceRequestsForClient(txtClientID.Text);
-            ClientList.Clear();
-            if (txtClientID.Text[0] == 'A')
+            try
             {
-                foreach (IndividualClient item in iClient)
+                calls = new Call().SelectAllCallsOfClient(txtClientID.Text);
+                sReq = new ServiceRequest().SelectAllServiceRequestsForClient(txtClientID.Text);
+                ClientList = new List<Client>();
+                
+                if (txtClientID.Text[0] == 'A')
                 {
-                    if (txtClientID.Text == item.Id)
+                    foreach (IndividualClient item in iClient)
                     {
-                        ClientList.Add(item);
+                        if (txtClientID.Text == item.Id)
+                        {
+                            ClientList.Add(item);
+                           
+                        }
                     }
                 }
-            }
-            else if (txtClientID.Text[0] == 'B')
-            {
-                foreach (BusinessClient item in bClient)
+                else if (txtClientID.Text[0] == 'B')
                 {
-                    if (txtClientID.Text == item.Id)
+                    foreach (BusinessClient item in bClient)
                     {
-                        ClientList.Add(item);
+                        if (txtClientID.Text == item.Id)
+                        {
+                            ClientList.Add(item);
+                        }
                     }
                 }
+                RefreshDGV();
+                RefreshDGV2();
+                RefreshDGV3();
             }
-            RefreshDGV();
-            RefreshDGV2();
+            catch (FormatException fe)
+            {
+                MessageBox.Show(fe.Message, "user input error");
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             dashform.callInfo.LogClientToCall(dashform.callInfo.CallID, txtClientID.Text);
+            dashform.callInfo.Client = (Client)bs2.Current;
+            
         }
     }
 }

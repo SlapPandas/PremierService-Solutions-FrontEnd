@@ -78,6 +78,7 @@ namespace PremiereSolutionProject.BLL
         public void service_OnInitialization()
         {
             Console.WriteLine("Service request has been instantiated");
+            
             //CreateJobs(this);
         }
 
