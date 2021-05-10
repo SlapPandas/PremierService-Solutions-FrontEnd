@@ -143,6 +143,7 @@ namespace PremiereSolutionProject.BLL
         //to display what clients can choose from
         public List<Contract> SelectAllContracts()
         {
+            CheckContractEndDates();
             ContractDH contractDH = new ContractDH();
             return contractDH.SelectAllContracts();
         }
@@ -300,25 +301,14 @@ namespace PremiereSolutionProject.BLL
         public List<string> GetContractPerformance()
         {
             List<string> contractPerformanceList = new List<string>();
-            int count = 0;
 
-            //get list of all contracts from DAL
+            //get list of all contracts with the number of times they were taken out by clients from DAL
             ContractDH contractDH = new ContractDH();
-            List<Contract> allContracts = contractDH.SelectAllContracts();
-            //get list of contract occurences from clientContractLink
-            List<Contract> contractOccurrences = new List<Contract>();
+            List<Contract> allContracts = contractDH.SelectAllContractsAssignedToClientWithThereUses();
 
             foreach (Contract item in allContracts)
             {
-                count = 0;
-                foreach (Contract occurrence in contractOccurrences)
-                {
-                    if (item.Equals(occurrence))
-                    {
-                        count++;
-                    }
-                }
-                contractPerformanceList.Add(item.contractID + ": " + (count / contractOccurrences.Count * 100) + "% of total sales.");
+                contractPerformanceList.Add(item.ToString());
             }
 
             return contractPerformanceList;
@@ -358,9 +348,7 @@ namespace PremiereSolutionProject.BLL
             return contractDH.SelectAllActiveContracts();
         }
 
-        //this method is to change the active fields of the contract to false when the end is reached
-        //could be ran on form load, or program start or something
-        public void CheckContractEndDates()
+        private void CheckContractEndDates()
         {
             ContractDH contractDH = new ContractDH();
             List<Contract> allContractsOffered = contractDH.SelectAllContracts();
@@ -381,7 +369,7 @@ namespace PremiereSolutionProject.BLL
         //to display contract details :) for those client can sign up for
         public override string ToString()
         {
-            return contractID + ": " + priorityLevel + " is available from " + startDate + " to " + endDate + " for R" + price;
+            return contractID + "was taken out " + useCount + " times.";
         }
 
         public override bool Equals(object obj)
