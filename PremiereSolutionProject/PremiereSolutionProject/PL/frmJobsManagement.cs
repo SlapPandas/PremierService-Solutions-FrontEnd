@@ -97,6 +97,11 @@ namespace PremiereSolutionProject.PL
         {
             JB.DeleteJob(SelectedJob);
             MessageBox.Show("The job has been successfully deleted", "Delete Job", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            cbxCurrentState.Text = "";
+            rtbNotes.Clear();
+            nudEmployees.Value = 0;
+            lbxNewAssigned.Items.Clear();
+            lstSpecialisations.Items.Clear();
         }
 
         private void btnUpdateJob_Click(object sender, EventArgs e)
@@ -123,6 +128,7 @@ namespace PremiereSolutionProject.PL
                 rtbNotes.Clear();
                 nudEmployees.Value = 0;
                 lbxNewAssigned.Items.Clear();
+                lstSpecialisations.Items.Clear();
 
             }
 
