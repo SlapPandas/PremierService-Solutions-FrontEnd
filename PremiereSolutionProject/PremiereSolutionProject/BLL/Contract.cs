@@ -227,8 +227,7 @@ namespace PremiereSolutionProject.BLL
             ContractDH contractDH = new ContractDH();
 
             if (contract.indclient == null)
-            {
-                
+            {                
                 contractDH.InsertNewlyAssignedContractToBusinessClient(contract);
             }
             if (contract.busclient == null)
