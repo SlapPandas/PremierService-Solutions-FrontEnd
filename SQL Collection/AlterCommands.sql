@@ -1451,5 +1451,6 @@ AS
 BEGIN TRAN
 	SELECT oldContractId AS id,COUNT(contractStateID) AS uses FROM ContractState
 	GROUP BY oldContractId
+	ORDER BY uses DESC
 COMMIT
 GO
