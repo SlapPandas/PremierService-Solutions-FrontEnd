@@ -204,15 +204,15 @@ namespace PremiereSolutionProject.PL
                 special = NewJob.Specialisation;
                 SelectedJob.Specialisation = special;
 
-                foreach (Specialisation sp in special)
-                {
-                    ListViewItem thylist = new ListViewItem(new string[]
-                    {
-                        sp.SpecialisationName,
-                        sp.Description
-                    });
-                    lstSpecialisations.Items.Add(thylist);
-                }
+                //foreach (Specialisation sp in special)
+                //{
+                //    ListViewItem thylist = new ListViewItem(new string[]
+                //    {
+                //        sp.SpecialisationName,
+                //        sp.Description
+                //    });
+                //    lstSpecialisations.Items.Add(thylist);
+                //}
 
 
 
