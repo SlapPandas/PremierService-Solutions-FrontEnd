@@ -73,6 +73,17 @@ namespace PremiereSolutionProject.BLL
             this.employeesNeeded = emps;
         }
 
+        //Update Constructor by Blessed
+        //public Job(int id, JobState js, string jNotes, List<MaintenanceEmployee> mE, Specialisation spec, int empsNeeded)
+        //{
+        //    this.jobID = id;
+        //    this.JobState = js;
+        //    this.jobNotes = jNotes;
+        //    this.employee = mE;
+        //    this.specialisation = spec;
+        //    this.employeesNeeded = empsNeeded;
+        //}
+
         //public Job(Address jAddress, JobState js, string jNotes, List<MaintenanceEmployee> mE, Specialisation spec, int sReqID)
         //{
         //    this.jobAddress = jAddress;

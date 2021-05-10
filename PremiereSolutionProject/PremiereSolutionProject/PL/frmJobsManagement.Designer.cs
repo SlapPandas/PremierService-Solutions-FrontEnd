@@ -118,7 +118,7 @@ namespace PremiereSolutionProject.PL
             this.btnUpdateJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateJob.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateJob.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdateJob.Location = new System.Drawing.Point(422, 704);
+            this.btnUpdateJob.Location = new System.Drawing.Point(293, 704);
             this.btnUpdateJob.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateJob.Name = "btnUpdateJob";
             this.btnUpdateJob.Size = new System.Drawing.Size(152, 28);
@@ -209,7 +209,7 @@ namespace PremiereSolutionProject.PL
             this.btnDeleteJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteJob.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteJob.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteJob.Location = new System.Drawing.Point(236, 704);
+            this.btnDeleteJob.Location = new System.Drawing.Point(477, 704);
             this.btnDeleteJob.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteJob.Name = "btnDeleteJob";
             this.btnDeleteJob.Size = new System.Drawing.Size(152, 28);

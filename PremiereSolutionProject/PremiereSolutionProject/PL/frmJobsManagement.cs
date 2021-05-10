@@ -15,17 +15,13 @@ namespace PremiereSolutionProject.PL
     public partial class frmJobsManagement : Form
     {
         Job JB = new Job();
+        Job SelectedJob = new Job();
+        Specialisation special;
         MaintenanceEmployee MainEmp = new MaintenanceEmployee();
-        List<Job> myJob = new List<Job>();
         List<MaintenanceEmployee> myEmployee = new List<MaintenanceEmployee>();
         BindingSource bs = new BindingSource();
-        Job SelectedJob;
-        List<Job> NewJobList = new List<Job>();
         List<MaintenanceEmployee> NewEmp = new List<MaintenanceEmployee>();
-        Employee NewEmployee;
-
-        List<MaintenanceEmployee> Availablelist = new List<MaintenanceEmployee>();
-        List<MaintenanceEmployee> RemoveList = new List<MaintenanceEmployee>();
+        JobState st;
 
 
         public frmJobsManagement()
@@ -50,7 +46,6 @@ namespace PremiereSolutionProject.PL
                     J.JobID.ToString(),
                     J.JobState.ToString(),
                     J.JobNotes,
-                  //  J.Specialisation.GetSpecialisationNames, Into another ListView
                     J.EmployeesNeeded.ToString(),
                     J.ServiceRequestID.ToString(),
                     J.PriorityLevel
@@ -59,26 +54,9 @@ namespace PremiereSolutionProject.PL
                 lst.Tag = J;
                 lstJobs.Items.Add(lst);
 
+                List<Job> NewJobList = new List<Job>();
                 NewJobList.Add(J);
             }
-
-            //MaintenanceEmployee NewMEMP = new MaintenanceEmployee();
-
-            //foreach (MaintenanceEmployee Emp in NewMEMP.SelectAllMaintenaceEmpployees())
-            //{
-            //    ListViewItem lst = new ListViewItem(new string[]
-            //    {
-            //            Emp.Id,
-            //            Emp.FirstName,
-            //            Emp.Surname
-            //    });
-            //    lst.Tag = Emp;
-            //    lbxAvailable.Items.Add(lst);
-            //    Availablelist.Add(Emp);
-            //}
-
-
-            myEmployee = MainEmp.SelectAllMaintenaceEmpployees();
 
             foreach (Job j in JB.SelectAllJobs())
             {
@@ -114,9 +92,8 @@ namespace PremiereSolutionProject.PL
 
         private void btnDeleteJob_Click(object sender, EventArgs e)
         {
-
-            //JB.DeleteJob(Job); //Need to parse a job object to the delete method to delete
-            MessageBox.Show("Successfully deleted the job.");
+            JB.DeleteJob(SelectedJob);
+            MessageBox.Show("The job has been successfully deleted", "Delete Job", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnUpdateJob_Click(object sender, EventArgs e)
@@ -128,13 +105,24 @@ namespace PremiereSolutionProject.PL
             }
             else if (string.IsNullOrEmpty(rtbNotes.Text))
             {
-                throw new FormatException("No State written");
+                throw new FormatException("No notes written");
             }
             else if (nudEmployees.Value < 0)
             {
                 throw new FormatException("Invalid Numeric Selection");
             }
+            else if(string.IsNullOrEmpty(cmbSpec.Text))
+            {
+                throw new FormatException("Specialisation hasn't been chosen.");
+            }
+            else
+            {
+                JB.UpdateJob(SelectedJob);
+                MessageBox.Show("The job has been successfully updated", "Update Job", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            }
+
+            
         }
 
         private void btnAddTechnician_Click(object sender, EventArgs e)
@@ -142,6 +130,8 @@ namespace PremiereSolutionProject.PL
             if (!lbxNewAssigned.Items.Contains(lbxAvailTech.SelectedItem.ToString()))
             {
                 lbxNewAssigned.Items.Add(lbxAvailTech.SelectedItem.ToString());
+                //myEmployee.Add(lbxAvailTech.SelectedItem); //Need to get listbox items added to the list of type maintenance employee
+
             }
             else
             {
@@ -154,31 +144,6 @@ namespace PremiereSolutionProject.PL
         {
 
             lbxNewAssigned.Items.RemoveAt(lbxNewAssigned.SelectedIndex);
-        }
-
-        public void UpdateJob()
-        {
-            //cbxCurrentState.Text = SelectedJob.JobState;
-            //rtbNotes.Text = SelectedJob.JobNotes;
-            //cbxSpecialisationName = SelectedJob.Specialisation;
-            //nudEmployees.Value = SelectedJob.EmployeesNeeded;
-            //lbxCurrentAssigned.Items.Add();
-
-
-        }
-
-        private void dgvJobs_SelectionChanged(object sender, EventArgs e)
-        {
-            SelectedJob = (Job)bs.Current;
-            UpdateJob();
-        }
-
-        private void btnSelect_Click(object sender, EventArgs e)
-        {
-            //lstViewAssemp.Clear();
-            //cbxCurrentState.Items.Clear();
-
-           
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -199,16 +164,26 @@ namespace PremiereSolutionProject.PL
         private void lstJobs_MouseClick(object sender, MouseEventArgs e)
         {
             lstViewAssemp.Items.Clear();
+
             if (lstJobs.SelectedItems.Count > 0)
             {
                 cmbSpec.Items.Clear();
-                Job NewJob = lstJobs.SelectedItems[0].Tag as Job;
+                Job NewJob = lstJobs.SelectedItems[0].Tag as Job; //Creates a job object of the current job 
 
-                rtbNotes.Text = NewJob.JobNotes;
-                nudEmployees.Value = NewJob.EmployeesNeeded;
+                //int id, Address jAddress, JobState js, string jNotes, List<MaintenanceEmployee> mE, Specialisation spec, int sReqID, int empsNeeded
 
-                JobState st;
-                st = NewJob.JobState;
+                SelectedJob.JobID = NewJob.JobID;
+                SelectedJob.JobAddress = NewJob.JobAddress;
+                SelectedJob.ServiceRequestID = NewJob.ServiceRequestID;
+
+                rtbNotes.Text = NewJob.JobNotes; // Gets the notes of the current job
+                SelectedJob.JobNotes = rtbNotes.Text;
+
+                nudEmployees.Value = NewJob.EmployeesNeeded; //Number of current job employees needed
+                SelectedJob.EmployeesNeeded = NewJob.EmployeesNeeded;
+               
+                st = NewJob.JobState; //Gets the current job state
+                SelectedJob.JobState = st;
 
                 if (st.ToString() == "Pending")
                 {
@@ -223,11 +198,13 @@ namespace PremiereSolutionProject.PL
                     cbxCurrentState.Text = "Finished";
                 }
 
-                Specialisation newSp = NewJob.Specialisation;
+                ////Specialisation: ID, name and description
 
-                List<Specialisation> newSpList = NewJob.Specialisation.GetSpecialisationNames();
+                List<Specialisation> newSpList = NewJob.Specialisation.GetSpecialisationNames(); //We only want the specialisation name
+                special = NewJob.Specialisation;
+                SelectedJob.Specialisation = special;
 
-
+                
 
                 foreach (Specialisation sp in newSpList)
                 {
@@ -237,7 +214,8 @@ namespace PremiereSolutionProject.PL
 
 
 
-                NewEmp = NewJob.Employee;
+                NewEmp = NewJob.Employee; //Maintenance Employee List 
+                SelectedJob.Employee = NewEmp;
 
                 foreach (Employee ME in NewEmp)
                 {
@@ -249,6 +227,8 @@ namespace PremiereSolutionProject.PL
 
                     lstViewAssemp.Items.Add(lst);
                 }
+
+                
             }
             else
             {
