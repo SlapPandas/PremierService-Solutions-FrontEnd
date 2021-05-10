@@ -270,7 +270,32 @@ namespace PremiereSolutionProject.DAL
 
             return contractList;
         }
+        public List<Contract> SelectAllContractsAssignedToClientWithThereUses()
+        {
+            List<Contract> contractList = new List<Contract>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC AllContractUses";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        contractList.Add(new Contract((string)reader["id"],(int)reader["uses"]));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
+            }
+            finally { }
 
+            return contractList;
+        }
         #endregion
 
 

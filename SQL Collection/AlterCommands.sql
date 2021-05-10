@@ -83,11 +83,11 @@ AFTER INSERT AS
 UPDATE 
     ContractState 
 set 
-    ContractState.contractNumber = dbo.ContractNumber(ContractState.contractStateID,ContractState.priorityLevel) 
+    ContractState.contractNumber = dbo.ContractNumber(ContractState.contractStateID,ContractState.priorityLevel)
 from 
-    [Contract] 
+    ContractState 
 INNER JOIN 
-    inserted ON [Contract].contractID= inserted.contractStateID
+    inserted ON ContractState.contractStateID= inserted.contractStateID
 GO
 
 GO
@@ -819,8 +819,8 @@ GO
 ALTER PROCEDURE InsertContractOfClient @contractId VARCHAR(50),@startDate DATETIME, @endDate DATETIME, @active INT
 AS
 BEGIN TRAN
-	INSERT INTO ContractState(startDate,endDate,activeContract,priorityLevel,price,contractType)
-	SELECT @startDate,@endDate,@active,priorityLevel,price,contractType FROM [Contract] WHERE [Contract].contractNumber =  @contractId
+	INSERT INTO ContractState(startDate,endDate,activeContract,priorityLevel,price,contractType,oldContractId)
+	SELECT @startDate,@endDate,@active,priorityLevel,price,contractType,contractID FROM [Contract] WHERE [Contract].contractNumber =  @contractId
 	SELECT SCOPE_IDENTITY()
 COMMIT 
 GO
@@ -1436,5 +1436,12 @@ BEGIN TRAN
 	DECLARE @count INT
 	SET @count = (SELECT COUNT(addressId) FROM Job WHERE addressId = @id) + (SELECT COUNT(addressId) FROM Employee WHERE addressId = @id) + (SELECT COUNT(addressId) FROM ClientBusiness WHERE addressId = @id) + (SELECT COUNT(addressId) FROM ClientIndividual WHERE addressId = @id)
 	SELECT @count AS uses
+COMMIT
+GO
+ALTER PROCEDURE AllContractUses
+AS
+BEGIN TRAN
+	SELECT oldContractId AS id,COUNT(contractStateID) AS uses FROM ContractState
+	GROUP BY oldContractId
 COMMIT
 GO
