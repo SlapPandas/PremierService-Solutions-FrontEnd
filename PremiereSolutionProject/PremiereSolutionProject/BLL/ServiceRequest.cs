@@ -63,14 +63,14 @@ namespace PremiereSolutionProject.BLL
         }
 
         //constructor with callback for event
-        public ServiceRequest(bool c, string desc, int callID, List<Specialisation> specRequired, string priority, Action callback)
+        public ServiceRequest(bool c, string desc, int callID, List<string> specRequired, string priority, Action callback)
         {
             this.OnInitialization += callback;
             callback = service_OnInitialization;
             this.closed = c;
             this.description = desc;
             this.callID = callID;
-            this.specialisationRequiredList = specRequired;
+            this.spesialisationRequiredNumberEmployees = specRequired;
             this.priorityLevel = priority;
             if (OnInitialization != null) OnInitialization();
         }
@@ -157,16 +157,11 @@ namespace PremiereSolutionProject.BLL
         private List<int> GetNumEmployeesForJob(List<string> specialisationEmpList)
         {
             List<int> specEmployees = new List<int>();
-
-            Regex r = new Regex(@"[^0 - 9]", RegexOptions.IgnoreCase); //returns only the numbers
-
             //taking the numbers out and adding the letters only to a list of string to match the name
             for (int i = 0; i < specialisationEmpList.Count; i++)
             {
-                specialisationEmpList[i] = r.Replace(specialisationEmpList[i], @"");
-                specEmployees[i] = int.Parse(specialisationEmpList[i]);
+                specEmployees.Add(int.Parse(Regex.Replace(specialisationEmpList[i], @"[^\d]", "")));
             }
-
             return specEmployees;
         }
 
@@ -185,9 +180,16 @@ namespace PremiereSolutionProject.BLL
 
         public void CreateJobs(ServiceRequest sr) //creates all the jobs from a call
         {
+            foreach (spe item in sr.SpecialisationRequiredList)
+            {
+
+            }
+
+
+
             List<Job> jobList = new List<Job>();
             Call c = new Call();    //from DAL where SELECTing a call according to call ID --> sr.CallID
-            List<int> employeesPerJob = GetNumEmployeesForJob(this.spesialisationRequiredNumberEmployees);  //getting corresponding number of employees
+            List<int> employeesPerJob = GetNumEmployeesForJob(sr.spesialisationRequiredNumberEmployees);  //getting corresponding number of employees
 
             List<Specialisation> specialisationList = sr.specialisationRequiredList;
             //to generate all the jobs for the service request according to the specialisations required
