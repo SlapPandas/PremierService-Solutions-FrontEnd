@@ -337,16 +337,6 @@
             // 
             this.dgvExistingClients.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-<<<<<<< Updated upstream
-            this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployee.Location = new System.Drawing.Point(39, 119);
-            this.dgvEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dgvEmployee.Name = "dgvEmployee";
-            this.dgvEmployee.RowHeadersWidth = 62;
-            this.dgvEmployee.Size = new System.Drawing.Size(476, 119);
-            this.dgvEmployee.TabIndex = 80;
-            this.dgvEmployee.SelectionChanged += new System.EventHandler(this.dgvEmployee_SelectionChanged);
-=======
             this.dgvExistingClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvExistingClients.Location = new System.Drawing.Point(39, 119);
             this.dgvExistingClients.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -355,7 +345,6 @@
             this.dgvExistingClients.Size = new System.Drawing.Size(563, 95);
             this.dgvExistingClients.TabIndex = 80;
             this.dgvExistingClients.SelectionChanged += new System.EventHandler(this.dgvEmployee_SelectionChanged);
->>>>>>> Stashed changes
             // 
             // label13
             // 
@@ -400,11 +389,7 @@
             this.cmbProvince.FormattingEnabled = true;
             this.cmbProvince.Location = new System.Drawing.Point(574, 298);
             this.cmbProvince.Name = "cmbProvince";
-<<<<<<< Updated upstream
-            this.cmbProvince.Size = new System.Drawing.Size(220, 24);
-=======
             this.cmbProvince.Size = new System.Drawing.Size(176, 24);
->>>>>>> Stashed changes
             this.cmbProvince.TabIndex = 110;
             // 
             // label14

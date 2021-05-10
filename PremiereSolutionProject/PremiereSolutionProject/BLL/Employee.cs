@@ -99,11 +99,7 @@ namespace PremiereSolutionProject.BLL
         public void UpdateSpecialisationOfMaintenanceEmployee(MaintenanceEmployee m)
         {
             EmployeeDH employeeDH = new EmployeeDH();
-<<<<<<< Updated upstream
             //TODO employeeDH.UpdateMaintenanceEmployeeSpecialisation(m);
-=======
-            //employeeDH.UpdateMaintenanceEmployeeSpecialisation(m);
->>>>>>> Stashed changes
         }
 
         public void InsertEmployee(Employee employee)
