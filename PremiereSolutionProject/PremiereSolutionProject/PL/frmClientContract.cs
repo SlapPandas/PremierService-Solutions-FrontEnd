@@ -50,33 +50,41 @@ namespace PremiereSolutionProject.PL
 
         private void frmClientContract_Load(object sender, EventArgs e)
         {
-            dgvServicePackages.ForeColor = Color.Black;
-            dgvServices.ForeColor = Color.Black;
-
-            packages = new ServicePackage().SelectAllServicePackage();
-            contract = new Contract().SelectAllContracts();
-            services = new Service().SelectAllServices();
-            List<string> cont = new List<string>();
-            
-            // contract = new List<Contract>();
-
-            foreach (Contract item in contract)
+            try
             {
-                cbxContractName.Items.Add(item.ContractType.ToString());
+                dgvServicePackages.ForeColor = Color.Black;
+                dgvServices.ForeColor = Color.Black;
+
+                packages = new ServicePackage().SelectAllServicePackage();
+                contract = new Contract().SelectAllContracts();
+                services = new Service().SelectAllServices();
+                List<string> cont = new List<string>();
+
+                // contract = new List<Contract>();
+
+                foreach (Contract item in contract)
+                {
+                    cbxContractName.Items.Add(item.ContractType.ToString());
+                }
+                //foreach (var item in contract)
+                //{
+                //    cbxPriorityLevel.Items.Add(item.PriorityLevel.ToString());
+                //}
+                cbxPriorityLevel.Items.Add("Platinum");
+                cbxPriorityLevel.Items.Add("Gold");
+                cbxPriorityLevel.Items.Add("Silver");
+                cbxPriorityLevel.Items.Add("Bronze");
+                cbxContractName.ValueMember = null;
+                cbxContractName.SelectedIndex = -1;
+                txtClientID.Text = dashForm.callInfo.Client.Id;
+                RefreshDGV();
+                RefreshDGVServices();
             }
-            //foreach (var item in contract)
-            //{
-            //    cbxPriorityLevel.Items.Add(item.PriorityLevel.ToString());
-            //}
-            cbxPriorityLevel.Items.Add("Platinum");
-            cbxPriorityLevel.Items.Add("Gold");
-            cbxPriorityLevel.Items.Add("Silver");
-            cbxPriorityLevel.Items.Add("Bronze");
-            cbxContractName.ValueMember = null;
-            cbxContractName.SelectedIndex = -1;
-            txtClientID.Text = dashForm.callInfo.Client.Id;
-            RefreshDGV();
-            RefreshDGVServices();
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+            }
+            
         }
 
         private void RefreshDGV()

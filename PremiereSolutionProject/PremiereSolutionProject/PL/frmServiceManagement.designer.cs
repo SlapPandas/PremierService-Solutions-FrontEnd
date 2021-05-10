@@ -65,6 +65,7 @@ namespace PremiereSolutionProject.PL
             this.dgvCurrentServices.RowHeadersWidth = 62;
             this.dgvCurrentServices.Size = new System.Drawing.Size(483, 128);
             this.dgvCurrentServices.TabIndex = 69;
+            this.dgvCurrentServices.SelectionChanged += new System.EventHandler(this.dgvCurrentServices_SelectionChanged);
             // 
             // label1
             // 
