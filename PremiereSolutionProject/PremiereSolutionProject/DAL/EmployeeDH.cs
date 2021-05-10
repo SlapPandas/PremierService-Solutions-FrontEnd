@@ -19,6 +19,7 @@ namespace PremiereSolutionProject.DAL
 
         public void UpdateMaintenanceEmployee(MaintenanceEmployee employee)
         {
+            InsertAllSpeciliozationOfMaintenanceEmployee(employee);
             UpdateCommand($"EXEC UpdateEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname ='{employee.Surname}', @contactNumber ='{employee.ContactNumber}', @email ='{employee.Email}', @nationalIdNumber ='{employee.NationalIDnumber}', @employmentdate ='{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed ='{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}', @adressId = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'");
         }
 
@@ -32,11 +33,6 @@ namespace PremiereSolutionProject.DAL
             UpdateCommand($"EXEC UpdateEmployeeState @id = '{id}', @employed = '{GetIntFromBool(employed)}'");
         }
 
-        public void UpdateMaintenanceEmployeeSpecialisation(MaintenanceEmployee employee)
-        {
-            InsertAllSpeciliozationOfMaintenanceEmployee(employee);
-            UpdateCommand($"EXEC UpdateMaintenanceEmployeeSpecializationList @id = '{employee.Id}'");
-        }
         #endregion
 
         //Done
@@ -49,6 +45,7 @@ namespace PremiereSolutionProject.DAL
 
         public void InsertMaintenanceEmployee(MaintenanceEmployee employee)
         {
+            InsertAllSpeciliozationOfNewMaintenanceEmployee(employee);
             InsertCommand($"EXEC InsertMaintenanceEmployee @firstName = '{employee.FirstName}', @surname = '{employee.Surname}', @contactNumber = '{employee.ContactNumber}', @email = '{employee.Email}', @nationalIdNumber = '{employee.NationalIDnumber}', @employmentDate = '{employee.RegistrationDate.ToString("yyyy-MM-dd")}',@employed = '{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}',@streetname = '{employee.Address.StreetName}',@suburb = '{employee.Address.Suburb}',@province = '{((int)employee.Address.Province).ToString()}',@postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'");
         }
 
@@ -218,6 +215,14 @@ namespace PremiereSolutionProject.DAL
             for (int i = 0; i < employee.Specialisations.Count; i++)
             {
                 InsertCommand($"EXEC InsertIntoTVPMaintenanceEmployeeSpecilization @employeeId = '{employee.Id}', @SpecilizationId = '{employee.Specialisations[i].SpecialisationID}'");
+            }
+        }
+
+        private void InsertAllSpeciliozationOfNewMaintenanceEmployee(MaintenanceEmployee employee)
+        {
+            for (int i = 0; i < employee.Specialisations.Count; i++)
+            {
+                InsertCommand($"EXEC InsertIntoTVPNewMaintenanceEmployeeSpecilization @SpecilizationId = '{employee.Specialisations[i].SpecialisationID}'");
             }
         }
 

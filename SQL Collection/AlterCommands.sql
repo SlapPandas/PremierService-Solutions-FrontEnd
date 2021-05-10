@@ -146,6 +146,13 @@ AS
 		VALUES (@SpecilizationId)
 	COMMIT
 GO
+ALTER PROC InsertIntoTVPNewMaintenanceEmployeeSpecilization @SpecilizationId INT
+AS
+	BEGIN TRAN
+		INSERT INTO TVP(idIntOne)
+		VALUES (@SpecilizationId)
+	COMMIT
+GO
 ALTER PROC InsertIntoTVPJobEmployee @jobId INT,@employeeId VARCHAR(50)
 AS
 	BEGIN TRAN
