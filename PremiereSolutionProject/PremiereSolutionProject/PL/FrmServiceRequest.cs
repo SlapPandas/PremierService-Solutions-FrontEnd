@@ -31,38 +31,54 @@ namespace PremiereSolutionProject.PL
         List<Specialisation> spec;
         private void FrmServiceRequest_Load(object sender, EventArgs e)
         {
-            specList = new List<string>();
-            spec = new Specialisation().SelectSpecialisationList();
-            foreach (Specialisation item in spec)
+            try
             {
-                cbxSpecialisation.Items.Add(item.SpecialisationName);
-            }
-            lblCallID.Text = dashform.callInfo.CallID.ToString();
-            List<IndividualClient> ic = new IndividualClient().SelectAllIndividualClients();
-            List<BusinessClient> bc = new BusinessClient().SelectAllBusinessClients();
-            //List<Client> cl = dashform.callInfo.Client.SelectAllClients();
-            string clientName = "";
-            if (dashform.callInfo.Client.Id[0] == 'A')
-            {
-                foreach (IndividualClient item in ic)
+                specList = new List<string>();
+                spec = new Specialisation().SelectSpecialisationList();
+                foreach (Specialisation item in spec)
                 {
-                    if (dashform.callInfo.Client.Id == item.Id)
+                    cbxSpecialisation.Items.Add(item.SpecialisationName);
+                }
+                lblCallID.Text = dashform.callInfo.CallID.ToString();
+                List<IndividualClient> ic = new IndividualClient().SelectAllIndividualClients();
+                List<BusinessClient> bc = new BusinessClient().SelectAllBusinessClients();
+                //List<Client> cl = dashform.callInfo.Client.SelectAllClients();
+                string clientName = "";
+                if (dashform.callInfo.Client.Id[0] == 'A')
+                {
+                    foreach (IndividualClient item in ic)
                     {
-                        clientName = item.FirstName;
+                        if (dashform.callInfo.Client.Id == item.Id)
+                        {
+                            clientName = item.FirstName;
+                        }
                     }
                 }
-            }
-            else if (dashform.callInfo.Client.Id[0]  == 'B')
-            {
-                foreach (BusinessClient item in bc)
+                else if (dashform.callInfo.Client.Id[0] == 'B')
                 {
-                    if (dashform.callInfo.Client.Id == item.Id)
+                    foreach (BusinessClient item in bc)
                     {
-                        clientName = item.BusinessName;
+                        if (dashform.callInfo.Client.Id == item.Id)
+                        {
+                            clientName = item.BusinessName;
+                        }
                     }
                 }
+                if (dashform.callInfo.Client != null )
+                {
+                    lblClientName.Text = clientName;
+                }
+                
             }
-            lblClientName.Text = clientName;
+            catch (FormatException fe)
+            {
+                MessageBox.Show(fe.Message, "user input error");
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+            }
+            
 
         }
 
@@ -118,7 +134,9 @@ namespace PremiereSolutionProject.PL
             //}
 
             //ServiceRequest sr = new ServiceRequest(richTextBox1.Text, int.Parse(lblCallID.Text), addedSpec, "1");
-            ServiceRequest sr = new ServiceRequest(false, richTextBox1.Text, dashform.callInfo.CallID, specList, "1");
+            ServiceRequest srE = new ServiceRequest();
+            ServiceRequest sr = new ServiceRequest(false, richTextBox1.Text, dashform.callInfo.CallID, specList, "1", srE.service_OnInitialization);
+           // Action action = sr.service_OnInitialization;
             sr.CreateServiceRequest(sr);
         }
     }

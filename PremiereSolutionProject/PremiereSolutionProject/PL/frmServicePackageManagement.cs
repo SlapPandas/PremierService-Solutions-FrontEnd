@@ -33,7 +33,11 @@ namespace PremiereSolutionProject.PL
             
             sp = new ServicePackage().SelectAllServicePackage();
             RefreshDGV();
-            lbxAvailable.Items.Add(services);
+            foreach (Service item in services)
+            {
+                lbxAvailable.Items.Add(item.ServiceName.ToString());
+            }
+            
         }
 
         private void RefreshDGV()
