@@ -27,10 +27,11 @@ namespace PremiereSolutionProject.PL
         {
             this.Close();
         }
-       
+        List<string> specList;       
         List<Specialisation> spec;
         private void FrmServiceRequest_Load(object sender, EventArgs e)
         {
+            specList = new List<string>();
             spec = new Specialisation().SelectSpecialisationList();
             foreach (Specialisation item in spec)
             {
@@ -80,7 +81,7 @@ namespace PremiereSolutionProject.PL
                 else
                 {
                     lbxSpecialisations.Items.Add(cbxSpecialisation.SelectedItem.ToString() + "," + nudNumberOfPeople.Value.ToString());
-
+                    specList.Add(cbxSpecialisation.SelectedItem.ToString() + "," + nudNumberOfPeople.Value.ToString());
 
                     
                 }
@@ -103,20 +104,21 @@ namespace PremiereSolutionProject.PL
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            spec = new Specialisation().SelectSpecialisationList();
-            List<Specialisation> addedSpec = new List<Specialisation>(); 
-            foreach (var item in lbxSpecialisations.Items)
-            {
-                foreach (Specialisation item2 in spec)
-                {
-                    if (item2.SpecialisationName == item.ToString())
-                    {
-                        addedSpec.Add(item2);
-                    }
-                }
-            }
+            //spec = new Specialisation().SelectSpecialisationList();
+            //List<Specialisation> addedSpec = new List<Specialisation>(); 
+            //foreach (var item in lbxSpecialisations.Items)
+            //{
+            //    foreach (Specialisation item2 in spec)
+            //    {
+            //        if (item2.SpecialisationName == item.ToString())
+            //        {
+            //            addedSpec.Add(item2);
+            //        }
+            //    }
+            //}
 
-            ServiceRequest sr = new ServiceRequest(richTextBox1.Text, int.Parse(lblCallID.Text), addedSpec, "1");
+            //ServiceRequest sr = new ServiceRequest(richTextBox1.Text, int.Parse(lblCallID.Text), addedSpec, "1");
+            ServiceRequest sr = new ServiceRequest(false, richTextBox1.Text, dashform.callInfo.CallID, specList, "1");
             sr.CreateServiceRequest(sr);
         }
     }
