@@ -52,6 +52,25 @@ namespace PremiereSolutionProject.BLL
             jDH.Update(job);
         }
 
+        public void UpdateJobState(int id, int state)
+        {
+            JobDH jobDH = new JobDH();
+            JobState s = new JobState();
+            switch (state)
+            {
+                case 0:
+                    s = JobState.Pending;
+                    break;
+                case 1:
+                    s = JobState.InProgress;
+                    break;
+                case 2:
+                    s = JobState.Finished;
+                    break;
+            }
+            jobDH.UpdateState(id, s);
+        }
+
         public void UpdateServiceRequest(ServiceRequest servReq) // updates a service request
         {
             ServiceRequestDH sDH = new ServiceRequestDH();
