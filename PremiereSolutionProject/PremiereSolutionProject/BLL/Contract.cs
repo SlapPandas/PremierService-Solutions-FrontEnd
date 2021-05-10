@@ -247,8 +247,6 @@ namespace PremiereSolutionProject.BLL
             string priority = DeterminePriorityLevel(contract.priorityLevel);
 
             StaticVariables sv = new StaticVariables();
-            ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
-            ContractDH contractDH = new ContractDH();
             List<ServicePackage> servicePackageList = contract.packageList; //get list of service packages in the contract
 
             //get sum of prices of service packages in contract
@@ -295,10 +293,6 @@ namespace PremiereSolutionProject.BLL
 
         public int DetermineDaysChosen(string code)
         {
-            //int n = 0;
-            //Regex r = new Regex(@"[^0 - 9]", RegexOptions.IgnoreCase); //returns only the numbers
-            //n = int.Parse(r.Replace(code, @""));
-
             return int.Parse(Regex.Replace(code, @"[^\d]", ""));
         }
 
