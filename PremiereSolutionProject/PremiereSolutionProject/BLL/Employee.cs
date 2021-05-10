@@ -79,37 +79,64 @@ namespace PremiereSolutionProject.BLL
 
         #region Methods
 
-        //public void UpdateEmployee(Employee employee)
-        //{
-        //    //might need to have a cast??? Will need to check when testing
-        //    EmployeeDH employeeDH = new EmployeeDH();
-        //    employeeDH.Update(employee);
-        //}
+        public void UpdateEmployee(Employee employee)
+        {
+            EmployeeDH employeeDH = new EmployeeDH();
+            switch (employee.GetType().Name)
+            {
+                case "CallCenterEmployee":
+                    employeeDH.UpdateCallCenterEmployee((CallCenterEmployee)employee);
+                    break;
+                case "MaintenanceEmployee":
+                    employeeDH.UpdateMaintenanceEmployee((MaintenanceEmployee)employee);
+                    break;
+                case "ServiceManager":
+                    employeeDH.UpdateServiceManager((ServiceManager)employee);
+                    break;
+            }
+        }
 
-        //Cant create instance of abstract type or Interface
-        //public void InsertEmployee(Employee employee)
-        //{
-        //    EmployeeDH employeeDH = new EmployeeDH();
-        //    employeeDH.Insert(employee);
-        //}
+        public void UpdateSpecialisationOfMaintenanceEmployee(MaintenanceEmployee m)
+        {
+            EmployeeDH employeeDH = new EmployeeDH();
+            employeeDH.UpdateMaintenanceEmployeeSpecialisation(m);
+        }
 
-        //public void InsertCallCenterEmployee(CallCenterEmployee employee)
-        //{
-        //    EmployeeDH employeeDH = new EmployeeDH();
-        //    employeeDH.Insert(employee);
-        //}
+        public void InsertEmployee(Employee employee)
+        {
+            EmployeeDH employeeDH = new EmployeeDH();
+            switch (employee.GetType().Name)
+            {
+                case "CallCenterEmployee":
+                    employeeDH.InsertCallCenterEmployee((CallCenterEmployee)employee);
+                    break;
+                case "MaintenanceEmployee":
+                    employeeDH.InsertMaintenanceEmployee((MaintenanceEmployee)employee);
+                    break;
+                case "ServiceManager":
+                    employeeDH.InsertServiceManager((ServiceManager)employee);
+                    break;
+            }
+        }
 
-        //public void InsertMaintenanceEmployee(MaintenanceEmployee employee)
-        //{
-        //    EmployeeDH employeeDH = new EmployeeDH();
-        //    employeeDH.Insert(employee);
-        //}
+        //I kept these in if needed. Can take out if not used in in. ^^ does all in one :)
+        public void InsertCallCenterEmployee(CallCenterEmployee employee)
+        {
+            EmployeeDH employeeDH = new EmployeeDH();
+            employeeDH.InsertCallCenterEmployee(employee);
+        }
 
-        //public void InsertServiceManager(ServiceManager employee)
-        //{
-        //    EmployeeDH employeeDH = new EmployeeDH();
-        //    employeeDH.Insert(employee);
-        //}
+        public void InsertMaintenanceEmployee(MaintenanceEmployee employee)
+        {
+            EmployeeDH employeeDH = new EmployeeDH();
+            employeeDH.InsertMaintenanceEmployee(employee);
+        }
+
+        public void InsertServiceManager(ServiceManager employee)
+        {
+            EmployeeDH employeeDH = new EmployeeDH();
+            employeeDH.InsertServiceManager(employee);
+        }
 
         public List<Employee> SelectAllEmpployees()
         {
