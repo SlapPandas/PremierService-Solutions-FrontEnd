@@ -30,6 +30,7 @@ namespace PremiereSolutionProject.PL
         private void frmServicePackageManagement_Load(object sender, EventArgs e)
         {
             services = new Service().SelectAllServices();
+            
             sp = new ServicePackage().SelectAllServicePackage();
             RefreshDGV();
             lbxAvailable.Items.Add(services);

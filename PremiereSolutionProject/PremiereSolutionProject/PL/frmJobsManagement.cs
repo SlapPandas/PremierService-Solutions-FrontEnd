@@ -16,8 +16,6 @@ namespace PremiereSolutionProject.PL
     {
         Job JB = new Job();
         MaintenanceEmployee MainEmp = new MaintenanceEmployee();
-        int indexrow;
-        int Index;
         List<Job> myJob = new List<Job>();
         List<MaintenanceEmployee> myEmployee = new List<MaintenanceEmployee>();
         BindingSource bs = new BindingSource();
@@ -64,23 +62,21 @@ namespace PremiereSolutionProject.PL
                 NewJobList.Add(J);
             }
 
-            MaintenanceEmployee NewMEMP = new MaintenanceEmployee();
+            //MaintenanceEmployee NewMEMP = new MaintenanceEmployee();
 
-            foreach (MaintenanceEmployee Emp in NewMEMP.SelectAllMaintenaceEmpployees())
-            {
-                ListViewItem lst = new ListViewItem(new string[]
-                {
-                        Emp.Id,
-                        Emp.FirstName,
-                        Emp.Surname
-                });
-                lst.Tag = Emp;
-                lstAvailable.Items.Add(lst);
-                Availablelist.Add(Emp);
-            }
+            //foreach (MaintenanceEmployee Emp in NewMEMP.SelectAllMaintenaceEmpployees())
+            //{
+            //    ListViewItem lst = new ListViewItem(new string[]
+            //    {
+            //            Emp.Id,
+            //            Emp.FirstName,
+            //            Emp.Surname
+            //    });
+            //    lst.Tag = Emp;
+            //    lbxAvailable.Items.Add(lst);
+            //    Availablelist.Add(Emp);
+            //}
 
-
-            //myJob = JB.SelectAllJobs();
 
             myEmployee = MainEmp.SelectAllMaintenaceEmpployees();
 
@@ -104,20 +100,13 @@ namespace PremiereSolutionProject.PL
                     j.JobState.ToString()
                 });
 
-                //    lstInProgress.Items.Add(lst);
-                //}
+            }
 
-                //foreach (Job j in JB.SelectFinishedJobs())
-                //{
-                //    ListViewItem lst = new ListViewItem(new string[]
-                //    {
-                //        j.JobID.ToString(),
-                //        j.JobState.ToString()
-                //    });
-
-                //    lstCompleted.Items.Add(lst);
-                //}
-
+            List<MaintenanceEmployee> ME;
+            ME = new MaintenanceEmployee().SelectAllMaintenaceEmpployees();
+            foreach (MaintenanceEmployee m in ME)
+            {
+                lbxAvailTech.Items.Add(m.FirstName + ' ' + m.Id);
             }
         }
 
@@ -146,47 +135,25 @@ namespace PremiereSolutionProject.PL
                 throw new FormatException("Invalid Numeric Selection");
             }
 
-            //JB.UpdateJob(Job); //Need to parse a job object to update
         }
 
         private void btnAddTechnician_Click(object sender, EventArgs e)
         {
-            //   lstNewAssigned.Items.Add(lstAvailable.SelectedIndices[0]);
-
-            MainEmp = lstAvailable.SelectedItems[0].Tag as MaintenanceEmployee;
-
-            ListViewItem lst = new ListViewItem(new string[]
-                {
-                        MainEmp.Id,
-                        MainEmp.FirstName,
-                        MainEmp.Surname
-                });
-            lst.Tag = MainEmp;
-            lstNewAssigned.Items.Add(lst);
-            lstAvailable.Items.Remove(lst);
-
-            RemoveList.Add(MainEmp);
-            Availablelist.Remove(MainEmp);
-
+            if (!lbxNewAssigned.Items.Contains(lbxAvailTech.SelectedItem.ToString()))
+            {
+                lbxNewAssigned.Items.Add(lbxAvailTech.SelectedItem.ToString());
+            }
+            else
+            {
+                MessageBox.Show("The technician has already been newly assigned", "Add technicians Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnRemoveTechnician_Click(object sender, EventArgs e)
         {
 
-            MainEmp = lstAvailable.SelectedItems[0].Tag as MaintenanceEmployee;
-
-            ListViewItem lst = new ListViewItem(new string[]
-                {
-                        MainEmp.Id,
-                        MainEmp.FirstName,
-                        MainEmp.Surname
-                });
-            lst.Tag = MainEmp;
-            lstAvailable.Items.Add(lst);
-            lstNewAssigned.Items.Remove(lst);
-            RemoveList.Remove(MainEmp);
-            Availablelist.Add(MainEmp);
-
+            lbxNewAssigned.Items.RemoveAt(lbxNewAssigned.SelectedIndex);
         }
 
         public void UpdateJob()
@@ -211,6 +178,27 @@ namespace PremiereSolutionProject.PL
             //lstViewAssemp.Clear();
             //cbxCurrentState.Items.Clear();
 
+           
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstViewAssemp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstJobs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstJobs_MouseClick(object sender, MouseEventArgs e)
+        {
+            lstViewAssemp.Items.Clear();
             if (lstJobs.SelectedItems.Count > 0)
             {
                 cmbSpec.Items.Clear();
@@ -222,32 +210,32 @@ namespace PremiereSolutionProject.PL
                 JobState st;
                 st = NewJob.JobState;
 
-                if (st.ToString()=="Pending")
+                if (st.ToString() == "Pending")
                 {
                     cbxCurrentState.Text = "Pending";
                 }
-                if (st.ToString() == "In Progress")
+                if (st.ToString() == "InProgress")
                 {
-                    cbxCurrentState.Text = "In Progress";
+                    cbxCurrentState.Text = "InProgress";
                 }
-                if (st.ToString() == "Finshed")
+                if (st.ToString() == "Finished")
                 {
                     cbxCurrentState.Text = "Finished";
                 }
 
-                Specialisation newSp = NewJob.Specialisation; //Not a list of specialisations?
+                Specialisation newSp = NewJob.Specialisation;
 
                 List<Specialisation> newSpList = NewJob.Specialisation.GetSpecialisationNames();
 
-               
-                
+
+
                 foreach (Specialisation sp in newSpList)
                 {
                     cmbSpec.Items.Add(sp.SpecialisationName);
                 }
                 cmbSpec.Text = newSpList[0].SpecialisationName;
 
-               
+
 
                 NewEmp = NewJob.Employee;
 
@@ -266,24 +254,6 @@ namespace PremiereSolutionProject.PL
             {
                 MessageBox.Show("No record was selected ", "Jobs", MessageBoxButtons.OK);
             }
-
-           
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lstViewAssemp_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lstJobs_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
