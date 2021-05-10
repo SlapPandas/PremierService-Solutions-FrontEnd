@@ -59,9 +59,11 @@ namespace PremiereSolutionProject.PL
             this.lstViewAssemp = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cmbSpec = new System.Windows.Forms.ComboBox();
             this.lbxNewAssigned = new System.Windows.Forms.ListBox();
             this.lbxAvailTech = new System.Windows.Forms.ListBox();
+            this.lstSpecialisations = new System.Windows.Forms.ListView();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.nudEmployees)).BeginInit();
             this.SuspendLayout();
             // 
@@ -170,7 +172,7 @@ namespace PremiereSolutionProject.PL
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(36, 581);
+            this.label8.Location = new System.Drawing.Point(36, 658);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 17);
@@ -179,7 +181,7 @@ namespace PremiereSolutionProject.PL
             // 
             // nudEmployees
             // 
-            this.nudEmployees.Location = new System.Drawing.Point(213, 579);
+            this.nudEmployees.Location = new System.Drawing.Point(213, 656);
             this.nudEmployees.Name = "nudEmployees";
             this.nudEmployees.Size = new System.Drawing.Size(70, 22);
             this.nudEmployees.TabIndex = 118;
@@ -364,14 +366,6 @@ namespace PremiereSolutionProject.PL
             this.columnHeader4.Text = "Name";
             this.columnHeader4.Width = 120;
             // 
-            // cmbSpec
-            // 
-            this.cmbSpec.FormattingEnabled = true;
-            this.cmbSpec.Location = new System.Drawing.Point(213, 533);
-            this.cmbSpec.Name = "cmbSpec";
-            this.cmbSpec.Size = new System.Drawing.Size(121, 24);
-            this.cmbSpec.TabIndex = 138;
-            // 
             // lbxNewAssigned
             // 
             this.lbxNewAssigned.FormattingEnabled = true;
@@ -390,15 +384,39 @@ namespace PremiereSolutionProject.PL
             this.lbxAvailTech.Size = new System.Drawing.Size(189, 132);
             this.lbxAvailTech.TabIndex = 141;
             // 
+            // lstSpecialisations
+            // 
+            this.lstSpecialisations.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader6,
+            this.columnHeader9});
+            this.lstSpecialisations.HideSelection = false;
+            this.lstSpecialisations.Location = new System.Drawing.Point(213, 533);
+            this.lstSpecialisations.MultiSelect = false;
+            this.lstSpecialisations.Name = "lstSpecialisations";
+            this.lstSpecialisations.Size = new System.Drawing.Size(204, 100);
+            this.lstSpecialisations.TabIndex = 142;
+            this.lstSpecialisations.UseCompatibleStateImageBehavior = false;
+            this.lstSpecialisations.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Name";
+            this.columnHeader6.Width = 120;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Description";
+            this.columnHeader9.Width = 120;
+            // 
             // frmJobsManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1017, 745);
+            this.Controls.Add(this.lstSpecialisations);
             this.Controls.Add(this.lbxAvailTech);
             this.Controls.Add(this.lbxNewAssigned);
-            this.Controls.Add(this.cmbSpec);
             this.Controls.Add(this.lstViewAssemp);
             this.Controls.Add(this.lstJobs);
             this.Controls.Add(this.lstPending);
@@ -462,8 +480,10 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.ListView lstViewAssemp;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ComboBox cmbSpec;
         private System.Windows.Forms.ListBox lbxNewAssigned;
         private System.Windows.Forms.ListBox lbxAvailTech;
+        private System.Windows.Forms.ListView lstSpecialisations;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
     }
 }

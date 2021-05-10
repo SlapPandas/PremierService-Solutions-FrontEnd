@@ -243,6 +243,10 @@ namespace PremiereSolutionProject.PL
             HideSubMenu();
         }
 
-        
+        private void btnErrorHandling_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmErrorHandling());
+            HideSubMenu();
+        }
     }
 }

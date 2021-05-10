@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace PremiereSolutionProject.PL
 {
-    public partial class frmErrorsTesting : Form
+    public partial class frmErrorHandling : Form
     {
-        public frmErrorsTesting()
+        public frmErrorHandling()
         {
             InitializeComponent();
+        }
+
+        private void frmErrorsHandling_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

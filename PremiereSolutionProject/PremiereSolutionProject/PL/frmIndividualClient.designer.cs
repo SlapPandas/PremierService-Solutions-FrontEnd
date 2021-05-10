@@ -53,7 +53,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtPostalCode = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
-            this.dgvEmployee = new System.Windows.Forms.DataGridView();
+            this.dgvExistingClients = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
             this.btnAddClient = new System.Windows.Forms.Button();
             this.btnDeleteClient = new System.Windows.Forms.Button();
@@ -61,7 +61,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExistingClients)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
@@ -333,10 +333,11 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // dgvEmployee
+            // dgvExistingClients
             // 
-            this.dgvEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvExistingClients.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< Updated upstream
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployee.Location = new System.Drawing.Point(39, 119);
             this.dgvEmployee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -345,6 +346,16 @@
             this.dgvEmployee.Size = new System.Drawing.Size(476, 119);
             this.dgvEmployee.TabIndex = 80;
             this.dgvEmployee.SelectionChanged += new System.EventHandler(this.dgvEmployee_SelectionChanged);
+=======
+            this.dgvExistingClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExistingClients.Location = new System.Drawing.Point(39, 119);
+            this.dgvExistingClients.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvExistingClients.Name = "dgvExistingClients";
+            this.dgvExistingClients.RowHeadersWidth = 62;
+            this.dgvExistingClients.Size = new System.Drawing.Size(563, 95);
+            this.dgvExistingClients.TabIndex = 80;
+            this.dgvExistingClients.SelectionChanged += new System.EventHandler(this.dgvEmployee_SelectionChanged);
+>>>>>>> Stashed changes
             // 
             // label13
             // 
@@ -389,7 +400,11 @@
             this.cmbProvince.FormattingEnabled = true;
             this.cmbProvince.Location = new System.Drawing.Point(574, 298);
             this.cmbProvince.Name = "cmbProvince";
+<<<<<<< Updated upstream
             this.cmbProvince.Size = new System.Drawing.Size(220, 24);
+=======
+            this.cmbProvince.Size = new System.Drawing.Size(176, 24);
+>>>>>>> Stashed changes
             this.cmbProvince.TabIndex = 110;
             // 
             // label14
@@ -438,7 +453,7 @@
             this.Controls.Add(this.btnDeleteClient);
             this.Controls.Add(this.btnAddClient);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.dgvEmployee);
+            this.Controls.Add(this.dgvExistingClients);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtPostalCode);
@@ -469,7 +484,7 @@
             this.Name = "frmIndividualClient";
             this.Text = "Add New Individual Client";
             this.Load += new System.EventHandler(this.frmAddIndividualClient_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExistingClients)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -501,7 +516,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtPostalCode;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.DataGridView dgvEmployee;
+        private System.Windows.Forms.DataGridView dgvExistingClients;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnAddClient;
         private System.Windows.Forms.Button btnDeleteClient;

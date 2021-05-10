@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace PremiereSolutionProject.PL
 {
@@ -18,6 +19,7 @@ namespace PremiereSolutionProject.PL
 
         private void frmAddBusinessClient_Load(object sender, EventArgs e)
         {
+            dgvBusinessClients.ForeColor = Color.Black;
             bc = new BusinessClient().SelectAllBusinessClients();
             RefreshDGV();
             btnDeleteClient.Enabled = false;

@@ -46,6 +46,8 @@ namespace PremiereSolutionProject.PL
 
         private void FrmManageMaintenanceEmployee_Load(object sender, EventArgs e)
         {
+            dgvEmployee.ForeColor = Color.Black;
+
             me = new MaintenanceEmployee().SelectAllMaintenaceEmpployees();
             List<Specialisation> sp = new Specialisation().SelectSpecialisationList();
             foreach (Specialisation item in sp)

@@ -22,6 +22,8 @@ namespace PremiereSolutionProject.PL
         BindingSource bs = new BindingSource();
         List<MaintenanceEmployee> NewEmp = new List<MaintenanceEmployee>();
         JobState st;
+        int placeholder;
+        List<MaintenanceEmployee> ME;
 
 
         public frmJobsManagement()
@@ -80,8 +82,9 @@ namespace PremiereSolutionProject.PL
 
             }
 
-            List<MaintenanceEmployee> ME;
+           
             ME = new MaintenanceEmployee().SelectAllMaintenaceEmpployees();
+
             foreach (MaintenanceEmployee m in ME)
             {
                 lbxAvailTech.Items.Add(m.FirstName + ' ' + m.Id);
@@ -111,14 +114,15 @@ namespace PremiereSolutionProject.PL
             {
                 throw new FormatException("Invalid Numeric Selection");
             }
-            else if(string.IsNullOrEmpty(cmbSpec.Text))
-            {
-                throw new FormatException("Specialisation hasn't been chosen.");
-            }
             else
             {
+                SelectedJob.Employee = myEmployee;
                 JB.UpdateJob(SelectedJob);
                 MessageBox.Show("The job has been successfully updated", "Update Job", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cbxCurrentState.Text = "";
+                rtbNotes.Clear();
+                nudEmployees.Value = 0;
+                lbxNewAssigned.Items.Clear();
 
             }
 
@@ -130,8 +134,7 @@ namespace PremiereSolutionProject.PL
             if (!lbxNewAssigned.Items.Contains(lbxAvailTech.SelectedItem.ToString()))
             {
                 lbxNewAssigned.Items.Add(lbxAvailTech.SelectedItem.ToString());
-                //myEmployee.Add(lbxAvailTech.SelectedItem); //Need to get listbox items added to the list of type maintenance employee
-
+                myEmployee.Add(lbxAvailTech.SelectedItem as MaintenanceEmployee); //Need to get listbox items added to the list of type maintenance employee
             }
             else
             {
@@ -167,7 +170,6 @@ namespace PremiereSolutionProject.PL
 
             if (lstJobs.SelectedItems.Count > 0)
             {
-                cmbSpec.Items.Clear();
                 Job NewJob = lstJobs.SelectedItems[0].Tag as Job; //Creates a job object of the current job 
 
                 //int id, Address jAddress, JobState js, string jNotes, List<MaintenanceEmployee> mE, Specialisation spec, int sReqID, int empsNeeded
@@ -198,19 +200,19 @@ namespace PremiereSolutionProject.PL
                     cbxCurrentState.Text = "Finished";
                 }
 
-                ////Specialisation: ID, name and description
-
                 List<Specialisation> newSpList = NewJob.Specialisation.GetSpecialisationNames(); //We only want the specialisation name
                 special = NewJob.Specialisation;
                 SelectedJob.Specialisation = special;
 
-                
-
-                foreach (Specialisation sp in newSpList)
+                foreach (Specialisation sp in special)
                 {
-                    cmbSpec.Items.Add(sp.SpecialisationName);
+                    ListViewItem thylist = new ListViewItem(new string[]
+                    {
+                        sp.SpecialisationName,
+                        sp.Description
+                    });
+                    lstSpecialisations.Items.Add(thylist);
                 }
-                cmbSpec.Text = newSpList[0].SpecialisationName;
 
 
 
@@ -229,6 +231,7 @@ namespace PremiereSolutionProject.PL
                 }
 
                 
+
             }
             else
             {
