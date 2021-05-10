@@ -24,6 +24,7 @@ namespace PremiereSolutionProject.BLL
         private bool helpLine;
         private int responseTime;
         private string contractType;    //recurring or non-recurring
+        private int useCount;
         #endregion
 
         #region Properties
@@ -40,6 +41,7 @@ namespace PremiereSolutionProject.BLL
         internal IndividualClient Indclient { get => indclient; set => indclient = value; }
         internal BusinessClient Busclient { get => busclient; set => busclient = value; }
         public string ContractType { get => contractType; set => contractType = value; }
+        public int UseCount { get => useCount; set => useCount = value; }
         #endregion
 
         #region Constructors
@@ -48,6 +50,12 @@ namespace PremiereSolutionProject.BLL
         public Contract()
         {
 
+        }
+
+        public Contract(string id, int useCount)
+        {
+            this.contractID = id;
+            this.useCount = useCount;
         }
 
         //constructor with all the fields
