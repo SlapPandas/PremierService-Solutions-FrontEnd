@@ -73,7 +73,7 @@ namespace PremiereSolutionProject.BLL
         #endregion
 
         #region Methods
-        public void CheckPromotionEndDates()
+        private void CheckPromotionEndDates()
         {
             ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
             List<ServicePackage> allPackages = servicePackadgeDH.SelectAllServicePackedges();
@@ -94,6 +94,7 @@ namespace PremiereSolutionProject.BLL
 
         public List<ServicePackage> SelectAllServicePackage() // get a list of service packages contract can be built from
         {
+            CheckPromotionEndDates();
             ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
             return servicePackadgeDH.SelectAllServicePackedges();
         }
