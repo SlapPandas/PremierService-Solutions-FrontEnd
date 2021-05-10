@@ -612,6 +612,14 @@ AS
 		WHERE specialisationID = @id
 	COMMIT
 GO
+ALTER PROC UpdateServicePackedgePromotion @id INT, @startDate DATE,@endDate DATE,@state INT,@percentage FLOAT
+AS
+	BEGIN TRAN
+		UPDATE ServicePackage
+		SET promotionStartDate = @startDate, promotionEndDate = @endDate, onPromotion = @state,promotionPercentAmount = @percentage
+		WHERE servicePackageID = @id
+	COMMIT
+GO
 
 -- INSERT Procedures
 ALTER PROCEDURE InsertAddress @streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(4), @city VARCHAR(40)

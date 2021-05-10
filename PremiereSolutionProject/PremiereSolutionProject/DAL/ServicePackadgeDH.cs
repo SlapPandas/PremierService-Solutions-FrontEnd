@@ -32,6 +32,10 @@ namespace PremiereSolutionProject.DAL
             InsertAllServicesOfServicePackedge(servicePackage);
             UpdateCommand($"EXEC UpdateServicePackedgeServiceList @id = '{servicePackage.PackageID}'");
         }
+        public void UpdateServicePackedgePromotion(ServicePackage servicePackage)
+        {
+            UpdateCommand($"EXEC UpdateServicePackedgePromotion @id ='{servicePackage.PackageID}', @startDate ='{servicePackage.PromotionStartDate.ToString("yyyy-MM-dd HH:mm:ss")}',@endDate ='{servicePackage.PromotionEndDate.ToString("yyyy-MM-dd HH:mm:ss")}',@state ='{GetIntFromBool(servicePackage.OnPromotion)}',@percentage ='{servicePackage.PromotionPercentage.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'");
+        }
 
         #endregion
 
@@ -42,7 +46,7 @@ namespace PremiereSolutionProject.DAL
         }
         public void Insert(ServicePackage servicePackage)
         {
-            InsertCommand($"EXEC InsertServicePackage @name = '{servicePackage.PackageName}', @onpromotion = '{GetIntFromBool(servicePackage.OnPromotion)}', @promationStartDate = '{servicePackage.PromotionStartDate}', @promotionEndDate = '{servicePackage.PromotionEndDate}', @price = '{servicePackage.ServicePrice.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}',@percintage = '{servicePackage.PromotionPercentage.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'");
+            InsertCommand($"EXEC InsertServicePackage @name = '{servicePackage.PackageName}', @onpromotion = '{GetIntFromBool(servicePackage.OnPromotion)}', @promationStartDate = '{servicePackage.PromotionStartDate.ToString("yyyy-MM-dd HH:mm:ss")}', @promotionEndDate = '{servicePackage.PromotionEndDate.ToString("yyyy-MM-dd HH:mm:ss")}', @price = '{servicePackage.ServicePrice.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}',@percintage = '{servicePackage.PromotionPercentage.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'");
         }
         public void InsertPromotion(ServicePackage servicePackage)
         {
