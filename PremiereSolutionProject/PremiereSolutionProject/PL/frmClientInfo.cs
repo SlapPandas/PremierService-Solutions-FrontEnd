@@ -40,7 +40,7 @@ namespace PremiereSolutionProject.PL
         {
             dgvClientInfo.ForeColor = Color.Black;
             dgvClientContractInfo.ForeColor = Color.Black;
-            dgvClientInfo.ForeColor = Color.Black;
+            dgvViewClient.ForeColor = Color.Black;
 
             bClient = new BusinessClient().SelectAllBusinessClients();
             iClient = new IndividualClient().SelectAllIndividualClients();
