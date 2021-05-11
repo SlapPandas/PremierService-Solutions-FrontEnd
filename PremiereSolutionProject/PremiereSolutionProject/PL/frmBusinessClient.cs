@@ -22,15 +22,6 @@ namespace PremiereSolutionProject.PL
             dgvBusinessClients.ForeColor = Color.Black;
             bc = new BusinessClient().SelectAllBusinessClients();
             RefreshDGV();
-            cmbProvince.Items.Add("North_West");
-            cmbProvince.Items.Add("Gauteng");
-            cmbProvince.Items.Add("Western_Cape");
-            cmbProvince.Items.Add("Eastern_Cape");
-            cmbProvince.Items.Add("Free_State");
-            cmbProvince.Items.Add("Northern_Cape");
-            cmbProvince.Items.Add("Mpumalanga");
-            cmbProvince.Items.Add("Limpopo");
-            cmbProvince.Items.Add("Kwazulu_Natal");
             //btnDeleteClient.Enabled = false;
         }
         private void RefreshDGV()
@@ -187,17 +178,17 @@ namespace PremiereSolutionProject.PL
 
         private void UpdateData()
         {
-
-            foreach (var item in cmbProvince.Items)
+            
+            foreach (Address item in cmbProvince.Items)
             {
-                if (item.ToString() == selectedBc.Address.Province.ToString())
+                if (item.Province == selectedBc.Address.Province)
                 {
-                    cmbProvince.SelectedItem = item.ToString();
+                    cmbProvince.SelectedItem = item.Province;
                     break;
                 }
             }
-
-
+            
+           
             txtBusinessName.Text = selectedBc.BusinessName;
             txtCity.Text = selectedBc.Address.City;
             txtContactNumber.Text = selectedBc.ContactNumber;

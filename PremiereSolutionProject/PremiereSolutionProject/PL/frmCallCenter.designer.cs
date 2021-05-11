@@ -157,6 +157,7 @@ namespace PremiereSolutionProject.PL
             // 
             // btnSearchClient
             // 
+            this.btnSearchClient.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSearchClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchClient.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSearchClient.Location = new System.Drawing.Point(139, 611);

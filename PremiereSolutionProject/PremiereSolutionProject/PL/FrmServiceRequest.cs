@@ -33,48 +33,41 @@ namespace PremiereSolutionProject.PL
         {
             try
             {
-                string clientName = "";
                 specList = new List<string>();
                 spec = new Specialisation().SelectSpecialisationList();
-                List<IndividualClient> ic = new IndividualClient().SelectAllIndividualClients();
-                List<BusinessClient> bc = new BusinessClient().SelectAllBusinessClients();
                 foreach (Specialisation item in spec)
                 {
                     cbxSpecialisation.Items.Add(item.SpecialisationName);
                 }
-                if (dashform.callInfo != null)
+                lblCallID.Text = dashform.callInfo.CallID.ToString();
+                List<IndividualClient> ic = new IndividualClient().SelectAllIndividualClients();
+                List<BusinessClient> bc = new BusinessClient().SelectAllBusinessClients();
+                List<Client> cl = dashform.callInfo.Client.SelectAllClients();
+                string clientName = "";
+                if (dashform.callInfo.Client.Id[0] == 'A')
                 {
-                    lblCallID.Text = dashform.callInfo.CallID.ToString();
-                    
-                    if (dashform.callInfo.Client.Id[0] == 'A')
+                    foreach (IndividualClient item in ic)
                     {
-                        foreach (IndividualClient item in ic)
+                        if (dashform.callInfo.Client.Id == item.Id)
                         {
-                            if (dashform.callInfo.Client.Id == item.Id)
-                            {
-                                clientName = item.FirstName;
-                            }
+                            clientName = item.FirstName;
                         }
-                    }
-                    else if (dashform.callInfo.Client.Id[0] == 'B')
-                    {
-                        foreach (BusinessClient item in bc)
-                        {
-                            if (dashform.callInfo.Client.Id == item.Id)
-                            {
-                                clientName = item.BusinessName;
-                            }
-                        }
-                    }
-                    if (dashform.callInfo.Client != null)
-                    {
-                        lblClientName.Text = clientName;
                     }
                 }
-                
-                
-                //List<Client> cl = dashform.callInfo.Client.SelectAllClients();
-                
+                else if (dashform.callInfo.Client.Id[0] == 'B')
+                {
+                    foreach (BusinessClient item in bc)
+                    {
+                        if (dashform.callInfo.Client.Id == item.Id)
+                        {
+                            clientName = item.BusinessName;
+                        }
+                    }
+                }
+                if (dashform.callInfo.Client != null)
+                {
+                    lblClientName.Text = clientName;
+                }
 
             }
             catch (FormatException fe)

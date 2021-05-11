@@ -73,7 +73,7 @@
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(23, 227);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -94,7 +94,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.richTextBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.richTextBox1.Location = new System.Drawing.Point(216, 224);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
@@ -124,7 +124,7 @@
             // 
             // cbxSpecialisation
             // 
-            this.cbxSpecialisation.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cbxSpecialisation.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbxSpecialisation.FormattingEnabled = true;
             this.cbxSpecialisation.Location = new System.Drawing.Point(216, 382);
             this.cbxSpecialisation.Margin = new System.Windows.Forms.Padding(4);
@@ -134,7 +134,7 @@
             // 
             // label5
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(23, 385);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -171,7 +171,7 @@
             // 
             // label6
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(23, 456);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -194,7 +194,7 @@
             // 
             // nudNumberOfPeople
             // 
-            this.nudNumberOfPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.nudNumberOfPeople.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.nudNumberOfPeople.Location = new System.Drawing.Point(216, 456);
             this.nudNumberOfPeople.Name = "nudNumberOfPeople";
             this.nudNumberOfPeople.Size = new System.Drawing.Size(133, 23);
