@@ -44,6 +44,11 @@ namespace PremiereSolutionProject.DAL
             InsertAllSpeciliozationOfNewServiceRequest(serviceRequest);
             InsertCommand($"EXEC InsertServiceRequestWithSpecializationList @callId ='{serviceRequest.CallID}', @closed ='{GetIntFromBool(serviceRequest.Closed)}', @description ='{serviceRequest.Description}',@priorityLevel ='{serviceRequest.PriorityLevel}'");
         }
+        public int InsertWithSpecilizationListWithReturnedId(ServiceRequest serviceRequest)
+        {
+            InsertAllSpeciliozationOfNewServiceRequest(serviceRequest);
+            return InsertCommandWithReturnedId($"EXEC InsertServiceRequestWithSpecializationListWithReturnedId @callId ='{serviceRequest.CallID}', @closed ='{GetIntFromBool(serviceRequest.Closed)}', @description ='{serviceRequest.Description}',@priorityLevel ='{serviceRequest.PriorityLevel}'");
+        }
         #endregion
 
         #region Select

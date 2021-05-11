@@ -859,6 +859,22 @@ AS
 		DELETE FROM TVP
 	COMMIT
 GO
+CREATE PROC InsertServiceRequestWithSpecializationListWithReturnedId @callId INT, @closed INT, @description VARCHAR(255),@priorityLevel VARCHAR(255)
+AS
+	BEGIN TRAN
+		DECLARE @serviceRequestId INT
+		INSERT INTO [ServiceRequest] ([callID], [closed], [description],[priorityLevel])
+		VALUES (@callId, @closed, @description,@priorityLevel)
+		SET @serviceRequestId = SCOPE_IDENTITY()
+
+		INSERT INTO ServiceRequestSpecialisationLink(ServiceRequestID,specialisationRequiredID)
+		SELECT @serviceRequestId,idIntOne FROM TVP
+
+		DELETE FROM TVP
+
+		SELECT IDENT_CURRENT('ServiceRequest')
+	COMMIT
+GO
 CREATE PROC UpdateSpecialization @id INT, @name VARCHAR(100),@description VARCHAR(255)
 AS
 	BEGIN TRAN
