@@ -98,7 +98,7 @@ namespace PremiereSolutionProject.BLL
         }
         #endregion
 
-        #region Methods
+        #region Methods 
 
         public List<Job> SelectAllJobs() // get a list of all jobs
         {

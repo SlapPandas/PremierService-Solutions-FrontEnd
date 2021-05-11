@@ -61,24 +61,17 @@ namespace PremiereSolutionProject.BLL
             this.specialisationRequiredList = specRequired;
             this.priorityLevel = priority;
         }
-
-        //constructor with callback for event
-        public ServiceRequest(bool c, string desc, int callID, List<string> specRequired, string priority, Action callback)
+        public ServiceRequest(string desc, int callID, List<string> specRequired, Action callback)
         {
             this.OnInitialization += callback;
             callback = service_OnInitialization;
-            this.closed = c;
             this.description = desc;
             this.callID = callID;
             this.spesialisationRequiredNumberEmployees = specRequired;
-            this.priorityLevel = priority;
             if (OnInitialization != null) OnInitialization();
         }
-        public ServiceRequest(bool c, string desc, int callID, List<string> specRequired, Action callback)
+        public ServiceRequest(string desc, int callID, List<string> specRequired)
         {
-            this.OnInitialization += callback;
-            callback = service_OnInitialization;
-            this.closed = c;
             this.description = desc;
             this.callID = callID;
             this.spesialisationRequiredNumberEmployees = specRequired;
@@ -195,26 +188,58 @@ namespace PremiereSolutionProject.BLL
             return null;
         }
 
+        private int InsertServiceRequestReturnID (ServiceRequest sr)
+        {
+            ServiceRequestDH serviceRequestDH = new ServiceRequestDH();
+            sr.specialisationRequiredList = GenerateSpecialisationList(sr.spesialisationRequiredNumberEmployees);
+            return serviceRequestDH.InsertWithSpecilizationListWithReturnedId(sr);
+        }
+
         public void CreateJobs(ServiceRequest sr) //creates all the jobs from a call
         {
+            sr.closed = false;
             List<Job> jobList = new List<Job>();
             CallDH callDH = new CallDH();
-            ///Call c = callDH.SelectCallById(sr.callID);    //from DAL where SELECTing a call according to call ID --> sr.CallID
-            List<int> employeesPerJob = GetNumEmployeesForJob(sr.spesialisationRequiredNumberEmployees);  //getting corresponding number of employees
-            List<Specialisation> specialisationList = GenerateSpecialisationList(sr.spesialisationRequiredNumberEmployees);
+            sr.serviceRequestID = InsertServiceRequestReturnID(sr); // insert the SR into database and return the SR ID
+            Call c = callDH.SelectCallById(sr.callID);    //select call using SR ID
+            ContractDH contractDH = new ContractDH();
+            if (c.Indclient.Id != null)
+            {
+                Contract contract = contractDH.SelectContractByIndividualClientIdCurrentlyActive(c.Indclient.Id);
+                sr.priorityLevel = contract.PriorityLevel;
+            }
+            else if(c.Busclient.Id != null)
+            {
+                Contract contract = contractDH.SelectContractByBusinessClientIdCurrentlyActive(c.Busclient.Id);
+                sr.priorityLevel = contract.PriorityLevel;
+            }
+            
+            List<int> employeesPerJob = GetNumEmployeesForJob(sr.spesialisationRequiredNumberEmployees);  //getting corresponding number of employees            
             //to generate all the jobs for the service request according to the specialisations required
             //create all jobs for a service request
-            for (int i = 0; i < specialisationList.Count; i++) //iterating thru the specialisations in the list
+            if (c.Indclient == null)
             {
-                ///jobList.Add(new Job(c.Client.Address, JobState.Pending, c.CallNotes, null, specialisationList[i], this.ServiceRequestID, employeesPerJob[i]));
-                //Maintenance employee will be null since it has not been assigned yet
+                for (int i = 0; i < sr.specialisationRequiredList.Count; i++) //iterating thru the specialisations in the list
+                {
+                    jobList.Add(new Job(c.Busclient.Address, JobState.Pending, c.CallNotes, null, sr.specialisationRequiredList[i], sr.serviceRequestID, employeesPerJob[i]));
+                    //Maintenance employee will be null since it has not been assigned yet
+                }
             }
+            if (c.Busclient == null)
+            {
+                for (int i = 0; i < sr.specialisationRequiredList.Count; i++) //iterating thru the specialisations in the list
+                {
+                    jobList.Add(new Job(c.Indclient.Address, JobState.Pending, c.CallNotes, null, sr.specialisationRequiredList[i], sr.serviceRequestID, employeesPerJob[i]));
+                    //Maintenance employee will be null since it has not been assigned yet
+                }
+            }
+            
             //need to add jobs to database after being created from a service request
             JobDH jobDH = new JobDH();
             foreach (Job jobitem in jobList)
             {
                 jobDH.Insert(jobitem);
-            }
+            }            
         }
 
         public void AssignPendingJobs()
