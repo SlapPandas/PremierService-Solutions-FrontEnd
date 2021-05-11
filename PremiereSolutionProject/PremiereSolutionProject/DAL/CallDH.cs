@@ -184,6 +184,40 @@ namespace PremiereSolutionProject.DAL
 
             return call;
         }
+        public Call SelectCallById(int id)
+        {
+            Call call = new Call();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectCallbyId @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Call checkClientOfCall = new Call((int)reader["callID"], reader.IsDBNull(reader.GetOrdinal("ClientIndividualID")) ? -1 : Convert.ToInt32(reader["ClientIndividualID"]), reader.IsDBNull(reader.GetOrdinal("ClientBusinessID")) ? -1 : Convert.ToInt32(reader["ClientBusinessID"]));
+                        if (checkClientOfCall.IndclientID == -1)
+                        {
+                            call = SelectCallByIdBusinessClient((int)checkClientOfCall.BusclientID);
+                        }
+                        if (checkClientOfCall.BusclientID == -1)
+                        {
+                            call = SelectCallByIdIndividualClient((int)checkClientOfCall.IndclientID);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
+            }
+            finally { }
+
+            return call;
+        }
         #endregion
 
         //Not 100% sure
