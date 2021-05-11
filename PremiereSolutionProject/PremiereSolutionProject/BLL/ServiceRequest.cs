@@ -74,6 +74,16 @@ namespace PremiereSolutionProject.BLL
             this.priorityLevel = priority;
             if (OnInitialization != null) OnInitialization();
         }
+        public ServiceRequest(bool c, string desc, int callID, List<string> specRequired, Action callback)
+        {
+            this.OnInitialization += callback;
+            callback = service_OnInitialization;
+            this.closed = c;
+            this.description = desc;
+            this.callID = callID;
+            this.spesialisationRequiredNumberEmployees = specRequired;
+            if (OnInitialization != null) OnInitialization();
+        }
 
         public void service_OnInitialization()
         {
@@ -127,6 +137,7 @@ namespace PremiereSolutionProject.BLL
         public void CreateServiceRequest(ServiceRequest s)
         {
             s.closed = false;
+
             ServiceRequest serviceRequest = new ServiceRequest(s.closed, s.description, s.callID, GenerateSpecialisationList(s.spesialisationRequiredNumberEmployees), s.priorityLevel);
 
             InsertServiceRequest(serviceRequest); //insert new service request directly into DB
@@ -188,23 +199,18 @@ namespace PremiereSolutionProject.BLL
         {
             List<Job> jobList = new List<Job>();
             CallDH callDH = new CallDH();
-            //Call c = callDH.SelectCallByCallId(sr.callID);    //from DAL where SELECTing a call according to call ID --> sr.CallID
-
+            Call c = callDH.SelectCallById(sr.callID);    //from DAL where SELECTing a call according to call ID --> sr.CallID
             List<int> employeesPerJob = GetNumEmployeesForJob(sr.spesialisationRequiredNumberEmployees);  //getting corresponding number of employees
-
             List<Specialisation> specialisationList = GenerateSpecialisationList(sr.spesialisationRequiredNumberEmployees);
             //to generate all the jobs for the service request according to the specialisations required
-
             //create all jobs for a service request
             for (int i = 0; i < specialisationList.Count; i++) //iterating thru the specialisations in the list
             {
-                //jobList.Add(new Job(c.Client.Address, JobState.Pending, c.CallNotes, null, specialisationList[i], this.ServiceRequestID, employeesPerJob[i]));
+                jobList.Add(new Job(c.Client.Address, JobState.Pending, c.CallNotes, null, specialisationList[i], this.ServiceRequestID, employeesPerJob[i]));
                 //Maintenance employee will be null since it has not been assigned yet
             }
-
             //need to add jobs to database after being created from a service request
             JobDH jobDH = new JobDH();
-
             foreach (Job jobitem in jobList)
             {
                 jobDH.Insert(jobitem);
