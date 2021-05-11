@@ -113,25 +113,13 @@ namespace PremiereSolutionProject.BLL
             return employeeDH.SelectAllMaintenanceEmployeesWithGivenSpecilization(id);
         }
 
-        public void EscalateJob(int newPosition, int jobID)  //?????????
+        public void EscalateJob(int newResponseDays, Job job) 
         {
-            //move a specific job up
-            // note that this is not gonna work properly since list is not stored somewhere right now
-            ServiceRequest serviceRequest = new ServiceRequest();
+            // used to create a special prio level. SPE = special
+            string newPrio = "SPE" + newResponseDays.ToString();
+            job.PriorityLevel = newPrio;
             JobDH jobDH = new JobDH();
-
-            List<Job> jobList = serviceRequest.OrderJobList(jobDH.SelectAllPendingJobs());
-
-            for (int i = 0; i < jobList.Count; i++)
-            {
-                if (jobList[i].JobID.Equals(jobID))
-                {
-                    Job jobtomove = jobList[i];
-                    jobList.RemoveAt(i);
-                    jobList.Insert(newPosition, jobtomove);
-                    break;
-                }
-            }
+            jobDH.Update(job);
         }
 
         public void ReAssignJob(int id, List<MaintenanceEmployee> employees)
