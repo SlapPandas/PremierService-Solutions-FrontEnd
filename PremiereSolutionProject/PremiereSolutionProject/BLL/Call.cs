@@ -16,6 +16,8 @@ namespace PremiereSolutionProject.BLL
         private Client client;
         private IndividualClient indclient;
         private BusinessClient busclient;
+        private int? indclientID;
+        private int? busclientID;
         private CallCenterEmployee employee;
         private string callNotes;
         private List<string> specialisationList;
@@ -31,11 +33,13 @@ namespace PremiereSolutionProject.BLL
         public List<string> SpecialisationList { get => specialisationList; set => specialisationList = value; }
         internal IndividualClient Indclient { get => indclient; set => indclient = value; }
         internal BusinessClient Busclient { get => busclient; set => busclient = value; }
+        public int? IndclientID { get => indclientID; set => indclientID = value; }
+        public int? BusclientID { get => busclientID; set => busclientID = value; }
         #endregion
 
         #region Constructors
         //default constructor
-         public Call()
+        public Call()
         {
         }
 
@@ -70,11 +74,11 @@ namespace PremiereSolutionProject.BLL
             this.callNotes = cNotes;
         }
 
-        public Call(int id, int individualID, int businessID)
+        public Call(int id, int? individualID, int? businessID)
         {
             this.callID = id;
-            this.callID = individualID;
-            this.callID = businessID;
+            this.indclientID = individualID;
+            this.busclientID = businessID;
         }
 
         public Call(int id, DateTime start, DateTime end, BusinessClient c, CallCenterEmployee ccEmp, string cNotes)
