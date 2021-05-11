@@ -114,7 +114,7 @@ namespace PremiereSolutionProject.BLL
          public CallCenterEmployee GenerateRandomEmployee()
         {
             EmployeeDH employeeDH = new EmployeeDH();
-            List<CallCenterEmployee> ccEmpList = employeeDH.SelectAllCallCenterEmployees(); //list of all call center employees
+            List<CallCenterEmployee> ccEmpList = employeeDH.SelectAllCallCenterEmployeesForCall(); //list of all call center employees
 
             Random random = new Random();
 

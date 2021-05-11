@@ -13,6 +13,18 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmClientInfo : Form
     {
+        frmDashboard dashform;
+        List<ServicePackage> package;
+        List<Service> service;
+        List<BusinessClient> bClient;
+        List<IndividualClient> iClient;
+        List<Call> calls;
+        List<ServiceRequest> sReq;
+        List<Client> ClientList;
+
+        BindingSource bs = new BindingSource();
+        BindingSource bs2 = new BindingSource();
+
         public frmClientInfo()
         {
             InitializeComponent();
@@ -25,17 +37,6 @@ namespace PremiereSolutionProject.PL
         {
             this.Close();
         }
-        frmDashboard dashform;
-        List<ServicePackage> package;
-        List<Service> service;
-        List<BusinessClient> bClient;
-        List<IndividualClient> iClient;
-        List<Call> calls;
-        List<ServiceRequest> sReq;
-        List<Client> ClientList;
-        
-        BindingSource bs = new BindingSource();
-        BindingSource bs2 = new BindingSource();
         private void frmClientInfo_Load(object sender, EventArgs e)
         {
             dgvClientInfo.ForeColor = Color.Black;

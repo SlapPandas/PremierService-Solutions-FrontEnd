@@ -1245,6 +1245,12 @@ BEGIN
 	WHERE Job.jobID = @id
 END
 GO
+CREATE PROCEDURE SelectCallbyId @id INT AS
+BEGIN
+	SELECT * FROM [Call]
+	WHERE [Call].callID = @id
+END
+GO
 CREATE PROCEDURE SelectAllCallsByIndividualClientId @id VARCHAR(100) AS
 BEGIN
 	SELECT * FROM [Call]

@@ -84,6 +84,32 @@ namespace PremiereSolutionProject.DAL
 
             return callCenterEmployeeList;
         }
+        public List<CallCenterEmployee> SelectAllCallCenterEmployeesForCall()
+        {
+            List<CallCenterEmployee> callCenterEmployeeList = new List<CallCenterEmployee>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectCallCenterEmployees";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        callCenterEmployeeList.Add(new CallCenterEmployee((string)reader["employeeNumber"], (string)reader["firstName"], (string)reader["surname"]));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
+            }
+            finally { }
+
+            return callCenterEmployeeList;
+        }
         public List<MaintenanceEmployee> SelectAllMaintenanceEmployees()
         {
             List<MaintenanceEmployee> maintenanceEmployeeList = new List<MaintenanceEmployee>();

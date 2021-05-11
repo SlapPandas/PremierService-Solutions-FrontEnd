@@ -982,6 +982,12 @@ BEGIN
 	WHERE Job.jobID = @id
 END
 GO
+ALTER PROCEDURE SelectCallbyId @id INT AS
+BEGIN
+	SELECT * FROM [Call]
+	WHERE [Call].callID = @id
+END
+GO
 ALTER PROCEDURE SelectAllCallsByIndividualClientId @id VARCHAR(100) AS
 BEGIN
 	SELECT * FROM [Call]

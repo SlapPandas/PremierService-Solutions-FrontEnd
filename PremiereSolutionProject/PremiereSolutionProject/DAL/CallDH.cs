@@ -128,6 +128,34 @@ namespace PremiereSolutionProject.DAL
 
             return call;
         }
+        public Call SelectCallById(int id)
+        {
+            Call call = new Call();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectCallbyId @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
+                        //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
+                        call = new Call((int)reader["callID"], (DateTime)reader["startTime"], (DateTime)reader["endTime"], callcenterEnptyEmployee, (string)reader["callNotes"]);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
+            }
+            finally { }
+
+            return call;
+        }
         #endregion
         
         //Not 100% sure

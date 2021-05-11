@@ -23,7 +23,10 @@ namespace PremiereSolutionProject.BLL
         public CallCenterEmployee(string id, string fname, string sname, Address address, string contactnr, string email, string natID, DateTime date, bool employed, string department = "Call Center")
         : base(id, fname, sname, address, contactnr, email, natID, date, employed, department)
         {
-            Department = department; ;
+            Department = department;
+        }
+        public CallCenterEmployee(string id, string fname, string sname): base(id, fname, sname)
+        {
         }
 
         //contructor without ID field

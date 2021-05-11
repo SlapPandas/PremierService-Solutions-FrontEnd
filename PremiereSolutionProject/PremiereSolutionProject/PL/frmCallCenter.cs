@@ -37,14 +37,11 @@ namespace PremiereSolutionProject.PL
 
         private void btnAnswer_Click(object sender, EventArgs e)
         {
-
             dashform.callInfo = new Call();
-
-            CallCenterEmployee Emp = dashform.callInfo.GenerateRandomEmployee();
-            dashform.callInfo.CreateCall();
+            Call call =  dashform.callInfo.CreateCall();
             //dashform.callInfo.LogClientToCall(dashform.callInfo.CallID,)
 
-            lblEmpName.Text = Emp.FirstName;
+            lblEmpName.Text = call.Employee.FirstName;
 
         }
 

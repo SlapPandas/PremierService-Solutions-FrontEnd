@@ -56,6 +56,12 @@ namespace PremiereSolutionProject.BLL
             this.employed = employed;
             this.department = department;
         }
+        public Employee(string id, string fname, string sname)
+        {
+            this.id = id;
+            this.firstName = fname;
+            this.surname = sname;
+        }
 
         //copnstructor with all fields except ID
         public Employee(string fname, string sname, Address address, string contactnr, string email, string natID, DateTime date, bool employed, string department)
