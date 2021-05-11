@@ -45,8 +45,6 @@ namespace PremiereSolutionProject.PL
             // 
             // label8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(32, 97);
@@ -60,7 +58,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.dgvCurrentServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCurrentServices.Location = new System.Drawing.Point(169, 97);
-            this.dgvCurrentServices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvCurrentServices.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCurrentServices.Name = "dgvCurrentServices";
             this.dgvCurrentServices.RowHeadersWidth = 62;
             this.dgvCurrentServices.Size = new System.Drawing.Size(644, 158);
@@ -83,8 +81,6 @@ namespace PremiereSolutionProject.PL
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(32, 358);
@@ -96,8 +92,6 @@ namespace PremiereSolutionProject.PL
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(32, 298);
@@ -109,21 +103,17 @@ namespace PremiereSolutionProject.PL
             // 
             // txtServiceName
             // 
-            this.txtServiceName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtServiceName.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtServiceName.Location = new System.Drawing.Point(169, 298);
-            this.txtServiceName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtServiceName.Margin = new System.Windows.Forms.Padding(4);
             this.txtServiceName.Name = "txtServiceName";
             this.txtServiceName.Size = new System.Drawing.Size(485, 20);
             this.txtServiceName.TabIndex = 71;
             // 
             // rtbServiceDescription
             // 
-            this.rtbServiceDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbServiceDescription.Location = new System.Drawing.Point(169, 358);
-            this.rtbServiceDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rtbServiceDescription.Margin = new System.Windows.Forms.Padding(4);
             this.rtbServiceDescription.Name = "rtbServiceDescription";
             this.rtbServiceDescription.Size = new System.Drawing.Size(485, 153);
             this.rtbServiceDescription.TabIndex = 74;
@@ -131,11 +121,10 @@ namespace PremiereSolutionProject.PL
             // 
             // btnCreatePackage
             // 
-            this.btnCreatePackage.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCreatePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreatePackage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreatePackage.Location = new System.Drawing.Point(424, 574);
-            this.btnCreatePackage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreatePackage.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreatePackage.Name = "btnCreatePackage";
             this.btnCreatePackage.Size = new System.Drawing.Size(148, 26);
             this.btnCreatePackage.TabIndex = 79;
@@ -149,7 +138,7 @@ namespace PremiereSolutionProject.PL
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(804, 636);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(91, 28);
             this.btnExit.TabIndex = 80;
@@ -158,11 +147,10 @@ namespace PremiereSolutionProject.PL
             // 
             // btnDeleteService
             // 
-            this.btnDeleteService.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnDeleteService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteService.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteService.Location = new System.Drawing.Point(627, 574);
-            this.btnDeleteService.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeleteService.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteService.Name = "btnDeleteService";
             this.btnDeleteService.Size = new System.Drawing.Size(141, 26);
             this.btnDeleteService.TabIndex = 81;
@@ -172,11 +160,10 @@ namespace PremiereSolutionProject.PL
             // 
             // btnUpdateService
             // 
-            this.btnUpdateService.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnUpdateService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateService.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateService.Location = new System.Drawing.Point(199, 574);
-            this.btnUpdateService.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdateService.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateService.Name = "btnUpdateService";
             this.btnUpdateService.Size = new System.Drawing.Size(140, 26);
             this.btnUpdateService.TabIndex = 82;
@@ -202,7 +189,7 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.dgvCurrentServices);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmServiceManagement";
             this.Text = "Create Service";
             this.Load += new System.EventHandler(this.frmServiceManagement_Load);

@@ -199,14 +199,14 @@ namespace PremiereSolutionProject.BLL
         {
             List<Job> jobList = new List<Job>();
             CallDH callDH = new CallDH();
-            Call c = callDH.SelectCallById(sr.callID);    //from DAL where SELECTing a call according to call ID --> sr.CallID
+            ///Call c = callDH.SelectCallById(sr.callID);    //from DAL where SELECTing a call according to call ID --> sr.CallID
             List<int> employeesPerJob = GetNumEmployeesForJob(sr.spesialisationRequiredNumberEmployees);  //getting corresponding number of employees
             List<Specialisation> specialisationList = GenerateSpecialisationList(sr.spesialisationRequiredNumberEmployees);
             //to generate all the jobs for the service request according to the specialisations required
             //create all jobs for a service request
             for (int i = 0; i < specialisationList.Count; i++) //iterating thru the specialisations in the list
             {
-                jobList.Add(new Job(c.Client.Address, JobState.Pending, c.CallNotes, null, specialisationList[i], this.ServiceRequestID, employeesPerJob[i]));
+                ///jobList.Add(new Job(c.Client.Address, JobState.Pending, c.CallNotes, null, specialisationList[i], this.ServiceRequestID, employeesPerJob[i]));
                 //Maintenance employee will be null since it has not been assigned yet
             }
             //need to add jobs to database after being created from a service request

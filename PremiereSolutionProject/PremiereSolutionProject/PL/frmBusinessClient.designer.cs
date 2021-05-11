@@ -78,7 +78,7 @@ namespace PremiereSolutionProject.PL
             this.lblTaxNum.AutoSize = true;
             this.lblTaxNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaxNum.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTaxNum.Location = new System.Drawing.Point(87, 252);
+            this.lblTaxNum.Location = new System.Drawing.Point(88, 311);
             this.lblTaxNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTaxNum.Name = "lblTaxNum";
             this.lblTaxNum.Size = new System.Drawing.Size(85, 17);
@@ -93,7 +93,7 @@ namespace PremiereSolutionProject.PL
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(87, 199);
+            this.label2.Location = new System.Drawing.Point(88, 258);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 17);
@@ -106,7 +106,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBusinessName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBusinessName.Location = new System.Drawing.Point(264, 194);
+            this.txtBusinessName.Location = new System.Drawing.Point(265, 253);
             this.txtBusinessName.Margin = new System.Windows.Forms.Padding(4);
             this.txtBusinessName.Name = "txtBusinessName";
             this.txtBusinessName.Size = new System.Drawing.Size(468, 22);
@@ -118,7 +118,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTaxNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTaxNum.Location = new System.Drawing.Point(264, 252);
+            this.txtTaxNum.Location = new System.Drawing.Point(265, 311);
             this.txtTaxNum.Margin = new System.Windows.Forms.Padding(4);
             this.txtTaxNum.Name = "txtTaxNum";
             this.txtTaxNum.Size = new System.Drawing.Size(468, 22);
@@ -161,7 +161,7 @@ namespace PremiereSolutionProject.PL
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(88, 564);
+            this.label9.Location = new System.Drawing.Point(89, 623);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(110, 17);
@@ -174,7 +174,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtContactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactNumber.Location = new System.Drawing.Point(264, 559);
+            this.txtContactNumber.Location = new System.Drawing.Point(265, 618);
             this.txtContactNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactNumber.Name = "txtContactNumber";
             this.txtContactNumber.Size = new System.Drawing.Size(468, 22);
@@ -187,7 +187,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(88, 513);
+            this.label12.Location = new System.Drawing.Point(89, 572);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(84, 17);
@@ -200,7 +200,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPostalCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPostalCode.Location = new System.Drawing.Point(264, 508);
+            this.txtPostalCode.Location = new System.Drawing.Point(265, 567);
             this.txtPostalCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(468, 22);
@@ -213,7 +213,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(88, 460);
+            this.label11.Location = new System.Drawing.Point(89, 519);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(63, 17);
@@ -227,7 +227,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(88, 409);
+            this.label10.Location = new System.Drawing.Point(89, 468);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(31, 17);
@@ -240,7 +240,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCity.Location = new System.Drawing.Point(264, 404);
+            this.txtCity.Location = new System.Drawing.Point(265, 463);
             this.txtCity.Margin = new System.Windows.Forms.Padding(4);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(468, 22);
@@ -253,7 +253,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(88, 359);
+            this.label5.Location = new System.Drawing.Point(89, 418);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 17);
@@ -266,7 +266,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSuburb.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSuburb.Location = new System.Drawing.Point(264, 354);
+            this.txtSuburb.Location = new System.Drawing.Point(265, 413);
             this.txtSuburb.Margin = new System.Windows.Forms.Padding(4);
             this.txtSuburb.Name = "txtSuburb";
             this.txtSuburb.Size = new System.Drawing.Size(468, 22);
@@ -279,7 +279,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(87, 306);
+            this.label13.Location = new System.Drawing.Point(88, 365);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(100, 17);
@@ -292,7 +292,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStreetName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStreetName.Location = new System.Drawing.Point(264, 302);
+            this.txtStreetName.Location = new System.Drawing.Point(265, 361);
             this.txtStreetName.Margin = new System.Windows.Forms.Padding(4);
             this.txtStreetName.Name = "txtStreetName";
             this.txtStreetName.Size = new System.Drawing.Size(468, 22);
@@ -307,7 +307,7 @@ namespace PremiereSolutionProject.PL
             this.dgvBusinessClients.Margin = new System.Windows.Forms.Padding(4);
             this.dgvBusinessClients.Name = "dgvBusinessClients";
             this.dgvBusinessClients.RowHeadersWidth = 62;
-            this.dgvBusinessClients.Size = new System.Drawing.Size(642, 80);
+            this.dgvBusinessClients.Size = new System.Drawing.Size(642, 149);
             this.dgvBusinessClients.TabIndex = 105;
             this.dgvBusinessClients.SelectionChanged += new System.EventHandler(this.dgvBusinessClients_SelectionChanged);
             // 
@@ -348,7 +348,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProvince.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProvince.FormattingEnabled = true;
-            this.cmbProvince.Location = new System.Drawing.Point(264, 455);
+            this.cmbProvince.Location = new System.Drawing.Point(265, 514);
             this.cmbProvince.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProvince.Name = "cmbProvince";
             this.cmbProvince.Size = new System.Drawing.Size(466, 24);

@@ -52,7 +52,7 @@ namespace PremiereSolutionProject.PL
             this.lblEmpName.Location = new System.Drawing.Point(348, 131);
             this.lblEmpName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmpName.Name = "lblEmpName";
-            this.lblEmpName.Size = new System.Drawing.Size(138, 13);
+            this.lblEmpName.Size = new System.Drawing.Size(184, 17);
             this.lblEmpName.TabIndex = 3;
             this.lblEmpName.Text = "Call Centre Employee Name";
             // 
@@ -92,7 +92,7 @@ namespace PremiereSolutionProject.PL
             this.label4.Location = new System.Drawing.Point(345, 35);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 26);
+            this.label4.Size = new System.Drawing.Size(150, 31);
             this.label4.TabIndex = 11;
             this.label4.Text = "Call Center";
             // 
@@ -151,13 +151,12 @@ namespace PremiereSolutionProject.PL
             this.label1.Location = new System.Drawing.Point(136, 297);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(49, 17);
             this.label1.TabIndex = 12;
             this.label1.Text = "Notes:";
             // 
             // btnSearchClient
             // 
-            this.btnSearchClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearchClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchClient.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSearchClient.Location = new System.Drawing.Point(139, 611);
@@ -171,7 +170,7 @@ namespace PremiereSolutionProject.PL
             // 
             // frmCallCenter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(908, 677);

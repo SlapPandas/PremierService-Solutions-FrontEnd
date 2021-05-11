@@ -57,7 +57,7 @@ namespace PremiereSolutionProject.PL
             // 
             // btnCreateContract
             // 
-            this.btnCreateContract.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCreateContract.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCreateContract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateContract.Location = new System.Drawing.Point(333, 542);
             this.btnCreateContract.Margin = new System.Windows.Forms.Padding(4);
@@ -101,7 +101,7 @@ namespace PremiereSolutionProject.PL
             // 
             // btnAddServicePackage
             // 
-            this.btnAddServicePackage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddServicePackage.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAddServicePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddServicePackage.Location = new System.Drawing.Point(494, 440);
             this.btnAddServicePackage.Margin = new System.Windows.Forms.Padding(4);
@@ -114,8 +114,6 @@ namespace PremiereSolutionProject.PL
             // 
             // cbxServicePackages
             // 
-            this.cbxServicePackages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxServicePackages.FormattingEnabled = true;
             this.cbxServicePackages.Location = new System.Drawing.Point(110, 149);
             this.cbxServicePackages.Margin = new System.Windows.Forms.Padding(4);
@@ -126,8 +124,6 @@ namespace PremiereSolutionProject.PL
             // 
             // dgvViewServices
             // 
-            this.dgvViewServices.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvViewServices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvViewServices.Location = new System.Drawing.Point(110, 243);
             this.dgvViewServices.Margin = new System.Windows.Forms.Padding(4);
@@ -157,7 +153,7 @@ namespace PremiereSolutionProject.PL
             // 
             // btnRemove
             // 
-            this.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Location = new System.Drawing.Point(709, 440);
             this.btnRemove.Margin = new System.Windows.Forms.Padding(4);
