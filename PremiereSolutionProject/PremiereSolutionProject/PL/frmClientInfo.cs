@@ -21,6 +21,8 @@ namespace PremiereSolutionProject.PL
         List<Call> calls;
         List<ServiceRequest> sReq;
         List<Client> ClientList;
+        List<BusinessClient> bList;
+        List<IndividualClient> iList;
 
         BindingSource bs = new BindingSource();
         BindingSource bs2 = new BindingSource();
@@ -60,9 +62,15 @@ namespace PremiereSolutionProject.PL
             dgvViewClient.DataSource = null;
             dgvViewClient.DataSource = bs;
         }
-        private void RefreshDGV3()
+        private void RefreshDGVI()
         {
-            bs2.DataSource = ClientList;
+            bs2.DataSource = iList;
+            dgvClientInfo.DataSource = null;
+            dgvClientInfo.DataSource = bs2;
+        }
+        private void RefreshDGVB()
+        {
+            bs2.DataSource = bList;
             dgvClientInfo.DataSource = null;
             dgvClientInfo.DataSource = bs2;
         }
@@ -73,6 +81,8 @@ namespace PremiereSolutionProject.PL
                 calls = new Call().SelectAllCallsOfClient(txtClientID.Text);
                 sReq = new ServiceRequest().SelectAllServiceRequestsForClient(txtClientID.Text);
                 ClientList = new List<Client>();
+                iList = new List<IndividualClient>();
+                bList = new List<BusinessClient>();
                 
                 if (txtClientID.Text[0] == 'A')
                 {
@@ -81,7 +91,8 @@ namespace PremiereSolutionProject.PL
                         if (txtClientID.Text == item.Id)
                         {
                             ClientList.Add(item);
-                           
+                            iList.Add(item);
+                            RefreshDGVI();
                         }
                     }
                 }
@@ -92,12 +103,14 @@ namespace PremiereSolutionProject.PL
                         if (txtClientID.Text == item.Id)
                         {
                             ClientList.Add(item);
+                            bList.Add(item);
+                            RefreshDGVB();
                         }
                     }
                 }
                 RefreshDGV();
                 RefreshDGV2();
-                RefreshDGV3();
+               // RefreshDGV3();
             }
             catch (FormatException fe)
             {

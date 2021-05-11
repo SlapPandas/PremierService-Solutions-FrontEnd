@@ -64,7 +64,7 @@ namespace PremiereSolutionProject.PL
             this.label3.Location = new System.Drawing.Point(350, 22);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 31);
+            this.label3.Size = new System.Drawing.Size(144, 26);
             this.label3.TabIndex = 13;
             this.label3.Text = "Identify Client";
             // 
@@ -76,7 +76,7 @@ namespace PremiereSolutionProject.PL
             this.txtClientID.Location = new System.Drawing.Point(316, 99);
             this.txtClientID.Margin = new System.Windows.Forms.Padding(4);
             this.txtClientID.Name = "txtClientID";
-            this.txtClientID.Size = new System.Drawing.Size(903, 29);
+            this.txtClientID.Size = new System.Drawing.Size(903, 20);
             this.txtClientID.TabIndex = 12;
             // 
             // label2
@@ -88,7 +88,7 @@ namespace PremiereSolutionProject.PL
             this.label2.Location = new System.Drawing.Point(118, 79);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 17);
+            this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "Client ID Number";
             // 
@@ -109,10 +109,10 @@ namespace PremiereSolutionProject.PL
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 234);
+            this.label1.Location = new System.Drawing.Point(54, 729);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 17);
+            this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 17;
             this.label1.Text = "Client service requests";
             // 
@@ -123,7 +123,7 @@ namespace PremiereSolutionProject.PL
             this.label4.Location = new System.Drawing.Point(54, 464);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(142, 17);
+            this.label4.Size = new System.Drawing.Size(106, 13);
             this.label4.TabIndex = 19;
             this.label4.Text = "Client call information";
             // 
@@ -131,7 +131,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.dgvClientContractInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClientContractInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientContractInfo.Location = new System.Drawing.Point(59, 280);
+            this.dgvClientContractInfo.Location = new System.Drawing.Point(59, 775);
             this.dgvClientContractInfo.Name = "dgvClientContractInfo";
             this.dgvClientContractInfo.RowHeadersWidth = 62;
             this.dgvClientContractInfo.RowTemplate.Height = 28;
@@ -155,10 +155,10 @@ namespace PremiereSolutionProject.PL
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(55, 709);
+            this.label5.Location = new System.Drawing.Point(54, 219);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 17);
+            this.label5.Size = new System.Drawing.Size(87, 13);
             this.label5.TabIndex = 22;
             this.label5.Text = "Client information";
             // 
@@ -166,7 +166,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.dgvClientInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClientInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientInfo.Location = new System.Drawing.Point(59, 759);
+            this.dgvClientInfo.Location = new System.Drawing.Point(57, 260);
             this.dgvClientInfo.Name = "dgvClientInfo";
             this.dgvClientInfo.RowHeadersWidth = 62;
             this.dgvClientInfo.RowTemplate.Height = 28;
@@ -188,7 +188,7 @@ namespace PremiereSolutionProject.PL
             // 
             // frmClientInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1379, 818);

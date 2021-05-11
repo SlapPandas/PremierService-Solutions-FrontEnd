@@ -40,7 +40,7 @@ namespace PremiereSolutionProject.PL
             dashform.callInfo = new Call();
             Call call =  dashform.callInfo.CreateCall();
             //dashform.callInfo.LogClientToCall(dashform.callInfo.CallID,)
-
+            dashform.callInfo = call;
             lblEmpName.Text = call.Employee.FirstName;
 
         }
