@@ -1108,6 +1108,14 @@ AS
 	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
     WHERE ClientIndividual.clientIndividualClientNumber = @id
 GO
+ALTER PROC SelectContractByIndividualClientIdActive @id VARCHAR(100)
+AS
+    SELECT * FROM ContractState
+    INNER JOIN ClientContractLink ON ContractState.contractStateID = ClientContractLink.ContractID
+    INNER JOIN ClientIndividual ON ClientContractLink.ClientIndividualID = ClientIndividual.clientIndividualID
+	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
+    WHERE ClientIndividual.clientIndividualClientNumber = @id AND ContractState.activeContract = '1'
+GO
 ALTER PROC SelectContractByIndividualClientIdAndContractId @clientId VARCHAR(50),@contractId VARCHAR(50)
 AS
     SELECT * FROM ContractState
