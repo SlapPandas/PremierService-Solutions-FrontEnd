@@ -27,6 +27,15 @@ namespace PremiereSolutionProject.PL
         private void frmAddIndividualClient_Load(object sender, EventArgs e)
         {
             dgvExistingClients.ForeColor = Color.Black;
+            cmbProvince.Items.Add("North_West");
+            cmbProvince.Items.Add("Gauteng");
+            cmbProvince.Items.Add("Western_Cape");
+            cmbProvince.Items.Add("Eastern_Cape");
+            cmbProvince.Items.Add("Free_State");
+            cmbProvince.Items.Add("Northern_Cape");
+            cmbProvince.Items.Add("Mpumalanga");
+            cmbProvince.Items.Add("Limpopo");
+            cmbProvince.Items.Add("Kwazulu_Natal");
 
             ic = new IndividualClient().SelectAllIndividualClients();
             RefreshDGV();
@@ -174,11 +183,11 @@ namespace PremiereSolutionProject.PL
         private void UpdateData()
         {
             //selectedProduct
-            foreach (Address item in cmbProvince.Items)
+            foreach (var item in cmbProvince.Items)
             {
-                if (item.Province == selectedIc.Address.Province)
+                if (item.ToString() == selectedIc.Address.Province.ToString())
                 {
-                    cmbProvince.SelectedItem = item.Province;
+                    cmbProvince.SelectedItem = item.ToString() ;
                     break;
                 }
             }

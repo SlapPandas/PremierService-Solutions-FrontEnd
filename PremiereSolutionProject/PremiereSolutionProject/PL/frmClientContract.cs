@@ -76,7 +76,10 @@ namespace PremiereSolutionProject.PL
                 cbxPriorityLevel.Items.Add("Bronze");
                 cbxContractName.ValueMember = null;
                 cbxContractName.SelectedIndex = -1;
-                txtClientID.Text = dashForm.callInfo.Client.Id;
+                if (dashForm.callInfo != null)
+                {
+                    txtClientID.Text = dashForm.callInfo.Client.Id;
+                }
                 RefreshDGV();
                 RefreshDGVServices();
             }
