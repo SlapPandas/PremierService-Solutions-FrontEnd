@@ -198,7 +198,7 @@ namespace PremiereSolutionProject.BLL
             //create all jobs for a service request
             for (int i = 0; i < specialisationList.Count; i++) //iterating thru the specialisations in the list
             {
-                jobList.Add(new Job(c.Client.Address, JobState.Pending, c.CallNotes, null, specialisationList[i], this.ServiceRequestID, employeesPerJob[i]));
+                //jobList.Add(new Job(c.Client.Address, JobState.Pending, c.CallNotes, null, specialisationList[i], this.ServiceRequestID, employeesPerJob[i]));
                 //Maintenance employee will be null since it has not been assigned yet
             }
 
