@@ -982,9 +982,19 @@ BEGIN
 	WHERE Job.jobID = @id
 END
 GO
-ALTER PROCEDURE SelectCallbyId @id INT AS
+ALTER PROCEDURE SelectCallbyIdClientIndividual @id INT AS
 BEGIN
 	SELECT * FROM [Call]
+	INNER JOIN ClientIndividual ON [Call].ClientIndividualID = ClientIndividual.clientIndividualID
+	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
+	WHERE [Call].callID = @id
+END
+GO
+ALTER PROCEDURE SelectCallbyIdClientBusiness @id INT AS
+BEGIN
+	SELECT * FROM [Call]
+	INNER JOIN ClientBusiness ON [Call].ClientBusinessID = ClientBusiness.clientBusinessID
+	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
 	WHERE [Call].callID = @id
 END
 GO

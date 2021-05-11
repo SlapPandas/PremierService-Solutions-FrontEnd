@@ -128,7 +128,7 @@ namespace PremiereSolutionProject.DAL
 
             return call;
         }
-        public Call SelectCallById(int id)
+        public Call SelectCallByIdIndividualClient(int id)
         {
             Call call = new Call();
             try
@@ -136,14 +136,42 @@ namespace PremiereSolutionProject.DAL
                 using (SqlConnection connection = new SqlConnection(connectionSring))
                 {
                     connection.Open();
-                    commandString = $"EXEC SelectCallbyId @id = '{id}'";
+                    commandString = $"EXEC SelectCallbyIdClientIndividual @id = '{id}'";
                     SqlCommand command = new SqlCommand(commandString, connection);
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
                         //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
-                        call = new Call((int)reader["callID"], (DateTime)reader["startTime"], (DateTime)reader["endTime"], callcenterEnptyEmployee, (string)reader["callNotes"]);
+                        call = new Call((int)reader["callID"], (DateTime)reader["startTime"], (DateTime)reader["endTime"], new IndividualClient((string)reader["clientIndividualClientNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["RegistrationDate"], GetTrueFalseFromBit((int)reader["active"])), callcenterEnptyEmployee, (string)reader["callNotes"]);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
+            }
+            finally { }
+
+            return call;
+        }
+        public Call SelectCallByIdBusinessClient(int id)
+        {
+            Call call = new Call();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectCallbyIdClientBusiness @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
+                        //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
+                        call = new Call((int)reader["callID"], (DateTime)reader["startTime"], (DateTime)reader["endTime"], new BusinessClient((string)reader["clientBusinessClientNumber"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (DateTime)reader["RegistrationDate"], (string)reader["taxNumber"], (string)reader["busuinessName"], GetTrueFalseFromBit((int)reader["active"])), callcenterEnptyEmployee, (string)reader["callNotes"]);
                     }
                 }
             }
@@ -157,7 +185,7 @@ namespace PremiereSolutionProject.DAL
             return call;
         }
         #endregion
-        
+
         //Not 100% sure
         #region SeperateMethods
         private bool GetTrueFalseFromBit(int bit)
