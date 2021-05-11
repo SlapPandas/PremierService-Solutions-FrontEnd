@@ -872,7 +872,7 @@ AS
 
 		DELETE FROM TVP
 
-		SELECT IDENT_CURRENT('ServiceRequest')
+		RETURN IDENT_CURRENT('ServiceRequest')
 	COMMIT
 GO
 CREATE PROC UpdateSpecialization @id INT, @name VARCHAR(100),@description VARCHAR(255)
@@ -1371,6 +1371,14 @@ AS
 	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
     WHERE ClientIndividual.clientIndividualClientNumber = @id
 GO
+CREATE PROC SelectContractByIndividualClientIdActive @id VARCHAR(100)
+AS
+    SELECT * FROM ContractState
+    INNER JOIN ClientContractLink ON ContractState.contractStateID = ClientContractLink.ContractID
+    INNER JOIN ClientIndividual ON ClientContractLink.ClientIndividualID = ClientIndividual.clientIndividualID
+	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
+    WHERE ClientIndividual.clientIndividualClientNumber = @id AND ContractState.activeContract = '1'
+GO
 CREATE PROC SelectContractByIndividualClientIdAndContractId @clientId VARCHAR(50),@contractId VARCHAR(50)
 AS
     SELECT * FROM ContractState
@@ -1386,6 +1394,14 @@ AS
     INNER JOIN ClientBusiness ON ClientContractLink.clientBusinessID = ClientBusiness.clientBusinessID
 	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
     WHERE ClientBusiness.clientBusinessClientNumber = @id
+GO
+CREATE PROC SelectContractByBusinessClientIdActive @id VARCHAR(100)
+AS
+    SELECT * FROM ContractState
+    INNER JOIN ClientContractLink ON ContractState.contractStateID = ClientContractLink.ContractID
+    INNER JOIN ClientBusiness ON ClientContractLink.clientBusinessID = ClientBusiness.clientBusinessID
+	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
+    WHERE ClientBusiness.clientBusinessClientNumber = @id AND ContractState.activeContract = '1'
 GO
 CREATE PROC SelectAllContractsByBusinessClientIdAndContractId @clientId VARCHAR(50),@contractId VARCHAR(50)
 AS
