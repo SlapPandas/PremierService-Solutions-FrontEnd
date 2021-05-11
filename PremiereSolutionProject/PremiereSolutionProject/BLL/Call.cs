@@ -60,6 +60,16 @@ namespace PremiereSolutionProject.BLL
             this.callNotes = cNotes;
         }
 
+        public Call(int id, DateTime start, DateTime end, IndividualClient individualClient, BusinessClient businessClient, string cNotes)
+        {
+            this.callID = id;
+            this.startTime = start;
+            this.endTime = end;
+            this.indclient = individualClient;
+            this.busclient = businessClient;
+            this.callNotes = cNotes;
+        }
+
         public Call(int id, DateTime start, DateTime end, BusinessClient c, CallCenterEmployee ccEmp, string cNotes)
         {
             this.callID = id;
