@@ -200,11 +200,11 @@ namespace PremiereSolutionProject.DAL
                         Call checkClientOfCall = new Call((int)reader["callID"], reader.IsDBNull(reader.GetOrdinal("ClientIndividualID")) ? -1 : Convert.ToInt32(reader["ClientIndividualID"]), reader.IsDBNull(reader.GetOrdinal("ClientBusinessID")) ? -1 : Convert.ToInt32(reader["ClientBusinessID"]));
                         if (checkClientOfCall.IndclientID == -1)
                         {
-                            call = SelectCallByIdBusinessClient((int)checkClientOfCall.BusclientID);
+                            call = SelectCallByIdBusinessClient((int)checkClientOfCall.CallID);
                         }
                         if (checkClientOfCall.BusclientID == -1)
                         {
-                            call = SelectCallByIdIndividualClient((int)checkClientOfCall.IndclientID);
+                            call = SelectCallByIdIndividualClient((int)checkClientOfCall.CallID);
                         }
                     }
                 }
