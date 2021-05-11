@@ -194,5 +194,30 @@ namespace PremiereSolutionProject.PL
             //        break;
             //}
         }
+
+        private void btnExiting_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtClientID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxPriorityLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

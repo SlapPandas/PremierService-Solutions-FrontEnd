@@ -40,7 +40,8 @@ namespace PremiereSolutionProject.PL
             this.btnSearch = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvClientInfo = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLogClient = new System.Windows.Forms.Button();
+            this.btnExiting = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientContractInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientInfo)).BeginInit();
@@ -48,47 +49,41 @@ namespace PremiereSolutionProject.PL
             // 
             // dgvViewClient
             // 
-            this.dgvViewClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvViewClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewClient.Location = new System.Drawing.Point(59, 516);
+            this.dgvViewClient.Location = new System.Drawing.Point(54, 345);
             this.dgvViewClient.Name = "dgvViewClient";
             this.dgvViewClient.RowHeadersWidth = 62;
             this.dgvViewClient.RowTemplate.Height = 28;
-            this.dgvViewClient.Size = new System.Drawing.Size(1160, 165);
+            this.dgvViewClient.Size = new System.Drawing.Size(828, 127);
             this.dgvViewClient.TabIndex = 15;
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(350, 22);
+            this.label3.Location = new System.Drawing.Point(417, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 26);
+            this.label3.Size = new System.Drawing.Size(180, 31);
             this.label3.TabIndex = 13;
             this.label3.Text = "Identify Client";
             // 
             // txtClientID
             // 
-            this.txtClientID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtClientID.Location = new System.Drawing.Point(316, 99);
+            this.txtClientID.Location = new System.Drawing.Point(173, 73);
             this.txtClientID.Margin = new System.Windows.Forms.Padding(4);
             this.txtClientID.Name = "txtClientID";
-            this.txtClientID.Size = new System.Drawing.Size(903, 20);
+            this.txtClientID.Size = new System.Drawing.Size(222, 23);
             this.txtClientID.TabIndex = 12;
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(118, 79);
+            this.label2.Location = new System.Drawing.Point(51, 79);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.Size = new System.Drawing.Size(114, 17);
             this.label2.TabIndex = 11;
             this.label2.Text = "Client ID Number";
             // 
@@ -96,7 +91,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(3124, 2103);
+            this.btnExit.Location = new System.Drawing.Point(2803, 2048);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 34);
@@ -107,42 +102,38 @@ namespace PremiereSolutionProject.PL
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 729);
+            this.label1.Location = new System.Drawing.Point(51, 497);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 13);
+            this.label1.Size = new System.Drawing.Size(151, 17);
             this.label1.TabIndex = 17;
             this.label1.Text = "Client service requests";
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(54, 464);
+            this.label4.Location = new System.Drawing.Point(51, 307);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 13);
+            this.label4.Size = new System.Drawing.Size(142, 17);
             this.label4.TabIndex = 19;
             this.label4.Text = "Client call information";
             // 
             // dgvClientContractInfo
             // 
-            this.dgvClientContractInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClientContractInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientContractInfo.Location = new System.Drawing.Point(59, 775);
+            this.dgvClientContractInfo.Location = new System.Drawing.Point(54, 535);
             this.dgvClientContractInfo.Name = "dgvClientContractInfo";
             this.dgvClientContractInfo.RowHeadersWidth = 62;
             this.dgvClientContractInfo.RowTemplate.Height = 28;
-            this.dgvClientContractInfo.Size = new System.Drawing.Size(1160, 154);
+            this.dgvClientContractInfo.Size = new System.Drawing.Size(828, 116);
             this.dgvClientContractInfo.TabIndex = 18;
             // 
             // btnSearch
             // 
-            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(656, 159);
+            this.btnSearch.Location = new System.Drawing.Point(428, 67);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(102, 34);
@@ -153,46 +144,56 @@ namespace PremiereSolutionProject.PL
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(54, 219);
+            this.label5.Location = new System.Drawing.Point(51, 131);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 13);
+            this.label5.Size = new System.Drawing.Size(117, 17);
             this.label5.TabIndex = 22;
             this.label5.Text = "Client information";
             // 
             // dgvClientInfo
             // 
-            this.dgvClientInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClientInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientInfo.Location = new System.Drawing.Point(57, 260);
+            this.dgvClientInfo.Location = new System.Drawing.Point(54, 162);
             this.dgvClientInfo.Name = "dgvClientInfo";
             this.dgvClientInfo.RowHeadersWidth = 62;
             this.dgvClientInfo.RowTemplate.Height = 28;
-            this.dgvClientInfo.Size = new System.Drawing.Size(1160, 159);
+            this.dgvClientInfo.Size = new System.Drawing.Size(828, 121);
             this.dgvClientInfo.TabIndex = 21;
             // 
-            // button1
+            // btnLogClient
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(782, 159);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 34);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "Log Client";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnLogClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogClient.Location = new System.Drawing.Point(553, 67);
+            this.btnLogClient.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogClient.Name = "btnLogClient";
+            this.btnLogClient.Size = new System.Drawing.Size(102, 34);
+            this.btnLogClient.TabIndex = 23;
+            this.btnLogClient.Text = "Log Client";
+            this.btnLogClient.UseVisualStyleBackColor = true;
+            this.btnLogClient.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnExiting
+            // 
+            this.btnExiting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExiting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExiting.Location = new System.Drawing.Point(943, 716);
+            this.btnExiting.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExiting.Name = "btnExiting";
+            this.btnExiting.Size = new System.Drawing.Size(102, 34);
+            this.btnExiting.TabIndex = 24;
+            this.btnExiting.Text = "Exit";
+            this.btnExiting.UseVisualStyleBackColor = true;
             // 
             // frmClientInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(1379, 818);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1058, 763);
+            this.Controls.Add(this.btnExiting);
+            this.Controls.Add(this.btnLogClient);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dgvClientInfo);
             this.Controls.Add(this.btnSearch);
@@ -230,6 +231,7 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvClientInfo;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLogClient;
+        private System.Windows.Forms.Button btnExiting;
     }
 }

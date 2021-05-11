@@ -22,7 +22,7 @@ namespace PremiereSolutionProject.PL
             dgvBusinessClients.ForeColor = Color.Black;
             bc = new BusinessClient().SelectAllBusinessClients();
             RefreshDGV();
-            btnDeleteClient.Enabled = false;
+            //btnDeleteClient.Enabled = false;
         }
         private void RefreshDGV()
         {

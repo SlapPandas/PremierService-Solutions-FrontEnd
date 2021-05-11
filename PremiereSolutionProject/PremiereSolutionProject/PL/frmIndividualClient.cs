@@ -203,5 +203,10 @@ namespace PremiereSolutionProject.PL
             selectedIc = (IndividualClient)bs.Current;
             UpdateData();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
