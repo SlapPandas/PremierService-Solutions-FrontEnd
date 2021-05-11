@@ -41,12 +41,17 @@ namespace PremiereSolutionProject.PL
             Call call =  dashform.callInfo.CreateCall();
             //dashform.callInfo.LogClientToCall(dashform.callInfo.CallID,)
             dashform.callInfo = call;
+            
             lblEmpName.Text = call.Employee.FirstName;
+            btnEnd.Enabled = true;
 
         }
 
         private void btnSearchClient_Click(object sender, EventArgs e)
         {
+            dashform.callInfo.CallNotes = rtbNotes.Text;
+            dashform.callInfo.UpdateCallNotes(dashform.callInfo.CallID, rtbNotes.Text);
+            
             new frmClientInfo(dashform).Show();
             this.Hide();
         }
@@ -54,6 +59,21 @@ namespace PremiereSolutionProject.PL
         private void btnEnd_Click(object sender, EventArgs e)
         {
             dashform.callInfo.LogEndTimeOfCall(dashform.callInfo.CallID,rtbNotes.Text);
+        }
+
+        private void frmCallCenter_Load(object sender, EventArgs e)
+        {
+            btnEnd.Enabled = false;
+            if (dashform.callInfo != null)
+            {
+                                
+                 lblEmpName.Text = dashform.callInfo.Employee.FirstName;
+                 rtbNotes.Text = dashform.callInfo.CallNotes;
+
+
+                btnEnd.Enabled = true;      
+            }
+            
         }
     }
 }

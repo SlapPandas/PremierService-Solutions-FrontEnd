@@ -136,8 +136,9 @@ namespace PremiereSolutionProject.PL
             //ServiceRequest sr = new ServiceRequest(richTextBox1.Text, int.Parse(lblCallID.Text), addedSpec, "1");
             ServiceRequest srE = new ServiceRequest();
             ServiceRequest sr = new ServiceRequest(false, richTextBox1.Text, dashform.callInfo.CallID, specList, "1", srE.service_OnInitialization);
+            
            // Action action = sr.service_OnInitialization;
-           // sr.CreateServiceRequest(sr);
+            sr.CreateServiceRequest(sr);
         }
     }
 }
