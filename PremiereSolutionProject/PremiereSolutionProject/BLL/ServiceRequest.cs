@@ -135,15 +135,20 @@ namespace PremiereSolutionProject.BLL
         private List<Specialisation> GenerateSpecialisationList(List<string> specialisationEmpList)
         {
             List<string> specNames = new List<string>();
-
+            SpecializationDH specializationDH = new SpecializationDH();
             Regex r = new Regex("[^a-z]", RegexOptions.IgnoreCase); //returns only the letters
 
             //taking the numbers out and adding the letters only to a list of string to match the name
             for (int i = 0; i < specialisationEmpList.Count; i++)
             {
-                specNames.Add(r.Replace(specialisationEmpList[i], @""));
+                string[] stringList = specialisationEmpList[i].Split(',');
+
+                specNames.Add(stringList[0]);
+
+
+                //specNames.Add(r.Replace(specialisationEmpList[i], @""));
             }
-            List<Specialisation> allSpecialisations = new List<Specialisation>(); //get list of all specialisations
+            List<Specialisation> allSpecialisations = specializationDH.SelectAllSpecialisations(); //get list of all specialisations
             List<Specialisation> specList = new List<Specialisation>();
 
             for (int i = 0; i < specialisationEmpList.Count; i++)
@@ -181,18 +186,13 @@ namespace PremiereSolutionProject.BLL
 
         public void CreateJobs(ServiceRequest sr) //creates all the jobs from a call
         {
-            //foreach (spe item in sr.SpecialisationRequiredList)
-            //{
-
-            //}
-
-
-
             List<Job> jobList = new List<Job>();
-            Call c = new Call();    //from DAL where SELECTing a call according to call ID --> sr.CallID
+            CallDH callDH = new CallDH();
+            Call c = callDH.SelectCallByCallId(sr.callID);    //from DAL where SELECTing a call according to call ID --> sr.CallID
+
             List<int> employeesPerJob = GetNumEmployeesForJob(sr.spesialisationRequiredNumberEmployees);  //getting corresponding number of employees
 
-            List<Specialisation> specialisationList = sr.specialisationRequiredList;
+            List<Specialisation> specialisationList = GenerateSpecialisationList(sr.spesialisationRequiredNumberEmployees);
             //to generate all the jobs for the service request according to the specialisations required
 
             //create all jobs for a service request
