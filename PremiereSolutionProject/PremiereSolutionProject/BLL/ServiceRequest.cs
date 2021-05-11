@@ -188,7 +188,7 @@ namespace PremiereSolutionProject.BLL
         {
             List<Job> jobList = new List<Job>();
             CallDH callDH = new CallDH();
-            Call c = callDH.SelectCallByCallId(sr.callID);    //from DAL where SELECTing a call according to call ID --> sr.CallID
+            //Call c = callDH.SelectCallByCallId(sr.callID);    //from DAL where SELECTing a call according to call ID --> sr.CallID
 
             List<int> employeesPerJob = GetNumEmployeesForJob(sr.spesialisationRequiredNumberEmployees);  //getting corresponding number of employees
 
