@@ -132,11 +132,11 @@ AS
 		VALUES (@serviceRequestId,@SpecilizationId)
 	COMMIT
 GO
-ALTER PROC InsertIntoTVPMaintenanceEmployeeSpecilization @employeeId INT,@SpecilizationId INT
+ALTER PROC InsertIntoTVPMaintenanceEmployeeSpecilization @employeeId VARCHAR(50),@SpecilizationId INT
 AS
 	BEGIN TRAN
 		INSERT INTO TVP(idIntOne,idIntTwo)
-		VALUES (@employeeId,@SpecilizationId)
+		VALUES ((SELECT employeeID FROM Employee WHERE employeeNumber = @employeeId),@SpecilizationId)
 	COMMIT
 GO
 ALTER PROC InsertIntoTVPNewServiceRequestSpecilization @SpecilizationId INT
@@ -684,13 +684,20 @@ GO
 ALTER PROCEDURE InsertMaintenanceEmployee @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentDate DATE, @employed INT, @department VARCHAR(25) ,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
 AS
 		BEGIN TRAN
-		DECLARE @LASTID INT
+		DECLARE @LASTADDRESSID INT
+		DECLARE @LASTEMPLOYEEID INT
 		INSERT INTO [Address] ([streetName], [suburb], [province], [postalcode],[city])
 		VALUES (@streetname, @suburb,@province ,@postalcode,@city)
-		SET @LASTID = SCOPE_IDENTITY()
+		SET @LASTADDRESSID = IDENT_CURRENT('Address')
 
 		INSERT INTO [Employee] ([firstName], [surname], [addressId], [contactNumber], [email], [nationalIdNumber], [employmentDate],[employed], [department])
-		VALUES (@firstName, @surname, @LASTID, @contactNumber, @email, @nationalIdNumber, @employmentDate,@employed, @department)
+		VALUES (@firstName, @surname, @LASTADDRESSID, @contactNumber, @email, @nationalIdNumber, @employmentDate,@employed, @department)
+		SET @LASTEMPLOYEEID = IDENT_CURRENT('Employee')
+
+		INSERT INTO SpecialisationEmployeeLink(employeeID,specialisationID)
+		SELECT @LASTEMPLOYEEID,idIntOne FROM TVP
+
+		DELETE FROM TVP
 COMMIT 
 GO
 ALTER PROCEDURE InsertServiceManager @firstName VARCHAR(50), @surname VARCHAR(50), @contactNumber VARCHAR(10), @email VARCHAR(100), @nationalIdNumber VARCHAR(13), @employmentDate DATE, @employed INT, @department VARCHAR(25) ,@streetname VARCHAR(100),@suburb VARCHAR(100),@province VARCHAR(20),@postalcode VARCHAR(20),@city VARCHAR(50)
@@ -1512,4 +1519,20 @@ BEGIN TRAN
 	GROUP BY oldContractId
 	ORDER BY uses DESC
 COMMIT
+GO
+ALTER PROCEDURE UpdateEmployeeWithSpecilizationList @id VARCHAR(50)
+AS
+BEGIN
+	BEGIN TRAN
+
+		DELETE FROM SpecialisationEmployeeLink
+		WHERE SpecialisationEmployeeLink.employeeID = (SELECT employeeID FROM Employee WHERE employeeNumber= @id)
+
+		INSERT INTO SpecialisationEmployeeLink(employeeID,specialisationID)
+		SELECT idIntOne,idIntTwo FROM TVP
+
+		DELETE FROM TVP
+
+	COMMIT
+END
 GO

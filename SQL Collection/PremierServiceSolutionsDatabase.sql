@@ -693,6 +693,22 @@ BEGIN
 	COMMIT
 END
 GO
+CREATE PROCEDURE UpdateEmployeeWithSpecilizationList @id VARCHAR(50)
+AS
+BEGIN
+	BEGIN TRAN
+
+		DELETE FROM SpecialisationEmployeeLink
+		WHERE SpecialisationEmployeeLink.employeeID = (SELECT employeeID FROM Employee WHERE employeeNumber= @id)
+
+		INSERT INTO SpecialisationEmployeeLink(employeeID,specialisationID)
+		SELECT idIntOne,idIntTwo FROM TVP
+
+		DELETE FROM TVP
+
+	COMMIT
+END
+GO
 CREATE PROCEDURE UpdateJob @id INT, @notes VARCHAR(255), @specialisationId INT, @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10),@city VARCHAR(100)
 AS
 BEGIN

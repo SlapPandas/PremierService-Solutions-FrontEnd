@@ -16,18 +16,19 @@ namespace PremiereSolutionProject.DAL
         {
             UpdateCommand($"EXEC UpdateEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname ='{employee.Surname}', @contactNumber ='{employee.ContactNumber}', @email ='{employee.Email}', @nationalIdNumber ='{employee.NationalIDnumber}', @employmentdate ='{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed ='{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}', @adressId = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'");
         }
-
         public void UpdateMaintenanceEmployee(MaintenanceEmployee employee)
         {
-            InsertAllSpeciliozationOfMaintenanceEmployee(employee);
             UpdateCommand($"EXEC UpdateEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname ='{employee.Surname}', @contactNumber ='{employee.ContactNumber}', @email ='{employee.Email}', @nationalIdNumber ='{employee.NationalIDnumber}', @employmentdate ='{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed ='{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}', @adressId = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'");
         }
-
+        public void UpdateMaintenanceEmployeeSpecilizaitonList(MaintenanceEmployee employee)
+        {
+            InsertAllSpeciliozationOfMaintenanceEmployee(employee);
+            UpdateCommand($"EXEC UpdateEmployeeWithSpecilizationList @id = '{employee.Id}'");
+        }
         public void UpdateServiceManager(ServiceManager employee)
         {
             UpdateCommand($"EXEC UpdateEmployee @id = '{employee.Id}', @firstName = '{employee.FirstName}', @surname ='{employee.Surname}', @contactNumber ='{employee.ContactNumber}', @email ='{employee.Email}', @nationalIdNumber ='{employee.NationalIDnumber}', @employmentdate ='{employee.RegistrationDate.ToString("yyyy-MM-dd")}', @employed ='{GetIntFromBool(employee.Employed)}', @department = '{employee.Department}', @adressId = '{employee.Address.AddressID}', @streetName = '{employee.Address.StreetName}', @suburb = '{employee.Address.Suburb}', @province = '{((int)employee.Address.Province).ToString()}', @postalcode = '{employee.Address.Postalcode}', @city = '{employee.Address.City}'");
         }
-
         public void UpdateEmployeeState(string id, bool employed)
         {
             UpdateCommand($"EXEC UpdateEmployeeState @id = '{id}', @employed = '{GetIntFromBool(employed)}'");
