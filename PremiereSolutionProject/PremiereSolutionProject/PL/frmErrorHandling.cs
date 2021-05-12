@@ -13,6 +13,9 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmErrorHandling : Form
     {
+        DatabaseOperation databaseOperation = new DatabaseOperation();
+        List<DatabaseOperation> databaseOperations = new List<DatabaseOperation>();
+
         public frmErrorHandling()
         {
             InitializeComponent();
@@ -20,18 +23,56 @@ namespace PremiereSolutionProject.PL
 
         private void frmErrorsHandling_Load(object sender, EventArgs e)
         {
+            databaseOperations = databaseOperation.SelectAllErrors();
             GenerateListColumns();
-            DatabaseOperation databaseOperation = new DatabaseOperation();
-            List<DatabaseOperation> databaseOperations = databaseOperation.SelectAllErrors();
-            foreach (var item in databaseOperations)
-            {
-            }
+            FillListView();
         }
         private void GenerateListColumns() 
         {
-            lstErrors.Columns.Add("Error Id");
-            lstErrors.Columns.Add("Date and Time Occured");
-            lstErrors.Columns.Add("Successful");
+            ColumnHeader idHeader, dateHeared,successHeader, descriptionHeader;
+            idHeader = new ColumnHeader();
+            dateHeared = new ColumnHeader();
+            successHeader = new ColumnHeader();
+            descriptionHeader = new ColumnHeader();
+
+            idHeader.Text = "Error Id";
+            idHeader.TextAlign = HorizontalAlignment.Left;
+            idHeader.Width = 70;
+
+            dateHeared.Text = "Date and Time Occured";
+            dateHeared.TextAlign = HorizontalAlignment.Left;
+            dateHeared.Width = 150;
+
+            successHeader.Text = "Successful";
+            successHeader.TextAlign = HorizontalAlignment.Left;
+            successHeader.Width = 200;
+
+            descriptionHeader.Text = "Successful";
+            descriptionHeader.TextAlign = HorizontalAlignment.Left;
+            descriptionHeader.Width = 200;
+
+            lstErrors.Columns.Add(idHeader);
+            lstErrors.Columns.Add(dateHeared);
+            lstErrors.Columns.Add(successHeader);
+            lstErrors.Columns.Add(descriptionHeader);
+
+        }
+        private void FillListView()
+        {
+            foreach (var item in databaseOperations)
+            {
+                lstErrors.Items.Add(new ListViewItem(new string[] { item.Id.ToString(), item.DateAndTime.ToString(), item.Success.ToString(),item.Description.ToString() }));
+            }
+        }
+
+        private void lstErrors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtDescription.Text = databaseOperations[lstErrors.FocusedItem.Index].Description;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
