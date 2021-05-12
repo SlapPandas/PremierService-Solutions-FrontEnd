@@ -183,15 +183,15 @@ namespace PremiereSolutionProject.PL
             HideSubMenu();
         }
 
-        private void btnClientContract_Click(object sender, EventArgs e)
-        {
-            openChildForm(new frmClientContract(this));
-            HideSubMenu();
-        }
-
         private void btnBusinessContact_Click(object sender, EventArgs e)
         {
             openChildForm(new frmBusinessContact());
+            HideSubMenu();
+        }
+
+        private void btnClientContract_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmClientContract());
             HideSubMenu();
         }
 
@@ -277,5 +277,19 @@ namespace PremiereSolutionProject.PL
             openChildForm(new frmErrorHandling());
             HideSubMenu();
         }
+
+        #region Client Maintenance P2
+        private void btnBusinessContact_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new frmBusinessContact());
+            HideSubMenu();
+        }
+
+        private void btnClientContract_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new frmClientContract());
+            HideSubMenu();
+        }
+        #endregion
     }
 }
