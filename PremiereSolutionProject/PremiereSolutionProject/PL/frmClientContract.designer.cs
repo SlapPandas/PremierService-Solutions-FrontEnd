@@ -58,7 +58,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(344, 18);
+            this.label1.Location = new System.Drawing.Point(352, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(179, 29);
@@ -162,6 +162,7 @@ namespace PremiereSolutionProject.PL
             this.cbxPriorityLevel.Name = "cbxPriorityLevel";
             this.cbxPriorityLevel.Size = new System.Drawing.Size(225, 21);
             this.cbxPriorityLevel.TabIndex = 14;
+            this.cbxPriorityLevel.Text = "-- Priority Level --";
             this.cbxPriorityLevel.SelectedIndexChanged += new System.EventHandler(this.cbxPriorityLevel_SelectedIndexChanged);
             this.cbxPriorityLevel.SelectedValueChanged += new System.EventHandler(this.cbxPriorityLevel_SelectedValueChanged);
             // 
@@ -209,6 +210,7 @@ namespace PremiereSolutionProject.PL
             this.cbxContractName.Name = "cbxContractName";
             this.cbxContractName.Size = new System.Drawing.Size(227, 21);
             this.cbxContractName.TabIndex = 18;
+            this.cbxContractName.Text = "-- Contract name --";
             this.cbxContractName.SelectedIndexChanged += new System.EventHandler(this.cbxContractName_SelectedIndexChanged);
             // 
             // dgvServicePackages
@@ -258,9 +260,9 @@ namespace PremiereSolutionProject.PL
             this.label9.Location = new System.Drawing.Point(25, 314);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(98, 16);
+            this.label9.Size = new System.Drawing.Size(125, 16);
             this.label9.TabIndex = 23;
-            this.label9.Text = "No. Of Days:";
+            this.label9.Text = "Number Of Days:";
             // 
             // nudNoOfDays
             // 
