@@ -53,7 +53,6 @@ namespace PremiereSolutionProject.PL
             this.btnUpdatePackage = new System.Windows.Forms.Button();
             this.lbxAvailable = new System.Windows.Forms.ListBox();
             this.lbxAdded = new System.Windows.Forms.ListBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentServicePackages)).BeginInit();
@@ -62,37 +61,31 @@ namespace PremiereSolutionProject.PL
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(338, 20);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(170, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(382, 31);
+            this.label1.Size = new System.Drawing.Size(378, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Service Package Management";
             // 
             // dgvCurrentServicePackages
             // 
             this.dgvCurrentServicePackages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCurrentServicePackages.Location = new System.Drawing.Point(241, 94);
-            this.dgvCurrentServicePackages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvCurrentServicePackages.Location = new System.Drawing.Point(132, 76);
             this.dgvCurrentServicePackages.Name = "dgvCurrentServicePackages";
             this.dgvCurrentServicePackages.RowHeadersWidth = 62;
-            this.dgvCurrentServicePackages.Size = new System.Drawing.Size(629, 117);
+            this.dgvCurrentServicePackages.Size = new System.Drawing.Size(472, 95);
             this.dgvCurrentServicePackages.TabIndex = 2;
             this.dgvCurrentServicePackages.SelectionChanged += new System.EventHandler(this.dgvCurrentServicePackages_SelectionChanged);
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(35, 252);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(26, 205);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 17);
+            this.label3.Size = new System.Drawing.Size(108, 16);
             this.label3.TabIndex = 56;
             this.label3.Text = "Package Name";
             // 
@@ -101,10 +94,9 @@ namespace PremiereSolutionProject.PL
             this.txtPackageName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtPackageName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPackageName.Location = new System.Drawing.Point(191, 252);
-            this.txtPackageName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPackageName.Location = new System.Drawing.Point(143, 205);
             this.txtPackageName.Name = "txtPackageName";
-            this.txtPackageName.Size = new System.Drawing.Size(152, 23);
+            this.txtPackageName.Size = new System.Drawing.Size(115, 20);
             this.txtPackageName.TabIndex = 55;
             // 
             // label4
@@ -112,11 +104,10 @@ namespace PremiereSolutionProject.PL
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(35, 304);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(26, 247);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 17);
+            this.label4.Size = new System.Drawing.Size(86, 16);
             this.label4.TabIndex = 58;
             this.label4.Text = "Service List";
             // 
@@ -126,153 +117,123 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(191, 304);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Location = new System.Drawing.Point(143, 247);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(152, 24);
+            this.comboBox1.Size = new System.Drawing.Size(115, 21);
             this.comboBox1.TabIndex = 59;
             // 
             // cbxPromotionYes
             // 
-            this.cbxPromotionYes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.cbxPromotionYes.AutoSize = true;
-            this.cbxPromotionYes.Location = new System.Drawing.Point(623, 252);
-            this.cbxPromotionYes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxPromotionYes.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxPromotionYes.Location = new System.Drawing.Point(403, 205);
             this.cbxPromotionYes.Name = "cbxPromotionYes";
-            this.cbxPromotionYes.Size = new System.Drawing.Size(54, 21);
+            this.cbxPromotionYes.Size = new System.Drawing.Size(51, 20);
             this.cbxPromotionYes.TabIndex = 60;
             this.cbxPromotionYes.Text = "Yes";
             this.cbxPromotionYes.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(421, 255);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(303, 203);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 17);
+            this.label5.Size = new System.Drawing.Size(73, 16);
             this.label5.TabIndex = 61;
             this.label5.Text = "Promotion";
             // 
             // cbxPromotionNo
             // 
-            this.cbxPromotionNo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.cbxPromotionNo.AutoSize = true;
-            this.cbxPromotionNo.Location = new System.Drawing.Point(733, 254);
-            this.cbxPromotionNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxPromotionNo.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxPromotionNo.Location = new System.Drawing.Point(464, 205);
             this.cbxPromotionNo.Name = "cbxPromotionNo";
-            this.cbxPromotionNo.Size = new System.Drawing.Size(48, 21);
+            this.cbxPromotionNo.Size = new System.Drawing.Size(45, 20);
             this.cbxPromotionNo.TabIndex = 62;
             this.cbxPromotionNo.Text = "No";
             this.cbxPromotionNo.UseVisualStyleBackColor = true;
             // 
             // dtpPromotionStart
             // 
-            this.dtpPromotionStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtpPromotionStart.Location = new System.Drawing.Point(627, 295);
-            this.dtpPromotionStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpPromotionStart.Location = new System.Drawing.Point(463, 232);
             this.dtpPromotionStart.Name = "dtpPromotionStart";
-            this.dtpPromotionStart.Size = new System.Drawing.Size(243, 22);
+            this.dtpPromotionStart.Size = new System.Drawing.Size(183, 20);
             this.dtpPromotionStart.TabIndex = 63;
             // 
             // dtpPromotionEnd
             // 
-            this.dtpPromotionEnd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtpPromotionEnd.Location = new System.Drawing.Point(627, 354);
-            this.dtpPromotionEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpPromotionEnd.Location = new System.Drawing.Point(463, 267);
             this.dtpPromotionEnd.Name = "dtpPromotionEnd";
-            this.dtpPromotionEnd.Size = new System.Drawing.Size(243, 22);
+            this.dtpPromotionEnd.Size = new System.Drawing.Size(183, 20);
             this.dtpPromotionEnd.TabIndex = 64;
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(424, 302);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(303, 232);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 17);
+            this.label6.Size = new System.Drawing.Size(149, 16);
             this.label6.TabIndex = 65;
             this.label6.Text = "Promotion Start Date";
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(424, 356);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(303, 267);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(135, 17);
+            this.label7.Size = new System.Drawing.Size(144, 16);
             this.label7.TabIndex = 66;
             this.label7.Text = "Promotion End Date";
             // 
             // label8
             // 
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(36, 94);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(16, 76);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(176, 17);
+            this.label8.Size = new System.Drawing.Size(110, 54);
             this.label8.TabIndex = 67;
             this.label8.Text = "Current Service Packages:";
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(423, 414);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(303, 306);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 17);
+            this.label2.Size = new System.Drawing.Size(154, 16);
             this.label2.TabIndex = 68;
             this.label2.Text = "Promotion Percentage";
             // 
             // numUDPercentage
             // 
-            this.numUDPercentage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.numUDPercentage.Location = new System.Drawing.Point(627, 409);
-            this.numUDPercentage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numUDPercentage.Location = new System.Drawing.Point(463, 307);
             this.numUDPercentage.Name = "numUDPercentage";
-            this.numUDPercentage.Size = new System.Drawing.Size(63, 22);
+            this.numUDPercentage.Size = new System.Drawing.Size(47, 20);
             this.numUDPercentage.TabIndex = 69;
             // 
             // btnCreatePackage
             // 
-            this.btnCreatePackage.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnCreatePackage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnCreatePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreatePackage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreatePackage.Location = new System.Drawing.Point(252, 601);
-            this.btnCreatePackage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreatePackage.Location = new System.Drawing.Point(28, 507);
             this.btnCreatePackage.Name = "btnCreatePackage";
-            this.btnCreatePackage.Size = new System.Drawing.Size(135, 32);
+            this.btnCreatePackage.Size = new System.Drawing.Size(101, 26);
             this.btnCreatePackage.TabIndex = 78;
             this.btnCreatePackage.Text = "Create Package";
-            this.btnCreatePackage.UseVisualStyleBackColor = true;
+            this.btnCreatePackage.UseVisualStyleBackColor = false;
             this.btnCreatePackage.Click += new System.EventHandler(this.btnCreatePackage_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(862, 681);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(12, 12);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(91, 28);
+            this.btnExit.Size = new System.Drawing.Size(68, 30);
             this.btnExit.TabIndex = 81;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -283,22 +244,20 @@ namespace PremiereSolutionProject.PL
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(35, 335);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(24, 348);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(62, 17);
+            this.label12.Size = new System.Drawing.Size(128, 16);
             this.label12.TabIndex = 82;
-            this.label12.Text = "Services";
+            this.label12.Text = "Services Available";
             // 
             // btnAddService
             // 
             this.btnAddService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddService.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddService.Location = new System.Drawing.Point(191, 406);
-            this.btnAddService.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddService.Location = new System.Drawing.Point(174, 380);
             this.btnAddService.Name = "btnAddService";
-            this.btnAddService.Size = new System.Drawing.Size(48, 27);
+            this.btnAddService.Size = new System.Drawing.Size(36, 22);
             this.btnAddService.TabIndex = 84;
             this.btnAddService.Text = ">>";
             this.btnAddService.UseVisualStyleBackColor = true;
@@ -306,75 +265,55 @@ namespace PremiereSolutionProject.PL
             // 
             // btnDeletePackage
             // 
-            this.btnDeletePackage.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnDeletePackage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnDeletePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeletePackage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeletePackage.Location = new System.Drawing.Point(570, 601);
-            this.btnDeletePackage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDeletePackage.Location = new System.Drawing.Point(254, 507);
             this.btnDeletePackage.Name = "btnDeletePackage";
-            this.btnDeletePackage.Size = new System.Drawing.Size(135, 32);
+            this.btnDeletePackage.Size = new System.Drawing.Size(101, 26);
             this.btnDeletePackage.TabIndex = 85;
             this.btnDeletePackage.Text = "Delete Package";
-            this.btnDeletePackage.UseVisualStyleBackColor = true;
+            this.btnDeletePackage.UseVisualStyleBackColor = false;
             this.btnDeletePackage.Click += new System.EventHandler(this.btnDeletePackage_Click);
             // 
             // btnUpdatePackage
             // 
-            this.btnUpdatePackage.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnUpdatePackage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnUpdatePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdatePackage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdatePackage.Location = new System.Drawing.Point(416, 601);
-            this.btnUpdatePackage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdatePackage.Location = new System.Drawing.Point(141, 507);
             this.btnUpdatePackage.Name = "btnUpdatePackage";
-            this.btnUpdatePackage.Size = new System.Drawing.Size(135, 32);
+            this.btnUpdatePackage.Size = new System.Drawing.Size(101, 26);
             this.btnUpdatePackage.TabIndex = 86;
             this.btnUpdatePackage.Text = "Update Package";
-            this.btnUpdatePackage.UseVisualStyleBackColor = true;
+            this.btnUpdatePackage.UseVisualStyleBackColor = false;
             this.btnUpdatePackage.Click += new System.EventHandler(this.btnUpdatePackage_Click);
             // 
             // lbxAvailable
             // 
             this.lbxAvailable.FormattingEnabled = true;
-            this.lbxAvailable.ItemHeight = 16;
-            this.lbxAvailable.Location = new System.Drawing.Point(39, 380);
-            this.lbxAvailable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbxAvailable.Location = new System.Drawing.Point(28, 367);
             this.lbxAvailable.Name = "lbxAvailable";
-            this.lbxAvailable.Size = new System.Drawing.Size(116, 148);
+            this.lbxAvailable.Size = new System.Drawing.Size(121, 121);
             this.lbxAvailable.TabIndex = 87;
             // 
             // lbxAdded
             // 
             this.lbxAdded.FormattingEnabled = true;
-            this.lbxAdded.ItemHeight = 16;
-            this.lbxAdded.Location = new System.Drawing.Point(272, 380);
-            this.lbxAdded.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbxAdded.Location = new System.Drawing.Point(234, 367);
             this.lbxAdded.Name = "lbxAdded";
-            this.lbxAdded.Size = new System.Drawing.Size(116, 148);
+            this.lbxAdded.Size = new System.Drawing.Size(121, 121);
             this.lbxAdded.TabIndex = 88;
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(36, 361);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(65, 17);
-            this.label13.TabIndex = 89;
-            this.label13.Text = "Available";
             // 
             // label14
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(268, 361);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(231, 348);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(49, 17);
+            this.label14.Size = new System.Drawing.Size(48, 16);
             this.label14.TabIndex = 90;
             this.label14.Text = "Added";
             // 
@@ -382,10 +321,9 @@ namespace PremiereSolutionProject.PL
             // 
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.Location = new System.Drawing.Point(191, 463);
-            this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemove.Location = new System.Drawing.Point(174, 445);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(48, 27);
+            this.btnRemove.Size = new System.Drawing.Size(36, 22);
             this.btnRemove.TabIndex = 84;
             this.btnRemove.Text = "<<";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -393,12 +331,11 @@ namespace PremiereSolutionProject.PL
             // 
             // frmServicePackageManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(966, 722);
+            this.ClientSize = new System.Drawing.Size(669, 557);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.lbxAdded);
             this.Controls.Add(this.lbxAvailable);
             this.Controls.Add(this.btnUpdatePackage);
@@ -425,7 +362,6 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.dgvCurrentServicePackages);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmServicePackageManagement";
             this.Text = "Create A New Service Package";
             this.Load += new System.EventHandler(this.frmServicePackageManagement_Load);
@@ -462,7 +398,6 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Button btnUpdatePackage;
         private System.Windows.Forms.ListBox lbxAvailable;
         private System.Windows.Forms.ListBox lbxAdded;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnRemove;
     }
