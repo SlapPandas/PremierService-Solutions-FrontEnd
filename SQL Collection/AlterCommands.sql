@@ -1095,8 +1095,7 @@ ALTER PROCEDURE SelectAllServicePackedgesLinkedToContract @id INT AS
 BEGIN
 	SELECT * FROM ServicePackage
 	INNER JOIN ServiceContractLink ON ServicePackage.servicePackageID = ServiceContractLink.ServicePackedgeID
-	INNER JOIN [Contract] ON ServiceContractLink.ContractID = ServiceContractLink.ContractID
-	WHERE [Contract].contractID = @id
+	WHERE ServiceContractLink.contractID = @id
 END
 GO
 ALTER PROCEDURE SelectAllServicePackedgesLinkedToContractState @id INT AS

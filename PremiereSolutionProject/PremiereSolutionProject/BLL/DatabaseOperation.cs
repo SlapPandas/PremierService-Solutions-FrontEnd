@@ -18,9 +18,15 @@ namespace PremiereSolutionProject.BLL
         #endregion
 
         #region Constructor
+        public DatabaseOperation()
+        {
+        }
         public DatabaseOperation(int errorId, DateTime errorDateTime, bool success, string errorMessage)
         {
-            Id = errorId;
+            this.Id = errorId;
+            this.DateAndTime = errorDateTime;
+            this.Success = success;
+            this.Description = errorMessage;
 
         }
         public DatabaseOperation(DateTime errorDateTime, bool success, string errorMessage)

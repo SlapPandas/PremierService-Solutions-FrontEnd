@@ -123,16 +123,8 @@ namespace PremiereSolutionProject.PL
 
         private void cbxContractName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //contractList = new Contract().SelectAllContracts();
-            foreach (Contract item in contractList)
-            {
-                if (item.ContractID == cbxContractName.SelectedItem.ToString())
-                {
-                   // packages.Clear();
-                    packages = item.PackageList;
-                    RefreshDGV();
-                }
-            }
+            packages = contractList[cbxContractName.SelectedIndex].PackageList;
+            RefreshDGV();
         }
 
         private void dgvServicePackages_SelectionChanged(object sender, EventArgs e)
