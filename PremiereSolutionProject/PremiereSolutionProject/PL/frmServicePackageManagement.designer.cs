@@ -311,7 +311,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(717, 222);
+            this.label14.Location = new System.Drawing.Point(717, 212);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(48, 16);
             this.label14.TabIndex = 90;
