@@ -54,8 +54,81 @@ namespace PremiereSolutionProject.PL
 
                 else
                 {
-                    //Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
-                   // Employee emp = new Employee(txtFirstname.Text,txtSurname.Text,null,txtContactNumber.Text,txtEmai.Text,txtNationalID.Text,DateTime.Now(),true,cbxDepartment.Text)
+                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
+                    //Employee emp = new Employee(txtFirstname.Text,txtSurname.Text,null,txtContactNumber.Text,txtEmai.Text,txtNationalID.Text,DateTime.Now(),true,cbxDepartment.Text)
+                    switch (cbxDepartment.SelectedItem)
+                    {
+                        case "CallCenterEmployee":
+                            CallCenterEmployee cce = new CallCenterEmployee(txtFirstname.Text,txtSurname.Text,address,txtContactNumber.Text,txtEmai.Text,txtNationalID.Text,DateTime.Now,cbxEmployed.Checked);
+                            cce.InsertCallCenterEmployee(cce);
+
+                            break;
+                        
+                        case "ServiceManager":
+                            ServiceManager sm = new ServiceManager(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, cbxEmployed.Checked);
+                            sm.InsertServiceManager(sm);
+                            break;
+                    }
+                    MessageBox.Show("Successfully created Employee", "Yay");
+                }
+
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show(fe.Message, "user input error");
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtEmployeeID.Text))
+                {
+                    throw new FormatException("No employee identification");
+                }
+                if (string.IsNullOrWhiteSpace(txtFirstname.Text))
+                {
+                    throw new FormatException("No employee name");
+                }
+                if (string.IsNullOrWhiteSpace(txtSurname.Text))
+                {
+                    throw new FormatException("No employee surname");
+                }
+                if (string.IsNullOrWhiteSpace(txtNationalID.Text))
+                {
+                    throw new FormatException("No employee national ID");
+                }
+                if (string.IsNullOrWhiteSpace(txtContactNumber.Text))
+                {
+                    throw new FormatException("No employee Contact number");
+                }
+                if (string.IsNullOrWhiteSpace(txtEmai.Text))
+                {
+                    throw new FormatException("No employee e-mail");
+                }
+
+                else
+                {
+                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
+                    //Employee emp = new Employee(txtFirstname.Text,txtSurname.Text,null,txtContactNumber.Text,txtEmai.Text,txtNationalID.Text,DateTime.Now(),true,cbxDepartment.Text)
+                    switch (cbxDepartment.SelectedItem)
+                    {
+                        case "CallCenterEmployee":
+                            CallCenterEmployee cce = new CallCenterEmployee(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, cbxEmployed.Checked);
+                            cce.InsertCallCenterEmployee(cce);
+
+                            break;
+
+                        case "ServiceManager":
+                            ServiceManager sm = new ServiceManager(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, cbxEmployed.Checked);
+                            sm.UpdateEmployee(sm);
+                            break;
+                    }
                     MessageBox.Show("Successfully created Employee", "Yay");
                 }
 

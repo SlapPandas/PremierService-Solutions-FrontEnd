@@ -34,7 +34,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,7 +41,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbxSpecializations = new System.Windows.Forms.ComboBox();
             this.txtNationalID = new System.Windows.Forms.TextBox();
             this.txtEmai = new System.Windows.Forms.TextBox();
             this.txtContactNumber = new System.Windows.Forms.TextBox();
@@ -58,6 +56,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.cbxSpecializations = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,15 +119,6 @@
             this.label1.Size = new System.Drawing.Size(294, 24);
             this.label1.TabIndex = 79;
             this.label1.Text = "Manage Maintenance Employee";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(241, 337);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 13);
-            this.label9.TabIndex = 78;
-            this.label9.Text = "Specializations";
             // 
             // label8
             // 
@@ -191,14 +182,6 @@
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 71;
             this.label2.Text = "Employee ID";
-            // 
-            // cbxSpecializations
-            // 
-            this.cbxSpecializations.FormattingEnabled = true;
-            this.cbxSpecializations.Location = new System.Drawing.Point(245, 354);
-            this.cbxSpecializations.Name = "cbxSpecializations";
-            this.cbxSpecializations.Size = new System.Drawing.Size(103, 21);
-            this.cbxSpecializations.TabIndex = 70;
             // 
             // txtNationalID
             // 
@@ -314,6 +297,23 @@
             this.label13.TabIndex = 92;
             this.label13.Text = "Province";
             // 
+            // cbxSpecializations
+            // 
+            this.cbxSpecializations.FormattingEnabled = true;
+            this.cbxSpecializations.Location = new System.Drawing.Point(245, 354);
+            this.cbxSpecializations.Name = "cbxSpecializations";
+            this.cbxSpecializations.Size = new System.Drawing.Size(103, 21);
+            this.cbxSpecializations.TabIndex = 70;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(241, 337);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 13);
+            this.label9.TabIndex = 78;
+            this.label9.Text = "Specializations";
+            // 
             // FrmManageMaintenanceEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,7 +368,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -376,7 +375,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbxSpecializations;
         private System.Windows.Forms.TextBox txtNationalID;
         private System.Windows.Forms.TextBox txtEmai;
         private System.Windows.Forms.TextBox txtContactNumber;
@@ -392,5 +390,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox cbxSpecializations;
+        private System.Windows.Forms.Label label9;
     }
 }
