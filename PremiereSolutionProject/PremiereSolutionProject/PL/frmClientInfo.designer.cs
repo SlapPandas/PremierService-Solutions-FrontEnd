@@ -197,6 +197,7 @@ namespace PremiereSolutionProject.PL
             this.btnExiting.TabIndex = 24;
             this.btnExiting.Text = "Close";
             this.btnExiting.UseVisualStyleBackColor = true;
+            this.btnExiting.Click += new System.EventHandler(this.btnExiting_Click);
             // 
             // frmClientInfo
             // 

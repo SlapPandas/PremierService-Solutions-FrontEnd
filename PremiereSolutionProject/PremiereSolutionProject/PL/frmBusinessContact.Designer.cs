@@ -179,7 +179,7 @@ namespace PremiereSolutionProject.PL
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(239, 20);
+            this.label8.Location = new System.Drawing.Point(352, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(176, 26);
             this.label8.TabIndex = 87;
