@@ -139,7 +139,9 @@ namespace PremiereSolutionProject.PL
             }
             else
             {
-                dashform.callInfo.LogClientToCall(dashform.callInfo.CallID, txtClientID.Text);
+                Call call = new Call();
+                call.LogClientToCall(dashform.callInfo.CallID, txtClientID.Text);
+                
                 dashform.callInfo.Client = (Client)bs2.Current;
             }
 

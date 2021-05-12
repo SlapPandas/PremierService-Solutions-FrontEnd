@@ -86,12 +86,20 @@ namespace PremiereSolutionProject.PL
 
         private void btnAddService_Click(object sender, EventArgs e)
         {
-            lbxAdded.Items.Add(lbxAvailable.SelectedItem.ToString());
+            if (lbxAvailable.SelectedItem != null)
+            {
+                lbxAdded.Items.Add(lbxAvailable.SelectedItem.ToString());
+            }
+            
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            lbxAdded.Items.RemoveAt(lbxAdded.SelectedIndex);
+            if (lbxAdded.SelectedItem != null)
+            {
+                lbxAdded.Items.RemoveAt(lbxAdded.SelectedIndex);
+            }
+            
         }
         bool promotion;
         private void btnCreatePackage_Click(object sender, EventArgs e)

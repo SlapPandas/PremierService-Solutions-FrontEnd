@@ -23,8 +23,11 @@ namespace PremiereSolutionProject.PL
             this.Close();
         }
         List<BusinessClientEmployees> bce;
+        List<BusinessClientEmployees> bceUpdate;
         BindingSource bs = new BindingSource();
         BusinessClientEmployees selectedBce;
+        BusinessClient selectedBc;
+        List<BusinessClient> bc;
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -77,20 +80,45 @@ namespace PremiereSolutionProject.PL
         {
             dgvExistingBusinesses.ForeColor = Color.Black;
             bce = new BusinessClientEmployees().SelectAllBusinessClientEmployees();
+            bc = new BusinessClient().SelectAllBusinessClients();
             RefreshDGV();
+            RefreshDGV2();
         }
         private void RefreshDGV()
         {
-            bs.DataSource = bce;
+            bs.DataSource = bc;
             dgvExistingBusinesses.DataSource = null;
             dgvExistingBusinesses.DataSource = bs;
 
         }
 
+        private void RefreshDGV2()
+        {
+            bs.DataSource = bce;
+            dgvExistingEmployees.DataSource = null;
+            dgvExistingEmployees.DataSource = bs;
+
+        }
+
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            selectedBce = (BusinessClientEmployees)bs.Current;
-            UpdateData();
+           
+            selectedBc = (BusinessClient)bs.Current;
+            UpdateDgv();
+        }
+        private void UpdateDgv()
+        {
+
+            foreach (var item in bce)
+            {
+                if (selectedBc.Id == item.BusinessID)
+                {
+                    bceUpdate.Add(item);
+                }
+            }
+            bs.DataSource = bceUpdate;
+            dgvExistingEmployees.DataSource = null;
+            dgvExistingEmployees.DataSource = bs;
         }
         private void UpdateData()
         {
@@ -196,6 +224,13 @@ namespace PremiereSolutionProject.PL
             {
                 MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
             }
+        }
+
+        private void dgvExistingEmployees_SelectionChanged(object sender, EventArgs e)
+        {
+            selectedBce = (BusinessClientEmployees)bs.Current;
+            
+            UpdateData();
         }
     }
 }

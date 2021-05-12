@@ -157,18 +157,23 @@ namespace PremiereSolutionProject.PL
         {
             try
             {
-                bc = new BusinessClient().SelectAllBusinessClients();
-                foreach (BusinessClient item in bc)
+                if ((txtSearch.Text != "") && (txtSearch.Text != null)) 
                 {
-                    if (item.Id == txtSearch.Text)
                     {
-                        bc2 = item ;
-                        bc = null;
-                        bc.Add(bc2);
-                        RefreshDGV();
+                        bc = new BusinessClient().SelectAllBusinessClients();
+                        foreach (BusinessClient item in bc)
+                            if (item.Id == txtSearch.Text)
+                        {
+                            bc2 = item;
+                            bc = null;
+                            bc.Add(bc2);
+                            RefreshDGV();
+                        }
                     }
                 }
-                RefreshDGV();
+                
+                
+                
             }
             catch (Exception ee)
             {

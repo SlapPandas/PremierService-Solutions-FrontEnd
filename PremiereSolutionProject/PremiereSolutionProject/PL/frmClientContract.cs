@@ -42,9 +42,10 @@ namespace PremiereSolutionProject.PL
             //}
             string pLvl = cbxPriorityLevel.Text + "," + nudNoOfDays.Value;
 
-            Contract cont = new Contract(dtpStartDate.Value, dtpEndDate.Value, dashForm.callInfo.Client, packages, true, cbxPriorityLevel.Text, 0.00, "Contract");
-            double price = cont.CalculateContractPrice(cont);
-            cont = new Contract(dtpStartDate.Value, dtpEndDate.Value, dashForm.callInfo.Client, packages, true, pLvl, price, "Contract");
+           // Contract cont = new Contract(dtpStartDate.Value, dtpEndDate.Value, dashForm.callInfo.Client, packages, true, cbxPriorityLevel.Text, 0.00, "Contract");
+            //double price = cont.CalculateContractPrice(cont);
+           // cont = new Contract(dtpStartDate.Value, dtpEndDate.Value, dashForm.callInfo.Client, packages, true, pLvl, price, "Contract");
+            Contract cont = new Contract(dtpStartDate.Value, dtpEndDate.Value, dashForm.callInfo.Client, packages, true, cbxPriorityLevel.Text, "Contract");
             cont.InsertContract(cont);
         }
 
@@ -215,7 +216,10 @@ namespace PremiereSolutionProject.PL
 
         private void dtpEndDate_ValueChanged(object sender, EventArgs e)
         {
-
+            if (dtpEndDate.Value <= dtpStartDate.Value)
+            {
+                MessageBox.Show("End date can't be same as start date");
+            }
         }
 
         private void cbxPriorityLevel_SelectedIndexChanged(object sender, EventArgs e)

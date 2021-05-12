@@ -93,9 +93,13 @@ namespace PremiereSolutionProject.PL
                 {
                     throw new FormatException("Number of employees cant be 0");
                 }
-
+                if (cbxSpecialisation.SelectedItem == null)
+                {
+                    throw new FormatException("No specialisation selected");
+                }
                 else
                 {
+                   
                     lbxSpecialisations.Items.Add(cbxSpecialisation.SelectedItem.ToString() + "," + nudNumberOfPeople.Value.ToString());
                     specList.Add(cbxSpecialisation.SelectedItem.ToString() + "," + nudNumberOfPeople.Value.ToString());
 
@@ -115,7 +119,11 @@ namespace PremiereSolutionProject.PL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            lbxSpecialisations.Items.RemoveAt(lbxSpecialisations.SelectedIndex);
+            if (lbxSpecialisations.SelectedItem != null)
+            {
+                lbxSpecialisations.Items.RemoveAt(lbxSpecialisations.SelectedIndex);
+            }
+            
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
