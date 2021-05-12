@@ -270,8 +270,8 @@ namespace PremiereSolutionProject.BLL
 
             // declaration
             JobDH jobDH = new JobDH();
-            List<MaintenanceEmployee> maintenanceEmployeesList = SelectAllAvailabeEmployees(); //get the list of available employees
-            List<Job> jobList = OrderJobList(jobDH.SelectAllJobsWithPriority()); // ordered list of all unassigned (pending) jobs
+            List<MaintenanceEmployee> maintenanceEmployeesList = SelectAllAvailabeEmployees(); //get the list of available employees, WORKING
+            List<Job> jobList = OrderJobList(jobDH.SelectAllPendingJobsWithPriority()); // ordered list of all unassigned (pending) jobs, WORKING
             bool jobAssigned = false;
             int empsAssigned = 0;
             int employeecount = 0;
@@ -290,26 +290,19 @@ namespace PremiereSolutionProject.BLL
                         for (int n = 0; n < maintenanceEmployeesList[k].Specialisations.Count; n++) //go thru list of the specialisations of the employee
                         {
                             if (job.Specialisation.Equals(maintenanceEmployeesList[k].Specialisations[n])) //match the emplpoyee specialisation to the specialisation needed
-                            {
-                                job.JobState = JobState.InProgress;
-                                job.Employee.Add(maintenanceEmployeesList[k]); //add employee to list of Employees for a job
-
-                                jobDH.UpdateState(job.JobID, job.JobState);  //to update the job in the db                              
+                            {                                
+                                job.Employee.Add(maintenanceEmployeesList[k]); //add employee to list of Employees for a job                          
                                 jobDH.InsertSingleEmployeeToJob(job.JobID, maintenanceEmployeesList[k].Id); //insert into EmployeeJobLink table
-
                                 maintenanceEmployeesList.RemoveAt(k);   //employee is no longer available
-
-                                empsAssigned++;
-
+                                empsAssigned++; // increase the count of employees assigned to the job, used to check if the job is filled
                                 n = maintenanceEmployeesList[k].Specialisations.Count;  //to break out of n-for loop if correct employee was found & job was created
                             }
                         }
-
                         jobAssigned = empsAssigned == job.EmployeesNeeded ? true : false;   //for when all employees of the job has been assigned
-
                         if (jobAssigned)
                         {
-                            k = maintenanceEmployeesList.Count; //to get back to foreach to go to next job 
+                            job.JobState = JobState.InProgress; // job only goes to inProgress if job is full
+                            k = maintenanceEmployeesList.Count; //to get back to foreach to go to next job when the job is full.
                         }
                     }
                 }
@@ -380,6 +373,25 @@ namespace PremiereSolutionProject.BLL
                     highestPrioList.Add(unorderedJoblistWithPrio[i]);
                 }
             }
+            // sort the higher prio stuff to the top of the list.
+            unchanged = false;
+            while (!unchanged) // this is a bubble sort. uses the prio string to change the order of the 2 lists so they stay linked. results in unordered job list to be sorted by prio. NOT DATE
+            {
+                unchanged = true;
+                for (int i = 0; i <= unorderedList; i++)  // unorderedPrioLevel.Count-1 so that it does go out of bounds
+                {
+                    currentPrioLevel = ExtractNumber(highestPrioList[i].PriorityLevel); // compairing current item with next item
+                    nextPrioLevel = ExtractNumber(highestPrioList[i + 1].PriorityLevel);
+                    if (nextPrioLevel > currentPrioLevel) // switch items based on prio level
+                    {
+                        unchanged = false;
+                        tempJob = highestPrioList[i];
+                        highestPrioList[i] = highestPrioList[i + 1];
+                        highestPrioList[i + 1] = tempJob;
+                    }
+                }
+            }
+            // end sort
             int jobListLength = unorderedJoblistWithPrio.Count;
             for (int i = 0; i < highestPrioList.Count; i++)
             {
