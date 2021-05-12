@@ -61,7 +61,7 @@ namespace PremiereSolutionProject.PL
             this.dgvCurrentServices.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCurrentServices.Name = "dgvCurrentServices";
             this.dgvCurrentServices.RowHeadersWidth = 62;
-            this.dgvCurrentServices.Size = new System.Drawing.Size(724, 178);
+            this.dgvCurrentServices.Size = new System.Drawing.Size(690, 178);
             this.dgvCurrentServices.TabIndex = 69;
             this.dgvCurrentServices.SelectionChanged += new System.EventHandler(this.dgvCurrentServices_SelectionChanged);
             // 
@@ -125,7 +125,7 @@ namespace PremiereSolutionProject.PL
             this.btnCreatePackage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnCreatePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreatePackage.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreatePackage.Location = new System.Drawing.Point(756, 396);
+            this.btnCreatePackage.Location = new System.Drawing.Point(721, 390);
             this.btnCreatePackage.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreatePackage.Name = "btnCreatePackage";
             this.btnCreatePackage.Size = new System.Drawing.Size(159, 29);
@@ -151,7 +151,7 @@ namespace PremiereSolutionProject.PL
             this.btnDeleteService.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnDeleteService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteService.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteService.Location = new System.Drawing.Point(756, 462);
+            this.btnDeleteService.Location = new System.Drawing.Point(721, 455);
             this.btnDeleteService.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeleteService.Name = "btnDeleteService";
             this.btnDeleteService.Size = new System.Drawing.Size(159, 29);
@@ -165,7 +165,7 @@ namespace PremiereSolutionProject.PL
             this.btnUpdateService.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnUpdateService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateService.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateService.Location = new System.Drawing.Point(756, 330);
+            this.btnUpdateService.Location = new System.Drawing.Point(721, 335);
             this.btnUpdateService.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdateService.Name = "btnUpdateService";
             this.btnUpdateService.Size = new System.Drawing.Size(158, 29);
@@ -179,7 +179,7 @@ namespace PremiereSolutionProject.PL
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(1168, 631);
+            this.ClientSize = new System.Drawing.Size(906, 591);
             this.Controls.Add(this.btnUpdateService);
             this.Controls.Add(this.btnDeleteService);
             this.Controls.Add(this.btnExit);
