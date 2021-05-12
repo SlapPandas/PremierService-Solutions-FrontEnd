@@ -110,6 +110,17 @@ namespace PremiereSolutionProject.BLL
             this.callID = callID;
             this.priorityLevel = priority;
         }
+        public ServiceRequest(int ID, bool closed)
+        {
+            this.closed = closed;
+            this.serviceRequestID = ID;
+        }
+        public ServiceRequest(int ID, string desc, string prio)
+        {
+            this.serviceRequestID = ID;
+            this.description = desc;
+            this.priorityLevel = prio;
+        }
         #endregion
 
         #region Methods

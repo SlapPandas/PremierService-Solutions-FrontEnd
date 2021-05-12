@@ -36,8 +36,18 @@ namespace PremiereSolutionProject.PL
             this.btnEnd = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnInsert = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtServiceRequestID = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtCallId = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPriorityLevel = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDescription = new System.Windows.Forms.RichTextBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.cmbClosed = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewAllServiceReq)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,120 +55,242 @@ namespace PremiereSolutionProject.PL
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(335, 20);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(251, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(228, 31);
+            this.label1.Size = new System.Drawing.Size(183, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "Service Requests";
             // 
             // dgvViewAllServiceReq
             // 
             this.dgvViewAllServiceReq.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewAllServiceReq.Location = new System.Drawing.Point(105, 71);
-            this.dgvViewAllServiceReq.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvViewAllServiceReq.Location = new System.Drawing.Point(79, 58);
+            this.dgvViewAllServiceReq.Margin = new System.Windows.Forms.Padding(2);
             this.dgvViewAllServiceReq.Name = "dgvViewAllServiceReq";
             this.dgvViewAllServiceReq.RowHeadersWidth = 62;
             this.dgvViewAllServiceReq.RowTemplate.Height = 28;
-            this.dgvViewAllServiceReq.Size = new System.Drawing.Size(745, 218);
+            this.dgvViewAllServiceReq.Size = new System.Drawing.Size(559, 177);
             this.dgvViewAllServiceReq.TabIndex = 2;
+            this.dgvViewAllServiceReq.Click += new System.EventHandler(this.dgvViewAllServiceReq_Click);
             // 
             // btnForward
             // 
             this.btnForward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnForward.Location = new System.Drawing.Point(484, 320);
-            this.btnForward.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnForward.Location = new System.Drawing.Point(373, 253);
+            this.btnForward.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(105, 41);
+            this.btnForward.Size = new System.Drawing.Size(79, 33);
             this.btnForward.TabIndex = 12;
             this.btnForward.Text = ">";
             this.btnForward.UseVisualStyleBackColor = true;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
             // btnBackward
             // 
             this.btnBackward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBackward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackward.Location = new System.Drawing.Point(328, 320);
-            this.btnBackward.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnBackward.Location = new System.Drawing.Point(256, 253);
+            this.btnBackward.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBackward.Name = "btnBackward";
-            this.btnBackward.Size = new System.Drawing.Size(105, 41);
+            this.btnBackward.Size = new System.Drawing.Size(79, 33);
             this.btnBackward.TabIndex = 13;
             this.btnBackward.Text = "<";
             this.btnBackward.UseVisualStyleBackColor = true;
+            this.btnBackward.Click += new System.EventHandler(this.btnBackward_Click);
             // 
             // btnEnd
             // 
             this.btnEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnd.Location = new System.Drawing.Point(617, 320);
-            this.btnEnd.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnEnd.Location = new System.Drawing.Point(473, 253);
+            this.btnEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEnd.Name = "btnEnd";
-            this.btnEnd.Size = new System.Drawing.Size(105, 41);
+            this.btnEnd.Size = new System.Drawing.Size(79, 33);
             this.btnEnd.TabIndex = 14;
             this.btnEnd.Text = ">>";
             this.btnEnd.UseVisualStyleBackColor = true;
+            this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
             // 
             // btnStart
             // 
             this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStart.Location = new System.Drawing.Point(199, 320);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.btnStart.Location = new System.Drawing.Point(159, 253);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(105, 41);
+            this.btnStart.Size = new System.Drawing.Size(79, 33);
             this.btnStart.TabIndex = 15;
             this.btnStart.Text = "<<";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(804, 636);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Location = new System.Drawing.Point(603, 748);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(91, 28);
+            this.btnExit.Size = new System.Drawing.Size(68, 23);
             this.btnExit.TabIndex = 111;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnInsert
-            // 
-            this.btnInsert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsert.Location = new System.Drawing.Point(341, 418);
-            this.btnInsert.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnInsert.Name = "btnInsert";
-            this.btnInsert.Size = new System.Drawing.Size(91, 28);
-            this.btnInsert.TabIndex = 112;
-            this.btnInsert.Text = "Insert";
-            this.btnInsert.UseVisualStyleBackColor = true;
             // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(484, 418);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Location = new System.Drawing.Point(373, 505);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(91, 28);
+            this.btnDelete.Size = new System.Drawing.Size(68, 23);
             this.btnDelete.TabIndex = 113;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(18, 310);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 13);
+            this.label3.TabIndex = 115;
+            this.label3.Text = "Service Request Id";
+            // 
+            // txtServiceRequestID
+            // 
+            this.txtServiceRequestID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServiceRequestID.Location = new System.Drawing.Point(124, 305);
+            this.txtServiceRequestID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtServiceRequestID.Name = "txtServiceRequestID";
+            this.txtServiceRequestID.ReadOnly = true;
+            this.txtServiceRequestID.Size = new System.Drawing.Size(201, 21);
+            this.txtServiceRequestID.TabIndex = 114;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(368, 310);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 117;
+            this.label2.Text = "Closed";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(80, 342);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(36, 13);
+            this.label4.TabIndex = 119;
+            this.label4.Text = "Call Id";
+            // 
+            // txtCallId
+            // 
+            this.txtCallId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCallId.Location = new System.Drawing.Point(124, 337);
+            this.txtCallId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCallId.Name = "txtCallId";
+            this.txtCallId.ReadOnly = true;
+            this.txtCallId.Size = new System.Drawing.Size(201, 21);
+            this.txtCallId.TabIndex = 118;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(340, 345);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 13);
+            this.label5.TabIndex = 121;
+            this.label5.Text = "Priority Level";
+            // 
+            // txtPriorityLevel
+            // 
+            this.txtPriorityLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPriorityLevel.Location = new System.Drawing.Point(415, 340);
+            this.txtPriorityLevel.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPriorityLevel.Name = "txtPriorityLevel";
+            this.txtPriorityLevel.ReadOnly = true;
+            this.txtPriorityLevel.Size = new System.Drawing.Size(201, 21);
+            this.txtPriorityLevel.TabIndex = 120;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(320, 373);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 13);
+            this.label6.TabIndex = 123;
+            this.label6.Text = "Description";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescription.Location = new System.Drawing.Point(79, 390);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(559, 108);
+            this.txtDescription.TabIndex = 124;
+            this.txtDescription.Text = "";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(267, 505);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(68, 23);
+            this.btnUpdate.TabIndex = 112;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // cmbClosed
+            // 
+            this.cmbClosed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbClosed.FormattingEnabled = true;
+            this.cmbClosed.Items.AddRange(new object[] {
+            "False",
+            "True"});
+            this.cmbClosed.Location = new System.Drawing.Point(414, 307);
+            this.cmbClosed.Name = "cmbClosed";
+            this.cmbClosed.Size = new System.Drawing.Size(202, 21);
+            this.cmbClosed.TabIndex = 125;
             // 
             // frmViewServiceRequests
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(908, 677);
+            this.ClientSize = new System.Drawing.Size(681, 781);
+            this.Controls.Add(this.cmbClosed);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtPriorityLevel);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtCallId);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtServiceRequestID);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnInsert);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.btnEnd);
@@ -167,7 +299,7 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.dgvViewAllServiceReq);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmViewServiceRequests";
             this.Text = "View Service Requests";
             this.Load += new System.EventHandler(this.frmViewServiceRequests_Load);
@@ -186,7 +318,17 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Button btnEnd;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtServiceRequestID;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtCallId;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtPriorityLevel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RichTextBox txtDescription;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.ComboBox cmbClosed;
     }
 }
