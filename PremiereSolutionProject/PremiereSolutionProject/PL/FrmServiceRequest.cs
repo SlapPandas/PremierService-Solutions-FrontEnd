@@ -120,24 +120,9 @@ namespace PremiereSolutionProject.PL
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            //spec = new Specialisation().SelectSpecialisationList();
-            //List<Specialisation> addedSpec = new List<Specialisation>(); 
-            //foreach (var item in lbxSpecialisations.Items)
-            //{
-            //    foreach (Specialisation item2 in spec)
-            //    {
-            //        if (item2.SpecialisationName == item.ToString())
-            //        {
-            //            addedSpec.Add(item2);
-            //        }
-            //    }
-            //}
-
-            //ServiceRequest sr = new ServiceRequest(richTextBox1.Text, int.Parse(lblCallID.Text), addedSpec, "1");
             ServiceRequest srE = new ServiceRequest();
-            ServiceRequest sr = new ServiceRequest(false, richTextBox1.Text, dashform.callInfo.CallID, specList, "1", srE.service_OnInitialization);
-            
-           // Action action = sr.service_OnInitialization;
+            ServiceRequest sr = new ServiceRequest(richTextBox1.Text, dashform.callInfo.CallID, specList, srE.service_OnInitialization);
+            Action action = sr.service_OnInitialization;
             sr.CreateServiceRequest(sr);
         }
     }

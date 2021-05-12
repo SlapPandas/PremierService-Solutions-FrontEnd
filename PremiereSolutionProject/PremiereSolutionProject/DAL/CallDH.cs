@@ -59,7 +59,7 @@ namespace PremiereSolutionProject.DAL
                     {
                         CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
                         //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
-                        callList.Add(new Call((int)reader["callID"], (DateTime)reader["startTime"], (DateTime)reader["endTime"], new IndividualClient((string)reader["clientIndividualClientNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["RegistrationDate"], GetTrueFalseFromBit((int)reader["active"])), GetCallCenterEmployeeByCallId((int)reader["callID"]), (string)reader["callNotes"]));
+                        callList.Add(new Call((int)reader["callID"], (DateTime)reader["startTime"], reader.IsDBNull(reader.GetOrdinal("endTime")) ? new DateTime(1111, 11, 11) : Convert.ToDateTime(reader["endTime"]), new IndividualClient((string)reader["clientIndividualClientNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["RegistrationDate"], GetTrueFalseFromBit((int)reader["active"])), GetCallCenterEmployeeByCallId((int)reader["callID"]), (string)reader["callNotes"]));
                     }
                 }
             }
@@ -87,7 +87,7 @@ namespace PremiereSolutionProject.DAL
                     {
                         CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
                         //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
-                        callList.Add(new Call((int)reader["callID"], (DateTime)reader["startTime"], (DateTime)reader["endTime"], new BusinessClient((string)reader["clientBusinessClientNumber"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (DateTime)reader["RegistrationDate"], (string)reader["taxNumber"], (string)reader["busuinessName"], GetTrueFalseFromBit((int)reader["active"])), callcenterEnptyEmployee, (string)reader["callNotes"]));
+                        callList.Add(new Call((int)reader["callID"], (DateTime)reader["startTime"], reader.IsDBNull(reader.GetOrdinal("endTime")) ? new DateTime(1111, 11, 11) : Convert.ToDateTime(reader["endTime"]), new BusinessClient((string)reader["clientBusinessClientNumber"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (DateTime)reader["RegistrationDate"], (string)reader["taxNumber"], (string)reader["busuinessName"], GetTrueFalseFromBit((int)reader["active"])), callcenterEnptyEmployee, (string)reader["callNotes"]));
                     }
                 }
             }
@@ -115,7 +115,7 @@ namespace PremiereSolutionProject.DAL
                     {
                         CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
                         //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
-                        call = new Call((int)reader["callID"], (DateTime)reader["startTime"], (DateTime)reader["endTime"], callcenterEnptyEmployee, (string)reader["callNotes"]);
+                        call = new Call((int)reader["callID"], (DateTime)reader["startTime"], reader.IsDBNull(reader.GetOrdinal("endTime")) ? new DateTime(1111, 11, 11) : Convert.ToDateTime(reader["endTime"]), callcenterEnptyEmployee, (string)reader["callNotes"]);
                     }
                 }
             }
@@ -143,7 +143,7 @@ namespace PremiereSolutionProject.DAL
                     {
                         CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
                         //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
-                        call = new Call((int)reader["callID"], (DateTime)reader["startTime"], (DateTime)reader["endTime"], new IndividualClient((string)reader["clientIndividualClientNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["RegistrationDate"], GetTrueFalseFromBit((int)reader["active"])), callcenterEnptyEmployee, (string)reader["callNotes"]);
+                        call = new Call((int)reader["callID"], (DateTime)reader["startTime"], reader.IsDBNull(reader.GetOrdinal("endTime")) ? new DateTime(1111, 11, 11) : Convert.ToDateTime(reader["endTime"]), new IndividualClient((string)reader["clientIndividualClientNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["RegistrationDate"], GetTrueFalseFromBit((int)reader["active"])), callcenterEnptyEmployee, (string)reader["callNotes"]);
                     }
                 }
             }
@@ -171,7 +171,7 @@ namespace PremiereSolutionProject.DAL
                     {
                         CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
                         //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
-                        call = new Call((int)reader["callID"], (DateTime)reader["startTime"], (DateTime)reader["endTime"], new BusinessClient((string)reader["clientBusinessClientNumber"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (DateTime)reader["RegistrationDate"], (string)reader["taxNumber"], (string)reader["busuinessName"], GetTrueFalseFromBit((int)reader["active"])), callcenterEnptyEmployee, (string)reader["callNotes"]);
+                        call = new Call((int)reader["callID"], (DateTime)reader["startTime"], reader.IsDBNull(reader.GetOrdinal("endTime")) ? new DateTime(1111, 11, 11) : Convert.ToDateTime(reader["endTime"]), new BusinessClient((string)reader["clientBusinessClientNumber"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (DateTime)reader["RegistrationDate"], (string)reader["taxNumber"], (string)reader["busuinessName"], GetTrueFalseFromBit((int)reader["active"])), callcenterEnptyEmployee, (string)reader["callNotes"]);
                     }
                 }
             }

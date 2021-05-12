@@ -1114,7 +1114,7 @@ AS
     INNER JOIN ClientContractLink ON ContractState.contractStateID = ClientContractLink.ContractID
     INNER JOIN ClientIndividual ON ClientContractLink.ClientIndividualID = ClientIndividual.clientIndividualID
 	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
-    WHERE ClientIndividual.clientIndividualClientNumber = @id AND ContractState.activeContract = '1'
+    WHERE ClientContractLink.ClientIndividualID = (SELECT clientIndividualID FROM ClientIndividual WHERE clientIndividualClientNumber = @id) AND ContractState.activeContract = '1'
 GO
 ALTER PROC SelectContractByIndividualClientIdAndContractId @clientId VARCHAR(50),@contractId VARCHAR(50)
 AS
@@ -1136,9 +1136,9 @@ ALTER PROC SelectContractByBusinessClientIdActive @id VARCHAR(100)
 AS
     SELECT * FROM ContractState
     INNER JOIN ClientContractLink ON ContractState.contractStateID = ClientContractLink.ContractID
-    INNER JOIN ClientBusiness ON ClientContractLink.clientBusinessID = ClientBusiness.clientBusinessID
+    INNER JOIN ClientBusiness ON ClientContractLink.ClientBusinessID = ClientBusiness.clientBusinessID
 	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
-    WHERE ClientBusiness.clientBusinessClientNumber = @id AND ContractState.activeContract = '1'
+    WHERE ClientContractLink.ClientBusinessID = (SELECT clientBusinessID FROM ClientBusiness WHERE clientBusinessClientNumber = @id) AND ContractState.activeContract = '1'
 GO
 ALTER PROC SelectAllContractsByBusinessClientIdAndContractId @clientId VARCHAR(50),@contractId VARCHAR(50)
 AS

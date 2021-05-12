@@ -86,7 +86,6 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-
         #region Select
         public List<Contract> SelectAllContracts()
         {
@@ -349,7 +348,6 @@ namespace PremiereSolutionProject.DAL
             return contractList;
         }
         #endregion
-
 
         #region SeperateMethods
         private void InsertAllServicesPackedgesOfContract(Contract contract)

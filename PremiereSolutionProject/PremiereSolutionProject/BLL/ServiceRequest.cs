@@ -129,11 +129,21 @@ namespace PremiereSolutionProject.BLL
 
         public void CreateServiceRequest(ServiceRequest s)
         {
-            s.closed = false;
-
-            ServiceRequest serviceRequest = new ServiceRequest(s.closed, s.description, s.callID, GenerateSpecialisationList(s.spesialisationRequiredNumberEmployees), s.priorityLevel);
-
-            InsertServiceRequest(serviceRequest); //insert new service request directly into DB
+            CallDH callDH = new CallDH();
+            ContractDH contractDH = new ContractDH();
+            string clientId = "-1", proirity = "";
+            Call call = callDH.SelectCallById(s.callID);
+            if (call.Busclient != null)
+            {
+                clientId = call.Busclient.Id;
+                proirity = contractDH.SelectContractByBusinessClientIdCurrentlyActive(clientId).PriorityLevel;
+            }
+            if (call.Indclient != null)
+            {
+                clientId = call.Indclient.Id;
+                proirity = contractDH.SelectContractByIndividualClientIdCurrentlyActive(clientId).PriorityLevel;
+            }
+            InsertServiceRequestWithSpecialisation(new ServiceRequest(false, s.description, s.callID, GenerateSpecialisationList(s.spesialisationRequiredNumberEmployees), proirity)); //insert new service request directly into DB
         }
 
         private List<Specialisation> GenerateSpecialisationList(List<string> specialisationEmpList)
