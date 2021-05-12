@@ -615,6 +615,7 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.pnlSideMenu);
             this.MinimumSize = new System.Drawing.Size(948, 596);
             this.Name = "frmDashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.pnlSideMenu.ResumeLayout(false);
             this.pnlClientSatisSubMenu.ResumeLayout(false);
