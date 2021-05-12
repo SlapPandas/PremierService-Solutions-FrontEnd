@@ -44,6 +44,8 @@ namespace PremiereSolutionProject.PL
             this.btnClientSatisCall = new System.Windows.Forms.Button();
             this.btnClientSatis = new System.Windows.Forms.Button();
             this.pnlClientMaintainSubMenu = new System.Windows.Forms.Panel();
+            this.btnClientContract = new System.Windows.Forms.Button();
+            this.btnBusinessContact = new System.Windows.Forms.Button();
             this.btnBusinessClient = new System.Windows.Forms.Button();
             this.btnIndiClient = new System.Windows.Forms.Button();
             this.btnClientMaintence = new System.Windows.Forms.Button();
@@ -57,18 +59,12 @@ namespace PremiereSolutionProject.PL
             this.btnViewServiceReq = new System.Windows.Forms.Button();
             this.btnServiceDept = new System.Windows.Forms.Button();
             this.pnlCallCenterSubmenu = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.btnClientInformation = new System.Windows.Forms.Button();
             this.btnCreateServiceRequest = new System.Windows.Forms.Button();
             this.btnCall = new System.Windows.Forms.Button();
             this.btnCallCenter = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.pnlChildForm = new System.Windows.Forms.Panel();
-            this.btnBusinessContact = new System.Windows.Forms.Button();
-            this.btnClientContract = new System.Windows.Forms.Button();
             this.pnlSideMenu.SuspendLayout();
             this.pnlServiceSubMenu.SuspendLayout();
             this.pnlClientSatisSubMenu.SuspendLayout();
@@ -76,7 +72,6 @@ namespace PremiereSolutionProject.PL
             this.pnlContractMaintSubMenu.SuspendLayout();
             this.pnlServiceDeptSubMenu.SuspendLayout();
             this.pnlCallCenterSubmenu.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSideMenu
@@ -113,7 +108,7 @@ namespace PremiereSolutionProject.PL
             this.btnErrorHandling.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnErrorHandling.Image = ((System.Drawing.Image)(resources.GetObject("btnErrorHandling.Image")));
             this.btnErrorHandling.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnErrorHandling.Location = new System.Drawing.Point(0, 1276);
+            this.btnErrorHandling.Location = new System.Drawing.Point(0, 1538);
             this.btnErrorHandling.Margin = new System.Windows.Forms.Padding(4);
             this.btnErrorHandling.Name = "btnErrorHandling";
             this.btnErrorHandling.Size = new System.Drawing.Size(312, 50);
@@ -129,7 +124,7 @@ namespace PremiereSolutionProject.PL
             this.pnlServiceSubMenu.Controls.Add(this.btnManageEmp);
             this.pnlServiceSubMenu.Controls.Add(this.btnEscalate);
             this.pnlServiceSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlServiceSubMenu.Location = new System.Drawing.Point(0, 1086);
+            this.pnlServiceSubMenu.Location = new System.Drawing.Point(0, 1348);
             this.pnlServiceSubMenu.Margin = new System.Windows.Forms.Padding(4);
             this.pnlServiceSubMenu.Name = "pnlServiceSubMenu";
             this.pnlServiceSubMenu.Size = new System.Drawing.Size(312, 190);
@@ -197,7 +192,7 @@ namespace PremiereSolutionProject.PL
             this.btnServiceManager.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnServiceManager.Image = ((System.Drawing.Image)(resources.GetObject("btnServiceManager.Image")));
             this.btnServiceManager.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServiceManager.Location = new System.Drawing.Point(0, 1036);
+            this.btnServiceManager.Location = new System.Drawing.Point(0, 1298);
             this.btnServiceManager.Margin = new System.Windows.Forms.Padding(4);
             this.btnServiceManager.Name = "btnServiceManager";
             this.btnServiceManager.Size = new System.Drawing.Size(312, 50);
@@ -215,7 +210,7 @@ namespace PremiereSolutionProject.PL
             this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(0, 1326);
+            this.btnExit.Location = new System.Drawing.Point(0, 1588);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(312, 44);
@@ -231,10 +226,10 @@ namespace PremiereSolutionProject.PL
             this.pnlClientSatisSubMenu.Controls.Add(this.btnFollowRequest);
             this.pnlClientSatisSubMenu.Controls.Add(this.btnClientSatisCall);
             this.pnlClientSatisSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlClientSatisSubMenu.Location = new System.Drawing.Point(0, 919);
+            this.pnlClientSatisSubMenu.Location = new System.Drawing.Point(0, 1102);
             this.pnlClientSatisSubMenu.Margin = new System.Windows.Forms.Padding(4);
             this.pnlClientSatisSubMenu.Name = "pnlClientSatisSubMenu";
-            this.pnlClientSatisSubMenu.Size = new System.Drawing.Size(312, 117);
+            this.pnlClientSatisSubMenu.Size = new System.Drawing.Size(312, 196);
             this.pnlClientSatisSubMenu.TabIndex = 1;
             // 
             // btnViewClientData
@@ -299,7 +294,7 @@ namespace PremiereSolutionProject.PL
             this.btnClientSatis.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnClientSatis.Image = ((System.Drawing.Image)(resources.GetObject("btnClientSatis.Image")));
             this.btnClientSatis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientSatis.Location = new System.Drawing.Point(0, 875);
+            this.btnClientSatis.Location = new System.Drawing.Point(0, 1058);
             this.btnClientSatis.Margin = new System.Windows.Forms.Padding(4);
             this.btnClientSatis.Name = "btnClientSatis";
             this.btnClientSatis.Size = new System.Drawing.Size(312, 44);
@@ -316,11 +311,47 @@ namespace PremiereSolutionProject.PL
             this.pnlClientMaintainSubMenu.Controls.Add(this.btnBusinessClient);
             this.pnlClientMaintainSubMenu.Controls.Add(this.btnIndiClient);
             this.pnlClientMaintainSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlClientMaintainSubMenu.Location = new System.Drawing.Point(0, 624);
+            this.pnlClientMaintainSubMenu.Location = new System.Drawing.Point(0, 807);
             this.pnlClientMaintainSubMenu.Margin = new System.Windows.Forms.Padding(4);
             this.pnlClientMaintainSubMenu.Name = "pnlClientMaintainSubMenu";
             this.pnlClientMaintainSubMenu.Size = new System.Drawing.Size(312, 251);
             this.pnlClientMaintainSubMenu.TabIndex = 1;
+            // 
+            // btnClientContract
+            // 
+            this.btnClientContract.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnClientContract.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnClientContract.FlatAppearance.BorderSize = 0;
+            this.btnClientContract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientContract.ForeColor = System.Drawing.Color.LightGray;
+            this.btnClientContract.Location = new System.Drawing.Point(0, 189);
+            this.btnClientContract.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClientContract.Name = "btnClientContract";
+            this.btnClientContract.Padding = new System.Windows.Forms.Padding(87, 0, 0, 0);
+            this.btnClientContract.Size = new System.Drawing.Size(312, 63);
+            this.btnClientContract.TabIndex = 13;
+            this.btnClientContract.Text = "Client Contract";
+            this.btnClientContract.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClientContract.UseVisualStyleBackColor = false;
+            this.btnClientContract.Click += new System.EventHandler(this.btnClientContract_Click_1);
+            // 
+            // btnBusinessContact
+            // 
+            this.btnBusinessContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnBusinessContact.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBusinessContact.FlatAppearance.BorderSize = 0;
+            this.btnBusinessContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBusinessContact.ForeColor = System.Drawing.Color.LightGray;
+            this.btnBusinessContact.Location = new System.Drawing.Point(0, 126);
+            this.btnBusinessContact.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBusinessContact.Name = "btnBusinessContact";
+            this.btnBusinessContact.Padding = new System.Windows.Forms.Padding(87, 0, 0, 0);
+            this.btnBusinessContact.Size = new System.Drawing.Size(312, 63);
+            this.btnBusinessContact.TabIndex = 12;
+            this.btnBusinessContact.Text = "Add Business Contact";
+            this.btnBusinessContact.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBusinessContact.UseVisualStyleBackColor = false;
+            this.btnBusinessContact.Click += new System.EventHandler(this.btnBusinessContact_Click_1);
             // 
             // btnBusinessClient
             // 
@@ -366,7 +397,7 @@ namespace PremiereSolutionProject.PL
             this.btnClientMaintence.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnClientMaintence.Image = ((System.Drawing.Image)(resources.GetObject("btnClientMaintence.Image")));
             this.btnClientMaintence.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientMaintence.Location = new System.Drawing.Point(0, 580);
+            this.btnClientMaintence.Location = new System.Drawing.Point(0, 763);
             this.btnClientMaintence.Margin = new System.Windows.Forms.Padding(4);
             this.btnClientMaintence.Name = "btnClientMaintence";
             this.btnClientMaintence.Size = new System.Drawing.Size(312, 44);
@@ -382,10 +413,10 @@ namespace PremiereSolutionProject.PL
             this.pnlContractMaintSubMenu.Controls.Add(this.btnServices);
             this.pnlContractMaintSubMenu.Controls.Add(this.btnServicePackageManage);
             this.pnlContractMaintSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlContractMaintSubMenu.Location = new System.Drawing.Point(0, 461);
+            this.pnlContractMaintSubMenu.Location = new System.Drawing.Point(0, 571);
             this.pnlContractMaintSubMenu.Margin = new System.Windows.Forms.Padding(4);
             this.pnlContractMaintSubMenu.Name = "pnlContractMaintSubMenu";
-            this.pnlContractMaintSubMenu.Size = new System.Drawing.Size(312, 119);
+            this.pnlContractMaintSubMenu.Size = new System.Drawing.Size(312, 192);
             this.pnlContractMaintSubMenu.TabIndex = 1;
             // 
             // btnCreateContract
@@ -450,7 +481,7 @@ namespace PremiereSolutionProject.PL
             this.btnContractMaintenance.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnContractMaintenance.Image = ((System.Drawing.Image)(resources.GetObject("btnContractMaintenance.Image")));
             this.btnContractMaintenance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnContractMaintenance.Location = new System.Drawing.Point(0, 417);
+            this.btnContractMaintenance.Location = new System.Drawing.Point(0, 527);
             this.btnContractMaintenance.Margin = new System.Windows.Forms.Padding(4);
             this.btnContractMaintenance.Name = "btnContractMaintenance";
             this.btnContractMaintenance.Size = new System.Drawing.Size(312, 44);
@@ -465,10 +496,10 @@ namespace PremiereSolutionProject.PL
             this.pnlServiceDeptSubMenu.Controls.Add(this.btnJobManagement);
             this.pnlServiceDeptSubMenu.Controls.Add(this.btnViewServiceReq);
             this.pnlServiceDeptSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlServiceDeptSubMenu.Location = new System.Drawing.Point(0, 335);
+            this.pnlServiceDeptSubMenu.Location = new System.Drawing.Point(0, 401);
             this.pnlServiceDeptSubMenu.Margin = new System.Windows.Forms.Padding(4);
             this.pnlServiceDeptSubMenu.Name = "pnlServiceDeptSubMenu";
-            this.pnlServiceDeptSubMenu.Size = new System.Drawing.Size(312, 82);
+            this.pnlServiceDeptSubMenu.Size = new System.Drawing.Size(312, 126);
             this.pnlServiceDeptSubMenu.TabIndex = 1;
             // 
             // btnJobManagement
@@ -515,7 +546,7 @@ namespace PremiereSolutionProject.PL
             this.btnServiceDept.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnServiceDept.Image = ((System.Drawing.Image)(resources.GetObject("btnServiceDept.Image")));
             this.btnServiceDept.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServiceDept.Location = new System.Drawing.Point(0, 291);
+            this.btnServiceDept.Location = new System.Drawing.Point(0, 357);
             this.btnServiceDept.Margin = new System.Windows.Forms.Padding(4);
             this.btnServiceDept.Name = "btnServiceDept";
             this.btnServiceDept.Size = new System.Drawing.Size(312, 44);
@@ -527,7 +558,6 @@ namespace PremiereSolutionProject.PL
             // 
             // pnlCallCenterSubmenu
             // 
-            this.pnlCallCenterSubmenu.Controls.Add(this.panel1);
             this.pnlCallCenterSubmenu.Controls.Add(this.btnClientInformation);
             this.pnlCallCenterSubmenu.Controls.Add(this.btnCreateServiceRequest);
             this.pnlCallCenterSubmenu.Controls.Add(this.btnCall);
@@ -535,71 +565,8 @@ namespace PremiereSolutionProject.PL
             this.pnlCallCenterSubmenu.Location = new System.Drawing.Point(0, 174);
             this.pnlCallCenterSubmenu.Margin = new System.Windows.Forms.Padding(4);
             this.pnlCallCenterSubmenu.Name = "pnlCallCenterSubmenu";
-            this.pnlCallCenterSubmenu.Size = new System.Drawing.Size(312, 117);
+            this.pnlCallCenterSubmenu.Size = new System.Drawing.Size(312, 183);
             this.pnlCallCenterSubmenu.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 185);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(312, 183);
-            this.panel1.TabIndex = 4;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.LightGray;
-            this.button2.Location = new System.Drawing.Point(0, 100);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(87, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(312, 50);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Client Information";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.LightGray;
-            this.button3.Location = new System.Drawing.Point(0, 50);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(87, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(312, 50);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Create service request";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.Color.LightGray;
-            this.button4.Location = new System.Drawing.Point(0, 0);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(87, 0, 0, 0);
-            this.button4.Size = new System.Drawing.Size(312, 50);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Call";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.UseVisualStyleBackColor = false;
             // 
             // btnClientInformation
             // 
@@ -699,42 +666,6 @@ namespace PremiereSolutionProject.PL
             this.pnlChildForm.Size = new System.Drawing.Size(1229, 775);
             this.pnlChildForm.TabIndex = 2;
             // 
-            // btnBusinessContact
-            // 
-            this.btnBusinessContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnBusinessContact.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBusinessContact.FlatAppearance.BorderSize = 0;
-            this.btnBusinessContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBusinessContact.ForeColor = System.Drawing.Color.LightGray;
-            this.btnBusinessContact.Location = new System.Drawing.Point(0, 126);
-            this.btnBusinessContact.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBusinessContact.Name = "btnBusinessContact";
-            this.btnBusinessContact.Padding = new System.Windows.Forms.Padding(87, 0, 0, 0);
-            this.btnBusinessContact.Size = new System.Drawing.Size(312, 63);
-            this.btnBusinessContact.TabIndex = 12;
-            this.btnBusinessContact.Text = "Add Business Contact";
-            this.btnBusinessContact.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBusinessContact.UseVisualStyleBackColor = false;
-            this.btnBusinessContact.Click += new System.EventHandler(this.btnBusinessContact_Click_1);
-            // 
-            // btnClientContract
-            // 
-            this.btnClientContract.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.btnClientContract.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnClientContract.FlatAppearance.BorderSize = 0;
-            this.btnClientContract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClientContract.ForeColor = System.Drawing.Color.LightGray;
-            this.btnClientContract.Location = new System.Drawing.Point(0, 189);
-            this.btnClientContract.Margin = new System.Windows.Forms.Padding(4);
-            this.btnClientContract.Name = "btnClientContract";
-            this.btnClientContract.Padding = new System.Windows.Forms.Padding(87, 0, 0, 0);
-            this.btnClientContract.Size = new System.Drawing.Size(312, 63);
-            this.btnClientContract.TabIndex = 13;
-            this.btnClientContract.Text = "Client Contract";
-            this.btnClientContract.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClientContract.UseVisualStyleBackColor = false;
-            this.btnClientContract.Click += new System.EventHandler(this.btnClientContract_Click_1);
-            // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -755,7 +686,6 @@ namespace PremiereSolutionProject.PL
             this.pnlContractMaintSubMenu.ResumeLayout(false);
             this.pnlServiceDeptSubMenu.ResumeLayout(false);
             this.pnlCallCenterSubmenu.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -788,10 +718,6 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Button btnJobManagement;
         private System.Windows.Forms.Button btnViewServiceReq;
         private System.Windows.Forms.Button btnServiceDept;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel pnlChildForm;
         private System.Windows.Forms.Panel pnlServiceSubMenu;
         private System.Windows.Forms.Button btnManageEmp;

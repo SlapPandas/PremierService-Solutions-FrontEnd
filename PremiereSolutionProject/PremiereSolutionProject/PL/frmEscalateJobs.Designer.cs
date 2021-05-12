@@ -35,7 +35,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(931, 548);
             this.Name = "frmEscalateJobs";
             this.Text = "frmEscalateJobs";
             this.Load += new System.EventHandler(this.frmEscalateJobs_Load);
