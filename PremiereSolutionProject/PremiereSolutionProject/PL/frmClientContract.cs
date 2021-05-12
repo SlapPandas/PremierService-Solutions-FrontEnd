@@ -89,8 +89,8 @@ namespace PremiereSolutionProject.PL
                 {
                     txtClientID.Text = dashForm.callInfo.Client.Id;
                 }
-                RefreshDGV();
-                RefreshDGVServices();
+                //RefreshDGV();
+                //RefreshDGVServices();
             }
             catch (Exception ee)
             {
@@ -106,24 +106,23 @@ namespace PremiereSolutionProject.PL
             List<ServicePackage> bindingList = packages;
             var source = new BindingSource(bindingList, null);
             dgvServicePackages.DataSource = source;
-
-            //bs.DataSource = packages;
-            //dgvServicePackages.DataSource = null;
-            //dgvServicePackages.DataSource = bs;
             
         }
 
         private void RefreshDGVServices()
         {
-            bss.DataSource = services;
-            dgvServices.DataSource = null;
-            dgvServices.DataSource = bss;
-            
+            dgvServices.Rows.Clear();
+            dgvServices.Refresh();
+            List<Service> bindingList = services;
+            var source = new BindingSource(bindingList, null);
+            dgvServices.DataSource = source;
         }
 
         private void cbxContractName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            packages = contractList[cbxContractName.SelectedIndex].PackageList;
+            Contract myContract = new Contract();
+            packages = null;
+            packages = myContract.GetOfferedContractByID(cbxContractName.Text).PackageList;
             RefreshDGV();
         }
 
@@ -131,8 +130,10 @@ namespace PremiereSolutionProject.PL
         {
             try
             {
+
                 if (bs.Current != null)
                 {
+                    
                     packages = new ServicePackage().SelectAllServicePackage();
                     foreach (ServicePackage item in packages)
                     {
@@ -233,6 +234,20 @@ namespace PremiereSolutionProject.PL
         private void cbxPriorityLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvServicePackages_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Service myService = new Service();
+
+            foreach (ServicePackage item in packages)
+            {
+                if (item.PackageID == int.Parse(dgvServicePackages.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()))
+                {
+                    services = myService.SelectServiceListInServicePackage(item);
+                    RefreshDGVServices();
+                }
+            }
         }
     }
 }

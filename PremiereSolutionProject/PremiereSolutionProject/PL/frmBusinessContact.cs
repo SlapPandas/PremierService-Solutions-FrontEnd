@@ -17,6 +17,11 @@ namespace PremiereSolutionProject.PL
         {
             InitializeComponent();
         }
+        public frmBusinessContact(frmDashboard _dashForm) : this()
+        {
+            dashForm = _dashForm;
+        }
+        frmDashboard dashForm;
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -88,7 +93,7 @@ namespace PremiereSolutionProject.PL
         {
             bs.DataSource = bc;
             dgvExistingBusinesses.DataSource = null;
-            dgvExistingBusinesses.DataSource = bs;
+            //dgvExistingBusinesses.DataSource = bs;
 
         }
 

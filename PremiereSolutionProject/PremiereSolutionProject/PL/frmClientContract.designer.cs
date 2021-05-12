@@ -221,6 +221,7 @@ namespace PremiereSolutionProject.PL
             this.dgvServicePackages.RowHeadersWidth = 51;
             this.dgvServicePackages.Size = new System.Drawing.Size(527, 157);
             this.dgvServicePackages.TabIndex = 19;
+            this.dgvServicePackages.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServicePackages_CellClick);
             this.dgvServicePackages.SelectionChanged += new System.EventHandler(this.dgvServicePackages_SelectionChanged);
             // 
             // label6

@@ -281,13 +281,13 @@ namespace PremiereSolutionProject.PL
         #region Client Maintenance P2
         private void btnBusinessContact_Click_1(object sender, EventArgs e)
         {
-            openChildForm(new frmBusinessContact());
+            openChildForm(new frmBusinessContact(this));
             HideSubMenu();
         }
 
         private void btnClientContract_Click_1(object sender, EventArgs e)
         {
-            openChildForm(new frmClientContract());
+            openChildForm(new frmClientContract(this));
             HideSubMenu();
         }
         #endregion
