@@ -43,10 +43,6 @@ namespace PremiereSolutionProject.PL
                 {
                     throw new FormatException("No employee national ID");
                 }
-                if (string.IsNullOrWhiteSpace(txtAddress.Text))
-                {
-                    throw new FormatException("No employee address");
-                }
                 if (string.IsNullOrWhiteSpace(txtContactNumber.Text))
                 {
                     throw new FormatException("No employee Contact number");

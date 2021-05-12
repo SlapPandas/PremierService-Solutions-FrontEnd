@@ -135,7 +135,6 @@ namespace PremiereSolutionProject.PL
             // 
             // btnExit
             // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(12, 10);
@@ -300,7 +299,7 @@ namespace PremiereSolutionProject.PL
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(96, 69);
+            this.label3.Location = new System.Drawing.Point(94, 66);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(178, 16);
             this.label3.TabIndex = 106;
@@ -413,7 +412,7 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.txtTaxNum);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmBusinessClient";
             this.Text = "Business Client";
             this.Load += new System.EventHandler(this.frmAddBusinessClient_Load);

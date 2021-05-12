@@ -147,5 +147,10 @@ namespace PremiereSolutionProject.PL
 
             
         }
+
+        private void btnExiting_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

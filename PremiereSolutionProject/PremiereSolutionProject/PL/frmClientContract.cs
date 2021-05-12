@@ -26,7 +26,7 @@ namespace PremiereSolutionProject.PL
         {
             this.Close();
         }
-        private List<Contract> contract;
+        private List<Contract> contractList;
         List<ServicePackage> packages;
         List<Service> services;
         BindingSource bs = new BindingSource();
@@ -53,19 +53,27 @@ namespace PremiereSolutionProject.PL
         {
             try
             {
+                Contract myContract = new Contract();
+                dtpEndDate.Value = DateTime.Today.AddDays(1);   //to not have it as the same day as default
+                //to not be able to register a contract if there is no client ID entered
+                btnCreate.Enabled = txtClientID.Text == "" ? false : true;
+
+                cbxContractName.DropDownStyle = ComboBoxStyle.DropDownList;
+                cbxPriorityLevel.DropDownStyle = ComboBoxStyle.DropDownList;
+
                 dgvServicePackages.ForeColor = Color.Black;
                 dgvServices.ForeColor = Color.Black;
 
-                packages = new ServicePackage().SelectAllServicePackage();
-                contract = new Contract().SelectAllContracts();
+                //packages = new ServicePackage().SelectAllServicePackage();
+                contractList = myContract.SelectAllContracts();
                 services = new Service().SelectAllServices();
                 List<string> cont = new List<string>();
 
                 // contract = new List<Contract>();
 
-                foreach (Contract item in contract)
+                foreach (Contract item in contractList)
                 {
-                    cbxContractName.Items.Add(item.ContractType.ToString());
+                    cbxContractName.Items.Add(item.ContractID.ToString());
                 }
                 //foreach (var item in contract)
                 //{
@@ -93,9 +101,15 @@ namespace PremiereSolutionProject.PL
 
         private void RefreshDGV()
         {
-            bs.DataSource = packages;
-            dgvServicePackages.DataSource = null;
-            dgvServicePackages.DataSource = bs;
+            dgvServicePackages.Rows.Clear();
+            dgvServicePackages.Refresh();
+            List<ServicePackage> bindingList = packages;
+            var source = new BindingSource(bindingList, null);
+            dgvServicePackages.DataSource = source;
+
+            //bs.DataSource = packages;
+            //dgvServicePackages.DataSource = null;
+            //dgvServicePackages.DataSource = bs;
             
         }
 
@@ -109,11 +123,12 @@ namespace PremiereSolutionProject.PL
 
         private void cbxContractName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            contract = new Contract().SelectAllContracts();
-            foreach (Contract item in contract)
+            //contractList = new Contract().SelectAllContracts();
+            foreach (Contract item in contractList)
             {
-                if (item.ContractType == cbxContractName.SelectedItem.ToString())
+                if (item.ContractID == cbxContractName.SelectedItem.ToString())
                 {
+                   // packages.Clear();
                     packages = item.PackageList;
                     RefreshDGV();
                 }
@@ -206,7 +221,7 @@ namespace PremiereSolutionProject.PL
 
         private void txtClientID_TextChanged(object sender, EventArgs e)
         {
-
+            btnCreate.Enabled = txtClientID.Text == "" ? false : true;
         }
 
         private void dtpStartDate_ValueChanged(object sender, EventArgs e)
@@ -218,7 +233,8 @@ namespace PremiereSolutionProject.PL
         {
             if (dtpEndDate.Value <= dtpStartDate.Value)
             {
-                MessageBox.Show("End date can't be same as start date");
+                MessageBox.Show("End date can't be same as start date.");
+                dtpEndDate.Focus();
             }
         }
 

@@ -31,6 +31,10 @@ namespace PremiereSolutionProject.PL
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashboard));
             this.pnlSideMenu = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.btnEscalateJobs = new System.Windows.Forms.Button();
             this.btnErrorHandling = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlClientSatisSubMenu = new System.Windows.Forms.Panel();
@@ -65,6 +69,7 @@ namespace PremiereSolutionProject.PL
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.pnlChildForm = new System.Windows.Forms.Panel();
             this.pnlSideMenu.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.pnlClientSatisSubMenu.SuspendLayout();
             this.pnlClientMaintainSubMenu.SuspendLayout();
             this.pnlContractMaintSubMenu.SuspendLayout();
@@ -77,6 +82,8 @@ namespace PremiereSolutionProject.PL
             // 
             this.pnlSideMenu.AutoScroll = true;
             this.pnlSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            this.pnlSideMenu.Controls.Add(this.panel2);
+            this.pnlSideMenu.Controls.Add(this.btnEscalateJobs);
             this.pnlSideMenu.Controls.Add(this.btnErrorHandling);
             this.pnlSideMenu.Controls.Add(this.btnExit);
             this.pnlSideMenu.Controls.Add(this.pnlClientSatisSubMenu);
@@ -93,8 +100,66 @@ namespace PremiereSolutionProject.PL
             this.pnlSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSideMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlSideMenu.Name = "pnlSideMenu";
-            this.pnlSideMenu.Size = new System.Drawing.Size(250, 614);
+            this.pnlSideMenu.Size = new System.Drawing.Size(250, 631);
             this.pnlSideMenu.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button6);
+            this.panel2.Controls.Add(this.button7);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 1064);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(233, 82);
+            this.panel2.TabIndex = 9;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.Color.LightGray;
+            this.button6.Location = new System.Drawing.Point(0, 41);
+            this.button6.Name = "button6";
+            this.button6.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
+            this.button6.Size = new System.Drawing.Size(233, 41);
+            this.button6.TabIndex = 14;
+            this.button6.Text = "Assign New Employees To A Job";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.Color.LightGray;
+            this.button7.Location = new System.Drawing.Point(0, 0);
+            this.button7.Name = "button7";
+            this.button7.Padding = new System.Windows.Forms.Padding(65, 0, 0, 0);
+            this.button7.Size = new System.Drawing.Size(233, 41);
+            this.button7.TabIndex = 13;
+            this.button7.Text = "Escalate Jobs";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // btnEscalateJobs
+            // 
+            this.btnEscalateJobs.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEscalateJobs.FlatAppearance.BorderSize = 0;
+            this.btnEscalateJobs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEscalateJobs.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnEscalateJobs.Image = ((System.Drawing.Image)(resources.GetObject("btnEscalateJobs.Image")));
+            this.btnEscalateJobs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEscalateJobs.Location = new System.Drawing.Point(0, 1013);
+            this.btnEscalateJobs.Name = "btnEscalateJobs";
+            this.btnEscalateJobs.Size = new System.Drawing.Size(233, 51);
+            this.btnEscalateJobs.TabIndex = 8;
+            this.btnEscalateJobs.Text = "        Service Manager";
+            this.btnEscalateJobs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEscalateJobs.UseVisualStyleBackColor = true;
             // 
             // btnErrorHandling
             // 
@@ -121,7 +186,7 @@ namespace PremiereSolutionProject.PL
             this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(0, 1013);
+            this.btnExit.Location = new System.Drawing.Point(0, 1146);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(233, 45);
             this.btnExit.TabIndex = 6;
@@ -597,27 +662,32 @@ namespace PremiereSolutionProject.PL
             // 
             // pnlChildForm
             // 
+            this.pnlChildForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.pnlChildForm.BackgroundImage = global::PremiereSolutionProject.Properties.Resources.PSSLogo;
-            this.pnlChildForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlChildForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pnlChildForm.Location = new System.Drawing.Point(250, 0);
+            this.pnlChildForm.MaximumSize = new System.Drawing.Size(1152, 630);
             this.pnlChildForm.Name = "pnlChildForm";
-            this.pnlChildForm.Size = new System.Drawing.Size(894, 614);
+            this.pnlChildForm.Size = new System.Drawing.Size(910, 630);
             this.pnlChildForm.TabIndex = 2;
             // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1144, 614);
+            this.ClientSize = new System.Drawing.Size(1168, 631);
             this.Controls.Add(this.pnlChildForm);
             this.Controls.Add(this.pnlSideMenu);
-            this.MinimumSize = new System.Drawing.Size(948, 596);
+            this.MaximumSize = new System.Drawing.Size(1184, 670);
+            this.MinimumSize = new System.Drawing.Size(1184, 670);
             this.Name = "frmDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.pnlSideMenu.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.pnlClientSatisSubMenu.ResumeLayout(false);
             this.pnlClientMaintainSubMenu.ResumeLayout(false);
             this.pnlContractMaintSubMenu.ResumeLayout(false);
@@ -664,5 +734,9 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Panel pnlChildForm;
         private System.Windows.Forms.Button btnBusinessContact;
         private System.Windows.Forms.Button btnErrorHandling;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnEscalateJobs;
     }
 }

@@ -44,7 +44,7 @@ namespace PremiereSolutionProject.PL
             
             lblEmpName.Text = call.Employee.FirstName;
             btnEnd.Enabled = true;
-
+            btnAnswer.Enabled = false;
         }
 
         private void btnSearchClient_Click(object sender, EventArgs e)
@@ -66,6 +66,8 @@ namespace PremiereSolutionProject.PL
         private void btnEnd_Click(object sender, EventArgs e)
         {
             dashform.callInfo.LogEndTimeOfCall(dashform.callInfo.CallID,rtbNotes.Text);
+            btnEnd.Enabled = false;
+            btnAnswer.Enabled = true;
         }
 
         private void frmCallCenter_Load(object sender, EventArgs e)
