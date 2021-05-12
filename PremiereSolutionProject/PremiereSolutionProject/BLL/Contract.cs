@@ -140,7 +140,14 @@ namespace PremiereSolutionProject.BLL
         // constuctor without ID and Price for use in PL
         public Contract(DateTime start, DateTime end, Client client, List<ServicePackage> packList, bool acti, string priorityLevel, string type)
         {
-
+            this.startDate = start;
+            this.endDate = end;
+            this.packageList = packList;
+            this.active = acti;
+            this.client = client;
+            this.priorityLevel = priorityLevel;
+            this.price = CalculateContractPrice(this);
+            this.contractType = type;
         }
         #endregion
 

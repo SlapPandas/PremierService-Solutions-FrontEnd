@@ -35,18 +35,23 @@ namespace PremiereSolutionProject.PL
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            
             //bool available;
             //if (cbx.Checked == true)
             //{
             //    available = true;
             //}
             string pLvl = cbxPriorityLevel.Text + "," + nudNoOfDays.Value;
+            IndividualClient myclient = (IndividualClient)dashForm.callInfo.Client;
+            
 
            // Contract cont = new Contract(dtpStartDate.Value, dtpEndDate.Value, dashForm.callInfo.Client, packages, true, cbxPriorityLevel.Text, 0.00, "Contract");
             //double price = cont.CalculateContractPrice(cont);
            // cont = new Contract(dtpStartDate.Value, dtpEndDate.Value, dashForm.callInfo.Client, packages, true, pLvl, price, "Contract");
-            Contract cont = new Contract(dtpStartDate.Value, dtpEndDate.Value, dashForm.callInfo.Client, packages, true, cbxPriorityLevel.Text, "Contract");
-            cont.InsertContract(cont);
+            
+            //TODO: This is not working, I have no idea why :(
+            Contract cont = new Contract(dtpStartDate.Value, dtpEndDate.Value, myclient, packages, true, pLvl, "Contract");
+            cont.LinkClientToContract(cont);
         }
 
         private void frmClientContract_Load(object sender, EventArgs e)
