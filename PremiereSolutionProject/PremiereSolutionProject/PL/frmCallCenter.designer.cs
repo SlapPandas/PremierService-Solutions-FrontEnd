@@ -53,9 +53,9 @@ namespace PremiereSolutionProject.PL
             this.lblEmpName.Location = new System.Drawing.Point(467, 166);
             this.lblEmpName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmpName.Name = "lblEmpName";
-            this.lblEmpName.Size = new System.Drawing.Size(201, 16);
+            this.lblEmpName.Size = new System.Drawing.Size(24, 16);
             this.lblEmpName.TabIndex = 3;
-            this.lblEmpName.Text = "Call Centre Employee Name";
+            this.lblEmpName.Text = "--";
             // 
             // rtbNotes
             // 
