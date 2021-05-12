@@ -113,13 +113,13 @@ namespace PremiereSolutionProject.BLL
             return employeeDH.SelectAllMaintenanceEmployeesWithGivenSpecilization(id);
         }
 
-        public void EscalateJob(int newResponseDays, Job job) 
+        public void EscalateServiceRequest(int newResponseDays, ServiceRequest sr) 
         {
             // used to create a special prio level. SPE = special
             string newPrio = "SPE" + newResponseDays.ToString();
-            job.PriorityLevel = newPrio;
-            JobDH jobDH = new JobDH();
-            jobDH.Update(job);
+            sr.PriorityLevel = newPrio;
+            ServiceRequestDH serviceRequestDH = new ServiceRequestDH();
+            serviceRequestDH.Update(sr);
         }
 
         public void ReAssignJob(int id, List<MaintenanceEmployee> employees)
