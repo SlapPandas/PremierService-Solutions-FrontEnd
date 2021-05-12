@@ -122,10 +122,10 @@ namespace PremiereSolutionProject.BLL
             serviceRequestDH.Update(sr);
         }
 
-        public void ReAssignJob(int id, List<MaintenanceEmployee> employees)
+        public void ReAssignJob(int Jobid, List<MaintenanceEmployee> employees)
         {
             JobDH jobDH = new JobDH();
-            Job job = jobDH.SelectJobById(id);
+            Job job = jobDH.SelectJobById(Jobid);
             job.Employee = employees;   //assigns new employee list (taken in as parameter) to employee
             jobDH.UpdateJobEmployeeList(job);   //updates in database
         }
