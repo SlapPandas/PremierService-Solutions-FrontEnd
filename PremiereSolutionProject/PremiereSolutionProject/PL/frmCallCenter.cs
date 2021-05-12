@@ -49,11 +49,18 @@ namespace PremiereSolutionProject.PL
 
         private void btnSearchClient_Click(object sender, EventArgs e)
         {
-            dashform.callInfo.CallNotes = rtbNotes.Text;
-            dashform.callInfo.UpdateCallNotes(dashform.callInfo.CallID, rtbNotes.Text);
-            
-            new frmClientInfo(dashform).Show();
-            this.Hide();
+            if (dashform.callInfo == null)
+            {
+                MessageBox.Show("Please accept a call first");
+            }
+            else
+            {
+                dashform.callInfo.CallNotes = rtbNotes.Text;
+                dashform.callInfo.UpdateCallNotes(dashform.callInfo.CallID, rtbNotes.Text);
+
+                new frmClientInfo(dashform).Show();
+                this.Hide();
+            }
         }
 
         private void btnEnd_Click(object sender, EventArgs e)

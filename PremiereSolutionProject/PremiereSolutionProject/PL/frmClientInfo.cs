@@ -76,57 +76,73 @@ namespace PremiereSolutionProject.PL
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            try
+            if (String.IsNullOrWhiteSpace(txtClientID.Text))
             {
-                calls = new Call().SelectAllCallsOfClient(txtClientID.Text);
-                sReq = new ServiceRequest().SelectAllServiceRequestsForClient(txtClientID.Text);
-                ClientList = new List<Client>();
-                iList = new List<IndividualClient>();
-                bList = new List<BusinessClient>();
-                
-                if (txtClientID.Text[0] == 'A')
+                MessageBox.Show("Please enter a client ID");
+            }
+            else
+            {
+                try
                 {
-                    foreach (IndividualClient item in iClient)
+                    calls = new Call().SelectAllCallsOfClient(txtClientID.Text);
+                    sReq = new ServiceRequest().SelectAllServiceRequestsForClient(txtClientID.Text);
+                    ClientList = new List<Client>();
+                    iList = new List<IndividualClient>();
+                    bList = new List<BusinessClient>();
+
+                    if (txtClientID.Text[0] == 'A')
                     {
-                        if (txtClientID.Text == item.Id)
+                        foreach (IndividualClient item in iClient)
                         {
-                            ClientList.Add(item);
-                            iList.Add(item);
-                            RefreshDGVI();
+                            if (txtClientID.Text == item.Id)
+                            {
+                                ClientList.Add(item);
+                                iList.Add(item);
+                                RefreshDGVI();
+                            }
                         }
                     }
-                }
-                else if (txtClientID.Text[0] == 'B')
-                {
-                    foreach (BusinessClient item in bClient)
+                    else if (txtClientID.Text[0] == 'B')
                     {
-                        if (txtClientID.Text == item.Id)
+                        foreach (BusinessClient item in bClient)
                         {
-                            ClientList.Add(item);
-                            bList.Add(item);
-                            RefreshDGVB();
+                            if (txtClientID.Text == item.Id)
+                            {
+                                ClientList.Add(item);
+                                bList.Add(item);
+                                RefreshDGVB();
+                            }
                         }
                     }
+                    RefreshDGV();
+                    RefreshDGV2();
+                    // RefreshDGV3();
                 }
-                RefreshDGV();
-                RefreshDGV2();
-               // RefreshDGV3();
+                catch (FormatException fe)
+                {
+                    MessageBox.Show(fe.Message, "user input error");
+                }
+                catch (Exception ee)
+                {
+                    MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                }
+
             }
-            catch (FormatException fe)
-            {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
-            }
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dashform.callInfo.LogClientToCall(dashform.callInfo.CallID, txtClientID.Text);
-            dashform.callInfo.Client = (Client)bs2.Current;
+            if (String.IsNullOrWhiteSpace(txtClientID.Text))
+            {
+                MessageBox.Show("Please enter the client ID");
+            }
+            else
+            {
+                dashform.callInfo.LogClientToCall(dashform.callInfo.CallID, txtClientID.Text);
+                dashform.callInfo.Client = (Client)bs2.Current;
+            }
+
             
         }
     }
