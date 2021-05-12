@@ -289,13 +289,13 @@ namespace PremiereSolutionProject.BLL
                     {
                         for (int n = 0; n < maintenanceEmployeesList[k].Specialisations.Count; n++) //go thru list of the specialisations of the employee
                         {
-                            if (job.Specialisation.Equals(maintenanceEmployeesList[k].Specialisations[n])) //match the emplpoyee specialisation to the specialisation needed
+                            if (job.Specialisation.SpecialisationID == maintenanceEmployeesList[k].Specialisations[n].SpecialisationID) //match the emplpoyee specialisation to the specialisation needed
                             {                                
                                 job.Employee.Add(maintenanceEmployeesList[k]); //add employee to list of Employees for a job                          
                                 jobDH.InsertSingleEmployeeToJob(job.JobID, maintenanceEmployeesList[k].Id); //insert into EmployeeJobLink table
                                 maintenanceEmployeesList.RemoveAt(k);   //employee is no longer available
                                 empsAssigned++; // increase the count of employees assigned to the job, used to check if the job is filled
-                                n = maintenanceEmployeesList[k].Specialisations.Count;  //to break out of n-for loop if correct employee was found & job was created
+                                n = maintenanceEmployeesList[k-1].Specialisations.Count;  //to break out of n-for loop if correct employee was found & job was created
                             }
                         }
                         jobAssigned = empsAssigned == job.EmployeesNeeded ? true : false;   //for when all employees of the job has been assigned
