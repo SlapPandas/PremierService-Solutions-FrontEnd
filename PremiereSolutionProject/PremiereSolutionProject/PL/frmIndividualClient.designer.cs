@@ -398,7 +398,7 @@
             // 
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddClient.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddClient.Location = new System.Drawing.Point(357, 480);
+            this.btnAddClient.Location = new System.Drawing.Point(345, 480);
             this.btnAddClient.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(206, 43);
