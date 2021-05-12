@@ -109,6 +109,12 @@ INSERT INTO ServiceContractLink([contractID],[ServicePackedgeID]) VALUES ('5','4
 INSERT INTO ServiceContractLink([contractID],[ServicePackedgeID]) VALUES ('5','2')
 INSERT INTO ServiceContractLink([contractID],[ServicePackedgeID]) VALUES ('6','4')
 INSERT INTO ServiceContractLink([contractID],[ServicePackedgeID]) VALUES ('6','2')
+INSERT INTO ServiceContractLink([contractID],[ServicePackedgeID]) VALUES ('2','2')
+INSERT INTO ServiceContractLink([contractID],[ServicePackedgeID]) VALUES ('2','3')
+INSERT INTO ServiceContractLink([contractID],[ServicePackedgeID]) VALUES ('2','4')
+INSERT INTO ServiceContractLink([contractID],[ServicePackedgeID]) VALUES ('2','2')
+INSERT INTO ServiceContractLink([contractID],[ServicePackedgeID]) VALUES ('2','4')
+INSERT INTO ServiceContractLink([contractID],[ServicePackedgeID]) VALUES ('2','2')
 
 INSERT INTO JobEmployeeLink(jobID,employeeID) VALUES ('1','4')
 INSERT INTO JobEmployeeLink(jobID,employeeID) VALUES ('1','5')
