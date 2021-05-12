@@ -11,9 +11,9 @@ using PremiereSolutionProject.BLL;
 
 namespace PremiereSolutionProject.PL
 {
-    public partial class FrmAddEmployee : Form
+    public partial class frmManageEmployee : Form
     {
-        public FrmAddEmployee()
+        public frmManageEmployee()
         {
             InitializeComponent();
         }

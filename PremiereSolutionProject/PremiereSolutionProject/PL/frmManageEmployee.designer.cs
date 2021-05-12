@@ -1,6 +1,6 @@
 ﻿namespace PremiereSolutionProject.PL
 {
-    partial class FrmAddEmployee
+    partial class frmManageEmployee
     {
         /// <summary>
         /// Required designer variable.
@@ -213,12 +213,13 @@
             this.label1.Location = new System.Drawing.Point(288, 37);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(319, 40);
+            this.label1.Size = new System.Drawing.Size(389, 50);
             this.label1.TabIndex = 19;
-            this.label1.Text = "Add New Employee";
+            this.label1.Text = "Manage Employees";
             // 
             // btnExit
             // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(813, 620);
@@ -385,7 +386,7 @@
             this.txtStreetName.Size = new System.Drawing.Size(216, 24);
             this.txtStreetName.TabIndex = 110;
             // 
-            // FrmAddEmployee
+            // frmManageEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -423,7 +424,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FrmAddEmployee";
+            this.Name = "frmManageEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.ResumeLayout(false);

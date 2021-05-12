@@ -43,6 +43,7 @@ namespace PremiereSolutionProject.PL
             pnlClientMaintainSubMenu.Visible = false;
             pnlContractMaintSubMenu.Visible = false;
             pnlClientSatisSubMenu.Visible = false;
+            pnlServiceSubMenu.Visible = false;
         }
 
         private void HideSubMenu()
@@ -240,6 +241,34 @@ namespace PremiereSolutionProject.PL
         private void button6_Click(object sender, EventArgs e)
         {
             openChildForm(new frmClientSatisfaction());
+            HideSubMenu();
+        }
+
+        
+
+        private void btnServiceManager_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(pnlServiceSubMenu);
+        }
+
+        #region Service Manager SubMenu
+
+        private void btnEscalate_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmEscalateJobs());
+            HideSubMenu();
+        }
+
+        private void btnManageEmp_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmManageEmployee());
+            HideSubMenu();
+        }
+        #endregion
+
+        private void btnAssignNewEmp_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new frmAssignNewEmployee());
             HideSubMenu();
         }
 

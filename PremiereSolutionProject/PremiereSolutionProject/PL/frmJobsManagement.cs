@@ -211,7 +211,7 @@ namespace PremiereSolutionProject.PL
                 }
 
                 SelectedJob.Specialisation = NewJob.Specialisation;
-                //cbxSpecialisation = NewJob.Specialisation.SpecialisationName;
+                cbxSpecialisation.Text = NewJob.Specialisation.SpecialisationName;
 
                 NewEmp = NewJob.Employee; //Maintenance Employee List 
                 SelectedJob.Employee = NewEmp;
