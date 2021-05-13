@@ -145,6 +145,12 @@ namespace PremiereSolutionProject.BLL
             }
         }
 
+        //Client myclient;
+        public string GetClientType(Client client)
+        {
+            return client.GetType().Name;
+        }
+
         #endregion
     }
 }
