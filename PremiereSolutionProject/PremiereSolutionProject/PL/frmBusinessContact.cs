@@ -13,6 +13,20 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmBusinessContact : Form
     {
+        frmDashboard dashForm;
+        
+        
+        BusinessClientEmployees selectedBce;
+        BusinessClient selectedBc;
+        
+
+        List<BusinessClient> businessClientList = new List<BusinessClient>();
+        BusinessClient businessclient = new BusinessClient();
+        List<BusinessClientEmployees> businessEmployeeList = new List<BusinessClientEmployees>();
+        BusinessClientEmployees businessEmployee = new BusinessClientEmployees();
+        BindingSource bs = new BindingSource();
+        BindingSource bs2 = new BindingSource();
+        
         public frmBusinessContact()
         {
             InitializeComponent();
@@ -21,89 +35,35 @@ namespace PremiereSolutionProject.PL
         {
             dashForm = _dashForm;
         }
-        frmDashboard dashForm;
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        List<BusinessClientEmployees> bce;
-        List<BusinessClientEmployees> bceUpdate;
-        BindingSource bs = new BindingSource();
-        BusinessClientEmployees selectedBce;
-        BusinessClient selectedBc;
-        List<BusinessClient> bc;
+        
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(txtBusinessID.Text))
-                {
-                    throw new FormatException("No business id");
-                }
-                if (string.IsNullOrWhiteSpace(txtContactNumber.Text))
-                {
-                    throw new FormatException("No contact number");
-                }
-                if (string.IsNullOrWhiteSpace(txtDepartment.Text))
-                {
-                    throw new FormatException("No department");
-                }
-                if (string.IsNullOrWhiteSpace(txtEmail.Text))
-                {
-                    throw new FormatException("No email");
-                }
-                if (string.IsNullOrWhiteSpace(txtName.Text))
-                {
-                    throw new FormatException("No first name");
-                }
-                if (string.IsNullOrWhiteSpace(txtSurname.Text))
-                {
-                    throw new FormatException("No sername");
-                }
-                else
-                {
+            
 
-                    BusinessClientEmployees bce = new BusinessClientEmployees(txtName.Text,txtSurname.Text,txtDepartment.Text,txtContactNumber.Text,txtEmail.Text,txtBusinessID.Text);
-                    bce.UpdateBusinessClientEmployee(bce);
-
-                    MessageBox.Show("Successfully updated business client employee", "Yay");
-                }
-
-            }
-            catch (FormatException fe)
+            DialogResult dr = MessageBox.Show("Are you sure to update The Business contact?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
             {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex] = new BusinessClientEmployees(businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].Id, txtName.Text, txtSurname.Text, txtDepartment.Text, txtContactNumber.Text, txtEmail.Text, txtBusinessID.Text);
+                businessEmployee.UpdateBusinessClientEmployee(businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex]);
+                RefreshDGVAndList();
+                //UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
             }
         }
 
         private void frmBusinessContact_Load(object sender, EventArgs e)
         {
-            dgvExistingBusinesses.ForeColor = Color.Black;
-            bce = new BusinessClientEmployees().SelectAllBusinessClientEmployees();
-            bc = new BusinessClient().SelectAllBusinessClients();
-            RefreshDGV();
-            RefreshDGV2();
-        }
-        private void RefreshDGV()
-        {
-            bs.DataSource = bc;
-            dgvExistingBusinesses.DataSource = null;
-            //dgvExistingBusinesses.DataSource = bs;
+            
+            RefreshDGVAndList();
+            BuildDGVStyle();
 
         }
-
-        private void RefreshDGV2()
-        {
-            bs.DataSource = bce;
-            dgvExistingEmployees.DataSource = null;
-            dgvExistingEmployees.DataSource = bs;
-
-        }
+       
+        
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
@@ -113,17 +73,23 @@ namespace PremiereSolutionProject.PL
         }
         private void UpdateDgv()
         {
-
-            foreach (var item in bce)
+            
+            businessEmployeeList = businessEmployee.SelectAllBusinessClientEmployees();
+            
+            List<BusinessClientEmployees> bindList = new List<BusinessClientEmployees>();
+            
+           
+            foreach (var item in businessEmployeeList)
             {
                 if (selectedBc.Id == item.BusinessID)
                 {
-                    bceUpdate.Add(item);
+                    bindList.Add(item);
                 }
             }
-            bs.DataSource = bceUpdate;
-            dgvExistingEmployees.DataSource = null;
-            dgvExistingEmployees.DataSource = bs;
+           
+            bs2 = new BindingSource(bindList, null);
+
+            dgvExistingEmployees.DataSource = bs2;
         }
         private void UpdateData()
         {
@@ -137,98 +103,31 @@ namespace PremiereSolutionProject.PL
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(txtBusinessID.Text))
-                {
-                    throw new FormatException("No business id");
-                }
-                if (string.IsNullOrWhiteSpace(txtContactNumber.Text))
-                {
-                    throw new FormatException("No contact number");
-                }
-                if (string.IsNullOrWhiteSpace(txtDepartment.Text))
-                {
-                    throw new FormatException("No department");
-                }
-                if (string.IsNullOrWhiteSpace(txtEmail.Text))
-                {
-                    throw new FormatException("No email");
-                }
-                if (string.IsNullOrWhiteSpace(txtName.Text))
-                {
-                    throw new FormatException("No first name");
-                }
-                if (string.IsNullOrWhiteSpace(txtSurname.Text))
-                {
-                    throw new FormatException("No sername");
-                }
-                else
-                {
+            
 
-                    BusinessClientEmployees bce = new BusinessClientEmployees(txtName.Text, txtSurname.Text, txtDepartment.Text, txtContactNumber.Text, txtEmail.Text, txtBusinessID.Text);
-                    bce.InsertBusinessClientEmployee(bce);
-
-                    MessageBox.Show("Successfully added business client employee", "Yay");
-                }
-
-            }
-            catch (FormatException fe)
+            DialogResult dr = MessageBox.Show("Are you sure to insert The Business contact?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
             {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex] = new BusinessClientEmployees(businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].Id, txtName.Text, txtSurname.Text, txtDepartment.Text, txtContactNumber.Text, txtEmail.Text, txtBusinessID.Text);
+                businessEmployee.InsertBusinessClientEmployee(businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex]);
+                RefreshDGVAndList();
+                UpdateFields(dgvExistingEmployees.CurrentCell.RowIndex);
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(txtBusinessID.Text))
+            
+                DialogResult dr = MessageBox.Show("Are you sure to update The Business contact?", "Confirmation", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
                 {
-                    throw new FormatException("No business id");
-                }
-                if (string.IsNullOrWhiteSpace(txtContactNumber.Text))
-                {
-                    throw new FormatException("No contact number");
-                }
-                if (string.IsNullOrWhiteSpace(txtDepartment.Text))
-                {
-                    throw new FormatException("No department");
-                }
-                if (string.IsNullOrWhiteSpace(txtEmail.Text))
-                {
-                    throw new FormatException("No email");
-                }
-                if (string.IsNullOrWhiteSpace(txtName.Text))
-                {
-                    throw new FormatException("No first name");
-                }
-                if (string.IsNullOrWhiteSpace(txtSurname.Text))
-                {
-                    throw new FormatException("No sername");
-                }
-                else
-                {
-
-                    BusinessClientEmployees bce = new BusinessClientEmployees(txtName.Text, txtSurname.Text, txtDepartment.Text, txtContactNumber.Text, txtEmail.Text, txtBusinessID.Text);
-                    bce.DeleteBusinessClientEmployee(bce);
-
-                    MessageBox.Show("Successfully deleted business client employee", "Yay");
+                    businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex] = new BusinessClientEmployees(businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].Id, txtName.Text, txtSurname.Text, txtDepartment.Text, txtContactNumber.Text, txtEmail.Text, txtBusinessID.Text);
+                    businessEmployee.DeleteBusinessClientEmployee(businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex]);
+                    RefreshDGVAndList();
+                    UpdateFields(dgvExistingEmployees.CurrentCell.RowIndex);
                 }
 
-            }
-            catch (FormatException fe)
-            {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
-            }
+           
         }
 
         private void dgvExistingEmployees_SelectionChanged(object sender, EventArgs e)
@@ -236,6 +135,41 @@ namespace PremiereSolutionProject.PL
             selectedBce = (BusinessClientEmployees)bs.Current;
             
             UpdateData();
+        }
+
+        private void BuildDGVStyle()
+        {
+            dgvExistingBusinesses.ForeColor = Color.Black;
+            dgvExistingEmployees.ForeColor = Color.Black;
+        }
+        private void RefreshDGVAndList()
+        {
+            businessClientList = businessclient.SelectAllBusinessClients();
+            
+            List<BusinessClient> bindList = businessClientList;
+           
+            bs = new BindingSource(bindList, null);
+            
+            dgvExistingBusinesses.DataSource = bs;
+            
+        }
+        private void UpdateFields(int index)
+        {
+            if (index <= dgvExistingEmployees.RowCount - 2)
+            {
+                txtBusinessID.Text = businessEmployeeList[index].Id.ToString();
+                txtName.Text = businessEmployeeList[index].FirstName;
+                txtSurname.Text = businessEmployeeList[index].Surname;
+                txtDepartment.Text = businessEmployeeList[index].Department;
+                txtContactNumber.Text = businessEmployeeList[index].Contactnumber;
+                txtEmail.Text = businessEmployeeList[index].Email;
+                
+            }
+        }
+
+        private void dgvExistingEmployees_SelectionChanged_1(object sender, EventArgs e)
+        {
+            UpdateFields(dgvExistingEmployees.CurrentCell.RowIndex);
         }
     }
 }
