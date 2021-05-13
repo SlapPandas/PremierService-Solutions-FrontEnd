@@ -23,7 +23,7 @@ namespace PremiereSolutionProject.DAL
         #region Insert
         public void InsertEndTime(int id, DateTime dateTime)
         {
-            InsertCommand($"EXEC UpdateEndTime @id ='{id}', @endTime ='{dateTime}'");
+            InsertCommand($"EXEC UpdateEndTime @id ='{id}', @endTime ='{dateTime.ToString("YYYY-MM-DD hh:mm:ss")}'");
           
         }
         public void InsertIndividualClientToCall(int Callid, string ClientId)
@@ -37,7 +37,7 @@ namespace PremiereSolutionProject.DAL
         }
         public int Insert(DateTime dateTime, string empId)
         {
-            return InsertCommandWithReturnedId($"EXEC InsertCall @startTime ='{dateTime}', @employeeID = '{empId}'");
+            return InsertCommandWithReturnedId($"EXEC InsertCall @startTime ='{dateTime.ToString("YYYY-MM-DD hh:mm:ss")}', @employeeID = '{empId}'");
         }
 
         #endregion
