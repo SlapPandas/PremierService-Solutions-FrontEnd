@@ -117,7 +117,7 @@ namespace PremiereSolutionProject.BLL
                     employeeDH.InsertCallCenterEmployee((CallCenterEmployee)employee);
                     break;
                 case "MaintenanceEmployee":
-                    employeeDH.InsertMaintenanceEmployee((MaintenanceEmployee)employee);
+                    employeeDH.InsertMaintenanceEmployeeWithOutSpecilizationList((MaintenanceEmployee)employee);
                     break;
                 case "ServiceManager":
                     employeeDH.InsertServiceManager((ServiceManager)employee);

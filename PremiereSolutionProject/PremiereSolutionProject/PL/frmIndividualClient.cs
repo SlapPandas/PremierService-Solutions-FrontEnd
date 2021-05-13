@@ -139,8 +139,6 @@ namespace PremiereSolutionProject.PL
                 txtDate.Text = individualClients[index].RegistrationDate.ToString("yyy/MM/dd");
                 cmbActive.SelectedIndex = GetIntFromBool(individualClients[index].Active);
             }
-
-
         }
         private bool GetTrueFalseFromBit(int bit)
         {

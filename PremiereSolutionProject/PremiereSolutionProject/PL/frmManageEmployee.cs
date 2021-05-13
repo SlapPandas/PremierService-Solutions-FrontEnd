@@ -13,9 +13,143 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmManageEmployee : Form
     {
+        List<Employee> employees = new List<Employee>();
+        Employee employee = new MaintenanceEmployee();
+        BindingSource bindingSource = new BindingSource();
         public frmManageEmployee()
         {
             InitializeComponent();
+        }
+
+        private void PopulateComboBox()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                cmbProvince.Items.Add(GetProvince(i + ""));
+            }
+        }
+        private Province GetProvince(string input)
+        {
+            Province province = (Province)1;
+
+            switch (input)
+            {
+                case "0":
+                    province = (Province)0;
+                    break;
+                case "1":
+                    province = (Province)1;
+                    break;
+                case "2":
+                    province = (Province)2;
+                    break;
+                case "3":
+                    province = (Province)3;
+                    break;
+                case "4":
+                    province = (Province)4;
+                    break;
+                case "5":
+                    province = (Province)5;
+                    break;
+                case "6":
+                    province = (Province)6;
+                    break;
+                case "7":
+                    province = (Province)7;
+                    break;
+                case "8":
+                    province = (Province)8;
+                    break;
+                default:
+                    province = (Province)1;
+                    break;
+            }
+            return province;
+        }
+        private void BuildDGVStyle()
+        {
+            dgvEmployee.ForeColor = Color.Black;
+        }
+        private void RefreshDGVAndList()
+        {
+            employees = employee.SelectAllEmpployees();
+            List<Employee> bindList = employees;
+            bindingSource = new BindingSource(bindList, null);
+            dgvEmployee.DataSource = bindingSource;
+        }
+        private void UpdateFields(int index)
+        {
+            if (index <= dgvEmployee.RowCount - 2)
+            {
+                if (index >= dgvEmployee.RowCount - 2)
+                {
+                    index = employees.Count - 1;
+                }
+                txtEmployeeID.Text = employees[index].Id;
+                txtFirstname.Text = employees[index].FirstName;
+                txtSurname.Text = employees[index].Surname;
+                txtContactNumber.Text = employees[index].ContactNumber;
+                txtNationalID.Text = employees[index].NationalIDnumber;
+                cbmDepartment.SelectedIndex = cbmDepartment.FindStringExact(employees[index].Department);
+                cmbEmployed.SelectedIndex = GetIntFromBool(employees[index].Employed);
+                txtStreetName.Text = employees[index].Address.StreetName;
+                txtSuburb.Text = employees[index].Address.Suburb;
+                txtCity.Text = employees[index].Address.City;
+                cmbProvince.SelectedItem = employees[index].Address.Province;
+                txtPostalCode.Text = employees[index].Address.Postalcode;
+                txtEmai.Text = employees[index].Email;
+                txtEmployeedDate.Text = employees[index].RegistrationDate.ToString("yyy/MM/dd");
+                cmbActive.SelectedIndex = GetIntFromBool(employees[index].Employed);
+            }
+
+
+        }
+        private bool GetTrueFalseFromBit(int bit)
+        {
+            bool output = bit == 1 ? true : false;
+            return output;
+        }
+        private int GetIntFromBool(bool input)
+        {
+            if (input == true)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        private void UpdateSpecificEmployee()
+        {
+            switch (employees[dgvEmployee.CurrentCell.RowIndex].GetType().Name)
+            {
+                case "CallCenterEmployee":
+                    employees[dgvEmployee.CurrentCell.RowIndex] = new CallCenterEmployee(employees[dgvEmployee.CurrentCell.RowIndex].Id, txtFirstname.Text, txtSurname.Text, new Address(employees[dgvEmployee.CurrentCell.RowIndex].Address.AddressID, txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, employees[dgvEmployee.CurrentCell.RowIndex].RegistrationDate, GetTrueFalseFromBit(cmbActive.SelectedIndex), cbmDepartment.Text);
+                    break;
+                case "MaintenanceEmployee":
+                    employees[dgvEmployee.CurrentCell.RowIndex] = new MaintenanceEmployee(employees[dgvEmployee.CurrentCell.RowIndex].Id, txtFirstname.Text, txtSurname.Text, new Address(employees[dgvEmployee.CurrentCell.RowIndex].Address.AddressID, txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, employees[dgvEmployee.CurrentCell.RowIndex].RegistrationDate, GetTrueFalseFromBit(cmbActive.SelectedIndex), cbmDepartment.Text);
+                    break;
+                case "ServiceManager":
+                    employees[dgvEmployee.CurrentCell.RowIndex] = new ServiceManager(employees[dgvEmployee.CurrentCell.RowIndex].Id, txtFirstname.Text, txtSurname.Text, new Address(employees[dgvEmployee.CurrentCell.RowIndex].Address.AddressID, txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, employees[dgvEmployee.CurrentCell.RowIndex].RegistrationDate, GetTrueFalseFromBit(cmbActive.SelectedIndex), cbmDepartment.Text);
+                    break;
+            }
+        }
+        private void AddNewEmployee() 
+        {
+            switch (cbmDepartment.Text)
+            {
+                case "Call Center":
+                    employees.Add(new CallCenterEmployee(employees[dgvEmployee.CurrentCell.RowIndex].Id, txtFirstname.Text, txtSurname.Text, new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, employees[dgvEmployee.CurrentCell.RowIndex].RegistrationDate, GetTrueFalseFromBit(cmbActive.SelectedIndex), cbmDepartment.Text));
+                    break;
+                case "Maintenance":
+                    employees.Add(new MaintenanceEmployee(employees[dgvEmployee.CurrentCell.RowIndex].Id, txtFirstname.Text, txtSurname.Text, new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, employees[dgvEmployee.CurrentCell.RowIndex].RegistrationDate, GetTrueFalseFromBit(cmbActive.SelectedIndex), cbmDepartment.Text));
+                    break;
+                case "Service Manager":
+                    employees.Add(new ServiceManager(employees[dgvEmployee.CurrentCell.RowIndex].Id, txtFirstname.Text, txtSurname.Text, new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, employees[dgvEmployee.CurrentCell.RowIndex].RegistrationDate, GetTrueFalseFromBit(cmbActive.SelectedIndex), cbmDepartment.Text));
+                    break;
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -23,124 +157,47 @@ namespace PremiereSolutionProject.PL
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void frmManageEmployee_Load(object sender, EventArgs e)
         {
-            try
+            RefreshDGVAndList();
+            BuildDGVStyle();
+            PopulateComboBox();  
+        }
+
+        private void dgvEmployee_SelectionChanged(object sender, EventArgs e)
+        {
+            UpdateFields(dgvEmployee.CurrentCell.RowIndex);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure to Delete The Employee?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
             {
-                if (string.IsNullOrWhiteSpace(txtEmployeeID.Text))
-                {
-                    throw new FormatException("No employee identification");
-                }
-                if (string.IsNullOrWhiteSpace(txtFirstname.Text))
-                {
-                    throw new FormatException("No employee name");
-                }
-                if (string.IsNullOrWhiteSpace(txtSurname.Text))
-                {
-                    throw new FormatException("No employee surname");
-                }
-                if (string.IsNullOrWhiteSpace(txtNationalID.Text))
-                {
-                    throw new FormatException("No employee national ID");
-                }
-                if (string.IsNullOrWhiteSpace(txtContactNumber.Text))
-                {
-                    throw new FormatException("No employee Contact number");
-                }
-                if (string.IsNullOrWhiteSpace(txtEmai.Text))
-                {
-                    throw new FormatException("No employee e-mail");
-                }
-
-                else
-                {
-                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
-                    //Employee emp = new Employee(txtFirstname.Text,txtSurname.Text,null,txtContactNumber.Text,txtEmai.Text,txtNationalID.Text,DateTime.Now(),true,cbxDepartment.Text)
-                    switch (cbxDepartment.SelectedItem)
-                    {
-                        case "CallCenterEmployee":
-                            //CallCenterEmployee cce = new CallCenterEmployee(txtFirstname.Text,txtSurname.Text,address,txtContactNumber.Text,txtEmai.Text,txtNationalID.Text,DateTime.Now,cbxEmployed.Checked);
-                            //cce.InsertCallCenterEmployee(cce);
-
-                            break;
-                        
-                        case "ServiceManager":
-                            //ServiceManager sm = new ServiceManager(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, cbxEmployed.Checked);
-                            //sm.InsertServiceManager(sm);
-                            break;
-                    }
-                    MessageBox.Show("Successfully created Employee", "Yay");
-                }
-
+                ServiceManager serviceManager = new ServiceManager();
+                serviceManager.UpdateEmployeestate(employees[dgvEmployee.CurrentCell.RowIndex].Id, false);
+                RefreshDGVAndList();
+                UpdateFields(dgvEmployee.CurrentCell.RowIndex);
             }
-            catch (FormatException fe)
+
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure to update The Employee?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
             {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                UpdateSpecificEmployee();
+                employee.UpdateEmployee(employees[dgvEmployee.CurrentCell.RowIndex]);
+                RefreshDGVAndList();
+                UpdateFields(dgvEmployee.CurrentCell.RowIndex);
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(txtEmployeeID.Text))
-                {
-                    throw new FormatException("No employee identification");
-                }
-                if (string.IsNullOrWhiteSpace(txtFirstname.Text))
-                {
-                    throw new FormatException("No employee name");
-                }
-                if (string.IsNullOrWhiteSpace(txtSurname.Text))
-                {
-                    throw new FormatException("No employee surname");
-                }
-                if (string.IsNullOrWhiteSpace(txtNationalID.Text))
-                {
-                    throw new FormatException("No employee national ID");
-                }
-                if (string.IsNullOrWhiteSpace(txtContactNumber.Text))
-                {
-                    throw new FormatException("No employee Contact number");
-                }
-                if (string.IsNullOrWhiteSpace(txtEmai.Text))
-                {
-                    throw new FormatException("No employee e-mail");
-                }
-
-                else
-                {
-                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
-                    //Employee emp = new Employee(txtFirstname.Text,txtSurname.Text,null,txtContactNumber.Text,txtEmai.Text,txtNationalID.Text,DateTime.Now(),true,cbxDepartment.Text)
-                    switch (cbxDepartment.SelectedItem)
-                    {
-                        case "CallCenterEmployee":
-                            //CallCenterEmployee cce = new CallCenterEmployee(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, cbxEmployed.Checked);
-                            //cce.InsertCallCenterEmployee(cce);
-
-                            break;
-
-                        case "ServiceManager":
-                            //ServiceManager sm = new ServiceManager(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, cbxEmployed.Checked);
-                            //sm.UpdateEmployee(sm);
-                            break;
-                    }
-                    MessageBox.Show("Successfully created Employee", "Yay");
-                }
-
-            }
-            catch (FormatException fe)
-            {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
-            }
+            AddNewEmployee();
+            employee.InsertEmployee(employees[employees.Count - 1]);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace PremiereSolutionProject.DAL
 
         public void Update(Contract contract)
         {
-            UpdateCommand($"EXEC UpdateContract @id ='{contract.ContractID}', @startdate ='{contract.StartTime}', @endtime ='{contract.EndTime}', @active ='{GetIntFromBool(contract.Active)}', @priorityLevel ='{contract.PriorityLevel}', @price ='{contract.Price.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}', @contractType ='{contract.ContractType}'");
+            UpdateCommand($"EXEC UpdateContract @id ='{contract.ContractID}', @startdate ='{contract.StartTime.ToString("yyyy-MM-dd hh:mm:ss")}', @endtime ='{contract.EndTime.ToString("yyyy-MM-dd hh:mm:ss")}', @active ='{GetIntFromBool(contract.Active)}', @priorityLevel ='{contract.PriorityLevel}', @price ='{contract.Price.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}', @contractType ='{contract.ContractType}'");
         }
         public void UpdateOfferedContractIfActive(string contractId, bool active)
         {
@@ -34,7 +34,7 @@ namespace PremiereSolutionProject.DAL
         }
         public void UpdateActiveAndDateRangeOfOfferedContract(string contractId,DateTime startDate,DateTime endDate, bool active)
         {
-            UpdateCommand($"EXEC UpdateOfferedContractActiveAndDateRange @id ='{contractId}', @active ='{GetIntFromBool(active)}',@dateStart ='{startDate}',@dateEnd ='{endDate}'");
+            UpdateCommand($"EXEC UpdateOfferedContractActiveAndDateRange @id ='{contractId}', @active ='{GetIntFromBool(active)}',@dateStart ='{startDate.ToString("yyyy-MM-dd hh:mm:ss")}',@dateEnd ='{endDate.ToString("yyyy-MM-dd hh:mm:ss")}'");
         }
         public void UpdateContractPackageList(Contract contract)
         {
@@ -55,7 +55,7 @@ namespace PremiereSolutionProject.DAL
         }
         public void InsertNewlyAssignedContractToIndividualClient(Contract contract) 
         {
-            int contractGenetatedId = InsertCommandWithReturnedId($"EXEC InsertContractOfClient @contractId ='{contract.ContractID}', @startDate ='{contract.StartTime}', @endDate ='{contract.EndTime}', @active ='{GetIntFromBool(contract.Active)}'");
+            int contractGenetatedId = InsertCommandWithReturnedId($"EXEC InsertContractOfClient @contractId ='{contract.ContractID}', @startDate ='{contract.StartTime.ToString("yyyy-MM-dd hh:mm:ss")}', @endDate ='{contract.EndTime.ToString("yyyy-MM-dd hh:mm:ss")}', @active ='{GetIntFromBool(contract.Active)}'");
             InsertCommand($"InsertClientContractLinkIndividualClient @ContractID ='{contractGenetatedId}', @ClientIndividualID ='{contract.Indclient.Id}'");
             for (int i = 0; i < contract.PackageList.Count; i++)
             {
@@ -71,7 +71,7 @@ namespace PremiereSolutionProject.DAL
         public void InsertNewlyAssignedContractToBusinessClient(Contract contract)
         {
             int contractGenetatedId = -1;
-            contractGenetatedId = InsertCommandWithReturnedId($"EXEC InsertContractOfClient @contractId ='{contract.ContractID}', @startDate ='{contract.StartTime}', @endDate ='{contract.EndTime}', @active ='{GetIntFromBool(contract.Active)}'");
+            contractGenetatedId = InsertCommandWithReturnedId($"EXEC InsertContractOfClient @contractId ='{contract.ContractID}', @startDate ='{contract.StartTime.ToString("yyyy-MM-dd hh:mm:ss")}', @endDate ='{contract.EndTime.ToString("yyyy-MM-dd hh:mm:ss")}', @active ='{GetIntFromBool(contract.Active)}'");
             InsertCommand($"InsertClientContractLinkBusinessClient @ContractID ='{contractGenetatedId}', @ClientBusinessID ='{contract.Indclient.Id}'");
             for (int i = 0; i < contract.PackageList.Count; i++)
             {
