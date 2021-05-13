@@ -8,211 +8,145 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmBusinessClient : Form
     {
+        List<BusinessClient> businessClients = new List<BusinessClient>();
+        BusinessClient businessClient = new BusinessClient();
+        BindingSource bindingSource = new BindingSource();
         public frmBusinessClient()
         {
             InitializeComponent();
         }
-        List<BusinessClient> bc;
-        BusinessClient bc2;
-        BindingSource bs = new BindingSource();
-        BusinessClient selectedBc;
-
-        private void frmAddBusinessClient_Load(object sender, EventArgs e)
+        private void frmBusinessClient_Load(object sender, EventArgs e)
         {
-            dgvBusinessClients.ForeColor = Color.Black;
-            bc = new BusinessClient().SelectAllBusinessClients();
-            RefreshDGV();
-            //btnDeleteClient.Enabled = false;
+            RefreshDGVAndList();
+            BuildDGVStyle();
+            PopulateComboBox();
         }
-        private void RefreshDGV()
-        {
-            bs.DataSource = bc;
-            dgvBusinessClients.DataSource = null;
-            dgvBusinessClients.DataSource = bs;
-
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(txtBusinessName.Text))
-                {
-                    throw new FormatException("No business name");
-                }
-                if (string.IsNullOrWhiteSpace(txtTaxNum.Text))
-                {
-                    throw new FormatException("No tax number");
-                }
-                if (string.IsNullOrWhiteSpace(txtStreetName.Text))
-                {
-                    throw new FormatException("No street name");
-                }
-                if (string.IsNullOrWhiteSpace(txtSuburb.Text))
-                {
-                    throw new FormatException("No suburb");
-                }
-                if (string.IsNullOrWhiteSpace(txtCity.Text))
-                {
-                    throw new FormatException("No city");
-                }
-                //if (string.IsNullOrWhiteSpace(cmbProvince.))
-                //{
-                //    throw new FormatException("No provinfce");
-                //}
-                if (string.IsNullOrWhiteSpace(txtPostalCode.Text))
-                {
-                    throw new FormatException("No postal code");
-                }
-                if (string.IsNullOrWhiteSpace(txtContactNumber.Text))
-                {
-                    throw new FormatException("No contact number");
-                }
-
-                else
-                {
-                    
-                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
-                    BusinessClient bc = new BusinessClient(address, txtContactNumber.Text, DateTime.Now, txtTaxNum.Text, txtBusinessName.Text, true);
-                    bc.InsertBusinessClient(bc);
-
-                    MessageBox.Show("Successfully created business client", "Yay");
-                }
-
-            }
-            catch (FormatException fe)
-            {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
-            }
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(txtBusinessName.Text))
-                {
-                    throw new FormatException("No business name");
-                }
-                if (string.IsNullOrWhiteSpace(txtTaxNum.Text))
-                {
-                    throw new FormatException("No tax number");
-                }
-                if (string.IsNullOrWhiteSpace(txtStreetName.Text))
-                {
-                    throw new FormatException("No street name");
-                }
-                if (string.IsNullOrWhiteSpace(txtSuburb.Text))
-                {
-                    throw new FormatException("No suburb");
-                }
-                if (string.IsNullOrWhiteSpace(txtCity.Text))
-                {
-                    throw new FormatException("No city");
-                }
-                //if (string.IsNullOrWhiteSpace(cmbProvince.))
-                //{
-                //    throw new FormatException("No provinfce");
-                //}
-                if (string.IsNullOrWhiteSpace(txtPostalCode.Text))
-                {
-                    throw new FormatException("No postal code");
-                }
-                if (string.IsNullOrWhiteSpace(txtContactNumber.Text))
-                {
-                    throw new FormatException("No contact number");
-                }
-
-                else
-                {
-
-                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
-                    BusinessClient bc = new BusinessClient(address, txtContactNumber.Text, DateTime.Now, txtTaxNum.Text, txtBusinessName.Text, true);
-                    bc.UpdateBusinessClient(bc);
-
-                    MessageBox.Show("Successfully updated business client", "Yay");
-                }
-
-            }
-            catch (FormatException fe)
-            {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
-            }
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if ((txtSearch.Text != "") && (txtSearch.Text != null)) 
-                {
-                    {
-                        bc = new BusinessClient().SelectAllBusinessClients();
-                        foreach (BusinessClient item in bc)
-                            if (item.Id == txtSearch.Text)
-                        {
-                            bc2 = item;
-                            bc = null;
-                            bc.Add(bc2);
-                            RefreshDGV();
-                        }
-                    }
-                }
-                
-                
-                
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
-            }
-        }
-
-        private void UpdateData()
-        {
-            
-            foreach (Address item in cmbProvince.Items)
-            {
-                if (item.Province == selectedBc.Address.Province)
-                {
-                    cmbProvince.SelectedItem = item.Province;
-                    break;
-                }
-            }
-            
-           
-            txtBusinessName.Text = selectedBc.BusinessName;
-            txtCity.Text = selectedBc.Address.City;
-            txtContactNumber.Text = selectedBc.ContactNumber;
-            txtPostalCode.Text = selectedBc.Address.Postalcode;
-            txtSuburb.Text = selectedBc.Address.Suburb;
-            txtStreetName.Text = selectedBc.Address.StreetName;
-            txtTaxNum.Text = selectedBc.TaxNumber;
-           
-        }
-
         private void dgvBusinessClients_SelectionChanged(object sender, EventArgs e)
         {
-            selectedBc = (BusinessClient)bs.Current;
-            UpdateData();
+            UpdateFields(dgvBusinessClients.CurrentCell.RowIndex);
         }
-
-        private void btnDeleteClient_Click(object sender, EventArgs e)
+        private void btnDeleteBusinessClient_Click(object sender, EventArgs e)
         {
+            DialogResult dr = MessageBox.Show("Are you sure to delete The Client?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                businessClients[dgvBusinessClients.CurrentCell.RowIndex].Active = false;
+                businessClient.RemoveClient(businessClients[dgvBusinessClients.CurrentCell.RowIndex]);
+                RefreshDGVAndList();
+                UpdateFields(dgvBusinessClients.CurrentCell.RowIndex);
+            }
+        }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure to update The Client?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                businessClients[dgvBusinessClients.CurrentCell.RowIndex] = new BusinessClient(businessClients[dgvBusinessClients.CurrentCell.RowIndex].Id, new Address(businessClients[dgvBusinessClients.CurrentCell.RowIndex].Address.AddressID, txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex+""), txtPostalCode.Text), txtContactNumber.Text, businessClients[dgvBusinessClients.CurrentCell.RowIndex].RegistrationDate, txtTaxNum.Text, txtBusinessName.Text, GetTrueFalseFromBit(cmbActive.SelectedIndex));
+                businessClient.UpdateClient(businessClients[dgvBusinessClients.CurrentCell.RowIndex]);
+                RefreshDGVAndList();
+                UpdateFields(dgvBusinessClients.CurrentCell.RowIndex);
+            }
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure to Insert The Client?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                businessClients.Add(new BusinessClient(new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, businessClients[dgvBusinessClients.CurrentCell.RowIndex].RegistrationDate, txtTaxNum.Text, txtBusinessName.Text, GetTrueFalseFromBit(cmbActive.SelectedIndex)));
+                businessClient.InsertBusinessClient(businessClients[businessClients.Count - 1]);
+                RefreshDGVAndList();
+                UpdateFields(dgvBusinessClients.CurrentCell.RowIndex);
+            }
+        }
+        private void PopulateComboBox()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                cmbProvince.Items.Add(GetProvince(i + ""));
+            }
+        }
+        private Province GetProvince(string input)
+        {
+            Province province = (Province)1;
 
+            switch (input)
+            {
+                case "0":
+                    province = (Province)0;
+                    break;
+                case "1":
+                    province = (Province)1;
+                    break;
+                case "2":
+                    province = (Province)2;
+                    break;
+                case "3":
+                    province = (Province)3;
+                    break;
+                case "4":
+                    province = (Province)4;
+                    break;
+                case "5":
+                    province = (Province)5;
+                    break;
+                case "6":
+                    province = (Province)6;
+                    break;
+                case "7":
+                    province = (Province)7;
+                    break;
+                case "8":
+                    province = (Province)8;
+                    break;
+                default:
+                    province = (Province)1;
+                    break;
+            }
+            return province;
+        }
+        private void BuildDGVStyle()
+        {
+            dgvBusinessClients.ForeColor = Color.Black;
+        }
+        private void RefreshDGVAndList()
+        {
+            businessClients = businessClient.SelectAllBusinessClients();
+            List<BusinessClient> bindList = businessClients;
+            bindingSource = new BindingSource(bindList, null);
+            dgvBusinessClients.DataSource = bindingSource;
+        }
+        private void UpdateFields(int index)
+        {
+            if (index <= dgvBusinessClients.RowCount - 2)
+            {
+                txtBusinessName.Text = businessClients[index].BusinessName;
+                txtTaxNum.Text = businessClients[index].TaxNumber;
+                txtStreetName.Text = businessClients[index].Address.StreetName;
+                txtSuburb.Text = businessClients[index].Address.Suburb;
+                txtCity.Text = businessClients[index].Address.City;
+                cmbProvince.SelectedItem = businessClients[index].Address.Province;
+                txtPostalCode.Text = businessClients[index].Address.Postalcode;
+                txtContactNumber.Text = businessClients[index].ContactNumber;
+                cmbActive.SelectedIndex = GetIntFromBool(businessClients[index].Active);
+            }
+
+
+        }
+        private bool GetTrueFalseFromBit(int bit)
+        {
+            bool output = bit == 1 ? true : false;
+            return output;
+        }
+        private int GetIntFromBool(bool input)
+        {
+            if (input == true)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 

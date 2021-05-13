@@ -60,6 +60,8 @@ namespace PremiereSolutionProject.PL
             {
                 individualClients.Add(new IndividualClient(txtFirstname.Text, txtSurname.Text, new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, GetTrueFalseFromBit(cmbActive.SelectedIndex)));
                 individualClient.InsertIndividualClient(individualClients[individualClients.Count-1]);
+                RefreshDGVAndList();
+                UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
             }
         }
         private void PopulateComboBox()

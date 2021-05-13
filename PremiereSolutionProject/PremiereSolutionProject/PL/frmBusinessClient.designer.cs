@@ -55,6 +55,8 @@ namespace PremiereSolutionProject.PL
             this.label14 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnDeleteBusinessClient = new System.Windows.Forms.Button();
+            this.cmbActive = new System.Windows.Forms.ComboBox();
+            this.txtAvtive = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBusinessClients)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,7 +145,6 @@ namespace PremiereSolutionProject.PL
             this.btnExit.TabIndex = 72;
             this.btnExit.Text = "Close";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label9
             // 
@@ -324,6 +325,7 @@ namespace PremiereSolutionProject.PL
             this.cmbProvince.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbProvince.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvince.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProvince.FormattingEnabled = true;
             this.cmbProvince.Location = new System.Drawing.Point(228, 438);
@@ -343,7 +345,6 @@ namespace PremiereSolutionProject.PL
             this.btnSearch.TabIndex = 116;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label14
             // 
@@ -376,15 +377,47 @@ namespace PremiereSolutionProject.PL
             this.btnDeleteBusinessClient.Name = "btnDeleteBusinessClient";
             this.btnDeleteBusinessClient.Size = new System.Drawing.Size(129, 77);
             this.btnDeleteBusinessClient.TabIndex = 117;
-            this.btnDeleteBusinessClient.Text = "Delete Business Client Info";
+            this.btnDeleteBusinessClient.Text = "Delete Business Client";
             this.btnDeleteBusinessClient.UseVisualStyleBackColor = true;
+            this.btnDeleteBusinessClient.Click += new System.EventHandler(this.btnDeleteBusinessClient_Click);
+            // 
+            // cmbActive
+            // 
+            this.cmbActive.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmbActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbActive.FormattingEnabled = true;
+            this.cmbActive.Items.AddRange(new object[] {
+            "false",
+            "true"});
+            this.cmbActive.Location = new System.Drawing.Point(229, 551);
+            this.cmbActive.Name = "cmbActive";
+            this.cmbActive.Size = new System.Drawing.Size(455, 23);
+            this.cmbActive.TabIndex = 121;
+            // 
+            // txtAvtive
+            // 
+            this.txtAvtive.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAvtive.AutoSize = true;
+            this.txtAvtive.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAvtive.Location = new System.Drawing.Point(153, 551);
+            this.txtAvtive.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txtAvtive.Name = "txtAvtive";
+            this.txtAvtive.Size = new System.Drawing.Size(53, 19);
+            this.txtAvtive.TabIndex = 120;
+            this.txtAvtive.Text = "Avtive";
             // 
             // frmBusinessClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(878, 575);
+            this.ClientSize = new System.Drawing.Size(878, 604);
+            this.Controls.Add(this.cmbActive);
+            this.Controls.Add(this.txtAvtive);
             this.Controls.Add(this.btnDeleteBusinessClient);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label14);
@@ -415,7 +448,7 @@ namespace PremiereSolutionProject.PL
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmBusinessClient";
             this.Text = "Business Client";
-            this.Load += new System.EventHandler(this.frmAddBusinessClient_Load);
+            this.Load += new System.EventHandler(this.frmBusinessClient_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBusinessClients)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -450,5 +483,7 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnDeleteBusinessClient;
+        private System.Windows.Forms.ComboBox cmbActive;
+        private System.Windows.Forms.Label txtAvtive;
     }
 }
