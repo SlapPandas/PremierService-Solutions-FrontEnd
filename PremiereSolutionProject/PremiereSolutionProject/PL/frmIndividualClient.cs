@@ -13,209 +13,148 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmIndividualClient : Form
     {
+        List<IndividualClient> individualClients = new List<IndividualClient>();
+        IndividualClient individualClient = new IndividualClient();
+        BindingSource bindingSource = new BindingSource();
         public frmIndividualClient()
         {
-            InitializeComponent();
-            
+            InitializeComponent(); 
         }
-
-        List<IndividualClient> ic;
-        IndividualClient ic2;
-        BindingSource bs = new BindingSource();
-        IndividualClient selectedIc;
-
-        private void frmAddIndividualClient_Load(object sender, EventArgs e)
+        private void frmIndividualClient_Load(object sender, EventArgs e)
         {
-            dgvExistingClients.ForeColor = Color.Black;
-            cmbProvince.Items.Add("North_West");
-            cmbProvince.Items.Add("Gauteng");
-            cmbProvince.Items.Add("Western_Cape");
-            cmbProvince.Items.Add("Eastern_Cape");
-            cmbProvince.Items.Add("Free_State");
-            cmbProvince.Items.Add("Northern_Cape");
-            cmbProvince.Items.Add("Mpumalanga");
-            cmbProvince.Items.Add("Limpopo");
-            cmbProvince.Items.Add("Kwazulu_Natal");
-
-            ic = new IndividualClient().SelectAllIndividualClients();
-            RefreshDGV();
+            RefreshDGVAndList();
+            BuildDGVStyle();
+            PopulateComboBox();
         }
-        private void RefreshDGV()
+        private void dgvExistingClients_SelectionChanged(object sender, EventArgs e)
         {
-            bs.DataSource = ic;
-            dgvExistingClients.DataSource = null;
-            dgvExistingClients.DataSource = bs;
-
+            UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
         }
-
-        private void btnExit_Click(object sender, EventArgs e)
+        private void btnDeleteClient_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void btnAddClient_Click(object sender, EventArgs e)
-        {
-            try
+            DialogResult dr = MessageBox.Show("Are you sure to delete The Client?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
             {
-                if (string.IsNullOrWhiteSpace(txtID.Text))
-                {
-                    throw new FormatException("No client identification");
-                }
-                if (string.IsNullOrWhiteSpace(txtFirstname.Text))
-                {
-                    throw new FormatException("No client name");
-                }
-                if (string.IsNullOrWhiteSpace(txtSurname.Text))
-                {
-                    throw new FormatException("No client surname");
-                }
-                if (string.IsNullOrWhiteSpace(txtNationalID.Text))
-                {
-                    throw new FormatException("No client national ID");
-                }
-                if (string.IsNullOrWhiteSpace(txtStreetName.Text))
-                {
-                    throw new FormatException("No client address");
-                }
-                if (string.IsNullOrWhiteSpace(txtContactNumber.Text))
-                {
-                    throw new FormatException("No client Contact number");
-                }
-                if (string.IsNullOrWhiteSpace(txtEmai.Text))
-                {
-                    throw new FormatException("No client e-mail");
-                }
-
-                else
-                {
-                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
-                    IndividualClient ic = new IndividualClient(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, true);
-                    ic.InsertIndividualClient(ic);
-                    MessageBox.Show("Successfully created client", "Yay");
-                }
-
-            }
-            catch (FormatException fe)
-            {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                individualClients[dgvExistingClients.CurrentCell.RowIndex].Active = false;
+                individualClient.RemoveClient(individualClients[dgvExistingClients.CurrentCell.RowIndex]);
+                RefreshDGVAndList();
+                UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
             }
         }
-
         private void btnUpdateIndiClient_Click(object sender, EventArgs e)
         {
-            try
+            DialogResult dr = MessageBox.Show("Are you sure to update The Client?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
             {
-                if (string.IsNullOrWhiteSpace(txtID.Text))
-                {
-                    throw new FormatException("No client identification");
-                }
-                if (string.IsNullOrWhiteSpace(txtFirstname.Text))
-                {
-                    throw new FormatException("No client name");
-                }
-                if (string.IsNullOrWhiteSpace(txtSurname.Text))
-                {
-                    throw new FormatException("No client surname");
-                }
-                if (string.IsNullOrWhiteSpace(txtNationalID.Text))
-                {
-                    throw new FormatException("No client national ID");
-                }
-                if (string.IsNullOrWhiteSpace(txtStreetName.Text))
-                {
-                    throw new FormatException("No client address");
-                }
-                if (string.IsNullOrWhiteSpace(txtContactNumber.Text))
-                {
-                    throw new FormatException("No client Contact number");
-                }
-                if (string.IsNullOrWhiteSpace(txtEmai.Text))
-                {
-                    throw new FormatException("No client e-mail");
-                }
-
-                else
-                {
-                    Address address = new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, (Province)cmbProvince.SelectedIndex, txtPostalCode.Text);
-                    IndividualClient ic = new IndividualClient(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, true);
-                    ic.UpdateClient(ic);
-                    MessageBox.Show("Successfully created client", "Yay");
-                }
-
+                individualClients[dgvExistingClients.CurrentCell.RowIndex] = new IndividualClient(individualClients[dgvExistingClients.CurrentCell.RowIndex].Id, txtFirstname.Text, txtSurname.Text, new Address(individualClients[dgvExistingClients.CurrentCell.RowIndex].Address.AddressID, txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, individualClients[dgvExistingClients.CurrentCell.RowIndex].RegistrationDate, GetTrueFalseFromBit(cmbActive.SelectedIndex));
+                individualClient.UpdateClient(individualClients[dgvExistingClients.CurrentCell.RowIndex]);
+                RefreshDGVAndList();
+                UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
             }
-            catch (FormatException fe)
+
+        }
+        private void btnAddClient_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure to Insert The Client?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
             {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                individualClients.Add(new IndividualClient(txtFirstname.Text, txtSurname.Text, new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, GetTrueFalseFromBit(cmbActive.SelectedIndex)));
+                individualClient.InsertIndividualClient(individualClients[individualClients.Count-1]);
             }
         }
-
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void PopulateComboBox()
         {
-            try
+            for (int i = 0; i < 9; i++)
             {
-                ic = new IndividualClient().SelectAllIndividualClients();
-                foreach (IndividualClient item in ic)
-                {
-                    if (item.Id == txtSearch.Text)
-                    {
-                        ic2 = item;
-                        ic = null;
-                        ic.Add(ic2);
-                        RefreshDGV();
-                    }
-                }
-                RefreshDGV();
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                cmbProvince.Items.Add(GetProvince(i + ""));
             }
         }
-
-        private void UpdateData()
+        private Province GetProvince(string input)
         {
-            //selectedProduct
-            foreach (var item in cmbProvince.Items)
+            Province province = (Province)1;
+
+            switch (input)
             {
-                if (item.ToString() == selectedIc.Address.Province.ToString())
-                {
-                    cmbProvince.SelectedItem = item.ToString() ;
+                case "0":
+                    province = (Province)0;
                     break;
-                }
+                case "1":
+                    province = (Province)1;
+                    break;
+                case "2":
+                    province = (Province)2;
+                    break;
+                case "3":
+                    province = (Province)3;
+                    break;
+                case "4":
+                    province = (Province)4;
+                    break;
+                case "5":
+                    province = (Province)5;
+                    break;
+                case "6":
+                    province = (Province)6;
+                    break;
+                case "7":
+                    province = (Province)7;
+                    break;
+                case "8":
+                    province = (Province)8;
+                    break;
+                default:
+                    province = (Province)1;
+                    break;
+            }
+            return province;
+        }
+        private void BuildDGVStyle()
+        {
+            dgvExistingClients.ForeColor = Color.Black;
+        }
+        private void RefreshDGVAndList()
+        {
+            individualClients = individualClient.SelectAllIndividualClients();
+            List<IndividualClient> bindList = individualClients;
+            bindingSource = new BindingSource(bindList, null);
+            dgvExistingClients.DataSource = bindingSource;
+        }
+        private void UpdateFields(int index)
+        {
+            if (index <= dgvExistingClients.RowCount - 2)
+            {
+                txtID.Text = individualClients[index].Id;
+                txtFirstname.Text = individualClients[index].FirstName;
+                txtSurname.Text = individualClients[index].Surname;
+                txtNationalID.Text = individualClients[index].NationalIDnumber;
+                txtContactNumber.Text = individualClients[index].ContactNumber;
+                txtEmai.Text = individualClients[index].Email;
+                txtStreetName.Text = individualClients[index].Address.StreetName;
+                txtSuburb.Text = individualClients[index].Address.Suburb;
+                txtCity.Text = individualClients[index].Address.City;
+                cmbProvince.SelectedItem = individualClients[index].Address.Province;
+                txtPostalCode.Text = individualClients[index].Address.Postalcode;
+                txtDate.Text = individualClients[index].RegistrationDate.ToString("yyy/MM/dd");
+                cmbActive.SelectedIndex = GetIntFromBool(individualClients[index].Active);
             }
 
 
-            txtCity.Text = selectedIc.Address.City;
-            txtContactNumber.Text = selectedIc.ContactNumber;
-            txtEmai.Text = selectedIc.Email;
-            txtFirstname.Text = selectedIc.FirstName;
-            txtID.Text = selectedIc.Id;
-            txtNationalID.Text = selectedIc.NationalIDnumber;
-            txtPostalCode.Text = selectedIc.Address.Postalcode;
-            txtSuburb.Text = selectedIc.Address.Suburb;
-            txtStreetName.Text = selectedIc.Address.StreetName;
-            txtSurname.Text = selectedIc.Surname;
-            
-           
         }
-
-        private void dgvEmployee_SelectionChanged(object sender, EventArgs e)
+        private bool GetTrueFalseFromBit(int bit)
         {
-            selectedIc = (IndividualClient)bs.Current;
-            UpdateData();
+            bool output = bit == 1 ? true : false;
+            return output;
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private int GetIntFromBool(bool input)
         {
-            this.Close();
+            if (input == true)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }
