@@ -235,7 +235,12 @@ namespace PremiereSolutionProject.PL
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            DialogResult iExit;
+            iExit = MessageBox.Show("Confirm if you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (iExit ==DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)

@@ -29,6 +29,7 @@ namespace PremiereSolutionProject.PL
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmJobsManagement));
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,7 +44,6 @@ namespace PremiereSolutionProject.PL
             this.label9 = new System.Windows.Forms.Label();
             this.btnDeleteJob = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnAddTechnician = new System.Windows.Forms.Button();
             this.btnRemoveTechnician = new System.Windows.Forms.Button();
             this.lstPending = new System.Windows.Forms.ListView();
@@ -56,12 +56,9 @@ namespace PremiereSolutionProject.PL
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lstViewAssemp = new System.Windows.Forms.ListView();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lbxNewAssigned = new System.Windows.Forms.ListBox();
             this.lbxAvailTech = new System.Windows.Forms.ListBox();
             this.cbxSpecialisation = new System.Windows.Forms.ComboBox();
+            this.lbxCurrentAssignedTech = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudEmployees)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +66,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(324, 18);
+            this.label1.Location = new System.Drawing.Point(393, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(236, 31);
@@ -84,16 +81,16 @@ namespace PremiereSolutionProject.PL
             this.label4.Location = new System.Drawing.Point(38, 396);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 17);
+            this.label4.Size = new System.Drawing.Size(119, 17);
             this.label4.TabIndex = 62;
-            this.label4.Text = "Current State";
+            this.label4.Text = "Current Job State";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(495, 391);
+            this.label5.Location = new System.Drawing.Point(824, 400);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(197, 17);
@@ -223,30 +220,18 @@ namespace PremiereSolutionProject.PL
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(509, 516);
+            this.label2.Location = new System.Drawing.Point(520, 400);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 17);
             this.label2.TabIndex = 126;
             this.label2.Text = "Available Technicians";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(822, 514);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(177, 17);
-            this.label3.TabIndex = 128;
-            this.label3.Text = "New Assigned Technicians";
-            // 
             // btnAddTechnician
             // 
             this.btnAddTechnician.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddTechnician.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTechnician.Location = new System.Drawing.Point(726, 559);
+            this.btnAddTechnician.Location = new System.Drawing.Point(733, 487);
             this.btnAddTechnician.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddTechnician.Name = "btnAddTechnician";
             this.btnAddTechnician.Size = new System.Drawing.Size(48, 27);
@@ -259,7 +244,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.btnRemoveTechnician.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveTechnician.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveTechnician.Location = new System.Drawing.Point(726, 627);
+            this.btnRemoveTechnician.Location = new System.Drawing.Point(733, 555);
             this.btnRemoveTechnician.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemoveTechnician.Name = "btnRemoveTechnician";
             this.btnRemoveTechnician.Size = new System.Drawing.Size(48, 27);
@@ -339,47 +324,13 @@ namespace PremiereSolutionProject.PL
             this.columnHeader12.Text = "Priority level";
             this.columnHeader12.Width = 90;
             // 
-            // lstViewAssemp
-            // 
-            this.lstViewAssemp.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader3,
-            this.columnHeader4});
-            this.lstViewAssemp.HideSelection = false;
-            this.lstViewAssemp.Location = new System.Drawing.Point(710, 391);
-            this.lstViewAssemp.MultiSelect = false;
-            this.lstViewAssemp.Name = "lstViewAssemp";
-            this.lstViewAssemp.Size = new System.Drawing.Size(299, 109);
-            this.lstViewAssemp.TabIndex = 136;
-            this.lstViewAssemp.UseCompatibleStateImageBehavior = false;
-            this.lstViewAssemp.View = System.Windows.Forms.View.Details;
-            this.lstViewAssemp.SelectedIndexChanged += new System.EventHandler(this.lstViewAssemp_SelectedIndexChanged);
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "ID";
-            this.columnHeader3.Width = 120;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Name";
-            this.columnHeader4.Width = 120;
-            // 
-            // lbxNewAssigned
-            // 
-            this.lbxNewAssigned.FormattingEnabled = true;
-            this.lbxNewAssigned.ItemHeight = 16;
-            this.lbxNewAssigned.Location = new System.Drawing.Point(815, 546);
-            this.lbxNewAssigned.Name = "lbxNewAssigned";
-            this.lbxNewAssigned.Size = new System.Drawing.Size(194, 132);
-            this.lbxNewAssigned.TabIndex = 140;
-            // 
             // lbxAvailTech
             // 
             this.lbxAvailTech.FormattingEnabled = true;
             this.lbxAvailTech.ItemHeight = 16;
-            this.lbxAvailTech.Location = new System.Drawing.Point(498, 546);
+            this.lbxAvailTech.Location = new System.Drawing.Point(505, 426);
             this.lbxAvailTech.Name = "lbxAvailTech";
-            this.lbxAvailTech.Size = new System.Drawing.Size(189, 132);
+            this.lbxAvailTech.Size = new System.Drawing.Size(189, 180);
             this.lbxAvailTech.TabIndex = 141;
             // 
             // cbxSpecialisation
@@ -390,21 +341,28 @@ namespace PremiereSolutionProject.PL
             this.cbxSpecialisation.Size = new System.Drawing.Size(232, 24);
             this.cbxSpecialisation.TabIndex = 142;
             // 
+            // lbxCurrentAssignedTech
+            // 
+            this.lbxCurrentAssignedTech.FormattingEnabled = true;
+            this.lbxCurrentAssignedTech.ItemHeight = 16;
+            this.lbxCurrentAssignedTech.Location = new System.Drawing.Point(832, 426);
+            this.lbxCurrentAssignedTech.Name = "lbxCurrentAssignedTech";
+            this.lbxCurrentAssignedTech.Size = new System.Drawing.Size(189, 180);
+            this.lbxCurrentAssignedTech.TabIndex = 143;
+            // 
             // frmJobsManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1067, 757);
+            this.Controls.Add(this.lbxCurrentAssignedTech);
             this.Controls.Add(this.cbxSpecialisation);
             this.Controls.Add(this.lbxAvailTech);
-            this.Controls.Add(this.lbxNewAssigned);
-            this.Controls.Add(this.lstViewAssemp);
             this.Controls.Add(this.lstJobs);
             this.Controls.Add(this.lstPending);
             this.Controls.Add(this.btnRemoveTechnician);
             this.Controls.Add(this.btnAddTechnician);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnDeleteJob);
             this.Controls.Add(this.rtbNotes);
@@ -420,9 +378,10 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmJobsManagement";
-            this.Text = "frmJobManagement";
+            this.Text = "Job Management";
             this.Load += new System.EventHandler(this.frmJobsManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudEmployees)).EndInit();
             this.ResumeLayout(false);
@@ -446,7 +405,6 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnDeleteJob;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnAddTechnician;
         private System.Windows.Forms.Button btnRemoveTechnician;
         private System.Windows.Forms.ListView lstPending;
@@ -459,11 +417,8 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.ColumnHeader columnHeader10;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ListView lstViewAssemp;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ListBox lbxNewAssigned;
         private System.Windows.Forms.ListBox lbxAvailTech;
         private System.Windows.Forms.ComboBox cbxSpecialisation;
+        private System.Windows.Forms.ListBox lbxCurrentAssignedTech;
     }
 }

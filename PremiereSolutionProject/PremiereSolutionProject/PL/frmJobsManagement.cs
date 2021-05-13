@@ -17,13 +17,16 @@ namespace PremiereSolutionProject.PL
         Job JB = new Job();
         Job SelectedJob = new Job();
         Specialisation special = new Specialisation();
-        MaintenanceEmployee MainEmp = new MaintenanceEmployee();
+        List <MaintenanceEmployee> MainEmp = new List<MaintenanceEmployee>();
         List<MaintenanceEmployee> myEmployee = new List<MaintenanceEmployee>();
         BindingSource bs = new BindingSource();
         List<MaintenanceEmployee> NewEmp = new List<MaintenanceEmployee>();
         JobState st;
-        int placeholder;
         List<MaintenanceEmployee> ME;
+        ServiceRequest SR = new ServiceRequest();
+        ServiceManager SM = new ServiceManager();
+        string stdOutput = "{0,-10}{1,-20}";
+        Job NewJob;
 
 
         public frmJobsManagement()
@@ -40,6 +43,8 @@ namespace PremiereSolutionProject.PL
 
         private void frmJobsManagement_Load(object sender, EventArgs e)
         {
+            lbxAvailTech.Items.Add(String.Format(stdOutput,"ID","Name"));
+            lbxCurrentAssignedTech.Items.Add(String.Format(stdOutput, "ID", "Name"));
 
             foreach (Job J in JB.SelectAllJobs())
             {
@@ -83,16 +88,15 @@ namespace PremiereSolutionProject.PL
             }
 
            
-            ME = new MaintenanceEmployee().SelectAllMaintenaceEmpployees();
+            ME = SR.SelectAllAvailabeEmployees();
 
             foreach (MaintenanceEmployee m in ME)
             {
-                lbxAvailTech.Items.Add(m.FirstName + ' ' + m.Id);
+                lbxAvailTech.Items.Add(String.Format(stdOutput, m.FirstName, m.Id));
             }
         }
 
         
-
         private void btnDeleteJob_Click(object sender, EventArgs e)
         {
             JB.DeleteJob(SelectedJob);
@@ -100,60 +104,71 @@ namespace PremiereSolutionProject.PL
             cbxCurrentState.Text = "";
             rtbNotes.Clear();
             nudEmployees.Value = 0;
-            lbxNewAssigned.Items.Clear();
         }
 
         private void btnUpdateJob_Click(object sender, EventArgs e)
         {
-            //Validation that none off the fields are empty
-            if (string.IsNullOrEmpty(cbxCurrentState.Text)) 
+            int jobstateindex;
+
+            if (Enumerable.SequenceEqual(SelectedJob.Employee, NewJob.Employee))
             {
-                throw new FormatException("No State Chosen ");
+                SM.UpdateJobEmployeeList(SelectedJob);
             }
-            else if (string.IsNullOrEmpty(rtbNotes.Text))
-            {
-                throw new FormatException("No notes written");
-            }
-            else if (nudEmployees.Value < 0)
-            {
-                throw new FormatException("Invalid Numeric Selection");
-            }
+
             else
             {
-                if (myEmployee != null)
-                {
-                    SelectedJob.Employee = myEmployee; //List of new chosen employees
-                }
-                
-                JB.UpdateJob(SelectedJob);
-                MessageBox.Show("The job has been successfully updated", "Update Job", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The two lists are the same. ");
+            }
+            
+            if (myEmployee != null)
+            {
+                SelectedJob.Employee = myEmployee; //List of new chosen employees
+            }
 
-                cbxCurrentState.Text = "";
-                rtbNotes.Clear();
-                nudEmployees.Value = 0;
-                lbxNewAssigned.Items.Clear();
+            if (SelectedJob.JobState != NewJob.JobState)
+            {
+                 jobstateindex = Array.IndexOf(Enum.GetValues(SelectedJob.JobState.GetType()), SelectedJob.JobState);
+                 SM.UpdateJobState(SelectedJob.JobID,jobstateindex);
+            }
 
-            }    
+
+            JB.UpdateJob(SelectedJob);
+            MessageBox.Show("The job has been successfully updated", "Update Job", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            cbxCurrentState.Text = "";
+            rtbNotes.Clear();
+            nudEmployees.Value = 0;
+            lbxCurrentAssignedTech.Items.Clear();
+
+            
         }
 
         private void btnAddTechnician_Click(object sender, EventArgs e)
         {
-            if (!lbxNewAssigned.Items.Contains(lbxAvailTech.SelectedItem.ToString()))
+            if (lbxAvailTech.SelectedItem != null)
             {
-                lbxNewAssigned.Items.Add(lbxAvailTech.SelectedItem.ToString());
-                myEmployee.Add(lbxAvailTech.SelectedItem as MaintenanceEmployee); //Need to get listbox items added to the list of type maintenance employee
+                lbxCurrentAssignedTech.Items.Add(lbxAvailTech.SelectedItem);
+                SelectedJob.Employee.Add(lbxAvailTech.SelectedItem as MaintenanceEmployee); //Need to get listbox items added to the list of type maintenance employee
+                
+                
+                lbxAvailTech.Items.RemoveAt(lbxAvailTech.SelectedIndex);               
             }
             else
             {
                 MessageBox.Show("The technician has already been newly assigned", "Add technicians Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void btnRemoveTechnician_Click(object sender, EventArgs e)
         {
 
-            lbxNewAssigned.Items.RemoveAt(lbxNewAssigned.SelectedIndex);
+            if (lbxCurrentAssignedTech.SelectedItem != null)
+            {
+                lbxAvailTech.Items.Add(lbxCurrentAssignedTech.SelectedItem);
+                lbxCurrentAssignedTech.Items.RemoveAt(lbxCurrentAssignedTech.SelectedIndex);
+                SelectedJob.Employee.Remove(lbxCurrentAssignedTech.SelectedItem as MaintenanceEmployee);
+            }
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -173,20 +188,24 @@ namespace PremiereSolutionProject.PL
 
         private void lstJobs_MouseClick(object sender, MouseEventArgs e)
         {
-            lstViewAssemp.Items.Clear();
+            lbxCurrentAssignedTech.Items.Clear();
 
             if (lstJobs.SelectedItems.Count > 0)
             {
-                Job NewJob = lstJobs.SelectedItems[0].Tag as Job; //Creates a job object of the current job 
-
-                //int id, Address jAddress, JobState js, string jNotes, List<MaintenanceEmployee> mE, Specialisation spec, int sReqID, int empsNeeded
-                //public Job(Address jAddress, JobState js, string jNotes, List<MaintenanceEmployee> mE, Specialisation spec, int sReqID, string priority, int empsNeeded)
+                NewJob = lstJobs.SelectedItems[0].Tag as Job; //Creates a job object of the current job 
 
                 SelectedJob.JobID = NewJob.JobID;
 
                 SelectedJob.JobAddress = NewJob.JobAddress;
 
                 SelectedJob.ServiceRequestID = NewJob.ServiceRequestID;
+                                
+                SelectedJob.Employee = NewJob.Employee;
+
+                foreach (MaintenanceEmployee m in NewJob.Employee)
+                {
+                    lbxCurrentAssignedTech.Items.Add(String.Format(stdOutput, m.FirstName, m.Id));
+                }
 
                 rtbNotes.Text = NewJob.JobNotes; // Gets the notes of the current job
                 SelectedJob.JobNotes = NewJob.JobNotes;
@@ -196,6 +215,8 @@ namespace PremiereSolutionProject.PL
                
                 st = NewJob.JobState; //Gets the current job state
                 SelectedJob.JobState = st;
+               
+
 
                 if (st.ToString() == "Pending")
                 {
@@ -223,8 +244,6 @@ namespace PremiereSolutionProject.PL
                             ME.Id,
                             ME.FirstName
                      });
-
-                    lstViewAssemp.Items.Add(lst);
                 }
 
                 SelectedJob.PriorityLevel = NewJob.PriorityLevel;
