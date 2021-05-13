@@ -309,7 +309,7 @@ namespace PremiereSolutionProject.BLL
             }
         }
 
-        private List<MaintenanceEmployee> SelectAllAvailabeEmployees()
+        Public List<MaintenanceEmployee> SelectAllAvailabeEmployees()
         {
             EmployeeDH employeeDH = new EmployeeDH();
             return employeeDH.SelectAllAvailableMaintenanceEmployees();
