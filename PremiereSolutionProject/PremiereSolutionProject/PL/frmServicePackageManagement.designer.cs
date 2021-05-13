@@ -75,7 +75,7 @@ namespace PremiereSolutionProject.PL
             this.dgvCurrentServicePackages.Location = new System.Drawing.Point(141, 101);
             this.dgvCurrentServicePackages.Name = "dgvCurrentServicePackages";
             this.dgvCurrentServicePackages.RowHeadersWidth = 62;
-            this.dgvCurrentServicePackages.Size = new System.Drawing.Size(700, 95);
+            this.dgvCurrentServicePackages.Size = new System.Drawing.Size(782, 95);
             this.dgvCurrentServicePackages.TabIndex = 2;
             this.dgvCurrentServicePackages.SelectionChanged += new System.EventHandler(this.dgvCurrentServicePackages_SelectionChanged);
             // 
@@ -107,9 +107,9 @@ namespace PremiereSolutionProject.PL
             this.label4.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(35, 272);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 16);
+            this.label4.Size = new System.Drawing.Size(96, 16);
             this.label4.TabIndex = 58;
-            this.label4.Text = "Service List";
+            this.label4.Text = "Service Price";
             // 
             // comboBox1
             // 
@@ -219,7 +219,7 @@ namespace PremiereSolutionProject.PL
             this.btnCreatePackage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnCreatePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreatePackage.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreatePackage.Location = new System.Drawing.Point(613, 491);
+            this.btnCreatePackage.Location = new System.Drawing.Point(684, 491);
             this.btnCreatePackage.Name = "btnCreatePackage";
             this.btnCreatePackage.Size = new System.Drawing.Size(228, 31);
             this.btnCreatePackage.TabIndex = 78;
@@ -245,7 +245,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(418, 212);
+            this.label12.Location = new System.Drawing.Point(448, 212);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(128, 16);
             this.label12.TabIndex = 82;
@@ -255,7 +255,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.btnAddService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddService.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddService.Location = new System.Drawing.Point(593, 272);
+            this.btnAddService.Location = new System.Drawing.Point(657, 272);
             this.btnAddService.Name = "btnAddService";
             this.btnAddService.Size = new System.Drawing.Size(61, 42);
             this.btnAddService.TabIndex = 84;
@@ -281,7 +281,7 @@ namespace PremiereSolutionProject.PL
             this.btnUpdatePackage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnUpdatePackage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdatePackage.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdatePackage.Location = new System.Drawing.Point(332, 491);
+            this.btnUpdatePackage.Location = new System.Drawing.Point(365, 491);
             this.btnUpdatePackage.Name = "btnUpdatePackage";
             this.btnUpdatePackage.Size = new System.Drawing.Size(228, 31);
             this.btnUpdatePackage.TabIndex = 86;
@@ -292,7 +292,7 @@ namespace PremiereSolutionProject.PL
             // lbxAvailable
             // 
             this.lbxAvailable.FormattingEnabled = true;
-            this.lbxAvailable.Location = new System.Drawing.Point(421, 241);
+            this.lbxAvailable.Location = new System.Drawing.Point(455, 241);
             this.lbxAvailable.Name = "lbxAvailable";
             this.lbxAvailable.Size = new System.Drawing.Size(121, 212);
             this.lbxAvailable.TabIndex = 87;
@@ -300,7 +300,7 @@ namespace PremiereSolutionProject.PL
             // lbxAdded
             // 
             this.lbxAdded.FormattingEnabled = true;
-            this.lbxAdded.Location = new System.Drawing.Point(720, 241);
+            this.lbxAdded.Location = new System.Drawing.Point(802, 241);
             this.lbxAdded.Name = "lbxAdded";
             this.lbxAdded.Size = new System.Drawing.Size(121, 212);
             this.lbxAdded.TabIndex = 88;
@@ -311,7 +311,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(717, 212);
+            this.label14.Location = new System.Drawing.Point(799, 212);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(48, 16);
             this.label14.TabIndex = 90;
@@ -321,7 +321,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemove.Location = new System.Drawing.Point(593, 391);
+            this.btnRemove.Location = new System.Drawing.Point(657, 391);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(61, 42);
             this.btnRemove.TabIndex = 84;
@@ -334,7 +334,7 @@ namespace PremiereSolutionProject.PL
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(906, 591);
+            this.ClientSize = new System.Drawing.Size(1136, 591);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lbxAdded);
             this.Controls.Add(this.lbxAvailable);

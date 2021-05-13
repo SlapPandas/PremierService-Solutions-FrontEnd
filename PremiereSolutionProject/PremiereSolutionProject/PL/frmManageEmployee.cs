@@ -59,14 +59,14 @@ namespace PremiereSolutionProject.PL
                     switch (cbxDepartment.SelectedItem)
                     {
                         case "CallCenterEmployee":
-                            CallCenterEmployee cce = new CallCenterEmployee(txtFirstname.Text,txtSurname.Text,address,txtContactNumber.Text,txtEmai.Text,txtNationalID.Text,DateTime.Now,cbxEmployed.Checked);
-                            cce.InsertCallCenterEmployee(cce);
+                            //CallCenterEmployee cce = new CallCenterEmployee(txtFirstname.Text,txtSurname.Text,address,txtContactNumber.Text,txtEmai.Text,txtNationalID.Text,DateTime.Now,cbxEmployed.Checked);
+                            //cce.InsertCallCenterEmployee(cce);
 
                             break;
                         
                         case "ServiceManager":
-                            ServiceManager sm = new ServiceManager(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, cbxEmployed.Checked);
-                            sm.InsertServiceManager(sm);
+                            //ServiceManager sm = new ServiceManager(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, cbxEmployed.Checked);
+                            //sm.InsertServiceManager(sm);
                             break;
                     }
                     MessageBox.Show("Successfully created Employee", "Yay");
@@ -119,14 +119,14 @@ namespace PremiereSolutionProject.PL
                     switch (cbxDepartment.SelectedItem)
                     {
                         case "CallCenterEmployee":
-                            CallCenterEmployee cce = new CallCenterEmployee(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, cbxEmployed.Checked);
-                            cce.InsertCallCenterEmployee(cce);
+                            //CallCenterEmployee cce = new CallCenterEmployee(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, cbxEmployed.Checked);
+                            //cce.InsertCallCenterEmployee(cce);
 
                             break;
 
                         case "ServiceManager":
-                            ServiceManager sm = new ServiceManager(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, cbxEmployed.Checked);
-                            sm.UpdateEmployee(sm);
+                            //ServiceManager sm = new ServiceManager(txtFirstname.Text, txtSurname.Text, address, txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, cbxEmployed.Checked);
+                            //sm.UpdateEmployee(sm);
                             break;
                     }
                     MessageBox.Show("Successfully created Employee", "Yay");

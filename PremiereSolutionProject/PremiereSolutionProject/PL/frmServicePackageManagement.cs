@@ -62,12 +62,17 @@ namespace PremiereSolutionProject.PL
                 cbxPromotionNo.Checked = true;
                 cbxPromotionYes.Checked = false;
             }
-
             lbxAdded.Items.Clear();
+            lbxAvailable.Items.Clear();
+            foreach (Service item in services)
+            {
+                lbxAvailable.Items.Add(item.ServiceName.ToString());
+            }
             
             foreach (var item in selectedP.ServiceList)
             {
                 lbxAdded.Items.Add(item.ServiceName);
+                lbxAvailable.Items.Remove(item.ServiceName);
             }
 
             txtPackageName.Text = selectedP.PackageName;
@@ -89,6 +94,7 @@ namespace PremiereSolutionProject.PL
             if (lbxAvailable.SelectedItem != null)
             {
                 lbxAdded.Items.Add(lbxAvailable.SelectedItem.ToString());
+                lbxAvailable.Items.Remove(lbxAvailable.SelectedItem);
             }
             
         }
@@ -97,7 +103,8 @@ namespace PremiereSolutionProject.PL
         {
             if (lbxAdded.SelectedItem != null)
             {
-                lbxAdded.Items.RemoveAt(lbxAdded.SelectedIndex);
+                lbxAvailable.Items.Add(lbxAdded.SelectedItem);
+                lbxAdded.Items.RemoveAt(lbxAdded.SelectedIndex);                
             }
             
         }
