@@ -20,6 +20,54 @@ namespace PremiereSolutionProject.PL
         {
             InitializeComponent();
         }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void frmManageEmployee_Load(object sender, EventArgs e)
+        {
+            RefreshDGVAndList();
+            BuildDGVStyle();
+            PopulateComboBox();
+        }
+        private void dgvEmployee_SelectionChanged(object sender, EventArgs e)
+        {
+            UpdateFields(dgvEmployee.CurrentCell.RowIndex);
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure to Delete The Employee?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                ServiceManager serviceManager = new ServiceManager();
+                serviceManager.UpdateEmployeestate(employees[dgvEmployee.CurrentCell.RowIndex].Id, false);
+                RefreshDGVAndList();
+                UpdateFields(dgvEmployee.CurrentCell.RowIndex);
+            }
+
+        }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure to update The Employee?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                UpdateSpecificEmployee();
+                employee.UpdateEmployee(employees[dgvEmployee.CurrentCell.RowIndex]);
+                RefreshDGVAndList();
+                UpdateFields(dgvEmployee.CurrentCell.RowIndex);
+            }
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure to Insert The Employee?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                AddNewEmployee();
+                employee.InsertEmployee(employees[employees.Count - 1]);
+                RefreshDGVAndList();
+                UpdateFields(dgvEmployee.CurrentCell.RowIndex);
+            }
+        }
 
         private void PopulateComboBox()
         {
@@ -152,52 +200,6 @@ namespace PremiereSolutionProject.PL
             }
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void frmManageEmployee_Load(object sender, EventArgs e)
-        {
-            RefreshDGVAndList();
-            BuildDGVStyle();
-            PopulateComboBox();  
-        }
-
-        private void dgvEmployee_SelectionChanged(object sender, EventArgs e)
-        {
-            UpdateFields(dgvEmployee.CurrentCell.RowIndex);
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            DialogResult dr = MessageBox.Show("Are you sure to Delete The Employee?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
-            {
-                ServiceManager serviceManager = new ServiceManager();
-                serviceManager.UpdateEmployeestate(employees[dgvEmployee.CurrentCell.RowIndex].Id, false);
-                RefreshDGVAndList();
-                UpdateFields(dgvEmployee.CurrentCell.RowIndex);
-            }
-
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            DialogResult dr = MessageBox.Show("Are you sure to update The Employee?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
-            {
-                UpdateSpecificEmployee();
-                employee.UpdateEmployee(employees[dgvEmployee.CurrentCell.RowIndex]);
-                RefreshDGVAndList();
-                UpdateFields(dgvEmployee.CurrentCell.RowIndex);
-            }
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            AddNewEmployee();
-            employee.InsertEmployee(employees[employees.Count - 1]);
-        }
     }
 }
