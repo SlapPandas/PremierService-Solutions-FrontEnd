@@ -240,7 +240,6 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        CallCenterEmployee callcenterEnptyEmployee = new CallCenterEmployee();
                         //TODO: call center employee is currently emply as geting there information is not working, fields like there number "C00000001" is not populating, dont know why.
                         callCenterEmployee = new CallCenterEmployee((string)reader["employeeNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressId"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["employmentDate"], GetTrueFalseFromBit((int)reader["employed"]), (string)reader["department"]);
 
