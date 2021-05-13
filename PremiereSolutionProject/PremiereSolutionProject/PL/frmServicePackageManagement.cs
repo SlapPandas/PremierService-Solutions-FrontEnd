@@ -13,6 +13,7 @@ namespace PremiereSolutionProject.PL
 { 
     public partial class frmServicePackageManagement : Form
     {
+        List<Service> services;
         public frmServicePackageManagement()
         {
             InitializeComponent();
@@ -23,8 +24,7 @@ namespace PremiereSolutionProject.PL
             this.Close();
         }
         List<ServicePackage> sp;
-        ServicePackage sp2;
-        List<Service> services;
+        ServicePackage sp2;       
         BindingSource bs = new BindingSource();
         ServicePackage selectedP;
         private void frmServicePackageManagement_Load(object sender, EventArgs e)
@@ -105,65 +105,46 @@ namespace PremiereSolutionProject.PL
             {
                 lbxAvailable.Items.Add(lbxAdded.SelectedItem);
                 lbxAdded.Items.RemoveAt(lbxAdded.SelectedIndex);                
-            }
-            
+            }            
         }
         bool promotion;
         private void btnCreatePackage_Click(object sender, EventArgs e)
         {
-            try
+            List<Service> services = new List<Service>();
+            if (!string.IsNullOrWhiteSpace(txtPackageName.Text) && !string.IsNullOrWhiteSpace(lbxAdded.Text) && !IsInt(txtPrice.Text) && ((cbxPromotionYes.Checked == true && cbxPromotionNo.Checked == true) || (cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false)) && (numUDPercentage.Value < 0))
             {
-                if (string.IsNullOrWhiteSpace(txtPackageName.Text))
+                MessageBox.Show("Please fill in all the field correctly");
+            }
+            else
+            {
+                // fix this im tired 
+                foreach (Service item in lbxAdded.Items)
                 {
-                    throw new FormatException("No business id");
+                    services.Add(item);
                 }
-                if (string.IsNullOrWhiteSpace(lbxAdded.Text))
+                if (cbxPromotionYes.Checked == true)
                 {
-                    throw new FormatException("No added services");
+                    promotion = true;
                 }
-                if ((cbxPromotionYes.Checked == true) && (cbxPromotionNo.Checked == true))
-                {
-                    throw new FormatException("only one promotion check box can be ticked");
-                }
-                if ((cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false))
-                {
-                    throw new FormatException("One promotion check box has to be ticked");
-                }
-                if ((numUDPercentage.Value < 0))
-                {
-                    throw new FormatException("Promotion percentage cant be smaller than 0");
-                }
-                
-                
                 else
                 {
-                    List<Service> ser = new List<Service>();
-                    foreach (Service item in lbxAdded.Items)
-                    {
-                        ser.Add(item);
-                    }
-                    if (cbxPromotionYes.Checked == true)
-                    {
-                        promotion = true;
-                    }
-                    else
-                    {
-                        promotion = false;
-                    }
-                    
-                    ServicePackage sp = new ServicePackage(txtPackageName.Text,ser,promotion,dtpPromotionStart.Value,dtpPromotionEnd.Value,(double)numUDPercentage.Value,0);
-                    sp.InsertServicePackage(sp);
-                    MessageBox.Show("Successfully updated service package", "Yay");
+                    promotion = false;
                 }
+                ServicePackage sp = new ServicePackage(txtPackageName.Text, services, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, int.Parse(txtPrice.Text));
+            }
+        }
 
-            }
-            catch (FormatException fe)
+        public bool IsInt(string numCheck)
+        {
+            int temp;
+            try
             {
-                MessageBox.Show(fe.Message, "user input error");
+                temp = int.Parse(numCheck);
+                return true;
             }
-            catch (Exception ee)
+            catch
             {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                return false;
             }
         }
 

@@ -34,7 +34,6 @@ namespace PremiereSolutionProject.PL
             this.label3 = new System.Windows.Forms.Label();
             this.txtPackageName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cbxPromotionYes = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbxPromotionNo = new System.Windows.Forms.CheckBox();
@@ -55,6 +54,7 @@ namespace PremiereSolutionProject.PL
             this.lbxAdded = new System.Windows.Forms.ListBox();
             this.label14 = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentServicePackages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUDPercentage)).BeginInit();
             this.SuspendLayout();
@@ -110,17 +110,6 @@ namespace PremiereSolutionProject.PL
             this.label4.Size = new System.Drawing.Size(96, 16);
             this.label4.TabIndex = 58;
             this.label4.Text = "Service Price";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(152, 272);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(115, 21);
-            this.comboBox1.TabIndex = 59;
             // 
             // cbxPromotionYes
             // 
@@ -329,12 +318,20 @@ namespace PremiereSolutionProject.PL
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(152, 272);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(115, 20);
+            this.txtPrice.TabIndex = 91;
+            // 
             // frmServicePackageManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1136, 591);
+            this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lbxAdded);
             this.Controls.Add(this.lbxAvailable);
@@ -355,7 +352,6 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.cbxPromotionNo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cbxPromotionYes);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPackageName);
@@ -379,7 +375,6 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPackageName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.CheckBox cbxPromotionYes;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox cbxPromotionNo;
@@ -400,5 +395,6 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.ListBox lbxAdded;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.TextBox txtPrice;
     }
 }
