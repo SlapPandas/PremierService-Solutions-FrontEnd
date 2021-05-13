@@ -1343,7 +1343,7 @@ END
 GO
 ALTER PROCEDURE SelectCallCenterEmployeeByCallId @id INT AS
 BEGIN
-	SELECT Employee.employeeID,Employee.employeeNumber FROM Employee
+	SELECT * FROM Employee
 	INNER JOIN [Address] ON Employee.addressId = [Address].addressID
 	INNER JOIN [Call] ON Employee.employeeID = [Call].employeeID
 	WHERE [Call].callID = @id
