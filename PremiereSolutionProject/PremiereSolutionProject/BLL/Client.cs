@@ -31,6 +31,10 @@ namespace PremiereSolutionProject.BLL
         public Client()
         {
         }
+        public Client(string ClientId)
+        {
+            this.id = ClientId;
+        }
 
         //constructor with all fields
         public Client(string id, Address address, string contactnr, DateTime date, bool active)

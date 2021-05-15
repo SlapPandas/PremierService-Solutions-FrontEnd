@@ -1555,3 +1555,15 @@ BEGIN
 	WHERE clientBusinessClientNumber = @id
 END
 GO
+ALTER PROC CountActiveContractsOfIndividualClientId @id VARCHAR(100)
+AS
+    SELECT COUNT(ContractID) FROM ClientContractLink
+    INNER JOIN ClientIndividual ON ClientContractLink.ClientIndividualID = ClientIndividual.clientIndividualID
+    WHERE ClientIndividual.clientIndividualClientNumber = @id AND active = '1'
+GO
+ALTER PROC CountActiveContractsOfBusinessClientId @id VARCHAR(100)
+AS
+    SELECT COUNT(ContractID) FROM ClientContractLink
+    INNER JOIN ClientBusiness ON ClientContractLink.ClientBusinessID = ClientBusiness.clientBusinessID
+    WHERE ClientBusiness.clientBusinessClientNumber = @id AND active = '1'
+GO

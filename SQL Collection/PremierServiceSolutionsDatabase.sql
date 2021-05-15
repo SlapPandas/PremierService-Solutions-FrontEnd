@@ -1841,3 +1841,20 @@ BEGIN TRAN
 	SELECT * FROM DatabaseOperation
 COMMIT
 GO
+CREATE PROC CountActiveContractsOfIndividualClientId @id VARCHAR(100)
+AS
+    SELECT COUNT(ContractID) FROM ContractState
+    INNER JOIN ClientContractLink ON ContractState.contractStateID = ClientContractLink.ContractID
+    INNER JOIN ClientIndividual ON ClientContractLink.ClientIndividualID = ClientIndividual.clientIndividualID
+	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
+    WHERE ClientIndividual.clientIndividualClientNumber = @id AND active = '1'
+GO
+
+CREATE PROC CountActiveContractsOfBusinessClientId @id VARCHAR(100)
+AS
+    SELECT COUNT(ContractID) FROM ContractState
+    INNER JOIN ClientContractLink ON ContractState.contractStateID = ClientContractLink.ContractID
+    INNER JOIN ClientBusiness ON ClientContractLink.ClientBusinessID = ClientBusiness.clientBusinessID
+	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
+    WHERE ClientBusiness.clientBusinessClientNumber = @id AND active = '1'
+GO

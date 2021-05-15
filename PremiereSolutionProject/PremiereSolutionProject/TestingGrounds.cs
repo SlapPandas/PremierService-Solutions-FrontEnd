@@ -127,6 +127,37 @@ namespace PremiereSolutionProject
         //        Console.WriteLine(contract.ToString());
         //    }
         //}
+
+        /*
+         switch (cbxPriorityLevel.SelectedItem.ToString())
+            {
+                case "Platinum":
+                    nudNoOfDays.Maximum = 2;
+                    nudNoOfDays.Minimum = 1;
+                    break;
+                case "Gold":
+                    nudNoOfDays.Maximum = 4;
+                    nudNoOfDays.Minimum = 3;
+                    break;
+                case "Silver":
+                    nudNoOfDays.Maximum = 6;
+                    nudNoOfDays.Minimum = 5;
+                    break;
+                case "Bronze":
+                    nudNoOfDays.Maximum = 8;
+                    nudNoOfDays.Minimum = 7;
+                    break;
+                default:
+                    nudNoOfDays.Maximum = 8;
+                    nudNoOfDays.Minimum = 1;
+                    break;
+            }
+            cbxPriorityLevel.Items.Add("Platinum");
+            cbxPriorityLevel.Items.Add("Gold");
+            cbxPriorityLevel.Items.Add("Silver");
+            cbxPriorityLevel.Items.Add("Bronze");
+         
+         */
         private Province GetProvince(string input)
         {
             Province province = (Province)1;

@@ -180,6 +180,24 @@ namespace PremiereSolutionProject.BLL
             Contract clientContract = clientID[0] == 'A' ? contractDH.SelectAssignedContractByIdAndIndividualClientId(clientID, contractID) : clientID[0] == 'B' ? contractDH.SelectAssignedContractByIdAndBusinessClientId(clientID, contractID) : null;
             return clientContract;
         }
+        public bool ClientHasAvtive(string id) {
+            ContractDH contractDH = new ContractDH();
+            if (id[0] == 'A')
+            {
+                if (contractDH.CountActiveContractsOfIndividualClientId(id) >0)
+                {
+                    return true;
+                }
+            }
+            if (id[0] == 'B')
+            {
+                if (contractDH.CountActiveContractsOfBusinessClientId(id) > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public void UpdateContract(Contract contract)
         {
@@ -234,11 +252,11 @@ namespace PremiereSolutionProject.BLL
         {
             ContractDH contractDH = new ContractDH();
 
-            if (contract.indclient == null)
+            if (contract.client.Id[0] == 'B')
             {                
                 contractDH.InsertNewlyAssignedContractToBusinessClient(contract);
             }
-            if (contract.busclient == null)
+            if (contract.client.Id[0] == 'A')
             {
                 contractDH.InsertNewlyAssignedContractToIndividualClient(contract);
             }
@@ -304,6 +322,12 @@ namespace PremiereSolutionProject.BLL
             }
 
             return s;
+        }
+        public string FormatPriorityForDataUse(string input,int numberOfDays) 
+        {
+            input = input.ToLower();
+            input = input.Substring(0, 3) + numberOfDays;
+            return input;
         }
 
         public int DetermineDaysChosen(string code)

@@ -23,12 +23,14 @@ INSERT INTO ClientIndividual(firstName, surname, addressId, contactNumber, email
 INSERT INTO ClientIndividual(firstName, surname, addressId, contactNumber, email, nationalIdNumber, RegistrationDate,[active]) VALUES ('Jane','Soft','2','06632122356','jane@gmail.com','9384717283912','2002-02-20','1')
 INSERT INTO ClientIndividual(firstName, surname, addressId, contactNumber, email, nationalIdNumber, RegistrationDate,[active]) VALUES ('Peter','Small','4','07434566723','peter@gmail.com','9384581284912','2004-03-04','1')
 INSERT INTO ClientIndividual(firstName, surname, addressId, contactNumber, email, nationalIdNumber, RegistrationDate,[active]) VALUES ('Jaco','Musk','5','02345667522','jaco@gmail.com','9283492918721','2012-09-21','1')
+INSERT INTO ClientIndividual(firstName, surname, addressId, contactNumber, email, nationalIdNumber, RegistrationDate,[active]) VALUES ('Liezle','Musk','5','02345667522','jaco@gmail.com','9283492918721','2012-09-21','1')
 
 INSERT INTO ClientBusiness([busuinessName],[addressId],[contactNumber],[taxNumber],[RegistrationDate],[active])VALUES ('WeSellThings','5','7394599123','8729293812','2000-03-21','1')
 INSERT INTO ClientBusiness([busuinessName],[addressId],[contactNumber],[taxNumber],[RegistrationDate],[active])VALUES ('takealittle','4','8762833485','8762128491','1999-03-19','1')
 INSERT INTO ClientBusiness([busuinessName],[addressId],[contactNumber],[taxNumber],[RegistrationDate],[active])VALUES ('amagone','5','8124955871','7263749182','1980-12-21','1')
 INSERT INTO ClientBusiness([busuinessName],[addressId],[contactNumber],[taxNumber],[RegistrationDate],[active])VALUES ('largemilkers','3','8264822814','7462919202','1892-12-01','1')
 INSERT INTO ClientBusiness([busuinessName],[addressId],[contactNumber],[taxNumber],[RegistrationDate],[active])VALUES ('boredathome','1','9193455812','6273819283','2020-03-21','1')
+INSERT INTO ClientBusiness([busuinessName],[addressId],[contactNumber],[taxNumber],[RegistrationDate],[active])VALUES ('Panda Slapping','1','9193455812','6273819283','2020-03-21','1')
 
 INSERT INTO ServicePackage([name],[onPromotion],[promotionStartDate],[promotionEndDate],[price],[promotionPercentAmount]) VALUES ('Samsung','0','2021-03-03','2021-06-03','1000','0')
 INSERT INTO ServicePackage([name],[onPromotion],[promotionStartDate],[promotionEndDate],[price],[promotionPercentAmount]) VALUES ('Printers','0','2021-03-02','2021-06-02','5000','0')

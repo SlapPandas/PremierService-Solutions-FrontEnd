@@ -58,7 +58,7 @@ namespace PremiereSolutionProject.DAL
         public void InsertNewlyAssignedContractToIndividualClient(Contract contract) 
         {
             int contractGenetatedId = InsertCommandWithReturnedId($"EXEC InsertContractOfClient @contractId ='{contract.ContractID}', @startDate ='{contract.StartTime.ToString("yyyy-MM-dd hh:mm:ss")}', @endDate ='{contract.EndTime.ToString("yyyy-MM-dd hh:mm:ss")}', @active ='{GetIntFromBool(contract.Active)}'");
-            InsertCommand($"InsertClientContractLinkIndividualClient @ContractID ='{contractGenetatedId}', @ClientIndividualID ='{contract.Indclient.Id}'");
+            InsertCommand($"InsertClientContractLinkIndividualClient @ContractID ='{contractGenetatedId}', @ClientIndividualID ='{contract.Client.Id}'");
             for (int i = 0; i < contract.PackageList.Count; i++)
             {
                 int packedgeId = InsertCommandWithReturnedId($"EXEC InsertServicePackageState @id ='{contract.PackageList[i].PackageID}'");
@@ -74,7 +74,7 @@ namespace PremiereSolutionProject.DAL
         {
             int contractGenetatedId = -1;
             contractGenetatedId = InsertCommandWithReturnedId($"EXEC InsertContractOfClient @contractId ='{contract.ContractID}', @startDate ='{contract.StartTime.ToString("yyyy-MM-dd hh:mm:ss")}', @endDate ='{contract.EndTime.ToString("yyyy-MM-dd hh:mm:ss")}', @active ='{GetIntFromBool(contract.Active)}'");
-            InsertCommand($"InsertClientContractLinkBusinessClient @ContractID ='{contractGenetatedId}', @ClientBusinessID ='{contract.Indclient.Id}'");
+            InsertCommand($"InsertClientContractLinkBusinessClient @ContractID ='{contractGenetatedId}', @ClientBusinessID ='{contract.Client.Id}'");
             for (int i = 0; i < contract.PackageList.Count; i++)
             {
                 int packedgeId = InsertCommandWithReturnedId($"EXEC InsertServicePackageState @id ='{contract.PackageList[i].PackageID}'");
@@ -244,6 +244,14 @@ namespace PremiereSolutionProject.DAL
             finally {}
 
             return contractList;
+        }
+        public int CountActiveContractsOfIndividualClientId(string id)
+        {
+            return InsertCommandWithReturnedId($"EXEC CountActiveContractsOfIndividualClientId @id = '{id}'");
+        }
+        public int CountActiveContractsOfBusinessClientId(string id)
+        {
+            return InsertCommandWithReturnedId($"EXEC CountActiveContractsOfBusinessClientId @id = '{id}'");
         }
         public Contract SelectContractByIndividualClientIdCurrentlyActive(string id)
         {

@@ -16,10 +16,9 @@ namespace PremiereSolutionProject.PL
         #region Declarations
 
         frmDashboard dashForm;
-        List<Contract> contractList;
-        List<ServicePackage> packages;
-        List<Service> services;
-        Client myClient;
+        Contract contract = new Contract();
+        List<Contract> contracts = new List<Contract>();
+        BindingSource bindingSource = new BindingSource();
 
         #endregion
 
@@ -28,69 +27,23 @@ namespace PremiereSolutionProject.PL
             InitializeComponent();
         }
 
-        public frmClientContract(frmDashboard _dashForm):this()
-        {
-            dashForm = _dashForm;
-        }
-
-        private void frmClientContract_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                Contract myContract = new Contract();
-                contractList = myContract.SelectAllContracts();
-                services = new Service().SelectAllServices();
-
-                //to not be able to register a contract if there is no client ID entered
-                btnCreate.Enabled = txtClientID.Text == "" ? false : true;
-                
-                if (dashForm.callInfo != null)
-                {
-                    txtClientID.Text = dashForm.callInfo.Client.Id;
-                }
-
-                InitializeElementsOnForm();
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
-            }   
-        }
-
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            string pLvl = cbxPriorityLevel.Text + "," + nudNoOfDays.Value;
-            Client cl = dashForm.callInfo.Client;
-
-            DateTime startdateTime = dtpStartDate.Value;
-            DateTime enddateTime = dtpEndDate.Value;
-
-            if (cl.GetClientType(cl) == "IndividualClient")
-            {
-                IndividualClient ind = (IndividualClient)cl;
-                Contract cont = new Contract(startdateTime, enddateTime, ind, null, packages, pLvl, "Recurring");
-                cont.LinkClientToContract(cont);
-            }
-            if (cl.GetClientType(cl) == "BusinessClient")
-            {
-                BusinessClient bus = (BusinessClient)cl;
-                Contract cont = new Contract(startdateTime, enddateTime, null, bus, packages, pLvl, "Recurring");
-                cont.LinkClientToContract(cont);
-            }
             
-        }
+        private void BuildForm() 
+        {
+            txtId.Text = dashForm.callInfo.Client.Id;
+            txtCallId.Text = dashForm.callInfo.CallID.ToString();
 
-        private void cbxContractName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Contract myContract = new Contract();
-            packages = null;
-            packages = myContract.GetOfferedContractByID(cbxContractName.Text).PackageList;
-            RefreshDGV();
+            cbxPriorityLevel.Items.Add("Platinum");
+            cbxPriorityLevel.Items.Add("Gold");
+            cbxPriorityLevel.Items.Add("Silver");
+            cbxPriorityLevel.Items.Add("Bronze");
+
+            dgvServicePackages.ForeColor = Color.Black;
+            dgvServices.ForeColor = Color.Black;
         }
-        
-        private void cbxPriorityLevel_SelectedValueChanged(object sender, EventArgs e)
+        private void SetMinMaxCounter(string name)
         {
-            switch (cbxPriorityLevel.SelectedItem.ToString())
+            switch (name)
             {
                 case "Platinum":
                     nudNoOfDays.Maximum = 2;
@@ -114,94 +67,76 @@ namespace PremiereSolutionProject.PL
                     break;
             }
         }
-
-        private void txtClientID_TextChanged(object sender, EventArgs e)
+        private void BuildContractListAndFillConboBox()
         {
-            btnCreate.Enabled = txtClientID.Text == "" ? false : true;
-        }
-
-        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
-        {
-            if (dtpEndDate.Value <= dtpStartDate.Value)
+            contracts = contract.SelectActiveContracts();
+            foreach (var item in contracts)
             {
-                MessageBox.Show("End date can't be same as start date.");
-                dtpEndDate.Focus();
+                cbxContractName.Items.Add(item.ContractID);
             }
         }
-
-        private void dgvServicePackages_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void RefreshDGVServicePackedges(int contractIndex)
         {
-            Service myService = new Service();
-            try
+            bindingSource = new BindingSource(contracts[contractIndex].PackageList, null);
+            dgvServicePackages.DataSource = bindingSource;
+        }
+        private void RefreshDGVServices(int contractIndex,int packedgeIndex)
+        {
+                bindingSource = new BindingSource(contracts[contractIndex].PackageList[packedgeIndex].ServiceList, null);
+                dgvServices.DataSource = bindingSource;
+        }
+
+
+        public frmClientContract(frmDashboard _dashForm):this()
+        {
+            dashForm = _dashForm;
+        }
+
+        private void frmClientContract_Load(object sender, EventArgs e)
+        {
+            BuildForm();
+            BuildContractListAndFillConboBox();
+        }
+
+        private void cbxPriorityLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetMinMaxCounter(cbxPriorityLevel.SelectedItem.ToString());
+        }
+
+        private void cbxContractName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshDGVServicePackedges(cbxContractName.SelectedIndex);
+            RefreshDGVServices(cbxContractName.SelectedIndex, 0);
+        }
+
+        private void dgvServicePackages_SelectionChanged(object sender, EventArgs e)
+        {
+            RefreshDGVServices(cbxContractName.SelectedIndex, dgvServicePackages.CurrentCell.RowIndex);
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            if (!contract.ClientHasAvtive(dashForm.callInfo.Client.Id))
             {
-                foreach (ServicePackage item in packages)
+                Client client = new IndividualClient();
+                if (dashForm.callInfo.Client.Id[0] == 'A')
                 {
-                    if (item.PackageID == int.Parse(dgvServicePackages.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()))
-                    {
-                        services = myService.SelectServiceListInServicePackage(item);
-                        RefreshDGVServices();
-                    }
+                    client = new IndividualClient();
+                    client.Id = dashForm.callInfo.Client.Id;
                 }
+                if (dashForm.callInfo.Client.Id[0] == 'B')
+                {
+                    client = new BusinessClient();
+                    client.Id = dashForm.callInfo.Client.Id;
+                }
+                contracts[cbxContractName.SelectedIndex].Client = client;
+                contracts[cbxContractName.SelectedIndex].PriorityLevel = contract.FormatPriorityForDataUse(cbxPriorityLevel.Text,(int)nudNoOfDays.Value);
+                contract.LinkClientToContract(contracts[cbxContractName.SelectedIndex]);
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("Please click on the Service PackageID to view the services in that Service Package.");
-            }      
-        }
-
-        private void btnExiting_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        
-        private void btnVerifyClient_Click(object sender, EventArgs e)
-        {
-            dashForm.callInfo.Client.VerifyClientContract(txtClientID.Text);
-        }
-
-        #region Methods
-        private void InitializeElementsOnForm()
-        {
-            cbxPriorityLevel.Items.Add("Platinum");
-            cbxPriorityLevel.Items.Add("Gold");
-            cbxPriorityLevel.Items.Add("Silver");
-            cbxPriorityLevel.Items.Add("Bronze");
-            cbxContractName.ValueMember = null;
-            cbxContractName.SelectedIndex = -1;
-
-            foreach (Contract item in contractList)
-            {
-                cbxContractName.Items.Add(item.ContractID.ToString());
+                MessageBox.Show("Client Already Has Active Contract");
             }
-
-            dgvServicePackages.ForeColor = Color.Black;
-            dgvServices.ForeColor = Color.Black;
-
-            cbxContractName.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxPriorityLevel.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            dtpEndDate.Value = DateTime.Today.AddDays(1);   //to not have it as the same day as default
         }
-
-        private void RefreshDGV()
-        {
-            dgvServicePackages.Rows.Clear();
-            dgvServicePackages.Refresh();
-            List<ServicePackage> bindingList = packages;
-            var source = new BindingSource(bindingList, null);
-            dgvServicePackages.DataSource = source;
-
-        }
-
-        private void RefreshDGVServices()
-        {
-            dgvServices.Rows.Clear();
-            dgvServices.Refresh();
-            List<Service> bindingList = services;
-            var source = new BindingSource(bindingList, null);
-            dgvServices.DataSource = source;
-        }
-        #endregion
-
     }
 }

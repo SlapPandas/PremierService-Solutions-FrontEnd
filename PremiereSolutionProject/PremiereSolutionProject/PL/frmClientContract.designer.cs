@@ -44,12 +44,13 @@ namespace PremiereSolutionProject.PL
             this.cbxContractName = new System.Windows.Forms.ComboBox();
             this.dgvServicePackages = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtClientID = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.nudNoOfDays = new System.Windows.Forms.NumericUpDown();
             this.btnExiting = new System.Windows.Forms.Button();
-            this.btnVerifyClient = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.txtCallId = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvServicePackages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNoOfDays)).BeginInit();
@@ -137,6 +138,7 @@ namespace PremiereSolutionProject.PL
             this.dgvServices.Location = new System.Drawing.Point(338, 375);
             this.dgvServices.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvServices.Name = "dgvServices";
+            this.dgvServices.ReadOnly = true;
             this.dgvServices.RowHeadersWidth = 62;
             this.dgvServices.Size = new System.Drawing.Size(752, 138);
             this.dgvServices.TabIndex = 12;
@@ -159,14 +161,14 @@ namespace PremiereSolutionProject.PL
             // 
             this.cbxPriorityLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbxPriorityLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxPriorityLevel.FormattingEnabled = true;
             this.cbxPriorityLevel.Location = new System.Drawing.Point(39, 244);
             this.cbxPriorityLevel.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cbxPriorityLevel.Name = "cbxPriorityLevel";
             this.cbxPriorityLevel.Size = new System.Drawing.Size(225, 21);
             this.cbxPriorityLevel.TabIndex = 14;
-            this.cbxPriorityLevel.Text = "-- Priority Level --";
-            this.cbxPriorityLevel.SelectedValueChanged += new System.EventHandler(this.cbxPriorityLevel_SelectedValueChanged);
+            this.cbxPriorityLevel.SelectedIndexChanged += new System.EventHandler(this.cbxPriorityLevel_SelectedIndexChanged);
             // 
             // dtpStartDate
             // 
@@ -187,7 +189,6 @@ namespace PremiereSolutionProject.PL
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(227, 20);
             this.dtpEndDate.TabIndex = 16;
-            this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
             // 
             // btnExit
             // 
@@ -205,12 +206,12 @@ namespace PremiereSolutionProject.PL
             // 
             this.cbxContractName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbxContractName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxContractName.FormattingEnabled = true;
             this.cbxContractName.Location = new System.Drawing.Point(37, 180);
             this.cbxContractName.Name = "cbxContractName";
             this.cbxContractName.Size = new System.Drawing.Size(227, 21);
             this.cbxContractName.TabIndex = 18;
-            this.cbxContractName.Text = "-- Contract name --";
             this.cbxContractName.SelectedIndexChanged += new System.EventHandler(this.cbxContractName_SelectedIndexChanged);
             // 
             // dgvServicePackages
@@ -220,10 +221,11 @@ namespace PremiereSolutionProject.PL
             this.dgvServicePackages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvServicePackages.Location = new System.Drawing.Point(337, 180);
             this.dgvServicePackages.Name = "dgvServicePackages";
+            this.dgvServicePackages.ReadOnly = true;
             this.dgvServicePackages.RowHeadersWidth = 51;
             this.dgvServicePackages.Size = new System.Drawing.Size(753, 139);
             this.dgvServicePackages.TabIndex = 19;
-            this.dgvServicePackages.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServicePackages_CellClick);
+            this.dgvServicePackages.SelectionChanged += new System.EventHandler(this.dgvServicePackages_SelectionChanged);
             // 
             // label6
             // 
@@ -234,24 +236,6 @@ namespace PremiereSolutionProject.PL
             this.label6.Size = new System.Drawing.Size(124, 16);
             this.label6.TabIndex = 20;
             this.label6.Text = "Service packages";
-            // 
-            // txtClientID
-            // 
-            this.txtClientID.Location = new System.Drawing.Point(338, 103);
-            this.txtClientID.Name = "txtClientID";
-            this.txtClientID.Size = new System.Drawing.Size(227, 20);
-            this.txtClientID.TabIndex = 22;
-            this.txtClientID.TextChanged += new System.EventHandler(this.txtClientID_TextChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(333, 84);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 16);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Client ID";
             // 
             // label9
             // 
@@ -270,6 +254,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.nudNoOfDays.Location = new System.Drawing.Point(39, 311);
             this.nudNoOfDays.Name = "nudNoOfDays";
+            this.nudNoOfDays.ReadOnly = true;
             this.nudNoOfDays.Size = new System.Drawing.Size(225, 20);
             this.nudNoOfDays.TabIndex = 24;
             // 
@@ -284,21 +269,40 @@ namespace PremiereSolutionProject.PL
             this.btnExiting.TabIndex = 115;
             this.btnExiting.Text = "Close";
             this.btnExiting.UseVisualStyleBackColor = true;
-            this.btnExiting.Click += new System.EventHandler(this.btnExiting_Click);
             // 
-            // btnVerifyClient
+            // label8
             // 
-            this.btnVerifyClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
-            this.btnVerifyClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerifyClient.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerifyClient.Location = new System.Drawing.Point(633, 89);
-            this.btnVerifyClient.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.btnVerifyClient.Name = "btnVerifyClient";
-            this.btnVerifyClient.Size = new System.Drawing.Size(173, 34);
-            this.btnVerifyClient.TabIndex = 116;
-            this.btnVerifyClient.Text = "Verify Client";
-            this.btnVerifyClient.UseVisualStyleBackColor = false;
-            this.btnVerifyClient.Click += new System.EventHandler(this.btnVerifyClient_Click);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(420, 86);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 13);
+            this.label8.TabIndex = 116;
+            this.label8.Text = "Client ID";
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(473, 83);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(190, 20);
+            this.txtId.TabIndex = 117;
+            // 
+            // txtCallId
+            // 
+            this.txtCallId.Location = new System.Drawing.Point(746, 83);
+            this.txtCallId.Name = "txtCallId";
+            this.txtCallId.ReadOnly = true;
+            this.txtCallId.Size = new System.Drawing.Size(190, 20);
+            this.txtCallId.TabIndex = 119;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(693, 86);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.TabIndex = 118;
+            this.label10.Text = "Call ID";
             // 
             // frmClientContract
             // 
@@ -306,12 +310,13 @@ namespace PremiereSolutionProject.PL
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1136, 591);
-            this.Controls.Add(this.btnVerifyClient);
+            this.Controls.Add(this.txtCallId);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtId);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnExiting);
             this.Controls.Add(this.nudNoOfDays);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtClientID);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dgvServicePackages);
             this.Controls.Add(this.cbxContractName);
@@ -358,11 +363,12 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.ComboBox cbxContractName;
         private System.Windows.Forms.DataGridView dgvServicePackages;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtClientID;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown nudNoOfDays;
         private System.Windows.Forms.Button btnExiting;
-        private System.Windows.Forms.Button btnVerifyClient;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.TextBox txtCallId;
+        private System.Windows.Forms.Label label10;
     }
 }
