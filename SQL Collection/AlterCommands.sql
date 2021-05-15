@@ -304,7 +304,7 @@ AS
 BEGIN
 	BEGIN TRAN
 		UPDATE Call
-		SET ClientBusinessID = (SELECT clientIndividualID FROM ClientIndividual WHERE clientIndividualClientNumber = @ClientBusiness)
+		SET ClientBusinessID = (SELECT clientBusinessID FROM ClientBusiness WHERE clientBusinessClientNumber = @ClientBusiness)
 		WHERE callID = @id
 	COMMIT
 END
