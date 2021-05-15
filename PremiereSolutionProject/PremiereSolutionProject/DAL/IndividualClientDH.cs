@@ -55,6 +55,32 @@ namespace PremiereSolutionProject.DAL
 
             return IndividualClientList;
         }
+        public IndividualClient SelectAllIndividualClientByID(string id)
+        {
+            IndividualClient IndividualClient = new IndividualClient();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectAllIndividualClientById @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        IndividualClient = new IndividualClient((string)reader["clientIndividualClientNumber"], (string)reader["firstName"], (string)reader["surname"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (string)reader["email"], (string)reader["nationalIdNumber"], (DateTime)reader["RegistrationDate"], GetTrueFalseFromBit((int)reader["active"]));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
+            }
+            finally { }
+
+            return IndividualClient;
+        }
 
         #endregion
 

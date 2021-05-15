@@ -106,11 +106,23 @@ namespace PremiereSolutionProject.BLL
             List<IndividualClient> individualClients = individualClientDH.SelectAllIndividualClients();
             return individualClients;
         }
+        public IndividualClient SelectAllIndividualClientByThereId(string id)
+        {
+            IndividualClientDH individualClientDH = new IndividualClientDH();
+            IndividualClient individualClients = individualClientDH.SelectAllIndividualClientByID(id);
+            return individualClients;
+        }
 
         public List<BusinessClient> SelectAllBusinessClients()
         {
             BusinessClientDH businessClientDH = new BusinessClientDH();
             List<BusinessClient> businessClients = businessClientDH.SelectAllBusinessClients();
+            return businessClients;
+        }
+        public BusinessClient SelectAllBusinessClientsByThereId(string id)
+        {
+            BusinessClientDH businessClientDH = new BusinessClientDH();
+            BusinessClient businessClients = businessClientDH.SelectAllBusinessClientsById(id);
             return businessClients;
         }
 

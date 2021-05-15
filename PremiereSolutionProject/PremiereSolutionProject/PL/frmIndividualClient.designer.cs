@@ -66,6 +66,7 @@
             this.txtDate = new System.Windows.Forms.TextBox();
             this.txtAvtive = new System.Windows.Forms.Label();
             this.cmbActive = new System.Windows.Forms.ComboBox();
+            this.btnClearSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExistingClients)).BeginInit();
             this.SuspendLayout();
             // 
@@ -472,6 +473,7 @@
             this.btnSearch.TabIndex = 113;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // button1
             // 
@@ -540,12 +542,26 @@
             this.cmbActive.Size = new System.Drawing.Size(198, 23);
             this.cmbActive.TabIndex = 119;
             // 
+            // btnClearSearch
+            // 
+            this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearSearch.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearSearch.Location = new System.Drawing.Point(733, 15);
+            this.btnClearSearch.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnClearSearch.Name = "btnClearSearch";
+            this.btnClearSearch.Size = new System.Drawing.Size(82, 48);
+            this.btnClearSearch.TabIndex = 120;
+            this.btnClearSearch.Text = "Clease search";
+            this.btnClearSearch.UseVisualStyleBackColor = true;
+            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
+            // 
             // frmIndividualClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(878, 602);
+            this.Controls.Add(this.btnClearSearch);
             this.Controls.Add(this.cmbActive);
             this.Controls.Add(this.txtAvtive);
             this.Controls.Add(this.lblDate);
@@ -634,5 +650,6 @@
         private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.Label txtAvtive;
         private System.Windows.Forms.ComboBox cmbActive;
+        private System.Windows.Forms.Button btnClearSearch;
     }
 }

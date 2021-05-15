@@ -60,6 +60,33 @@ namespace PremiereSolutionProject.DAL
             return businessClientList;
 
         }
+        public BusinessClient SelectAllBusinessClientsById(string id)
+        {
+            BusinessClient businessClient = new BusinessClient();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectAllBusinessClientById @id = '{id}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        businessClient = new BusinessClient((string)reader["clientBusinessClientNumber"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (DateTime)reader["RegistrationDate"], (string)reader["taxNumber"], (string)reader["busuinessName"], GetTrueFalseFromBit((int)reader["active"]));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
+            }
+            finally { }
+
+            return businessClient;
+
+        }
         #endregion
 
 

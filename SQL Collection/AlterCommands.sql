@@ -1541,3 +1541,17 @@ BEGIN TRAN
 	SELECT * FROM DatabaseOperation
 COMMIT
 GO
+ALTER PROCEDURE SelectAllIndividualClientById @id VARCHAR(50) AS 
+BEGIN
+	SELECT * FROM ClientIndividual
+	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
+	WHERE clientIndividualClientNumber = @id
+END
+GO
+ALTER PROCEDURE SelectAllBusinessClientById @id VARCHAR(50) AS
+BEGIN
+	SELECT * FROM ClientBusiness
+	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
+	WHERE clientBusinessClientNumber = @id
+END
+GO

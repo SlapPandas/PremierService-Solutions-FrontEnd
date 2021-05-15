@@ -115,8 +115,18 @@ namespace PremiereSolutionProject.PL
             bindingSource = new BindingSource(bindList, null);
             dgvBusinessClients.DataSource = bindingSource;
         }
+        private void RefreshDGVAndListWithoutReset()
+        {
+            List<BusinessClient> bindList = businessClients;
+            bindingSource = new BindingSource(bindList, null);
+            dgvBusinessClients.DataSource = bindingSource;
+        }
         private void UpdateFields(int index)
         {
+            if (index >= businessClients.Count)
+            {
+                index = 0;
+            }
             if (index <= dgvBusinessClients.RowCount - 2)
             {
                 txtBusinessName.Text = businessClients[index].BusinessName;
@@ -147,6 +157,19 @@ namespace PremiereSolutionProject.PL
             {
                 return 0;
             }
+        }
+
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            RefreshDGVAndList();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            businessClients.Clear();
+            businessClients.Add(businessClient.SelectAllBusinessClientsByThereId(txtSearch.Text));
+            RefreshDGVAndListWithoutReset();
+            
         }
     }
 

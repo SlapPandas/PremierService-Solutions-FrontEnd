@@ -121,8 +121,18 @@ namespace PremiereSolutionProject.PL
             bindingSource = new BindingSource(bindList, null);
             dgvExistingClients.DataSource = bindingSource;
         }
+        private void RefreshDGVAndListWithoutReset()
+        {
+            List<IndividualClient> bindList = individualClients;
+            bindingSource = new BindingSource(bindList, null);
+            dgvExistingClients.DataSource = bindingSource;
+        }
         private void UpdateFields(int index)
         {
+            if (index >= individualClients.Count)
+            {
+                index = 0;
+            }
             if (index <= dgvExistingClients.RowCount - 2)
             {
                 txtID.Text = individualClients[index].Id;
@@ -155,6 +165,19 @@ namespace PremiereSolutionProject.PL
             {
                 return 0;
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            individualClients.Clear();
+            individualClients.Add(individualClient.SelectAllIndividualClientByThereId(txtSearch.Text));
+            RefreshDGVAndListWithoutReset();
+            
+        }
+
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            RefreshDGVAndList();
         }
     }
 }

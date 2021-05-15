@@ -1338,10 +1338,24 @@ BEGIN
 	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
 END
 GO
+CREATE PROCEDURE SelectAllIndividualClientById @id VARCHAR(50) AS 
+BEGIN
+	SELECT * FROM ClientIndividual
+	INNER JOIN [Address] ON ClientIndividual.addressId = [Address].addressID
+	WHERE clientIndividualClientNumber = @id
+END
+GO
 CREATE PROCEDURE SelectAllBusinessClients AS
 BEGIN
 	SELECT * FROM ClientBusiness
 	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
+END
+GO
+CREATE PROCEDURE SelectAllBusinessClientById @id VARCHAR(50) AS
+BEGIN
+	SELECT * FROM ClientBusiness
+	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
+	WHERE clientBusinessClientNumber = @id
 END
 GO
 CREATE PROCEDURE SelectIndividualClientById @id INT AS
