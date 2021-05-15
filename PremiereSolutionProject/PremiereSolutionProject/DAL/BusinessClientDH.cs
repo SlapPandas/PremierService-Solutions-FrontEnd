@@ -11,7 +11,7 @@ namespace PremiereSolutionProject.DAL
 {
     public class BusinessClientDH : DatabaseConnection, IDataconnection
     {
-        //Done
+        AddressDH AddressDH = new AddressDH();
         #region Update
         public void Update(BusinessClient businessClient)
         {
@@ -23,7 +23,6 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Done
         #region Insert
         public void Insert(BusinessClient businessClient)
         {
@@ -31,7 +30,6 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Done
         #region Select
         public List<BusinessClient> SelectAllBusinessClients()
         {
@@ -46,7 +44,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        businessClientList.Add(new BusinessClient((string)reader["clientBusinessClientNumber"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (DateTime)reader["RegistrationDate"], (string)reader["taxNumber"], (string)reader["busuinessName"], GetTrueFalseFromBit((int)reader["active"])));
+                        businessClientList.Add(new BusinessClient((string)reader["clientBusinessClientNumber"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], AddressDH.GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (DateTime)reader["RegistrationDate"], (string)reader["taxNumber"], (string)reader["busuinessName"], GetTrueFalseFromBit((int)reader["active"])));
                     }
                 }
             }
@@ -73,7 +71,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        businessClient = new BusinessClient((string)reader["clientBusinessClientNumber"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (DateTime)reader["RegistrationDate"], (string)reader["taxNumber"], (string)reader["busuinessName"], GetTrueFalseFromBit((int)reader["active"]));
+                        businessClient = new BusinessClient((string)reader["clientBusinessClientNumber"], new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], AddressDH.GetProvince((string)reader["province"]), (string)reader["postalcode"]), (string)reader["contactNumber"], (DateTime)reader["RegistrationDate"], (string)reader["taxNumber"], (string)reader["busuinessName"], GetTrueFalseFromBit((int)reader["active"]));
                     }
                 }
             }
@@ -89,47 +87,7 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-
         #region SeperateMethods
-        private Province GetProvince(string input)
-        {
-            Province province = (Province)1;
-
-            switch (input)
-            {
-                case "0":
-                    province = (Province)0;
-                    break;
-                case "1":
-                    province = (Province)1;
-                    break;
-                case "2":
-                    province = (Province)2;
-                    break;
-                case "3":
-                    province = (Province)3;
-                    break;
-                case "4":
-                    province = (Province)4;
-                    break;
-                case "5":
-                    province = (Province)5;
-                    break;
-                case "6":
-                    province = (Province)6;
-                    break;
-                case "7":
-                    province = (Province)7;
-                    break;
-                case "8":
-                    province = (Province)8;
-                    break;
-                default:
-                    province = (Province)1;
-                    break;
-            }
-            return province;
-        }
         private bool GetTrueFalseFromBit(int bit)
         {
             bool output = bit == 1 ? true : false;

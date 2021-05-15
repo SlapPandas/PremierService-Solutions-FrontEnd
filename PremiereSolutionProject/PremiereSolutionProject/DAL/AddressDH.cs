@@ -53,6 +53,31 @@ namespace PremiereSolutionProject.DAL
 
             return addressList;
         }
+        public Address GetAddressById(int addressId)
+        {
+            Address address = new Address();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectAddressById @id = '{addressId}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        address = new Address((int)reader["addressID"], (string)reader["streetName"], (string)reader["suburb"], (string)reader["city"], GetProvince((string)reader["province"]), (string)reader["postalcode"]);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
+            }
+            finally { }
+            return address;
+        }
         #endregion
 
         #region Delete
@@ -69,7 +94,6 @@ namespace PremiereSolutionProject.DAL
             }
         }
         #endregion
-
 
         #region SeperateMethods
         private int GetNumberOfAddessUses(int addressId)
@@ -101,7 +125,7 @@ namespace PremiereSolutionProject.DAL
             }
             return output;
         }
-        private Province GetProvince(string input)
+        public Province GetProvince(string input)
         {
             Province province = (Province)1;
 

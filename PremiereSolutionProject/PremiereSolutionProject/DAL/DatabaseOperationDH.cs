@@ -35,6 +35,7 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
+        #region Select
         public List<DatabaseOperation> SelectAllErrors()
         {
             List<DatabaseOperation> errorList = new List<DatabaseOperation>();
@@ -59,6 +60,8 @@ namespace PremiereSolutionProject.DAL
             }
             return errorList;
         }
+        #endregion
+
         #region SeperateMethods
         private bool GetTrueFalseFromBit(int bit)
         {

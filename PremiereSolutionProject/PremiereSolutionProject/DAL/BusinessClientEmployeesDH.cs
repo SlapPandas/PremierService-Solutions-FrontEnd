@@ -11,7 +11,6 @@ namespace PremiereSolutionProject.DAL
 {
     public class BusinessClientEmployeesDH : DatabaseConnection, IDataconnection
     {
-        //Done
         #region Delete
         public void Delete(BusinessClientEmployees businessClientEmployees)
         {
@@ -19,7 +18,6 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Done
         #region Update
         public void Update(BusinessClientEmployees businessClientEmployees)
         {
@@ -27,7 +25,6 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Done
         #region Insert
         public void Insert(BusinessClientEmployees businessClientEmployees)
         {
@@ -35,7 +32,6 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        //Done
         #region Select
         public List<BusinessClientEmployees> SelectAllBusinessClientEmployeesByBusinessId(string businessId)
         {
@@ -94,45 +90,6 @@ namespace PremiereSolutionProject.DAL
         #endregion
 
         #region SeperateMethods
-        private Province GetProvince(string input)
-        {
-            Province province = (Province)1;
-
-            switch (input)
-            {
-                case "0":
-                    province = (Province)0;
-                    break;
-                case "1":
-                    province = (Province)1;
-                    break;
-                case "2":
-                    province = (Province)2;
-                    break;
-                case "3":
-                    province = (Province)3;
-                    break;
-                case "4":
-                    province = (Province)4;
-                    break;
-                case "5":
-                    province = (Province)5;
-                    break;
-                case "6":
-                    province = (Province)6;
-                    break;
-                case "7":
-                    province = (Province)7;
-                    break;
-                case "8":
-                    province = (Province)8;
-                    break;
-                default:
-                    province = (Province)1;
-                    break;
-            }
-            return province;
-        }
         #endregion
     }
 }

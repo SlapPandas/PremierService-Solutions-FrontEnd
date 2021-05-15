@@ -29,6 +29,13 @@ namespace PremiereSolutionProject.DAL
         {
             InsertCommand($"EXEC InsertService @name = '{service.ServiceName}', @description = '{service.ServiceDescription}'");
         }
+        public void InsertAllServicesOfServicePackedge(ServicePackage servicePackage)
+        {
+            for (int i = 0; i < servicePackage.ServiceList.Count; i++)
+            {
+                InsertCommand($"EXEC InsertIntoTVPPackedgeService @packedgeId = '{servicePackage.PackageID}',@serviceId = '{servicePackage.ServiceList[i].ServiceID}'");
+            }
+        }
         #endregion
 
         #region Select

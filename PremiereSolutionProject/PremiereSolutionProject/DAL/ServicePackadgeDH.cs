@@ -11,6 +11,7 @@ namespace PremiereSolutionProject.DAL
 {
     public class ServicePackadgeDH : DatabaseConnection
     {
+        ServiceDH serviceDH= new ServiceDH();
         #region Delete
         public void Delete(ServicePackage servicePackage)
         {
@@ -29,7 +30,7 @@ namespace PremiereSolutionProject.DAL
         }
         public void UpdateServicePackedgeServiceList(ServicePackage servicePackage)
         {
-            InsertAllServicesOfServicePackedge(servicePackage);
+            serviceDH.InsertAllServicesOfServicePackedge(servicePackage);
             UpdateCommand($"EXEC UpdateServicePackedgeServiceList @id = '{servicePackage.PackageID}'");
         }
         public void UpdateServicePackedgePromotion(ServicePackage servicePackage)
@@ -52,6 +53,21 @@ namespace PremiereSolutionProject.DAL
         {
             UpdateCommand($"EXEC UpdateServicePackagePropotion @id = '{servicePackage.PackageID}', @onPromotion = '{GetIntFromBool(servicePackage.OnPromotion)}', @promotionStartDate = '{servicePackage.PromotionStartDate.ToString("yyyy-MM-dd HH:mm:ss")}', @promotionEndDate = '{servicePackage.PromotionEndDate.ToString("yyyy-MM-dd HH:mm:ss")}', @percentage = '{servicePackage.PromotionPercentage.ToString(CultureInfo.CreateSpecificCulture("en-GB"))}'");
         }
+        public void InsertAllServicesPackedgesOfContract(Contract contract)
+        {
+            for (int i = 0; i < contract.PackageList.Count; i++)
+            {
+                InsertCommand($"EXEC InsertIntoTVPContractServicePackage @contractId ='{contract.ContractID}',@servicePackageId ='{contract.PackageList[i].PackageID}'");
+            }
+        }
+        public void InsertAllServicePackedgesOfNewContract(Contract contract)
+        {
+            for (int i = 0; i < contract.PackageList.Count; i++)
+            {
+                InsertCommand($"EXEC InsertIntoTVPNewContractServicePackedge @packedgeId = '{contract.PackageList[i].PackageID}'");
+            }
+
+        }
         #endregion
 
         #region Select
@@ -68,7 +84,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        servicePackedgeList.Add(new ServicePackage((int)reader["servicePackageID"], (string)reader["name"], SelectAllServicesLinkedToPackedge((int)reader["servicePackageID"]), GetTrueFalseFromBit((int)reader["onPromotion"]), (DateTime)reader["promotionStartDate"], (DateTime)reader["promotionEndDate"], reader.GetDouble(reader.GetOrdinal("promotionPercentAmount")), reader.GetDouble(reader.GetOrdinal("price"))));
+                        servicePackedgeList.Add(new ServicePackage((int)reader["servicePackageID"], (string)reader["name"], serviceDH.SelectAllServiceInPackage((int)reader["servicePackageID"]), GetTrueFalseFromBit((int)reader["onPromotion"]), (DateTime)reader["promotionStartDate"], (DateTime)reader["promotionEndDate"], reader.GetDouble(reader.GetOrdinal("promotionPercentAmount")), reader.GetDouble(reader.GetOrdinal("price"))));
                     }
                 }
             }
@@ -94,7 +110,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        servicePackedgeList.Add(new ServicePackage((int)reader["servicePackageStateID"], (string)reader["name"], SelectAllServicesLinkedToPackedgeWithState((int)reader["servicePackageStateID"]), GetTrueFalseFromBit((int)reader["onPromotion"]), (DateTime)reader["promotionStartDate"], (DateTime)reader["promotionEndDate"], reader.GetDouble(reader.GetOrdinal("promotionPercentAmount")), reader.GetDouble(reader.GetOrdinal("price"))));
+                        servicePackedgeList.Add(new ServicePackage((int)reader["servicePackageStateID"], (string)reader["name"], serviceDH.SelectAllServiceInPackageState((int)reader["servicePackageStateID"]), GetTrueFalseFromBit((int)reader["onPromotion"]), (DateTime)reader["promotionStartDate"], (DateTime)reader["promotionEndDate"], reader.GetDouble(reader.GetOrdinal("promotionPercentAmount")), reader.GetDouble(reader.GetOrdinal("price"))));
                     }
                 }
             }
@@ -107,66 +123,60 @@ namespace PremiereSolutionProject.DAL
 
             return servicePackedgeList;
         }
+        public List<ServicePackage> SelectAllServicePackedgesLinkedToContract(int contractid)
+        {
+            List<ServicePackage> servicePackedgeList = new List<ServicePackage>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServicePackedgesLinkedToContract @id = '{contractid}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        servicePackedgeList.Add(new ServicePackage((int)reader["servicePackageID"], (string)reader["name"], serviceDH.SelectAllServiceInPackage((int)reader["servicePackageID"]), GetTrueFalseFromBit((int)reader["onPromotion"]), (DateTime)reader["promotionStartDate"], (DateTime)reader["promotionEndDate"], reader.GetDouble(reader.GetOrdinal("promotionPercentAmount")), reader.GetDouble(reader.GetOrdinal("price"))));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
+            }
+            finally { }
+            return servicePackedgeList;
+        }
+        public List<ServicePackage> SelectAllServicePackedgesLinkedToContractState(int contractid)
+        {
+            List<ServicePackage> servicePackedgeList = new List<ServicePackage>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectAllServicePackedgesLinkedToContractState @id = '{contractid}'";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        servicePackedgeList.Add(new ServicePackage((int)reader["servicePackageStateID"], (string)reader["name"], serviceDH.SelectAllServiceInPackageState((int)reader["servicePackageStateID"]), GetTrueFalseFromBit((int)reader["onPromotion"]), (DateTime)reader["promotionStartDate"], (DateTime)reader["promotionEndDate"], reader.GetDouble(reader.GetOrdinal("promotionPercentAmount")), reader.GetDouble(reader.GetOrdinal("price"))));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
+            }
+            finally { }
+            return servicePackedgeList;
+        }
+
         #endregion
 
         #region SeperateMethods
-        private void InsertAllServicesOfServicePackedge(ServicePackage servicePackage)
-        {
-            for (int i = 0; i < servicePackage.ServiceList.Count; i++)
-            {
-                InsertCommand($"EXEC InsertIntoTVPPackedgeService @packedgeId = '{servicePackage.PackageID}',@serviceId = '{servicePackage.ServiceList[i].ServiceID}'");
-            }
-        }
-        private List<Service> SelectAllServicesLinkedToPackedge(int id)
-        {
-            List<Service> serivceList = new List<Service>();
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionSring))
-                {
-                    connection.Open();
-                    commandString = $"EXEC SelectAllServicesByServicePackedge @id = '{id}'";
-                    SqlCommand command = new SqlCommand(commandString, connection);
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        serivceList.Add(new Service((int)reader["serviceID"], (string)reader["name"], (string)reader["description"]));
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
-            }
-            finally { }
-            return serivceList;
-        }
-        private List<Service> SelectAllServicesLinkedToPackedgeWithState(int id)
-        {
-            List<Service> serivceList = new List<Service>();
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionSring))
-                {
-                    connection.Open();
-                    commandString = $"EXEC SelectAllServicesByServicePackedgeWithState @id = '{id}'";
-                    SqlCommand command = new SqlCommand(commandString, connection);
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        serivceList.Add(new Service((int)reader["serviceStateID"], (string)reader["name"], (string)reader["description"]));
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
-            }
-            finally { }
-            return serivceList;
-        }
         private bool GetTrueFalseFromBit(int bit)
         {
             bool output = bit == 1 ? true : false;

@@ -158,12 +158,10 @@ namespace PremiereSolutionProject.PL
                 return 0;
             }
         }
-
         private void btnClearSearch_Click(object sender, EventArgs e)
         {
             RefreshDGVAndList();
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             businessClients.Clear();

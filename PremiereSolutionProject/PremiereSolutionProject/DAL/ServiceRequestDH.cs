@@ -11,6 +11,7 @@ namespace PremiereSolutionProject.DAL
 {
     public class ServiceRequestDH : DatabaseConnection, IDataconnection
     {
+        SpecializationDH SpecializationDH = new SpecializationDH();
         #region Delete
         public void Delete(ServiceRequest serviceRequest)
         {
@@ -29,7 +30,7 @@ namespace PremiereSolutionProject.DAL
         }
         public void UpdateSpecializationList(ServiceRequest serviceRequest)
         {
-            InsertAllSpeciliozationOfServiceRequest(serviceRequest);
+            SpecializationDH.InsertAllSpeciliozationOfServiceRequest(serviceRequest);
             UpdateCommand($"EXEC UpdateServiceRequestSpecializationList @id = '{serviceRequest.ServiceRequestID}'");
         }
         #endregion
@@ -41,12 +42,12 @@ namespace PremiereSolutionProject.DAL
         }
         public void InsertWithSpecilizationList(ServiceRequest serviceRequest)
         {
-            InsertAllSpeciliozationOfNewServiceRequest(serviceRequest);
+            SpecializationDH.InsertAllSpeciliozationOfNewServiceRequest(serviceRequest);
             InsertCommand($"EXEC InsertServiceRequestWithSpecializationList @callId ='{serviceRequest.CallID}', @closed ='{GetIntFromBool(serviceRequest.Closed)}', @description ='{serviceRequest.Description}',@priorityLevel ='{serviceRequest.PriorityLevel}'");
         }
         public int InsertWithSpecilizationListWithReturnedId(ServiceRequest serviceRequest)
         {
-            InsertAllSpeciliozationOfNewServiceRequest(serviceRequest);
+            SpecializationDH.InsertAllSpeciliozationOfNewServiceRequest(serviceRequest);
             return InsertCommandWithReturnedId($"EXEC InsertServiceRequestWithSpecializationListWithReturnedId @callId ='{serviceRequest.CallID}', @closed ='{GetIntFromBool(serviceRequest.Closed)}', @description ='{serviceRequest.Description}',@priorityLevel ='{serviceRequest.PriorityLevel}'");
         }
         #endregion
@@ -65,7 +66,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        ServiceRequestList.Add(new ServiceRequest((int)reader["serviceRequestID"], GetTrueFalseFromBit((int)reader["closed"]), (string)reader["description"], (int)reader["callID"], GetSpecialisationById((int)reader["serviceRequestID"]), (string)reader["priorityLevel"]));
+                        ServiceRequestList.Add(new ServiceRequest((int)reader["serviceRequestID"], GetTrueFalseFromBit((int)reader["closed"]), (string)reader["description"], (int)reader["callID"], SpecializationDH.GetSpecialisationByIdForServiceRequest((int)reader["serviceRequestID"]), (string)reader["priorityLevel"]));
                     }
                 }
             }
@@ -91,7 +92,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                    ServiceRequestList.Add(new ServiceRequest((int)reader["serviceRequestID"], GetTrueFalseFromBit((int)reader["closed"]), (string)reader["description"], (int)reader["callID"], GetSpecialisationById((int)reader["serviceRequestID"]), (string)reader["priorityLevel"]));
+                    ServiceRequestList.Add(new ServiceRequest((int)reader["serviceRequestID"], GetTrueFalseFromBit((int)reader["closed"]), (string)reader["description"], (int)reader["callID"], SpecializationDH.GetSpecialisationByIdForServiceRequest((int)reader["serviceRequestID"]), (string)reader["priorityLevel"]));
                     }
                 }
             }
@@ -118,7 +119,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        ServiceRequestList.Add(new ServiceRequest((int)reader["serviceRequestID"], GetTrueFalseFromBit((int)reader["closed"]), (string)reader["description"], (int)reader["callID"], GetSpecialisationById((int)reader["serviceRequestID"]), (string)reader["priorityLevel"]));
+                        ServiceRequestList.Add(new ServiceRequest((int)reader["serviceRequestID"], GetTrueFalseFromBit((int)reader["closed"]), (string)reader["description"], (int)reader["callID"], SpecializationDH.GetSpecialisationByIdForServiceRequest((int)reader["serviceRequestID"]), (string)reader["priorityLevel"]));
                     }
                 }
             }
@@ -134,47 +135,7 @@ namespace PremiereSolutionProject.DAL
         #endregion
 
         #region SeperateMethods
-        private List<Specialisation> GetSpecialisationById(int serviceRequestID)
-        {
-            List<Specialisation> specialisationList = new List<Specialisation>();
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionSring))
-                {
-                    connection.Open();
-                    commandString = $"EXEC SelectAllSpecilisationbyServiceRequest @id = '{serviceRequestID}'";
-                    SqlCommand command = new SqlCommand(commandString, connection);
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        specialisationList.Add(new Specialisation((int)reader["specialisationID"], (string)reader["name"], (string)reader["description"]));
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
-            }
-            finally
-            {}
-
-            return specialisationList;
-        }
-        private void InsertAllSpeciliozationOfServiceRequest(ServiceRequest serviceRequest)
-        {
-            for (int i = 0; i < serviceRequest.SpecialisationRequiredList.Count; i++)
-            {
-                InsertCommand($"EXEC InsertIntoTVPServiceRequestSpecilization @serviceRequestId = '{serviceRequest.ServiceRequestID}', @SpecilizationId = '{serviceRequest.SpecialisationRequiredList[i].SpecialisationID}'");
-            }
-        }
-        private void InsertAllSpeciliozationOfNewServiceRequest(ServiceRequest serviceRequest)
-        {
-            for (int i = 0; i < serviceRequest.SpecialisationRequiredList.Count; i++)
-            {
-                InsertCommand($"EXEC InsertIntoTVPNewServiceRequestSpecilization @SpecilizationId = '{serviceRequest.SpecialisationRequiredList[i].SpecialisationID}'");
-            }
-        }
+       
         private bool GetTrueFalseFromBit(int bit)
         {
             bool output = bit == 1 ? true : false;
