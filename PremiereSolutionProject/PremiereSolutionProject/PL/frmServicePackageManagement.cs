@@ -76,7 +76,7 @@ namespace PremiereSolutionProject.PL
             }
 
             txtPackageName.Text = selectedP.PackageName;
-
+            txtPrice.Text = selectedP.ServicePrice.ToString();
             dtpPromotionEnd.Value = selectedP.PromotionEndDate;
             dtpPromotionStart.Value = selectedP.PromotionStartDate;
            // numUDPercentage.Value = selectedP.PromotionPercentage;
@@ -110,28 +110,53 @@ namespace PremiereSolutionProject.PL
         bool promotion;
         private void btnCreatePackage_Click(object sender, EventArgs e)
         {
-            List<Service> services = new List<Service>();
-            if (!string.IsNullOrWhiteSpace(txtPackageName.Text) && !string.IsNullOrWhiteSpace(lbxAdded.Text) && !IsInt(txtPrice.Text) && ((cbxPromotionYes.Checked == true && cbxPromotionNo.Checked == true) || (cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false)) && (numUDPercentage.Value < 0))
+            List<string> serviceNames = lbxAdded.Items.Cast<string>().ToList();
+            Service service = new Service();
+            List<Service> services = service.SelectAllServices();
+            bool nameMatch = false;
+            if (!string.IsNullOrWhiteSpace(txtPackageName.Text) && !string.IsNullOrWhiteSpace(lbxAdded.Text) && !IsInt(txtPrice.Text) && ((cbxPromotionYes.Checked == true && cbxPromotionNo.Checked == true) || (cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false)) && (numUDPercentage.Value < 0) && (dtpPromotionStart.Value < dtpPromotionEnd.Value))
             {
-                MessageBox.Show("Please fill in all the field correctly");
+                MessageBox.Show("Please fill in all the fields correctly");
             }
             else
             {
-                // fix this im tired 
-                foreach (Service item in lbxAdded.Items)
+                foreach (var item in services)
                 {
-                    services.Add(item);
+                    if (item.ServiceName == txtPackageName.Text)
+                    {
+                        nameMatch = true;
+                        break;
+                    }
                 }
-                if (cbxPromotionYes.Checked == true)
+                if (!nameMatch)
                 {
-                    promotion = true;
+                    List<Service> servicesTemp = new List<Service>();
+                    foreach (Service item in services)
+                    {
+                        for (int i = 0; i < lbxAdded.Items.Count; i++)
+                        {
+                            if (item.ServiceName == serviceNames[i])
+                            {
+                                servicesTemp.Add(item);
+                            }
+                        }
+                    }
+                    if (cbxPromotionYes.Checked == true)
+                    {
+                        promotion = true;
+                    }
+                    else
+                    {
+                        promotion = false;
+                    }
+                    ServicePackage sp = new ServicePackage(txtPackageName.Text, servicesTemp, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, int.Parse(txtPrice.Text));
                 }
                 else
                 {
-                    promotion = false;
-                }
-                ServicePackage sp = new ServicePackage(txtPackageName.Text, services, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, int.Parse(txtPrice.Text));
+                    MessageBox.Show("Service Package name already exists");
+                }                
             }
+            RefreshDGV();
         }
 
         public bool IsInt(string numCheck)
@@ -150,118 +175,54 @@ namespace PremiereSolutionProject.PL
 
         private void btnUpdatePackage_Click(object sender, EventArgs e)
         {
-            try
+            List<string> serviceNames = lbxAdded.Items.Cast<string>().ToList();
+            Service service = new Service();
+            List<Service> services = service.SelectAllServices();
+            if (!string.IsNullOrWhiteSpace(txtPackageName.Text) && !string.IsNullOrWhiteSpace(lbxAdded.Text) && !IsInt(txtPrice.Text) && ((cbxPromotionYes.Checked == true && cbxPromotionNo.Checked == true) || (cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false)) && (numUDPercentage.Value < 0) && (dtpPromotionStart.Value < dtpPromotionEnd.Value))
             {
-                if (string.IsNullOrWhiteSpace(txtPackageName.Text))
+                MessageBox.Show("Please fill in all the fields correctly");
+            }
+            else
+            {
+                List<Service> servicesTemp = new List<Service>();
+                foreach (Service item in services)
                 {
-                    throw new FormatException("No business id");
+                    for (int i = 0; i < lbxAdded.Items.Count; i++)
+                    {
+                        if (item.ServiceName == serviceNames[i])
+                        {
+                            servicesTemp.Add(item);
+                        }
+                    }
                 }
-                if (string.IsNullOrWhiteSpace(lbxAdded.Text))
+                if (cbxPromotionYes.Checked == true)
                 {
-                    throw new FormatException("No added services");
+                    promotion = true;
                 }
-                if ((cbxPromotionYes.Checked == true) && (cbxPromotionNo.Checked == true))
-                {
-                    throw new FormatException("only one promotion check box can be ticked");
-                }
-                if ((cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false))
-                {
-                    throw new FormatException("One promotion check box has to be ticked");
-                }
-                if ((numUDPercentage.Value < 0))
-                {
-                    throw new FormatException("Promotion percentage cant be smaller than 0");
-                }
-
-
                 else
                 {
-                    List<Service> ser = new List<Service>();
-                    foreach (Service item in lbxAdded.Items)
-                    {
-                        ser.Add(item);
-                    }
-                    if (cbxPromotionYes.Checked == true)
-                    {
-                        promotion = true;
-                    }
-                    else
-                    {
-                        promotion = false;
-                    }
-
-                    ServicePackage sp = new ServicePackage(txtPackageName.Text, ser, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, 0);
-                    sp.UpdateServicePackage(sp);
-                    MessageBox.Show("Successfully updated service package", "Yay");
+                    promotion = false;
                 }
-
+                ServicePackage sp = new ServicePackage(txtPackageName.Text, servicesTemp, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, int.Parse(txtPrice.Text));
             }
-            catch (FormatException fe)
-            {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
-            }
+            RefreshDGV();
         }
 
         private void btnDeletePackage_Click(object sender, EventArgs e)
         {
-            try
+            // get the service packed selected in the DGV, obtain its ID and then delete it.
+            ServicePackage servicePackage = new ServicePackage();
+            List<ServicePackage> servicePackages = servicePackage.SelectAllServicePackage();
+            string SPName = txtPackageName.Text;
+            for (int i = 0; i < servicePackages.Count; i++)
             {
-                if (string.IsNullOrWhiteSpace(txtPackageName.Text))
+                if (servicePackages[i].PackageName == SPName)
                 {
-                    throw new FormatException("No business id");
+                    servicePackage.DeleteServicePackage(servicePackages[i]);
+                    break;
                 }
-                if (string.IsNullOrWhiteSpace(lbxAdded.Text))
-                {
-                    throw new FormatException("No added services");
-                }
-                if ((cbxPromotionYes.Checked == true) && (cbxPromotionNo.Checked == true))
-                {
-                    throw new FormatException("only one promotion check box can be ticked");
-                }
-                if ((cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false))
-                {
-                    throw new FormatException("One promotion check box has to be ticked");
-                }
-                if ((numUDPercentage.Value < 0))
-                {
-                    throw new FormatException("Promotion percentage cant be smaller than 0");
-                }
-
-
-                else
-                {
-                    List<Service> ser = new List<Service>();
-                    foreach (Service item in lbxAdded.Items)
-                    {
-                        ser.Add(item);
-                    }
-                    if (cbxPromotionYes.Checked == true)
-                    {
-                        promotion = true;
-                    }
-                    else
-                    {
-                        promotion = false;
-                    }
-
-                    ServicePackage sp = new ServicePackage(txtPackageName.Text, ser, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, 0);
-                    sp.DeleteServicePackage(sp);
-                    MessageBox.Show("Successfully updated service package", "Yay");
-                }
-
             }
-            catch (FormatException fe)
-            {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
-            }
+            RefreshDGV();
         }
     }
 }
