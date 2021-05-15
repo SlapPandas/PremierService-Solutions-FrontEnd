@@ -13,13 +13,21 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmAssignNewEmployee : Form
     {
+        #region Declarations
         List<MaintenanceEmployee> myEmployee = new List<MaintenanceEmployee>();
-        List<MaintenanceEmployee> allMainEmp = new List<MaintenanceEmployee>();
-        MaintenanceEmployee ME;
+        List<MaintenanceEmployee> allMaintenanceEmployees = new List<MaintenanceEmployee>();
+        MaintenanceEmployee myMaintenanceEmployee = new MaintenanceEmployee();
+        #endregion
 
         public frmAssignNewEmployee()
         {
             InitializeComponent();
+        }
+
+        private void frmAssignNewEmployee_Load(object sender, EventArgs e)
+        {
+            allMaintenanceEmployees = myMaintenanceEmployee.SelectAllMaintenaceEmpployees();
+            FormatForm();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -36,7 +44,7 @@ namespace PremiereSolutionProject.PL
             }
             else
             {
-                MessageBox.Show("The technician has already been newly assigned", "Add technicians Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The technician has already been assigned.", "Add technicians Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -45,9 +53,23 @@ namespace PremiereSolutionProject.PL
             lbxNewAssigned.Items.RemoveAt(lbxNewAssigned.SelectedIndex);
         }
 
-        private void frmAssignNewEmployee_Load(object sender, EventArgs e)
+        #region Methods
+
+        private void PopulateDGV()
         {
-            allMainEmp = ME.SelectAllMaintenaceEmpployees();
+            dgvViewEmp.Rows.Clear();
+            dgvViewEmp.Refresh();
+            List<MaintenanceEmployee> bindingList = allMaintenanceEmployees;
+            var source = new BindingSource(bindingList, null);
+            dgvViewEmp.DataSource = source;
         }
+
+        private void FormatForm()
+        {
+            dgvViewEmp.ForeColor = Color.Black;
+            PopulateDGV();
+        }
+
+        #endregion
     }
 }

@@ -44,41 +44,46 @@ namespace PremiereSolutionProject.PL
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(252, 22);
+            this.label1.Location = new System.Drawing.Point(423, 24);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(368, 32);
+            this.label1.Size = new System.Drawing.Size(339, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Assign Employees To A Job";
             // 
             // dgvViewEmp
             // 
+            this.dgvViewEmp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvViewEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewEmp.Location = new System.Drawing.Point(64, 75);
+            this.dgvViewEmp.Location = new System.Drawing.Point(12, 89);
+            this.dgvViewEmp.Margin = new System.Windows.Forms.Padding(2);
             this.dgvViewEmp.Name = "dgvViewEmp";
             this.dgvViewEmp.RowHeadersWidth = 51;
             this.dgvViewEmp.RowTemplate.Height = 24;
-            this.dgvViewEmp.Size = new System.Drawing.Size(765, 156);
+            this.dgvViewEmp.Size = new System.Drawing.Size(1113, 185);
             this.dgvViewEmp.TabIndex = 1;
             // 
             // lbxAvailTech
             // 
+            this.lbxAvailTech.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbxAvailTech.FormattingEnabled = true;
-            this.lbxAvailTech.ItemHeight = 16;
-            this.lbxAvailTech.Location = new System.Drawing.Point(194, 324);
+            this.lbxAvailTech.Location = new System.Drawing.Point(305, 330);
+            this.lbxAvailTech.Margin = new System.Windows.Forms.Padding(2);
             this.lbxAvailTech.Name = "lbxAvailTech";
-            this.lbxAvailTech.Size = new System.Drawing.Size(189, 132);
+            this.lbxAvailTech.Size = new System.Drawing.Size(182, 225);
             this.lbxAvailTech.TabIndex = 148;
             // 
             // btnRemoveTechnician
             // 
+            this.btnRemoveTechnician.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemoveTechnician.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveTechnician.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveTechnician.Location = new System.Drawing.Point(422, 405);
-            this.btnRemoveTechnician.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRemoveTechnician.Location = new System.Drawing.Point(549, 458);
             this.btnRemoveTechnician.Name = "btnRemoveTechnician";
-            this.btnRemoveTechnician.Size = new System.Drawing.Size(48, 27);
+            this.btnRemoveTechnician.Size = new System.Drawing.Size(81, 52);
             this.btnRemoveTechnician.TabIndex = 146;
             this.btnRemoveTechnician.Text = "<<";
             this.btnRemoveTechnician.UseVisualStyleBackColor = true;
@@ -86,12 +91,12 @@ namespace PremiereSolutionProject.PL
             // 
             // btnAddTechnician
             // 
+            this.btnAddTechnician.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddTechnician.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddTechnician.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTechnician.Location = new System.Drawing.Point(422, 337);
-            this.btnAddTechnician.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddTechnician.Location = new System.Drawing.Point(549, 376);
             this.btnAddTechnician.Name = "btnAddTechnician";
-            this.btnAddTechnician.Size = new System.Drawing.Size(48, 27);
+            this.btnAddTechnician.Size = new System.Drawing.Size(81, 49);
             this.btnAddTechnician.TabIndex = 145;
             this.btnAddTechnician.Text = ">>";
             this.btnAddTechnician.UseVisualStyleBackColor = true;
@@ -99,57 +104,56 @@ namespace PremiereSolutionProject.PL
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(518, 292);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(664, 306);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(177, 17);
+            this.label3.Size = new System.Drawing.Size(187, 16);
             this.label3.TabIndex = 144;
             this.label3.Text = "New Assigned Technicians";
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(205, 294);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(244, 306);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 17);
+            this.label2.Size = new System.Drawing.Size(151, 16);
             this.label2.TabIndex = 143;
             this.label2.Text = "Available Technicians";
             // 
             // btnExit
             // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(790, 550);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(12, 12);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(91, 28);
+            this.btnExit.Size = new System.Drawing.Size(87, 41);
             this.btnExit.TabIndex = 142;
-            this.btnExit.Text = "Exit";
+            this.btnExit.Text = "Close";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lbxNewAssigned
             // 
+            this.lbxNewAssigned.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbxNewAssigned.FormattingEnabled = true;
-            this.lbxNewAssigned.ItemHeight = 16;
-            this.lbxNewAssigned.Location = new System.Drawing.Point(511, 324);
+            this.lbxNewAssigned.Location = new System.Drawing.Point(713, 330);
+            this.lbxNewAssigned.Margin = new System.Windows.Forms.Padding(2);
             this.lbxNewAssigned.Name = "lbxNewAssigned";
-            this.lbxNewAssigned.Size = new System.Drawing.Size(194, 132);
+            this.lbxNewAssigned.Size = new System.Drawing.Size(185, 225);
             this.lbxNewAssigned.TabIndex = 147;
             // 
             // frmAssignNewEmployee
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(894, 591);
+            this.ClientSize = new System.Drawing.Size(1136, 590);
             this.Controls.Add(this.lbxAvailTech);
             this.Controls.Add(this.lbxNewAssigned);
             this.Controls.Add(this.btnRemoveTechnician);
@@ -160,6 +164,7 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.dgvViewEmp);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmAssignNewEmployee";
             this.Text = "Assign New Employee";
             this.Load += new System.EventHandler(this.frmAssignNewEmployee_Load);
