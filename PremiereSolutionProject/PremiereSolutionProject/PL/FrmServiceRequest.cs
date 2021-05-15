@@ -84,50 +84,25 @@ namespace PremiereSolutionProject.PL
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-          
-
-            try
+            // check the specilisation is selected and a number of employees are selected
+            if ((nudNumberOfPeople.Value > 0) && (lbxSpecialisations.Items.Count == 0))
             {
-                
-                if (nudNumberOfPeople.Value == 0)
-                {
-                    throw new FormatException("Number of employees cant be 0");
-                }
-                if (cbxSpecialisation.SelectedItem == null)
-                {
-                    throw new FormatException("No specialisation selected");
-                }
-                else
-                {
-                   
-                    lbxSpecialisations.Items.Add(cbxSpecialisation.SelectedItem.ToString() + "," + nudNumberOfPeople.Value.ToString());
-                    specList.Add(cbxSpecialisation.SelectedItem.ToString() + "," + nudNumberOfPeople.Value.ToString());
-
-                    
-                }
-
+                MessageBox.Show("error, please make sure the number of employees is more than 0 and there are specialisations selected");
             }
-            catch (FormatException fe)
+            else
             {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                lbxSpecialisations.Items.Add(cbxSpecialisation.SelectedItem.ToString() + "," + nudNumberOfPeople.Value.ToString());
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (lbxSpecialisations.SelectedItem != null)
-            {
-                lbxSpecialisations.Items.RemoveAt(lbxSpecialisations.SelectedIndex);
-            }
-            
+            lbxSpecialisations.Items.RemoveAt(lbxSpecialisations.SelectedIndex);            
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            specList = lbxSpecialisations.Items.Cast<string>().ToList();
             ServiceRequest srE = new ServiceRequest();
             ServiceRequest sr = new ServiceRequest(richTextBox1.Text, dashform.callInfo.CallID, specList, srE.service_OnInitialization);
             Action action = sr.service_OnInitialization;
