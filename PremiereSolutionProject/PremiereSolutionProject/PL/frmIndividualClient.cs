@@ -27,18 +27,25 @@ namespace PremiereSolutionProject.PL
 
         #endregion
 
-
         #region Events
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void frmIndividualClient_Load(object sender, EventArgs e)
         {
             RefreshDGVAndList();
             BuildDGVStyle();
             PopulateComboBox();
         }
+
         private void dgvExistingClients_SelectionChanged(object sender, EventArgs e)
         {
             UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
         }
+
         private void btnDeleteClient_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure to delete The Client?", "Confirmation", MessageBoxButtons.YesNo);
@@ -50,6 +57,7 @@ namespace PremiereSolutionProject.PL
                 UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
             }
         }
+
         private void btnUpdateIndiClient_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure to update The Client?", "Confirmation", MessageBoxButtons.YesNo);
@@ -60,8 +68,8 @@ namespace PremiereSolutionProject.PL
                 RefreshDGVAndList();
                 UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
             }
-
         }
+
         private void btnAddClient_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure to Insert The Client?", "Confirmation", MessageBoxButtons.YesNo);
@@ -73,6 +81,24 @@ namespace PremiereSolutionProject.PL
                 UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
             }
         }
+        
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            individualClients.Clear();
+            individualClients.Add(individualClient.SelectAllIndividualClientByThereId(txtSearch.Text));
+            RefreshDGVAndListWithoutReset();
+            
+        }
+
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            RefreshDGVAndList();
+        }
+
+        #endregion
+
+        #region Methods
+
         private void PopulateComboBox()
         {
             for (int i = 0; i < 9; i++)
@@ -176,25 +202,8 @@ namespace PremiereSolutionProject.PL
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            individualClients.Clear();
-            individualClients.Add(individualClient.SelectAllIndividualClientByThereId(txtSearch.Text));
-            RefreshDGVAndListWithoutReset();
-            
-        }
-
-        private void btnClearSearch_Click(object sender, EventArgs e)
-        {
-            RefreshDGVAndList();
-        }
 
         #endregion
 
-        #region Methods
-
-
-
-        #endregion
     }
 }

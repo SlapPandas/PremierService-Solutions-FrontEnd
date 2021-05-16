@@ -148,10 +148,10 @@ namespace PremiereSolutionProject.PL
             this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(46, 516);
+            this.btnCreate.Location = new System.Drawing.Point(46, 509);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(229, 50);
+            this.btnCreate.Size = new System.Drawing.Size(229, 57);
             this.btnCreate.TabIndex = 13;
             this.btnCreate.Text = "Register Contract to Client";
             this.btnCreate.UseVisualStyleBackColor = false;
