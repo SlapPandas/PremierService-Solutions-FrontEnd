@@ -1858,3 +1858,8 @@ AS
 	INNER JOIN [Address] ON ClientBusiness.addressId = [Address].addressID
     WHERE ClientBusiness.clientBusinessClientNumber = @id AND active = '1'
 GO
+CREATE PROC SelectJobsNotFinished
+AS
+SELECT * FROM Job
+WHERE Job.currentState = 0 OR Job.currentState = 1
+GO

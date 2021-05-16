@@ -36,11 +36,11 @@
             this.btnGive = new System.Windows.Forms.Button();
             this.btnTake = new System.Windows.Forms.Button();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
-            this.dgvAvailable = new System.Windows.Forms.DataGridView();
             this.dgvHave = new System.Windows.Forms.DataGridView();
+            this.dgvAvailable = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvEmployee
@@ -122,6 +122,15 @@
             this.txtDescription.TabIndex = 88;
             this.txtDescription.Text = "";
             // 
+            // dgvHave
+            // 
+            this.dgvHave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHave.Location = new System.Drawing.Point(491, 274);
+            this.dgvHave.Name = "dgvHave";
+            this.dgvHave.RowHeadersWidth = 62;
+            this.dgvHave.Size = new System.Drawing.Size(264, 181);
+            this.dgvHave.TabIndex = 90;
+            // 
             // dgvAvailable
             // 
             this.dgvAvailable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -131,15 +140,6 @@
             this.dgvAvailable.Size = new System.Drawing.Size(264, 181);
             this.dgvAvailable.TabIndex = 89;
             this.dgvAvailable.SelectionChanged += new System.EventHandler(this.dgvAvailable_SelectionChanged);
-            // 
-            // dgvHave
-            // 
-            this.dgvHave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHave.Location = new System.Drawing.Point(491, 274);
-            this.dgvHave.Name = "dgvHave";
-            this.dgvHave.RowHeadersWidth = 62;
-            this.dgvHave.Size = new System.Drawing.Size(264, 181);
-            this.dgvHave.TabIndex = 90;
             // 
             // FrmManageMaintenanceEmployee
             // 
@@ -162,8 +162,8 @@
             this.Text = "Manage Maintenance Employees";
             this.Load += new System.EventHandler(this.FrmManageMaintenanceEmployee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,7 +178,7 @@
         private System.Windows.Forms.Button btnGive;
         private System.Windows.Forms.Button btnTake;
         private System.Windows.Forms.RichTextBox txtDescription;
-        private System.Windows.Forms.DataGridView dgvAvailable;
         private System.Windows.Forms.DataGridView dgvHave;
+        private System.Windows.Forms.DataGridView dgvAvailable;
     }
 }

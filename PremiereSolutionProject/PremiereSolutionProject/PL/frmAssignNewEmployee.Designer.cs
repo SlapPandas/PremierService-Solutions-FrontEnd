@@ -30,15 +30,18 @@ namespace PremiereSolutionProject.PL
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvViewEmp = new System.Windows.Forms.DataGridView();
-            this.lbxAvailTech = new System.Windows.Forms.ListBox();
+            this.dgvViewJob = new System.Windows.Forms.DataGridView();
             this.btnRemoveTechnician = new System.Windows.Forms.Button();
             this.btnAddTechnician = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-            this.lbxNewAssigned = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvViewEmp)).BeginInit();
+            this.dgvAvailableTech = new System.Windows.Forms.DataGridView();
+            this.dgvAssignedTech = new System.Windows.Forms.DataGridView();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvViewJob)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAvailableTech)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAssignedTech)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -53,28 +56,19 @@ namespace PremiereSolutionProject.PL
             this.label1.TabIndex = 0;
             this.label1.Text = "Assign Employees To A Job";
             // 
-            // dgvViewEmp
+            // dgvViewJob
             // 
-            this.dgvViewEmp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvViewJob.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvViewEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewEmp.Location = new System.Drawing.Point(12, 89);
-            this.dgvViewEmp.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvViewEmp.Name = "dgvViewEmp";
-            this.dgvViewEmp.RowHeadersWidth = 51;
-            this.dgvViewEmp.RowTemplate.Height = 24;
-            this.dgvViewEmp.Size = new System.Drawing.Size(1113, 185);
-            this.dgvViewEmp.TabIndex = 1;
-            // 
-            // lbxAvailTech
-            // 
-            this.lbxAvailTech.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbxAvailTech.FormattingEnabled = true;
-            this.lbxAvailTech.Location = new System.Drawing.Point(305, 330);
-            this.lbxAvailTech.Margin = new System.Windows.Forms.Padding(2);
-            this.lbxAvailTech.Name = "lbxAvailTech";
-            this.lbxAvailTech.Size = new System.Drawing.Size(182, 225);
-            this.lbxAvailTech.TabIndex = 148;
+            this.dgvViewJob.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViewJob.Location = new System.Drawing.Point(12, 89);
+            this.dgvViewJob.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvViewJob.Name = "dgvViewJob";
+            this.dgvViewJob.RowHeadersWidth = 51;
+            this.dgvViewJob.RowTemplate.Height = 24;
+            this.dgvViewJob.Size = new System.Drawing.Size(1113, 185);
+            this.dgvViewJob.TabIndex = 1;
+            this.dgvViewJob.SelectionChanged += new System.EventHandler(this.dgvViewJob_SelectionChanged);
             // 
             // btnRemoveTechnician
             // 
@@ -136,17 +130,35 @@ namespace PremiereSolutionProject.PL
             this.btnExit.TabIndex = 142;
             this.btnExit.Text = "Close";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // lbxNewAssigned
+            // dgvAvailableTech
             // 
-            this.lbxNewAssigned.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbxNewAssigned.FormattingEnabled = true;
-            this.lbxNewAssigned.Location = new System.Drawing.Point(713, 330);
-            this.lbxNewAssigned.Margin = new System.Windows.Forms.Padding(2);
-            this.lbxNewAssigned.Name = "lbxNewAssigned";
-            this.lbxNewAssigned.Size = new System.Drawing.Size(185, 225);
-            this.lbxNewAssigned.TabIndex = 147;
+            this.dgvAvailableTech.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAvailableTech.Location = new System.Drawing.Point(247, 376);
+            this.dgvAvailableTech.Name = "dgvAvailableTech";
+            this.dgvAvailableTech.RowHeadersWidth = 62;
+            this.dgvAvailableTech.Size = new System.Drawing.Size(264, 181);
+            this.dgvAvailableTech.TabIndex = 147;
+            // 
+            // dgvAssignedTech
+            // 
+            this.dgvAssignedTech.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAssignedTech.Location = new System.Drawing.Point(667, 376);
+            this.dgvAssignedTech.Name = "dgvAssignedTech";
+            this.dgvAssignedTech.RowHeadersWidth = 62;
+            this.dgvAssignedTech.Size = new System.Drawing.Size(264, 181);
+            this.dgvAssignedTech.TabIndex = 148;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnUpdate.Location = new System.Drawing.Point(555, 555);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 149;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // frmAssignNewEmployee
             // 
@@ -154,21 +166,24 @@ namespace PremiereSolutionProject.PL
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1136, 590);
-            this.Controls.Add(this.lbxAvailTech);
-            this.Controls.Add(this.lbxNewAssigned);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.dgvAssignedTech);
+            this.Controls.Add(this.dgvAvailableTech);
             this.Controls.Add(this.btnRemoveTechnician);
             this.Controls.Add(this.btnAddTechnician);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.dgvViewEmp);
+            this.Controls.Add(this.dgvViewJob);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmAssignNewEmployee";
             this.Text = "Assign New Employee";
             this.Load += new System.EventHandler(this.frmAssignNewEmployee_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvViewEmp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvViewJob)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAvailableTech)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAssignedTech)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,13 +192,14 @@ namespace PremiereSolutionProject.PL
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvViewEmp;
-        private System.Windows.Forms.ListBox lbxAvailTech;
+        private System.Windows.Forms.DataGridView dgvViewJob;
         private System.Windows.Forms.Button btnRemoveTechnician;
         private System.Windows.Forms.Button btnAddTechnician;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.ListBox lbxNewAssigned;
+        private System.Windows.Forms.DataGridView dgvAvailableTech;
+        private System.Windows.Forms.DataGridView dgvAssignedTech;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

@@ -11,6 +11,8 @@ INSERT INTO Employee(firstName,surname,addressId,contactNumber,email,nationalIdN
 INSERT INTO Employee(firstName,surname,addressId,contactNumber,email,nationalIdNumber,employmentDate,employed,department) VALUES ('Dylan','Zeus','5','0617349561','mrdoge@gmail.com','9305832739295','2002-02-03','1','Maintenance')
 INSERT INTO Employee(firstName,surname,addressId,contactNumber,email,nationalIdNumber,employmentDate,employed,department) VALUES ('Alex','Davidson','3','0812377924','alex@yahoo.com','7502349562035','1999-01-01','1','Maintenance')
 INSERT INTO Employee(firstName,surname,addressId,contactNumber,email,nationalIdNumber,employmentDate,employed,department) VALUES ('Blessed','Rapudi','5','1234543212','bless@gmail.com','9323152739295','2000-01-01','1','Maintenance')
+INSERT INTO Employee(firstName,surname,addressId,contactNumber,email,nationalIdNumber,employmentDate,employed,department) VALUES ('nicole','lim','1','1234543212','nicole@gmail.com','9323152739223','2020-01-01','1','Maintenance')
+INSERT INTO Employee(firstName,surname,addressId,contactNumber,email,nationalIdNumber,employmentDate,employed,department) VALUES ('bella','tom','3','1234543212','bless@gmail.com','9323152739265','2004-01-01','1','Maintenance')
 
 INSERT INTO Specialisation([name],[description]) VALUES ('Fix Printers','fix printers of all types')
 INSERT INTO Specialisation([name],[description]) VALUES ('Pumber','Fix pipes and toilets')

@@ -13,63 +13,135 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmAssignNewEmployee : Form
     {
-        #region Declarations
-        List<MaintenanceEmployee> myEmployee = new List<MaintenanceEmployee>();
-        List<MaintenanceEmployee> allMaintenanceEmployees = new List<MaintenanceEmployee>();
-        MaintenanceEmployee myMaintenanceEmployee = new MaintenanceEmployee();
-        #endregion
+        List<Job> jobs = new List<Job>();
+        List<MaintenanceEmployee> maintenanceEmployeesAvailable = new List<MaintenanceEmployee>();
+        List<MaintenanceEmployee> maintenanceEmployeesHave = new List<MaintenanceEmployee>();
+        Job job = new Job();
+        ServiceRequest serviceRequest = new ServiceRequest();
+        ServiceManager serviceManager = new ServiceManager();
+        MaintenanceEmployee maintenanceEmployee = new MaintenanceEmployee();
+        BindingSource bindingSource = new BindingSource();
 
         public frmAssignNewEmployee()
         {
             InitializeComponent();
         }
 
-        private void frmAssignNewEmployee_Load(object sender, EventArgs e)
+        private void GenerateDGV()
         {
-            allMaintenanceEmployees = myMaintenanceEmployee.SelectAllMaintenaceEmpployees();
-            FormatForm();
+            dgvAvailableTech.ColumnCount = 2;
+            dgvAvailableTech.Columns[0].Name = "ID";
+            dgvAvailableTech.Columns[1].Name = "Name";
+
+            dgvAssignedTech.ColumnCount = 2;
+            dgvAssignedTech.Columns[0].Name = "ID";
+            dgvAssignedTech.Columns[1].Name = "Name";
+
+            dgvViewJob.ColumnCount = 3;
+            dgvViewJob.Columns[0].Name = "ID";
+            dgvViewJob.Columns[1].Name = "Notes";
+            dgvViewJob.Columns[2].Name = "Number of Employees needed";
+            dgvViewJob.Columns[1].Width = 200;
+
+            dgvViewJob.ForeColor = Color.Black;
+            dgvAvailableTech.ForeColor = Color.Black;
+            dgvAssignedTech.ForeColor = Color.Black;
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void RefreshDGVAndListForJobs()
         {
-            this.Close();
+            if (dgvViewJob.Rows.Count != 0)
+            {
+                dgvViewJob.Rows.Clear();
+            }
+            jobs = job.SelectAllJobsNotFinished();
+            List<Job> bindList = jobs;
+            foreach (var item in bindList)
+            {
+                string[] row = { item.JobID.ToString(), item.JobNotes, item.EmployeesNeeded.ToString()};
+                dgvViewJob.Rows.Add(row);
+            }
+        }
+
+        private void frmAssignNewEmployee_Load(object sender, EventArgs e)
+        {
+            GenerateDGV();
+            RefreshDGVAndListForJobs();
+            RefreshDGVAvailable();
+        }
+        private void RefreshDGVEmployeesHave(int index)
+        {
+            maintenanceEmployeesHave = jobs[index].Employee;
+            if (dgvAssignedTech.Rows.Count != 0)
+            {
+                dgvAssignedTech.Rows.Clear();
+            }
+            foreach (var item in jobs[index].Employee)
+            {
+                string[] row = { item.Id.ToString(), item.FirstName + " " + item.Surname };
+                dgvAssignedTech.Rows.Add(row);
+            }
+        }
+        private void RefreshDGVAvailable()
+        {
+            maintenanceEmployeesAvailable = serviceRequest.SelectAllAvailabeEmployees();
+            if (dgvAvailableTech.Rows.Count != 0)
+            {
+                dgvAvailableTech.Rows.Clear();
+            }
+            foreach (var item in maintenanceEmployeesAvailable)
+            {
+                string[] row = { item.Id.ToString(), item.FirstName + " " + item.Surname };
+                dgvAvailableTech.Rows.Add(row);
+            }
+        }
+
+        private void dgvViewJob_SelectionChanged(object sender, EventArgs e)
+        {
+            RefreshDGVEmployeesHave(dgvViewJob.CurrentCell.RowIndex);
+            RefreshDGVAvailable();
         }
 
         private void btnAddTechnician_Click(object sender, EventArgs e)
         {
-            if (!lbxNewAssigned.Items.Contains(lbxAvailTech.SelectedItem.ToString()))
+            bool exists = false;
+            for (int i = 0; i < maintenanceEmployeesHave.Count; i++)
             {
-                lbxNewAssigned.Items.Add(lbxAvailTech.SelectedItem.ToString());
-                myEmployee.Add(lbxAvailTech.SelectedItem as MaintenanceEmployee); //Need to get listbox items added to the list of type maintenance employee
+                if (maintenanceEmployeesHave[i].Id.ToString().Contains(maintenanceEmployeesAvailable[dgvAvailableTech.CurrentCell.RowIndex].Id.ToString()))
+                {
+                    exists = true;
+                    break;
+                }
             }
-            else
+            if (!exists)
             {
-                MessageBox.Show("The technician has already been assigned.", "Add technicians Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string[] row = { maintenanceEmployeesAvailable[dgvAvailableTech.CurrentCell.RowIndex].Id.ToString(), maintenanceEmployeesAvailable[dgvAvailableTech.CurrentCell.RowIndex].FirstName + " " + maintenanceEmployeesAvailable[dgvAvailableTech.CurrentCell.RowIndex].Surname};
+                dgvAssignedTech.Rows.Add(row);
+                maintenanceEmployeesHave.Add(maintenanceEmployeesAvailable[dgvAvailableTech.CurrentCell.RowIndex]);
             }
         }
 
         private void btnRemoveTechnician_Click(object sender, EventArgs e)
         {
-            lbxNewAssigned.Items.RemoveAt(lbxNewAssigned.SelectedIndex);
+            for (int i = 0; i < maintenanceEmployeesHave.Count; i++)
+            {
+                if (maintenanceEmployeesHave[i].Id.ToString().Contains(dgvAssignedTech.Rows[dgvAssignedTech.CurrentCell.RowIndex].Cells[0].Value.ToString()))
+                {
+                    maintenanceEmployeesHave.RemoveAt(i);
+                    break;
+                }
+            }
+            dgvAssignedTech.Rows.RemoveAt(dgvAssignedTech.CurrentCell.RowIndex);
         }
 
-        #region Methods
-
-        private void PopulateDGV()
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-            dgvViewEmp.Rows.Clear();
-            dgvViewEmp.Refresh();
-            List<MaintenanceEmployee> bindingList = allMaintenanceEmployees;
-            var source = new BindingSource(bindingList, null);
-            dgvViewEmp.DataSource = source;
+            DialogResult dr = MessageBox.Show("Are you sure to Update EmployeeList?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                jobs[dgvViewJob.CurrentCell.RowIndex].Employee = maintenanceEmployeesHave;
+                serviceManager.UpdateJobEmployeeList(jobs[dgvViewJob.CurrentCell.RowIndex]);
+            }
         }
-
-        private void FormatForm()
-        {
-            dgvViewEmp.ForeColor = Color.Black;
-            PopulateDGV();
-        }
-
-        #endregion
     }
 }

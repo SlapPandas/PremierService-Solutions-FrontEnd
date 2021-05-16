@@ -84,6 +84,32 @@ namespace PremiereSolutionProject.DAL
 
             return jobList;
         }
+        public List<Job> SelectJobsNotCurrentlyFinished()
+        {
+            List<Job> jobList = new List<Job>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionSring))
+                {
+                    connection.Open();
+                    commandString = $"EXEC SelectJobsNotFinished";
+                    SqlCommand command = new SqlCommand(commandString, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        jobList.Add(new Job((int)reader["jobID"], addressDH.GetAddressById((int)reader["addressId"]), GetJobState((string)reader["currentState"]), (string)reader["notes"], employeeDH.GetMaintenanceEmployeeByJobId((int)reader["jobID"]), specializationDH.GetSpecialisationById((int)reader["specialisationId"]), (int)reader["ServiceRequestID"], (int)reader["amountOfEmployeesNeeded"]));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
+                databaseOperationDH.CreateOperationLog(new DatabaseOperation(false, connectionSring));
+            }
+            finally { }
+
+            return jobList;
+        }
         public Job SelectJobById(int id)
         {
             Job job = new Job();

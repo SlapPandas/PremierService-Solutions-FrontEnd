@@ -1567,3 +1567,8 @@ AS
     INNER JOIN ClientBusiness ON ClientContractLink.ClientBusinessID = ClientBusiness.clientBusinessID
     WHERE ClientBusiness.clientBusinessClientNumber = @id AND active = '1'
 GO
+ALTER PROC SelectJobsNotFinished
+AS
+SELECT * FROM Job
+WHERE Job.currentState = 0 OR Job.currentState = 1
+GO

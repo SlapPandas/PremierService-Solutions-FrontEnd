@@ -143,8 +143,12 @@ namespace PremiereSolutionProject.PL
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            mEmployees[dgvEmployee.CurrentCell.RowIndex].Specialisations = specialisationsHave;
-            mEmployee.UpdateSpecialisationOfMaintenanceEmployee(mEmployees[dgvEmployee.CurrentCell.RowIndex]);
+            DialogResult dr = MessageBox.Show("Are you sure to Update EmployeeList?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                mEmployees[dgvEmployee.CurrentCell.RowIndex].Specialisations = specialisationsHave;
+                mEmployee.UpdateSpecialisationOfMaintenanceEmployee(mEmployees[dgvEmployee.CurrentCell.RowIndex]);
+            }
         }
     }
 }
