@@ -56,7 +56,7 @@ namespace PremiereSolutionProject.PL
             this.dgvViewClient.Name = "dgvViewClient";
             this.dgvViewClient.RowHeadersWidth = 62;
             this.dgvViewClient.RowTemplate.Height = 28;
-            this.dgvViewClient.Size = new System.Drawing.Size(788, 120);
+            this.dgvViewClient.Size = new System.Drawing.Size(1033, 120);
             this.dgvViewClient.TabIndex = 15;
             // 
             // label3
@@ -64,7 +64,7 @@ namespace PremiereSolutionProject.PL
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Yi Baiti", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(352, 9);
+            this.label3.Location = new System.Drawing.Point(474, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(167, 29);
@@ -73,7 +73,7 @@ namespace PremiereSolutionProject.PL
             // 
             // txtClientID
             // 
-            this.txtClientID.Location = new System.Drawing.Point(188, 76);
+            this.txtClientID.Location = new System.Drawing.Point(368, 72);
             this.txtClientID.Margin = new System.Windows.Forms.Padding(4);
             this.txtClientID.Name = "txtClientID";
             this.txtClientID.Size = new System.Drawing.Size(222, 20);
@@ -83,7 +83,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(54, 76);
+            this.label2.Location = new System.Drawing.Point(234, 72);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 16);
@@ -94,14 +94,13 @@ namespace PremiereSolutionProject.PL
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Location = new System.Drawing.Point(2623, 1860);
+            this.btnExit.Location = new System.Drawing.Point(2868, 1875);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 34);
             this.btnExit.TabIndex = 16;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label1
             // 
@@ -134,14 +133,14 @@ namespace PremiereSolutionProject.PL
             this.dgvClientContractInfo.Name = "dgvClientContractInfo";
             this.dgvClientContractInfo.RowHeadersWidth = 62;
             this.dgvClientContractInfo.RowTemplate.Height = 28;
-            this.dgvClientContractInfo.Size = new System.Drawing.Size(787, 116);
+            this.dgvClientContractInfo.Size = new System.Drawing.Size(1032, 116);
             this.dgvClientContractInfo.TabIndex = 18;
             // 
             // btnSearch
             // 
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(443, 70);
+            this.btnSearch.Location = new System.Drawing.Point(623, 66);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(102, 34);
@@ -154,7 +153,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(51, 124);
+            this.label5.Location = new System.Drawing.Point(54, 122);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 16);
@@ -170,14 +169,14 @@ namespace PremiereSolutionProject.PL
             this.dgvClientInfo.Name = "dgvClientInfo";
             this.dgvClientInfo.RowHeadersWidth = 62;
             this.dgvClientInfo.RowTemplate.Height = 28;
-            this.dgvClientInfo.Size = new System.Drawing.Size(788, 121);
+            this.dgvClientInfo.Size = new System.Drawing.Size(1033, 121);
             this.dgvClientInfo.TabIndex = 21;
             // 
             // btnLogClient
             // 
             this.btnLogClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogClient.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogClient.Location = new System.Drawing.Point(568, 70);
+            this.btnLogClient.Location = new System.Drawing.Point(748, 66);
             this.btnLogClient.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogClient.Name = "btnLogClient";
             this.btnLogClient.Size = new System.Drawing.Size(102, 34);
@@ -204,7 +203,7 @@ namespace PremiereSolutionProject.PL
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(878, 575);
+            this.ClientSize = new System.Drawing.Size(1123, 590);
             this.Controls.Add(this.btnExiting);
             this.Controls.Add(this.btnLogClient);
             this.Controls.Add(this.label5);

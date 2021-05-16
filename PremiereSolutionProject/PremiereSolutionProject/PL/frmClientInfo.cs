@@ -13,67 +13,40 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmClientInfo : Form
     {
-        frmDashboard dashform;
-        List<ServicePackage> package;
-        List<Service> service;
-        List<BusinessClient> bClient;
-        List<IndividualClient> iClient;
-        List<Call> calls;
-        List<ServiceRequest> sReq;
-        List<Client> ClientList;
-        List<BusinessClient> bList;
-        List<IndividualClient> iList;
-
-        BindingSource bs = new BindingSource();
-        BindingSource bs2 = new BindingSource();
-
         public frmClientInfo()
         {
             InitializeComponent();
         }
+
+        #region Declarations
+
+        frmDashboard dashform;
+        List<BusinessClient> businessClientList;
+        List<IndividualClient> individualClientList;
+        List<Call> callList;
+        List<ServiceRequest> serviceRequestList;
+        List<Client> myClientList;
+        List<BusinessClient> searchedBusinessClientList;
+        List<IndividualClient> searchedIndividualClientList;
+        BindingSource bindingSource = new BindingSource();
+        BindingSource bs2 = new BindingSource();
+
+        #endregion
+
+        #region Events
+
         public frmClientInfo(frmDashboard _dashform):this()
         {
             dashform = _dashform;
         }
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        
         private void frmClientInfo_Load(object sender, EventArgs e)
         {
-            dgvClientInfo.ForeColor = Color.Black;
-            dgvClientContractInfo.ForeColor = Color.Black;
-            dgvViewClient.ForeColor = Color.Black;
+            FormatDGV();
+            businessClientList = new BusinessClient().SelectAllBusinessClients();
+            individualClientList = new IndividualClient().SelectAllIndividualClients();
+        }
 
-            bClient = new BusinessClient().SelectAllBusinessClients();
-            iClient = new IndividualClient().SelectAllIndividualClients();
-            
-
-        }
-        private void RefreshDGV()
-        {
-            bs.DataSource = calls;
-            dgvClientContractInfo.DataSource = null;
-            dgvClientContractInfo.DataSource = bs;
-        }
-        private void RefreshDGV2()
-        {
-            bs.DataSource = sReq;
-            dgvViewClient.DataSource = null;
-            dgvViewClient.DataSource = bs;
-        }
-        private void RefreshDGVI()
-        {
-            bs2.DataSource = iList;
-            dgvClientInfo.DataSource = null;
-            dgvClientInfo.DataSource = bs2;
-        }
-        private void RefreshDGVB()
-        {
-            bs2.DataSource = bList;
-            dgvClientInfo.DataSource = null;
-            dgvClientInfo.DataSource = bs2;
-        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrWhiteSpace(txtClientID.Text))
@@ -84,51 +57,48 @@ namespace PremiereSolutionProject.PL
             {
                 try
                 {
-                    calls = new Call().SelectAllCallsOfClient(txtClientID.Text);
-                    sReq = new ServiceRequest().SelectAllServiceRequestsForClient(txtClientID.Text);
-                    ClientList = new List<Client>();
-                    iList = new List<IndividualClient>();
-                    bList = new List<BusinessClient>();
+                    callList = new Call().SelectAllCallsOfClient(txtClientID.Text);
+                    serviceRequestList = new ServiceRequest().SelectAllServiceRequestsForClient(txtClientID.Text);
+                    myClientList = new List<Client>();
+                    searchedIndividualClientList = new List<IndividualClient>();
+                    searchedBusinessClientList = new List<BusinessClient>();
 
                     if (txtClientID.Text[0] == 'A')
                     {
-                        foreach (IndividualClient item in iClient)
+                        foreach (IndividualClient item in individualClientList)
                         {
                             if (txtClientID.Text == item.Id)
                             {
-                                ClientList.Add(item);
-                                iList.Add(item);
-                                RefreshDGVI();
+                                myClientList.Add(item);
+                                searchedIndividualClientList.Add(item);
+                                RefreshDGVIndividualClient();
                             }
                         }
                     }
                     else if (txtClientID.Text[0] == 'B')
                     {
-                        foreach (BusinessClient item in bClient)
+                        foreach (BusinessClient item in businessClientList)
                         {
                             if (txtClientID.Text == item.Id)
                             {
-                                ClientList.Add(item);
-                                bList.Add(item);
-                                RefreshDGVB();
+                                myClientList.Add(item);
+                                searchedBusinessClientList.Add(item);
+                                RefreshDGVBusinessClient();
                             }
                         }
                     }
-                    RefreshDGV();
-                    RefreshDGV2();
-                    // RefreshDGV3();
+                    RefreshCallDGV();
+                    RefreshServiceRequestDGV();
                 }
-                catch (FormatException fe)
+                catch (FormatException formatExcpetion)
                 {
-                    MessageBox.Show(fe.Message, "user input error");
+                    MessageBox.Show(formatExcpetion.Message, "Incorrect user input.");
                 }
-                catch (Exception ee)
+                catch (Exception exception)
                 {
-                    MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                    MessageBox.Show(exception.Message, (exception.InnerException != null) ? (exception.InnerException.ToString()) : ("Error"));
                 }
-
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -140,17 +110,53 @@ namespace PremiereSolutionProject.PL
             else
             {
                 Call call = new Call();
-                call.LogClientToCall(dashform.callInfo.CallID, txtClientID.Text);
-                
+                call.LogClientToCall(dashform.callInfo.CallID, txtClientID.Text);        
                 dashform.callInfo.Client = (Client)bs2.Current;
             }
-
-            
         }
 
         private void btnExiting_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        #endregion
+
+        #region Methods
+        private void RefreshCallDGV()
+        {
+            bindingSource.DataSource = callList;
+            dgvClientContractInfo.DataSource = null;
+            dgvClientContractInfo.DataSource = bindingSource;
+        }
+        private void RefreshServiceRequestDGV()
+        {
+            bindingSource.DataSource = serviceRequestList;
+            dgvViewClient.DataSource = null;
+            dgvViewClient.DataSource = bindingSource;
+        }
+
+        private void RefreshDGVIndividualClient()
+        {
+            bs2.DataSource = searchedIndividualClientList;
+            dgvClientInfo.DataSource = null;
+            dgvClientInfo.DataSource = bs2;
+        }
+
+        private void RefreshDGVBusinessClient()
+        {
+            bs2.DataSource = searchedBusinessClientList;
+            dgvClientInfo.DataSource = null;
+            dgvClientInfo.DataSource = bs2;
+        }
+
+        private void FormatDGV()
+        {
+            dgvClientInfo.ForeColor = Color.Black;
+            dgvClientContractInfo.ForeColor = Color.Black;
+            dgvViewClient.ForeColor = Color.Black;
+        }
+
+        #endregion
     }
 }
