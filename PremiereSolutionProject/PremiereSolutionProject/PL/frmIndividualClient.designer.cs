@@ -61,7 +61,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.lblDate = new System.Windows.Forms.Label();
             this.txtDate = new System.Windows.Forms.TextBox();
             this.txtAvtive = new System.Windows.Forms.Label();
@@ -77,7 +77,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(85, 369);
+            this.label8.Location = new System.Drawing.Point(166, 365);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(94, 19);
@@ -91,7 +91,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(130, 433);
+            this.label7.Location = new System.Drawing.Point(211, 429);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 19);
@@ -105,7 +105,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(51, 402);
+            this.label6.Location = new System.Drawing.Point(132, 398);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(130, 19);
@@ -119,7 +119,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(472, 265);
+            this.label5.Location = new System.Drawing.Point(657, 266);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(119, 19);
@@ -133,7 +133,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(105, 336);
+            this.label4.Location = new System.Drawing.Point(186, 332);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 19);
@@ -147,7 +147,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(87, 303);
+            this.label3.Location = new System.Drawing.Point(168, 299);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 19);
@@ -161,7 +161,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(89, 270);
+            this.label2.Location = new System.Drawing.Point(170, 266);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 19);
@@ -170,9 +170,10 @@
             // 
             // btnUpdateIndiClient
             // 
+            this.btnUpdateIndiClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdateIndiClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateIndiClient.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateIndiClient.Location = new System.Drawing.Point(99, 503);
+            this.btnUpdateIndiClient.Location = new System.Drawing.Point(239, 516);
             this.btnUpdateIndiClient.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnUpdateIndiClient.Name = "btnUpdateIndiClient";
             this.btnUpdateIndiClient.Size = new System.Drawing.Size(206, 43);
@@ -186,7 +187,7 @@
             this.txtNationalID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtNationalID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNationalID.Location = new System.Drawing.Point(187, 367);
+            this.txtNationalID.Location = new System.Drawing.Point(268, 363);
             this.txtNationalID.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtNationalID.Name = "txtNationalID";
             this.txtNationalID.Size = new System.Drawing.Size(198, 21);
@@ -197,7 +198,7 @@
             this.txtEmai.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtEmai.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmai.Location = new System.Drawing.Point(187, 433);
+            this.txtEmai.Location = new System.Drawing.Point(268, 429);
             this.txtEmai.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtEmai.Name = "txtEmai";
             this.txtEmai.Size = new System.Drawing.Size(198, 21);
@@ -208,7 +209,7 @@
             this.txtContactNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtContactNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactNumber.Location = new System.Drawing.Point(187, 400);
+            this.txtContactNumber.Location = new System.Drawing.Point(268, 396);
             this.txtContactNumber.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtContactNumber.Name = "txtContactNumber";
             this.txtContactNumber.Size = new System.Drawing.Size(198, 21);
@@ -219,7 +220,7 @@
             this.txtStreetName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtStreetName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStreetName.Location = new System.Drawing.Point(599, 265);
+            this.txtStreetName.Location = new System.Drawing.Point(784, 264);
             this.txtStreetName.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtStreetName.Name = "txtStreetName";
             this.txtStreetName.Size = new System.Drawing.Size(198, 21);
@@ -230,7 +231,7 @@
             this.txtSurname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtSurname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSurname.Location = new System.Drawing.Point(187, 334);
+            this.txtSurname.Location = new System.Drawing.Point(268, 330);
             this.txtSurname.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(198, 21);
@@ -241,7 +242,7 @@
             this.txtFirstname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtFirstname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirstname.Location = new System.Drawing.Point(187, 301);
+            this.txtFirstname.Location = new System.Drawing.Point(268, 297);
             this.txtFirstname.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtFirstname.Name = "txtFirstname";
             this.txtFirstname.Size = new System.Drawing.Size(198, 21);
@@ -252,7 +253,7 @@
             this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID.Location = new System.Drawing.Point(187, 268);
+            this.txtID.Location = new System.Drawing.Point(268, 264);
             this.txtID.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
@@ -263,7 +264,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(340, 17);
+            this.label1.Location = new System.Drawing.Point(500, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(191, 29);
@@ -277,7 +278,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(529, 301);
+            this.label9.Location = new System.Drawing.Point(714, 301);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(62, 19);
@@ -289,7 +290,7 @@
             this.txtSuburb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtSuburb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSuburb.Location = new System.Drawing.Point(599, 301);
+            this.txtSuburb.Location = new System.Drawing.Point(784, 299);
             this.txtSuburb.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtSuburb.Name = "txtSuburb";
             this.txtSuburb.Size = new System.Drawing.Size(198, 21);
@@ -302,7 +303,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(554, 331);
+            this.label10.Location = new System.Drawing.Point(739, 332);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 19);
@@ -314,7 +315,7 @@
             this.txtCity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCity.Location = new System.Drawing.Point(599, 331);
+            this.txtCity.Location = new System.Drawing.Point(784, 332);
             this.txtCity.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(198, 21);
@@ -327,7 +328,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(518, 367);
+            this.label11.Location = new System.Drawing.Point(703, 365);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(73, 19);
@@ -341,7 +342,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(489, 400);
+            this.label12.Location = new System.Drawing.Point(674, 398);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(102, 19);
@@ -353,7 +354,7 @@
             this.txtPostalCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtPostalCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPostalCode.Location = new System.Drawing.Point(599, 400);
+            this.txtPostalCode.Location = new System.Drawing.Point(784, 394);
             this.txtPostalCode.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(198, 21);
@@ -364,7 +365,7 @@
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(920, 686);
+            this.btnExit.Location = new System.Drawing.Point(1178, 675);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(115, 39);
@@ -381,7 +382,7 @@
             this.dgvExistingClients.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.dgvExistingClients.Name = "dgvExistingClients";
             this.dgvExistingClients.RowHeadersWidth = 62;
-            this.dgvExistingClients.Size = new System.Drawing.Size(800, 107);
+            this.dgvExistingClients.Size = new System.Drawing.Size(1058, 107);
             this.dgvExistingClients.TabIndex = 80;
             this.dgvExistingClients.SelectionChanged += new System.EventHandler(this.dgvExistingClients_SelectionChanged);
             // 
@@ -401,9 +402,10 @@
             // 
             // btnAddClient
             // 
+            this.btnAddClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddClient.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddClient.Location = new System.Drawing.Point(345, 503);
+            this.btnAddClient.Location = new System.Drawing.Point(485, 516);
             this.btnAddClient.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(206, 43);
@@ -414,9 +416,10 @@
             // 
             // btnDeleteClient
             // 
+            this.btnDeleteClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDeleteClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteClient.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteClient.Location = new System.Drawing.Point(591, 503);
+            this.btnDeleteClient.Location = new System.Drawing.Point(731, 516);
             this.btnDeleteClient.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnDeleteClient.Name = "btnDeleteClient";
             this.btnDeleteClient.Size = new System.Drawing.Size(206, 43);
@@ -432,19 +435,18 @@
             this.cmbProvince.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProvince.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProvince.FormattingEnabled = true;
-            this.cmbProvince.Location = new System.Drawing.Point(599, 367);
+            this.cmbProvince.Location = new System.Drawing.Point(783, 362);
             this.cmbProvince.Name = "cmbProvince";
             this.cmbProvince.Size = new System.Drawing.Size(198, 23);
             this.cmbProvince.TabIndex = 110;
             // 
             // label14
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(442, 92);
+            this.label14.Location = new System.Drawing.Point(624, 87);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(92, 19);
@@ -453,10 +455,10 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(545, 92);
+            this.txtSearch.Location = new System.Drawing.Point(727, 87);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(180, 21);
@@ -464,9 +466,11 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(733, 77);
+            this.btnSearch.Location = new System.Drawing.Point(915, 72);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(82, 48);
@@ -475,17 +479,17 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // button1
+            // btnClose
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(13, 13);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 35);
-            this.button1.TabIndex = 114;
-            this.button1.Text = "Close";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(13, 13);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(66, 35);
+            this.btnClose.TabIndex = 114;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // lblDate
             // 
@@ -494,19 +498,19 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(464, 433);
+            this.lblDate.Location = new System.Drawing.Point(129, 461);
             this.lblDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(127, 19);
+            this.lblDate.Size = new System.Drawing.Size(131, 19);
             this.lblDate.TabIndex = 116;
-            this.lblDate.Text = "Date Regestred";
+            this.lblDate.Text = "Date Registered";
             // 
             // txtDate
             // 
             this.txtDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDate.Location = new System.Drawing.Point(599, 433);
+            this.txtDate.Location = new System.Drawing.Point(268, 459);
             this.txtDate.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtDate.Name = "txtDate";
             this.txtDate.ReadOnly = true;
@@ -520,12 +524,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAvtive.AutoSize = true;
             this.txtAvtive.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAvtive.Location = new System.Drawing.Point(464, 468);
+            this.txtAvtive.Location = new System.Drawing.Point(723, 429);
             this.txtAvtive.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtAvtive.Name = "txtAvtive";
             this.txtAvtive.Size = new System.Drawing.Size(53, 19);
             this.txtAvtive.TabIndex = 118;
-            this.txtAvtive.Text = "Avtive";
+            this.txtAvtive.Text = "Active";
             // 
             // cmbActive
             // 
@@ -537,21 +541,23 @@
             this.cmbActive.Items.AddRange(new object[] {
             "false",
             "true"});
-            this.cmbActive.Location = new System.Drawing.Point(599, 463);
+            this.cmbActive.Location = new System.Drawing.Point(784, 424);
             this.cmbActive.Name = "cmbActive";
             this.cmbActive.Size = new System.Drawing.Size(198, 23);
             this.cmbActive.TabIndex = 119;
             // 
             // btnClearSearch
             // 
+            this.btnClearSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSearch.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearSearch.Location = new System.Drawing.Point(733, 15);
+            this.btnClearSearch.Location = new System.Drawing.Point(1016, 72);
             this.btnClearSearch.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnClearSearch.Name = "btnClearSearch";
             this.btnClearSearch.Size = new System.Drawing.Size(82, 48);
             this.btnClearSearch.TabIndex = 120;
-            this.btnClearSearch.Text = "Clease search";
+            this.btnClearSearch.Text = "Clear search";
             this.btnClearSearch.UseVisualStyleBackColor = true;
             this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
             // 
@@ -560,13 +566,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(878, 602);
+            this.ClientSize = new System.Drawing.Size(1136, 591);
             this.Controls.Add(this.btnClearSearch);
             this.Controls.Add(this.cmbActive);
             this.Controls.Add(this.txtAvtive);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.txtDate);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtSearch);
@@ -645,7 +651,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.Label txtAvtive;

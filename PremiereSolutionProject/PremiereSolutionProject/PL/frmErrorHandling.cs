@@ -67,7 +67,7 @@ namespace PremiereSolutionProject.PL
             successHeader.TextAlign = HorizontalAlignment.Left;
             successHeader.Width = 200;
 
-            descriptionHeader.Text = "Successful";
+            descriptionHeader.Text = "Description";
             descriptionHeader.TextAlign = HorizontalAlignment.Left;
             descriptionHeader.Width = 200;
 
