@@ -13,20 +13,27 @@ namespace PremiereSolutionProject.PL
 { 
     public partial class frmServicePackageManagement : Form
     {
-        List<Service> services;
         public frmServicePackageManagement()
         {
             InitializeComponent();
         }
 
+        #region Declarations
+
+        List<Service> services; 
+        List<ServicePackage> sp;
+        ServicePackage sp2;
+        BindingSource bs = new BindingSource();
+        ServicePackage selectedP;
+
+        #endregion
+
+        #region Events
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        List<ServicePackage> sp;
-        ServicePackage sp2;       
-        BindingSource bs = new BindingSource();
-        ServicePackage selectedP;
+       
         private void frmServicePackageManagement_Load(object sender, EventArgs e)
         {
             dgvCurrentServicePackages.ForeColor = Color.Black;
@@ -39,47 +46,7 @@ namespace PremiereSolutionProject.PL
             
         }
 
-        private void RefreshDGV()
-        {
-            sp = new ServicePackage().SelectAllServicePackage();
-            bs.DataSource = sp;
-            dgvCurrentServicePackages.DataSource = null;
-            dgvCurrentServicePackages.DataSource = bs;
-        }
-
-        private void UpdateData()
-        {
-            //selectedProduct
-            if (selectedP.OnPromotion == true)
-            {
-                cbxPromotionYes.Checked = true;
-                cbxPromotionNo.Checked = false;
-            }
-            else
-            {
-                cbxPromotionNo.Checked = true;
-                cbxPromotionYes.Checked = false;
-            }
-            lbxAdded.Items.Clear();
-            lbxAvailable.Items.Clear();
-            foreach (Service item in services)
-            {
-                lbxAvailable.Items.Add(item.ServiceName.ToString());
-            }
-            
-            foreach (var item in selectedP.ServiceList)
-            {
-                lbxAdded.Items.Add(item.ServiceName);
-                lbxAvailable.Items.Remove(item.ServiceName);
-            }
-
-            txtPackageName.Text = selectedP.PackageName;
-            txtPrice.Text = selectedP.ServicePrice.ToString();
-            dtpPromotionEnd.Value = selectedP.PromotionEndDate;
-            dtpPromotionStart.Value = selectedP.PromotionStartDate;
-           // numUDPercentage.Value = selectedP.PromotionPercentage;
-
-        }
+       
 
         private void dgvCurrentServicePackages_SelectionChanged(object sender, EventArgs e)
         {
@@ -156,22 +123,9 @@ namespace PremiereSolutionProject.PL
             RefreshDGV();
         }
 
-        public bool IsInt(string numCheck)
-        {
-            int temp;
-            try
-            {
-                temp = int.Parse(numCheck);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         private void btnUpdatePackage_Click(object sender, EventArgs e)
         {
+            //TODO: Update is not working :) Jayden, please check
             List<string> serviceNames = lbxAdded.Items.Cast<string>().ToList();
             Service service = new Service();
             List<Service> services = service.SelectAllServices();
@@ -201,6 +155,7 @@ namespace PremiereSolutionProject.PL
                     promotion = false;
                 }
                 ServicePackage sp = new ServicePackage(txtPackageName.Text, servicesTemp, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, int.Parse(txtPrice.Text));
+                sp.UpdateServicePackage(sp);
             }
             RefreshDGV();
         }
@@ -221,5 +176,67 @@ namespace PremiereSolutionProject.PL
             }
             RefreshDGV();
         }
+
+        #endregion
+
+        #region Methods
+
+        private void RefreshDGV()
+        {
+            sp = new ServicePackage().SelectAllServicePackage();
+            bs.DataSource = sp;
+            dgvCurrentServicePackages.DataSource = null;
+            dgvCurrentServicePackages.DataSource = bs;
+        }
+
+        private void UpdateData()
+        {
+            //selectedProduct
+            if (selectedP.OnPromotion == true)
+            {
+                cbxPromotionYes.Checked = true;
+                cbxPromotionNo.Checked = false;
+            }
+            else
+            {
+                cbxPromotionNo.Checked = true;
+                cbxPromotionYes.Checked = false;
+            }
+            lbxAdded.Items.Clear();
+            lbxAvailable.Items.Clear();
+            foreach (Service item in services)
+            {
+                lbxAvailable.Items.Add(item.ServiceName.ToString());
+            }
+
+            foreach (var item in selectedP.ServiceList)
+            {
+                lbxAdded.Items.Add(item.ServiceName);
+                lbxAvailable.Items.Remove(item.ServiceName);
+            }
+
+            txtPackageName.Text = selectedP.PackageName;
+            txtPrice.Text = selectedP.ServicePrice.ToString();
+            dtpPromotionEnd.Value = selectedP.PromotionEndDate;
+            dtpPromotionStart.Value = selectedP.PromotionStartDate;
+            // numUDPercentage.Value = selectedP.PromotionPercentage;
+
+        }
+
+        public bool IsInt(string numCheck)
+        {
+            int temp;
+            try
+            {
+                temp = int.Parse(numCheck);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        #endregion
     }
 }
