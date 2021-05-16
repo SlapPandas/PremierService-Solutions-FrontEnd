@@ -74,7 +74,7 @@ namespace PremiereSolutionProject.PL
             this.dgvServiceRequests.Name = "dgvServiceRequests";
             this.dgvServiceRequests.RowHeadersWidth = 51;
             this.dgvServiceRequests.RowTemplate.Height = 24;
-            this.dgvServiceRequests.Size = new System.Drawing.Size(847, 133);
+            this.dgvServiceRequests.Size = new System.Drawing.Size(847, 134);
             this.dgvServiceRequests.TabIndex = 2;
             this.dgvServiceRequests.SelectionChanged += new System.EventHandler(this.dgvServiceRequests_SelectionChanged);
             // 
@@ -96,6 +96,7 @@ namespace PremiereSolutionProject.PL
             this.btnEscalateServiceRequest.Font = new System.Drawing.Font("Microsoft Yi Baiti", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEscalateServiceRequest.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnEscalateServiceRequest.Location = new System.Drawing.Point(660, 430);
+            this.btnEscalateServiceRequest.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEscalateServiceRequest.Name = "btnEscalateServiceRequest";
             this.btnEscalateServiceRequest.Size = new System.Drawing.Size(347, 85);
             this.btnEscalateServiceRequest.TabIndex = 110;
@@ -109,6 +110,7 @@ namespace PremiereSolutionProject.PL
             this.btnClose.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnClose.Location = new System.Drawing.Point(12, 9);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(86, 44);
             this.btnClose.TabIndex = 111;
@@ -185,6 +187,7 @@ namespace PremiereSolutionProject.PL
             // txtServiceRequestID
             // 
             this.txtServiceRequestID.Location = new System.Drawing.Point(321, 256);
+            this.txtServiceRequestID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtServiceRequestID.Name = "txtServiceRequestID";
             this.txtServiceRequestID.ReadOnly = true;
             this.txtServiceRequestID.Size = new System.Drawing.Size(181, 20);
@@ -193,6 +196,7 @@ namespace PremiereSolutionProject.PL
             // txtCallID
             // 
             this.txtCallID.Location = new System.Drawing.Point(321, 291);
+            this.txtCallID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCallID.Name = "txtCallID";
             this.txtCallID.ReadOnly = true;
             this.txtCallID.Size = new System.Drawing.Size(181, 20);
@@ -201,6 +205,7 @@ namespace PremiereSolutionProject.PL
             // txtClosed
             // 
             this.txtClosed.Location = new System.Drawing.Point(321, 326);
+            this.txtClosed.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtClosed.Name = "txtClosed";
             this.txtClosed.ReadOnly = true;
             this.txtClosed.Size = new System.Drawing.Size(181, 20);
@@ -208,7 +213,8 @@ namespace PremiereSolutionProject.PL
             // 
             // txtCurrentPrio
             // 
-            this.txtCurrentPrio.Location = new System.Drawing.Point(321, 361);
+            this.txtCurrentPrio.Location = new System.Drawing.Point(321, 360);
+            this.txtCurrentPrio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCurrentPrio.Name = "txtCurrentPrio";
             this.txtCurrentPrio.ReadOnly = true;
             this.txtCurrentPrio.Size = new System.Drawing.Size(181, 20);
@@ -217,6 +223,7 @@ namespace PremiereSolutionProject.PL
             // txtCurrentDays
             // 
             this.txtCurrentDays.Location = new System.Drawing.Point(321, 394);
+            this.txtCurrentDays.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCurrentDays.Name = "txtCurrentDays";
             this.txtCurrentDays.ReadOnly = true;
             this.txtCurrentDays.Size = new System.Drawing.Size(181, 20);
@@ -225,6 +232,7 @@ namespace PremiereSolutionProject.PL
             // rtxtDescription
             // 
             this.rtxtDescription.Location = new System.Drawing.Point(321, 430);
+            this.rtxtDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rtxtDescription.Name = "rtxtDescription";
             this.rtxtDescription.ReadOnly = true;
             this.rtxtDescription.Size = new System.Drawing.Size(181, 88);
@@ -256,6 +264,7 @@ namespace PremiereSolutionProject.PL
             // txtNewPrio
             // 
             this.txtNewPrio.Location = new System.Drawing.Point(824, 320);
+            this.txtNewPrio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNewPrio.Name = "txtNewPrio";
             this.txtNewPrio.Size = new System.Drawing.Size(181, 20);
             this.txtNewPrio.TabIndex = 127;
@@ -263,14 +272,25 @@ namespace PremiereSolutionProject.PL
             // numNewDays
             // 
             this.numNewDays.Location = new System.Drawing.Point(824, 362);
+            this.numNewDays.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numNewDays.Maximum = new decimal(new int[] {
             8,
+            0,
+            0,
+            0});
+            this.numNewDays.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             this.numNewDays.Name = "numNewDays";
             this.numNewDays.Size = new System.Drawing.Size(120, 20);
             this.numNewDays.TabIndex = 128;
+            this.numNewDays.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // frmEscalateJobs
             // 

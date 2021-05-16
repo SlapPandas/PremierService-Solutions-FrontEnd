@@ -48,9 +48,17 @@ namespace PremiereSolutionProject.PL
 
         private void btnEscalateServiceRequest_Click(object sender, EventArgs e)
         {
-            ServiceManager myServiceManager = new ServiceManager();
-            myServiceManager.EscalateServiceRequest((int)numNewDays.Value, serviceRequestList[dgvServiceRequests.CurrentCell.RowIndex]);
-            PopulateDGV();
+            if (int.Parse(txtCurrentDays.Text) > (int)numNewDays.Value || txtCurrentDays.Text == "1")
+            {
+                ServiceManager myServiceManager = new ServiceManager();
+                myServiceManager.EscalateServiceRequest((int)numNewDays.Value, serviceRequestList[dgvServiceRequests.CurrentCell.RowIndex]);
+                PopulateDGV();
+            }
+            else
+            {
+                MessageBox.Show("The new days need to be less than the previous days.", "Invalid entry");
+            }
+            
         }
         #endregion
 
@@ -113,6 +121,7 @@ namespace PremiereSolutionProject.PL
                     return "Invalid";
             }
         }
+
         #endregion
 
     }
