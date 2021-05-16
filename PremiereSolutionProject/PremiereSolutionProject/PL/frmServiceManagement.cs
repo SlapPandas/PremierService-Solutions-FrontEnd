@@ -23,76 +23,40 @@ namespace PremiereSolutionProject.PL
 
         private void btnCreatePackage_Click(object sender, EventArgs e)
         {
-            try
+            if (string.IsNullOrWhiteSpace(txtServiceName.Text) && string.IsNullOrWhiteSpace(rtbServiceDescription.Text))
             {
-                if (string.IsNullOrWhiteSpace(txtServiceName.Text))
-                {
-                    throw new FormatException("No service name");
-                }
-                if (string.IsNullOrWhiteSpace(rtbServiceDescription.Text))
-                {
-                    throw new FormatException("No service description");
-                }
-                
-
-                else
-                {
-                    Service service = new Service(txtServiceName.Text, rtbServiceDescription.Text);
-                    service.InsertService(service);
-                    MessageBox.Show("Successfully created service", "Yay");
-                }
-
+                MessageBox.Show("Please fill the correct information");
             }
-            catch (FormatException fe)
+            else
             {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                Service service = new Service(txtServiceName.Text, rtbServiceDescription.Text);
+                service.InsertService(service);
+                RefreshDGV();
             }
         }
 
         private void btnUpdateService_Click(object sender, EventArgs e)
         {
-            try
+            if (string.IsNullOrWhiteSpace(txtServiceName.Text) && string.IsNullOrWhiteSpace(rtbServiceDescription.Text))
             {
-                if (string.IsNullOrWhiteSpace(txtServiceName.Text))
-                {
-                    throw new FormatException("No service name");
-                }
-                if (string.IsNullOrWhiteSpace(rtbServiceDescription.Text))
-                {
-                    throw new FormatException("No service description");
-                }
-
-
-                else
-                {
-                    Service service = new Service(txtServiceName.Text, rtbServiceDescription.Text);
-                    service.UpdateService(service);
-                    MessageBox.Show("Successfully updated service", "Yay");
-                }
-
+                MessageBox.Show("Please fill the correct information");
             }
-            catch (FormatException fe)
+            else
             {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                Service service = new Service(selectedService.ServiceID,txtServiceName.Text, rtbServiceDescription.Text);
+                service.UpdateService(service);
+                RefreshDGV();
             }
         }
 
         private void frmServiceManagement_Load(object sender, EventArgs e)
-        {
-            services = new Service().SelectAllServices();
+        {            
             dgvCurrentServices.ForeColor = Color.Black;
             RefreshDGV();
         }
         private void RefreshDGV()
         {
+            services = new Service().SelectAllServices();
             bs.DataSource = services;
             dgvCurrentServices.DataSource = null;
             dgvCurrentServices.DataSource = bs;
@@ -101,34 +65,9 @@ namespace PremiereSolutionProject.PL
 
         private void btnDeleteService_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(txtServiceName.Text))
-                {
-                    throw new FormatException("No service name");
-                }
-                if (string.IsNullOrWhiteSpace(rtbServiceDescription.Text))
-                {
-                    throw new FormatException("No service description");
-                }
-
-
-                else
-                {
-                    Service service = new Service(txtServiceName.Text, rtbServiceDescription.Text);
-                    service.DeleteService(service);
-                    MessageBox.Show("Successfully deleted service", "Yay");
-                }
-
-            }
-            catch (FormatException fe)
-            {
-                MessageBox.Show(fe.Message, "user input error");
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
-            }
+            Service service = selectedService;
+            service.DeleteService(service);
+            RefreshDGV();
         }
 
         private void dgvCurrentServices_SelectionChanged(object sender, EventArgs e)
