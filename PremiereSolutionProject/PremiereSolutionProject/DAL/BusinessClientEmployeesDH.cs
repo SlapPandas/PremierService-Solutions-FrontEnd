@@ -46,7 +46,7 @@ namespace PremiereSolutionProject.DAL
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        businessClientemployeeList.Add(new BusinessClientEmployees((int)reader["clientBusinessEmployeeID"], (string)reader["firstName"], (string)reader["surname"], (string)reader["department"], (string)reader["contactNumber"], (string)reader["email"], (string)reader["busuinessName"]));
+                        businessClientemployeeList.Add(new BusinessClientEmployees((int)reader["clientBusinessEmployeeID"], (string)reader["firstName"], (string)reader["surname"], (string)reader["department"], (string)reader["contactNumber"], (string)reader["email"], (string)reader["clientBusinessClientNumber"]));
                     }
                 }
             }

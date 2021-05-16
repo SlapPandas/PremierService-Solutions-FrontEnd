@@ -13,13 +13,22 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmIndividualClient : Form
     {
-        List<IndividualClient> individualClients = new List<IndividualClient>();
-        IndividualClient individualClient = new IndividualClient();
-        BindingSource bindingSource = new BindingSource();
+        
         public frmIndividualClient()
         {
             InitializeComponent(); 
         }
+
+        #region Declarations
+
+        List<IndividualClient> individualClients = new List<IndividualClient>();
+        IndividualClient individualClient = new IndividualClient();
+        BindingSource bindingSource = new BindingSource();
+
+        #endregion
+
+
+        #region Events
         private void frmIndividualClient_Load(object sender, EventArgs e)
         {
             RefreshDGVAndList();
@@ -179,5 +188,13 @@ namespace PremiereSolutionProject.PL
         {
             RefreshDGVAndList();
         }
+
+        #endregion
+
+        #region Methods
+
+
+
+        #endregion
     }
 }
