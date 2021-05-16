@@ -31,7 +31,7 @@ namespace PremiereSolutionProject.DAL
         }
         public void Update(Job job)
         {
-            UpdateCommand($"EXEC UpdateJob @id = {job.JobID}, @notes = '{job.JobNotes}', @specialisationId = {job.Specialisation.SpecialisationID}, @adressid = {job.JobAddress.AddressID}, @streetName = '{job.JobAddress.StreetName}', @suburb = '{job.JobAddress.Suburb}', @province = '{((int)job.JobAddress.Province).ToString()}', @postalcode = '{job.JobAddress.Postalcode}',@city = '{job.JobAddress.City}'");
+            UpdateCommand($"EXEC UpdateJob @id ='{job.JobID}', @notes ='{job.JobNotes}',@state ='{((int)job.JobState).ToString()}', @needed ='{job.EmployeesNeeded}'");
         }
         public void UpdateJobEmployeeList(Job job)
         {

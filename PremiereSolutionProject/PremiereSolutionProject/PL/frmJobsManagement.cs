@@ -14,257 +14,153 @@ namespace PremiereSolutionProject.PL
 
     public partial class frmJobsManagement : Form
     {
+        List<Job> jobs = new List<Job>();
+        Job job = new Job();
         public frmJobsManagement()
         {
             InitializeComponent();
         }
-
-
-        #region Declarations
-
-        Job JB = new Job();
-        Job SelectedJob = new Job();
-        Specialisation special = new Specialisation();
-        List<MaintenanceEmployee> MainEmp = new List<MaintenanceEmployee>();
-        List<MaintenanceEmployee> myEmployee = new List<MaintenanceEmployee>();
-        BindingSource bs = new BindingSource();
-        List<MaintenanceEmployee> NewEmp = new List<MaintenanceEmployee>();
-        JobState st;
-        List<MaintenanceEmployee> ME;
-        ServiceRequest SR = new ServiceRequest();
-        ServiceManager SM = new ServiceManager();
-        string stdOutput = "{0,-10}{1,-20}";
-        Job NewJob;
-
-        #endregion
-
-
-        #region Events
-
-        private void btnExit_Click(object sender, EventArgs e)
+        private void GenerateDGV()
         {
-            this.Close();
+            dgvViewJob.ColumnCount = 10;
+            dgvViewJob.Columns[0].Name = "ID";
+            dgvViewJob.Columns[1].Name = "Current state";
+            dgvViewJob.Columns[2].Name = "Number of Employees needed";
+            dgvViewJob.Columns[3].Name = "Specilization";
+            dgvViewJob.Columns[4].Name = "Priority Level";
+            dgvViewJob.Columns[5].Name = "StreetnName";
+            dgvViewJob.Columns[6].Name = "Suburb";
+            dgvViewJob.Columns[7].Name = "City";
+            dgvViewJob.Columns[8].Name = "Province";
+            dgvViewJob.Columns[9].Name = "Postal code";
+
+            dgvEmployees.ColumnCount = 2;
+            dgvEmployees.Columns[0].Name = "ID";
+            dgvEmployees.Columns[1].Name = "Name";
+
+            dgvViewJob.ForeColor = Color.Black;
+            dgvEmployees.ForeColor = Color.Black;
+        }
+        private void PopulateComboBox()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                cbxCurrentState.Items.Add(GetJobState(i + ""));
+            }
+        }
+        private JobState GetJobState(string input)
+        {
+            JobState jobState = (JobState)1;
+
+            switch (input)
+            {
+                case "0":
+                    jobState = (JobState)0;
+                    break;
+                case "1":
+                    jobState = (JobState)1;
+                    break;
+                case "2":
+                    jobState = (JobState)2;
+                    break;
+                default:
+                    jobState = (JobState)1;
+                    break;
+            }
+            return jobState;
+        }
+        private void RefreshDGVAndListForJobs()
+        {
+            if (dgvViewJob.Rows.Count != 0)
+            {
+                dgvViewJob.Rows.Clear();
+            }
+            jobs = job.SelectAllJobs();
+            foreach (var item in jobs)
+            {
+                string[] row = { item.JobID.ToString(), item.JobState.ToString(), item.EmployeesNeeded.ToString(), item.Specialisation.SpecialisationName, item.PriorityLevel, item.JobAddress.StreetName, item.JobAddress.Suburb, item.JobAddress.City, item.JobAddress.Province.ToString(), item.JobAddress.Postalcode.ToString() };
+                dgvViewJob.Rows.Add(row);
+            }
+        }
+        private void RefreshDGVAndListForEmployees(int index)
+        {
+            if (index <= jobs.Count - 1)
+            {
+                if (dgvEmployees.Rows.Count != 0)
+                {
+                    dgvEmployees.Rows.Clear();
+                }
+                foreach (var item in jobs[index].Employee)
+                {
+                    string[] row = { item.Id.ToString(), item.FirstName + " " + item.Surname };
+                    dgvEmployees.Rows.Add(row);
+                }
+            }
+        }
+        private void UpdateFields(int index)
+        {
+            if (index <= jobs.Count-1)
+            {
+                txtNotes.Text = jobs[index].JobNotes;
+                cbxCurrentState.SelectedItem = jobs[index].JobState;
+                nudEmployees.Value = jobs[index].EmployeesNeeded;
+            }
+            
         }
 
         private void frmJobsManagement_Load(object sender, EventArgs e)
         {
-            lbxAvailTech.Items.Add(String.Format(stdOutput,"ID","Name"));
-            lbxCurrentAssignedTech.Items.Add(String.Format(stdOutput, "ID", "Name"));
-
-            foreach (Job J in JB.SelectAllJobs())
-            {
-                ListViewItem lst = new ListViewItem(new string[]
-                {
-                    J.JobID.ToString(),
-                    J.JobState.ToString(),
-                    J.JobNotes,
-                    J.EmployeesNeeded.ToString(),
-                    J.ServiceRequestID.ToString(),
-                    J.PriorityLevel
-                });
-
-                lst.Tag = J;
-                lstJobs.Items.Add(lst);
-
-                List<Job> NewJobList = new List<Job>();
-                NewJobList.Add(J);
-            }
-
-            foreach (Job j in JB.SelectAllJobs())
-            {
-                ListViewItem lsty = new ListViewItem(new string[]
-                {
-                    j.JobID.ToString(),
-                    j.JobState.ToString()
-                });
-
-                lstPending.Items.Add(lsty);
-            }
-
-
-            foreach (Job j in JB.SelectInProgressJobs())
-            {
-                ListViewItem lst = new ListViewItem(new string[]
-                {
-                    j.JobID.ToString(),
-                    j.JobState.ToString()
-                });
-
-            }
-
-           
-            ME = SR.SelectAllAvailabeEmployees();
-
-            foreach (MaintenanceEmployee m in ME)
-            {
-                lbxAvailTech.Items.Add(String.Format(stdOutput, m.FirstName, m.Id));
-            }
+            GenerateDGV();
+            PopulateComboBox();
+            RefreshDGVAndListForJobs();
         }
 
-        
+        private void dgvViewJob_SelectionChanged(object sender, EventArgs e)
+        {
+            UpdateFields(dgvViewJob.CurrentCell.RowIndex);
+            RefreshDGVAndListForEmployees(dgvViewJob.CurrentCell.RowIndex);
+        }
+
         private void btnDeleteJob_Click(object sender, EventArgs e)
         {
-            JB.DeleteJob(SelectedJob);
-            MessageBox.Show("The job has been successfully deleted", "Delete Job", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            cbxCurrentState.Text = "";
-            rtbNotes.Clear();
-            nudEmployees.Value = 0;
+            if (dgvViewJob.CurrentCell.RowIndex <= jobs.Count - 1)
+            {
+                DialogResult dr = MessageBox.Show("Are you sure to Delete The job?", "Confirmation", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    job.DeleteJob(jobs[dgvViewJob.CurrentCell.RowIndex]);
+                    RefreshDGVAndListForJobs();
+                    UpdateFields(dgvViewJob.CurrentCell.RowIndex);
+                    RefreshDGVAndListForEmployees(dgvViewJob.CurrentCell.RowIndex);
+                }
+            }
+            else
+            {
+                MessageBox.Show("selected item can not be deleted");
+            }
+            
         }
 
         private void btnUpdateJob_Click(object sender, EventArgs e)
         {
-            int jobstateindex;
-
-            if (Enumerable.SequenceEqual(SelectedJob.Employee, NewJob.Employee))
+            if (dgvViewJob.CurrentCell.RowIndex <= jobs.Count - 1)
             {
-                SM.UpdateJobEmployeeList(SelectedJob);
-            }
-
-            else
-            {
-                MessageBox.Show("The two lists are the same. ");
-            }
-            
-            if (myEmployee != null)
-            {
-                SelectedJob.Employee = myEmployee; //List of new chosen employees
-            }
-
-            if (SelectedJob.JobState != NewJob.JobState)
-            {
-                 jobstateindex = Array.IndexOf(Enum.GetValues(SelectedJob.JobState.GetType()), SelectedJob.JobState);
-                 SM.UpdateJobState(SelectedJob.JobID,jobstateindex);
-            }
-
-
-            JB.UpdateJob(SelectedJob);
-            MessageBox.Show("The job has been successfully updated", "Update Job", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            cbxCurrentState.Text = "";
-            rtbNotes.Clear();
-            nudEmployees.Value = 0;
-            lbxCurrentAssignedTech.Items.Clear();
-
-            
-        }
-
-        private void btnAddTechnician_Click(object sender, EventArgs e)
-        {
-            if (lbxAvailTech.SelectedItem != null)
-            {
-                lbxCurrentAssignedTech.Items.Add(lbxAvailTech.SelectedItem);
-                SelectedJob.Employee.Add(lbxAvailTech.SelectedItem as MaintenanceEmployee); //Need to get listbox items added to the list of type maintenance employee
-                
-                
-                lbxAvailTech.Items.RemoveAt(lbxAvailTech.SelectedIndex);               
+                DialogResult dr = MessageBox.Show("Are you sure to Update The job?", "Confirmation", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    jobs[dgvViewJob.CurrentCell.RowIndex].JobNotes = txtNotes.Text;
+                    jobs[dgvViewJob.CurrentCell.RowIndex].JobState = GetJobState(cbxCurrentState.SelectedIndex+"");
+                    jobs[dgvViewJob.CurrentCell.RowIndex].EmployeesNeeded = (int)nudEmployees.Value;
+                    job.UpdateJob(jobs[dgvViewJob.CurrentCell.RowIndex]);
+                    RefreshDGVAndListForJobs();
+                    UpdateFields(dgvViewJob.CurrentCell.RowIndex);
+                    RefreshDGVAndListForEmployees(dgvViewJob.CurrentCell.RowIndex);
+                }
             }
             else
             {
-                MessageBox.Show("The technician has already been newly assigned", "Add technicians Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private void btnRemoveTechnician_Click(object sender, EventArgs e)
-        {
-
-            if (lbxCurrentAssignedTech.SelectedItem != null)
-            {
-                lbxAvailTech.Items.Add(lbxCurrentAssignedTech.SelectedItem);
-                lbxCurrentAssignedTech.Items.RemoveAt(lbxCurrentAssignedTech.SelectedIndex);
-                SelectedJob.Employee.Remove(lbxCurrentAssignedTech.SelectedItem as MaintenanceEmployee);
+                MessageBox.Show("selected item can not be deleted");
             }
         }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lstViewAssemp_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lstJobs_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lstJobs_MouseClick(object sender, MouseEventArgs e)
-        {
-            lstJobs.FullRowSelect = true;
-            lbxCurrentAssignedTech.Items.Clear();
-
-            if (lstJobs.SelectedItems.Count > 0)
-            {
-                NewJob = lstJobs.SelectedItems[0].Tag as Job; //Creates a job object of the current job 
-
-                SelectedJob.JobID = NewJob.JobID;
-
-                SelectedJob.JobAddress = NewJob.JobAddress;
-
-                SelectedJob.ServiceRequestID = NewJob.ServiceRequestID;
-                                
-                SelectedJob.Employee = NewJob.Employee;
-
-                foreach (MaintenanceEmployee m in NewJob.Employee)
-                {
-                    lbxCurrentAssignedTech.Items.Add(String.Format(stdOutput, m.FirstName, m.Id));
-                }
-
-                rtbNotes.Text = NewJob.JobNotes; // Gets the notes of the current job
-                SelectedJob.JobNotes = NewJob.JobNotes;
-
-                nudEmployees.Value = NewJob.EmployeesNeeded; //Number of current job employees needed
-                SelectedJob.EmployeesNeeded = NewJob.EmployeesNeeded;
-               
-                st = NewJob.JobState; //Gets the current job state
-                SelectedJob.JobState = st;
-               
-
-
-                if (st.ToString() == "Pending")
-                {
-                    cbxCurrentState.Text = "Pending";
-                }
-                if (st.ToString() == "InProgress")
-                {
-                    cbxCurrentState.Text = "InProgress";
-                }
-                if (st.ToString() == "Finished")
-                {
-                    cbxCurrentState.Text = "Finished";
-                }
-
-                SelectedJob.Specialisation = NewJob.Specialisation;
-                cbxSpecialisation.Text = NewJob.Specialisation.SpecialisationName;
-
-                NewEmp = NewJob.Employee; //Maintenance Employee List 
-                SelectedJob.Employee = NewEmp;
-
-                foreach (Employee ME in NewEmp)
-                {
-                    ListViewItem lst = new ListViewItem(new string[]
-                     {
-                            ME.Id,
-                            ME.FirstName
-                     });
-                }
-
-                SelectedJob.PriorityLevel = NewJob.PriorityLevel;
-            }
-            else
-            {
-                MessageBox.Show("No record was selected ", "Jobs", MessageBoxButtons.OK);
-            }
-        }
-
-        #endregion
-
-        #region Methods
-
-
-        #endregion
     }
 }

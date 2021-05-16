@@ -444,17 +444,13 @@ BEGIN
 	COMMIT
 END
 GO
-ALTER PROCEDURE UpdateJob @id INT, @notes VARCHAR(255), @specialisationId INT, @adressid INT, @streetName VARCHAR(100), @suburb VARCHAR(100), @province VARCHAR(20), @postalcode VARCHAR(10),@city VARCHAR(100)
+ALTER PROCEDURE UpdateJob @id INT, @notes VARCHAR(255),@state INT, @needed INT
 AS
 BEGIN
 	BEGIN TRAN
 		UPDATE Job
-		SET addressId = @adressid, notes = @notes, specialisationId = @specialisationId
+		SET notes = @notes, currentState = @state, amountOfEmployeesNeeded = @needed
 		WHERE jobID = @id
-
-		UPDATE [Address]
-		SET streetName = @streetName, suburb = @suburb, province = @province, postalcode = @postalcode,city = @city
-		WHERE addressID = @adressid
 	COMMIT
 END
 GO
