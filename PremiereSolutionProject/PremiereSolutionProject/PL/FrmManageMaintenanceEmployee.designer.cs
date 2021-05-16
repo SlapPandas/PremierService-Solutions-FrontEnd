@@ -37,16 +37,13 @@
             this.btnTake = new System.Windows.Forms.Button();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
             this.dgvHave = new System.Windows.Forms.DataGridView();
-<<<<<<< Updated upstream
             this.dgvAvailable = new System.Windows.Forms.DataGridView();
-=======
             this.btnClose = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
->>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).BeginInit();
@@ -163,8 +160,6 @@
             this.dgvAvailable.TabIndex = 89;
             this.dgvAvailable.SelectionChanged += new System.EventHandler(this.dgvAvailable_SelectionChanged);
             // 
-<<<<<<< Updated upstream
-=======
             // dgvHave
             // 
             this.dgvHave.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -240,7 +235,6 @@
             this.label6.TabIndex = 96;
             this.label6.Text = "Search Employee";
             // 
->>>>>>> Stashed changes
             // FrmManageMaintenanceEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,15 +279,12 @@
         private System.Windows.Forms.Button btnTake;
         private System.Windows.Forms.RichTextBox txtDescription;
         private System.Windows.Forms.DataGridView dgvHave;
-<<<<<<< Updated upstream
         private System.Windows.Forms.DataGridView dgvAvailable;
-=======
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
->>>>>>> Stashed changes
     }
 }
