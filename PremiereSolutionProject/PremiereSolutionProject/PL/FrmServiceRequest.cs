@@ -17,18 +17,26 @@ namespace PremiereSolutionProject.PL
             InitializeComponent();
         }
 
+        #region Declarations
+
+        frmDashboard dashform;
+        List<string> specList;
+        List<Specialisation> spec;
+
+        #endregion
+
+        #region Events
+
         public FrmServiceRequest(frmDashboard _dashform):this()
         {
             dashform = _dashform;
         }
-        frmDashboard dashform;
-
+        
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        List<string> specList;       
-        List<Specialisation> spec;
+        
         private void FrmServiceRequest_Load(object sender, EventArgs e)
         {
             try
@@ -106,5 +114,7 @@ namespace PremiereSolutionProject.PL
             Action action = sr.service_OnInitialization;
             sr.CreateServiceRequest(sr);
         }
+
+        #endregion
     }
 }

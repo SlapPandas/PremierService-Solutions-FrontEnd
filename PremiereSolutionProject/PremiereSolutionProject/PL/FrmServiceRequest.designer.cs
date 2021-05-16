@@ -52,9 +52,10 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(199, 14);
+            this.label1.Location = new System.Drawing.Point(429, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(287, 33);
@@ -63,9 +64,10 @@
             // 
             // lblClientName
             // 
+            this.lblClientName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblClientName.AutoSize = true;
             this.lblClientName.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClientName.Location = new System.Drawing.Point(282, 65);
+            this.lblClientName.Location = new System.Drawing.Point(564, 63);
             this.lblClientName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClientName.Name = "lblClientName";
             this.lblClientName.Size = new System.Drawing.Size(91, 16);
@@ -74,9 +76,10 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(112, 134);
+            this.label3.Location = new System.Drawing.Point(268, 143);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 16);
@@ -85,9 +88,10 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(202, 65);
+            this.label4.Location = new System.Drawing.Point(484, 63);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 16);
@@ -96,18 +100,20 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(115, 163);
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox1.Location = new System.Drawing.Point(271, 172);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(305, 122);
+            this.richTextBox1.Size = new System.Drawing.Size(662, 115);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = "";
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(202, 94);
+            this.label2.Location = new System.Drawing.Point(484, 92);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 16);
@@ -116,9 +122,10 @@
             // 
             // lblCallID
             // 
+            this.lblCallID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCallID.AutoSize = true;
             this.lblCallID.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCallID.Location = new System.Drawing.Point(282, 94);
+            this.lblCallID.Location = new System.Drawing.Point(564, 92);
             this.lblCallID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCallID.Name = "lblCallID";
             this.lblCallID.Size = new System.Drawing.Size(56, 16);
@@ -127,8 +134,9 @@
             // 
             // cbxSpecialisation
             // 
+            this.cbxSpecialisation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxSpecialisation.FormattingEnabled = true;
-            this.cbxSpecialisation.Location = new System.Drawing.Point(115, 320);
+            this.cbxSpecialisation.Location = new System.Drawing.Point(271, 329);
             this.cbxSpecialisation.Margin = new System.Windows.Forms.Padding(4);
             this.cbxSpecialisation.Name = "cbxSpecialisation";
             this.cbxSpecialisation.Size = new System.Drawing.Size(305, 21);
@@ -136,9 +144,10 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(112, 300);
+            this.label5.Location = new System.Drawing.Point(268, 309);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(160, 16);
@@ -147,15 +156,16 @@
             // 
             // btnSubmit
             // 
+            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(115, 449);
+            this.btnSubmit.Location = new System.Drawing.Point(461, 519);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(305, 36);
+            this.btnSubmit.Size = new System.Drawing.Size(313, 36);
             this.btnSubmit.TabIndex = 11;
-            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.Text = "Submit Service Request";
             this.btnSubmit.UseVisualStyleBackColor = false;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
@@ -168,15 +178,16 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(102, 34);
             this.btnExit.TabIndex = 12;
-            this.btnExit.Text = "Exit";
+            this.btnExit.Text = "Close";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(112, 374);
+            this.label6.Location = new System.Drawing.Point(268, 383);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(135, 16);
@@ -185,13 +196,14 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(470, 163);
+            this.btnAdd.Location = new System.Drawing.Point(613, 329);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(109, 49);
+            this.btnAdd.Size = new System.Drawing.Size(130, 60);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add Specialisation";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -199,7 +211,8 @@
             // 
             // nudNumberOfPeople
             // 
-            this.nudNumberOfPeople.Location = new System.Drawing.Point(115, 393);
+            this.nudNumberOfPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nudNumberOfPeople.Location = new System.Drawing.Point(271, 402);
             this.nudNumberOfPeople.Maximum = new decimal(new int[] {
             10,
             0,
@@ -221,21 +234,23 @@
             // 
             // lbxSpecialisations
             // 
+            this.lbxSpecialisations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbxSpecialisations.FormattingEnabled = true;
-            this.lbxSpecialisations.Location = new System.Drawing.Point(623, 163);
+            this.lbxSpecialisations.Location = new System.Drawing.Point(794, 309);
             this.lbxSpecialisations.Name = "lbxSpecialisations";
             this.lbxSpecialisations.Size = new System.Drawing.Size(139, 173);
             this.lbxSpecialisations.TabIndex = 18;
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(470, 236);
+            this.button1.Location = new System.Drawing.Point(613, 402);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 49);
+            this.button1.Size = new System.Drawing.Size(130, 60);
             this.button1.TabIndex = 19;
             this.button1.Text = "Remove specialisation";
             this.button1.UseVisualStyleBackColor = false;
