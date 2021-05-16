@@ -125,6 +125,16 @@ namespace PremiereSolutionProject.BLL
             this.price = price;
         }
 
+        public Contract(DateTime start, DateTime end, List<ServicePackage> packList, string priorityLevel, double price, string type)
+        {
+            this.startDate = start;
+            this.endDate = end;
+            this.packageList = packList;
+            this.contractType = type;
+            this.priorityLevel = priorityLevel;
+            this.price = price;
+        }
+
         // no client with active parameter
         public Contract(string id, bool acti, DateTime start, DateTime end, List<ServicePackage> packList, string priorityLevel, double price, string type)
         {
