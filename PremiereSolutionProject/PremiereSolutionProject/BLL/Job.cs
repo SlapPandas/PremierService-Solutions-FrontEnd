@@ -105,6 +105,13 @@ namespace PremiereSolutionProject.BLL
             JobDH jobDH = new JobDH();
             return jobDH.SelectAllJobsWithPriority();
         }
+
+        public List<Job> SelectAllJobsNotFinished() // get a list of all jobs now finished
+        {
+            JobDH jobDH = new JobDH();
+            return jobDH.SelectJobsNotCurrentlyFinished();
+        }
+
         public List<Job> SelectAllPendingJobsWithPriorityLevel() // get a list of all jobs
         {
             JobDH jobDH = new JobDH();
