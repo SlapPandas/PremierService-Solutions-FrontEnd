@@ -17,9 +17,21 @@ namespace PremiereSolutionProject.PL
         {
             InitializeComponent();
         }
+
+        #region Declarations
+
         List<Service> services;
         BindingSource bs = new BindingSource();
         Service selectedService;
+
+        #endregion
+
+        #region Events
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void btnCreatePackage_Click(object sender, EventArgs e)
         {
@@ -54,14 +66,6 @@ namespace PremiereSolutionProject.PL
             dgvCurrentServices.ForeColor = Color.Black;
             RefreshDGV();
         }
-        private void RefreshDGV()
-        {
-            services = new Service().SelectAllServices();
-            bs.DataSource = services;
-            dgvCurrentServices.DataSource = null;
-            dgvCurrentServices.DataSource = bs;
-
-        }
 
         private void btnDeleteService_Click(object sender, EventArgs e)
         {
@@ -75,10 +79,28 @@ namespace PremiereSolutionProject.PL
             selectedService = (Service)bs.Current;
             UpdateData();
         }
+
+        #endregion
+
+        #region Methods
+
         private void UpdateData()
         {
             txtServiceName.Text = selectedService.ServiceName;
             rtbServiceDescription.Text = selectedService.ServiceDescription;
         }
+
+        private void RefreshDGV()
+        {
+            services = new Service().SelectAllServices();
+            bs.DataSource = services;
+            dgvCurrentServices.DataSource = null;
+            dgvCurrentServices.DataSource = bs;
+            dgvCurrentServices.Columns[2].Width = 300;
+            dgvCurrentServices.Columns[1].Width = 120;
+        }
+
+        #endregion
+
     }
 }
