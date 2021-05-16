@@ -34,6 +34,8 @@ namespace PremiereSolutionProject.PL
             this.btnErrorHandling = new System.Windows.Forms.Button();
             this.pnlServiceSubMenu = new System.Windows.Forms.Panel();
             this.btnAssignNewEmp = new System.Windows.Forms.Button();
+            this.btnAddSpecialisation = new System.Windows.Forms.Button();
+            this.btnManageME = new System.Windows.Forms.Button();
             this.btnManageEmp = new System.Windows.Forms.Button();
             this.btnEscalate = new System.Windows.Forms.Button();
             this.btnServiceManager = new System.Windows.Forms.Button();
@@ -108,7 +110,7 @@ namespace PremiereSolutionProject.PL
             this.btnErrorHandling.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnErrorHandling.Image = ((System.Drawing.Image)(resources.GetObject("btnErrorHandling.Image")));
             this.btnErrorHandling.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnErrorHandling.Location = new System.Drawing.Point(0, 1538);
+            this.btnErrorHandling.Location = new System.Drawing.Point(0, 1659);
             this.btnErrorHandling.Margin = new System.Windows.Forms.Padding(4);
             this.btnErrorHandling.Name = "btnErrorHandling";
             this.btnErrorHandling.Size = new System.Drawing.Size(312, 50);
@@ -121,13 +123,15 @@ namespace PremiereSolutionProject.PL
             // pnlServiceSubMenu
             // 
             this.pnlServiceSubMenu.Controls.Add(this.btnAssignNewEmp);
+            this.pnlServiceSubMenu.Controls.Add(this.btnAddSpecialisation);
+            this.pnlServiceSubMenu.Controls.Add(this.btnManageME);
             this.pnlServiceSubMenu.Controls.Add(this.btnManageEmp);
             this.pnlServiceSubMenu.Controls.Add(this.btnEscalate);
             this.pnlServiceSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlServiceSubMenu.Location = new System.Drawing.Point(0, 1348);
             this.pnlServiceSubMenu.Margin = new System.Windows.Forms.Padding(4);
             this.pnlServiceSubMenu.Name = "pnlServiceSubMenu";
-            this.pnlServiceSubMenu.Size = new System.Drawing.Size(312, 190);
+            this.pnlServiceSubMenu.Size = new System.Drawing.Size(312, 311);
             this.pnlServiceSubMenu.TabIndex = 9;
             // 
             // btnAssignNewEmp
@@ -137,16 +141,52 @@ namespace PremiereSolutionProject.PL
             this.btnAssignNewEmp.FlatAppearance.BorderSize = 0;
             this.btnAssignNewEmp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAssignNewEmp.ForeColor = System.Drawing.Color.LightGray;
-            this.btnAssignNewEmp.Location = new System.Drawing.Point(0, 126);
+            this.btnAssignNewEmp.Location = new System.Drawing.Point(0, 252);
             this.btnAssignNewEmp.Margin = new System.Windows.Forms.Padding(4);
             this.btnAssignNewEmp.Name = "btnAssignNewEmp";
             this.btnAssignNewEmp.Padding = new System.Windows.Forms.Padding(87, 0, 0, 0);
             this.btnAssignNewEmp.Size = new System.Drawing.Size(312, 63);
-            this.btnAssignNewEmp.TabIndex = 15;
+            this.btnAssignNewEmp.TabIndex = 17;
             this.btnAssignNewEmp.Text = "Assign New Employees To A Job";
             this.btnAssignNewEmp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAssignNewEmp.UseVisualStyleBackColor = false;
-            this.btnAssignNewEmp.Click += new System.EventHandler(this.btnAssignNewEmp_Click_1);
+            this.btnAssignNewEmp.Click += new System.EventHandler(this.btnAssignNewEmp_Click);
+            // 
+            // btnAddSpecialisation
+            // 
+            this.btnAddSpecialisation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnAddSpecialisation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddSpecialisation.FlatAppearance.BorderSize = 0;
+            this.btnAddSpecialisation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddSpecialisation.ForeColor = System.Drawing.Color.LightGray;
+            this.btnAddSpecialisation.Location = new System.Drawing.Point(0, 189);
+            this.btnAddSpecialisation.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddSpecialisation.Name = "btnAddSpecialisation";
+            this.btnAddSpecialisation.Padding = new System.Windows.Forms.Padding(87, 0, 0, 0);
+            this.btnAddSpecialisation.Size = new System.Drawing.Size(312, 63);
+            this.btnAddSpecialisation.TabIndex = 16;
+            this.btnAddSpecialisation.Text = "Add Specialisation";
+            this.btnAddSpecialisation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddSpecialisation.UseVisualStyleBackColor = false;
+            this.btnAddSpecialisation.Click += new System.EventHandler(this.btnAddSpecialisation_Click);
+            // 
+            // btnManageME
+            // 
+            this.btnManageME.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.btnManageME.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnManageME.FlatAppearance.BorderSize = 0;
+            this.btnManageME.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageME.ForeColor = System.Drawing.Color.LightGray;
+            this.btnManageME.Location = new System.Drawing.Point(0, 126);
+            this.btnManageME.Margin = new System.Windows.Forms.Padding(4);
+            this.btnManageME.Name = "btnManageME";
+            this.btnManageME.Padding = new System.Windows.Forms.Padding(87, 0, 0, 0);
+            this.btnManageME.Size = new System.Drawing.Size(312, 63);
+            this.btnManageME.TabIndex = 15;
+            this.btnManageME.Text = "Manage Maintenance Employees";
+            this.btnManageME.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnManageME.UseVisualStyleBackColor = false;
+            this.btnManageME.Click += new System.EventHandler(this.btnManageME_Click_1);
             // 
             // btnManageEmp
             // 
@@ -210,7 +250,7 @@ namespace PremiereSolutionProject.PL
             this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(0, 1588);
+            this.btnExit.Location = new System.Drawing.Point(0, 1709);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(312, 51);
@@ -722,9 +762,11 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Button btnManageEmp;
         private System.Windows.Forms.Button btnEscalate;
         private System.Windows.Forms.Button btnServiceManager;
-        private System.Windows.Forms.Button btnAssignNewEmp;
         private System.Windows.Forms.Button btnErrorHandling;
         private System.Windows.Forms.Button btnClientContract;
         private System.Windows.Forms.Button btnBusinessContact;
+        private System.Windows.Forms.Button btnAssignNewEmp;
+        private System.Windows.Forms.Button btnAddSpecialisation;
+        private System.Windows.Forms.Button btnManageME;
     }
 }

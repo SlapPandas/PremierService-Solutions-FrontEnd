@@ -111,6 +111,18 @@ namespace PremiereSolutionProject.PL
         {
             ShowSubMenu(pnlClientSatisSubMenu);
         }
+
+        private void btnServiceManager_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(pnlServiceSubMenu);
+        }
+
+        private void btnErrorHandling_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmErrorHandling());
+            HideSubMenu();
+        }
+
         #region btnCallCenterSubMenu
         private void btnCall_Click(object sender, EventArgs e)
         {
@@ -195,6 +207,17 @@ namespace PremiereSolutionProject.PL
             HideSubMenu();
         }
 
+        private void btnBusinessContact_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new frmBusinessContact(this));
+            HideSubMenu();
+        }
+
+        private void btnClientContract_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new frmClientContract(this));
+            HideSubMenu();
+        }
         #endregion
 
         #region btnClientSatisSubMenu
@@ -213,6 +236,38 @@ namespace PremiereSolutionProject.PL
         private void btnViewClientData_Click(object sender, EventArgs e)
         {
             openChildForm(new frmClientInfo());
+            HideSubMenu();
+        }
+        #endregion
+
+        #region Service Manager SubMenu
+
+        private void btnEscalate_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmEscalateJobs());
+            HideSubMenu();
+        }
+
+        private void btnManageEmp_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmManageEmployee());
+            HideSubMenu();
+        }
+        private void btnAddSpecialisation_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmManageSpecialisation());
+            HideSubMenu();
+        }
+
+        private void btnManageME_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new FrmManageMaintenanceEmployee());
+            HideSubMenu();
+        }
+
+        private void btnAssignNewEmp_Click(object sender, EventArgs e)
+        {
+            openChildForm(new frmAssignNewEmployee());
             HideSubMenu();
         }
         #endregion
@@ -250,51 +305,5 @@ namespace PremiereSolutionProject.PL
         }
 
         
-
-        private void btnServiceManager_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(pnlServiceSubMenu);
-        }
-
-        #region Service Manager SubMenu
-
-        private void btnEscalate_Click(object sender, EventArgs e)
-        {
-            openChildForm(new frmEscalateJobs());
-            HideSubMenu();
-        }
-
-        private void btnManageEmp_Click(object sender, EventArgs e)
-        {
-            openChildForm(new frmManageEmployee());
-            HideSubMenu();
-        }
-        #endregion
-
-        private void btnAssignNewEmp_Click_1(object sender, EventArgs e)
-        {
-            openChildForm(new frmAssignNewEmployee());
-            HideSubMenu();
-        }
-
-        private void btnErrorHandling_Click(object sender, EventArgs e)
-        {
-            openChildForm(new frmErrorHandling());
-            HideSubMenu();
-        }
-
-        #region Client Maintenance P2
-        private void btnBusinessContact_Click_1(object sender, EventArgs e)
-        {
-            openChildForm(new frmBusinessContact(this));
-            HideSubMenu();
-        }
-
-        private void btnClientContract_Click_1(object sender, EventArgs e)
-        {
-            openChildForm(new frmClientContract(this));
-            HideSubMenu();
-        }
-        #endregion
     }
 }
