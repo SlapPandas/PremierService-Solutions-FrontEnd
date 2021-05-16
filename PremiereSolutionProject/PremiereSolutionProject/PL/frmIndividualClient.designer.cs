@@ -368,6 +368,7 @@
             this.dgvExistingClients.Location = new System.Drawing.Point(40, 132);
             this.dgvExistingClients.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.dgvExistingClients.Name = "dgvExistingClients";
+            this.dgvExistingClients.ReadOnly = true;
             this.dgvExistingClients.RowHeadersWidth = 62;
             this.dgvExistingClients.Size = new System.Drawing.Size(1058, 107);
             this.dgvExistingClients.TabIndex = 80;

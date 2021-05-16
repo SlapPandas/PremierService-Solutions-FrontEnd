@@ -412,6 +412,7 @@
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployee.Location = new System.Drawing.Point(49, 92);
             this.dgvEmployee.Name = "dgvEmployee";
+            this.dgvEmployee.ReadOnly = true;
             this.dgvEmployee.RowHeadersWidth = 62;
             this.dgvEmployee.Size = new System.Drawing.Size(888, 193);
             this.dgvEmployee.TabIndex = 122;

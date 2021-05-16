@@ -140,6 +140,7 @@ namespace PremiereSolutionProject.PL
             this.dgvViewServices.Location = new System.Drawing.Point(66, 198);
             this.dgvViewServices.Margin = new System.Windows.Forms.Padding(4);
             this.dgvViewServices.Name = "dgvViewServices";
+            this.dgvViewServices.ReadOnly = true;
             this.dgvViewServices.RowHeadersWidth = 62;
             this.dgvViewServices.Size = new System.Drawing.Size(677, 182);
             this.dgvViewServices.TabIndex = 27;

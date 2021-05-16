@@ -54,6 +54,7 @@ namespace PremiereSolutionProject.PL
             this.dgvViewClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvViewClient.Location = new System.Drawing.Point(54, 295);
             this.dgvViewClient.Name = "dgvViewClient";
+            this.dgvViewClient.ReadOnly = true;
             this.dgvViewClient.RowHeadersWidth = 62;
             this.dgvViewClient.RowTemplate.Height = 28;
             this.dgvViewClient.Size = new System.Drawing.Size(1033, 120);
@@ -131,6 +132,7 @@ namespace PremiereSolutionProject.PL
             this.dgvClientContractInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientContractInfo.Location = new System.Drawing.Point(55, 447);
             this.dgvClientContractInfo.Name = "dgvClientContractInfo";
+            this.dgvClientContractInfo.ReadOnly = true;
             this.dgvClientContractInfo.RowHeadersWidth = 62;
             this.dgvClientContractInfo.RowTemplate.Height = 28;
             this.dgvClientContractInfo.Size = new System.Drawing.Size(1032, 116);
@@ -167,6 +169,7 @@ namespace PremiereSolutionProject.PL
             this.dgvClientInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientInfo.Location = new System.Drawing.Point(54, 143);
             this.dgvClientInfo.Name = "dgvClientInfo";
+            this.dgvClientInfo.ReadOnly = true;
             this.dgvClientInfo.RowHeadersWidth = 62;
             this.dgvClientInfo.RowTemplate.Height = 28;
             this.dgvClientInfo.Size = new System.Drawing.Size(1033, 121);

@@ -62,6 +62,7 @@ namespace PremiereSolutionProject.PL
             this.dgvCurrentServices.Location = new System.Drawing.Point(275, 111);
             this.dgvCurrentServices.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCurrentServices.Name = "dgvCurrentServices";
+            this.dgvCurrentServices.ReadOnly = true;
             this.dgvCurrentServices.RowHeadersWidth = 62;
             this.dgvCurrentServices.Size = new System.Drawing.Size(590, 162);
             this.dgvCurrentServices.TabIndex = 69;

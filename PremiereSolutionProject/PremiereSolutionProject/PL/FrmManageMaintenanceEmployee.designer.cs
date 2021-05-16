@@ -56,6 +56,7 @@
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployee.Location = new System.Drawing.Point(118, 124);
             this.dgvEmployee.Name = "dgvEmployee";
+            this.dgvEmployee.ReadOnly = true;
             this.dgvEmployee.RowHeadersWidth = 62;
             this.dgvEmployee.Size = new System.Drawing.Size(895, 167);
             this.dgvEmployee.TabIndex = 83;
@@ -142,11 +143,13 @@
             // 
             // dgvHave
             // 
+            this.dgvHave.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvHave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHave.Location = new System.Drawing.Point(491, 274);
+            this.dgvHave.Location = new System.Drawing.Point(617, 315);
             this.dgvHave.Name = "dgvHave";
+            this.dgvHave.ReadOnly = true;
             this.dgvHave.RowHeadersWidth = 62;
-            this.dgvHave.Size = new System.Drawing.Size(264, 181);
+            this.dgvHave.Size = new System.Drawing.Size(264, 189);
             this.dgvHave.TabIndex = 90;
             // 
             // dgvAvailable
@@ -155,20 +158,11 @@
             this.dgvAvailable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAvailable.Location = new System.Drawing.Point(267, 315);
             this.dgvAvailable.Name = "dgvAvailable";
+            this.dgvAvailable.ReadOnly = true;
             this.dgvAvailable.RowHeadersWidth = 62;
             this.dgvAvailable.Size = new System.Drawing.Size(264, 159);
             this.dgvAvailable.TabIndex = 89;
             this.dgvAvailable.SelectionChanged += new System.EventHandler(this.dgvAvailable_SelectionChanged);
-            // 
-            // dgvHave
-            // 
-            this.dgvHave.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dgvHave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHave.Location = new System.Drawing.Point(617, 315);
-            this.dgvHave.Name = "dgvHave";
-            this.dgvHave.RowHeadersWidth = 62;
-            this.dgvHave.Size = new System.Drawing.Size(264, 189);
-            this.dgvHave.TabIndex = 90;
             // 
             // btnClose
             // 

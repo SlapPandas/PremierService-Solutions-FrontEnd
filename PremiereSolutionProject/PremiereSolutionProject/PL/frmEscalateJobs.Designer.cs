@@ -70,8 +70,9 @@ namespace PremiereSolutionProject.PL
             // 
             this.dgvServiceRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvServiceRequests.Location = new System.Drawing.Point(157, 98);
-            this.dgvServiceRequests.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvServiceRequests.Margin = new System.Windows.Forms.Padding(2);
             this.dgvServiceRequests.Name = "dgvServiceRequests";
+            this.dgvServiceRequests.ReadOnly = true;
             this.dgvServiceRequests.RowHeadersWidth = 51;
             this.dgvServiceRequests.RowTemplate.Height = 24;
             this.dgvServiceRequests.Size = new System.Drawing.Size(847, 134);
@@ -320,7 +321,7 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.dgvServiceRequests);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1156, 637);
             this.Name = "frmEscalateJobs";
             this.Text = "frmEscalateJobs";

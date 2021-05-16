@@ -64,6 +64,7 @@ namespace PremiereSolutionProject.PL
             this.dgvViewJob.Location = new System.Drawing.Point(12, 89);
             this.dgvViewJob.Margin = new System.Windows.Forms.Padding(2);
             this.dgvViewJob.Name = "dgvViewJob";
+            this.dgvViewJob.ReadOnly = true;
             this.dgvViewJob.RowHeadersWidth = 51;
             this.dgvViewJob.RowTemplate.Height = 24;
             this.dgvViewJob.Size = new System.Drawing.Size(1113, 185);
@@ -136,6 +137,7 @@ namespace PremiereSolutionProject.PL
             this.dgvAvailableTech.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAvailableTech.Location = new System.Drawing.Point(280, 325);
             this.dgvAvailableTech.Name = "dgvAvailableTech";
+            this.dgvAvailableTech.ReadOnly = true;
             this.dgvAvailableTech.RowHeadersWidth = 62;
             this.dgvAvailableTech.Size = new System.Drawing.Size(264, 232);
             this.dgvAvailableTech.TabIndex = 147;
@@ -145,6 +147,7 @@ namespace PremiereSolutionProject.PL
             this.dgvAssignedTech.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAssignedTech.Location = new System.Drawing.Point(637, 325);
             this.dgvAssignedTech.Name = "dgvAssignedTech";
+            this.dgvAssignedTech.ReadOnly = true;
             this.dgvAssignedTech.RowHeadersWidth = 62;
             this.dgvAssignedTech.Size = new System.Drawing.Size(264, 232);
             this.dgvAssignedTech.TabIndex = 148;
