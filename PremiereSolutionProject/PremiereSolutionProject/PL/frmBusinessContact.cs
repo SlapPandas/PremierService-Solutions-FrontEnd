@@ -60,8 +60,6 @@ namespace PremiereSolutionProject.PL
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            //TODO: don't know why the dgvExistingEmployees are showing the BUSINESS NAME and not the id???
-            // think i fixed the id problem
             DialogResult dr = MessageBox.Show("Are you sure to insert a new business contact for " + businessClientList[dgvExistingBusinesses.CurrentCell.RowIndex].BusinessName +"?", "Confirmation", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {

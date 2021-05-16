@@ -306,7 +306,7 @@ namespace PremiereSolutionProject.PL
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(58, 197);
+            this.label5.Location = new System.Drawing.Point(58, 186);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(253, 16);
             this.label5.TabIndex = 107;
@@ -317,13 +317,13 @@ namespace PremiereSolutionProject.PL
             this.dgvExistingEmployees.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvExistingEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvExistingEmployees.Location = new System.Drawing.Point(61, 215);
+            this.dgvExistingEmployees.Location = new System.Drawing.Point(61, 204);
             this.dgvExistingEmployees.Margin = new System.Windows.Forms.Padding(2);
             this.dgvExistingEmployees.Name = "dgvExistingEmployees";
             this.dgvExistingEmployees.ReadOnly = true;
             this.dgvExistingEmployees.RowHeadersWidth = 62;
             this.dgvExistingEmployees.RowTemplate.Height = 28;
-            this.dgvExistingEmployees.Size = new System.Drawing.Size(1024, 97);
+            this.dgvExistingEmployees.Size = new System.Drawing.Size(1024, 108);
             this.dgvExistingEmployees.TabIndex = 106;
             this.dgvExistingEmployees.SelectionChanged += new System.EventHandler(this.dgvExistingEmployees_SelectionChanged);
             // 
