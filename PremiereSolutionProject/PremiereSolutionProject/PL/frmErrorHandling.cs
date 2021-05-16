@@ -13,28 +13,48 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmErrorHandling : Form
     {
-        DatabaseOperation databaseOperation = new DatabaseOperation();
-        List<DatabaseOperation> databaseOperations = new List<DatabaseOperation>();
 
         public frmErrorHandling()
         {
             InitializeComponent();
         }
 
+        #region Declarations
+
+        DatabaseOperation databaseOperation = new DatabaseOperation();
+        List<DatabaseOperation> databaseOperations = new List<DatabaseOperation>();
+
+        #endregion
+
+        #region Events
         private void frmErrorsHandling_Load(object sender, EventArgs e)
         {
             databaseOperations = databaseOperation.SelectAllErrors();
             GenerateListColumns();
             FillListView();
         }
-        private void GenerateListColumns() 
+
+        private void lstErrors_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ColumnHeader idHeader, dateHeared,successHeader, descriptionHeader;
+            txtDescription.Text = databaseOperations[lstErrors.FocusedItem.Index].Description;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
+
+        #region Methods
+        private void GenerateListColumns()
+        {
+            ColumnHeader idHeader, dateHeared, successHeader, descriptionHeader;
             idHeader = new ColumnHeader();
             dateHeared = new ColumnHeader();
             successHeader = new ColumnHeader();
             descriptionHeader = new ColumnHeader();
-
+            
             idHeader.Text = "Error Id";
             idHeader.TextAlign = HorizontalAlignment.Left;
             idHeader.Width = 70;
@@ -56,23 +76,16 @@ namespace PremiereSolutionProject.PL
             lstErrors.Columns.Add(successHeader);
             lstErrors.Columns.Add(descriptionHeader);
 
+            lstErrors.FullRowSelect = true;
         }
+
         private void FillListView()
         {
             foreach (var item in databaseOperations)
             {
-                lstErrors.Items.Add(new ListViewItem(new string[] { item.Id.ToString(), item.DateAndTime.ToString(), item.Success.ToString(),item.Description.ToString() }));
+                lstErrors.Items.Add(new ListViewItem(new string[] { item.Id.ToString(), item.DateAndTime.ToString(), item.Success.ToString(), item.Description.ToString() }));
             }
         }
-
-        private void lstErrors_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtDescription.Text = databaseOperations[lstErrors.FocusedItem.Index].Description;
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion
     }
 }
