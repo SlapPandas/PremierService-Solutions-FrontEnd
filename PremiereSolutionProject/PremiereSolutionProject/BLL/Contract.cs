@@ -317,6 +317,8 @@ namespace PremiereSolutionProject.BLL
                     return "Silver";
                 case "bro":
                     return "Bronze";
+                case "spe":
+                    return "Special";
                 default:
                     break;
             }
