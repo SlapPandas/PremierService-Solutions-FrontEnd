@@ -27,13 +27,12 @@ namespace PremiereSolutionProject.PL
         BindingSource bs = new BindingSource();
         private void frmViewServiceRequests_Load(object sender, EventArgs e)
         {
-            dgvViewAllServiceReq.ForeColor = Color.Black;
-
-            sr = serviceRequest.SelectAllServiceRequests();
+            dgvViewAllServiceReq.ForeColor = Color.Black;            
             RefreshDGV();
         }
         private void RefreshDGV()
         {
+            sr = serviceRequest.SelectAllServiceRequests();
             bs.DataSource = sr;
             dgvViewAllServiceReq.DataSource = null;
             dgvViewAllServiceReq.DataSource = bs;
@@ -106,7 +105,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to delete row?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to update row?", "Confirmation", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
                 serviceRequest.UpdateServiceRequest(new ServiceRequest(sr[dgvViewAllServiceReq.CurrentRow.Index].ServiceRequestID, txtDescription.Text, txtPriorityLevel.Text));
