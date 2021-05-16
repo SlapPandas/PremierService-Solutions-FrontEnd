@@ -13,6 +13,13 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmAssignNewEmployee : Form
     {
+        public frmAssignNewEmployee()
+        {
+            InitializeComponent();
+        }
+
+        #region Declarations
+
         List<Job> jobs = new List<Job>();
         List<MaintenanceEmployee> maintenanceEmployeesAvailable = new List<MaintenanceEmployee>();
         List<MaintenanceEmployee> maintenanceEmployeesHave = new List<MaintenanceEmployee>();
@@ -22,78 +29,15 @@ namespace PremiereSolutionProject.PL
         MaintenanceEmployee maintenanceEmployee = new MaintenanceEmployee();
         BindingSource bindingSource = new BindingSource();
 
-        public frmAssignNewEmployee()
-        {
-            InitializeComponent();
-        }
+        #endregion
 
-        private void GenerateDGV()
-        {
-            dgvAvailableTech.ColumnCount = 2;
-            dgvAvailableTech.Columns[0].Name = "ID";
-            dgvAvailableTech.Columns[1].Name = "Name";
-
-            dgvAssignedTech.ColumnCount = 2;
-            dgvAssignedTech.Columns[0].Name = "ID";
-            dgvAssignedTech.Columns[1].Name = "Name";
-
-            dgvViewJob.ColumnCount = 3;
-            dgvViewJob.Columns[0].Name = "ID";
-            dgvViewJob.Columns[1].Name = "Notes";
-            dgvViewJob.Columns[2].Name = "Number of Employees needed";
-            dgvViewJob.Columns[1].Width = 200;
-
-            dgvViewJob.ForeColor = Color.Black;
-            dgvAvailableTech.ForeColor = Color.Black;
-            dgvAssignedTech.ForeColor = Color.Black;
-        }
-
-        private void RefreshDGVAndListForJobs()
-        {
-            if (dgvViewJob.Rows.Count != 0)
-            {
-                dgvViewJob.Rows.Clear();
-            }
-            jobs = job.SelectAllJobsNotFinished();
-            List<Job> bindList = jobs;
-            foreach (var item in bindList)
-            {
-                string[] row = { item.JobID.ToString(), item.JobNotes, item.EmployeesNeeded.ToString()};
-                dgvViewJob.Rows.Add(row);
-            }
-        }
+        #region Events
 
         private void frmAssignNewEmployee_Load(object sender, EventArgs e)
         {
             GenerateDGV();
             RefreshDGVAndListForJobs();
             RefreshDGVAvailable();
-        }
-        private void RefreshDGVEmployeesHave(int index)
-        {
-            maintenanceEmployeesHave = jobs[index].Employee;
-            if (dgvAssignedTech.Rows.Count != 0)
-            {
-                dgvAssignedTech.Rows.Clear();
-            }
-            foreach (var item in jobs[index].Employee)
-            {
-                string[] row = { item.Id.ToString(), item.FirstName + " " + item.Surname };
-                dgvAssignedTech.Rows.Add(row);
-            }
-        }
-        private void RefreshDGVAvailable()
-        {
-            maintenanceEmployeesAvailable = serviceRequest.SelectAllAvailabeEmployees();
-            if (dgvAvailableTech.Rows.Count != 0)
-            {
-                dgvAvailableTech.Rows.Clear();
-            }
-            foreach (var item in maintenanceEmployeesAvailable)
-            {
-                string[] row = { item.Id.ToString(), item.FirstName + " " + item.Surname };
-                dgvAvailableTech.Rows.Add(row);
-            }
         }
 
         private void dgvViewJob_SelectionChanged(object sender, EventArgs e)
@@ -143,5 +87,74 @@ namespace PremiereSolutionProject.PL
                 serviceManager.UpdateJobEmployeeList(jobs[dgvViewJob.CurrentCell.RowIndex]);
             }
         }
+
+        #endregion
+
+        #region Methods
+
+        private void GenerateDGV()
+        {
+            dgvAvailableTech.ColumnCount = 2;
+            dgvAvailableTech.Columns[0].Name = "ID";
+            dgvAvailableTech.Columns[1].Name = "Name";
+
+            dgvAssignedTech.ColumnCount = 2;
+            dgvAssignedTech.Columns[0].Name = "ID";
+            dgvAssignedTech.Columns[1].Name = "Name";
+
+            dgvViewJob.ColumnCount = 3;
+            dgvViewJob.Columns[0].Name = "ID";
+            dgvViewJob.Columns[1].Name = "Notes";
+            dgvViewJob.Columns[2].Name = "Number of Employees needed";
+            dgvViewJob.Columns[1].Width = 200;
+
+            dgvViewJob.ForeColor = Color.Black;
+            dgvAvailableTech.ForeColor = Color.Black;
+            dgvAssignedTech.ForeColor = Color.Black;
+        }
+
+        private void RefreshDGVAndListForJobs()
+        {
+            if (dgvViewJob.Rows.Count != 0)
+            {
+                dgvViewJob.Rows.Clear();
+            }
+            jobs = job.SelectAllJobsNotFinished();
+            List<Job> bindList = jobs;
+            foreach (var item in bindList)
+            {
+                string[] row = { item.JobID.ToString(), item.JobNotes, item.EmployeesNeeded.ToString() };
+                dgvViewJob.Rows.Add(row);
+            }
+        }
+
+        private void RefreshDGVEmployeesHave(int index)
+        {
+            maintenanceEmployeesHave = jobs[index].Employee;
+            if (dgvAssignedTech.Rows.Count != 0)
+            {
+                dgvAssignedTech.Rows.Clear();
+            }
+            foreach (var item in jobs[index].Employee)
+            {
+                string[] row = { item.Id.ToString(), item.FirstName + " " + item.Surname };
+                dgvAssignedTech.Rows.Add(row);
+            }
+        }
+        private void RefreshDGVAvailable()
+        {
+            maintenanceEmployeesAvailable = serviceRequest.SelectAllAvailabeEmployees();
+            if (dgvAvailableTech.Rows.Count != 0)
+            {
+                dgvAvailableTech.Rows.Clear();
+            }
+            foreach (var item in maintenanceEmployeesAvailable)
+            {
+                string[] row = { item.Id.ToString(), item.FirstName + " " + item.Surname };
+                dgvAvailableTech.Rows.Add(row);
+            }
+        }
+
+        #endregion
     }
 }

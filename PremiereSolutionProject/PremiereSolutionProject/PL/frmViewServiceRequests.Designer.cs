@@ -29,6 +29,8 @@ namespace PremiereSolutionProject.PL
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvViewAllServiceReq = new System.Windows.Forms.DataGridView();
             this.btnForward = new System.Windows.Forms.Button();
@@ -53,9 +55,10 @@ namespace PremiereSolutionProject.PL
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(130, 29);
+            this.label1.Location = new System.Drawing.Point(479, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(225, 33);
             this.label1.TabIndex = 1;
@@ -63,20 +66,39 @@ namespace PremiereSolutionProject.PL
             // 
             // dgvViewAllServiceReq
             // 
+            this.dgvViewAllServiceReq.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvViewAllServiceReq.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvViewAllServiceReq.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewAllServiceReq.Location = new System.Drawing.Point(33, 79);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvViewAllServiceReq.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvViewAllServiceReq.Location = new System.Drawing.Point(296, 71);
             this.dgvViewAllServiceReq.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvViewAllServiceReq.Name = "dgvViewAllServiceReq";
+            this.dgvViewAllServiceReq.ReadOnly = true;
             this.dgvViewAllServiceReq.RowHeadersWidth = 62;
             this.dgvViewAllServiceReq.RowTemplate.Height = 28;
-            this.dgvViewAllServiceReq.Size = new System.Drawing.Size(671, 232);
+            this.dgvViewAllServiceReq.Size = new System.Drawing.Size(636, 232);
             this.dgvViewAllServiceReq.TabIndex = 2;
             this.dgvViewAllServiceReq.Click += new System.EventHandler(this.dgvViewAllServiceReq_Click);
             // 
             // btnForward
             // 
+            this.btnForward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnForward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnForward.Location = new System.Drawing.Point(453, 332);
+            this.btnForward.Location = new System.Drawing.Point(672, 307);
             this.btnForward.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(104, 44);
@@ -87,8 +109,9 @@ namespace PremiereSolutionProject.PL
             // 
             // btnBackward
             // 
+            this.btnBackward.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBackward.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackward.Location = new System.Drawing.Point(178, 332);
+            this.btnBackward.Location = new System.Drawing.Point(446, 307);
             this.btnBackward.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBackward.Name = "btnBackward";
             this.btnBackward.Size = new System.Drawing.Size(104, 44);
@@ -99,8 +122,9 @@ namespace PremiereSolutionProject.PL
             // 
             // btnEnd
             // 
+            this.btnEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnd.Location = new System.Drawing.Point(600, 332);
+            this.btnEnd.Location = new System.Drawing.Point(828, 307);
             this.btnEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEnd.Name = "btnEnd";
             this.btnEnd.Size = new System.Drawing.Size(104, 44);
@@ -111,8 +135,9 @@ namespace PremiereSolutionProject.PL
             // 
             // btnStart
             // 
+            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStart.Location = new System.Drawing.Point(33, 332);
+            this.btnStart.Location = new System.Drawing.Point(299, 307);
             this.btnStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(104, 44);
@@ -130,19 +155,20 @@ namespace PremiereSolutionProject.PL
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(79, 39);
             this.btnExit.TabIndex = 111;
-            this.btnExit.Text = "Exit";
+            this.btnExit.Text = "Close";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(723, 518);
+            this.btnDelete.Location = new System.Drawing.Point(839, 494);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(231, 45);
+            this.btnDelete.Size = new System.Drawing.Size(93, 45);
             this.btnDelete.TabIndex = 113;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -150,9 +176,10 @@ namespace PremiereSolutionProject.PL
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(30, 412);
+            this.label3.Location = new System.Drawing.Point(290, 370);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(136, 16);
@@ -161,9 +188,10 @@ namespace PremiereSolutionProject.PL
             // 
             // txtServiceRequestID
             // 
+            this.txtServiceRequestID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtServiceRequestID.Enabled = false;
             this.txtServiceRequestID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtServiceRequestID.Location = new System.Drawing.Point(33, 438);
+            this.txtServiceRequestID.Location = new System.Drawing.Point(295, 391);
             this.txtServiceRequestID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtServiceRequestID.Name = "txtServiceRequestID";
             this.txtServiceRequestID.ReadOnly = true;
@@ -172,9 +200,10 @@ namespace PremiereSolutionProject.PL
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(723, 412);
+            this.label2.Location = new System.Drawing.Point(291, 463);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 16);
@@ -183,9 +212,10 @@ namespace PremiereSolutionProject.PL
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 464);
+            this.label4.Location = new System.Drawing.Point(290, 416);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 16);
@@ -194,9 +224,10 @@ namespace PremiereSolutionProject.PL
             // 
             // txtCallId
             // 
+            this.txtCallId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCallId.Enabled = false;
             this.txtCallId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCallId.Location = new System.Drawing.Point(33, 485);
+            this.txtCallId.Location = new System.Drawing.Point(295, 437);
             this.txtCallId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCallId.Name = "txtCallId";
             this.txtCallId.ReadOnly = true;
@@ -205,9 +236,10 @@ namespace PremiereSolutionProject.PL
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(723, 457);
+            this.label5.Location = new System.Drawing.Point(292, 508);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 16);
@@ -216,9 +248,10 @@ namespace PremiereSolutionProject.PL
             // 
             // txtPriorityLevel
             // 
+            this.txtPriorityLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPriorityLevel.Enabled = false;
             this.txtPriorityLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPriorityLevel.Location = new System.Drawing.Point(725, 478);
+            this.txtPriorityLevel.Location = new System.Drawing.Point(296, 529);
             this.txtPriorityLevel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPriorityLevel.Name = "txtPriorityLevel";
             this.txtPriorityLevel.ReadOnly = true;
@@ -227,9 +260,10 @@ namespace PremiereSolutionProject.PL
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(366, 412);
+            this.label6.Location = new System.Drawing.Point(564, 391);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 16);
@@ -238,22 +272,24 @@ namespace PremiereSolutionProject.PL
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(369, 440);
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescription.Location = new System.Drawing.Point(567, 412);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(229, 123);
+            this.txtDescription.Size = new System.Drawing.Size(229, 138);
             this.txtDescription.TabIndex = 124;
             this.txtDescription.Text = "";
             // 
             // btnUpdate
             // 
+            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(33, 518);
+            this.btnUpdate.Location = new System.Drawing.Point(839, 424);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(230, 46);
+            this.btnUpdate.Size = new System.Drawing.Size(93, 46);
             this.btnUpdate.TabIndex = 112;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -261,12 +297,13 @@ namespace PremiereSolutionProject.PL
             // 
             // cmbClosed
             // 
+            this.cmbClosed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbClosed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClosed.FormattingEnabled = true;
             this.cmbClosed.Items.AddRange(new object[] {
             "False",
             "True"});
-            this.cmbClosed.Location = new System.Drawing.Point(725, 432);
+            this.cmbClosed.Location = new System.Drawing.Point(295, 483);
             this.cmbClosed.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbClosed.Name = "cmbClosed";
             this.cmbClosed.Size = new System.Drawing.Size(230, 21);

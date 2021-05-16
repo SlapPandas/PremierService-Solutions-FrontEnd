@@ -18,24 +18,24 @@ namespace PremiereSolutionProject.PL
             InitializeComponent();
         }
 
+        #region Declarations
+
+        ServiceRequest serviceRequest = new ServiceRequest();
+        List<ServiceRequest> sr = new List<ServiceRequest>();
+        BindingSource bs = new BindingSource();
+
+        #endregion
+
+        #region Events
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        ServiceRequest serviceRequest = new ServiceRequest();
-        List<ServiceRequest> sr = new List<ServiceRequest>();
-        BindingSource bs = new BindingSource();
         private void frmViewServiceRequests_Load(object sender, EventArgs e)
         {
             dgvViewAllServiceReq.ForeColor = Color.Black;            
             RefreshDGV();
-        }
-        private void RefreshDGV()
-        {
-            sr = serviceRequest.SelectAllServiceRequests();
-            bs.DataSource = sr;
-            dgvViewAllServiceReq.DataSource = null;
-            dgvViewAllServiceReq.DataSource = bs;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -67,21 +67,7 @@ namespace PremiereSolutionProject.PL
                 populateFields(dgvViewAllServiceReq.CurrentRow.Index);
             }  
         }
-        private void populateFields(int index) {
-            txtServiceRequestID.Text = sr[index].ServiceRequestID.ToString();
-            txtCallId.Text = sr[index].CallID.ToString();
-            txtDescription.Text = sr[index].Description;
-            txtPriorityLevel.Text = sr[index].PriorityLevel;
-            if (sr[index].Closed)
-            {
-                cmbClosed.SelectedIndex = 1;
-            }
-            if (!sr[index].Closed)
-            {
-                cmbClosed.SelectedIndex = 0;
-            }
-            
-        }
+        
 
         private void dgvViewAllServiceReq_Click(object sender, EventArgs e)
         {
@@ -118,10 +104,44 @@ namespace PremiereSolutionProject.PL
                 MessageBox.Show("Process did not Proceed");
             }
         }
+
+        #endregion
+
+        #region Methods
+
         private bool GetTrueFalseFromBit(int bit)
         {
             bool output = bit == 1 ? true : false;
             return output;
         }
+
+        private void RefreshDGV()
+        {
+            sr = serviceRequest.SelectAllServiceRequests();
+            bs.DataSource = sr;
+            dgvViewAllServiceReq.DataSource = null;
+            dgvViewAllServiceReq.DataSource = bs;
+            dgvViewAllServiceReq.Columns[2].Width = 200;
+            dgvViewAllServiceReq.Columns[0].Width = 70;
+        }
+
+        private void populateFields(int index)
+        {
+            txtServiceRequestID.Text = sr[index].ServiceRequestID.ToString();
+            txtCallId.Text = sr[index].CallID.ToString();
+            txtDescription.Text = sr[index].Description;
+            txtPriorityLevel.Text = sr[index].PriorityLevel;
+            if (sr[index].Closed)
+            {
+                cmbClosed.SelectedIndex = 1;
+            }
+            if (!sr[index].Closed)
+            {
+                cmbClosed.SelectedIndex = 0;
+            }
+
+        }
+
+        #endregion
     }
 }
