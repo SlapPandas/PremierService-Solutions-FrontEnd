@@ -77,21 +77,19 @@ namespace PremiereSolutionProject.PL
             catch (Exception ee)
             {
                 MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
-            }
-            
-
+            }            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // check the specilisation is selected and a number of employees are selected
-            if ((nudNumberOfPeople.Value > 0) && (lbxSpecialisations.Items.Count == 0))
+            if (string.IsNullOrEmpty(cbxSpecialisation.Text))
             {
-                MessageBox.Show("error, please make sure the number of employees is more than 0 and there are specialisations selected");
+                MessageBox.Show("error, please make sure is a specialisations selected");
             }
             else
             {
                 lbxSpecialisations.Items.Add(cbxSpecialisation.SelectedItem.ToString() + "," + nudNumberOfPeople.Value.ToString());
+                MessageBox.Show("service request created");
             }
         }
 

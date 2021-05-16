@@ -200,9 +200,24 @@
             // nudNumberOfPeople
             // 
             this.nudNumberOfPeople.Location = new System.Drawing.Point(115, 393);
+            this.nudNumberOfPeople.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudNumberOfPeople.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudNumberOfPeople.Name = "nudNumberOfPeople";
             this.nudNumberOfPeople.Size = new System.Drawing.Size(133, 20);
             this.nudNumberOfPeople.TabIndex = 17;
+            this.nudNumberOfPeople.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // lbxSpecialisations
             // 
