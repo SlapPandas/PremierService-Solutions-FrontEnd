@@ -37,7 +37,16 @@
             this.btnTake = new System.Windows.Forms.Button();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
             this.dgvHave = new System.Windows.Forms.DataGridView();
+<<<<<<< Updated upstream
             this.dgvAvailable = new System.Windows.Forms.DataGridView();
+=======
+            this.btnClose = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+>>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).BeginInit();
@@ -45,80 +54,92 @@
             // 
             // dgvEmployee
             // 
+            this.dgvEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployee.Location = new System.Drawing.Point(12, 79);
+            this.dgvEmployee.Location = new System.Drawing.Point(118, 124);
             this.dgvEmployee.Name = "dgvEmployee";
             this.dgvEmployee.RowHeadersWidth = 62;
-            this.dgvEmployee.Size = new System.Drawing.Size(854, 181);
+            this.dgvEmployee.Size = new System.Drawing.Size(895, 167);
             this.dgvEmployee.TabIndex = 83;
             this.dgvEmployee.SelectionChanged += new System.EventHandler(this.dgvEmployee_SelectionChanged);
             // 
             // btnUpdate
             // 
+            this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Location = new System.Drawing.Point(395, 432);
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(617, 510);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.Size = new System.Drawing.Size(264, 55);
             this.btnUpdate.TabIndex = 82;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Text = "Update Employee Specialisations";
+            this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(376, 50);
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(931, 87);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(111, 23);
+            this.btnSearch.Size = new System.Drawing.Size(82, 31);
             this.btnSearch.TabIndex = 81;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(199, 54);
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.Location = new System.Drawing.Point(777, 98);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(148, 20);
             this.txtSearch.TabIndex = 80;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(287, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(340, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(294, 24);
+            this.label1.Size = new System.Drawing.Size(441, 35);
             this.label1.TabIndex = 79;
             this.label1.Text = "Manage Maintenance Employee";
             // 
             // btnGive
             // 
+            this.btnGive.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnGive.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnGive.Location = new System.Drawing.Point(395, 331);
+            this.btnGive.Location = new System.Drawing.Point(540, 370);
             this.btnGive.Name = "btnGive";
-            this.btnGive.Size = new System.Drawing.Size(75, 23);
+            this.btnGive.Size = new System.Drawing.Size(67, 23);
             this.btnGive.TabIndex = 86;
-            this.btnGive.Text = "-->";
+            this.btnGive.Text = ">>";
             this.btnGive.UseVisualStyleBackColor = true;
             this.btnGive.Click += new System.EventHandler(this.btnGive_Click);
             // 
             // btnTake
             // 
+            this.btnTake.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnTake.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnTake.Location = new System.Drawing.Point(395, 382);
+            this.btnTake.Location = new System.Drawing.Point(540, 414);
             this.btnTake.Name = "btnTake";
-            this.btnTake.Size = new System.Drawing.Size(75, 23);
+            this.btnTake.Size = new System.Drawing.Size(67, 23);
             this.btnTake.TabIndex = 87;
-            this.btnTake.Text = "<--";
+            this.btnTake.Text = "<<";
             this.btnTake.UseVisualStyleBackColor = true;
             this.btnTake.Click += new System.EventHandler(this.btnTake_Click);
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(112, 461);
+            this.txtDescription.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtDescription.Location = new System.Drawing.Point(267, 498);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = true;
-            this.txtDescription.Size = new System.Drawing.Size(643, 96);
+            this.txtDescription.Size = new System.Drawing.Size(264, 67);
             this.txtDescription.TabIndex = 88;
             this.txtDescription.Text = "";
             // 
@@ -133,20 +154,105 @@
             // 
             // dgvAvailable
             // 
+            this.dgvAvailable.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvAvailable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAvailable.Location = new System.Drawing.Point(112, 274);
+            this.dgvAvailable.Location = new System.Drawing.Point(267, 315);
             this.dgvAvailable.Name = "dgvAvailable";
             this.dgvAvailable.RowHeadersWidth = 62;
-            this.dgvAvailable.Size = new System.Drawing.Size(264, 181);
+            this.dgvAvailable.Size = new System.Drawing.Size(264, 159);
             this.dgvAvailable.TabIndex = 89;
             this.dgvAvailable.SelectionChanged += new System.EventHandler(this.dgvAvailable_SelectionChanged);
             // 
+<<<<<<< Updated upstream
+=======
+            // dgvHave
+            // 
+            this.dgvHave.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dgvHave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHave.Location = new System.Drawing.Point(617, 315);
+            this.dgvHave.Name = "dgvHave";
+            this.dgvHave.RowHeadersWidth = 62;
+            this.dgvHave.Size = new System.Drawing.Size(264, 189);
+            this.dgvHave.TabIndex = 90;
+            // 
+            // btnClose
+            // 
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(12, 12);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(94, 32);
+            this.btnClose.TabIndex = 91;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(115, 102);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(191, 16);
+            this.label2.TabIndex = 92;
+            this.label2.Text = "All Maintenance Employees";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(264, 296);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(130, 16);
+            this.label3.TabIndex = 93;
+            this.label3.Text = "All Specialisations";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(264, 477);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 16);
+            this.label4.TabIndex = 94;
+            this.label4.Text = "Description";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(614, 296);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(177, 16);
+            this.label5.TabIndex = 95;
+            this.label5.Text = "Employee Specialisations";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(774, 79);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(124, 16);
+            this.label6.TabIndex = 96;
+            this.label6.Text = "Search Employee";
+            // 
+>>>>>>> Stashed changes
             // FrmManageMaintenanceEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(878, 575);
+            this.ClientSize = new System.Drawing.Size(1123, 590);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvHave);
             this.Controls.Add(this.dgvAvailable);
             this.Controls.Add(this.txtDescription);
@@ -179,6 +285,15 @@
         private System.Windows.Forms.Button btnTake;
         private System.Windows.Forms.RichTextBox txtDescription;
         private System.Windows.Forms.DataGridView dgvHave;
+<<<<<<< Updated upstream
         private System.Windows.Forms.DataGridView dgvAvailable;
+=======
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+>>>>>>> Stashed changes
     }
 }
