@@ -64,177 +64,182 @@ namespace PremiereSolutionProject.PL
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(393, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(506, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(236, 31);
+            this.label1.Size = new System.Drawing.Size(257, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Jobs Management";
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(38, 396);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(248, 320);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 17);
+            this.label4.Size = new System.Drawing.Size(128, 16);
             this.label4.TabIndex = 62;
             this.label4.Text = "Current Job State";
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(824, 400);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(835, 201);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(197, 17);
+            this.label5.Size = new System.Drawing.Size(207, 16);
             this.label5.TabIndex = 60;
             this.label5.Text = "Current Assigned Technicians";
             // 
             // cbxCurrentState
             // 
+            this.cbxCurrentState.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.cbxCurrentState.FormattingEnabled = true;
             this.cbxCurrentState.Items.AddRange(new object[] {
             "Pending",
             "In Progress",
             "Finished"});
-            this.cbxCurrentState.Location = new System.Drawing.Point(213, 393);
-            this.cbxCurrentState.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbxCurrentState.Location = new System.Drawing.Point(391, 315);
+            this.cbxCurrentState.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbxCurrentState.Name = "cbxCurrentState";
-            this.cbxCurrentState.Size = new System.Drawing.Size(232, 24);
+            this.cbxCurrentState.Size = new System.Drawing.Size(175, 21);
             this.cbxCurrentState.TabIndex = 63;
             // 
             // btnUpdateJob
             // 
+            this.btnUpdateJob.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnUpdateJob.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnUpdateJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateJob.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateJob.Font = new System.Drawing.Font("Microsoft Yi Baiti", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateJob.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdateJob.Location = new System.Drawing.Point(293, 704);
-            this.btnUpdateJob.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdateJob.Location = new System.Drawing.Point(427, 520);
             this.btnUpdateJob.Name = "btnUpdateJob";
-            this.btnUpdateJob.Size = new System.Drawing.Size(152, 28);
+            this.btnUpdateJob.Size = new System.Drawing.Size(149, 47);
             this.btnUpdateJob.TabIndex = 109;
             this.btnUpdateJob.Text = "Update Job";
-            this.btnUpdateJob.UseVisualStyleBackColor = true;
+            this.btnUpdateJob.UseVisualStyleBackColor = false;
             this.btnUpdateJob.Click += new System.EventHandler(this.btnUpdateJob_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(963, 716);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(12, 13);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(91, 28);
+            this.btnExit.Size = new System.Drawing.Size(73, 31);
             this.btnExit.TabIndex = 110;
-            this.btnExit.Text = "Exit";
+            this.btnExit.Text = "Close";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(40, 229);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(232, 183);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 17);
+            this.label6.Size = new System.Drawing.Size(108, 16);
             this.label6.TabIndex = 112;
             this.label6.Text = "Jobs Trackings";
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(36, 533);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(232, 429);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(136, 17);
+            this.label7.Size = new System.Drawing.Size(144, 16);
             this.label7.TabIndex = 115;
             this.label7.Text = "Specialisation Name";
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(36, 589);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(248, 473);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(118, 17);
+            this.label8.Size = new System.Drawing.Size(128, 16);
             this.label8.TabIndex = 117;
             this.label8.Text = "No. of employees";
             // 
             // nudEmployees
             // 
-            this.nudEmployees.Location = new System.Drawing.Point(213, 587);
+            this.nudEmployees.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.nudEmployees.Location = new System.Drawing.Point(391, 473);
+            this.nudEmployees.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nudEmployees.Name = "nudEmployees";
-            this.nudEmployees.Size = new System.Drawing.Size(70, 22);
+            this.nudEmployees.Size = new System.Drawing.Size(52, 20);
             this.nudEmployees.TabIndex = 118;
             // 
             // rtbNotes
             // 
-            this.rtbNotes.Location = new System.Drawing.Point(213, 441);
+            this.rtbNotes.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.rtbNotes.Location = new System.Drawing.Point(391, 354);
+            this.rtbNotes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rtbNotes.Name = "rtbNotes";
-            this.rtbNotes.Size = new System.Drawing.Size(232, 66);
+            this.rtbNotes.Size = new System.Drawing.Size(175, 54);
             this.rtbNotes.TabIndex = 120;
             this.rtbNotes.Text = "";
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(36, 441);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(331, 354);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(45, 17);
+            this.label9.Size = new System.Drawing.Size(45, 16);
             this.label9.TabIndex = 119;
             this.label9.Text = "Notes";
             // 
             // btnDeleteJob
             // 
+            this.btnDeleteJob.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnDeleteJob.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnDeleteJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteJob.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteJob.Font = new System.Drawing.Font("Microsoft Yi Baiti", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteJob.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteJob.Location = new System.Drawing.Point(477, 704);
-            this.btnDeleteJob.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeleteJob.Location = new System.Drawing.Point(680, 520);
             this.btnDeleteJob.Name = "btnDeleteJob";
-            this.btnDeleteJob.Size = new System.Drawing.Size(152, 28);
+            this.btnDeleteJob.Size = new System.Drawing.Size(149, 47);
             this.btnDeleteJob.TabIndex = 123;
             this.btnDeleteJob.Text = "Delete Job";
-            this.btnDeleteJob.UseVisualStyleBackColor = true;
+            this.btnDeleteJob.UseVisualStyleBackColor = false;
             this.btnDeleteJob.Click += new System.EventHandler(this.btnDeleteJob_Click);
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(520, 400);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(602, 201);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 17);
+            this.label2.Size = new System.Drawing.Size(151, 16);
             this.label2.TabIndex = 126;
             this.label2.Text = "Available Technicians";
             // 
             // btnAddTechnician
             // 
+            this.btnAddTechnician.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnAddTechnician.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddTechnician.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTechnician.Location = new System.Drawing.Point(733, 487);
-            this.btnAddTechnician.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddTechnician.Location = new System.Drawing.Point(790, 354);
             this.btnAddTechnician.Name = "btnAddTechnician";
-            this.btnAddTechnician.Size = new System.Drawing.Size(48, 27);
+            this.btnAddTechnician.Size = new System.Drawing.Size(36, 22);
             this.btnAddTechnician.TabIndex = 129;
             this.btnAddTechnician.Text = ">>";
             this.btnAddTechnician.UseVisualStyleBackColor = true;
@@ -242,12 +247,12 @@ namespace PremiereSolutionProject.PL
             // 
             // btnRemoveTechnician
             // 
+            this.btnRemoveTechnician.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnRemoveTechnician.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveTechnician.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveTechnician.Location = new System.Drawing.Point(733, 555);
-            this.btnRemoveTechnician.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRemoveTechnician.Location = new System.Drawing.Point(790, 427);
             this.btnRemoveTechnician.Name = "btnRemoveTechnician";
-            this.btnRemoveTechnician.Size = new System.Drawing.Size(48, 27);
+            this.btnRemoveTechnician.Size = new System.Drawing.Size(36, 22);
             this.btnRemoveTechnician.TabIndex = 130;
             this.btnRemoveTechnician.Text = "<<";
             this.btnRemoveTechnician.UseVisualStyleBackColor = true;
@@ -255,13 +260,15 @@ namespace PremiereSolutionProject.PL
             // 
             // lstPending
             // 
+            this.lstPending.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lstPending.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
             this.lstPending.HideSelection = false;
-            this.lstPending.Location = new System.Drawing.Point(41, 262);
+            this.lstPending.Location = new System.Drawing.Point(235, 201);
+            this.lstPending.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lstPending.Name = "lstPending";
-            this.lstPending.Size = new System.Drawing.Size(968, 97);
+            this.lstPending.Size = new System.Drawing.Size(331, 80);
             this.lstPending.TabIndex = 131;
             this.lstPending.UseCompatibleStateImageBehavior = false;
             this.lstPending.View = System.Windows.Forms.View.Details;
@@ -277,6 +284,7 @@ namespace PremiereSolutionProject.PL
             // 
             // lstJobs
             // 
+            this.lstJobs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lstJobs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader5,
             this.columnHeader7,
@@ -285,9 +293,10 @@ namespace PremiereSolutionProject.PL
             this.columnHeader11,
             this.columnHeader12});
             this.lstJobs.HideSelection = false;
-            this.lstJobs.Location = new System.Drawing.Point(43, 65);
+            this.lstJobs.Location = new System.Drawing.Point(197, 53);
+            this.lstJobs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lstJobs.Name = "lstJobs";
-            this.lstJobs.Size = new System.Drawing.Size(966, 150);
+            this.lstJobs.Size = new System.Drawing.Size(800, 123);
             this.lstJobs.TabIndex = 134;
             this.lstJobs.UseCompatibleStateImageBehavior = false;
             this.lstJobs.View = System.Windows.Forms.View.Details;
@@ -326,36 +335,40 @@ namespace PremiereSolutionProject.PL
             // 
             // lbxAvailTech
             // 
+            this.lbxAvailTech.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbxAvailTech.FormattingEnabled = true;
-            this.lbxAvailTech.ItemHeight = 16;
-            this.lbxAvailTech.Location = new System.Drawing.Point(505, 426);
+            this.lbxAvailTech.Location = new System.Drawing.Point(610, 227);
+            this.lbxAvailTech.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbxAvailTech.Name = "lbxAvailTech";
-            this.lbxAvailTech.Size = new System.Drawing.Size(189, 180);
+            this.lbxAvailTech.Size = new System.Drawing.Size(162, 251);
             this.lbxAvailTech.TabIndex = 141;
             // 
             // cbxSpecialisation
             // 
+            this.cbxSpecialisation.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.cbxSpecialisation.FormattingEnabled = true;
-            this.cbxSpecialisation.Location = new System.Drawing.Point(213, 533);
+            this.cbxSpecialisation.Location = new System.Drawing.Point(391, 429);
+            this.cbxSpecialisation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbxSpecialisation.Name = "cbxSpecialisation";
-            this.cbxSpecialisation.Size = new System.Drawing.Size(232, 24);
+            this.cbxSpecialisation.Size = new System.Drawing.Size(175, 21);
             this.cbxSpecialisation.TabIndex = 142;
             // 
             // lbxCurrentAssignedTech
             // 
+            this.lbxCurrentAssignedTech.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lbxCurrentAssignedTech.FormattingEnabled = true;
-            this.lbxCurrentAssignedTech.ItemHeight = 16;
-            this.lbxCurrentAssignedTech.Location = new System.Drawing.Point(832, 426);
+            this.lbxCurrentAssignedTech.Location = new System.Drawing.Point(855, 227);
+            this.lbxCurrentAssignedTech.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbxCurrentAssignedTech.Name = "lbxCurrentAssignedTech";
-            this.lbxCurrentAssignedTech.Size = new System.Drawing.Size(189, 180);
+            this.lbxCurrentAssignedTech.Size = new System.Drawing.Size(162, 251);
             this.lbxCurrentAssignedTech.TabIndex = 143;
             // 
             // frmJobsManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(1067, 757);
+            this.ClientSize = new System.Drawing.Size(1123, 590);
             this.Controls.Add(this.lbxCurrentAssignedTech);
             this.Controls.Add(this.cbxSpecialisation);
             this.Controls.Add(this.lbxAvailTech);
@@ -379,7 +392,7 @@ namespace PremiereSolutionProject.PL
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmJobsManagement";
             this.Text = "Job Management";
             this.Load += new System.EventHandler(this.frmJobsManagement_Load);

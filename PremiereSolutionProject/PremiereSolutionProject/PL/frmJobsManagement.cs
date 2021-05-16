@@ -14,10 +14,18 @@ namespace PremiereSolutionProject.PL
 
     public partial class frmJobsManagement : Form
     {
+        public frmJobsManagement()
+        {
+            InitializeComponent();
+        }
+
+
+        #region Declarations
+
         Job JB = new Job();
         Job SelectedJob = new Job();
         Specialisation special = new Specialisation();
-        List <MaintenanceEmployee> MainEmp = new List<MaintenanceEmployee>();
+        List<MaintenanceEmployee> MainEmp = new List<MaintenanceEmployee>();
         List<MaintenanceEmployee> myEmployee = new List<MaintenanceEmployee>();
         BindingSource bs = new BindingSource();
         List<MaintenanceEmployee> NewEmp = new List<MaintenanceEmployee>();
@@ -28,17 +36,14 @@ namespace PremiereSolutionProject.PL
         string stdOutput = "{0,-10}{1,-20}";
         Job NewJob;
 
+        #endregion
 
-        public frmJobsManagement()
-        {
-            InitializeComponent();
-        }
 
+        #region Events
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
-            
         }
 
         private void frmJobsManagement_Load(object sender, EventArgs e)
@@ -188,6 +193,7 @@ namespace PremiereSolutionProject.PL
 
         private void lstJobs_MouseClick(object sender, MouseEventArgs e)
         {
+            lstJobs.FullRowSelect = true;
             lbxCurrentAssignedTech.Items.Clear();
 
             if (lstJobs.SelectedItems.Count > 0)
@@ -253,5 +259,12 @@ namespace PremiereSolutionProject.PL
                 MessageBox.Show("No record was selected ", "Jobs", MessageBoxButtons.OK);
             }
         }
+
+        #endregion
+
+        #region Methods
+
+
+        #endregion
     }
 }
