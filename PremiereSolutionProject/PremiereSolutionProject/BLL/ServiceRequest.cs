@@ -275,38 +275,40 @@ namespace PremiereSolutionProject.BLL
             bool jobAssigned = false;
             int empsAssigned = 0;
             int employeecount = 0;
-
-            foreach (Job job in jobList)
+            if (jobList.Count != 0 || maintenanceEmployeesList.Count != 0)
             {
-                //initializing
-                jobAssigned = false;
-                empsAssigned = 0;
-                employeecount = maintenanceEmployeesList.Count; //to prevent out of bounds in list - dynamically change after employees have been removed
-
-                for (int i = 0; i < job.EmployeesNeeded; i++)   //to assign all employees needed for the job
+                foreach (Job job in jobList)
                 {
-                    for (int k = 0; k < employeecount; k++) //iterating thru the list from DAL with available employees in it
+                    //initializing
+                    jobAssigned = false;
+                    empsAssigned = 0;
+                    employeecount = maintenanceEmployeesList.Count; //to prevent out of bounds in list - dynamically change after employees have been removed
+
+                    for (int i = 0; i < job.EmployeesNeeded; i++)   //to assign all employees needed for the job
                     {
-                        for (int n = 0; n < maintenanceEmployeesList[k].Specialisations.Count; n++) //go thru list of the specialisations of the employee
+                        for (int k = 0; k < employeecount; k++) //iterating thru the list from DAL with available employees in it
                         {
-                            if (job.Specialisation.SpecialisationID == maintenanceEmployeesList[k].Specialisations[n].SpecialisationID) //match the emplpoyee specialisation to the specialisation needed
-                            {                                
-                                job.Employee.Add(maintenanceEmployeesList[k]); //add employee to list of Employees for a job                          
-                                jobDH.InsertSingleEmployeeToJob(job.JobID, maintenanceEmployeesList[k].Id); //insert into EmployeeJobLink table
-                                maintenanceEmployeesList.RemoveAt(k);   //employee is no longer available
-                                empsAssigned++; // increase the count of employees assigned to the job, used to check if the job is filled
-                                n = maintenanceEmployeesList[k-1].Specialisations.Count;  //to break out of n-for loop if correct employee was found & job was created
+                            for (int n = 0; n < maintenanceEmployeesList[k].Specialisations.Count; n++) //go thru list of the specialisations of the employee
+                            {
+                                if (job.Specialisation.SpecialisationID == maintenanceEmployeesList[k].Specialisations[n].SpecialisationID) //match the emplpoyee specialisation to the specialisation needed
+                                {
+                                    job.Employee.Add(maintenanceEmployeesList[k]); //add employee to list of Employees for a job                          
+                                    jobDH.InsertSingleEmployeeToJob(job.JobID, maintenanceEmployeesList[k].Id); //insert into EmployeeJobLink table
+                                    maintenanceEmployeesList.RemoveAt(k);   //employee is no longer available
+                                    empsAssigned++; // increase the count of employees assigned to the job, used to check if the job is filled
+                                    n = maintenanceEmployeesList[k - 1].Specialisations.Count;  //to break out of n-for loop if correct employee was found & job was created
+                                }
                             }
-                        }
-                        jobAssigned = empsAssigned == job.EmployeesNeeded ? true : false;   //for when all employees of the job has been assigned
-                        if (jobAssigned)
-                        {
-                            job.JobState = JobState.InProgress; // job only goes to inProgress if job is full
-                            k = maintenanceEmployeesList.Count; //to get back to foreach to go to next job when the job is full.
+                            jobAssigned = empsAssigned == job.EmployeesNeeded ? true : false;   //for when all employees of the job has been assigned
+                            if (jobAssigned)
+                            {
+                                job.JobState = JobState.InProgress; // job only goes to inProgress if job is full
+                                k = maintenanceEmployeesList.Count; //to get back to foreach to go to next job when the job is full.
+                            }
                         }
                     }
                 }
-            }
+            }            
         }
 
         public List<MaintenanceEmployee> SelectAllAvailabeEmployees()

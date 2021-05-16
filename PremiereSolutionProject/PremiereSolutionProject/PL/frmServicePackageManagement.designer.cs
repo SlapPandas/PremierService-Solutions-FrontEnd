@@ -76,6 +76,7 @@ namespace PremiereSolutionProject.PL
             this.dgvCurrentServicePackages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCurrentServicePackages.Location = new System.Drawing.Point(243, 101);
             this.dgvCurrentServicePackages.Name = "dgvCurrentServicePackages";
+            this.dgvCurrentServicePackages.ReadOnly = true;
             this.dgvCurrentServicePackages.RowHeadersWidth = 62;
             this.dgvCurrentServicePackages.Size = new System.Drawing.Size(661, 142);
             this.dgvCurrentServicePackages.TabIndex = 2;
@@ -123,6 +124,7 @@ namespace PremiereSolutionProject.PL
             this.cbxPromotionYes.TabIndex = 60;
             this.cbxPromotionYes.Text = "Yes";
             this.cbxPromotionYes.UseVisualStyleBackColor = true;
+            this.cbxPromotionYes.CheckedChanged += new System.EventHandler(this.cbxPromotionYes_CheckedChanged);
             // 
             // label5
             // 
@@ -146,6 +148,7 @@ namespace PremiereSolutionProject.PL
             this.cbxPromotionNo.TabIndex = 62;
             this.cbxPromotionNo.Text = "No";
             this.cbxPromotionNo.UseVisualStyleBackColor = true;
+            this.cbxPromotionNo.CheckedChanged += new System.EventHandler(this.cbxPromotionNo_CheckedChanged);
             // 
             // dtpPromotionStart
             // 

@@ -60,8 +60,7 @@ namespace PremiereSolutionProject.PL
             {
                 lbxAdded.Items.Add(lbxAvailable.SelectedItem.ToString());
                 lbxAvailable.Items.Remove(lbxAvailable.SelectedItem);
-            }
-            
+            }            
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -72,9 +71,9 @@ namespace PremiereSolutionProject.PL
                 lbxAdded.Items.RemoveAt(lbxAdded.SelectedIndex);                
             }            
         }
-        bool promotion;
         private void btnCreatePackage_Click(object sender, EventArgs e)
         {
+            bool promotion;
             List<string> serviceNames = lbxAdded.Items.Cast<string>().ToList();
             ServicePackage servicePackage = new ServicePackage();
             List<ServicePackage> servicePackages = servicePackage.SelectAllServicePackage();
@@ -121,11 +120,12 @@ namespace PremiereSolutionProject.PL
             }
             servicePackage.InsertServicePackage(servicePackage);
             RefreshDGV();
+            UpdateData();
         }
 
         private void btnUpdatePackage_Click(object sender, EventArgs e)
         {
-            //TODO: Update is not working :) Jayden, please check
+            bool promotion;
             List<string> serviceNames = lbxAdded.Items.Cast<string>().ToList();
             Service service = new Service();
             List<Service> services = service.SelectAllServices();
@@ -135,29 +135,39 @@ namespace PremiereSolutionProject.PL
             }
             else
             {
-                List<Service> servicesTemp = new List<Service>();
-                foreach (Service item in services)
+                if (lbxAdded.Items.Count == 0)
                 {
-                    for (int i = 0; i < lbxAdded.Items.Count; i++)
-                    {
-                        if (item.ServiceName == serviceNames[i])
-                        {
-                            servicesTemp.Add(item);
-                        }
-                    }
-                }
-                if (cbxPromotionYes.Checked == true)
-                {
-                    promotion = true;
+                    MessageBox.Show("There must be at least 1 service in the service package");
                 }
                 else
                 {
-                    promotion = false;
-                }
-                ServicePackage sp = new ServicePackage(txtPackageName.Text, servicesTemp, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, int.Parse(txtPrice.Text));
-                sp.UpdateServicePackage(sp);
-            }
-            RefreshDGV();
+                    List<Service> servicesTemp = new List<Service>();
+                    foreach (Service item in services)
+                    {
+                        for (int i = 0; i < lbxAdded.Items.Count; i++)
+                        {
+                            if (item.ServiceName == serviceNames[i])
+                            {
+                                servicesTemp.Add(item);
+                            }
+                        }
+                    }
+                    if (cbxPromotionYes.Checked)
+                    {
+                        promotion = true;
+                    }
+                    else
+                    {
+                        promotion = false;
+                    }
+                    ServicePackage sp = new ServicePackage(selectedP.PackageID, txtPackageName.Text, servicesTemp, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, int.Parse(txtPrice.Text));
+                    sp.UpdateServicePackage(sp);
+                    sp.UpdateListOfServices(sp);
+                    sp.UpdatePromotionStateOfPackage(selectedP.PackageID, promotion);                    
+                    RefreshDGV();
+                    UpdateData();
+                }                
+            }            
         }
 
         private void btnDeletePackage_Click(object sender, EventArgs e)
@@ -175,6 +185,7 @@ namespace PremiereSolutionProject.PL
                 }
             }
             RefreshDGV();
+            UpdateData();
         }
 
         #endregion
@@ -219,7 +230,7 @@ namespace PremiereSolutionProject.PL
             txtPrice.Text = selectedP.ServicePrice.ToString();
             dtpPromotionEnd.Value = selectedP.PromotionEndDate;
             dtpPromotionStart.Value = selectedP.PromotionStartDate;
-            // numUDPercentage.Value = selectedP.PromotionPercentage;
+            numUDPercentage.Value = (decimal)selectedP.PromotionPercentage;
 
         }
 
@@ -238,5 +249,21 @@ namespace PremiereSolutionProject.PL
         }
 
         #endregion
+
+        private void cbxPromotionYes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxPromotionYes.Checked)
+            {
+                cbxPromotionNo.Checked = false;
+            }
+        }
+
+        private void cbxPromotionNo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxPromotionNo.Checked)
+            {
+                cbxPromotionYes.Checked = false;
+            }
+        }
     }
 }
