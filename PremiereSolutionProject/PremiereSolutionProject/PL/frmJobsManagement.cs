@@ -14,12 +14,85 @@ namespace PremiereSolutionProject.PL
 
     public partial class frmJobsManagement : Form
     {
-        List<Job> jobs = new List<Job>();
-        Job job = new Job();
+
         public frmJobsManagement()
         {
             InitializeComponent();
         }
+
+        #region Declarations
+
+        List<Job> jobs = new List<Job>();
+        Job job = new Job();
+
+        #endregion
+
+        #region Events
+
+        private void frmJobsManagement_Load(object sender, EventArgs e)
+        {
+            GenerateDGV();
+            PopulateComboBox();
+            RefreshDGVAndListForJobs();
+        }
+
+        private void dgvViewJob_SelectionChanged(object sender, EventArgs e)
+        {
+            UpdateFields(dgvViewJob.CurrentCell.RowIndex);
+            RefreshDGVAndListForEmployees(dgvViewJob.CurrentCell.RowIndex);
+        }
+
+        private void btnDeleteJob_Click(object sender, EventArgs e)
+        {
+            if (dgvViewJob.CurrentCell.RowIndex <= jobs.Count - 1)
+            {
+                DialogResult dr = MessageBox.Show("Are you sure to Delete The job?", "Confirmation", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    job.DeleteJob(jobs[dgvViewJob.CurrentCell.RowIndex]);
+                    RefreshDGVAndListForJobs();
+                    UpdateFields(dgvViewJob.CurrentCell.RowIndex);
+                    RefreshDGVAndListForEmployees(dgvViewJob.CurrentCell.RowIndex);
+                }
+            }
+            else
+            {
+                MessageBox.Show("selected item can not be deleted");
+            }
+            
+        }
+
+        private void btnUpdateJob_Click(object sender, EventArgs e)
+        {
+            if (dgvViewJob.CurrentCell.RowIndex <= jobs.Count - 1)
+            {
+                DialogResult dr = MessageBox.Show("Are you sure to Update The job?", "Confirmation", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    jobs[dgvViewJob.CurrentCell.RowIndex].JobNotes = txtNotes.Text;
+                    jobs[dgvViewJob.CurrentCell.RowIndex].JobState = GetJobState(cbxCurrentState.SelectedIndex+"");
+                    jobs[dgvViewJob.CurrentCell.RowIndex].EmployeesNeeded = (int)nudEmployees.Value;
+                    job.UpdateJob(jobs[dgvViewJob.CurrentCell.RowIndex]);
+                    RefreshDGVAndListForJobs();
+                    UpdateFields(dgvViewJob.CurrentCell.RowIndex);
+                    RefreshDGVAndListForEmployees(dgvViewJob.CurrentCell.RowIndex);
+                }
+            }
+            else
+            {
+                MessageBox.Show("selected item can not be deleted");
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
+
+        #region Methods
+
         private void GenerateDGV()
         {
             dgvViewJob.ColumnCount = 10;
@@ -99,68 +172,15 @@ namespace PremiereSolutionProject.PL
         }
         private void UpdateFields(int index)
         {
-            if (index <= jobs.Count-1)
+            if (index <= jobs.Count - 1)
             {
                 txtNotes.Text = jobs[index].JobNotes;
                 cbxCurrentState.SelectedItem = jobs[index].JobState;
                 nudEmployees.Value = jobs[index].EmployeesNeeded;
             }
-            
+
         }
 
-        private void frmJobsManagement_Load(object sender, EventArgs e)
-        {
-            GenerateDGV();
-            PopulateComboBox();
-            RefreshDGVAndListForJobs();
-        }
-
-        private void dgvViewJob_SelectionChanged(object sender, EventArgs e)
-        {
-            UpdateFields(dgvViewJob.CurrentCell.RowIndex);
-            RefreshDGVAndListForEmployees(dgvViewJob.CurrentCell.RowIndex);
-        }
-
-        private void btnDeleteJob_Click(object sender, EventArgs e)
-        {
-            if (dgvViewJob.CurrentCell.RowIndex <= jobs.Count - 1)
-            {
-                DialogResult dr = MessageBox.Show("Are you sure to Delete The job?", "Confirmation", MessageBoxButtons.YesNo);
-                if (dr == DialogResult.Yes)
-                {
-                    job.DeleteJob(jobs[dgvViewJob.CurrentCell.RowIndex]);
-                    RefreshDGVAndListForJobs();
-                    UpdateFields(dgvViewJob.CurrentCell.RowIndex);
-                    RefreshDGVAndListForEmployees(dgvViewJob.CurrentCell.RowIndex);
-                }
-            }
-            else
-            {
-                MessageBox.Show("selected item can not be deleted");
-            }
-            
-        }
-
-        private void btnUpdateJob_Click(object sender, EventArgs e)
-        {
-            if (dgvViewJob.CurrentCell.RowIndex <= jobs.Count - 1)
-            {
-                DialogResult dr = MessageBox.Show("Are you sure to Update The job?", "Confirmation", MessageBoxButtons.YesNo);
-                if (dr == DialogResult.Yes)
-                {
-                    jobs[dgvViewJob.CurrentCell.RowIndex].JobNotes = txtNotes.Text;
-                    jobs[dgvViewJob.CurrentCell.RowIndex].JobState = GetJobState(cbxCurrentState.SelectedIndex+"");
-                    jobs[dgvViewJob.CurrentCell.RowIndex].EmployeesNeeded = (int)nudEmployees.Value;
-                    job.UpdateJob(jobs[dgvViewJob.CurrentCell.RowIndex]);
-                    RefreshDGVAndListForJobs();
-                    UpdateFields(dgvViewJob.CurrentCell.RowIndex);
-                    RefreshDGVAndListForEmployees(dgvViewJob.CurrentCell.RowIndex);
-                }
-            }
-            else
-            {
-                MessageBox.Show("selected item can not be deleted");
-            }
-        }
+        #endregion
     }
 }

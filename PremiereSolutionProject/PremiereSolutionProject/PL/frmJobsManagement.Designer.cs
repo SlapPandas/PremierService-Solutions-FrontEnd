@@ -42,6 +42,7 @@ namespace PremiereSolutionProject.PL
             this.btnDeleteJob = new System.Windows.Forms.Button();
             this.dgvViewJob = new System.Windows.Forms.DataGridView();
             this.dgvEmployees = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewJob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
@@ -52,7 +53,7 @@ namespace PremiereSolutionProject.PL
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(506, 10);
+            this.label1.Location = new System.Drawing.Point(441, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(257, 35);
             this.label1.TabIndex = 2;
@@ -64,7 +65,7 @@ namespace PremiereSolutionProject.PL
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(194, 220);
+            this.label4.Location = new System.Drawing.Point(208, 261);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 16);
             this.label4.TabIndex = 62;
@@ -75,7 +76,7 @@ namespace PremiereSolutionProject.PL
             this.cbxCurrentState.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.cbxCurrentState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCurrentState.FormattingEnabled = true;
-            this.cbxCurrentState.Location = new System.Drawing.Point(337, 215);
+            this.cbxCurrentState.Location = new System.Drawing.Point(211, 279);
             this.cbxCurrentState.Margin = new System.Windows.Forms.Padding(2);
             this.cbxCurrentState.Name = "cbxCurrentState";
             this.cbxCurrentState.Size = new System.Drawing.Size(175, 21);
@@ -88,9 +89,9 @@ namespace PremiereSolutionProject.PL
             this.btnUpdateJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateJob.Font = new System.Drawing.Font("Microsoft Yi Baiti", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdateJob.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdateJob.Location = new System.Drawing.Point(12, 222);
+            this.btnUpdateJob.Location = new System.Drawing.Point(492, 434);
             this.btnUpdateJob.Name = "btnUpdateJob";
-            this.btnUpdateJob.Size = new System.Drawing.Size(149, 47);
+            this.btnUpdateJob.Size = new System.Drawing.Size(194, 75);
             this.btnUpdateJob.TabIndex = 109;
             this.btnUpdateJob.Text = "Update Job";
             this.btnUpdateJob.UseVisualStyleBackColor = false;
@@ -106,6 +107,7 @@ namespace PremiereSolutionProject.PL
             this.btnExit.TabIndex = 110;
             this.btnExit.Text = "Close";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label8
             // 
@@ -113,7 +115,7 @@ namespace PremiereSolutionProject.PL
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Location = new System.Drawing.Point(194, 253);
+            this.label8.Location = new System.Drawing.Point(208, 311);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(128, 16);
             this.label8.TabIndex = 117;
@@ -122,7 +124,7 @@ namespace PremiereSolutionProject.PL
             // nudEmployees
             // 
             this.nudEmployees.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.nudEmployees.Location = new System.Drawing.Point(337, 253);
+            this.nudEmployees.Location = new System.Drawing.Point(211, 334);
             this.nudEmployees.Margin = new System.Windows.Forms.Padding(2);
             this.nudEmployees.Maximum = new decimal(new int[] {
             10,
@@ -136,7 +138,7 @@ namespace PremiereSolutionProject.PL
             0});
             this.nudEmployees.Name = "nudEmployees";
             this.nudEmployees.ReadOnly = true;
-            this.nudEmployees.Size = new System.Drawing.Size(52, 20);
+            this.nudEmployees.Size = new System.Drawing.Size(175, 20);
             this.nudEmployees.TabIndex = 118;
             this.nudEmployees.Value = new decimal(new int[] {
             1,
@@ -147,10 +149,10 @@ namespace PremiereSolutionProject.PL
             // txtNotes
             // 
             this.txtNotes.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.txtNotes.Location = new System.Drawing.Point(620, 215);
+            this.txtNotes.Location = new System.Drawing.Point(492, 279);
             this.txtNotes.Margin = new System.Windows.Forms.Padding(2);
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(492, 54);
+            this.txtNotes.Size = new System.Drawing.Size(426, 97);
             this.txtNotes.TabIndex = 120;
             this.txtNotes.Text = "";
             // 
@@ -160,7 +162,7 @@ namespace PremiereSolutionProject.PL
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(560, 215);
+            this.label9.Location = new System.Drawing.Point(489, 261);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(45, 16);
             this.label9.TabIndex = 119;
@@ -173,9 +175,9 @@ namespace PremiereSolutionProject.PL
             this.btnDeleteJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteJob.Font = new System.Drawing.Font("Microsoft Yi Baiti", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteJob.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteJob.Location = new System.Drawing.Point(363, 457);
+            this.btnDeleteJob.Location = new System.Drawing.Point(724, 434);
             this.btnDeleteJob.Name = "btnDeleteJob";
-            this.btnDeleteJob.Size = new System.Drawing.Size(149, 47);
+            this.btnDeleteJob.Size = new System.Drawing.Size(194, 75);
             this.btnDeleteJob.TabIndex = 123;
             this.btnDeleteJob.Text = "Delete Job";
             this.btnDeleteJob.UseVisualStyleBackColor = false;
@@ -183,32 +185,42 @@ namespace PremiereSolutionProject.PL
             // 
             // dgvViewJob
             // 
-            this.dgvViewJob.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvViewJob.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvViewJob.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewJob.Location = new System.Drawing.Point(12, 46);
+            this.dgvViewJob.Location = new System.Drawing.Point(11, 62);
             this.dgvViewJob.Margin = new System.Windows.Forms.Padding(2);
             this.dgvViewJob.Name = "dgvViewJob";
             this.dgvViewJob.ReadOnly = true;
             this.dgvViewJob.RowHeadersWidth = 51;
             this.dgvViewJob.RowTemplate.Height = 24;
-            this.dgvViewJob.Size = new System.Drawing.Size(1113, 144);
+            this.dgvViewJob.Size = new System.Drawing.Size(1101, 165);
             this.dgvViewJob.TabIndex = 124;
             this.dgvViewJob.SelectionChanged += new System.EventHandler(this.dgvViewJob_SelectionChanged);
             // 
             // dgvEmployees
             // 
-            this.dgvEmployees.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvEmployees.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployees.Location = new System.Drawing.Point(11, 308);
+            this.dgvEmployees.Location = new System.Drawing.Point(206, 386);
             this.dgvEmployees.Margin = new System.Windows.Forms.Padding(2);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.ReadOnly = true;
             this.dgvEmployees.RowHeadersWidth = 51;
             this.dgvEmployees.RowTemplate.Height = 24;
-            this.dgvEmployees.Size = new System.Drawing.Size(1113, 144);
+            this.dgvEmployees.Size = new System.Drawing.Size(242, 158);
             this.dgvEmployees.TabIndex = 125;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(203, 368);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 16);
+            this.label2.TabIndex = 126;
+            this.label2.Text = "Employees";
             // 
             // frmJobsManagement
             // 
@@ -216,6 +228,7 @@ namespace PremiereSolutionProject.PL
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1123, 590);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvEmployees);
             this.Controls.Add(this.dgvViewJob);
             this.Controls.Add(this.btnDeleteJob);
@@ -256,5 +269,6 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Button btnDeleteJob;
         private System.Windows.Forms.DataGridView dgvViewJob;
         private System.Windows.Forms.DataGridView dgvEmployees;
+        private System.Windows.Forms.Label label2;
     }
 }
