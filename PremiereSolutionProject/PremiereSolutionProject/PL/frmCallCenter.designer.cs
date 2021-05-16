@@ -45,15 +45,12 @@ namespace PremiereSolutionProject.PL
             // 
             // lblEmpName
             // 
-            this.lblEmpName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblEmpName.AutoSize = true;
-            this.lblEmpName.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmpName.Location = new System.Drawing.Point(467, 166);
+            this.lblEmpName.Font = new System.Drawing.Font("Microsoft Yi Baiti", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpName.Location = new System.Drawing.Point(446, 188);
             this.lblEmpName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmpName.Name = "lblEmpName";
-            this.lblEmpName.Size = new System.Drawing.Size(24, 16);
+            this.lblEmpName.Size = new System.Drawing.Size(34, 24);
             this.lblEmpName.TabIndex = 3;
             this.lblEmpName.Text = "--";
             // 
@@ -65,7 +62,7 @@ namespace PremiereSolutionProject.PL
             this.rtbNotes.Location = new System.Drawing.Point(104, 315);
             this.rtbNotes.Margin = new System.Windows.Forms.Padding(4);
             this.rtbNotes.Name = "rtbNotes";
-            this.rtbNotes.Size = new System.Drawing.Size(520, 200);
+            this.rtbNotes.Size = new System.Drawing.Size(949, 215);
             this.rtbNotes.TabIndex = 4;
             this.rtbNotes.Text = "";
             // 
@@ -90,7 +87,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Yi Baiti", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(329, 9);
+            this.label4.Location = new System.Drawing.Point(513, 9);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(167, 35);
@@ -99,13 +96,11 @@ namespace PremiereSolutionProject.PL
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(385, 131);
+            this.pictureBox1.Location = new System.Drawing.Point(341, 150);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.Size = new System.Drawing.Size(309, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -170,10 +165,10 @@ namespace PremiereSolutionProject.PL
             this.btnSearchClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchClient.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchClient.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSearchClient.Location = new System.Drawing.Point(646, 315);
+            this.btnSearchClient.Location = new System.Drawing.Point(887, 103);
             this.btnSearchClient.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchClient.Name = "btnSearchClient";
-            this.btnSearchClient.Size = new System.Drawing.Size(109, 200);
+            this.btnSearchClient.Size = new System.Drawing.Size(166, 151);
             this.btnSearchClient.TabIndex = 13;
             this.btnSearchClient.Text = "Search Client";
             this.btnSearchClient.UseVisualStyleBackColor = false;
@@ -181,15 +176,12 @@ namespace PremiereSolutionProject.PL
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(467, 141);
+            this.label2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(423, 160);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(182, 16);
+            this.label2.Size = new System.Drawing.Size(229, 21);
             this.label2.TabIndex = 14;
             this.label2.Text = "Employee taking the call:";
             // 
@@ -198,7 +190,7 @@ namespace PremiereSolutionProject.PL
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(878, 575);
+            this.ClientSize = new System.Drawing.Size(1123, 590);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSearchClient);
             this.Controls.Add(this.label1);
@@ -213,6 +205,7 @@ namespace PremiereSolutionProject.PL
             this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCallCenter";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Call Center";
             this.Load += new System.EventHandler(this.frmCallCenter_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -19,29 +19,31 @@ namespace PremiereSolutionProject.PL
             InitializeComponent();
             
         }
-        public frmCallCenter(frmDashboard _dashform):this()
+        #region Declarations
+
+        frmDashboard dashform;
+
+        #endregion
+
+        #region Events
+
+        public frmCallCenter(frmDashboard _dashform) : this()
         {
             dashform = _dashform;
         }
-        frmDashboard dashform;
-        
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btnServiceRequest_Click(object sender, EventArgs e)
-        {
-        }
-
         private void btnAnswer_Click(object sender, EventArgs e)
         {
             dashform.callInfo = new Call();
-            Call call =  dashform.callInfo.CreateCall();
-            //dashform.callInfo.LogClientToCall(dashform.callInfo.CallID,)
+            Call call = dashform.callInfo.CreateCall();
             dashform.callInfo = call;
-            
+
             lblEmpName.Text = call.Employee.FirstName;
             btnEnd.Enabled = true;
             btnAnswer.Enabled = false;
@@ -65,7 +67,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnEnd_Click(object sender, EventArgs e)
         {
-            dashform.callInfo.LogEndTimeOfCall(dashform.callInfo.CallID,rtbNotes.Text);
+            dashform.callInfo.LogEndTimeOfCall(dashform.callInfo.CallID, rtbNotes.Text);
             btnEnd.Enabled = false;
             btnAnswer.Enabled = true;
         }
@@ -75,14 +77,17 @@ namespace PremiereSolutionProject.PL
             btnEnd.Enabled = false;
             if (dashform.callInfo != null)
             {
-                                
-                 lblEmpName.Text = dashform.callInfo.Employee.FirstName;
-                 rtbNotes.Text = dashform.callInfo.CallNotes;
+
+                lblEmpName.Text = dashform.callInfo.Employee.FirstName;
+                rtbNotes.Text = dashform.callInfo.CallNotes;
 
 
-                btnEnd.Enabled = true;      
+                btnEnd.Enabled = true;
             }
-            
+
         }
+
+        #endregion
+
     }
 }
