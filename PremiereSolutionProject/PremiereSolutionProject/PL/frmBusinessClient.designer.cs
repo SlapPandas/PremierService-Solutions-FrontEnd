@@ -58,6 +58,7 @@ namespace PremiereSolutionProject.PL
             this.cmbActive = new System.Windows.Forms.ComboBox();
             this.txtAvtive = new System.Windows.Forms.Label();
             this.btnClearSearch = new System.Windows.Forms.Button();
+            this.btnClearTextBoxes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBusinessClients)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,7 +130,7 @@ namespace PremiereSolutionProject.PL
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAdd.Location = new System.Drawing.Point(825, 351);
+            this.btnAdd.Location = new System.Drawing.Point(841, 334);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(197, 77);
             this.btnAdd.TabIndex = 71;
@@ -291,7 +292,7 @@ namespace PremiereSolutionProject.PL
             this.dgvBusinessClients.Location = new System.Drawing.Point(97, 85);
             this.dgvBusinessClients.Name = "dgvBusinessClients";
             this.dgvBusinessClients.RowHeadersWidth = 62;
-            this.dgvBusinessClients.Size = new System.Drawing.Size(846, 121);
+            this.dgvBusinessClients.Size = new System.Drawing.Size(780, 121);
             this.dgvBusinessClients.TabIndex = 105;
             this.dgvBusinessClients.SelectionChanged += new System.EventHandler(this.dgvBusinessClients_SelectionChanged);
             // 
@@ -316,7 +317,7 @@ namespace PremiereSolutionProject.PL
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdate.Location = new System.Drawing.Point(825, 251);
+            this.btnUpdate.Location = new System.Drawing.Point(841, 234);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(197, 77);
             this.btnUpdate.TabIndex = 107;
@@ -342,7 +343,7 @@ namespace PremiereSolutionProject.PL
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(976, 129);
+            this.btnSearch.Location = new System.Drawing.Point(932, 133);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(129, 32);
@@ -356,7 +357,7 @@ namespace PremiereSolutionProject.PL
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(973, 84);
+            this.label14.Location = new System.Drawing.Point(929, 84);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(80, 16);
             this.label14.TabIndex = 115;
@@ -365,11 +366,11 @@ namespace PremiereSolutionProject.PL
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Font = new System.Drawing.Font("Modern No. 20", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(976, 104);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(932, 104);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(129, 17);
+            this.txtSearch.Size = new System.Drawing.Size(129, 21);
             this.txtSearch.TabIndex = 114;
             // 
             // btnDeleteBusinessClient
@@ -379,7 +380,7 @@ namespace PremiereSolutionProject.PL
             this.btnDeleteBusinessClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteBusinessClient.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteBusinessClient.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteBusinessClient.Location = new System.Drawing.Point(825, 450);
+            this.btnDeleteBusinessClient.Location = new System.Drawing.Point(841, 433);
             this.btnDeleteBusinessClient.Name = "btnDeleteBusinessClient";
             this.btnDeleteBusinessClient.Size = new System.Drawing.Size(197, 77);
             this.btnDeleteBusinessClient.TabIndex = 117;
@@ -422,7 +423,7 @@ namespace PremiereSolutionProject.PL
             this.btnClearSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSearch.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearSearch.Location = new System.Drawing.Point(976, 171);
+            this.btnClearSearch.Location = new System.Drawing.Point(932, 171);
             this.btnClearSearch.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnClearSearch.Name = "btnClearSearch";
             this.btnClearSearch.Size = new System.Drawing.Size(129, 35);
@@ -431,12 +432,27 @@ namespace PremiereSolutionProject.PL
             this.btnClearSearch.UseVisualStyleBackColor = true;
             this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
             // 
+            // btnClearTextBoxes
+            // 
+            this.btnClearTextBoxes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearTextBoxes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearTextBoxes.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearTextBoxes.Location = new System.Drawing.Point(841, 525);
+            this.btnClearTextBoxes.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnClearTextBoxes.Name = "btnClearTextBoxes";
+            this.btnClearTextBoxes.Size = new System.Drawing.Size(197, 35);
+            this.btnClearTextBoxes.TabIndex = 123;
+            this.btnClearTextBoxes.Text = "Clear Fields";
+            this.btnClearTextBoxes.UseVisualStyleBackColor = true;
+            this.btnClearTextBoxes.Click += new System.EventHandler(this.btnClearTextBoxes_Click);
+            // 
             // frmBusinessClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1136, 590);
+            this.Controls.Add(this.btnClearTextBoxes);
             this.Controls.Add(this.btnClearSearch);
             this.Controls.Add(this.cmbActive);
             this.Controls.Add(this.txtAvtive);
@@ -508,5 +524,6 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.ComboBox cmbActive;
         private System.Windows.Forms.Label txtAvtive;
         private System.Windows.Forms.Button btnClearSearch;
+        private System.Windows.Forms.Button btnClearTextBoxes;
     }
 }

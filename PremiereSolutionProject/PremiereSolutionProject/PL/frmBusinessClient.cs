@@ -163,19 +163,45 @@ namespace PremiereSolutionProject.PL
         {
             RefreshDGVAndList();
         }
+
+        //TODO: need to figure out why the search is not working
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            businessClients.Clear();
-            businessClients.Add(businessClient.SelectAllBusinessClientsByThereId(txtSearch.Text));
-            RefreshDGVAndListWithoutReset();
-            
+            if (txtSearch.Text.Length >= 9)
+            {
+                businessClients.Clear();
+                businessClients.Add(businessClient.SelectAllBusinessClientsByThereId(txtSearch.Text));
+                RefreshDGVAndListWithoutReset();
+            }
+            else
+            {
+                MessageBox.Show("Please make sure to enter an ID to search for.","No ID entered", MessageBoxButtons.OK);
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-    }
 
-        
+        private void btnClearTextBoxes_Click(object sender, EventArgs e)
+        {
+            txtBusinessName.Text = "";
+            txtCity.Text = "";
+            txtContactNumber.Text = "";
+            txtPostalCode.Text = "";
+            txtSearch.Text = "";
+            txtStreetName.Text = "";
+            txtSuburb.Text = "";
+            txtTaxNum.Text = "";
+            cmbActive.SelectedIndex = -1;
+            cmbProvince.SelectedIndex = -1;
+        }
+
+        #region Methods
+
+
+
+        #endregion
+    }
 }
