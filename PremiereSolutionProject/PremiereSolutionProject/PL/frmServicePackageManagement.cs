@@ -30,9 +30,7 @@ namespace PremiereSolutionProject.PL
         private void frmServicePackageManagement_Load(object sender, EventArgs e)
         {
             dgvCurrentServicePackages.ForeColor = Color.Black;
-            services = new Service().SelectAllServices();
-            
-            sp = new ServicePackage().SelectAllServicePackage();
+            services = new Service().SelectAllServices();                        
             RefreshDGV();
             foreach (Service item in services)
             {
@@ -43,10 +41,10 @@ namespace PremiereSolutionProject.PL
 
         private void RefreshDGV()
         {
+            sp = new ServicePackage().SelectAllServicePackage();
             bs.DataSource = sp;
             dgvCurrentServicePackages.DataSource = null;
             dgvCurrentServicePackages.DataSource = bs;
-
         }
 
         private void UpdateData()
@@ -111,8 +109,8 @@ namespace PremiereSolutionProject.PL
         private void btnCreatePackage_Click(object sender, EventArgs e)
         {
             List<string> serviceNames = lbxAdded.Items.Cast<string>().ToList();
-            Service service = new Service();
-            List<Service> services = service.SelectAllServices();
+            ServicePackage servicePackage = new ServicePackage();
+            List<ServicePackage> servicePackages = servicePackage.SelectAllServicePackage();
             bool nameMatch = false;
             if (!string.IsNullOrWhiteSpace(txtPackageName.Text) && !string.IsNullOrWhiteSpace(lbxAdded.Text) && !IsInt(txtPrice.Text) && ((cbxPromotionYes.Checked == true && cbxPromotionNo.Checked == true) || (cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false)) && (numUDPercentage.Value < 0) && (dtpPromotionStart.Value < dtpPromotionEnd.Value))
             {
@@ -120,11 +118,12 @@ namespace PremiereSolutionProject.PL
             }
             else
             {
-                foreach (var item in services)
+                foreach (var item in servicePackages)
                 {
-                    if (item.ServiceName == txtPackageName.Text)
+                    if (item.PackageName == txtPackageName.Text)
                     {
                         nameMatch = true;
+                        MessageBox.Show("This package already exists");
                         break;
                     }
                 }
@@ -138,6 +137,7 @@ namespace PremiereSolutionProject.PL
                             if (item.ServiceName == serviceNames[i])
                             {
                                 servicesTemp.Add(item);
+                                break;
                             }
                         }
                     }
@@ -149,13 +149,10 @@ namespace PremiereSolutionProject.PL
                     {
                         promotion = false;
                     }
-                    ServicePackage sp = new ServicePackage(txtPackageName.Text, servicesTemp, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, int.Parse(txtPrice.Text));
-                }
-                else
-                {
-                    MessageBox.Show("Service Package name already exists");
-                }                
+                    servicePackage = new ServicePackage(txtPackageName.Text, servicesTemp, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, int.Parse(txtPrice.Text));
+                }               
             }
+            servicePackage.InsertServicePackage(servicePackage);
             RefreshDGV();
         }
 
