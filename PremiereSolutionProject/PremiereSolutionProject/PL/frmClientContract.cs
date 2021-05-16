@@ -13,6 +13,11 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmClientContract : Form
     {
+        public frmClientContract()
+        {
+            InitializeComponent();
+        }
+
         #region Declarations
 
         frmDashboard dashForm;
@@ -22,70 +27,7 @@ namespace PremiereSolutionProject.PL
 
         #endregion
 
-        public frmClientContract()
-        {
-            InitializeComponent();
-        }
-
-            
-        private void BuildForm() 
-        {
-            txtId.Text = dashForm.callInfo.Client.Id;
-            txtCallId.Text = dashForm.callInfo.CallID.ToString();
-
-            cbxPriorityLevel.Items.Add("Platinum");
-            cbxPriorityLevel.Items.Add("Gold");
-            cbxPriorityLevel.Items.Add("Silver");
-            cbxPriorityLevel.Items.Add("Bronze");
-
-            dgvServicePackages.ForeColor = Color.Black;
-            dgvServices.ForeColor = Color.Black;
-        }
-        private void SetMinMaxCounter(string name)
-        {
-            switch (name)
-            {
-                case "Platinum":
-                    nudNoOfDays.Maximum = 2;
-                    nudNoOfDays.Minimum = 1;
-                    break;
-                case "Gold":
-                    nudNoOfDays.Maximum = 4;
-                    nudNoOfDays.Minimum = 3;
-                    break;
-                case "Silver":
-                    nudNoOfDays.Maximum = 6;
-                    nudNoOfDays.Minimum = 5;
-                    break;
-                case "Bronze":
-                    nudNoOfDays.Maximum = 8;
-                    nudNoOfDays.Minimum = 7;
-                    break;
-                default:
-                    nudNoOfDays.Maximum = 8;
-                    nudNoOfDays.Minimum = 1;
-                    break;
-            }
-        }
-        private void BuildContractListAndFillConboBox()
-        {
-            contracts = contract.SelectActiveContracts();
-            foreach (var item in contracts)
-            {
-                cbxContractName.Items.Add(item.ContractID);
-            }
-        }
-        private void RefreshDGVServicePackedges(int contractIndex)
-        {
-            bindingSource = new BindingSource(contracts[contractIndex].PackageList, null);
-            dgvServicePackages.DataSource = bindingSource;
-        }
-        private void RefreshDGVServices(int contractIndex,int packedgeIndex)
-        {
-                bindingSource = new BindingSource(contracts[contractIndex].PackageList[packedgeIndex].ServiceList, null);
-                dgvServices.DataSource = bindingSource;
-        }
-
+        #region Events
 
         public frmClientContract(frmDashboard _dashForm):this()
         {
@@ -138,5 +80,78 @@ namespace PremiereSolutionProject.PL
                 MessageBox.Show("Client Already Has Active Contract");
             }
         }
+
+        private void btnExiting_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void BuildForm()
+        {
+            txtId.Text = dashForm.callInfo.Client.Id;
+            txtCallId.Text = dashForm.callInfo.CallID.ToString();
+
+            cbxPriorityLevel.Items.Add("Platinum");
+            cbxPriorityLevel.Items.Add("Gold");
+            cbxPriorityLevel.Items.Add("Silver");
+            cbxPriorityLevel.Items.Add("Bronze");
+
+            dgvServicePackages.ForeColor = Color.Black;
+            dgvServices.ForeColor = Color.Black;
+        }
+
+        private void SetMinMaxCounter(string name)
+        {
+            switch (name)
+            {
+                case "Platinum":
+                    nudNoOfDays.Maximum = 2;
+                    nudNoOfDays.Minimum = 1;
+                    break;
+                case "Gold":
+                    nudNoOfDays.Maximum = 4;
+                    nudNoOfDays.Minimum = 3;
+                    break;
+                case "Silver":
+                    nudNoOfDays.Maximum = 6;
+                    nudNoOfDays.Minimum = 5;
+                    break;
+                case "Bronze":
+                    nudNoOfDays.Maximum = 8;
+                    nudNoOfDays.Minimum = 7;
+                    break;
+                default:
+                    nudNoOfDays.Maximum = 8;
+                    nudNoOfDays.Minimum = 1;
+                    break;
+            }
+        }
+
+        private void BuildContractListAndFillConboBox()
+        {
+            contracts = contract.SelectActiveContracts();
+            foreach (var item in contracts)
+            {
+                cbxContractName.Items.Add(item.ContractID);
+            }
+        }
+
+        private void RefreshDGVServicePackedges(int contractIndex)
+        {
+            bindingSource = new BindingSource(contracts[contractIndex].PackageList, null);
+            dgvServicePackages.DataSource = bindingSource;
+        }
+
+        private void RefreshDGVServices(int contractIndex, int packedgeIndex)
+        {
+            bindingSource = new BindingSource(contracts[contractIndex].PackageList[packedgeIndex].ServiceList, null);
+            dgvServices.DataSource = bindingSource;
+        }
+
+        #endregion
     }
 }

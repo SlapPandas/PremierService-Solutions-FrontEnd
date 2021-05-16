@@ -59,11 +59,11 @@ namespace PremiereSolutionProject.PL
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(472, 18);
+            this.label1.Font = new System.Drawing.Font("Microsoft Yi Baiti", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(491, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(179, 29);
+            this.label1.Size = new System.Drawing.Size(213, 35);
             this.label1.TabIndex = 0;
             this.label1.Text = "Client Contract";
             // 
@@ -73,7 +73,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(32, 161);
+            this.label2.Location = new System.Drawing.Point(43, 161);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 16);
@@ -86,7 +86,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 224);
+            this.label3.Location = new System.Drawing.Point(43, 224);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 16);
@@ -99,7 +99,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(32, 355);
+            this.label4.Location = new System.Drawing.Point(43, 355);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 16);
@@ -112,7 +112,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(32, 427);
+            this.label5.Location = new System.Drawing.Point(43, 427);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 16);
@@ -148,10 +148,10 @@ namespace PremiereSolutionProject.PL
             this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(28, 510);
+            this.btnCreate.Location = new System.Drawing.Point(46, 516);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(236, 50);
+            this.btnCreate.Size = new System.Drawing.Size(229, 50);
             this.btnCreate.TabIndex = 13;
             this.btnCreate.Text = "Register Contract to Client";
             this.btnCreate.UseVisualStyleBackColor = false;
@@ -163,7 +163,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.cbxPriorityLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxPriorityLevel.FormattingEnabled = true;
-            this.cbxPriorityLevel.Location = new System.Drawing.Point(39, 244);
+            this.cbxPriorityLevel.Location = new System.Drawing.Point(50, 244);
             this.cbxPriorityLevel.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.cbxPriorityLevel.Name = "cbxPriorityLevel";
             this.cbxPriorityLevel.Size = new System.Drawing.Size(225, 21);
@@ -174,7 +174,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.dtpStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtpStartDate.Location = new System.Drawing.Point(37, 375);
+            this.dtpStartDate.Location = new System.Drawing.Point(48, 375);
             this.dtpStartDate.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(227, 20);
@@ -184,7 +184,7 @@ namespace PremiereSolutionProject.PL
             // 
             this.dtpEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.dtpEndDate.Location = new System.Drawing.Point(37, 452);
+            this.dtpEndDate.Location = new System.Drawing.Point(48, 452);
             this.dtpEndDate.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(227, 20);
@@ -208,7 +208,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.cbxContractName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxContractName.FormattingEnabled = true;
-            this.cbxContractName.Location = new System.Drawing.Point(37, 180);
+            this.cbxContractName.Location = new System.Drawing.Point(48, 180);
             this.cbxContractName.Name = "cbxContractName";
             this.cbxContractName.Size = new System.Drawing.Size(227, 21);
             this.cbxContractName.TabIndex = 18;
@@ -243,7 +243,7 @@ namespace PremiereSolutionProject.PL
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(32, 292);
+            this.label9.Location = new System.Drawing.Point(43, 292);
             this.label9.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(125, 16);
@@ -252,7 +252,7 @@ namespace PremiereSolutionProject.PL
             // 
             // nudNoOfDays
             // 
-            this.nudNoOfDays.Location = new System.Drawing.Point(39, 311);
+            this.nudNoOfDays.Location = new System.Drawing.Point(50, 311);
             this.nudNoOfDays.Name = "nudNoOfDays";
             this.nudNoOfDays.ReadOnly = true;
             this.nudNoOfDays.Size = new System.Drawing.Size(225, 20);
@@ -269,19 +269,21 @@ namespace PremiereSolutionProject.PL
             this.btnExiting.TabIndex = 115;
             this.btnExiting.Text = "Close";
             this.btnExiting.UseVisualStyleBackColor = true;
+            this.btnExiting.Click += new System.EventHandler(this.btnExiting_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(420, 86);
+            this.label8.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(292, 78);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 13);
+            this.label8.Size = new System.Drawing.Size(68, 16);
             this.label8.TabIndex = 116;
             this.label8.Text = "Client ID";
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(473, 83);
+            this.txtId.Location = new System.Drawing.Point(366, 78);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(190, 20);
@@ -289,7 +291,7 @@ namespace PremiereSolutionProject.PL
             // 
             // txtCallId
             // 
-            this.txtCallId.Location = new System.Drawing.Point(746, 83);
+            this.txtCallId.Location = new System.Drawing.Point(639, 78);
             this.txtCallId.Name = "txtCallId";
             this.txtCallId.ReadOnly = true;
             this.txtCallId.Size = new System.Drawing.Size(190, 20);
@@ -298,9 +300,10 @@ namespace PremiereSolutionProject.PL
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(693, 86);
+            this.label10.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(577, 78);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.Size = new System.Drawing.Size(56, 16);
             this.label10.TabIndex = 118;
             this.label10.Text = "Call ID";
             // 
