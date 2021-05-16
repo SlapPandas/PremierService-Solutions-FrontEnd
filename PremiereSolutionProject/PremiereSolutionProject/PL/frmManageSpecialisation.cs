@@ -31,7 +31,7 @@ namespace PremiereSolutionProject.PL
         {
             lstspecial = SR.SelectSpecialisationList();
             dgvAddSpecial.DataSource = lstspecial;
-
+            txtName.Focus();
         }
 
         private void dgvAddSpecial_CellContentClick(object sender, DataGridViewCellEventArgs e)

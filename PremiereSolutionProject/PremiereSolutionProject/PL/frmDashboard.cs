@@ -253,7 +253,7 @@ namespace PremiereSolutionProject.PL
             openChildForm(new frmManageEmployee());
             HideSubMenu();
         }
-        private void btnAddSpecialisation_Click(object sender, EventArgs e)
+        private void btnManageSpecialisation_Click(object sender, EventArgs e)
         {
             openChildForm(new frmManageSpecialisation());
             HideSubMenu();
