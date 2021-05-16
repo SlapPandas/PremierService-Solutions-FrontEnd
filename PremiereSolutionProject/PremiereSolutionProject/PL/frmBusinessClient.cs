@@ -23,6 +23,14 @@ namespace PremiereSolutionProject.PL
         #endregion
 
         #region Events
+
+        private void frmBusinessClient_Load(object sender, EventArgs e)
+        {
+            RefreshDGVAndList();
+            BuildDGVStyle();
+            PopulateComboBox();
+        }
+
         private void dgvBusinessClients_SelectionChanged(object sender, EventArgs e)
         {
             UpdateFields(dgvBusinessClients.CurrentCell.RowIndex);
@@ -106,13 +114,6 @@ namespace PremiereSolutionProject.PL
         #endregion
 
         #region Methods
-
-        private void frmBusinessClient_Load(object sender, EventArgs e)
-        {
-            RefreshDGVAndList();
-            BuildDGVStyle();
-            PopulateComboBox();
-        }
 
         private void BuildDGVStyle()
         {
