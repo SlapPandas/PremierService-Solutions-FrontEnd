@@ -35,30 +35,38 @@ namespace PremiereSolutionProject.PL
 
         private void btnCreatePackage_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtServiceName.Text) && string.IsNullOrWhiteSpace(rtbServiceDescription.Text))
+            DialogResult dr = MessageBox.Show("Are you sure to Create this serice?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
             {
-                MessageBox.Show("Please fill the correct information");
-            }
-            else
-            {
-                Service service = new Service(txtServiceName.Text, rtbServiceDescription.Text);
-                service.InsertService(service);
-                RefreshDGV();
-            }
+                if (string.IsNullOrWhiteSpace(txtServiceName.Text) && string.IsNullOrWhiteSpace(rtbServiceDescription.Text))
+                {
+                    MessageBox.Show("Please fill the correct information");
+                }
+                else
+                {
+                    Service service = new Service(txtServiceName.Text, rtbServiceDescription.Text);
+                    service.InsertService(service);
+                    RefreshDGV();
+                }
+            }            
         }
 
         private void btnUpdateService_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtServiceName.Text) && string.IsNullOrWhiteSpace(rtbServiceDescription.Text))
+            DialogResult dr = MessageBox.Show("Are you sure to Update this serice?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
             {
-                MessageBox.Show("Please fill the correct information");
-            }
-            else
-            {
-                Service service = new Service(selectedService.ServiceID,txtServiceName.Text, rtbServiceDescription.Text);
-                service.UpdateService(service);
-                RefreshDGV();
-            }
+                if (string.IsNullOrWhiteSpace(txtServiceName.Text) && string.IsNullOrWhiteSpace(rtbServiceDescription.Text))
+                {
+                    MessageBox.Show("Please fill the correct information");
+                }
+                else
+                {
+                    Service service = new Service(selectedService.ServiceID, txtServiceName.Text, rtbServiceDescription.Text);
+                    service.UpdateService(service);
+                    RefreshDGV();
+                }
+            }                        
         }
 
         private void frmServiceManagement_Load(object sender, EventArgs e)
@@ -69,9 +77,13 @@ namespace PremiereSolutionProject.PL
 
         private void btnDeleteService_Click(object sender, EventArgs e)
         {
-            Service service = selectedService;
-            service.DeleteService(service);
-            RefreshDGV();
+            DialogResult dr = MessageBox.Show("Are you sure to Delete this service?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                Service service = selectedService;
+                service.DeleteService(service);
+                RefreshDGV();
+            }            
         }
 
         private void dgvCurrentServices_SelectionChanged(object sender, EventArgs e)
@@ -102,5 +114,10 @@ namespace PremiereSolutionProject.PL
 
         #endregion
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtServiceName.Clear();
+            rtbServiceDescription.Clear();
+        }
     }
 }

@@ -96,23 +96,60 @@ namespace PremiereSolutionProject.PL
             }
             else
             {
-                lbxSpecialisations.Items.Add(cbxSpecialisation.SelectedItem.ToString() + "," + nudNumberOfPeople.Value.ToString());
-                MessageBox.Show("service request created");
+                cbxSpecialisation.Items.Remove(cbxSpecialisation.SelectedIndex);
+                string temp = cbxSpecialisation.SelectedItem.ToString() + "," + nudNumberOfPeople.Value.ToString();
+                string temp2;
+                string nameCheck = temp.Remove(temp.Length - 2);
+                bool notInside = true;                
+                List<String> tempList = new List<string>();
+                List<String> tempNameList = new List<string>();
+                tempList = lbxSpecialisations.Items.Cast<String>().ToList();
+                foreach (var item in tempList)
+                {
+                    temp2 = temp.Remove(temp.Length - 2);
+                    tempNameList.Add(temp2);
+                }
+                foreach (var item in tempNameList)
+                {
+                    if (nameCheck == item)
+                    {
+                        notInside = false;
+                    }
+                }
+                if (notInside)
+                {
+                    lbxSpecialisations.Items.Add(temp);
+                }
+                else
+                {
+                    MessageBox.Show("Service already exsits");
+                }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            lbxSpecialisations.Items.RemoveAt(lbxSpecialisations.SelectedIndex);            
+            try
+            {
+                lbxSpecialisations.Items.RemoveAt(lbxSpecialisations.SelectedIndex);
+            }
+            catch 
+            {
+                MessageBox.Show("Please select a serice to remove");
+            }            
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            specList = lbxSpecialisations.Items.Cast<string>().ToList();
-            ServiceRequest srE = new ServiceRequest();
-            ServiceRequest sr = new ServiceRequest(richTextBox1.Text, dashform.callInfo.CallID, specList, srE.service_OnInitialization);
-            Action action = sr.service_OnInitialization;
-            sr.CreateServiceRequest(sr);
+            DialogResult dr = MessageBox.Show("Are you sure the information is correct?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                specList = lbxSpecialisations.Items.Cast<string>().ToList();
+                ServiceRequest srE = new ServiceRequest();
+                ServiceRequest sr = new ServiceRequest(richTextBox1.Text, dashform.callInfo.CallID, specList, srE.service_OnInitialization);
+                Action action = sr.service_OnInitialization;
+                sr.CreateServiceRequest(sr);
+            }            
         }
 
         #endregion
