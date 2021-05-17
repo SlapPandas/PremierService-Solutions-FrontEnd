@@ -41,6 +41,7 @@ namespace PremiereSolutionProject.PL
             this.btnExit = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
+            this.btnClearFields = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAddSpecial)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +63,7 @@ namespace PremiereSolutionProject.PL
             // dgvAddSpecial
             // 
             this.dgvAddSpecial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAddSpecial.Location = new System.Drawing.Point(41, 83);
+            this.dgvAddSpecial.Location = new System.Drawing.Point(57, 84);
             this.dgvAddSpecial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvAddSpecial.Name = "dgvAddSpecial";
             this.dgvAddSpecial.ReadOnly = true;
@@ -95,7 +96,6 @@ namespace PremiereSolutionProject.PL
             this.txtName.Location = new System.Drawing.Point(323, 286);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(207, 22);
             this.txtName.TabIndex = 48;
             // 
@@ -129,7 +129,7 @@ namespace PremiereSolutionProject.PL
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddClient.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddClient.Location = new System.Drawing.Point(163, 553);
+            this.btnAddClient.Location = new System.Drawing.Point(163, 643);
             this.btnAddClient.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(139, 34);
@@ -143,7 +143,7 @@ namespace PremiereSolutionProject.PL
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdate.Location = new System.Drawing.Point(391, 553);
+            this.btnUpdate.Location = new System.Drawing.Point(391, 643);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(139, 34);
@@ -157,7 +157,7 @@ namespace PremiereSolutionProject.PL
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDelete.Location = new System.Drawing.Point(619, 553);
+            this.btnDelete.Location = new System.Drawing.Point(619, 643);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(139, 34);
@@ -172,7 +172,11 @@ namespace PremiereSolutionProject.PL
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+<<<<<<< Updated upstream
             this.btnExit.Location = new System.Drawing.Point(787, 658);
+=======
+            this.btnExit.Location = new System.Drawing.Point(936, 675);
+>>>>>>> Stashed changes
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(91, 28);
@@ -208,12 +212,27 @@ namespace PremiereSolutionProject.PL
             this.txtID.Size = new System.Drawing.Size(51, 22);
             this.txtID.TabIndex = 112;
             // 
+            // btnClearFields
+            // 
+            this.btnClearFields.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearFields.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnClearFields.Location = new System.Drawing.Point(391, 559);
+            this.btnClearFields.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnClearFields.Name = "btnClearFields";
+            this.btnClearFields.Size = new System.Drawing.Size(139, 34);
+            this.btnClearFields.TabIndex = 112;
+            this.btnClearFields.Text = "Clear Fields";
+            this.btnClearFields.UseVisualStyleBackColor = true;
+            this.btnClearFields.Click += new System.EventHandler(this.btnClearFields_Click);
+            // 
             // frmManageSpecialisation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(891, 700);
+            this.ClientSize = new System.Drawing.Size(1040, 717);
+            this.Controls.Add(this.btnClearFields);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -249,5 +268,6 @@ namespace PremiereSolutionProject.PL
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Button btnClearFields;
     }
 }

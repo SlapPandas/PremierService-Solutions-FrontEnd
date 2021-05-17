@@ -36,14 +36,31 @@ namespace PremiereSolutionProject.PL
 
             CustomizeDesign();
         }
+
+        #region Main functioning
+
         private void CustomizeDesign()
         {
             pnlCallCenterSubmenu.Visible = false;
             pnlServiceDeptSubMenu.Visible = false;
             pnlClientMaintainSubMenu.Visible = false;
             pnlContractMaintSubMenu.Visible = false;
-            pnlClientSatisSubMenu.Visible = false;
             pnlServiceSubMenu.Visible = false;
+        }
+        private Form activeForm = null;
+        private void openChildForm(Form childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            pnlChildForm.Controls.Add(childForm);
+            pnlChildForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
         }
 
         private void HideSubMenu()
@@ -68,10 +85,7 @@ namespace PremiereSolutionProject.PL
                 pnlContractMaintSubMenu.Visible = false;
             }
 
-            if (pnlClientSatisSubMenu.Visible == true)
-            {
-                pnlClientSatisSubMenu.Visible = false;
-            }
+           
         }
 
         private void ShowSubMenu(Panel subMenu)
@@ -86,7 +100,9 @@ namespace PremiereSolutionProject.PL
                 subMenu.Visible = false;
             }
         }
+        #endregion
 
+        #region Main buttons
         private void btnCallCenter_Click(object sender, EventArgs e)
         {
             ShowSubMenu(pnlCallCenterSubmenu);
@@ -107,10 +123,6 @@ namespace PremiereSolutionProject.PL
             ShowSubMenu(pnlClientMaintainSubMenu);
         }
 
-        private void btnClientSatis_Click(object sender, EventArgs e)
-        {
-            ShowSubMenu(pnlClientSatisSubMenu);
-        }
 
         private void btnServiceManager_Click(object sender, EventArgs e)
         {
@@ -122,6 +134,16 @@ namespace PremiereSolutionProject.PL
             openChildForm(new frmErrorHandling());
             HideSubMenu();
         }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult iExit;
+            iExit = MessageBox.Show("Confirm if you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (iExit == DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
+        }
+        #endregion
 
         #region btnCallCenterSubMenu
         private void btnCall_Click(object sender, EventArgs e)
@@ -221,12 +243,7 @@ namespace PremiereSolutionProject.PL
         #endregion
 
         #region btnClientSatisSubMenu
-        private void btnClientSatisCall_Click(object sender, EventArgs e)
-        {
-            openChildForm(new frmClientSatisfaction());
-            HideSubMenu();
-        }
-
+ 
         private void btnFollowRequest_Click(object sender, EventArgs e)
         {
             //Code
@@ -272,38 +289,6 @@ namespace PremiereSolutionProject.PL
         }
         #endregion
 
-        private Form activeForm = null;
-        private void openChildForm(Form childForm)
-        {
-            if (activeForm != null)
-                activeForm.Close();
-
-                activeForm = childForm;
-                childForm.TopLevel = false;
-                childForm.FormBorderStyle = FormBorderStyle.None;
-                childForm.Dock = DockStyle.Fill;
-                pnlChildForm.Controls.Add(childForm);
-                pnlChildForm.Tag = childForm;
-                childForm.BringToFront();
-                childForm.Show();
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            DialogResult iExit;
-            iExit = MessageBox.Show("Confirm if you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (iExit ==DialogResult.Yes)
-            {
-                Environment.Exit(0);
-            }
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            openChildForm(new frmClientSatisfaction());
-            HideSubMenu();
-        }
-
-        
+    
     }
 }

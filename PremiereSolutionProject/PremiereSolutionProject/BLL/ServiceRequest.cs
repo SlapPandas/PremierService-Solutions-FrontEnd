@@ -221,8 +221,8 @@ namespace PremiereSolutionProject.BLL
             sr.closed = false;
             List<Job> jobList = new List<Job>();
             CallDH callDH = new CallDH();
-            sr.serviceRequestID = InsertServiceRequestReturnID(sr); // insert the SR into database and return the SR ID
-            Call c = callDH.SelectCallById(sr.callID);    //select call using SR ID
+            sr.serviceRequestID = InsertServiceRequestReturnID(sr); // insert the SP into database and return the SP ID
+            Call c = callDH.SelectCallById(sr.callID);    //select call using SP ID
             ContractDH contractDH = new ContractDH();
             if (c.Indclient.Id != null)
             {

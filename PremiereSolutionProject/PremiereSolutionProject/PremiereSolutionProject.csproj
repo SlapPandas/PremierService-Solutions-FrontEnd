@@ -144,12 +144,6 @@
     <Compile Include="PL\frmClientInfo.designer.cs">
       <DependentUpon>frmClientInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="PL\frmClientSatisfaction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PL\frmClientSatisfaction.designer.cs">
-      <DependentUpon>frmClientSatisfaction.cs</DependentUpon>
-    </Compile>
     <Compile Include="PL\frmClientContract.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,9 +230,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PL\frmClientInfo.resx">
       <DependentUpon>frmClientInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PL\frmClientSatisfaction.resx">
-      <DependentUpon>frmClientSatisfaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PL\frmClientContract.resx">
       <DependentUpon>frmClientContract.cs</DependentUpon>
