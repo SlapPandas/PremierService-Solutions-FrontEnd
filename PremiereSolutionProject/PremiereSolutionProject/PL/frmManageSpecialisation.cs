@@ -13,18 +13,16 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmManageSpecialisation : Form
     {
-        #region Fields
         Specialisation SP = new Specialisation();
         List<Specialisation> lstspecial = new List<Specialisation>();
-        BindingSource bindingSource = new BindingSource();
-        #endregion
+        BindingSource bindingSource;
 
         public frmManageSpecialisation()
         {
             InitializeComponent();
         }
 
-        #region Function buttons
+        #region Assisting buttons
         private void btnExit_Click_1(object sender, EventArgs e)
         {
             this.Close();
@@ -37,7 +35,7 @@ namespace PremiereSolutionProject.PL
         }
         #endregion
 
-        #region Load and methods
+        #region Form Load And Methods
         private void frmAddSpecialisation_Load(object sender, EventArgs e)
         {
             lstspecial = SP.SelectSpecialisationList();
@@ -45,18 +43,12 @@ namespace PremiereSolutionProject.PL
             txtName.Focus();
         }
 
-        private void WhatToUpdate()
-        {
-<<<<<<< Updated upstream
-            MessageBox.Show($"{txtID.Text}");
-            SR.SpecialisationID = int.Parse(txtID.Text);
-            SR.SpecialisationName = txtName.Text;
-            SR.Description = rtbDescription.Text;
-=======
-            SP.SpecialisationID = int.Parse(txtID.Text);
-            SP.SpecialisationName = txtName.Text;
-            SP.Description = rtbDescription.Text;
-        }
+        //private void WhatToUpdate()
+        //{
+        //    SP.SpecialisationID = int.Parse(txtID.Text);
+        //    SP.SpecialisationName = txtName.Text;
+        //    SP.Description = rtbDescription.Text;
+        //}
 
         private void RefreshDGV()
         {
@@ -64,83 +56,88 @@ namespace PremiereSolutionProject.PL
             List<Specialisation> bindList = lstspecial;
             bindingSource = new BindingSource(bindList, null);
             dgvAddSpecial.DataSource = bindingSource;
->>>>>>> Stashed changes
         }
-        #endregion
 
-        #region Cell clicking
-        private void dgvAddSpecial_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Updatefields(int index)
         {
-            if (e.RowIndex >= 0)
+            if (index >= lstspecial.Count)
             {
-                DataGridViewRow row = this.dgvAddSpecial.Rows[e.RowIndex];
-
-                txtID.Text = row.Cells["SpecialisationID"].Value.ToString();
-                txtName.Text = row.Cells["SpecialisationName"].Value.ToString();
-                rtbDescription.Text = row.Cells["Description"].Value.ToString();
-<<<<<<< Updated upstream
-                //SR.SpecialisationID =  Place;//int.Parse(row.Cells["SpecialisationID"].Value.ToString());
-=======
->>>>>>> Stashed changes
+                index = 0;
+            }
+            if (index <= dgvAddSpecial.RowCount - 2)
+            {
+                txtID.Text = lstspecial[index].SpecialisationID.ToString();
+                txtName.Text = lstspecial[index].SpecialisationName;
+                rtbDescription.Text = lstspecial[index].Description;
             }
         }
         #endregion
 
+        
+
         #region Insert Client
         private void btnAddClient_Click(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
-            SR.SpecialisationName = txtName.Text;
-            SR.Description = rtbDescription.Text;
-            SR.InsertSpecialisation(SR);
-            MessageBox.Show("The specialisation has been inserted.","Information",MessageBoxButtons.OK);
-            txtName.Clear();
-            rtbDescription.Clear();
-=======
-            if (!(String.IsNullOrEmpty(txtName.Text) && String.IsNullOrEmpty(rtbDescription.Text)))
+            DialogResult dr = MessageBox.Show("Are you sure to insert the specialisation?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
             {
-                WhatToUpdate();
-                SP.InsertSpecialisation(SP);
+                
+
+                lstspecial.Add(new Specialisation(txtName.Text, rtbDescription.Text));
+                SP.InsertSpecialisation(lstspecial[lstspecial.Count - 1]);
+
                 MessageBox.Show("The specialisation has been inserted.", "Information", MessageBoxButtons.OK);
                 txtName.Clear();
                 rtbDescription.Clear();
                 RefreshDGV();
-            }          
->>>>>>> Stashed changes
+            }
         }
         #endregion
 
         #region Update Client
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            WhatToUpdate();
+            
             DialogResult dr = MessageBox.Show("Are you sure to update the specialisation?", "Confirmation", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                SP.UpdateSpecialisation(SP);
+                
+                lstspecial[dgvAddSpecial.CurrentCell.RowIndex] = new Specialisation(lstspecial[dgvAddSpecial.CurrentCell.RowIndex].SpecialisationID,txtName.Text,rtbDescription.Text);
+                SP.UpdateSpecialisation(lstspecial[dgvAddSpecial.CurrentCell.RowIndex]);
+                Updatefields(dgvAddSpecial.CurrentCell.RowIndex);
             }
             MessageBox.Show("The specialisation has been updated.", "Information", MessageBoxButtons.OK);
             txtName.Clear();
             rtbDescription.Clear();
             RefreshDGV();
         }
-    
         #endregion
 
         #region Delete Client
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            WhatToUpdate();
+            //WhatToUpdate();
             DialogResult dr = MessageBox.Show("Are you sure to delete the specialisation?", "Confirmation", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                SP.DeleteSpecialisation(SP);
-            }
-            MessageBox.Show("The specialisation has been deleted.", "Information", MessageBoxButtons.OK);
-            txtName.Clear();
-            rtbDescription.Clear();
-            RefreshDGV();
-    }
-}
+                
+                lstspecial[dgvAddSpecial.CurrentCell.RowIndex] = new Specialisation(lstspecial[dgvAddSpecial.CurrentCell.RowIndex].SpecialisationID, txtName.Text, rtbDescription.Text);
+                SP.DeleteSpecialisation(lstspecial[dgvAddSpecial.CurrentCell.RowIndex]);
+                Updatefields(dgvAddSpecial.CurrentCell.RowIndex);
+
+                MessageBox.Show("The specialisation has been deleted.", "Information", MessageBoxButtons.OK);
+                txtName.Clear();
+                rtbDescription.Clear();
+                RefreshDGV();
+                Updatefields(dgvAddSpecial.CurrentCell.RowIndex);
+            }     
+        }
+
         #endregion
+
+        private void dgvAddSpecial_SelectionChanged(object sender, EventArgs e)
+        {
+            Updatefields(dgvAddSpecial.CurrentCell.RowIndex);
+        }
+    }
 }

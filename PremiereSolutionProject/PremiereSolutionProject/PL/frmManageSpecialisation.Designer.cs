@@ -71,7 +71,8 @@ namespace PremiereSolutionProject.PL
             this.dgvAddSpecial.RowTemplate.Height = 24;
             this.dgvAddSpecial.Size = new System.Drawing.Size(717, 150);
             this.dgvAddSpecial.TabIndex = 13;
-            this.dgvAddSpecial.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAddSpecial_CellContentClick);
+            //this.dgvAddSpecial.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAddSpecial_CellContentClick);
+            this.dgvAddSpecial.SelectionChanged += new System.EventHandler(this.dgvAddSpecial_SelectionChanged);
             // 
             // label2
             // 
@@ -172,11 +173,7 @@ namespace PremiereSolutionProject.PL
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-<<<<<<< Updated upstream
-            this.btnExit.Location = new System.Drawing.Point(787, 658);
-=======
             this.btnExit.Location = new System.Drawing.Point(936, 675);
->>>>>>> Stashed changes
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(91, 28);
