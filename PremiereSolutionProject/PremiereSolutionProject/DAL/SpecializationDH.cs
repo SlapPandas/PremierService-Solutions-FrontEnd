@@ -13,22 +13,14 @@ namespace PremiereSolutionProject.DAL
         #region Update
         public void Update(Specialisation specialisation)
         {
-            UpdateCommand($"EXEC UpdateSpecialization @i = '{specialisation.SpecialisationID}', @name = '{specialisation.SpecialisationName}',@description = '{specialisation.Description}'");
+            UpdateCommand($"EXEC UpdateSpecialization @id = '{specialisation.SpecialisationID}', @name = '{specialisation.SpecialisationName}',@description = '{specialisation.Description}'");
         }
         #endregion
 
         #region Delete
-        public bool Delete(Specialisation specialisation)
+        public void Delete(Specialisation specialisation)
         {
-            if (GetNumberOfSpecializationUses(specialisation.SpecialisationID) > 0)
-            {
-                return false;
-            }
-            else
-            {
-                DeleteCommand($"EXEC DeleteSpecialisation @id = '{specialisation.SpecialisationID}'");
-                return true;
-            }
+            DeleteCommand($"EXEC DeleteSpecialisation @id = '{specialisation.SpecialisationID}'");
         }
         #endregion
 
