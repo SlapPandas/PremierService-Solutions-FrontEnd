@@ -45,6 +45,7 @@ namespace PremiereSolutionProject.PL
             FormatDGV();
             businessClientList = new BusinessClient().SelectAllBusinessClients();
             individualClientList = new IndividualClient().SelectAllIndividualClients();
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -107,11 +108,25 @@ namespace PremiereSolutionProject.PL
             {
                 MessageBox.Show("Please enter the client ID");
             }
+            else if (dashform.callInfo.Client != null)
+            {
+                MessageBox.Show("Client already logged");
+            }
+            else if (bs2.Current == null)
+            {
+                MessageBox.Show("No client selected in data grid view");
+            }
             else
             {
-                Call call = new Call();
-                call.LogClientToCall(dashform.callInfo.CallID, txtClientID.Text);        
-                dashform.callInfo.Client = (Client)bs2.Current;
+                DialogResult dr = MessageBox.Show("Are you sure you want to add client?", "Confirmation", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    Call call = new Call();
+                    call.LogClientToCall(dashform.callInfo.CallID, txtClientID.Text);
+                    dashform.callInfo.Client = (Client)bs2.Current;
+                    this.Close();
+                }
+                
             }
         }
 

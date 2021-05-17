@@ -81,7 +81,7 @@ namespace PremiereSolutionProject.PL
                 lblEmpName.Text = dashform.callInfo.Employee.FirstName;
                 rtbNotes.Text = dashform.callInfo.CallNotes;
 
-
+                btnAnswer.Enabled = false;
                 btnEnd.Enabled = true;
             }
 
