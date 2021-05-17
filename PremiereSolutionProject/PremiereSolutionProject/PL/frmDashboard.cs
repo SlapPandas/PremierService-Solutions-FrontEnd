@@ -27,8 +27,7 @@ namespace PremiereSolutionProject.PL
                 {
                     Console.WriteLine("Now assigning jobs..");
                     ServiceRequest sr = new ServiceRequest();
-                    //TODO
-                    //sr.AssignPendingJobs();
+                    sr.AssignPendingJobs();
                     Console.WriteLine("Jobs have been assigned..");
                     Thread.Sleep(300000);
                 }

@@ -275,7 +275,7 @@ namespace PremiereSolutionProject.BLL
             bool jobAssigned = false;
             int empsAssigned = 0;
             int employeecount = 0;
-            if (jobList.Count != 0 || maintenanceEmployeesList.Count != 0)
+            if (jobList.Count > 0 && maintenanceEmployeesList.Count > 0)
             {
                 foreach (Job job in jobList)
                 {
@@ -296,8 +296,8 @@ namespace PremiereSolutionProject.BLL
                                     jobDH.InsertSingleEmployeeToJob(job.JobID, maintenanceEmployeesList[k].Id); //insert into EmployeeJobLink table
                                     maintenanceEmployeesList.RemoveAt(k);   //employee is no longer available
                                     empsAssigned++; // increase the count of employees assigned to the job, used to check if the job is filled
-                                    n = maintenanceEmployeesList[k - 1].Specialisations.Count;  //to break out of n-for loop if correct employee was found & job was created
-                                }
+                                    break; //to break out of n-for loop if correct employee was found & job was created
+                                }                                
                             }
                             jobAssigned = empsAssigned == job.EmployeesNeeded ? true : false;   //for when all employees of the job has been assigned
                             if (jobAssigned)
