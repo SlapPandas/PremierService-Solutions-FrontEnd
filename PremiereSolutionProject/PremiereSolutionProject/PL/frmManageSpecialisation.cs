@@ -21,7 +21,7 @@ namespace PremiereSolutionProject.PL
             InitializeComponent();
         }
 
-       
+
         private void btnExit_Click_1(object sender, EventArgs e)
         {
             this.Close();
@@ -34,33 +34,69 @@ namespace PremiereSolutionProject.PL
             txtName.Focus();
         }
 
+        private void WhatToUpdate()
+        {
+            SR.SpecialisationID = int.Parse(txtID.Text);
+            SR.SpecialisationName = txtName.Text;
+            SR.Description = rtbDescription.Text;
+        }
+
+        #region Cell clicking
         private void dgvAddSpecial_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int Place;
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dgvAddSpecial.Rows[e.RowIndex];
 
+                txtID.Text = row.Cells["SpecialisationID"].Value.ToString();
+                Place = int.Parse(txtID.Text);
                 txtName.Text = row.Cells["SpecialisationName"].Value.ToString();
                 rtbDescription.Text = row.Cells["Description"].Value.ToString();
-                SR.SpecialisationID = int.Parse(row.Cells["SpecialisationID"].Value.ToString());
+                SR.SpecialisationID =  Place;//int.Parse(row.Cells["SpecialisationID"].Value.ToString());
             }
         }
+        #endregion
 
+        #region Insert Client
         private void btnAddClient_Click(object sender, EventArgs e)
         {
-            SR.SpecialisationName = txtName.Text;
-            SR.Description = rtbDescription.Text;
-            SR.UpdateSpecialisation(SR);
+            WhatToUpdate();
+            SR.InsertSpecialisation(SR);
+            MessageBox.Show("The specialisation has been inserted.","Information",MessageBoxButtons.OK);
+            txtName.Clear();
+            rtbDescription.Clear();
         }
+        #endregion
 
+        #region Update Client
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            SR.UpdateSpecialisation(SR);
+            WhatToUpdate();
+            DialogResult dr = MessageBox.Show("Are you sure to update the specialisation?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                SR.UpdateSpecialisation(SR);
+            }
+            MessageBox.Show("The specialisation has been updated.", "Information", MessageBoxButtons.OK);
+            txtName.Clear();
+            rtbDescription.Clear();
         }
+        #endregion
 
+        #region Delete Client
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            SR.DeleteSpecialisation(SR);
+            WhatToUpdate();
+            DialogResult dr = MessageBox.Show("Are you sure to delete the specialisation?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                SR.DeleteSpecialisation(SR);
+            }
+            MessageBox.Show("The specialisation has been deleted.", "Information", MessageBoxButtons.OK);
+            txtName.Clear();
+            rtbDescription.Clear();
         }
+        #endregion
     }
 }
