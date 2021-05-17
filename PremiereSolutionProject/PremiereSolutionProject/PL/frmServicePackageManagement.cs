@@ -163,7 +163,7 @@ namespace PremiereSolutionProject.PL
                     ServicePackage sp = new ServicePackage(selectedP.PackageID, txtPackageName.Text, servicesTemp, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, int.Parse(txtPrice.Text));
                     sp.UpdateServicePackage(sp);
                     sp.UpdateListOfServices(sp);
-                    sp.UpdatePromotionStateOfPackage(selectedP.PackageID, promotion);                    
+                    sp.UpdateWholePromotionState(sp);                    
                     RefreshDGV();
                     UpdateData();
                 }                

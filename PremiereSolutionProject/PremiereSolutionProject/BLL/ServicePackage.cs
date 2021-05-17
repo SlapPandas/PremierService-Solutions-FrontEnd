@@ -91,6 +91,11 @@ namespace PremiereSolutionProject.BLL
 
             return package.onPromotion ? (package.servicePrice * ((100 - package.promotionPercentage)/100)) : package.servicePrice;
         }
+        public void UpdateWholePromotionState(ServicePackage servicePackage) 
+        {
+            ServicePackadgeDH servicePackadgeDH = new ServicePackadgeDH();
+            servicePackadgeDH.UpdateServicePackedgePromotion(servicePackage);
+        }
 
         public List<ServicePackage> SelectAllServicePackage() // get a list of service packages contract can be built from
         {
