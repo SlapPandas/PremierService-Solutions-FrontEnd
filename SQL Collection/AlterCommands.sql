@@ -241,6 +241,12 @@ GO
 ALTER PROC DeleteSpecialisation @id INT 
 AS
 	BEGIN TRAN
+		DELETE FROM SpecialisationEmployeeLink
+		WHERE specialisationID = @id
+
+		DELETE FROM ServiceRequestSpecialisationLink
+		WHERE specialisationRequiredID = @id
+
 		DELETE FROM Specialisation
 		WHERE specialisationID = @id
 	COMMIT
