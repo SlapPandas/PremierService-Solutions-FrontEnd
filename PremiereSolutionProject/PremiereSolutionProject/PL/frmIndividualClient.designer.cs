@@ -67,6 +67,7 @@
             this.txtAvtive = new System.Windows.Forms.Label();
             this.cmbActive = new System.Windows.Forms.ComboBox();
             this.btnClearSearch = new System.Windows.Forms.Button();
+            this.btnClearFields = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExistingClients)).BeginInit();
             this.SuspendLayout();
             // 
@@ -544,12 +545,28 @@
             this.btnClearSearch.UseVisualStyleBackColor = true;
             this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
             // 
+            // btnClearFields
+            // 
+            this.btnClearFields.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
+            this.btnClearFields.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearFields.Font = new System.Drawing.Font("Microsoft Yi Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearFields.Location = new System.Drawing.Point(485, 459);
+            this.btnClearFields.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnClearFields.Name = "btnClearFields";
+            this.btnClearFields.Size = new System.Drawing.Size(206, 43);
+            this.btnClearFields.TabIndex = 121;
+            this.btnClearFields.Text = "Clear Fields";
+            this.btnClearFields.UseVisualStyleBackColor = false;
+            this.btnClearFields.Click += new System.EventHandler(this.btnClearFields_Click);
+            // 
             // frmIndividualClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1136, 591);
+            this.Controls.Add(this.btnClearFields);
             this.Controls.Add(this.btnClearSearch);
             this.Controls.Add(this.cmbActive);
             this.Controls.Add(this.txtAvtive);
@@ -640,5 +657,6 @@
         private System.Windows.Forms.Label txtAvtive;
         private System.Windows.Forms.ComboBox cmbActive;
         private System.Windows.Forms.Button btnClearSearch;
+        private System.Windows.Forms.Button btnClearFields;
     }
 }

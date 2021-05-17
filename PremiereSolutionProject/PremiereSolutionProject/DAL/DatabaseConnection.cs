@@ -12,8 +12,8 @@ namespace PremiereSolutionProject.DAL
     public class DatabaseConnection : IDataconnection
     {
         #region Fields
-        public string connectionSring = @"Data Source =.; Initial Catalog = PremierServiceSolutionsDatabase; Integrated Security = SSPI";
-        //public string connectionSring = @"Data Source =localhost,11433; Initial Catalog = PremierServiceSolutionsDatabase; User ID=sa;Password=GrantedPeople1209!";
+        readonly public string connectionSring = @"Data Source =.; Initial Catalog = PremierServiceSolutionsDatabase; Integrated Security = SSPI";
+        //readonly public string connectionSring = @"Data Source =localhost,11433; Initial Catalog = PremierServiceSolutionsDatabase; User ID=sa;Password=GrantedPeople1209!";
         public string commandString = "";
         #endregion
 

@@ -25,32 +25,12 @@ namespace PremiereSolutionProject.PL
             InitializeComponent();
         }
 
-        private void BuildDGVStyle()
-        {
-            dgvEmployee.ForeColor = Color.Black;
-        }
         private void RefreshDGVAndList()
         {
             mEmployees = mEmployee.SelectAllMaintenaceEmpployees();
             List<MaintenanceEmployee> bindList = mEmployees;
             bindingSource = new BindingSource(bindList, null);
             dgvEmployee.DataSource = bindingSource;
-        }
-        private bool GetTrueFalseFromBit(int bit)
-        {
-            bool output = bit == 1 ? true : false;
-            return output;
-        }
-        private int GetIntFromBool(bool input)
-        {
-            if (input == true)
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
         }
         private void RefreshDGVBoxHave(int index)
         {
@@ -130,15 +110,22 @@ namespace PremiereSolutionProject.PL
 
         private void btnTake_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < specialisationsHave.Count; i++)
+            if (dgvHave.Rows.Count > 1)
             {
-                if (specialisationsHave[i].SpecialisationID.ToString().Contains(dgvHave.Rows[dgvHave.CurrentCell.RowIndex].Cells[0].Value.ToString()))
+                for (int i = 0; i < specialisationsHave.Count; i++)
                 {
-                    specialisationsHave.RemoveAt(i);
-                    break;
+                    if (specialisationsHave[i].SpecialisationID.ToString().Contains(dgvHave.Rows[dgvHave.CurrentCell.RowIndex].Cells[0].Value.ToString()))
+                    {
+                        specialisationsHave.RemoveAt(i);
+                        break;
+                    }
                 }
+                dgvHave.Rows.RemoveAt(dgvHave.CurrentCell.RowIndex);
             }
-            dgvHave.Rows.RemoveAt(dgvHave.CurrentCell.RowIndex);
+            else
+            {
+                MessageBox.Show("Please insure that the list of specilizations is not zero");
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -146,9 +133,22 @@ namespace PremiereSolutionProject.PL
             DialogResult dr = MessageBox.Show("Are you sure to Update EmployeeList?", "Confirmation", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                mEmployees[dgvEmployee.CurrentCell.RowIndex].Specialisations = specialisationsHave;
-                mEmployee.UpdateSpecialisationOfMaintenanceEmployee(mEmployees[dgvEmployee.CurrentCell.RowIndex]);
+                if (specialisationsHave.Count > 0)
+                {
+                    mEmployees[dgvEmployee.CurrentCell.RowIndex].Specialisations = specialisationsHave;
+                    mEmployee.UpdateSpecialisationOfMaintenanceEmployee(mEmployees[dgvEmployee.CurrentCell.RowIndex]);
+                }
+                else
+                {
+                    MessageBox.Show("Please insure that the list of specilizations is not zero");
+                }
+
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -67,6 +67,8 @@
             this.cmbActive = new System.Windows.Forms.ComboBox();
             this.txtAvtive = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.btnClearSearch = new System.Windows.Forms.Button();
+            this.btnClearFields = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -429,6 +431,7 @@
             this.btnSearch.TabIndex = 121;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
@@ -524,12 +527,42 @@
             this.label16.TabIndex = 130;
             this.label16.Text = "Employee ID Search";
             // 
+            // btnClearSearch
+            // 
+            this.btnClearSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearSearch.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearSearch.Location = new System.Drawing.Point(961, 210);
+            this.btnClearSearch.Name = "btnClearSearch";
+            this.btnClearSearch.Size = new System.Drawing.Size(144, 37);
+            this.btnClearSearch.TabIndex = 131;
+            this.btnClearSearch.Text = "Clear Search";
+            this.btnClearSearch.UseVisualStyleBackColor = true;
+            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
+            // 
+            // btnClearFields
+            // 
+            this.btnClearFields.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(55)))), ((int)(((byte)(84)))));
+            this.btnClearFields.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearFields.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearFields.Location = new System.Drawing.Point(759, 529);
+            this.btnClearFields.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClearFields.Name = "btnClearFields";
+            this.btnClearFields.Size = new System.Drawing.Size(345, 49);
+            this.btnClearFields.TabIndex = 132;
+            this.btnClearFields.Text = "Clear Fields";
+            this.btnClearFields.UseVisualStyleBackColor = false;
+            this.btnClearFields.Click += new System.EventHandler(this.btnClearFields_Click);
+            // 
             // frmManageEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1136, 591);
+            this.Controls.Add(this.btnClearFields);
+            this.Controls.Add(this.btnClearSearch);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.cmbActive);
             this.Controls.Add(this.txtAvtive);
@@ -623,5 +656,7 @@
         private System.Windows.Forms.ComboBox cmbActive;
         private System.Windows.Forms.Label txtAvtive;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnClearSearch;
+        private System.Windows.Forms.Button btnClearFields;
     }
 }

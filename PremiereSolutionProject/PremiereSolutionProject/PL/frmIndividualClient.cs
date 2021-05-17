@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -63,10 +64,13 @@ namespace PremiereSolutionProject.PL
             DialogResult dr = MessageBox.Show("Are you sure to update The Client?", "Confirmation", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                individualClients[dgvExistingClients.CurrentCell.RowIndex] = new IndividualClient(individualClients[dgvExistingClients.CurrentCell.RowIndex].Id, txtFirstname.Text, txtSurname.Text, new Address(individualClients[dgvExistingClients.CurrentCell.RowIndex].Address.AddressID, txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, individualClients[dgvExistingClients.CurrentCell.RowIndex].RegistrationDate, GetTrueFalseFromBit(cmbActive.SelectedIndex));
-                individualClient.UpdateClient(individualClients[dgvExistingClients.CurrentCell.RowIndex]);
-                RefreshDGVAndList();
-                UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
+                if (!CheckForDuplicates(dgvExistingClients.CurrentCell.RowIndex,txtNationalID.Text, txtEmai.Text, txtContactNumber.Text) && checkValidNationalId(txtNationalID.Text) && checkValidContactNumber(txtContactNumber.Text) && checkValidEmail(txtEmai.Text))
+                {
+                    individualClients[dgvExistingClients.CurrentCell.RowIndex] = new IndividualClient(individualClients[dgvExistingClients.CurrentCell.RowIndex].Id, txtFirstname.Text, txtSurname.Text, new Address(individualClients[dgvExistingClients.CurrentCell.RowIndex].Address.AddressID, txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, individualClients[dgvExistingClients.CurrentCell.RowIndex].RegistrationDate, GetTrueFalseFromBit(cmbActive.SelectedIndex));
+                    individualClient.UpdateClient(individualClients[dgvExistingClients.CurrentCell.RowIndex]);
+                    RefreshDGVAndList();
+                    UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
+                }
             }
         }
 
@@ -75,10 +79,13 @@ namespace PremiereSolutionProject.PL
             DialogResult dr = MessageBox.Show("Are you sure to Insert The Client?", "Confirmation", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                individualClients.Add(new IndividualClient(txtFirstname.Text, txtSurname.Text, new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, GetTrueFalseFromBit(cmbActive.SelectedIndex)));
-                individualClient.InsertIndividualClient(individualClients[individualClients.Count-1]);
-                RefreshDGVAndList();
-                UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
+                if (!CheckForDuplicates(-1, txtNationalID.Text, txtEmai.Text, txtContactNumber.Text) && checkValidNationalId(txtNationalID.Text) && checkValidContactNumber(txtContactNumber.Text) && checkValidEmail(txtEmai.Text))
+                {
+                    individualClients.Add(new IndividualClient(txtFirstname.Text, txtSurname.Text, new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, txtEmai.Text, txtNationalID.Text, DateTime.Now, GetTrueFalseFromBit(cmbActive.SelectedIndex)));
+                    individualClient.InsertIndividualClient(individualClients[individualClients.Count - 1]);
+                    RefreshDGVAndList();
+                    UpdateFields(dgvExistingClients.CurrentCell.RowIndex);
+                }
             }
         }
         
@@ -92,7 +99,12 @@ namespace PremiereSolutionProject.PL
 
         private void btnClearSearch_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = "";
             RefreshDGVAndList();
+        }
+        private void btnClearFields_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
 
         #endregion
@@ -201,9 +213,68 @@ namespace PremiereSolutionProject.PL
                 return 0;
             }
         }
+        private bool CheckForDuplicates(int excluded,string nationalId, string email, string contactNumber)
+        {
+            for (int i = 0; i < individualClients.Count; i++)
+            {
+                if (i != excluded)
+                {
+                    if ((individualClients[i].NationalIDnumber == nationalId || individualClients[i].Email == email || individualClients[i].ContactNumber == contactNumber) && individualClients[i].Active == true)
+                    {
+                        MessageBox.Show("please insure that the id Number, email or contact nuber does not exist in the system already");
+                        return true;
+                    }
+                }
+            }
+            return false;
 
+        }
+        private bool checkValidNationalId(string id) 
+        {
+            if (id.Length == 13)
+            {
+                return true;
+            }
+            MessageBox.Show("please insure that the id Number has the correct amount of digits 13");
+            return false;
+        }
+        private bool checkValidContactNumber(string id)
+        {
+            if (id.Length == 10)
+            {
+                return true;
+            }
+            MessageBox.Show("please insure that the contact has the correct amount of digits 10");
+            return false;
+        }
+        private bool checkValidEmail(string id)
+        {
+            EmailAddressAttribute email = new EmailAddressAttribute();
+            if (email.IsValid(id))
+            {
+                return true;
+            }
+            MessageBox.Show("please insure that the email is valid");
+            return false;
+        }
+        private void ClearFields()
+        {
+            txtNationalID.Text = "";
+            txtFirstname.Text = "";
+            txtSurname.Text = "";
+            txtContactNumber.Text = "";
+            txtEmai.Text = "";
+            txtDate.Text = "";
+            txtStreetName.Text = "";
+            txtSuburb.Text = "";
+            txtCity.Text = "";
+            txtPostalCode.Text = "";
+            cmbActive.SelectedIndex = -1;
+            cmbProvince.SelectedIndex = -1;
+        }
 
         #endregion
+
 
     }
 }

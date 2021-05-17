@@ -428,7 +428,7 @@ namespace PremiereSolutionProject.PL
             this.btnClearSearch.Name = "btnClearSearch";
             this.btnClearSearch.Size = new System.Drawing.Size(129, 35);
             this.btnClearSearch.TabIndex = 122;
-            this.btnClearSearch.Text = "Close search";
+            this.btnClearSearch.Text = "Clear search";
             this.btnClearSearch.UseVisualStyleBackColor = true;
             this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
             // 

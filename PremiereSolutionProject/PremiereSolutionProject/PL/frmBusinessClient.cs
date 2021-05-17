@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
+using System.ComponentModel.DataAnnotations;
 
 namespace PremiereSolutionProject.PL
 {
@@ -53,10 +54,13 @@ namespace PremiereSolutionProject.PL
             DialogResult dr = MessageBox.Show("Are you sure to update The Client?", "Confirmation", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                businessClients[dgvBusinessClients.CurrentCell.RowIndex] = new BusinessClient(businessClients[dgvBusinessClients.CurrentCell.RowIndex].Id, new Address(businessClients[dgvBusinessClients.CurrentCell.RowIndex].Address.AddressID, txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex+""), txtPostalCode.Text), txtContactNumber.Text, businessClients[dgvBusinessClients.CurrentCell.RowIndex].RegistrationDate, txtTaxNum.Text, txtBusinessName.Text, GetTrueFalseFromBit(cmbActive.SelectedIndex));
-                businessClient.UpdateClient(businessClients[dgvBusinessClients.CurrentCell.RowIndex]);
-                RefreshDGVAndList();
-                UpdateFields(dgvBusinessClients.CurrentCell.RowIndex);
+                if (!CheckForDuplicates(dgvBusinessClients.CurrentCell.RowIndex, txtTaxNum.Text, txtContactNumber.Text) && checkValidTaxId(txtTaxNum.Text) && checkValidContactNumber(txtContactNumber.Text))
+                {
+                    businessClients[dgvBusinessClients.CurrentCell.RowIndex] = new BusinessClient(businessClients[dgvBusinessClients.CurrentCell.RowIndex].Id, new Address(businessClients[dgvBusinessClients.CurrentCell.RowIndex].Address.AddressID, txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, businessClients[dgvBusinessClients.CurrentCell.RowIndex].RegistrationDate, txtTaxNum.Text, txtBusinessName.Text, GetTrueFalseFromBit(cmbActive.SelectedIndex));
+                    businessClient.UpdateClient(businessClients[dgvBusinessClients.CurrentCell.RowIndex]);
+                    RefreshDGVAndList();
+                    UpdateFields(dgvBusinessClients.CurrentCell.RowIndex);
+                }
             }
         }
 
@@ -65,16 +69,20 @@ namespace PremiereSolutionProject.PL
             DialogResult dr = MessageBox.Show("Are you sure to Insert The Client?", "Confirmation", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                businessClients.Add(new BusinessClient(new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, businessClients[dgvBusinessClients.CurrentCell.RowIndex].RegistrationDate, txtTaxNum.Text, txtBusinessName.Text, GetTrueFalseFromBit(cmbActive.SelectedIndex)));
-                businessClient.InsertBusinessClient(businessClients[businessClients.Count - 1]);
-                RefreshDGVAndList();
-                UpdateFields(dgvBusinessClients.CurrentCell.RowIndex);
+                if (!CheckForDuplicates(-1, txtTaxNum.Text, txtContactNumber.Text) && checkValidTaxId(txtTaxNum.Text) && checkValidContactNumber(txtContactNumber.Text))
+                {
+                    businessClients.Add(new BusinessClient(new Address(txtStreetName.Text, txtSuburb.Text, txtCity.Text, GetProvince(cmbProvince.SelectedIndex + ""), txtPostalCode.Text), txtContactNumber.Text, businessClients[dgvBusinessClients.CurrentCell.RowIndex].RegistrationDate, txtTaxNum.Text, txtBusinessName.Text, GetTrueFalseFromBit(cmbActive.SelectedIndex)));
+                    businessClient.InsertBusinessClient(businessClients[businessClients.Count - 1]);
+                    RefreshDGVAndList();
+                    UpdateFields(dgvBusinessClients.CurrentCell.RowIndex);
+                }
             }
         }
 
         private void btnClearSearch_Click(object sender, EventArgs e)
         {
             RefreshDGVAndList();
+            txtSearch.Text = "";
         }
 
         //TODO: need to figure out why the search is not working
@@ -217,7 +225,40 @@ namespace PremiereSolutionProject.PL
             }
             return province;
         }
+        private bool CheckForDuplicates(int excluded, string taxNumber, string contactNumber)
+        {
+            for (int i = 0; i < businessClients.Count; i++)
+            {
+                if (i != excluded)
+                {
+                    if ((businessClients[i].TaxNumber == taxNumber || businessClients[i].ContactNumber == contactNumber) && businessClients[i].Active == true)
+                    {
+                        MessageBox.Show("please insure that the id Number, email or contact nuber does not exist in the system already");
+                        return true;
+                    }
+                }
+            }
+            return false;
 
+        }
+        private bool checkValidTaxId(string id)
+        {
+            if (id.Length == 10)
+            {
+                return true;
+            }
+            MessageBox.Show("please insure that the id Number has the correct amount of digits 13");
+            return false;
+        }
+        private bool checkValidContactNumber(string id)
+        {
+            if (id.Length == 10)
+            {
+                return true;
+            }
+            MessageBox.Show("please insure that the contact has the correct amount of digits 10");
+            return false;
+        }
         #endregion
     }
 }
