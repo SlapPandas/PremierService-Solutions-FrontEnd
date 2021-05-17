@@ -36,6 +36,7 @@ namespace PremiereSolutionProject.PL
 
         private void WhatToUpdate()
         {
+            MessageBox.Show($"{txtID.Text}");
             SR.SpecialisationID = int.Parse(txtID.Text);
             SR.SpecialisationName = txtName.Text;
             SR.Description = rtbDescription.Text;
@@ -53,7 +54,7 @@ namespace PremiereSolutionProject.PL
                 Place = int.Parse(txtID.Text);
                 txtName.Text = row.Cells["SpecialisationName"].Value.ToString();
                 rtbDescription.Text = row.Cells["Description"].Value.ToString();
-                SR.SpecialisationID =  Place;//int.Parse(row.Cells["SpecialisationID"].Value.ToString());
+                //SR.SpecialisationID =  Place;//int.Parse(row.Cells["SpecialisationID"].Value.ToString());
             }
         }
         #endregion
@@ -61,7 +62,8 @@ namespace PremiereSolutionProject.PL
         #region Insert Client
         private void btnAddClient_Click(object sender, EventArgs e)
         {
-            WhatToUpdate();
+            SR.SpecialisationName = txtName.Text;
+            SR.Description = rtbDescription.Text;
             SR.InsertSpecialisation(SR);
             MessageBox.Show("The specialisation has been inserted.","Information",MessageBoxButtons.OK);
             txtName.Clear();
