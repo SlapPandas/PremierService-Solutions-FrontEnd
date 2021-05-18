@@ -187,7 +187,7 @@ CREATE TABLE "Contract"
 	activeContract INT NOT NULL,
 	priorityLevel VARCHAR (20) NOT NULL,
 	price FLOAT NOT NULL,
-	contractType VARCHAR(15) NOT NULL
+	contractType VARCHAR(100) NOT NULL
 	);
 	GO
 CREATE TABLE "ContractState"
@@ -199,7 +199,7 @@ CREATE TABLE "ContractState"
 	activeContract INT NOT NULL,
 	priorityLevel VARCHAR (20) NOT NULL,
 	price FLOAT NOT NULL,
-	contractType VARCHAR(15) NOT NULL,
+	contractType VARCHAR(100) NOT NULL,
 	oldContractId VARCHAR(100) NOT NULL
 	);
 	GO
