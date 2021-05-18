@@ -146,6 +146,7 @@ namespace PremiereSolutionProject.PL
             bindingSource = new BindingSource(bindList, null);
             dgvEmployee.DataSource = bindingSource;
         }
+
         private void RefreshDGVBoxHave(int index)
         {
             if (dgvHave.Rows.Count != 0)
@@ -158,6 +159,7 @@ namespace PremiereSolutionProject.PL
                 dgvHave.Rows.Add(row);
             }
         }
+
         private void RefreshDGVAvailable()
         {
             specialisationsAvailable = specialisation.SelectSpecialisationList();
@@ -167,6 +169,7 @@ namespace PremiereSolutionProject.PL
                 dgvAvailable.Rows.Add(row);
             }
         }
+
         private void GenerateDGV()
         {
             dgvAvailable.ColumnCount = 2;

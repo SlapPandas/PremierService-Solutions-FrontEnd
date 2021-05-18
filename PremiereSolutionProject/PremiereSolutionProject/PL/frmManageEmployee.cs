@@ -14,27 +14,38 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmManageEmployee : Form
     {
-        List<Employee> employees = new List<Employee>();
-        Employee employee = new MaintenanceEmployee();
-        BindingSource bindingSource = new BindingSource();
         public frmManageEmployee()
         {
             InitializeComponent();
         }
+
+        #region Declarations
+
+        List<Employee> employees = new List<Employee>();
+        Employee employee = new MaintenanceEmployee();
+        BindingSource bindingSource = new BindingSource();
+
+        #endregion
+
+        #region Events
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void frmManageEmployee_Load(object sender, EventArgs e)
         {
             RefreshDGVAndList();
             BuildDGVStyle();
             PopulateComboBox();
         }
+
         private void dgvEmployee_SelectionChanged(object sender, EventArgs e)
         {
             UpdateFields(dgvEmployee.CurrentCell.RowIndex);
         }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure to Delete The Employee?", "Confirmation", MessageBoxButtons.YesNo);
@@ -45,8 +56,8 @@ namespace PremiereSolutionProject.PL
                 RefreshDGVAndList();
                 UpdateFields(dgvEmployee.CurrentCell.RowIndex);
             }
-
         }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure to update The Employee?", "Confirmation", MessageBoxButtons.YesNo);
@@ -61,6 +72,7 @@ namespace PremiereSolutionProject.PL
                 }
             }
         }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Are you sure to Insert The Employee?", "Confirmation", MessageBoxButtons.YesNo);
@@ -75,19 +87,26 @@ namespace PremiereSolutionProject.PL
                 }
             }
         }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             BruteSearch(txtSearch.Text);
         }
+
         private void btnClearSearch_Click(object sender, EventArgs e)
         {
             RefreshDGVAndList();
             txtSearch.Text = "";
         }
+
         private void btnClearFields_Click(object sender, EventArgs e)
         {
             ClearFields();
         }
+
+        #endregion
+
+        #region Methods
 
         private void PopulateComboBox()
         {
@@ -96,6 +115,7 @@ namespace PremiereSolutionProject.PL
                 cmbProvince.Items.Add(GetProvince(i + ""));
             }
         }
+
         private Province GetProvince(string input)
         {
             Province province = (Province)1;
@@ -135,10 +155,12 @@ namespace PremiereSolutionProject.PL
             }
             return province;
         }
+
         private void BuildDGVStyle()
         {
             dgvEmployee.ForeColor = Color.Black;
         }
+
         private void RefreshDGVAndList()
         {
             employees = employee.SelectAllEmpployees();
@@ -146,13 +168,14 @@ namespace PremiereSolutionProject.PL
             bindingSource = new BindingSource(bindList, null);
             dgvEmployee.DataSource = bindingSource;
         }
+
         private void RefreshDGVAndListWithoutListRefresh()
         {
-            employees = employee.SelectAllEmpployees();
             List<Employee> bindList = employees;
             bindingSource = new BindingSource(bindList, null);
             dgvEmployee.DataSource = bindingSource;
         }
+
         private void UpdateFields(int index)
         {
             if (index <= dgvEmployee.RowCount - 2)
@@ -177,14 +200,14 @@ namespace PremiereSolutionProject.PL
                 txtEmployeedDate.Text = employees[index].RegistrationDate.ToString("yyy/MM/dd");
                 cmbActive.SelectedIndex = GetIntFromBool(employees[index].Employed);
             }
-
-
         }
+
         private bool GetTrueFalseFromBit(int bit)
         {
             bool output = bit == 1 ? true : false;
             return output;
         }
+
         private int GetIntFromBool(bool input)
         {
             if (input == true)
@@ -196,6 +219,7 @@ namespace PremiereSolutionProject.PL
                 return 0;
             }
         }
+
         private void UpdateSpecificEmployee()
         {
             switch (employees[dgvEmployee.CurrentCell.RowIndex].GetType().Name)
@@ -211,6 +235,7 @@ namespace PremiereSolutionProject.PL
                     break;
             }
         }
+
         private void AddNewEmployee() 
         {
             switch (cbmDepartment.Text)
@@ -226,6 +251,7 @@ namespace PremiereSolutionProject.PL
                     break;
             }
         }
+
         private void BruteSearch(string id)
         {
             for (int i = 0; i < employees.Count; i++)
@@ -240,6 +266,7 @@ namespace PremiereSolutionProject.PL
             }
             RefreshDGVAndListWithoutListRefresh();
         }
+
         private void ClearFields()
         {
                 txtEmployeeID.Text = "";
@@ -258,6 +285,7 @@ namespace PremiereSolutionProject.PL
                 txtEmployeedDate.Text = "";
                 cmbActive.SelectedIndex = -1;
         }
+
         private bool CheckForDuplicates(int excluded, string nationalId, string email, string contactNumber)
         {
             for (int i = 0; i < employees.Count; i++)
@@ -266,32 +294,34 @@ namespace PremiereSolutionProject.PL
                 {
                     if ((employees[i].NationalIDnumber == nationalId || employees[i].Email == email || employees[i].ContactNumber == contactNumber) && employees[i].Employed == true)
                     {
-                        MessageBox.Show("please insure that the id Number, email or contact nuber does not exist in the system already");
+                        MessageBox.Show("Please ensure that the ID number, email address or contact number does not exist in the system already.", "Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return true;
                     }
                 }
             }
             return false;
-
         }
+
         private bool checkValidNationalId(string id)
         {
             if (id.Length == 13)
             {
                 return true;
             }
-            MessageBox.Show("please insure that the id Number has the correct amount of digits 13");
+            MessageBox.Show("Please ensure that the ID number contains only 13 digits.", "Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
+
         private bool checkValidContactNumber(string id)
         {
             if (id.Length == 10)
             {
                 return true;
             }
-            MessageBox.Show("please insure that the contact has the correct amount of digits 10");
+            MessageBox.Show("Please ensure that the contact number only has 10 digits.", "Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
+
         private bool checkValidEmail(string id)
         {
             EmailAddressAttribute email = new EmailAddressAttribute();
@@ -299,8 +329,10 @@ namespace PremiereSolutionProject.PL
             {
                 return true;
             }
-            MessageBox.Show("please insure that the email is valid");
+            MessageBox.Show("Please ensure that the email is valid.", "Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
+
+        #endregion
     }
 }
