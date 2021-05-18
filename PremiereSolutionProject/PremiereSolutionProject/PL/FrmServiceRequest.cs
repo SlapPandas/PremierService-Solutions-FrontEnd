@@ -144,14 +144,39 @@ namespace PremiereSolutionProject.PL
             DialogResult dr = MessageBox.Show("Are you sure the information is correct?", "Confirmation", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                specList = lbxSpecialisations.Items.Cast<string>().ToList();
-                ServiceRequest srE = new ServiceRequest();
-                ServiceRequest sr = new ServiceRequest(richTextBox1.Text, dashform.callInfo.CallID, specList, srE.service_OnInitialization);
-                Action action = sr.service_OnInitialization;
-                sr.CreateServiceRequest(sr);
+                if ((lbxSpecialisations.Items.Count == 0) || string.IsNullOrWhiteSpace(richTextBox1.Text))
+                {
+                    MessageBox.Show("Please fill in all the fields correctly");
+                }
+                else
+                {
+                    specList = lbxSpecialisations.Items.Cast<string>().ToList();
+                    ServiceRequest srE = new ServiceRequest();
+                    ServiceRequest sr = new ServiceRequest(richTextBox1.Text, dashform.callInfo.CallID, specList, srE.service_OnInitialization);
+                    Action action = sr.service_OnInitialization;
+                    sr.CreateServiceRequest(sr);
+                    richTextBox1.Clear();
+                    lbxSpecialisations.Items.Clear();
+                    cbxSpecialisation.Text = "";
+                    nudNumberOfPeople.Value = 1;
+                }
+                
             }            
         }
 
         #endregion
+
+        private void lbxSpecialisations_Click(object sender, EventArgs e)
+        {
+            if (lbxSpecialisations.SelectedIndex != -1)
+            {
+                string selectedItemName = lbxSpecialisations.SelectedItem.ToString();                
+            }
+            else
+            {
+                lbxSpecialisations.SelectedIndex = lbxSpecialisations.Items.Count - 1;
+                string selectedItemName = lbxSpecialisations.SelectedItem.ToString();
+            }
+        }
     }
 }

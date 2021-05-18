@@ -135,6 +135,7 @@
             // cbxSpecialisation
             // 
             this.cbxSpecialisation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxSpecialisation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSpecialisation.FormattingEnabled = true;
             this.cbxSpecialisation.Location = new System.Drawing.Point(271, 329);
             this.cbxSpecialisation.Margin = new System.Windows.Forms.Padding(4);
@@ -224,6 +225,7 @@
             0,
             0});
             this.nudNumberOfPeople.Name = "nudNumberOfPeople";
+            this.nudNumberOfPeople.ReadOnly = true;
             this.nudNumberOfPeople.Size = new System.Drawing.Size(133, 20);
             this.nudNumberOfPeople.TabIndex = 17;
             this.nudNumberOfPeople.Value = new decimal(new int[] {
@@ -240,6 +242,7 @@
             this.lbxSpecialisations.Name = "lbxSpecialisations";
             this.lbxSpecialisations.Size = new System.Drawing.Size(139, 173);
             this.lbxSpecialisations.TabIndex = 18;
+            this.lbxSpecialisations.Click += new System.EventHandler(this.lbxSpecialisations_Click);
             // 
             // button1
             // 
