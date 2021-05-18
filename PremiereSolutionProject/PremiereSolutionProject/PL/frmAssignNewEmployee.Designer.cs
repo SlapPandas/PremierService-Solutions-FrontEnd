@@ -58,16 +58,15 @@ namespace PremiereSolutionProject.PL
             // 
             // dgvViewJob
             // 
-            this.dgvViewJob.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvViewJob.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvViewJob.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewJob.Location = new System.Drawing.Point(12, 89);
+            this.dgvViewJob.Location = new System.Drawing.Point(232, 89);
             this.dgvViewJob.Margin = new System.Windows.Forms.Padding(2);
             this.dgvViewJob.Name = "dgvViewJob";
             this.dgvViewJob.ReadOnly = true;
             this.dgvViewJob.RowHeadersWidth = 51;
             this.dgvViewJob.RowTemplate.Height = 24;
-            this.dgvViewJob.Size = new System.Drawing.Size(1113, 185);
+            this.dgvViewJob.Size = new System.Drawing.Size(690, 185);
             this.dgvViewJob.TabIndex = 1;
             this.dgvViewJob.SelectionChanged += new System.EventHandler(this.dgvViewJob_SelectionChanged);
             // 
@@ -134,6 +133,7 @@ namespace PremiereSolutionProject.PL
             // 
             // dgvAvailableTech
             // 
+            this.dgvAvailableTech.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAvailableTech.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAvailableTech.Location = new System.Drawing.Point(280, 325);
             this.dgvAvailableTech.Name = "dgvAvailableTech";
@@ -144,6 +144,7 @@ namespace PremiereSolutionProject.PL
             // 
             // dgvAssignedTech
             // 
+            this.dgvAssignedTech.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAssignedTech.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAssignedTech.Location = new System.Drawing.Point(637, 325);
             this.dgvAssignedTech.Name = "dgvAssignedTech";
