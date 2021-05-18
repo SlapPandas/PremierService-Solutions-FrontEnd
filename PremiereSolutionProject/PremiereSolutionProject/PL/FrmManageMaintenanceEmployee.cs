@@ -13,6 +13,14 @@ namespace PremiereSolutionProject.PL
 {
     public partial class FrmManageMaintenanceEmployee : Form
     {
+
+        public FrmManageMaintenanceEmployee()
+        {
+            InitializeComponent();
+        }
+
+        #region Declarations
+
         List<MaintenanceEmployee> mEmployees = new List<MaintenanceEmployee>();
         List<Specialisation> specialisationsAvailable = new List<Specialisation>();
         List<Specialisation> specialisationsHave = new List<Specialisation>();
@@ -20,56 +28,9 @@ namespace PremiereSolutionProject.PL
         Specialisation specialisation = new Specialisation();
         BindingSource bindingSource = new BindingSource();
 
-        public FrmManageMaintenanceEmployee()
-        {
-            InitializeComponent();
-        }
+        #endregion
 
-        private void RefreshDGVAndList()
-        {
-            mEmployees = mEmployee.SelectAllMaintenaceEmpployees();
-            List<MaintenanceEmployee> bindList = mEmployees;
-            bindingSource = new BindingSource(bindList, null);
-            dgvEmployee.DataSource = bindingSource;
-        }
-        private void RefreshDGVBoxHave(int index)
-        {
-            if (dgvHave.Rows.Count != 0)
-            {
-                dgvHave.Rows.Clear();
-            }
-            foreach (var item in mEmployees[index].Specialisations)
-            {
-                string[] row = { item.SpecialisationID.ToString(), item.SpecialisationName };
-                dgvHave.Rows.Add(row);
-            }
-        }
-        private void RefreshDGVAvailable()
-        {
-            specialisationsAvailable = specialisation.SelectSpecialisationList();
-            foreach (var item in specialisationsAvailable)
-            {
-                string[] row = { item.SpecialisationID.ToString(), item.SpecialisationName };
-                dgvAvailable.Rows.Add(row);
-            }
-        }
-        private void GenerateDGV()
-        {
-            dgvAvailable.ColumnCount = 2;
-            dgvAvailable.Columns[0].Name = "ID";
-            dgvAvailable.Columns[1].Name = "Name";
-
-            dgvHave.ColumnCount = 2;
-            dgvHave.Columns[0].Name = "ID";
-            dgvHave.Columns[1].Name = "Name";
-
-            dgvEmployee.ForeColor = Color.Black;
-            dgvAvailable.ForeColor = Color.Black;
-            dgvHave.ForeColor = Color.Black;
-
-            dgvAvailable.Columns[0].Width = 50;
-            dgvHave.Columns[0].Width = 50;
-        }
+        #region Events
 
         private void FrmManageMaintenanceEmployee_Load(object sender, EventArgs e)
         {
@@ -145,7 +106,6 @@ namespace PremiereSolutionProject.PL
                 {
                     MessageBox.Show("Please insure that the list of specilizations is not zero");
                 }
-
             }
         }
 
@@ -153,5 +113,85 @@ namespace PremiereSolutionProject.PL
         {
             this.Close();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            List<MaintenanceEmployee> list = new List<MaintenanceEmployee>();
+            mEmployees.Clear();
+            mEmployees = mEmployee.SelectAllMaintenaceEmpployees();
+            foreach (MaintenanceEmployee item in mEmployees)
+            {
+                if (item.Id == txtSearch.Text)
+                {
+                    list.Add(item);
+                }
+            }
+                RefreshDGVAndListWithoutReset(list);
+        }
+
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            txtSearch.Text = "";
+            RefreshDGVAndList();
+        }
+
+        #endregion
+
+        #region Methods
+
+        private void RefreshDGVAndList()
+        {
+            mEmployees = mEmployee.SelectAllMaintenaceEmpployees();
+            List<MaintenanceEmployee> bindList = mEmployees;
+            bindingSource = new BindingSource(bindList, null);
+            dgvEmployee.DataSource = bindingSource;
+        }
+        private void RefreshDGVBoxHave(int index)
+        {
+            if (dgvHave.Rows.Count != 0)
+            {
+                dgvHave.Rows.Clear();
+            }
+            foreach (var item in mEmployees[index].Specialisations)
+            {
+                string[] row = { item.SpecialisationID.ToString(), item.SpecialisationName };
+                dgvHave.Rows.Add(row);
+            }
+        }
+        private void RefreshDGVAvailable()
+        {
+            specialisationsAvailable = specialisation.SelectSpecialisationList();
+            foreach (var item in specialisationsAvailable)
+            {
+                string[] row = { item.SpecialisationID.ToString(), item.SpecialisationName };
+                dgvAvailable.Rows.Add(row);
+            }
+        }
+        private void GenerateDGV()
+        {
+            dgvAvailable.ColumnCount = 2;
+            dgvAvailable.Columns[0].Name = "ID";
+            dgvAvailable.Columns[1].Name = "Name";
+
+            dgvHave.ColumnCount = 2;
+            dgvHave.Columns[0].Name = "ID";
+            dgvHave.Columns[1].Name = "Name";
+
+            dgvEmployee.ForeColor = Color.Black;
+            dgvAvailable.ForeColor = Color.Black;
+            dgvHave.ForeColor = Color.Black;
+
+            dgvAvailable.Columns[0].Width = 50;
+            dgvHave.Columns[0].Width = 50;
+        }
+
+        private void RefreshDGVAndListWithoutReset(List<MaintenanceEmployee> list)
+        {
+            List<MaintenanceEmployee> bindList = list;
+            bindingSource = new BindingSource(bindList, null);
+            dgvEmployee.DataSource = bindingSource;
+        }
+
+        #endregion
     }
 }
