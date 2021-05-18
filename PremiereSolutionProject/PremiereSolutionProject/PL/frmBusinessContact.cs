@@ -60,7 +60,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to insert a new business contact for " + businessClientList[dgvExistingBusinesses.CurrentCell.RowIndex].BusinessName +"?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to insert a new business contact for " + businessClientList[dgvExistingBusinesses.CurrentCell.RowIndex].BusinessName  + "? ", "Confirmation", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
                 businessEmployeeList.Add(new BusinessClientEmployees(txtName.Text, txtSurname.Text, txtDepartment.Text, txtContactNumber.Text, txtEmail.Text, txtBusinessID.Text));
