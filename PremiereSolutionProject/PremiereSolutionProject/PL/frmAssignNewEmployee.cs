@@ -67,7 +67,9 @@ namespace PremiereSolutionProject.PL
 
         private void btnRemoveTechnician_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < maintenanceEmployeesHave.Count; i++)
+            if (dgvAssignedTech.Rows.Count > 1)
+            {
+                for (int i = 0; i < maintenanceEmployeesHave.Count; i++)
             {
                 if (maintenanceEmployeesHave[i].Id.ToString().Contains(dgvAssignedTech.Rows[dgvAssignedTech.CurrentCell.RowIndex].Cells[0].Value.ToString()))
                 {
@@ -75,12 +77,17 @@ namespace PremiereSolutionProject.PL
                     break;
                 }
             }
-            dgvAssignedTech.Rows.RemoveAt(dgvAssignedTech.CurrentCell.RowIndex);
+                dgvAssignedTech.Rows.RemoveAt(dgvAssignedTech.CurrentCell.RowIndex);
+            }
+            else
+            {
+                MessageBox.Show("There are no specialisations left to remove.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to Update EmployeeList?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to Update EmployeeList?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (dr == DialogResult.Yes)
             {
                 jobs[dgvViewJob.CurrentCell.RowIndex].Employee = maintenanceEmployeesHave;
