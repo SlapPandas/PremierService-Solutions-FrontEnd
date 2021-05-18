@@ -267,6 +267,7 @@ namespace PremiereSolutionProject.PL
             this.txtNewPrio.Location = new System.Drawing.Point(824, 320);
             this.txtNewPrio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNewPrio.Name = "txtNewPrio";
+            this.txtNewPrio.ReadOnly = true;
             this.txtNewPrio.Size = new System.Drawing.Size(181, 20);
             this.txtNewPrio.TabIndex = 127;
             // 
@@ -285,6 +286,7 @@ namespace PremiereSolutionProject.PL
             0,
             0});
             this.numNewDays.Name = "numNewDays";
+            this.numNewDays.ReadOnly = true;
             this.numNewDays.Size = new System.Drawing.Size(120, 20);
             this.numNewDays.TabIndex = 128;
             this.numNewDays.Value = new decimal(new int[] {

@@ -39,6 +39,18 @@ INSERT INTO ServicePackage([name],[onPromotion],[promotionStartDate],[promotionE
 INSERT INTO ServicePackage([name],[onPromotion],[promotionStartDate],[promotionEndDate],[price],[promotionPercentAmount]) VALUES ('Cars','0','2021-03-01','2021-06-01','30000','0')
 INSERT INTO ServicePackage([name],[onPromotion],[promotionStartDate],[promotionEndDate],[price],[promotionPercentAmount]) VALUES ('Planes','0','2021-03-01','2021-06-01','15000','0')
 INSERT INTO ServicePackage([name],[onPromotion],[promotionStartDate],[promotionEndDate],[price],[promotionPercentAmount]) VALUES ('Gardening','1','2021-03-01','2021-06-01','20000','15')
+INSERT INTO ServicePackage([name],[onPromotion],[price],[promotionPercentAmount]) VALUES ('Samsung Appliances','0','1000','0')
+INSERT INTO ServicePackage([name],[onPromotion],[price],[promotionPercentAmount]) VALUES ('Office Printers','0','5000','0')
+INSERT INTO ServicePackage([name],[onPromotion],[price],[promotionPercentAmount]) VALUES ('Flooring','0','30000','0')
+INSERT INTO ServicePackage([name],[onPromotion],[price],[promotionPercentAmount]) VALUES ('Phones','0','15000','0')
+INSERT INTO ServicePackage([name],[onPromotion],[promotionStartDate],[promotionEndDate],[price],[promotionPercentAmount]) VALUES ('Gardening','1','2021/03/01','2021/06/01','20000','15')
+INSERT INTO ServicePackage([name],[onPromotion],[price],[promotionPercentAmount]) VALUES ('Nokia Devices','0','7000','0')
+INSERT INTO ServicePackage([name],[onPromotion],[promotionStartDate],[promotionEndDate],[price],[promotionPercentAmount]) VALUES ('HP Equipment','1','2021/01/01','2021/06/30','4500','25')
+INSERT INTO ServicePackage([name],[onPromotion],[price],[promotionPercentAmount]) VALUES ('Painting','0','6300','0')
+INSERT INTO ServicePackage([name],[onPromotion],[promotionStartDate],[promotionEndDate],[price],[promotionPercentAmount]) VALUES ('Outside Maintenance','1','2021/10/01','2021/12/31','30000','10')
+INSERT INTO ServicePackage([name],[onPromotion],[price],[promotionPercentAmount]) VALUES ('Indoor Maintenance','0','50000','0')
+INSERT INTO ServicePackage([name],[onPromotion],[price],[promotionPercentAmount]) VALUES ('Pest Control','0','4000','0')
+
 
 INSERT INTO [Service]([name],[description]) VALUES('fixInkjetPrinter','Fix all types of ink jet printers')
 INSERT INTO [Service]([name],[description]) VALUES('fixToilet','fix toilets')
