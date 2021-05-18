@@ -182,5 +182,14 @@ namespace PremiereSolutionProject.PL
         }
 
         #endregion
+
+        private void cbxCurrentState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((int)jobs[dgvViewJob.CurrentCell.RowIndex].JobState > cbxCurrentState.SelectedIndex)
+            {
+                MessageBox.Show("you can not select a previous state");
+                cbxCurrentState.SelectedIndex = (int)jobs[dgvViewJob.CurrentCell.RowIndex].JobState;
+            }
+        }
     }
 }

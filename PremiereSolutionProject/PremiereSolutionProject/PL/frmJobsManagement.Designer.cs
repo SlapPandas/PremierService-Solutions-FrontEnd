@@ -81,6 +81,7 @@ namespace PremiereSolutionProject.PL
             this.cbxCurrentState.Name = "cbxCurrentState";
             this.cbxCurrentState.Size = new System.Drawing.Size(175, 21);
             this.cbxCurrentState.TabIndex = 63;
+            this.cbxCurrentState.SelectedIndexChanged += new System.EventHandler(this.cbxCurrentState_SelectedIndexChanged);
             // 
             // btnUpdateJob
             // 
