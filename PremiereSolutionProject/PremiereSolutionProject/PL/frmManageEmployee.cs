@@ -302,7 +302,5 @@ namespace PremiereSolutionProject.PL
             MessageBox.Show("please insure that the email is valid");
             return false;
         }
-
-
     }
 }

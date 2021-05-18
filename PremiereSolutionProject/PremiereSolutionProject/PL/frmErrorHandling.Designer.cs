@@ -68,6 +68,7 @@ namespace PremiereSolutionProject.PL
             this.txtDescription.Location = new System.Drawing.Point(115, 399);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescription.Name = "txtDescription";
+            this.txtDescription.ReadOnly = true;
             this.txtDescription.Size = new System.Drawing.Size(909, 130);
             this.txtDescription.TabIndex = 5;
             this.txtDescription.Text = "";

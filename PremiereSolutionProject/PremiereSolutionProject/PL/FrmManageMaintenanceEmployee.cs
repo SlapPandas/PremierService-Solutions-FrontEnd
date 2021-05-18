@@ -86,7 +86,10 @@ namespace PremiereSolutionProject.PL
 
         private void dgvAvailable_SelectionChanged(object sender, EventArgs e)
         {
-            txtDescription.Text = specialisationsAvailable[dgvAvailable.CurrentCell.RowIndex].Description;
+            if (dgvAvailable.CurrentCell.RowIndex <= dgvAvailable.RowCount - 2)
+            {
+                txtDescription.Text = specialisationsAvailable[dgvAvailable.CurrentCell.RowIndex].Description;
+            }
         }
 
         private void btnGive_Click(object sender, EventArgs e)
