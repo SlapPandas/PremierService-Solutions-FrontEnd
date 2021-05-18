@@ -129,11 +129,12 @@ namespace PremiereSolutionProject.PL
             ShowSubMenu(pnlServiceSubMenu);
         }
 
-        private void btnErrorHandling_Click(object sender, EventArgs e)
+        private void btnErrorHandling_Click_1(object sender, EventArgs e)
         {
             openChildForm(new frmErrorHandling());
             HideSubMenu();
         }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             DialogResult iExit;
@@ -287,8 +288,9 @@ namespace PremiereSolutionProject.PL
             openChildForm(new frmAssignNewEmployee());
             HideSubMenu();
         }
+
         #endregion
 
-    
+       
     }
 }
