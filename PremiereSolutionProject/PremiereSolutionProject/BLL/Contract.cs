@@ -393,6 +393,7 @@ namespace PremiereSolutionProject.BLL
 
         public List<Contract> SelectActiveContracts()
         {
+            CheckContractEndDates();
             ContractDH contractDH = new ContractDH();
             return contractDH.SelectAllActiveContracts();
         }
