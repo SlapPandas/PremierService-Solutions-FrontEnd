@@ -85,7 +85,10 @@ namespace PremiereSolutionProject.PL
                 pnlContractMaintSubMenu.Visible = false;
             }
 
-           
+            if (pnlServiceSubMenu.Visible == true)
+            {
+                pnlServiceSubMenu.Visible = false;
+            }
         }
 
         private void ShowSubMenu(Panel subMenu)
@@ -138,7 +141,7 @@ namespace PremiereSolutionProject.PL
         private void btnExit_Click(object sender, EventArgs e)
         {
             DialogResult iExit;
-            iExit = MessageBox.Show("Confirm if you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            iExit = MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (iExit == DialogResult.Yes)
             {
                 Environment.Exit(0);

@@ -41,14 +41,9 @@ namespace PremiereSolutionProject.PL
             lstspecial = SP.SelectSpecialisationList();
             dgvAddSpecial.DataSource = lstspecial;
             txtName.Focus();
+            dgvAddSpecial.AutoResizeColumns();
+            dgvAddSpecial.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
-
-        //private void WhatToUpdate()
-        //{
-        //    SP.SpecialisationID = int.Parse(txtID.Text);
-        //    SP.SpecialisationName = txtName.Text;
-        //    SP.Description = rtbDescription.Text;
-        //}
 
         private void RefreshDGV()
         {
@@ -64,7 +59,7 @@ namespace PremiereSolutionProject.PL
             {
                 index = 0;
             }
-            if (index <= dgvAddSpecial.RowCount - 2)
+            if (index <= dgvAddSpecial.RowCount - 1)
             {
                 txtID.Text = lstspecial[index].SpecialisationID.ToString();
                 txtName.Text = lstspecial[index].SpecialisationName;
@@ -78,18 +73,34 @@ namespace PremiereSolutionProject.PL
         #region Insert Client
         private void btnAddClient_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to insert the specialisation?", "Confirmation", MessageBoxButtons.YesNo);
+            if (txtName.Text == "" || rtbDescription.Text == "" || txtName.Text == "" && rtbDescription.Text == "")
+            {
+                MessageBox.Show("Please enter data!", "Insert Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                txtName.Focus();
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("Are you sure to insert the specialisation?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
-                
+                for (int i = 0; i < dgvAddSpecial.Rows.Count; i++)
+                {
+                    if (txtName.Text == dgvAddSpecial.Rows[i].Cells[1].Value.ToString() && rtbDescription.Text == dgvAddSpecial.Rows[i].Cells[2].Value.ToString())
+                    {
+                        MessageBox.Show("This is a duplicate. Please enter new data.","Insert Error",MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        txtName.Clear();
+                        rtbDescription.Clear();
+                        txtName.Focus();
+                        return;
+                    } 
+                };
+                    lstspecial.Add(new Specialisation(txtName.Text, rtbDescription.Text));
+                    SP.InsertSpecialisation(lstspecial[lstspecial.Count - 1]);
 
-                lstspecial.Add(new Specialisation(txtName.Text, rtbDescription.Text));
-                SP.InsertSpecialisation(lstspecial[lstspecial.Count - 1]);
-
-                MessageBox.Show("The specialisation has been inserted.", "Information", MessageBoxButtons.OK);
-                txtName.Clear();
-                rtbDescription.Clear();
-                RefreshDGV();
+                    MessageBox.Show("The specialisation has been inserted.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtName.Clear();
+                    rtbDescription.Clear();
+                    RefreshDGV();
             }
         }
         #endregion
@@ -97,27 +108,38 @@ namespace PremiereSolutionProject.PL
         #region Update Client
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            
-            DialogResult dr = MessageBox.Show("Are you sure to update the specialisation?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
+            if (txtName.Text == "" || rtbDescription.Text == "" || txtName.Text == "" && rtbDescription.Text == "")
             {
-                
+                MessageBox.Show("Please select data to update!", "Insert Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                txtName.Focus();
+                return;
+            }
+            DialogResult dr = MessageBox.Show("Are you sure to update the specialisation?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {                
                 lstspecial[dgvAddSpecial.CurrentCell.RowIndex] = new Specialisation(lstspecial[dgvAddSpecial.CurrentCell.RowIndex].SpecialisationID,txtName.Text,rtbDescription.Text);
                 SP.UpdateSpecialisation(lstspecial[dgvAddSpecial.CurrentCell.RowIndex]);
                 Updatefields(dgvAddSpecial.CurrentCell.RowIndex);
-            }
-            MessageBox.Show("The specialisation has been updated.", "Information", MessageBoxButtons.OK);
-            txtName.Clear();
-            rtbDescription.Clear();
-            RefreshDGV();
+
+                MessageBox.Show("The specialisation has been updated.", "Information", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                txtName.Clear();
+                rtbDescription.Clear();
+                txtName.Focus();
+                RefreshDGV();
+            }            
         }
         #endregion
 
         #region Delete Client
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //WhatToUpdate();
-            DialogResult dr = MessageBox.Show("Are you sure to delete the specialisation?", "Confirmation", MessageBoxButtons.YesNo);
+            if (txtName.Text == "" || rtbDescription.Text == "" || txtName.Text == "" && rtbDescription.Text == "")
+            {
+                MessageBox.Show("Please select data to delete!", "Insert Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                txtName.Focus();
+                return;
+            }
+            DialogResult dr = MessageBox.Show("Are you sure to delete the specialisation?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dr == DialogResult.Yes)
             {
                 
@@ -125,9 +147,10 @@ namespace PremiereSolutionProject.PL
                 SP.DeleteSpecialisation(lstspecial[dgvAddSpecial.CurrentCell.RowIndex]);
                 Updatefields(dgvAddSpecial.CurrentCell.RowIndex);
 
-                MessageBox.Show("The specialisation has been deleted.", "Information", MessageBoxButtons.OK);
+                MessageBox.Show("The specialisation has been deleted.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtName.Clear();
                 rtbDescription.Clear();
+                txtName.Focus();
                 RefreshDGV();
                 Updatefields(dgvAddSpecial.CurrentCell.RowIndex);
             }     

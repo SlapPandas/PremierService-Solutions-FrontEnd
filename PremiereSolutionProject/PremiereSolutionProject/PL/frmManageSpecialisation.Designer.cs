@@ -53,7 +53,7 @@ namespace PremiereSolutionProject.PL
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Yi Baiti", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(240, 18);
+            this.label4.Location = new System.Drawing.Point(364, 21);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(314, 44);
@@ -63,7 +63,7 @@ namespace PremiereSolutionProject.PL
             // dgvAddSpecial
             // 
             this.dgvAddSpecial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAddSpecial.Location = new System.Drawing.Point(57, 84);
+            this.dgvAddSpecial.Location = new System.Drawing.Point(181, 87);
             this.dgvAddSpecial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvAddSpecial.Name = "dgvAddSpecial";
             this.dgvAddSpecial.ReadOnly = true;
@@ -71,7 +71,6 @@ namespace PremiereSolutionProject.PL
             this.dgvAddSpecial.RowTemplate.Height = 24;
             this.dgvAddSpecial.Size = new System.Drawing.Size(717, 150);
             this.dgvAddSpecial.TabIndex = 13;
-            //this.dgvAddSpecial.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAddSpecial_CellContentClick);
             this.dgvAddSpecial.SelectionChanged += new System.EventHandler(this.dgvAddSpecial_SelectionChanged);
             // 
             // label2
@@ -82,7 +81,7 @@ namespace PremiereSolutionProject.PL
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(159, 286);
+            this.label2.Location = new System.Drawing.Point(283, 289);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 17);
@@ -94,7 +93,7 @@ namespace PremiereSolutionProject.PL
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(323, 286);
+            this.txtName.Location = new System.Drawing.Point(447, 289);
             this.txtName.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(207, 22);
@@ -108,7 +107,7 @@ namespace PremiereSolutionProject.PL
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(159, 354);
+            this.label1.Location = new System.Drawing.Point(283, 357);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 17);
@@ -118,7 +117,7 @@ namespace PremiereSolutionProject.PL
             // rtbDescription
             // 
             this.rtbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbDescription.Location = new System.Drawing.Point(323, 359);
+            this.rtbDescription.Location = new System.Drawing.Point(447, 362);
             this.rtbDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rtbDescription.Name = "rtbDescription";
             this.rtbDescription.Size = new System.Drawing.Size(319, 148);
@@ -130,7 +129,7 @@ namespace PremiereSolutionProject.PL
             this.btnAddClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddClient.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddClient.Location = new System.Drawing.Point(163, 643);
+            this.btnAddClient.Location = new System.Drawing.Point(287, 646);
             this.btnAddClient.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(139, 34);
@@ -144,7 +143,7 @@ namespace PremiereSolutionProject.PL
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdate.Location = new System.Drawing.Point(391, 643);
+            this.btnUpdate.Location = new System.Drawing.Point(515, 646);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(139, 34);
@@ -158,7 +157,7 @@ namespace PremiereSolutionProject.PL
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDelete.Location = new System.Drawing.Point(619, 643);
+            this.btnDelete.Location = new System.Drawing.Point(743, 646);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(139, 34);
@@ -169,16 +168,15 @@ namespace PremiereSolutionProject.PL
             // 
             // btnExit
             // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnExit.Location = new System.Drawing.Point(936, 675);
+            this.btnExit.Location = new System.Drawing.Point(13, 18);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(91, 28);
             this.btnExit.TabIndex = 111;
-            this.btnExit.Text = "Exit";
+            this.btnExit.Text = "Close";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click_1);
             // 
@@ -214,7 +212,7 @@ namespace PremiereSolutionProject.PL
             this.btnClearFields.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearFields.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClearFields.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnClearFields.Location = new System.Drawing.Point(391, 559);
+            this.btnClearFields.Location = new System.Drawing.Point(515, 562);
             this.btnClearFields.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnClearFields.Name = "btnClearFields";
             this.btnClearFields.Size = new System.Drawing.Size(139, 34);

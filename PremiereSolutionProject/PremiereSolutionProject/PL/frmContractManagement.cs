@@ -29,7 +29,12 @@ namespace PremiereSolutionProject.PL
         #region Events
         private void btnAddServicePackage_Click(object sender, EventArgs e)
         {
-            lbxPackages.Items.Add(cbxServicePackages.SelectedItem.ToString());
+            if (lbxPackages.Items.Contains(cbxServicePackages.SelectedItem.ToString()))
+            {
+                MessageBox.Show("The service package has already been inserted.", "Service Package Duplicate", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+            }
+            else { lbxPackages.Items.Add(cbxServicePackages.SelectedItem.ToString()); }
+            
         }
         
         private void frmContractManagement_Load(object sender, EventArgs e)
