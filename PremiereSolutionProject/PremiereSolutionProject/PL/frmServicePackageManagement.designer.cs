@@ -217,6 +217,7 @@ namespace PremiereSolutionProject.PL
             this.numUDPercentage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numUDPercentage.Location = new System.Drawing.Point(252, 491);
             this.numUDPercentage.Name = "numUDPercentage";
+            this.numUDPercentage.ReadOnly = true;
             this.numUDPercentage.Size = new System.Drawing.Size(183, 20);
             this.numUDPercentage.TabIndex = 69;
             // 
@@ -355,12 +356,14 @@ namespace PremiereSolutionProject.PL
             this.rtbDesc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbDesc.Location = new System.Drawing.Point(865, 268);
             this.rtbDesc.Name = "rtbDesc";
+            this.rtbDesc.ReadOnly = true;
             this.rtbDesc.Size = new System.Drawing.Size(131, 238);
             this.rtbDesc.TabIndex = 92;
             this.rtbDesc.Text = "";
             // 
             // label9
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Yi Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(862, 249);

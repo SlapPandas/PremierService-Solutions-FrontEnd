@@ -79,7 +79,7 @@ namespace PremiereSolutionProject.PL
                 ServicePackage servicePackage = new ServicePackage();
                 List<ServicePackage> servicePackages = servicePackage.SelectAllServicePackage();
                 bool nameMatch = false;
-                if (!string.IsNullOrWhiteSpace(txtPackageName.Text) && !string.IsNullOrWhiteSpace(lbxAdded.Text) && !IsInt(txtPrice.Text) && ((cbxPromotionYes.Checked == true && cbxPromotionNo.Checked == true) || (cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false)) && (numUDPercentage.Value < 0) && (dtpPromotionStart.Value < dtpPromotionEnd.Value))
+                if (string.IsNullOrWhiteSpace(txtPackageName.Text) || !IsInt(txtPrice.Text) || (lbxAdded.Items.Count == 0) || (dtpPromotionEnd.Value.Date < dtpPromotionStart.Value.Date))
                 {
                     MessageBox.Show("Please fill in all the fields correctly");
                 }
@@ -117,12 +117,19 @@ namespace PremiereSolutionProject.PL
                             promotion = false;
                         }
                         servicePackage = new ServicePackage(txtPackageName.Text, servicesTemp, promotion, dtpPromotionStart.Value, dtpPromotionEnd.Value, (double)numUDPercentage.Value, int.Parse(txtPrice.Text));
+                        servicePackage.InsertServicePackage(servicePackage);
+                        servicePackages = servicePackage.SelectAllServicePackage();
+                        ServicePackage SPtemp = new ServicePackage();
+                        foreach (var item in servicePackages)
+                        {
+                            SPtemp = item;
+                        }
+                        SPtemp.ServiceList = servicesTemp;
+                        SPtemp.UpdateListOfServices(SPtemp);
+                        RefreshDGV();
                     }
                 }
-                servicePackage.InsertServicePackage(servicePackage);
-                RefreshDGV();
-                UpdateData();
-            }            
+            }             
         }
 
         private void btnUpdatePackage_Click(object sender, EventArgs e)
@@ -134,17 +141,30 @@ namespace PremiereSolutionProject.PL
                 List<string> serviceNames = lbxAdded.Items.Cast<string>().ToList();
                 Service service = new Service();
                 List<Service> services = service.SelectAllServices();
-                if (!string.IsNullOrWhiteSpace(txtPackageName.Text) && !string.IsNullOrWhiteSpace(lbxAdded.Text) && !IsInt(txtPrice.Text) && ((cbxPromotionYes.Checked == true && cbxPromotionNo.Checked == true) || (cbxPromotionYes.Checked == false) && (cbxPromotionNo.Checked == false)) && (numUDPercentage.Value < 0) && (dtpPromotionStart.Value < dtpPromotionEnd.Value))
+                ServicePackage servicePackage = new ServicePackage();
+                List<ServicePackage> servicePackages = servicePackage.SelectAllServicePackage();
+                bool nameMatch = false;
+                int counter = 0;
+                if (string.IsNullOrWhiteSpace(txtPackageName.Text) || !IsInt(txtPrice.Text) || (lbxAdded.Items.Count == 0) || (dtpPromotionEnd.Value.Date < dtpPromotionStart.Value.Date))
                 {
                     MessageBox.Show("Please fill in all the fields correctly");
                 }
                 else
                 {
-                    if (lbxAdded.Items.Count == 0)
-                    {
-                        MessageBox.Show("There must be at least 1 service in the service package");
+                    foreach (var item in servicePackages)
+                    {                        
+                        if (item.PackageName == txtPackageName.Text)
+                        {
+                            if (dgvCurrentServicePackages.CurrentCell.RowIndex == counter)
+                            {
+                                continue;
+                            }
+                            nameMatch = true;
+                            break;
+                        }
+                        counter++;
                     }
-                    else
+                    if (!nameMatch)
                     {
                         List<Service> servicesTemp = new List<Service>();
                         foreach (Service item in services)
@@ -170,7 +190,10 @@ namespace PremiereSolutionProject.PL
                         sp.UpdateListOfServices(sp);
                         sp.UpdateWholePromotionState(sp);
                         RefreshDGV();
-                        UpdateData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("This package already exists");
                     }
                 }
             }                 
@@ -193,7 +216,6 @@ namespace PremiereSolutionProject.PL
                     }
                 }
                 RefreshDGV();
-                UpdateData();
             }
             // get the service packed selected in the DGV, obtain its ID and then delete it.            
         }
@@ -254,15 +276,7 @@ namespace PremiereSolutionProject.PL
         public bool IsInt(string numCheck)
         {
             int temp;
-            try
-            {
-                temp = int.Parse(numCheck);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return  int.TryParse(numCheck, out temp);
         }
 
         #endregion
@@ -291,6 +305,7 @@ namespace PremiereSolutionProject.PL
             cbxPromotionYes.Checked = false;
             numUDPercentage.Value = 0;
             lbxAdded.Items.Clear();
+            lbxAvailable.Items.Clear();
             foreach (Service item in services)
             {
                 lbxAvailable.Items.Add(item.ServiceName.ToString());
@@ -300,28 +315,61 @@ namespace PremiereSolutionProject.PL
 
         private void lbxAvailable_Click(object sender, EventArgs e)
         {
-            string selectedItemName = lbxAvailable.SelectedItem.ToString();
-            foreach (var item in services)
+            if (lbxAvailable.SelectedIndex != -1)
             {
-                if (selectedItemName == item.ServiceName)
+                string selectedItemName = lbxAvailable.SelectedItem.ToString();
+                foreach (var item in services)
                 {
-                    rtbDesc.Clear();
-                    rtbDesc.Text = item.ServiceDescription;
+                    if (selectedItemName == item.ServiceName)
+                    {
+                        rtbDesc.Clear();
+                        rtbDesc.Text = item.ServiceDescription;
+                    }
                 }
             }
+            else
+            {
+                lbxAvailable.SelectedIndex = lbxAvailable.Items.Count-1;
+                string selectedItemName = lbxAvailable.SelectedItem.ToString();
+                foreach (var item in services)
+                {
+                    if (selectedItemName == item.ServiceName)
+                    {
+                        rtbDesc.Clear();
+                        rtbDesc.Text = item.ServiceDescription;
+                    }
+                }
+            }            
         }
 
         private void lbxAdded_Click(object sender, EventArgs e)
         {
-            string selectedItemName = lbxAdded.SelectedItem.ToString();
-            foreach (var item in services)
+            if (lbxAdded.SelectedIndex !=  -1)
             {
-                if (selectedItemName == item.ServiceName)
+                string selectedItemName = lbxAdded.SelectedItem.ToString();
+                foreach (var item in services)
                 {
-                    rtbDesc.Clear();
-                    rtbDesc.Text = item.ServiceDescription;
+                    if (selectedItemName == item.ServiceName)
+                    {
+                        rtbDesc.Clear();
+                        rtbDesc.Text = item.ServiceDescription;
+                    }
                 }
             }
+            else
+            {
+                lbxAdded.SelectedIndex = lbxAdded.Items.Count - 1;
+                string selectedItemName = lbxAdded.SelectedItem.ToString();
+                foreach (var item in services)
+                {
+                    if (selectedItemName == item.ServiceName)
+                    {
+                        rtbDesc.Clear();
+                        rtbDesc.Text = item.ServiceDescription;
+                    }
+                }
+            }
+            
         }
     }
 }
