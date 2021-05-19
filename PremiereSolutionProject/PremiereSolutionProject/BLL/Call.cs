@@ -122,12 +122,7 @@ namespace PremiereSolutionProject.BLL
 
         public List<string> PopulateSpecialisationList(List<string> listFromCombobox)
         {
-            //from a combobox they select the specialisation(s) gathered from the call and add it to the list as the call is recorded
-            //this can be passed on to service request to generate a job with the appropriate employee
-            //also need the number of employees concatenated with the specialisation name
-
             this.specialisationList = listFromCombobox;
-
             return this.specialisationList;
         }
 
@@ -171,8 +166,6 @@ namespace PremiereSolutionProject.BLL
             {
                 callDH.InsertBusinessClientToCall(callID, clientID);
             }
-            // do I need to make something here to show if it did not work?
-            //there is no return value, so i cannot retun null.
         }
 
         public void LogEndTimeOfCall(int callID, string notes)
@@ -189,23 +182,8 @@ namespace PremiereSolutionProject.BLL
             List<Call> clientCalls = ID[0] == 'A' ? callDH.SelectAllCallByIndividualClientById(ID) : ID[0] == 'B' ? callDH.SelectAllCallByBusinessClientById(ID) : null;
             return clientCalls;
         }
+
         #endregion
 
-        #region Overloads
-        public override string ToString()
-        {
-            return base.ToString();
-        }
-
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-        #endregion
     }
 }

@@ -17,18 +17,19 @@ namespace PremiereSolutionProject.BLL
         public string Description { get; set; }
         #endregion
 
-        #region Constructor
+        #region Constructors
         public DatabaseOperation()
         {
         }
+
         public DatabaseOperation(int errorId, DateTime errorDateTime, bool success, string errorMessage)
         {
             this.Id = errorId;
             this.DateAndTime = errorDateTime;
             this.Success = success;
             this.Description = errorMessage;
-
         }
+
         public DatabaseOperation(DateTime errorDateTime, bool success, string errorMessage)
         {
             DateAndTime = errorDateTime;

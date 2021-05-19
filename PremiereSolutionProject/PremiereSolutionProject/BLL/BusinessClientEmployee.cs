@@ -87,18 +87,21 @@ namespace PremiereSolutionProject.BLL
             return businessClientEmpsDH.SelectAllBusinessClientEmployeesByBusinessId(businessID);
         }
 
+        //Update a business client employee
         public void UpdateBusinessClientEmployee(BusinessClientEmployees businessClientEmployees)
         {
             BusinessClientEmployeesDH businessClientEmployeesDH = new BusinessClientEmployeesDH();
             businessClientEmployeesDH.Update(businessClientEmployees);
         }
 
+        //insert a business client employee
         public void InsertBusinessClientEmployee(BusinessClientEmployees businessClientEmployees)
         {
             BusinessClientEmployeesDH businessClientEmployeesDH = new BusinessClientEmployeesDH();
             businessClientEmployeesDH.Insert(businessClientEmployees);
         }
 
+        //delete a business client employee
         public void DeleteBusinessClientEmployee(BusinessClientEmployees businessClientEmployee)
         {
             BusinessClientEmployeesDH businessClientEmployeesDH = new BusinessClientEmployeesDH();

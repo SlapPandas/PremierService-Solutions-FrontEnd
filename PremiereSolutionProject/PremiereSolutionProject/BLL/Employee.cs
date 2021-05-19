@@ -125,7 +125,6 @@ namespace PremiereSolutionProject.BLL
             }
         }
 
-        //I kept these in if needed. Can take out if not used in in. ^^ does all in one :)
         public void InsertCallCenterEmployee(CallCenterEmployee employee)
         {
             EmployeeDH employeeDH = new EmployeeDH();
@@ -166,7 +165,6 @@ namespace PremiereSolutionProject.BLL
 
             return allEmployees;
         }
-
 
         public List<CallCenterEmployee> SelectAllCallCentreEmployees()
         {

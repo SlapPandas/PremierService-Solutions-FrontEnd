@@ -170,6 +170,7 @@ namespace PremiereSolutionProject.BLL
             ContractDH contractDH = new ContractDH();
             return contractDH.SelectAllContracts();
         }
+
         //from contractState table - contracts that client already has
         public List<Contract> SelectAllContractOfClient(string ID)
         {
@@ -190,6 +191,7 @@ namespace PremiereSolutionProject.BLL
             Contract clientContract = clientID[0] == 'A' ? contractDH.SelectAssignedContractByIdAndIndividualClientId(clientID, contractID) : clientID[0] == 'B' ? contractDH.SelectAssignedContractByIdAndBusinessClientId(clientID, contractID) : null;
             return clientContract;
         }
+
         public bool ClientHasAvtive(string id) {
             ContractDH contractDH = new ContractDH();
             if (id[0] == 'A')
@@ -271,12 +273,9 @@ namespace PremiereSolutionProject.BLL
                 contractDH.InsertNewlyAssignedContractToIndividualClient(contract);
             }
         }
-
-        //this method needs to be tested. I am not sure how it will work taking in a Client
+        
         public void CreateNewContract(Client c, Contract contract)
         {
-            //should the method maybe take in a ClientID and then just find the client according that from a list? 
-            //or will PL be able to enter a client object as a parameter?
             if (c.VerifyClientContract(c.Id))
             {
                 InsertContract(new Contract(contract.startDate, contract.endDate, c, contract.packageList, true, contract.priorityLevel, CalculateContractPrice(this), contract.contractType));
@@ -335,6 +334,7 @@ namespace PremiereSolutionProject.BLL
 
             return s;
         }
+
         public string FormatPriorityForDataUse(string input,int numberOfDays) 
         {
             input = input.ToLower();

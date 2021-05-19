@@ -25,6 +25,7 @@ namespace PremiereSolutionProject.BLL
         {
             Department = department;
         }
+
         public CallCenterEmployee(string id, string fname, string sname): base(id, fname, sname)
         {
         }
@@ -35,6 +36,7 @@ namespace PremiereSolutionProject.BLL
         {
             Department = department; ;
         }
+
         #endregion
 
         #region Interface Methods
@@ -46,6 +48,7 @@ namespace PremiereSolutionProject.BLL
             myEmployee = (CallCenterEmployee)employeeFromPL;
             return myEmployee;
         }
+
         public override List<Employee> CreateList()
         {
             List<Employee> myEmployeeList = new List<Employee>();

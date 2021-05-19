@@ -56,10 +56,10 @@ namespace PremiereSolutionProject.BLL
         #endregion
 
         #region Methods
+
         public void UpdateAddress(Address a)
         {
             AddressDH addressDataHandler = new AddressDH();
-
             addressDataHandler.Update(a);
         }
 
