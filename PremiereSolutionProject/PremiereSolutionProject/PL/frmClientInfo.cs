@@ -59,6 +59,10 @@ namespace PremiereSolutionProject.PL
                 try
                 {
                     callList = new Call().SelectAllCallsOfClient(txtClientID.Text);
+                    if (callList.Count == 0)
+                    {
+                        MessageBox.Show("The client that you where looking for does not exist");
+                    }
                     serviceRequestList = new ServiceRequest().SelectAllServiceRequestsForClient(txtClientID.Text);
                     myClientList = new List<Client>();
                     searchedIndividualClientList = new List<IndividualClient>();

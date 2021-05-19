@@ -39,53 +39,57 @@ namespace PremiereSolutionProject.PL
         
         private void FrmServiceRequest_Load(object sender, EventArgs e)
         {
-            try
+            if (dashform.callInfo != null)
             {
-                specList = new List<string>();
-                spec = new Specialisation().SelectSpecialisationList();
-                foreach (Specialisation item in spec)
+                try
                 {
-                    cbxSpecialisation.Items.Add(item.SpecialisationName);
-                }
-                lblCallID.Text = dashform.callInfo.CallID.ToString();
-                List<IndividualClient> ic = new IndividualClient().SelectAllIndividualClients();
-                List<BusinessClient> bc = new BusinessClient().SelectAllBusinessClients();
-                List<Client> cl = dashform.callInfo.Client.SelectAllClients();
-                string clientName = "";
-                if (dashform.callInfo.Client.Id[0] == 'A')
-                {
-                    foreach (IndividualClient item in ic)
+                    specList = new List<string>();
+                    spec = new Specialisation().SelectSpecialisationList();
+                    foreach (Specialisation item in spec)
                     {
-                        if (dashform.callInfo.Client.Id == item.Id)
+                        cbxSpecialisation.Items.Add(item.SpecialisationName);
+                    }
+                    lblCallID.Text = dashform.callInfo.CallID.ToString();
+                    List<IndividualClient> ic = new IndividualClient().SelectAllIndividualClients();
+                    List<BusinessClient> bc = new BusinessClient().SelectAllBusinessClients();
+                    List<Client> cl = dashform.callInfo.Client.SelectAllClients();
+                    string clientName = "";
+                    if (dashform.callInfo.Client.Id[0] == 'A')
+                    {
+                        foreach (IndividualClient item in ic)
                         {
-                            clientName = item.FirstName;
+                            if (dashform.callInfo.Client.Id == item.Id)
+                            {
+                                clientName = item.FirstName;
+                            }
                         }
                     }
-                }
-                else if (dashform.callInfo.Client.Id[0] == 'B')
-                {
-                    foreach (BusinessClient item in bc)
+                    else if (dashform.callInfo.Client.Id[0] == 'B')
                     {
-                        if (dashform.callInfo.Client.Id == item.Id)
+                        foreach (BusinessClient item in bc)
                         {
-                            clientName = item.BusinessName;
+                            if (dashform.callInfo.Client.Id == item.Id)
+                            {
+                                clientName = item.BusinessName;
+                            }
                         }
                     }
-                }
-                if (dashform.callInfo.Client != null)
-                {
-                    lblClientName.Text = clientName;
-                }
+                    if (dashform.callInfo.Client != null)
+                    {
+                        lblClientName.Text = clientName;
+                    }
 
+                }
+                catch (FormatException fe)
+                {
+                    MessageBox.Show(fe.Message, "User input is incorect", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ee)
+                {
+                    MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
+                }
             }
-            catch (FormatException fe)
-            {
-                MessageBox.Show(fe.Message, "User input is incorect", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ee)
-            {
-                MessageBox.Show(ee.Message, (ee.InnerException != null) ? (ee.InnerException.ToString()) : ("Error"));
-            }            
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
