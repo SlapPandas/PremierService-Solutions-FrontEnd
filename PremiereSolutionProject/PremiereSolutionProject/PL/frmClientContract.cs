@@ -92,16 +92,23 @@ namespace PremiereSolutionProject.PL
 
         private void BuildForm()
         {
-            txtId.Text = dashForm.callInfo.Client.Id;
-            txtCallId.Text = dashForm.callInfo.CallID.ToString();
+            if (dashForm.callInfo == null)
+            {
+                MessageBox.Show("Please accept a call first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                txtId.Text = dashForm.callInfo.Client.Id;
+                txtCallId.Text = dashForm.callInfo.CallID.ToString();
 
-            cbxPriorityLevel.Items.Add("Platinum");
-            cbxPriorityLevel.Items.Add("Gold");
-            cbxPriorityLevel.Items.Add("Silver");
-            cbxPriorityLevel.Items.Add("Bronze");
+                cbxPriorityLevel.Items.Add("Platinum");
+                cbxPriorityLevel.Items.Add("Gold");
+                cbxPriorityLevel.Items.Add("Silver");
+                cbxPriorityLevel.Items.Add("Bronze");
 
-            dgvServicePackages.ForeColor = Color.Black;
-            dgvServices.ForeColor = Color.Black;
+                dgvServicePackages.ForeColor = Color.Black;
+                dgvServices.ForeColor = Color.Black;
+            }        
         }
 
         private void SetMinMaxCounter(string name)
