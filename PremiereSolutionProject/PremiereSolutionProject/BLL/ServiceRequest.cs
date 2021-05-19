@@ -205,7 +205,6 @@ namespace PremiereSolutionProject.BLL
                     return spec;
                 }
             }
-
             return null;
         }
 
@@ -221,8 +220,8 @@ namespace PremiereSolutionProject.BLL
             sr.closed = false;
             List<Job> jobList = new List<Job>();
             CallDH callDH = new CallDH();
-            sr.serviceRequestID = InsertServiceRequestReturnID(sr); // insert the SP into database and return the SP ID
-            Call c = callDH.SelectCallById(sr.callID);    //select call using SP ID
+            sr.serviceRequestID = InsertServiceRequestReturnID(sr); // insert the SR into database and return the SR ID
+            Call c = callDH.SelectCallById(sr.callID);    //select call using SR ID
             ContractDH contractDH = new ContractDH();
             if (c.Indclient.Id != null)
             {
@@ -266,8 +265,6 @@ namespace PremiereSolutionProject.BLL
         public void AssignPendingJobs()
         {
             //this method is to be called whenever new jobs have been created
-            //need to use the full list of jobs, according to priority level - no hanging jobs
-
             // declaration
             JobDH jobDH = new JobDH();
             List<MaintenanceEmployee> maintenanceEmployeesList = SelectAllAvailabeEmployees(); //get the list of available employees, WORKING
@@ -296,7 +293,6 @@ namespace PremiereSolutionProject.BLL
                                     {
                                         job.Employee.Add(maintenanceEmployeesList[k]); //add employee to list of Employees for a job                          
                                         jobDH.InsertSingleEmployeeToJob(job.JobID, maintenanceEmployeesList[k].Id); //insert into EmployeeJobLink table
-                                        //maintenanceEmployeesList.RemoveAt(k);   //employee is no longer available
                                         empsAssigned++; // increase the count of employees assigned to the job, used to check if the job is filled
                                         break; //to break out of n-for loop if correct employee was found & job was created
                                     }

@@ -88,7 +88,6 @@ namespace PremiereSolutionProject.BLL
         }
         public double CalculatePromotion(ServicePackage package) // calculate the amount a client will pay for a service package if it is on promotion   
         {
-
             return package.onPromotion ? (package.servicePrice * ((100 - package.promotionPercentage)/100)) : package.servicePrice;
         }
         public void UpdateWholePromotionState(ServicePackage servicePackage) 

@@ -78,7 +78,7 @@ namespace PremiereSolutionProject.BLL
         public List<IndividualClient> SelectIndividualClients()
         {
             IndividualClientDH indClientDH = new IndividualClientDH();
-            return indClientDH.SelectAllIndividualClients();  //this name should change .. 
+            return indClientDH.SelectAllIndividualClients();
         }
 
         public void UpdateIndividualClient(IndividualClient ic)

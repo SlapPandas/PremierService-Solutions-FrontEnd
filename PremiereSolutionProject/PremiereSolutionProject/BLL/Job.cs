@@ -105,7 +105,7 @@ namespace PremiereSolutionProject.BLL
             JobDH jobDH = new JobDH();
             return jobDH.SelectAllJobsWithPriority();
         }
-        public List<Job> SelectAllJobsWithoutPriority() // get a list of all jobs
+        public List<Job> SelectAllJobsWithoutPriority()
         {
             JobDH jobDH = new JobDH();
             return jobDH.SelectAllJobs();
@@ -198,7 +198,6 @@ namespace PremiereSolutionProject.BLL
     }
     public enum JobState
     {
-        //we added Pending and made it the default JobState. When the job has been assigned it will change to InProgress
         Pending,
         InProgress,
         Finished
