@@ -80,7 +80,7 @@ namespace PremiereSolutionProject.PL
             }
             catch (FormatException fe)
             {
-                MessageBox.Show(fe.Message, "user input error");
+                MessageBox.Show(fe.Message, "User input is incorect", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ee)
             {
@@ -92,7 +92,7 @@ namespace PremiereSolutionProject.PL
         {
             if (string.IsNullOrEmpty(cbxSpecialisation.Text))
             {
-                MessageBox.Show("error, please make sure is a specialisations selected");
+                MessageBox.Show("Please make sure is a specialisations selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -122,7 +122,7 @@ namespace PremiereSolutionProject.PL
                 }
                 else
                 {
-                    MessageBox.Show("Service already exsits");
+                    MessageBox.Show("Service already exsits", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace PremiereSolutionProject.PL
             }
             catch 
             {
-                MessageBox.Show("Please select a serice to remove");
+                MessageBox.Show("Please select a serice to remove", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }            
         }
 
@@ -146,7 +146,7 @@ namespace PremiereSolutionProject.PL
             {
                 if ((lbxSpecialisations.Items.Count == 0) || string.IsNullOrWhiteSpace(richTextBox1.Text))
                 {
-                    MessageBox.Show("Please fill in all the fields correctly");
+                    MessageBox.Show("Please fill in all the fields correctly", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -164,13 +164,11 @@ namespace PremiereSolutionProject.PL
             }            
         }
 
-        #endregion
-
         private void lbxSpecialisations_Click(object sender, EventArgs e)
         {
             if (lbxSpecialisations.SelectedIndex != -1)
             {
-                string selectedItemName = lbxSpecialisations.SelectedItem.ToString();                
+                string selectedItemName = lbxSpecialisations.SelectedItem.ToString();
             }
             else
             {
@@ -178,5 +176,9 @@ namespace PremiereSolutionProject.PL
                 string selectedItemName = lbxSpecialisations.SelectedItem.ToString();
             }
         }
+
+        #endregion
+
+
     }
 }

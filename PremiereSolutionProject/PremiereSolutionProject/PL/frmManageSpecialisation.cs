@@ -13,6 +13,7 @@ namespace PremiereSolutionProject.PL
 {
     public partial class frmManageSpecialisation : Form
     {
+        #region Declarations
         Specialisation SP = new Specialisation();
         List<Specialisation> lstspecial = new List<Specialisation>();
         BindingSource bindingSource;
@@ -21,8 +22,18 @@ namespace PremiereSolutionProject.PL
         {
             InitializeComponent();
         }
+        #endregion
 
-        #region Assisting buttons
+        #region Events
+        private void frmAddSpecialisation_Load(object sender, EventArgs e)
+        {
+            lstspecial = SP.SelectSpecialisationList();
+            dgvAddSpecial.DataSource = lstspecial;
+            txtName.Focus();
+            dgvAddSpecial.AutoResizeColumns();
+            dgvAddSpecial.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+
         private void btnExit_Click_1(object sender, EventArgs e)
         {
             this.Close();
@@ -33,17 +44,15 @@ namespace PremiereSolutionProject.PL
             rtbDescription.Clear();
             txtName.Focus();
         }
+
+        private void dgvAddSpecial_SelectionChanged(object sender, EventArgs e)
+        {
+            Updatefields(dgvAddSpecial.CurrentCell.RowIndex);
+        }
         #endregion
 
-        #region Form Load And Methods
-        private void frmAddSpecialisation_Load(object sender, EventArgs e)
-        {
-            lstspecial = SP.SelectSpecialisationList();
-            dgvAddSpecial.DataSource = lstspecial;
-            txtName.Focus();
-            dgvAddSpecial.AutoResizeColumns();
-            dgvAddSpecial.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-        }
+        #region Methods
+
 
         private void RefreshDGV()
         {
@@ -67,8 +76,6 @@ namespace PremiereSolutionProject.PL
             }
         }
         #endregion
-
-        
 
         #region Insert Client
         private void btnAddClient_Click(object sender, EventArgs e)
@@ -157,10 +164,6 @@ namespace PremiereSolutionProject.PL
         }
 
         #endregion
-
-        private void dgvAddSpecial_SelectionChanged(object sender, EventArgs e)
-        {
-            Updatefields(dgvAddSpecial.CurrentCell.RowIndex);
-        }
+      
     }
 }

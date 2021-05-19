@@ -88,13 +88,13 @@ namespace PremiereSolutionProject.PL
             }
             else
             {
-                MessageBox.Show("Please insure that the list of specilizations is not zero");
+                MessageBox.Show("Please insure that the list of specilizations is not zero", "Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to Update EmployeeList?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to Update EmployeeList?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 if (specialisationsHave.Count > 0)
@@ -104,7 +104,7 @@ namespace PremiereSolutionProject.PL
                 }
                 else
                 {
-                    MessageBox.Show("Please insure that the list of specilizations is not zero");
+                    MessageBox.Show("Please insure that the list of specilizations is not zero", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }

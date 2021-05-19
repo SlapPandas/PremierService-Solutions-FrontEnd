@@ -77,7 +77,7 @@ namespace PremiereSolutionProject.PL
             }
             else
             {
-                MessageBox.Show("Client Already Has Active Contract");
+                MessageBox.Show("Client Already Has Active Contract","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

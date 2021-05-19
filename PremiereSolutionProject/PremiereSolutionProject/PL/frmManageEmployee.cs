@@ -48,7 +48,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to Delete The Employee?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to Delete The Employee?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 ServiceManager serviceManager = new ServiceManager();
@@ -60,7 +60,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to update The Employee?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to update The Employee?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 if (!CheckForDuplicates(dgvEmployee.CurrentCell.RowIndex, txtNationalID.Text, txtEmai.Text, txtContactNumber.Text) && checkValidNationalId(txtNationalID.Text) && checkValidContactNumber(txtContactNumber.Text) && checkValidEmail(txtEmai.Text))
@@ -75,7 +75,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to Insert The Employee?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to Insert The Employee?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 if (!CheckForDuplicates(-1, txtNationalID.Text, txtEmai.Text, txtContactNumber.Text) && checkValidNationalId(txtNationalID.Text) && checkValidContactNumber(txtContactNumber.Text) && checkValidEmail(txtEmai.Text))

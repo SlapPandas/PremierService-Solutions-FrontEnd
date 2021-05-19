@@ -81,7 +81,7 @@ namespace PremiereSolutionProject.PL
             }
             else
             {
-                MessageBox.Show("A contract cannot be created without any packages in it.", "Nothing selected", MessageBoxButtons.OK);
+                MessageBox.Show("A contract cannot be created without any packages in it.", "Nothing selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -89,7 +89,7 @@ namespace PremiereSolutionProject.PL
         {
             if (lbxPackages.SelectedIndex == -1)
             {
-                MessageBox.Show("Make sure to select a service package to remove.", "Nothing selected", MessageBoxButtons.OK);
+                MessageBox.Show("Make sure to select a service package to remove.", "Nothing selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -109,7 +109,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure you want to cancel creating this contract?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure you want to cancel creating this contract?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 this.Close();

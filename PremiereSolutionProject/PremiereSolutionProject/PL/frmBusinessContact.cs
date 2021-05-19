@@ -43,7 +43,7 @@ namespace PremiereSolutionProject.PL
         
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to update "+ businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].FirstName + " " + businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].Surname + "?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to update "+ businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].FirstName + " " + businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].Surname + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex] = new BusinessClientEmployees(businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].Id, txtName.Text, txtSurname.Text, txtDepartment.Text, txtContactNumber.Text, txtEmail.Text, txtBusinessID.Text);
@@ -60,7 +60,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to insert a new business contact for " + businessClientList[dgvExistingBusinesses.CurrentCell.RowIndex].BusinessName  + "? ", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to insert a new business contact for " + businessClientList[dgvExistingBusinesses.CurrentCell.RowIndex].BusinessName  + "? ", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 businessEmployeeList.Add(new BusinessClientEmployees(txtName.Text, txtSurname.Text, txtDepartment.Text, txtContactNumber.Text, txtEmail.Text, txtBusinessID.Text));
@@ -78,7 +78,7 @@ namespace PremiereSolutionProject.PL
         private void btnDelete_Click(object sender, EventArgs e)
         {
 
-            DialogResult dr = MessageBox.Show("Are you sure to delete "+ businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].FirstName + " " + businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].Surname + " for " + businessClientList[dgvExistingBusinesses.CurrentCell.RowIndex].BusinessName + "?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to delete "+ businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].FirstName + " " + businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].Surname + " for " + businessClientList[dgvExistingBusinesses.CurrentCell.RowIndex].BusinessName + "?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex] = new BusinessClientEmployees(businessEmployeeList[dgvExistingEmployees.CurrentCell.RowIndex].Id, txtName.Text, txtSurname.Text, txtDepartment.Text, txtContactNumber.Text, txtEmail.Text, txtBusinessID.Text);

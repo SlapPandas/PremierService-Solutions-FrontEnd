@@ -53,7 +53,7 @@ namespace PremiereSolutionProject.PL
         {
             if (dashform.callInfo == null)
             {
-                MessageBox.Show("Please accept a call first");
+                MessageBox.Show("Please accept a call first","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

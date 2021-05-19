@@ -56,7 +56,7 @@ namespace PremiereSolutionProject.PL
             }
             else
             {
-                MessageBox.Show("The new days need to be less than the previous days.", "Invalid entry");
+                MessageBox.Show("The new days need to be less than the previous days.", "Invalid entry",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

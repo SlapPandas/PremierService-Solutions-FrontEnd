@@ -71,7 +71,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnCreatePackage_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to Create this service package?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to Create this service package?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 bool promotion;
@@ -81,7 +81,7 @@ namespace PremiereSolutionProject.PL
                 bool nameMatch = false;
                 if (string.IsNullOrWhiteSpace(txtPackageName.Text) || !IsInt(txtPrice.Text) || (lbxAdded.Items.Count == 0) || (dtpPromotionEnd.Value.Date < dtpPromotionStart.Value.Date))
                 {
-                    MessageBox.Show("Please fill in all the fields correctly");
+                    MessageBox.Show("Please fill in all the fields correctly","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -90,7 +90,7 @@ namespace PremiereSolutionProject.PL
                         if (item.PackageName == txtPackageName.Text)
                         {
                             nameMatch = true;
-                            MessageBox.Show("This package already exists");
+                            MessageBox.Show("This package already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
                     }
@@ -134,7 +134,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnUpdatePackage_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to Upadate this service package?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to Upadate this service package?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 bool promotion;
@@ -147,7 +147,7 @@ namespace PremiereSolutionProject.PL
                 int counter = 0;
                 if (string.IsNullOrWhiteSpace(txtPackageName.Text) || !IsInt(txtPrice.Text) || (lbxAdded.Items.Count == 0) || (dtpPromotionEnd.Value.Date < dtpPromotionStart.Value.Date))
                 {
-                    MessageBox.Show("Please fill in all the fields correctly");
+                    MessageBox.Show("Please fill in all the fields correctly", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -193,7 +193,7 @@ namespace PremiereSolutionProject.PL
                     }
                     else
                     {
-                        MessageBox.Show("This package already exists");
+                        MessageBox.Show("This package already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }                 
@@ -201,7 +201,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnDeletePackage_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to Delete this service package?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to Delete this service package?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 ServicePackage servicePackage = new ServicePackage();
@@ -218,6 +218,97 @@ namespace PremiereSolutionProject.PL
                 RefreshDGV();
             }
             // get the service packed selected in the DGV, obtain its ID and then delete it.            
+        }
+
+        private void cbxPromotionYes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxPromotionYes.Checked)
+            {
+                cbxPromotionNo.Checked = false;
+            }
+        }
+
+        private void cbxPromotionNo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxPromotionNo.Checked)
+            {
+                cbxPromotionYes.Checked = false;
+            }
+        }
+
+        private void btnClearFields_Click(object sender, EventArgs e)
+        {
+            txtPackageName.Clear();
+            txtPrice.Clear();
+            cbxPromotionNo.Checked = true;
+            cbxPromotionYes.Checked = false;
+            numUDPercentage.Value = 0;
+            lbxAdded.Items.Clear();
+            lbxAvailable.Items.Clear();
+            foreach (Service item in services)
+            {
+                lbxAvailable.Items.Add(item.ServiceName.ToString());
+            }
+            rtbDesc.Clear();
+        }
+
+        private void lbxAvailable_Click(object sender, EventArgs e)
+        {
+            if (lbxAvailable.SelectedIndex != -1)
+            {
+                string selectedItemName = lbxAvailable.SelectedItem.ToString();
+                foreach (var item in services)
+                {
+                    if (selectedItemName == item.ServiceName)
+                    {
+                        rtbDesc.Clear();
+                        rtbDesc.Text = item.ServiceDescription;
+                    }
+                }
+            }
+            else
+            {
+                lbxAvailable.SelectedIndex = lbxAvailable.Items.Count - 1;
+                string selectedItemName = lbxAvailable.SelectedItem.ToString();
+                foreach (var item in services)
+                {
+                    if (selectedItemName == item.ServiceName)
+                    {
+                        rtbDesc.Clear();
+                        rtbDesc.Text = item.ServiceDescription;
+                    }
+                }
+            }
+        }
+
+        private void lbxAdded_Click(object sender, EventArgs e)
+        {
+            if (lbxAdded.SelectedIndex != -1)
+            {
+                string selectedItemName = lbxAdded.SelectedItem.ToString();
+                foreach (var item in services)
+                {
+                    if (selectedItemName == item.ServiceName)
+                    {
+                        rtbDesc.Clear();
+                        rtbDesc.Text = item.ServiceDescription;
+                    }
+                }
+            }
+            else
+            {
+                lbxAdded.SelectedIndex = lbxAdded.Items.Count - 1;
+                string selectedItemName = lbxAdded.SelectedItem.ToString();
+                foreach (var item in services)
+                {
+                    if (selectedItemName == item.ServiceName)
+                    {
+                        rtbDesc.Clear();
+                        rtbDesc.Text = item.ServiceDescription;
+                    }
+                }
+            }
+
         }
 
         #endregion
@@ -281,95 +372,6 @@ namespace PremiereSolutionProject.PL
 
         #endregion
 
-        private void cbxPromotionYes_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxPromotionYes.Checked)
-            {
-                cbxPromotionNo.Checked = false;
-            }
-        }
-
-        private void cbxPromotionNo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxPromotionNo.Checked)
-            {
-                cbxPromotionYes.Checked = false;
-            }
-        }
-
-        private void btnClearFields_Click(object sender, EventArgs e)
-        {
-            txtPackageName.Clear();
-            txtPrice.Clear();
-            cbxPromotionNo.Checked = true;
-            cbxPromotionYes.Checked = false;
-            numUDPercentage.Value = 0;
-            lbxAdded.Items.Clear();
-            lbxAvailable.Items.Clear();
-            foreach (Service item in services)
-            {
-                lbxAvailable.Items.Add(item.ServiceName.ToString());
-            }
-            rtbDesc.Clear();
-        }
-
-        private void lbxAvailable_Click(object sender, EventArgs e)
-        {
-            if (lbxAvailable.SelectedIndex != -1)
-            {
-                string selectedItemName = lbxAvailable.SelectedItem.ToString();
-                foreach (var item in services)
-                {
-                    if (selectedItemName == item.ServiceName)
-                    {
-                        rtbDesc.Clear();
-                        rtbDesc.Text = item.ServiceDescription;
-                    }
-                }
-            }
-            else
-            {
-                lbxAvailable.SelectedIndex = lbxAvailable.Items.Count-1;
-                string selectedItemName = lbxAvailable.SelectedItem.ToString();
-                foreach (var item in services)
-                {
-                    if (selectedItemName == item.ServiceName)
-                    {
-                        rtbDesc.Clear();
-                        rtbDesc.Text = item.ServiceDescription;
-                    }
-                }
-            }            
-        }
-
-        private void lbxAdded_Click(object sender, EventArgs e)
-        {
-            if (lbxAdded.SelectedIndex !=  -1)
-            {
-                string selectedItemName = lbxAdded.SelectedItem.ToString();
-                foreach (var item in services)
-                {
-                    if (selectedItemName == item.ServiceName)
-                    {
-                        rtbDesc.Clear();
-                        rtbDesc.Text = item.ServiceDescription;
-                    }
-                }
-            }
-            else
-            {
-                lbxAdded.SelectedIndex = lbxAdded.Items.Count - 1;
-                string selectedItemName = lbxAdded.SelectedItem.ToString();
-                foreach (var item in services)
-                {
-                    if (selectedItemName == item.ServiceName)
-                    {
-                        rtbDesc.Clear();
-                        rtbDesc.Text = item.ServiceDescription;
-                    }
-                }
-            }
-            
-        }
+        
     }
 }

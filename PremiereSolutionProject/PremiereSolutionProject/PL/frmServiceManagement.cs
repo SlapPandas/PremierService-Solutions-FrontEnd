@@ -33,14 +33,20 @@ namespace PremiereSolutionProject.PL
             this.Close();
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtServiceName.Clear();
+            rtbServiceDescription.Clear();
+        }
+
         private void btnCreatePackage_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to Create this serice?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to Create this serice?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 if (string.IsNullOrWhiteSpace(txtServiceName.Text) && string.IsNullOrWhiteSpace(rtbServiceDescription.Text))
                 {
-                    MessageBox.Show("Please fill the correct information");
+                    MessageBox.Show("Please fill the correct information","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -53,12 +59,12 @@ namespace PremiereSolutionProject.PL
 
         private void btnUpdateService_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to Update this serice?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to Update this serice?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 if (string.IsNullOrWhiteSpace(txtServiceName.Text) && string.IsNullOrWhiteSpace(rtbServiceDescription.Text))
                 {
-                    MessageBox.Show("Please fill the correct information");
+                    MessageBox.Show("Please fill the correct information", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -77,7 +83,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnDeleteService_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to Delete this service?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to Delete this service?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 Service service = selectedService;
@@ -114,10 +120,6 @@ namespace PremiereSolutionProject.PL
 
         #endregion
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            txtServiceName.Clear();
-            rtbServiceDescription.Clear();
-        }
+       
     }
 }

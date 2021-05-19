@@ -39,7 +39,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnDeleteBusinessClient_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to delete The Client?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to delete The Client?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 businessClients[dgvBusinessClients.CurrentCell.RowIndex].Active = false;
@@ -51,7 +51,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to update The Client?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to update The Client?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 if (!CheckForDuplicates(dgvBusinessClients.CurrentCell.RowIndex, txtTaxNum.Text, txtContactNumber.Text) && checkValidTaxId(txtTaxNum.Text) && checkValidContactNumber(txtContactNumber.Text))
@@ -66,7 +66,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to Insert The Client?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to Insert The Client?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 if (!CheckForDuplicates(-1, txtTaxNum.Text, txtContactNumber.Text) && checkValidTaxId(txtTaxNum.Text) && checkValidContactNumber(txtContactNumber.Text))
@@ -96,7 +96,7 @@ namespace PremiereSolutionProject.PL
             }
             else
             {
-                MessageBox.Show("Please make sure to enter an ID to search for.","No ID entered", MessageBoxButtons.OK);
+                MessageBox.Show("Please make sure to enter an ID to search for.","No ID entered", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -233,7 +233,7 @@ namespace PremiereSolutionProject.PL
                 {
                     if ((businessClients[i].TaxNumber == taxNumber || businessClients[i].ContactNumber == contactNumber) && businessClients[i].Active == true)
                     {
-                        MessageBox.Show("please insure that the id Number, email or contact nuber does not exist in the system already");
+                        MessageBox.Show("Please insure that the id Number, email or contact nuber does not exist in the system already","Confirmation",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return true;
                     }
                 }
@@ -247,7 +247,7 @@ namespace PremiereSolutionProject.PL
             {
                 return true;
             }
-            MessageBox.Show("please insure that the id Number has the correct amount of digits 13");
+            MessageBox.Show("Please insure that the id Number has the correct amount of digits 13", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
         private bool checkValidContactNumber(string id)
@@ -256,7 +256,7 @@ namespace PremiereSolutionProject.PL
             {
                 return true;
             }
-            MessageBox.Show("please insure that the contact has the correct amount of digits 10");
+            MessageBox.Show("Please insure that the contact has the correct amount of digits 10","Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
         #endregion

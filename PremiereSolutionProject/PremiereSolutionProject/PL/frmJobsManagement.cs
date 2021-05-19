@@ -42,6 +42,15 @@ namespace PremiereSolutionProject.PL
             RefreshDGVAndListForEmployees(dgvViewJob.CurrentCell.RowIndex);
         }
 
+        private void cbxCurrentState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((int)jobs[dgvViewJob.CurrentCell.RowIndex].JobState > cbxCurrentState.SelectedIndex)
+            {
+                MessageBox.Show("You can not select a previous state", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cbxCurrentState.SelectedIndex = (int)jobs[dgvViewJob.CurrentCell.RowIndex].JobState;
+            }
+        }
+
         private void btnDeleteJob_Click(object sender, EventArgs e)
         {
             if (dgvViewJob.CurrentCell.RowIndex <= jobs.Count - 1)
@@ -183,13 +192,6 @@ namespace PremiereSolutionProject.PL
 
         #endregion
 
-        private void cbxCurrentState_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if ((int)jobs[dgvViewJob.CurrentCell.RowIndex].JobState > cbxCurrentState.SelectedIndex)
-            {
-                MessageBox.Show("you can not select a previous state");
-                cbxCurrentState.SelectedIndex = (int)jobs[dgvViewJob.CurrentCell.RowIndex].JobState;
-            }
-        }
+        
     }
 }

@@ -49,7 +49,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnDeleteClient_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to delete The Client?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to delete The Client?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 individualClients[dgvExistingClients.CurrentCell.RowIndex].Active = false;
@@ -61,7 +61,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnUpdateIndiClient_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to update The Client?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to update The Client?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 if (!CheckForDuplicates(dgvExistingClients.CurrentCell.RowIndex,txtNationalID.Text, txtEmai.Text, txtContactNumber.Text) && checkValidNationalId(txtNationalID.Text) && checkValidContactNumber(txtContactNumber.Text) && checkValidEmail(txtEmai.Text))
@@ -76,7 +76,7 @@ namespace PremiereSolutionProject.PL
 
         private void btnAddClient_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you sure to Insert The Client?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Are you sure to Insert The Client?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
                 if (!CheckForDuplicates(-1, txtNationalID.Text, txtEmai.Text, txtContactNumber.Text) && checkValidNationalId(txtNationalID.Text) && checkValidContactNumber(txtContactNumber.Text) && checkValidEmail(txtEmai.Text))
@@ -221,7 +221,7 @@ namespace PremiereSolutionProject.PL
                 {
                     if ((individualClients[i].NationalIDnumber == nationalId || individualClients[i].Email == email || individualClients[i].ContactNumber == contactNumber) && individualClients[i].Active == true)
                     {
-                        MessageBox.Show("please insure that the id Number, email or contact nuber does not exist in the system already");
+                        MessageBox.Show("Please insure that the id Number, email or contact nuber does not exist in the system already","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                         return true;
                     }
                 }
@@ -235,7 +235,7 @@ namespace PremiereSolutionProject.PL
             {
                 return true;
             }
-            MessageBox.Show("please insure that the id Number has the correct amount of digits 13");
+            MessageBox.Show("Please insure that the id Number has the correct amount of digits 13", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
         private bool checkValidContactNumber(string id)
@@ -244,7 +244,7 @@ namespace PremiereSolutionProject.PL
             {
                 return true;
             }
-            MessageBox.Show("please insure that the contact has the correct amount of digits 10");
+            MessageBox.Show("Please insure that the contact has the correct amount of digits 10","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
         private bool checkValidEmail(string id)
@@ -254,7 +254,7 @@ namespace PremiereSolutionProject.PL
             {
                 return true;
             }
-            MessageBox.Show("please insure that the email is valid");
+            MessageBox.Show("Please insure that the email is valid","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
         private void ClearFields()

@@ -52,7 +52,7 @@ namespace PremiereSolutionProject.PL
         {
             if (String.IsNullOrWhiteSpace(txtClientID.Text))
             {
-                MessageBox.Show("Please enter a client ID");
+                MessageBox.Show("Please enter a client ID","Error",MessageBoxButtons.RetryCancel,MessageBoxIcon.Error);
             }
             else
             {
@@ -93,7 +93,7 @@ namespace PremiereSolutionProject.PL
                 }
                 catch (FormatException formatExcpetion)
                 {
-                    MessageBox.Show(formatExcpetion.Message, "Incorrect user input.");
+                    MessageBox.Show(formatExcpetion.Message, "Incorrect user input.",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
                 catch (Exception exception)
                 {
@@ -106,19 +106,19 @@ namespace PremiereSolutionProject.PL
         {
             if (String.IsNullOrWhiteSpace(txtClientID.Text))
             {
-                MessageBox.Show("Please enter the client ID");
+                MessageBox.Show("Please enter the client ID","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
             else if (dashform.callInfo.Client != null)
             {
-                MessageBox.Show("Client already logged");
+                MessageBox.Show("Client already logged", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (bs2.Current == null)
             {
-                MessageBox.Show("No client selected in data grid view");
+                MessageBox.Show("No client selected in data grid view", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                DialogResult dr = MessageBox.Show("Are you sure you want to add client?", "Confirmation", MessageBoxButtons.YesNo);
+                DialogResult dr = MessageBox.Show("Are you sure you want to add client?", "Confirmation", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
                     Call call = new Call();
