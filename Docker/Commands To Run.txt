@@ -1,7 +1,9 @@
 Make use of powershell
 1. go to dir where the docker file is located
 2. docker build -t restored-db .
+	docker build -t my-php-app .
 3. docker run -p 11433:1433 -d restored-db
+	docker run -it --rm --name my-running-app my-php-app
 
 Servername: localhost, 11433
 Username: sa

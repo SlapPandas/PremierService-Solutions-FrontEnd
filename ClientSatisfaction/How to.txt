@@ -1,0 +1,5 @@
+Have XAMPP isntalled and start both Apache and MySQL.
+Make sure file for wep page is in path -- C:\xampp\htdocs. HAS TO BE IN HTDOCS
+Type "http://localhost/phpmyadmin" into web browser to view database.
+Type "http://localhost/ClientSatisfaction/index.php" into web browser to open web page.
+

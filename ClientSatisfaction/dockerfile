@@ -1,0 +1,5 @@
+
+FROM php:7.4-cli
+COPY . C:\xampp\htdocs\ClientSatisfaction\index.php
+WORKDIR C:\xampp\htdocs\ClientSatisfaction\index.php
+CMD [ "php", "index.php" ]

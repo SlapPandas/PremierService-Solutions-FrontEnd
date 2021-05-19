@@ -88,8 +88,5 @@ namespace PremiereSolutionProject.DAL
             return businessClientemployeeList;
         }
         #endregion
-
-        #region SeperateMethods
-        #endregion
     }
 }
