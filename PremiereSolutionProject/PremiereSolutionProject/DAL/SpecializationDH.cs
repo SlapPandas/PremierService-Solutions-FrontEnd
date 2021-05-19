@@ -195,34 +195,5 @@ namespace PremiereSolutionProject.DAL
             return specialisation;
         }
         #endregion
-
-        #region Seperate Methods
-        private int GetNumberOfSpecializationUses(int specializationId)
-        {
-            int output = -1;
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionSring))
-                {
-                    connection.Open();
-                    commandString = $"EXEC SpecialisationUses @id = '{specializationId}'";
-                    SqlCommand command = new SqlCommand(commandString, connection);
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        output = (int)reader["uses"];
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                DatabaseOperationDH databaseOperationDH = new DatabaseOperationDH();
-                DatabaseOperation databaseOperation = new DatabaseOperation(false, e.ToString());
-                databaseOperationDH.CreateOperationLog(databaseOperation);
-            }
-            finally{}
-            return output;
-        }
-        #endregion
     }
 }

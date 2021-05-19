@@ -82,7 +82,6 @@ namespace PremiereSolutionProject.DAL
 
             return IndividualClient;
         }
-
         #endregion
 
         #region SeperateMethods

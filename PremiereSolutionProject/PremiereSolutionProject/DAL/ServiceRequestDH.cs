@@ -134,8 +134,7 @@ namespace PremiereSolutionProject.DAL
         }
         #endregion
 
-        #region SeperateMethods
-       
+        #region SeperateMethods   
         private bool GetTrueFalseFromBit(int bit)
         {
             bool output = bit == 1 ? true : false;
