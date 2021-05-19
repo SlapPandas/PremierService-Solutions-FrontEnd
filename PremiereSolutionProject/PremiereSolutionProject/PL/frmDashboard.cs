@@ -292,8 +292,12 @@ namespace PremiereSolutionProject.PL
             HideSubMenu();
         }
 
+
         #endregion
 
-       
+        private void btnClientSatisfaction_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://localhost/ClientSatisfaction/index.php");
+        }
     }
 }
