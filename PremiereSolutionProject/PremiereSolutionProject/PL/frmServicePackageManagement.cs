@@ -216,8 +216,7 @@ namespace PremiereSolutionProject.PL
                     }
                 }
                 RefreshDGV();
-            }
-            // get the service packed selected in the DGV, obtain its ID and then delete it.            
+            }         
         }
 
         private void cbxPromotionYes_CheckedChanged(object sender, EventArgs e)
@@ -332,7 +331,7 @@ namespace PremiereSolutionProject.PL
             }
             if (index <= dgvCurrentServicePackages.RowCount - 2)
             {
-                //selectedProduct
+                
                 if (selectedP.OnPromotion == true)
                 {
                     cbxPromotionYes.Checked = true;
